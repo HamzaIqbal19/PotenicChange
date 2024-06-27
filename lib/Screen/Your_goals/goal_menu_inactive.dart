@@ -102,7 +102,6 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
               }
             }
 
-
             loadData();
           } else {
             loadData();
@@ -815,9 +814,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 color: Colors.white, width: 2),
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
-                                              image: AssetImage(
-                                                  practiceImages(goalDetails['userPractices']
-                                                  [index]['color'].toString())),
+                                              image: AssetImage(practiceImages(
+                                                  goalDetails['userPractices']
+                                                          [index]['color']
+                                                      .toString())),
                                               fit: BoxFit.contain,
                                             )),
                                         child: Container(
@@ -884,8 +884,8 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                 color: Colors.white, width: 2),
                                             shape: BoxShape.circle,
                                             image: DecorationImage(
-                                              image: AssetImage(
-                                                practiceImages(activePractices[index]
+                                              image: AssetImage(practiceImages(
+                                                  activePractices[index]
                                                           ['color']
                                                       .toString())),
                                               fit: BoxFit.contain,
@@ -930,16 +930,15 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         ),
                         child: Column(
                           children: [
-                           
                             AnimatedScaleButton(
                               onTap: () {
-                                if(subscriptions == 'active'){
-                                 // Navigator.push(context, FadePageRoute(page: const timeline()));
-                                }else{
-                                  ScaffoldMessenger.of(context)
-                                      .showSnackBar(const SnackBar(
-                                      content: Text(
-                                          "This feature is only available for premium members")));
+                                if (subscriptions == 'active') {
+                                  // Navigator.push(context, FadePageRoute(page: const timeline()));
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text(
+                                              "This feature is only available for premium members")));
                                 }
                               },
                               child: Container(

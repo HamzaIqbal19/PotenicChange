@@ -683,7 +683,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                 //               "Practice progress is not active")));
                                 // }
                               },
-                              child:  const button_feilds(
+                              child: const button_feilds(
                                 feild_text: 'View practice progress',
                                 icon_viible: true,
                                 text_color: 0xff646464,
@@ -726,13 +726,13 @@ class _missed_MenuState extends State<missed_Menu> {
                                       AppDimensions.height10(context) * 1.0),
                               child: AnimatedScaleButton(
                                 onTap: () {
-                                  if(subscripption == 'active'){
-                                   // Navigator.push(context, FadePageRoute(page: const timeline()));
-                                  }else{
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(const SnackBar(
-                                        content: Text(
-                                            "This feature is only available for premium members")));
+                                  if (subscripption == 'active') {
+                                    // Navigator.push(context, FadePageRoute(page: const timeline()));
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                            content: Text(
+                                                "This feature is only available for premium members")));
                                   }
                                 },
                                 child: button_feilds(
@@ -767,7 +767,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                               "Practice assessment is activated after first practice evaluation.")));
                                 }
                               },
-                              child:  button_feilds(
+                              child: button_feilds(
                                 feild_text: 'Practice assesment history',
                                 icon_viible: true,
                                 text_color: 0xff646464,

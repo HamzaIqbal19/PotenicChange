@@ -21,46 +21,53 @@ class _notificationsState extends State<notifications> {
   bool status2 = false;
   bool status3 = false;
   bool status4 = false;
-  List statements = ['None', '10 minutes', '20 minutes','30 minutes','1 hour'];
-  List missedPractices = ['None', '10 minutes', '20 minutes','30 minutes','1 hour'];
+  List statements = [
+    'None',
+    '10 minutes',
+    '20 minutes',
+    '30 minutes',
+    '1 hour'
+  ];
+  List missedPractices = [
+    'None',
+    '10 minutes',
+    '20 minutes',
+    '30 minutes',
+    '1 hour'
+  ];
 
-  int selectedIndex = 0 ;
+  int selectedIndex = 0;
   int missedIndex = 0;
-  
 
-getReminderStatus(){
-  PracticeGoalApi.getUserReminder().then((value){
-    print("Reminder status: $value" );
-    if(value!=null){
- setState(() {
+  getReminderStatus() {
+    PracticeGoalApi.getUserReminder().then((value) {
+      print("Reminder status: $value");
+      if (value != null) {
+        setState(() {
+          status = value['receiveNotification'];
+          if (status != false) {
+            status1 = value['beforePractice'];
+            if (status1 != false) {
+              selectedIndex = statements.indexOf(value['beforePracticeTime']);
+            }
 
-      status= value['receiveNotification'];
-      if(status!=false){
-      status1= value['beforePractice'];
-      if(status1!=false){
-        selectedIndex = statements.indexOf(value['beforePracticeTime']);
+            status2 = value['missedPractice'];
+            if (status2 != false) {
+              missedIndex =
+                  missedPractices.indexOf(value['missedPracticeTime']);
+            }
+
+            status3 = status2;
+            status4 = value['progressReport'];
+          }
+        });
       }
-
-
-      
-      status2= value['missedPractice'];
-      if(status2!=false){
-        missedIndex = missedPractices.indexOf(value['missedPracticeTime']);
-      }
-      
-      status3= status2;
-      status4= value['progressReport'];
-      }
-      
     });
-    }
-   
-  } );
-}
+  }
 
-setUserReminder(name, reminder){
-  PracticeGoalApi().updateUserReminder(name, reminder);
-}
+  setUserReminder(name, reminder) {
+    PracticeGoalApi().updateUserReminder(name, reminder);
+  }
 
   @override
   void initState() {
@@ -150,20 +157,20 @@ setUserReminder(name, reminder){
                       activeColor: const Color(0xFF34C759),
                       inactiveColor: const Color(0xFF2F3A4B),
                       value: status,
-                      onToggle: (val) async{
+                      onToggle: (val) async {
                         setState(() {
                           status = val;
                           setUserReminder('receiveNotification', status);
-                          if(val == false){
-                          status1 = val;
-                          status2 = val;
-                          status3 = val;
-                          status4 = val;
+                          if (val == false) {
+                            status1 = val;
+                            status2 = val;
+                            status3 = val;
+                            status4 = val;
                           }
-                         
+
                           // color3 = val;
                         });
-                      // await checkNotificationPermission();
+                        // await checkNotificationPermission();
                       },
                     ),
                   ],
@@ -209,8 +216,8 @@ setUserReminder(name, reminder){
                           decoration: BoxDecoration(
                               border: Border(
                                   bottom: BorderSide(
-                                      width: AppDimensions.width10(context) *
-                                          0.1,
+                                      width:
+                                          AppDimensions.width10(context) * 0.1,
                                       color: const Color(0xFF000000)))),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -219,37 +226,42 @@ setUserReminder(name, reminder){
                                 width: AppDimensions.width10(context) * 24.7,
                                 height: AppDimensions.height10(context) * 4.7,
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
                                       //width: AppDimensions.width10(context) * 20.6,
                                       height:
-                                          AppDimensions.height10(context) *
-                                              1.9,
+                                          AppDimensions.height10(context) * 1.9,
                                       child: Text(
                                         'Reminders before practice starts ',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.font10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0XFF5B74A6)),
                                       ),
                                     ),
                                     GestureDetector(
                                       onTap: () {
-                                        _showBottomSheet(const Key('missed'),context,statements, selectedIndex, (value){
+                                        _showBottomSheet(
+                                            const Key('missed'),
+                                            context,
+                                            statements,
+                                            selectedIndex, (value) {
                                           setState(() {
                                             selectedIndex = value;
                                           });
-                                            setUserReminder('beforePracticeTime', statements[selectedIndex].toString(),);
+                                          setUserReminder(
+                                            'beforePracticeTime',
+                                            statements[selectedIndex]
+                                                .toString(),
+                                          );
                                         });
                                       },
                                       child: Container(
-                                        width:
-                                            AppDimensions.width10(context) *
-                                                20.6,
+                                        width: AppDimensions.width10(context) *
+                                            20.6,
                                         height:
                                             AppDimensions.height10(context) *
                                                 2.2,
@@ -258,7 +270,10 @@ setUserReminder(name, reminder){
                                                     context) *
                                                 0.6),
                                         child: Text(
-                                        selectedIndex!=0?"${statements[selectedIndex].toString()} before":  statements[selectedIndex].toString(),
+                                          selectedIndex != 0
+                                              ? "${statements[selectedIndex].toString()} before"
+                                              : statements[selectedIndex]
+                                                  .toString(),
                                           style: TextStyle(
                                               fontSize: AppDimensions.font10(
                                                       context) *
@@ -296,8 +311,8 @@ setUserReminder(name, reminder){
                           decoration: BoxDecoration(
                               border: Border(
                                   bottom: BorderSide(
-                                      width: AppDimensions.width10(context) *
-                                          0.1,
+                                      width:
+                                          AppDimensions.width10(context) * 0.1,
                                       color: const Color(0xFF000000)))),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -306,31 +321,36 @@ setUserReminder(name, reminder){
                                 width: AppDimensions.width10(context) * 24.7,
                                 height: AppDimensions.height10(context) * 4.7,
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     SizedBox(
                                       //width: AppDimensions.width10(context) * 20.6,
                                       height:
-                                          AppDimensions.height10(context) *
-                                              1.9,
+                                          AppDimensions.height10(context) * 1.9,
                                       child: Text(
                                         'For missed practices remind me',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.font10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0XFF5B74A6)),
                                       ),
                                     ),
                                     GestureDetector(
-                                      onTap: (){
-                                        _showBottomSheet(const Key('missed'),context, missedPractices, missedIndex, (value){
-                                        setState(() {
-                                          missedIndex = value;
-                                        });
-                                        setUserReminder('missedPracticeTime', missedPractices[missedIndex].toString());
+                                      onTap: () {
+                                        _showBottomSheet(
+                                            const Key('missed'),
+                                            context,
+                                            missedPractices,
+                                            missedIndex, (value) {
+                                          setState(() {
+                                            missedIndex = value;
+                                          });
+                                          setUserReminder(
+                                              'missedPracticeTime',
+                                              missedPractices[missedIndex]
+                                                  .toString());
                                         });
                                       },
                                       child: Container(
@@ -344,7 +364,10 @@ setUserReminder(name, reminder){
                                                     context) *
                                                 0.6),
                                         child: Text(
-                                       missedIndex!=0?"${missedPractices[missedIndex].toString()} after":  missedPractices[missedIndex].toString(),
+                                          missedIndex != 0
+                                              ? "${missedPractices[missedIndex].toString()} after"
+                                              : missedPractices[missedIndex]
+                                                  .toString(),
                                           style: TextStyle(
                                               fontSize: AppDimensions.font10(
                                                       context) *
@@ -368,7 +391,7 @@ setUserReminder(name, reminder){
                                 onToggle: (val) {
                                   setState(() {
                                     status2 = val;
-                                     setUserReminder('missedPractice', status2);
+                                    setUserReminder('missedPractice', status2);
                                     // color3 = val;
                                   });
                                 },
@@ -382,8 +405,8 @@ setUserReminder(name, reminder){
                           decoration: BoxDecoration(
                               border: Border(
                                   bottom: BorderSide(
-                                      width: AppDimensions.width10(context) *
-                                          0.1,
+                                      width:
+                                          AppDimensions.width10(context) * 0.1,
                                       color: const Color(0xFF000000)))),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -392,21 +415,19 @@ setUserReminder(name, reminder){
                                 width: AppDimensions.width10(context) * 24.7,
                                 height: AppDimensions.height10(context) * 4.7,
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SizedBox(
                                       //width: AppDimensions.width10(context) * 20.6,
                                       height:
-                                          AppDimensions.height10(context) *
-                                              3.8,
+                                          AppDimensions.height10(context) * 3.8,
                                       child: Text(
                                         'Check-ins and missed practice\nsessions',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.font10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0XFF5B74A6)),
                                       ),
@@ -442,21 +463,19 @@ setUserReminder(name, reminder){
                                 width: AppDimensions.width10(context) * 24.7,
                                 height: AppDimensions.height10(context) * 4.7,
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SizedBox(
                                       //width: AppDimensions.width10(context) * 20.6,
                                       height:
-                                          AppDimensions.height10(context) *
-                                              1.9,
+                                          AppDimensions.height10(context) * 1.9,
                                       child: Text(
                                         'Progress Reports  ',
                                         style: TextStyle(
-                                            fontSize: AppDimensions.font10(
-                                                    context) *
-                                                1.6,
+                                            fontSize:
+                                                AppDimensions.font10(context) *
+                                                    1.6,
                                             fontWeight: FontWeight.w500,
                                             color: const Color(0XFF5B74A6)),
                                       ),
@@ -506,13 +525,19 @@ setUserReminder(name, reminder){
   }
 }
 
-void _showBottomSheet(Key? key,BuildContext context, statements, selectedIndex,  onCountChanged) {
+void _showBottomSheet(
+    Key? key, BuildContext context, statements, selectedIndex, onCountChanged) {
   showModalBottomSheet(
     context: context,
     builder: (BuildContext context) {
-      return MyBottomSheet(key: key, statments: statements, onCountChanged: (int value) { 
-        onCountChanged(value);
-       }, selectedIndex: selectedIndex,);
+      return MyBottomSheet(
+        key: key,
+        statments: statements,
+        onCountChanged: (int value) {
+          onCountChanged(value);
+        },
+        selectedIndex: selectedIndex,
+      );
     },
   );
 }
@@ -521,24 +546,28 @@ class MyBottomSheet extends StatefulWidget {
   List statments;
   int selectedIndex;
   final ValueChanged<int> onCountChanged;
-   MyBottomSheet({Key? key,required this.statments, required this.selectedIndex, required this.onCountChanged}):super(key: key);
+  MyBottomSheet(
+      {Key? key,
+      required this.statments,
+      required this.selectedIndex,
+      required this.onCountChanged})
+      : super(key: key);
 
   @override
   _MyBottomSheetState createState() => _MyBottomSheetState();
 }
 
 class _MyBottomSheetState extends State<MyBottomSheet> {
-  
-  
-int _selectedIndex =0;
+  int _selectedIndex = 0;
 
-@override
-void initState() {
-  super.initState();
-  setState(() {
-     _selectedIndex = widget.selectedIndex;
-  });
-}
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      _selectedIndex = widget.selectedIndex;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -546,7 +575,7 @@ void initState() {
       color: const Color(0xFFFBFBFB), // Set the height of the bottom sheet
       child: Column(
         children: [
-           Container(
+          Container(
             padding: EdgeInsets.only(
                 left: AppDimensions.width10(context) * 1.0,
                 right: AppDimensions.width10(context) * 1.9,
@@ -600,7 +629,6 @@ void initState() {
           Divider(
               height: AppDimensions.height10(context) * 0.1,
               color: const Color(0xFF828282)),
-          
           Expanded(
             child: ListWheelScrollView(
               itemExtent: 26,

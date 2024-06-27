@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/Alerts/message_center.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/progress_report.dart';
@@ -46,6 +47,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
   String subId = '';
   String planId = '';
   bool yearly = false;
+  int newMessages = 0;
 
   Future<void> getUserRole() async {
     final SharedPreferences prefs = await _prefs;
@@ -72,7 +74,6 @@ class _your_goals_menuState extends State<your_goals_menu> {
 
   getSubscriptionData() {
     SubscriptionService().getCustomerData().then((value) => {
-
           setState(() {
             trial = value['subscriptions'] == null
                 ? ''
@@ -94,9 +95,19 @@ class _your_goals_menuState extends State<your_goals_menu> {
         });
   }
 
+  getUser() {
+    Authentication().getUserData().then((value) {
+      print("New messages asdas ${value["unreadMessageCenterCount"]}");
+      setState(() {
+        newMessages = value["unreadMessageCenterCount"];
+      });
+    });
+  }
+
   @override
   void initState() {
     super.initState();
+    getUser();
     getUserRole();
     getSubscriptionData();
   }
@@ -234,11 +245,9 @@ class _your_goals_menuState extends State<your_goals_menu> {
                         ),
                       ),
                       GestureDetector(
-                        onTap:(){
-                          Navigator.push(
-                              context,
-                              FadePageRoute(
-                                  page: const MessageCenter()));
+                        onTap: () {
+                          Navigator.push(context,
+                              FadePageRoute(page: const MessageCenter()));
                         },
                         child: Container(
                           width: AppDimensions.width10(context) * 33.4,
@@ -256,7 +265,9 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                 width: AppDimensions.width10(context) * 20.6,
                                 height: AppDimensions.height10(context) * 2.2,
                                 child: Text(
-                                  'Messages',
+                                  newMessages >= 0
+                                      ? "Messages ($newMessages new)"
+                                      : 'Messages',
                                   style: TextStyle(
                                       fontSize:
                                           AppDimensions.font10(context) * 1.6,
@@ -266,7 +277,8 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               ),
                               SizedBox(
                                   width: AppDimensions.width10(context) * 2.4,
-                                  height: AppDimensions.height10(context) * 1.39,
+                                  height:
+                                      AppDimensions.height10(context) * 1.39,
                                   child: Image.asset(
                                     'assets/images/BTN Back.webp',
                                     //width: AppDimensions.width10(context) * 2.6,

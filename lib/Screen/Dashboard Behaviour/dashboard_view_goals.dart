@@ -36,8 +36,6 @@ import '../capture_inspiration/inpiration_landing.dart';
 import 'calender_bottom_sheet.dart';
 import 'menu_dashboard_behaviour.dart';
 
-
-
 class ViewDashboard extends StatefulWidget {
   final bool missed;
   final bool update;
@@ -59,7 +57,8 @@ class ViewDashboard extends StatefulWidget {
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-class _ViewDashboardState extends State<ViewDashboard> with WidgetsBindingObserver {
+class _ViewDashboardState extends State<ViewDashboard>
+    with WidgetsBindingObserver {
   var allGoals;
   var responseData;
   var allPractice;
@@ -68,7 +67,7 @@ class _ViewDashboardState extends State<ViewDashboard> with WidgetsBindingObserv
   bool noData = false;
   bool loader = true;
   bool redaVisble = false;
- var getSubscription = '';
+  var getSubscription = '';
   bool maxViewDate = false;
   List<Map<String, dynamic>> timesList = [];
   int pastPracCompleted = -1;
@@ -85,7 +84,8 @@ class _ViewDashboardState extends State<ViewDashboard> with WidgetsBindingObserv
   var notificationUrl;
   final ScrollController _scrollController = ScrollController();
   bool isVisible = true;
-  final NotificationPermissionService _notificationPermissionService = NotificationPermissionService();
+  final NotificationPermissionService _notificationPermissionService =
+      NotificationPermissionService();
 
   void _incrementValue() {
     setState(() {
@@ -93,10 +93,9 @@ class _ViewDashboardState extends State<ViewDashboard> with WidgetsBindingObserv
     });
   }
 
-getUserNotifications(){
-  notificationApi.getUserNotification();
-}
-
+  getUserNotifications() {
+    notificationApi.getUserNotification();
+  }
 
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
@@ -118,13 +117,12 @@ getUserNotifications(){
     super.dispose();
   }
 
-
   Future<void> getGoalUpdates() async {
     final SharedPreferences prefs = await _prefs;
     var levelChange = prefs.getBool('goalLevelUpdate');
     var goalUpdate = prefs.getString('goalLevelUpOrDown');
     // var length = prefs.getInt('goalAchievedLenght');
-     getSubscription = prefs.getString('subscriptionStatus').toString();
+    getSubscription = prefs.getString('subscriptionStatus').toString();
     var goalData = prefs.getString('goalAcieved');
     var newData = json.decode(goalData!);
 
@@ -143,8 +141,9 @@ getUserNotifications(){
     }
   }
 
-  notificationPermissionSerice(){
-    _notificationPermissionService.checkAndRequestNotificationPermission(context);
+  notificationPermissionSerice() {
+    _notificationPermissionService.checkAndRequestNotificationPermission(
+        context, true);
   }
 
   bool _showOverlay = false;
@@ -202,9 +201,7 @@ getUserNotifications(){
     }
     getGoalUpdates();
     WidgetsBinding.instance.addObserver(this);
-
   }
-
 
   void _scrollToCurrentIndex() {
     _scrollController.animateTo(
@@ -339,7 +336,6 @@ getUserNotifications(){
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
-
   void onDoneLoading() {
     setState(() {
       loader = false;
@@ -382,9 +378,10 @@ getUserNotifications(){
 
   @override
   Widget build(BuildContext context) {
-   // getNotificationData();
+    // getNotificationData();
     bool smallScreen = MediaQuery.of(context).size.height < 690;
-    final notificationController notificationsController = Get.find<notificationController>();
+    final notificationController notificationsController =
+        Get.find<notificationController>();
     var nottificationList = notificationsController.getAllNotifications();
 
     return WillPopScope(
@@ -421,12 +418,14 @@ getUserNotifications(){
                               },
                               child: Container(
                                 margin: EdgeInsets.only(
-                                    right:
-                                    UpdatedDimensions.height10(context) * 1.32),
+                                    right: UpdatedDimensions.height10(context) *
+                                        1.32),
                                 child: Image.asset(
                                   'assets/images/Asset 10 2.webp',
-                                  height: UpdatedDimensions.width10(context) * 4.0,
-                                  width: UpdatedDimensions.width10(context) * 3.977,
+                                  height:
+                                      UpdatedDimensions.width10(context) * 4.0,
+                                  width: UpdatedDimensions.width10(context) *
+                                      3.977,
                                   fit: BoxFit.contain,
                                 ),
                               ),
@@ -490,8 +489,8 @@ getUserNotifications(){
             backgroundColor: const Color(0xffD9B4B4),
             bottomNavigationBar: contain
                 ? Container(
-                    margin:
-                        EdgeInsets.all(UpdatedDimensions.height10(context) * 1.8),
+                    margin: EdgeInsets.all(
+                        UpdatedDimensions.height10(context) * 1.8),
                     child: updateBox(
                         headText: widget.missed ? 'Missed' : 'SAVED',
                         bodyText: widget.name,
@@ -500,13 +499,14 @@ getUserNotifications(){
                         FadeFunction: () {},
                         functionText: widget.missed ? 'Undo' : 'Edit'),
                   )
-                :  BottomAppBar(
+                : BottomAppBar(
                     elevation: 0,
                     padding: EdgeInsets.zero,
                     notchMargin: 0,
                     color: const Color(0xffD9B4B4),
                     child: Navigation_Bar(
-                      bg_colored: true,subscription: getSubscription.toString(),
+                      bg_colored: true,
+                      subscription: getSubscription.toString(),
                     ),
                   ),
             body: Container(
@@ -532,7 +532,8 @@ getUserNotifications(){
                                 child: SizedBox(
                                     width: double.infinity,
                                     height:
-                                    UpdatedDimensions.height10(context) * 19.2,
+                                        UpdatedDimensions.height10(context) *
+                                            19.2,
                                     child: Stack(children: [
                                       Stack(
                                         children: [
@@ -540,9 +541,10 @@ getUserNotifications(){
                                             scrollDirection: Axis.horizontal,
                                             controller: _scrollController,
                                             child: SizedBox(
-                                              height: UpdatedDimensions.height10(
-                                                      context) *
-                                                  19.2,
+                                              height:
+                                                  UpdatedDimensions.height10(
+                                                          context) *
+                                                      19.2,
                                               width: UpdatedDimensions.width10(
                                                       context) *
                                                   45.0,
@@ -621,7 +623,7 @@ getUserNotifications(){
                                                                             3),
                                                                     style: TextStyle(
                                                                         fontSize:
-                                                                        UpdatedDimensions.font10(context) *
+                                                                            UpdatedDimensions.font10(context) *
                                                                                 1.2,
                                                                         fontWeight:
                                                                             FontWeight
@@ -645,13 +647,13 @@ getUserNotifications(){
                                                                             FontWeight
                                                                                 .w400,
                                                                         fontSize:
-                                                                        UpdatedDimensions.font10(context) *
+                                                                            UpdatedDimensions.font10(context) *
                                                                                 1.4),
                                                                   ),
                                                                 ),
                                                                 Container(
                                                                     height:
-                                                                    UpdatedDimensions.width10(context) *
+                                                                        UpdatedDimensions.width10(context) *
                                                                             2.0,
                                                                     width: UpdatedDimensions.width10(
                                                                             context) *
@@ -695,10 +697,10 @@ getUserNotifications(){
                                                               .height10(
                                                                   context) *
                                                           19.2,
-                                                      width:
-                                                      UpdatedDimensions.width10(
+                                                      width: UpdatedDimensions
+                                                              .width10(
                                                                   context) *
-                                                              18.8,
+                                                          18.8,
                                                       // margin: EdgeInsets.only(left: 55.5, right: 55.5),
                                                       child: Container(
                                                         height: UpdatedDimensions
@@ -759,7 +761,7 @@ getUserNotifications(){
                                                                           0, 3),
                                                                   style: TextStyle(
                                                                       fontSize:
-                                                                      UpdatedDimensions.font10(context) *
+                                                                          UpdatedDimensions.font10(context) *
                                                                               1.2,
                                                                       fontWeight:
                                                                           FontWeight
@@ -773,7 +775,7 @@ getUserNotifications(){
                                                                       color: const Color(
                                                                           0xff5B74A6),
                                                                       fontSize:
-                                                                      UpdatedDimensions.height10(context) *
+                                                                          UpdatedDimensions.height10(context) *
                                                                               1.4,
                                                                       fontWeight:
                                                                           FontWeight
@@ -781,7 +783,7 @@ getUserNotifications(){
                                                                 ),
                                                                 Container(
                                                                     height:
-                                                                    UpdatedDimensions.height10(context) *
+                                                                        UpdatedDimensions.height10(context) *
                                                                             2.8,
                                                                     width: UpdatedDimensions.width10(
                                                                             context) *
@@ -854,15 +856,16 @@ getUserNotifications(){
                                                                       context) *
                                                               7.9,
                                                           width:
-                                                          UpdatedDimensions.height10(
+                                                              UpdatedDimensions.height10(
                                                                       context) *
                                                                   7.9,
                                                           // margin: const EdgeInsets.only(
                                                           //   top: 84,
                                                           // ),
                                                           decoration: BoxDecoration(
-                                                              shape: BoxShape
-                                                                  .circle,
+                                                              shape:
+                                                                  BoxShape
+                                                                      .circle,
                                                               border: Border.all(
                                                                   width: 3,
                                                                   color: Colors
@@ -892,7 +895,7 @@ getUserNotifications(){
                                                                         0, 3),
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                    UpdatedDimensions.font10(context) *
+                                                                        UpdatedDimensions.font10(context) *
                                                                             1.2,
                                                                     fontWeight:
                                                                         FontWeight
@@ -904,7 +907,7 @@ getUserNotifications(){
                                                                 '${getFormattedDate(next).split('-').reversed.join().substring(0, 2)}.${getFormattedDate(next).split('-').reversed.join().substring(2, 4)}',
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                    UpdatedDimensions.font10(context) *
+                                                                        UpdatedDimensions.font10(context) *
                                                                             1.4,
                                                                     fontWeight:
                                                                         FontWeight
@@ -941,7 +944,7 @@ getUserNotifications(){
                                                                             context) *
                                                                         1.7,
                                                                     height:
-                                                                    UpdatedDimensions.height10(context) *
+                                                                        UpdatedDimensions.height10(context) *
                                                                             1.5,
                                                                     // margin:
                                                                     //     const EdgeInsets.only(top: 3.32),
@@ -976,7 +979,6 @@ getUserNotifications(){
                                                       context) *
                                                   20.0,
                                             ),
-
                                             child: SingleChildScrollView(
                                               child: Column(
                                                 children: [
@@ -989,25 +991,35 @@ getUserNotifications(){
                                                       padding: EdgeInsets.zero,
                                                       itemBuilder:
                                                           ((context, index) {
-                                                        return dashBoardSessionComponent(context, timesList[index], () {
-
-                                                            _scrollToCurrentIndex();
-                                                          }, () async {
+                                                        return dashBoardSessionComponent(
+                                                            context,
+                                                            timesList[index],
+                                                            () {
+                                                          _scrollToCurrentIndex();
+                                                        }, () async {
                                                           if (_showOverlay ==
                                                               false) {
                                                             Navigator.push(
                                                                 context,
                                                                 FadePageRoute(
-                                                                    page: (const goal_menu_inactive(
-                                                                      isActive: false,
-                                                                      goal_evaluation: false,
-                                                                    ))));
+                                                                    page:
+                                                                        (const goal_menu_inactive(
+                                                                  isActive:
+                                                                      false,
+                                                                  goal_evaluation:
+                                                                      false,
+                                                                ))));
                                                             final SharedPreferences
-                                                            prefs =
-                                                            await _prefs;
+                                                                prefs =
+                                                                await _prefs;
                                                             await prefs.setInt(
                                                                 'goal_num',
-                                                                timesList[index]['data']['userGoal']['id']);
+                                                                timesList[index]
+                                                                            [
+                                                                            'data']
+                                                                        [
+                                                                        'userGoal']
+                                                                    ['id']);
 
                                                             await prefs.setString(
                                                                 'goal_menu_route',
@@ -1022,55 +1034,112 @@ getUserNotifications(){
                                                           if (_showOverlay ==
                                                               false) {
                                                             final SharedPreferences
-                                                            prefs =
-                                                            await _prefs;
+                                                                prefs =
+                                                                await _prefs;
                                                             await prefs.setString(
                                                                 'prac_menu_route',
                                                                 'dashboard');
                                                             await prefs.setInt(
                                                                 'prac_num',
-                                                                timesList[index]['data']['id']);
+                                                                timesList[index]
+                                                                        ['data']
+                                                                    ['id']);
                                                             await prefs.setInt(
                                                                 'goal_num',
-                                                                timesList[index]['data']['userGoal']['id']);
+                                                                timesList[index]
+                                                                            [
+                                                                            'data']
+                                                                        [
+                                                                        'userGoal']
+                                                                    ['id']);
 
                                                             await prefs.setString(
                                                                 'dash_pracName',
-                                                                timesList[index]['data']['name']);
+                                                                timesList[index]
+                                                                        ['data']
+                                                                    ['name']);
                                                             await prefs.setString(
                                                                 'dash_goalName',
-                                                                timesList[index]['data']['userGoal']['name']);
+                                                                timesList[index]
+                                                                            [
+                                                                            'data']
+                                                                        [
+                                                                        'userGoal']
+                                                                    ['name']);
                                                             await prefs.setString(
                                                                 'record_date',
-                                                                getFormattedDate(current).toString());
+                                                                getFormattedDate(
+                                                                        current)
+                                                                    .toString());
 
-                                                            await timesList[index]['data']['color'] != null
-                                                                ? prefs.setString('dash_pracColor', timesList[index]['data']['color'])
-                                                                : prefs.setString('dash_pracColor', '0');
+                                                            await timesList[index]
+                                                                            [
+                                                                            'data']
+                                                                        [
+                                                                        'color'] !=
+                                                                    null
+                                                                ? prefs.setString(
+                                                                    'dash_pracColor',
+                                                                    timesList[index]
+                                                                            [
+                                                                            'data']
+                                                                        [
+                                                                        'color'])
+                                                                : prefs.setString(
+                                                                    'dash_pracColor',
+                                                                    '0');
                                                             await prefs.setString(
                                                                 'recording_Time1',
-                                                                timesList[index]['time']);
+                                                                timesList[index]
+                                                                    ['time']);
                                                             await prefs.setBool(
                                                                 'behaviour_route',
                                                                 true);
-                                                            await timesList[index]['data']['userGoal']['color'] != null
-                                                                ? prefs.setString('dash_goalColor', timesList[index]['data']['userGoal']['color'])
+                                                            await timesList[index]['data']
+                                                                            [
+                                                                            'userGoal']
+                                                                        [
+                                                                        'color'] !=
+                                                                    null
+                                                                ? prefs.setString(
+                                                                    'dash_goalColor',
+                                                                    timesList[index]
+                                                                            [
+                                                                            'data']['userGoal']
+                                                                        [
+                                                                        'color'])
                                                                 : '0';
-                                                            if (timesList[index]['status'] ==
+                                                            if (timesList[index]
+                                                                    [
+                                                                    'status'] ==
                                                                 "Not Started") {
-                                                              Navigator.push(context,
-                                                                  FadePageRoute(page: const practiceMenu(goal_eval: false)));
-                                                            } else if (timesList[index]['status'] ==
+                                                              Navigator.push(
+                                                                  context,
+                                                                  FadePageRoute(
+                                                                      page: const practiceMenu(
+                                                                          goal_eval:
+                                                                              false)));
+                                                            } else if (timesList[
+                                                                        index][
+                                                                    'status'] ==
                                                                 "missed") {
                                                               Navigator.push(
                                                                   context,
                                                                   FadePageRoute(
-                                                                      page: missed_Menu(
-                                                                        pracName: timesList[index]['data']['name'],
-                                                                      )));
+                                                                      page:
+                                                                          missed_Menu(
+                                                                    pracName: timesList[index]
+                                                                            [
+                                                                            'data']
+                                                                        [
+                                                                        'name'],
+                                                                  )));
                                                             } else {
-                                                              Navigator.push(context,
-                                                                  FadePageRoute(page: const menu_behaviour()));
+                                                              Navigator.push(
+                                                                  context,
+                                                                  FadePageRoute(
+                                                                      page:
+                                                                          const menu_behaviour()));
                                                             }
                                                           } else {
                                                             if (goalLevel ==
@@ -1080,210 +1149,248 @@ getUserNotifications(){
                                                           }
                                                         });
                                                       })),
-                                                  SizedBox(height: UpdatedDimensions.height10(
-                                                      context) *
-                                                      20.0,)
+                                                  SizedBox(
+                                                    height: UpdatedDimensions
+                                                            .height10(context) *
+                                                        20.0,
+                                                  )
                                                 ],
                                               ),
                                             ),
                                           ),
                                         ],
                                       ),
-                                       Positioned(
-                                              top:smallScreen? UpdatedDimensions.height10(
-                                                  context) *
-                                                  50.0:UpdatedDimensions.height10(
+                                      Positioned(
+                                          top: smallScreen
+                                              ? UpdatedDimensions.height10(
                                                       context) *
+                                                  50.0
+                                              : UpdatedDimensions
+                                                      .height10(context) *
                                                   54.0,
-                                              left: UpdatedDimensions.height10(
-                                                      context) *
-                                                  1.3,
-                                              child: Stack(
-                                                children: [
-                                               isVisible?   Obx((){
-                                                    if (notificationsController.getAllNotifications().isEmpty ) {
-                                                      return const SizedBox(); // Return an empty widget if the string is empty
-                                                    } else {
-                                                      return Container(
-                                                        width: MediaQuery.of(context).size.width,
-                                                        child: CarouselSlider.builder(itemCount: notificationsController.getAllNotifications().length,
-                                                            itemBuilder: (BuildContext context,int itemIndex, int pageViewIndex)=>reda(
-                                                                context,notificationsController.getAllNotifications()[itemIndex], (){
-
-
-                                                              Timer(Duration(seconds: 2), () { setState(() {
-
-                                                              });});
-
-                                                           }),
-                                                            options: CarouselOptions(enlargeCenterPage: true, height: 200,viewportFraction: 1, enableInfiniteScroll: false)),
-                                                      );
-                                                    }
-                                                  }):Container(),
-                                                  AnimatedScaleButton(
-                                                    onTap: () {
-                                                      // notifications_sheet(context);
-                                                      setState(() {
-                                                        isVisible = !isVisible;
-                                                      });
-                                                    },
-                                                    child: Container(
-                                                      width: UpdatedDimensions
-                                                          .height10(
-                                                          context) *
-                                                          4,
-                                                      height: UpdatedDimensions
-                                                          .height10(
-                                                          context) *
-                                                          4,
-                                                      padding: EdgeInsets.all(
-                                                          UpdatedDimensions
+                                          left: UpdatedDimensions.height10(
+                                                  context) *
+                                              1.3,
+                                          child: Stack(
+                                            children: [
+                                              isVisible
+                                                  ? Obx(() {
+                                                      if (notificationsController
+                                                          .getAllNotifications()
+                                                          .isEmpty) {
+                                                        return const SizedBox(); // Return an empty widget if the string is empty
+                                                      } else {
+                                                        return Container(
+                                                          width: MediaQuery.of(
+                                                                  context)
+                                                              .size
+                                                              .width,
+                                                          child: CarouselSlider
+                                                              .builder(
+                                                                  itemCount:
+                                                                      notificationsController
+                                                                          .getAllNotifications()
+                                                                          .length,
+                                                                  itemBuilder: (BuildContext
+                                                                              context,
+                                                                          int
+                                                                              itemIndex,
+                                                                          int
+                                                                              pageViewIndex) =>
+                                                                      reda(
+                                                                          context,
+                                                                          notificationsController.getAllNotifications()[
+                                                                              itemIndex],
+                                                                          () {
+                                                                        Timer(
+                                                                            const Duration(seconds: 2),
+                                                                            () {
+                                                                          setState(
+                                                                              () {});
+                                                                        });
+                                                                      }),
+                                                                  options: CarouselOptions(
+                                                                      enlargeCenterPage:
+                                                                          true,
+                                                                      height:
+                                                                          200,
+                                                                      viewportFraction:
+                                                                          1,
+                                                                      enableInfiniteScroll:
+                                                                          false)),
+                                                        );
+                                                      }
+                                                    })
+                                                  : Container(),
+                                              AnimatedScaleButton(
+                                                onTap: () {
+                                                  // notifications_sheet(context);
+                                                  setState(() {
+                                                    isVisible = !isVisible;
+                                                  });
+                                                },
+                                                child: Container(
+                                                  width: UpdatedDimensions
+                                                          .height10(context) *
+                                                      4,
+                                                  height: UpdatedDimensions
+                                                          .height10(context) *
+                                                      4,
+                                                  padding: EdgeInsets.all(
+                                                      UpdatedDimensions
                                                               .height10(
-                                                              context) *
-                                                              0.4),
-                                                      decoration:
+                                                                  context) *
+                                                          0.4),
+                                                  decoration:
                                                       const BoxDecoration(
-                                                          shape: BoxShape
-                                                              .circle,
-                                                          color:
-                                                          Colors.white),
-                                                      child: Container(
-                                                        width: UpdatedDimensions
-                                                            .width10(
-                                                            context) *
-                                                            3.5,
-                                                        height: UpdatedDimensions
-                                                            .height10(
-                                                            context) *
-                                                            3.5,
-                                                        decoration: const BoxDecoration(
-                                                            shape:
-                                                            BoxShape.circle,
-                                                            color: Colors.white,
-                                                            image: DecorationImage(
-                                                                image: AssetImage(
-                                                                    'assets/images/Smart Object_1.webp'))),
-                                                        child: Align(
-                                                          alignment:
+                                                          shape:
+                                                              BoxShape.circle,
+                                                          color: Colors.white),
+                                                  child: Container(
+                                                    width: UpdatedDimensions
+                                                            .width10(context) *
+                                                        3.5,
+                                                    height: UpdatedDimensions
+                                                            .height10(context) *
+                                                        3.5,
+                                                    decoration: const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                        color: Colors.white,
+                                                        image: DecorationImage(
+                                                            image: AssetImage(
+                                                                'assets/images/Smart Object_1.webp'))),
+                                                    child: Align(
+                                                      alignment:
                                                           const Alignment(
                                                               0, 2.8),
-                                                          child: Container(
-                                                            width: UpdatedDimensions
-                                                                .width10(
-                                                                context) *
-                                                                1.7,
-                                                            height: UpdatedDimensions
-                                                                .height10(
-                                                                context) *
-                                                                1.7,
-                                                            decoration:
-                                                            const BoxDecoration(
-                                                              shape: BoxShape
-                                                                  .circle,
-                                                              color:
-                                                              Colors.white,
-                                                            ),
-                                                            child: Center(
-                                                              child: Text(
-                                                                  notificationsController.getAllNotifications().isEmpty? "": notificationsController.getAllNotifications().length.toString(),
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                    UpdatedDimensions.font10(context) *
-                                                                        1,
-                                                                    fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                                    color: const Color(
-                                                                        0xFFFA9934)),
+                                                      child: notificationsController
+                                                              .getAllNotifications()
+                                                              .isEmpty
+                                                          ? const SizedBox()
+                                                          : Container(
+                                                              width: UpdatedDimensions
+                                                                      .width10(
+                                                                          context) *
+                                                                  1.7,
+                                                              height: UpdatedDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.7,
+                                                              decoration:
+                                                                  const BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                              child: Center(
+                                                                child: Text(
+                                                                  notificationsController
+                                                                      .getAllNotifications()
+                                                                      .length
+                                                                      .toString(),
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          UpdatedDimensions.font10(context) *
+                                                                              1,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      color: const Color(
+                                                                          0xFFFA9934)),
+                                                                ),
                                                               ),
                                                             ),
-                                                          ),
-                                                        ),
-                                                      ),
                                                     ),
-                                                  )
-
-                                                ],
-                                              )),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          )),
                                       if (_showOverlay)
                                         FutureBuilder(
                                             future: Future.delayed(
                                                 const Duration(
                                                     milliseconds: 200)),
-                                            builder:
-                                                (c, s) =>
-                                                    s.connectionState ==
-                                                            ConnectionState.done
-                                                        ? helpFulTips(context, goalLevel, single, (){setState(() {
-    _showOverlay = false;
-    });}, (){_incrementValue();
+                                            builder: (c, s) => s
+                                                        .connectionState ==
+                                                    ConnectionState.done
+                                                ? helpFulTips(
+                                                    context, goalLevel, single,
+                                                    () {
+                                                    setState(() {
+                                                      _showOverlay = false;
+                                                    });
+                                                  }, () {
+                                                    _incrementValue();
                                                     if (goalLevel > 7) {
                                                       setState(() {
                                                         _showOverlay = false;
                                                       });
-                                                    }})
-                                                        : Container()),
-
+                                                    }
+                                                  })
+                                                : Container()),
                                     ])),
                               )
                             : noPlanned == true
-                                ? noPlannedUi(context, responseData, _scrollController, past, current, next, () {
-                  previous();
-                  setState(() {
-                    loader = true;
-                  });
-                  fetchPracticeByDay();
-                }, () {
-                  if (!maxViewDate) {
-                    setState(() {
-                      loader = true;
-                    });
-                    future();
-                    fetchPracticeByDay();
-                  }
-                }, () {
-                  Navigator.push(
-                      context,
-                      FadePageRoute(
-                          page:
-                          const record_session(
-                            past_session: false,
-                          )));
-                })
-                                : noSessions(context, responseData, _scrollController, past, current, next, () {
-                  previous();
-                  setState(() {
-                    loader = true;
-                  });
-                  fetchPracticeByDay();
-                },() {
-                  if (!maxViewDate) {
-                    setState(() {
-                      loader = true;
-                    });
-                    future();
-                    fetchPracticeByDay();
-                  }
-                })
-                        : dashboardPlaceHolder(context, past, current, next, () {
-                  previous();
-                  setState(() {
-                    loader = true;
-                  });
-                  fetchPracticeByDay();
-                }, () {
-                  setState(() {
-                    loader = true;
-                  });
-                  future();
-                  fetchPracticeByDay();
-                }, () {
-                  Navigator.push(
-                      context,
-                      FadePageRoute(
-                          page:
-                          const view_all_goals_menu()));
-                })
+                                ? noPlannedUi(context, responseData,
+                                    _scrollController, past, current, next, () {
+                                    previous();
+                                    setState(() {
+                                      loader = true;
+                                    });
+                                    fetchPracticeByDay();
+                                  }, () {
+                                    if (!maxViewDate) {
+                                      setState(() {
+                                        loader = true;
+                                      });
+                                      future();
+                                      fetchPracticeByDay();
+                                    }
+                                  }, () {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: const record_session(
+                                          past_session: false,
+                                        )));
+                                  })
+                                : noSessions(context, responseData,
+                                    _scrollController, past, current, next, () {
+                                    previous();
+                                    setState(() {
+                                      loader = true;
+                                    });
+                                    fetchPracticeByDay();
+                                  }, () {
+                                    if (!maxViewDate) {
+                                      setState(() {
+                                        loader = true;
+                                      });
+                                      future();
+                                      fetchPracticeByDay();
+                                    }
+                                  })
+                        : dashboardPlaceHolder(context, past, current, next,
+                            () {
+                            previous();
+                            setState(() {
+                              loader = true;
+                            });
+                            fetchPracticeByDay();
+                          }, () {
+                            setState(() {
+                              loader = true;
+                            });
+                            future();
+                            fetchPracticeByDay();
+                          }, () {
+                            Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const view_all_goals_menu()));
+                          })
                     : const DashBoardBehaviour_shimmer())),
       ),
     );

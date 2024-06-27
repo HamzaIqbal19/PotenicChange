@@ -18,6 +18,7 @@ import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
 
+import '../Alerts/widgets/notificationPermissionService.dart';
 import '../HomeScreen/HomeScreen.dart';
 import '../ReviewPractice/practiceReview.dart';
 
@@ -36,6 +37,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
   bool updated = false;
   bool reminderSelected = false;
   var reminder;
+  final NotificationPermissionService _notificationPermissionService =
+      NotificationPermissionService();
 
   void _fetchPracticeDetails() async {
     PracticeGoalApi.getUserPractice().then((response) {
@@ -54,6 +57,16 @@ class _PracticeReminderState extends State<PracticeReminder> {
   var mygoal = TextEditingController();
   var practiceName = TextEditingController();
   var practice = TextEditingController();
+  notificationPermissionSerice() {
+    setState(() {
+      radio1 = true;
+      radio2 = false;
+      reminderSelected = true;
+    });
+    _notificationPermissionService.checkAndRequestNotificationPermission(
+        context, false);
+  }
+
   var color;
   String route = '';
   bool loader = false;
@@ -692,119 +705,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                   reminderSelected = false;
                                 });
                               } else if (radio1 == false) {
-                                showDialog<String>(
-                                  context: context,
-                                  builder: (BuildContext context) => SizedBox(
-                                    width:
-                                        AppDimensions.width10(context) * 27.0,
-                                    height:
-                                        AppDimensions.height10(context) * 18.8,
-                                    child: AlertDialog(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(
-                                              AppDimensions.height10(context) *
-                                                  1.4)),
-                                      contentPadding: EdgeInsets.zero,
-                                      actionsPadding: EdgeInsets.zero,
-                                      titlePadding: EdgeInsets.zero,
-                                      title: Container(
-                                        margin: const EdgeInsets.only(
-                                            top: 19,
-                                            right: 16,
-                                            left: 16,
-                                            bottom: 2),
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                4.4,
-                                        width: AppDimensions.width10(context) *
-                                            23.8,
-                                        child: Text(
-                                          "Notification permission is \nneeded",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.7,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                      content: Container(
-                                        margin: EdgeInsets.only(
-                                            bottom: AppDimensions.height10(
-                                                    context) *
-                                                1.9,
-                                            left: AppDimensions.height10(
-                                                    context) *
-                                                1.6,
-                                            right: AppDimensions.height10(
-                                                    context) *
-                                                1.6),
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.8,
-                                        width: AppDimensions.width10(context) *
-                                            23.8,
-                                        child: const Text(
-                                          "Please enable it in Phone’s setting",
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontSize: 13,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        ),
-                                      ),
-                                      actions: <Widget>[
-                                        Column(
-                                          children: [
-                                            Container(
-                                              height: 42,
-                                              width: double.infinity,
-                                              color: const Color(0xFF007AFF),
-                                              child: TextButton(
-                                                onPressed: () {
-                                                  setState(() {
-                                                    radio1 = true;
-                                                    radio2 = false;
-                                                    reminderSelected = true;
-                                                  });
-                                                  Navigator.pop(context);
-                                                },
-                                                child: const Text(
-                                                  'Enable Notification',
-                                                  style: TextStyle(
-                                                      color: Color(0xFFFFFFFF),
-                                                      fontSize: 17,
-                                                      fontFamily: "Laila",
-                                                      fontWeight:
-                                                          FontWeight.w400),
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: 44,
-                                              width: double.infinity,
-                                              child: TextButton(
-                                                onPressed: () {
-                                                  Navigator.pop(context);
-                                                },
-                                                child: const Text(
-                                                  'Cancel',
-                                                  style: TextStyle(
-                                                      fontSize: 17,
-                                                      fontFamily: "Laila",
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Color(0xFF007AFF)),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                );
+                                notificationPermissionSerice();
                               }
                             },
                             child: SizedBox(

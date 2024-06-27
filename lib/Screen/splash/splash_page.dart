@@ -29,6 +29,7 @@ class SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 2), loadData);
+    appLaunch();
 
     super.initState();
   }
@@ -49,6 +50,10 @@ class SplashPageState extends State<SplashPage> {
   //     loadData();
   //   }
   // }
+
+  Future appLaunch() async {
+    Authentication().appLaunch();
+  }
 
   Future loadData() async {
     final SharedPreferences prefs = await _prefs;

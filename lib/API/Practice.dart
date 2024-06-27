@@ -144,6 +144,7 @@ class PracticeGoalApi {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
+      print("response $jsonData");
       final SharedPreferences prefs = await _prefs;
       if (jsonData['practiceEvaluations'] != null) {
         await prefs.setString(
@@ -359,7 +360,6 @@ class PracticeGoalApi {
     }
   }
 
-
   static Future getUserReminder() async {
     final SharedPreferences prefs = await _prefs;
     var accessToken = prefs.getString("usertoken");
@@ -383,9 +383,6 @@ class PracticeGoalApi {
     }
   }
 
-
-
-
   Future updateUserReminder(name, reminder) async {
     final SharedPreferences prefs = await _prefs;
     var accessToken = prefs.getString("usertoken");
@@ -396,7 +393,6 @@ class PracticeGoalApi {
     };
     var body = json.encode({
       name: reminder,
-      
     });
     var request = await client.put(
         Uri.parse('${URL.BASE_URL}api/user/updateUserReminderByUserId/$userId'),
@@ -404,7 +400,6 @@ class PracticeGoalApi {
         body: body);
 
     if (request.statusCode == 200) {
-      
       return true;
     } else {
       client.close();
@@ -412,5 +407,4 @@ class PracticeGoalApi {
       return false;
     }
   }
-
 }

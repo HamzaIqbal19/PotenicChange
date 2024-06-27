@@ -9,11 +9,11 @@ import 'package:get/get.dart';
 var client = SentryHttpClient();
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-class notificationApi{
-
+class notificationApi {
   static Future getUserNotification() async {
     final SharedPreferences prefs = await _prefs;
-    final notificationController controller = Get.find<notificationController>();
+    final notificationController controller =
+        Get.find<notificationController>();
     var accessToken = prefs.getString("usertoken");
     var userId = prefs.getInt('userid');
     var headers = {
@@ -22,14 +22,14 @@ class notificationApi{
     };
 
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/user/getUserRedaCenterNotifications/$userId'),
+      Uri.parse(
+          '${URL.BASE_URL}api/user/getUserRedaCenterNotifications/$userId'),
       headers: headers,
     );
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
       controller.clearNotifications();
       controller.notificationList(jsonData["data"]);
-
     } else {
       throw Exception('Failed to fetch goal names');
     }
@@ -45,15 +45,15 @@ class notificationApi{
     };
 
     var response = await http.get(
-      Uri.parse('${URL.BASE_URL}api/user/getUserMessageCenterNotifications/$userId'),
+      Uri.parse(
+          '${URL.BASE_URL}api/user/getUserMessageCenterNotifications/$userId'),
       headers: headers,
     );
     print("get notifications ${response.statusCode} $userId");
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
 
-     return jsonData["data"];
-
+      return jsonData["data"];
     } else {
       throw Exception('Failed to fetch goal names');
     }
@@ -61,7 +61,8 @@ class notificationApi{
 
   static Future deleteUserNotification(notificationIds) async {
     final SharedPreferences prefs = await _prefs;
-    final notificationController controller = Get.find<notificationController>();
+    final notificationController controller =
+        Get.find<notificationController>();
     var accessToken = prefs.getString("usertoken");
 
     var headers = {
@@ -73,45 +74,60 @@ class notificationApi{
     });
 
     var response = await http.post(
-      Uri.parse('${URL.BASE_URL}api/user/deleteSelectedNotifications'),
-      headers: headers,
-      body: body
-    );
+        Uri.parse('${URL.BASE_URL}api/user/deleteSelectedNotifications'),
+        headers: headers,
+        body: body);
 
     if (response.statusCode == 200) {
       getUserNotification();
       return true;
-
     } else {
       throw Exception('Failed to fetch goal names');
-
     }
   }
 
   static Future markAsRead(notificationId) async {
     final SharedPreferences prefs = await _prefs;
-    final notificationController controller = Get.find<notificationController>();
+    final notificationController controller =
+        Get.find<notificationController>();
     var accessToken = prefs.getString("usertoken");
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$accessToken',
     };
 
-
     var response = await http.put(
-        Uri.parse('${URL.BASE_URL}api/user/markedReadNotification/$notificationId'),
-        headers: headers,
+      Uri.parse(
+          '${URL.BASE_URL}api/user/markedReadNotification/$notificationId'),
+      headers: headers,
     );
     print("Mark as read response ${response.statusCode} ${response.body}");
     if (response.statusCode == 200) {
       getUserNotification();
       return true;
-
     } else {
       throw Exception('Failed to fetch goal names');
-
     }
   }
 
+  static Future markAllAsRead() async {
+    final SharedPreferences prefs = await _prefs;
+    var userId = prefs.getInt('userid');
+    var accessToken = prefs.getString("usertoken");
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$accessToken',
+    };
 
+    var response = await http.put(
+      Uri.parse('${URL.BASE_URL}api/user/markedReadAllNotification/$userId'),
+      headers: headers,
+    );
+    print("Mark as read response ${response.statusCode} ${response.body}");
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      throw Exception('Failed to fetch goal names');
+    }
+  }
 }

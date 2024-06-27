@@ -66,7 +66,6 @@ class Authentication {
     var fcmToken = await FirebaseMessaging.instance.getToken();
     final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
 
-
     var body = json.encode({
       "fcmRegistrationToken": "$fcmToken",
       "email": "$email",
@@ -238,5 +237,57 @@ class Authentication {
     } else {
       return false;
     }
+  }
+
+  Future appLaunch() async {
+    final SharedPreferences prefs = await _prefs;
+    var userId = prefs.getInt('userid');
+    if (userId != null) {
+      var accessToken = prefs.getString("usertoken");
+      var headers = {
+        'Content-Type': 'application/json',
+        'x-access-token': '$accessToken'
+      };
+
+      var body = json.encode({
+        "userId": userId,
+      });
+      var request = await client.post(
+          Uri.parse('${URL.BASE_URL}api/user/appLaunch'),
+          headers: headers,
+          body: body);
+
+      var responses = jsonDecode(request.body);
+
+      print("App launch $responses");
+
+      if (request.statusCode == 200) {
+        final SharedPreferences prefs = await _prefs;
+        await prefs.setString('usertoken', responses);
+
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+
+  Future getUserData() async {
+    final SharedPreferences prefs = await _prefs;
+    var accessToken = prefs.getString("usertoken");
+    var userId = prefs.getInt('userid');
+
+    var headers = {
+      'x-access-token': '$accessToken',
+    };
+    var response = await client.get(
+      Uri.parse('${URL.BASE_URL}api/auth/user-by-id/$userId'),
+      headers: headers,
+    );
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+
+      return jsonData;
+    } else {}
   }
 }
