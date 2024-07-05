@@ -51,7 +51,7 @@ reda(BuildContext context, notificationData, final VoidCallback onTap) {
                     left: UpdatedDimensions.width10(context) * 3.4),
                 child: Text(
                   notificationData["title"],
-                  maxLines: 2,
+                  maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     fontSize: UpdatedDimensions.font10(context) * 2,

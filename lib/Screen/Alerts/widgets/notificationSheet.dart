@@ -323,7 +323,7 @@ void seeMoreSheet(context, data) {
                     child: Buttons().linearGradButton(
                         AppDimensionsUpdated.height10(context) * 5,
                         AppDimensionsUpdated.width10(context) * 29.5,
-                        "Primary CTA",
+                        "Action It",
                         AppDimensionsUpdated.font10(context) * 1.6,
                         const Color(0xFFFCC10D),
                         const Color(0xFFFDA210),
