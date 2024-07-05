@@ -132,6 +132,8 @@ class PracticeGoalApi {
     var accessToken = prefs.getString("usertoken");
     var pracNum = prefs.getInt("prac_num");
 
+    print("Practice number $pracNum");
+
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$accessToken'
@@ -142,6 +144,7 @@ class PracticeGoalApi {
       headers: headers,
     );
 
+    print("response ${response.body}");
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
       print("response $jsonData");

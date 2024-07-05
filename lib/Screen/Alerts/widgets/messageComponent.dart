@@ -46,7 +46,7 @@ messages(BuildContext context, title, body, visible, final VoidCallback onTap,
               width: UpdatedDimensions.width10(context) * 28.0,
               child: Text(
                 title,
-                maxLines: 2,
+                maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   fontSize: UpdatedDimensions.font10(context) * 2,

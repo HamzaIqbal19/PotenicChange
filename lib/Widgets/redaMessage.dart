@@ -11,8 +11,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 reda(BuildContext context, notificationData, final VoidCallback onTap) {
   return AnimatedScaleButton(
     onTap: () {
-      notificationApi.markAsRead(notificationData["id"]);
-
+      //notificationApi.markAsRead(notificationData["id"]);
       seeMoreSheet(context, notificationData);
       onTap();
     },
@@ -40,13 +39,13 @@ reda(BuildContext context, notificationData, final VoidCallback onTap) {
         ),
         Container(
           margin: EdgeInsets.only(
-            top: UpdatedDimensions.height10(context) * 3.7,
+            top: UpdatedDimensions.height10(context) * 4.7,
           ),
           child: Column(
             children: [
               Container(
                 width: UpdatedDimensions.width10(context) * 26.7,
-                height: UpdatedDimensions.width10(context) * 2.3,
+                //height: UpdatedDimensions.width10(context) * 2.3,
                 margin: EdgeInsets.only(
                     left: UpdatedDimensions.width10(context) * 3.4),
                 child: Text(

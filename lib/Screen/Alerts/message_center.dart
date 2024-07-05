@@ -29,7 +29,7 @@ class _MessageCenterState extends State<MessageCenter> {
   bool isLoading = true;
 
   void markAllAsRead() {
-    notificationApi.markAllAsRead();
+    // notificationApi.markAllAsRead();
   }
 
   void addIdsToList() {

@@ -16,6 +16,9 @@ navigationRouting(BuildContext context, String route, String url) {
     case "dashboard":
       return Navigator.push(
           context, FadePageRoute(page: const practiceMenu(goal_eval: false)));
+    case "practiceEvaluation":
+      return Navigator.push(
+          context, FadePageRoute(page: const practiceMenu(goal_eval: false)));
     case "hurdle":
       return Navigator.push(
           context, FadePageRouteReverse(page: const landing_hurdles()));
@@ -47,18 +50,29 @@ navigationRouting(BuildContext context, String route, String url) {
       return laucherForNotifications().emailLauncher();
     case "community":
       return laucherForNotifications().urlLauncher(url);
+    case 'contactUs':
+      return laucherForNotifications().contactUsLauncher();
     default:
       return null;
   }
 }
 
-navigationIds(String route, data) async {
+navigationIds(data) async {
   final SharedPreferences prefs = await _prefs;
-  if (route == "goalMenu") {
-    await prefs.setInt("goal_num", data["route"]["userGoalId"]);
-  } else if (route == 'dashboard') {
-    await prefs.setInt("prac_num", data["route"]["userPracticeId"]);
+  print("Navigtion Ids ${int.parse(data['userGoalId']).runtimeType}");
+  if (data["route"] == "goalMenu") {
+    await prefs.setInt("goal_num", int.parse(data["userGoalId"]));
   }
+  if (data["route"] == 'dashboard') {
+    await prefs.setInt("prac_num", int.parse(data["userPracticeId"]));
+    await prefs.setInt("goal_num", int.parse(data["userGoalId"]));
+  }
+  if (data["route"] == 'practiceEvaluation') {
+    await prefs.setInt("prac_num", int.parse(data["userPracticeId"]));
+    await prefs.setInt("goal_num", int.parse(data["userGoalId"]));
+    print("Navigtion Ids route completed");
+  }
+  print("Navigtion Ids no route");
   //  ;
   // switch (route) {
   //   case "hurdle":

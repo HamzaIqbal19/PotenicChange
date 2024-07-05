@@ -198,6 +198,7 @@ void seeMoreSheet(context, data) {
   showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
+      scrollControlDisabledMaxHeightRatio: 500,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(16)),
       ),
@@ -319,22 +320,28 @@ void seeMoreSheet(context, data) {
                 SizedBox(
                   height: AppDimensionsUpdated.height10(context) * 2,
                 ),
-                AnimatedScaleButton(
-                    child: Buttons().linearGradButton(
-                        AppDimensionsUpdated.height10(context) * 5,
-                        AppDimensionsUpdated.width10(context) * 29.5,
-                        "Action It",
-                        AppDimensionsUpdated.font10(context) * 1.6,
-                        const Color(0xFFFCC10D),
-                        const Color(0xFFFDA210),
-                        false),
-                    onTap: () {
-                      if (data["data"]["route"] != "") {
-                        navigationIds(data["data"]["route"], data[data]);
-                        navigationRouting(context, data["data"]["route"],
-                            data["data"]["url"] ?? "");
-                      }
-                    }),
+                data["data"] != null
+                    ? data['status'] != 'read'
+                        ? AnimatedScaleButton(
+                            child: Buttons().linearGradButton(
+                                AppDimensionsUpdated.height10(context) * 5,
+                                AppDimensionsUpdated.width10(context) * 29.5,
+                                routeName(data["data"]["route"]),
+                                AppDimensionsUpdated.font10(context) * 1.6,
+                                const Color(0xFFFCC10D),
+                                const Color(0xFFFDA210),
+                                false),
+                            onTap: () {
+                              if (data["data"]["route"] != "") {
+                                navigationIds(data["data"]);
+                                navigationRouting(
+                                    context,
+                                    data["data"]["route"],
+                                    data["data"]["url"] ?? "");
+                              }
+                            })
+                        : Container()
+                    : Container(),
                 SizedBox(
                   height: AppDimensionsUpdated.height10(context) * 2,
                 ),
@@ -343,7 +350,7 @@ void seeMoreSheet(context, data) {
                         context,
                         AppDimensionsUpdated.height10(context) * 5,
                         AppDimensionsUpdated.width10(context) * 29.5,
-                        "Delete alert CTA"),
+                        "Delete alert"),
                     onTap: () {
                       notificationApi.deleteUserNotification(data["id"]);
                       Navigator.pop(context);
@@ -354,4 +361,14 @@ void seeMoreSheet(context, data) {
               ],
             ),
           )));
+}
+
+String routeName(route) {
+  if (route == 'community') {
+    return 'View Community';
+  } else if (route == 'contactUs') {
+    return 'Send us your story';
+  } else {
+    return 'Action it';
+  }
 }

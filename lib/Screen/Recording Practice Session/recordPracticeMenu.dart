@@ -66,16 +66,16 @@ class _practiceMenuState extends State<practiceMenu> {
     });
   }
 
-  void getRecorDetails() async {
-    final SharedPreferences prefs = await _prefs;
+  // void getRecorDetails() async {
+  //   final SharedPreferences prefs = await _prefs;
 
-    setState(() {
-      goalName = prefs.getString('dash_goalName')!;
-      pracColor = prefs.getString('dash_pracColor')!;
-      pracName = prefs.getString('dash_pracName')!;
-      color = prefs.getString('dash_goalName')!;
-    });
-  }
+  //   setState(() {
+  //     goalName = prefs.getString('dash_goalName')!;
+  //     pracColor = prefs.getString('dash_pracColor')!;
+  //     pracName = prefs.getString('dash_pracName')!;
+  //     color = prefs.getString('dash_goalName')!;
+  //   });
+  // }
 
   void getSubscription() async {
     final SharedPreferences prefs = await _prefs;
@@ -598,7 +598,8 @@ class _practiceMenuState extends State<practiceMenu> {
                                                     ? true
                                                     : false,
                                                 text_color: 0xff646464,
-                                                premium: subscripption == 'active',
+                                                premium:
+                                                    subscripption == 'active',
                                                 feild_text_2: reportDate != ''
                                                     ? '   ${formatDate(reportDate)}'
                                                     : '',
@@ -692,7 +693,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                     //               "Practice progress is not active")));
                                     // }
                                   },
-                                  child:  const button_feilds(
+                                  child: const button_feilds(
                                     feild_text: 'View practice progress',
                                     icon_viible: true,
                                     text_color: 0xff646464,
@@ -738,13 +739,13 @@ class _practiceMenuState extends State<practiceMenu> {
                                           1.0),
                                   child: AnimatedScaleButton(
                                     onTap: () {
-                                      if(subscripption == 'active'){
-                                     //   Navigator.push(context, FadePageRoute(page: const timeline()));
-                                      }else{
+                                      if (subscripption == 'active') {
+                                        //   Navigator.push(context, FadePageRoute(page: const timeline()));
+                                      } else {
                                         ScaffoldMessenger.of(context)
                                             .showSnackBar(const SnackBar(
-                                            content: Text(
-                                                "This feature is only available for premium members")));
+                                                content: Text(
+                                                    "This feature is only available for premium members")));
                                       }
                                     },
                                     child: button_feilds(
@@ -782,7 +783,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                   "Practice assessment is activated after first practice evaluation.")));
                                     }
                                   },
-                                  child:  button_feilds(
+                                  child: button_feilds(
                                     feild_text: 'Practice assesment history',
                                     icon_viible: true,
                                     text_color: 0xff646464,
