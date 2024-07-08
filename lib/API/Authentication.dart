@@ -239,6 +239,35 @@ class Authentication {
     }
   }
 
+  Future userStatusUpdate(status, value) async {
+    final SharedPreferences prefs = await _prefs;
+    var userId = prefs.getInt('userid');
+    var accessToken = prefs.getString("usertoken");
+    var headers = {
+      'Content-Type': 'application/json',
+      'x-access-token': '$accessToken'
+    };
+
+    var body = json.encode({status: value});
+
+    var request = await client.put(
+        Uri.parse('${URL.BASE_URL}api/user/update-user/$userId'),
+        headers: headers,
+        body: body);
+
+    var response = jsonDecode(request.body);
+
+    print('response ${request.statusCode}  $response');
+
+    if (request.statusCode == 200) {
+      return true;
+    } else if (request.statusCode == 400) {
+      return response;
+    } else {
+      return false;
+    }
+  }
+
   Future appLaunch() async {
     final SharedPreferences prefs = await _prefs;
     var userId = prefs.getInt('userid');

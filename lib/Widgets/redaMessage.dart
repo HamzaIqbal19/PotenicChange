@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
 import 'package:potenic_app/MyServices/Notification/notificationRouting.dart';
 import 'package:potenic_app/Screen/Alerts/widgets/notificationSheet.dart';
+import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -11,8 +12,12 @@ import 'package:carousel_slider/carousel_slider.dart';
 reda(BuildContext context, notificationData, final VoidCallback onTap) {
   return AnimatedScaleButton(
     onTap: () {
-      //notificationApi.markAsRead(notificationData["id"]);
-      seeMoreSheet(context, notificationData);
+      notificationApi.markAsRead(notificationData["id"]);
+      seeMoreSheet(context, notificationData, () {
+        notificationApi.deleteUserNotification(notificationData["id"]);
+
+        Navigator.of(context).pop();
+      });
       onTap();
     },
     child: Container(
@@ -49,7 +54,7 @@ reda(BuildContext context, notificationData, final VoidCallback onTap) {
                 margin: EdgeInsets.only(
                     left: UpdatedDimensions.width10(context) * 3.4),
                 child: Text(
-                  notificationData["title"],
+                  capitalizeFirstLetter(notificationData["title"]),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
@@ -76,7 +81,7 @@ reda(BuildContext context, notificationData, final VoidCallback onTap) {
                     left: UpdatedDimensions.width10(context) * 3.4,
                     bottom: UpdatedDimensions.height10(context) * 1.2),
                 child: Text(
-                  notificationData["body"],
+                  capitalizeFirstLetter(notificationData["body"]),
                   // textAlign: TextAlign.left,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,

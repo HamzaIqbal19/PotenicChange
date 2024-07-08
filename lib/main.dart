@@ -14,11 +14,9 @@ import 'package:potenic_app/Screen/splash/splash_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
-
 import 'MyServices/Notification/notificationController.dart';
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
 
 Future<void> main(context) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +38,6 @@ Future<void> main(context) async {
       await FirebaseMessaging.instance.requestPermission(provisional: true);
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
 
-
   AwesomeNotifications().initialize(null, [
     NotificationChannel(
         channelKey: "call_channel",
@@ -55,22 +52,15 @@ Future<void> main(context) async {
         defaultRingtoneType: DefaultRingtoneType.Notification)
   ]);
 
-
-  
   foregroundMessaging();
 
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) async {
-
-  });
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) async {});
 
   FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
     notificationApi.getUserNotification();
   });
-
-
-
 
   await SentryFlutter.init(
     (options) {
@@ -92,7 +82,6 @@ Future<void> main(context) async {
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print("onMessage background: ${message.data}");
   await Firebase.initializeApp();
-
 }
 
 class MyApp extends StatelessWidget with WidgetsBindingObserver {

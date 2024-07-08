@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
@@ -1327,6 +1328,10 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                       setState(() {
                                                         _showOverlay = false;
                                                       });
+                                                      Authentication()
+                                                          .userStatusUpdate(
+                                                              'isTutorial',
+                                                              false);
                                                     }
                                                   })
                                                 : Container()),

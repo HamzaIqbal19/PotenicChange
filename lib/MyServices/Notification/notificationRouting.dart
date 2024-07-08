@@ -4,6 +4,7 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPractice
 import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_goals_menu.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
 import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -16,6 +17,17 @@ navigationRouting(BuildContext context, String route, String url) {
     case "dashboard":
       return Navigator.push(
           context, FadePageRoute(page: const practiceMenu(goal_eval: false)));
+    case "tutorial":
+      return Navigator.push(
+          context,
+          FadePageRoute(
+              page: const ViewDashboard(
+            missed: false,
+            name: '',
+            update: false,
+            helpfulTips: true,
+            record: 0,
+          )));
     case "practiceEvaluation":
       return Navigator.push(
           context, FadePageRoute(page: const practiceMenu(goal_eval: false)));
@@ -59,7 +71,6 @@ navigationRouting(BuildContext context, String route, String url) {
 
 navigationIds(data) async {
   final SharedPreferences prefs = await _prefs;
-  print("Navigtion Ids ${int.parse(data['userGoalId']).runtimeType}");
   if (data["route"] == "goalMenu") {
     await prefs.setInt("goal_num", int.parse(data["userGoalId"]));
   }
@@ -70,9 +81,7 @@ navigationIds(data) async {
   if (data["route"] == 'practiceEvaluation') {
     await prefs.setInt("prac_num", int.parse(data["userPracticeId"]));
     await prefs.setInt("goal_num", int.parse(data["userGoalId"]));
-    print("Navigtion Ids route completed");
   }
-  print("Navigtion Ids no route");
   //  ;
   // switch (route) {
   //   case "hurdle":

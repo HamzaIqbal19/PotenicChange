@@ -264,15 +264,30 @@ class _your_goals_menuState extends State<your_goals_menu> {
                               SizedBox(
                                 width: AppDimensions.width10(context) * 20.6,
                                 height: AppDimensions.height10(context) * 2.2,
-                                child: Text(
-                                  newMessages >= 0
-                                      ? "Messages ($newMessages new)"
-                                      : 'Messages',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.font10(context) * 1.6,
-                                      fontWeight: FontWeight.w500,
-                                      color: colorC),
+                                child: Row(
+                                  //crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Messages',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.font10(context) *
+                                                  1.6,
+                                          fontWeight: FontWeight.w500,
+                                          color: colorC),
+                                    ),
+                                    Text(
+                                      " ($newMessages new)",
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.font10(context) *
+                                                  1.6,
+                                          fontWeight: newMessages > 0
+                                              ? FontWeight.bold
+                                              : FontWeight.w500,
+                                          color: colorC),
+                                    ),
+                                  ],
                                 ),
                               ),
                               SizedBox(

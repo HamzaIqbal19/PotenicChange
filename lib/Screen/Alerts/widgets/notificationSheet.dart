@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
 import 'package:potenic_app/MyServices/Notification/notificationRouting.dart';
+import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -193,8 +194,7 @@ void notificationsSheet(context) {
           )));
 }
 
-void seeMoreSheet(context, data) {
-  print("Notification data: $data");
+void seeMoreSheet(context, data, final VoidCallback tap1) {
   showModalBottomSheet(
       context: context,
       backgroundColor: Colors.transparent,
@@ -284,7 +284,7 @@ void seeMoreSheet(context, data) {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        data["title"],
+                        capitalizeFirstLetter(data["title"]),
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
@@ -306,7 +306,7 @@ void seeMoreSheet(context, data) {
                         height: AppDimensionsUpdated.height10(context),
                       ),
                       Text(
-                        data["body"],
+                        capitalizeFirstLetter(data["body"]),
                         style: TextStyle(
                             fontSize: AppDimensions.font10(context) * 1.6,
                             height: AppDimensions.height10(context) * 0.15,
@@ -351,10 +351,7 @@ void seeMoreSheet(context, data) {
                         AppDimensionsUpdated.height10(context) * 5,
                         AppDimensionsUpdated.width10(context) * 29.5,
                         "Delete alert"),
-                    onTap: () {
-                      notificationApi.deleteUserNotification(data["id"]);
-                      Navigator.pop(context);
-                    }),
+                    onTap: tap1),
                 SizedBox(
                   height: AppDimensionsUpdated.height10(context) * 1.8,
                 ),

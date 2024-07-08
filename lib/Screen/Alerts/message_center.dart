@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -29,7 +31,7 @@ class _MessageCenterState extends State<MessageCenter> {
   bool isLoading = true;
 
   void markAllAsRead() {
-    // notificationApi.markAllAsRead();
+    notificationApi.markAllAsRead();
   }
 
   void addIdsToList() {
@@ -279,7 +281,19 @@ class _MessageCenterState extends State<MessageCenter> {
                                         "Notification Data ${notifications[index]}");
                                     // notificationApi.markAsRead(
                                     //     notifications['index']["id"]);
-                                    seeMoreSheet(context, notifications[index]);
+                                    seeMoreSheet(context, notifications[index],
+                                        () {
+                                      notificationApi.deleteUserNotification(
+                                          notifications[index]["id"]);
+
+                                      Navigator.of(context).pop();
+                                      setState(() {
+                                        isLoading = true;
+                                      });
+                                      Timer(const Duration(seconds: 1), () {
+                                        getUserNotifications();
+                                      });
+                                    });
                                   }
                                 },
                                 longPress: () {

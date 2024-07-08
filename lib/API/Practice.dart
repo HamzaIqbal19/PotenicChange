@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:potenic_app/API/Apispecs.dart';
+import 'package:potenic_app/API/Authentication.dart';
 import 'package:sentry/sentry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,7 +41,7 @@ class PracticeGoalApi {
     var responses = jsonDecode(request.body);
     if (request.statusCode == 200) {
       await prefs.setInt("prac_num", responses['result']['id']);
-
+      Authentication().userStatusUpdate('onBoarding', true);
       return true;
     } else {
       return false;

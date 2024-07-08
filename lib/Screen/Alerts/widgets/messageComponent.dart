@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
@@ -45,7 +46,7 @@ messages(BuildContext context, title, body, visible, final VoidCallback onTap,
             Container(
               width: UpdatedDimensions.width10(context) * 28.0,
               child: Text(
-                title,
+                capitalizeFirstLetter(title),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
@@ -69,7 +70,7 @@ messages(BuildContext context, title, body, visible, final VoidCallback onTap,
               margin: EdgeInsets.only(
                   bottom: UpdatedDimensions.height10(context) * 1.2),
               child: Text(
-                body,
+                capitalizeFirstLetter(body),
                 // textAlign: TextAlign.left,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
