@@ -44,7 +44,7 @@ reda(BuildContext context, notificationData, final VoidCallback onTap) {
         ),
         Container(
           margin: EdgeInsets.only(
-            top: UpdatedDimensions.height10(context) * 4.7,
+            top: UpdatedDimensions.height10(context) * 3.7,
           ),
           child: Column(
             children: [
