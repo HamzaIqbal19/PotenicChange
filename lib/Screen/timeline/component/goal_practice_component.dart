@@ -163,6 +163,10 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                           children: [
                             Container(
                               alignment: Alignment.center,
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      AppDimensionsUpdated.height10(context) *
+                                          2.5),
                               child: Text(
                                 widget.mainText,
                                 textAlign: TextAlign.center,
@@ -185,10 +189,17 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                             Container(
                               width:
                                   AppDimensionsUpdated.width10(context) * 20.9,
+                              margin: EdgeInsets.only(top: 10),
+                              padding: EdgeInsets.symmetric(
+                                  horizontal:
+                                      AppDimensionsUpdated.height10(context) *
+                                          2),
                               alignment: Alignment.center,
                               child: Text(
                                 '“${widget.subText}”',
                                 textAlign: TextAlign.center,
+                                maxLines: 2,
+                                overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensionsUpdated.font10(context) *

@@ -23,13 +23,15 @@ class TimelineService {
     };
     var response = await http.get(
       Uri.parse(
-          '${URL.BASE_URL}api/user/getTimeLineByUserId/$userId?givenDate=$givenDate'),
+          '${URL.BASE_URL}api/user/userTimelineByGivenDate/$userId?givenDate=$givenDate'),
       headers: headers,
     );
 
+    print("Timeline data $accessToken");
+
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-
+      print("Timeline data $jsonData");
       return (jsonData);
     } else {
       throw Exception('Failed to fetch goal names');

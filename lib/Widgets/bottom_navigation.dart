@@ -21,7 +21,8 @@ class Navigation_Bar extends StatefulWidget {
 
   const Navigation_Bar({
     super.key,
-    required this.bg_colored, required this.subscription,
+    required this.bg_colored,
+    required this.subscription,
   });
 
   @override
@@ -113,9 +114,10 @@ class Navigation_BarState extends State<Navigation_Bar> {
             BottomNavigationBarItem(
               icon: AnimatedScaleButton(
                 onTap: () {
-                 if(widget.subscription == 'active'){
-                   // Navigator.push(context, FadePageRoute(page: const timeline()));
-                  }else{
+                  if (widget.subscription == 'active') {
+                    Navigator.push(
+                        context, FadePageRoute(page: const timeline()));
+                  } else {
                     timelinePopup(context);
                   }
                 },
@@ -138,7 +140,6 @@ class Navigation_BarState extends State<Navigation_Bar> {
                   child: Container(
                       width: UpdatedDimensions.width10(context) * 3.0,
                       height: UpdatedDimensions.height10(context) * 3.0,
-                      
                       child: const ImageIcon(
                         AssetImage('assets/images/insp (1).webp'),
                         color: Colors.white,
@@ -182,7 +183,6 @@ class Navigation_BarState extends State<Navigation_Bar> {
           selectedLabelStyle: TextStyle(
             fontSize: UpdatedDimensions.font10(context) * 1.4,
             fontWeight: FontWeight.w400,
-
           ),
           unselectedLabelStyle: TextStyle(
             fontSize: UpdatedDimensions.font10(context) * 1.4,

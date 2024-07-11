@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 import 'package:potenic_app/API/timelineApi.dart';
+import 'package:potenic_app/Screen/timeline/component/filterComponent.dart';
 import 'package:potenic_app/Screen/timeline/component/new_practice.dart';
 import 'package:potenic_app/Screen/timeline/component/newvision_component.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -30,19 +31,22 @@ class _timelineState extends State<timeline> {
   List<String> usernameList = [];
   Map<String, dynamic> TimeLineRes = {};
   Set<String> uniqueNames = Set<String>();
+  bool pastActivities = true;
   String? _name = 'All';
   bool dataFound = false;
   final List<String> _statements = [
     'All ',
     'Practice session',
-    'Goal & Practice scheduled',
-    'Sessions missed',
+    // 'All',
+    //'Goal & Practice scheduled',
+    // 'Sessions missed',
     'Hurdle',
     'Inspiration',
     'Report',
     'New Vision Score'
   ];
 
+  String currentDateKey = '2024-07-11';
   int _selectedTag = 0;
   int goalIndex = 0;
   String selectedActivity = 'All';
@@ -51,13 +55,16 @@ class _timelineState extends State<timeline> {
     setState(() {
       setValue = DateTime.now();
       selectedGoal = 'All';
-      selectedActivity = 'All';
+      selectedActivity = _statements[0];
     });
   }
 
   @override
   void initState() {
-    callTimeLine();
+    setState(() {
+      selectedActivity = _statements[0];
+    });
+    callTimeLine(date);
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
@@ -74,8 +81,8 @@ class _timelineState extends State<timeline> {
 
   DateTime date = DateTime.now();
 
-  callTimeLine() {
-    String formattedDate = DateFormat('MM-dd-yyyy').format(date);
+  callTimeLine(givenDate) {
+    String formattedDate = DateFormat('MM-dd-yyyy').format(givenDate);
 
     TimelineService.getTimeLine(formattedDate).then((value) {
       setState(() {
@@ -113,42 +120,55 @@ class _timelineState extends State<timeline> {
     }
   }
 
+  isDateInFuture(date) {
+    if (date.isAfter(DateTime.now())) {
+      setState(() {
+        pastActivities = false;
+      });
+    } else {
+      setState(() {
+        pastActivities = true;
+      });
+    }
+  }
+
   addGoalNames() {
-    for (int index = 0; index < 7; index++) {
-      DateTime currentDate = DateTime.now().subtract(Duration(days: index));
-      String currentDateKey = DateFormat('yyyy-MM-dd').format(currentDate);
-      if (TimeLineRes.containsKey(currentDateKey) &&
-          TimeLineRes[currentDateKey].length != 0) {
-        List<dynamic> usercreated =
-            TimeLineRes[currentDateKey]["userPracticeCreated"] ?? ['No data'];
-        List<dynamic> goalcreated =
-            TimeLineRes[currentDateKey]["userGoalsCreated"] ?? ['No data'];
-        List<dynamic> goaldeleted =
-            TimeLineRes[currentDateKey]["deleteGoals"] ?? ['No data'];
-        List<dynamic> practicedeleted =
-            TimeLineRes[currentDateKey]["deletePractices"] ?? ['No data'];
-        List<dynamic> goalupdate =
-            TimeLineRes[currentDateKey]["userGoalsUpdated"] ?? ['No data'];
-        List<dynamic> practiceupdate =
-            TimeLineRes[currentDateKey]["userPracticeUpdated"] ?? ['No data'];
-        if (usercreated.isNotEmpty) {
-          addUniqueNames(usercreated);
-        }
-        if (goalcreated.isNotEmpty) {
-          addUniqueNames(goalcreated);
-        }
-        if (goaldeleted.isNotEmpty) {
-          addUniqueNames(goaldeleted);
-        }
-        if (practicedeleted.isNotEmpty) {
-          addUniqueNames(practicedeleted);
-        }
-        if (goalupdate.isNotEmpty) {
-          addUniqueNames(goalupdate);
-        }
-        if (practiceupdate.isNotEmpty) {
-          addUniqueNames(practiceupdate);
-        }
+    if (TimeLineRes[currentDateKey] != null) {
+      List<dynamic> usercreated =
+          TimeLineRes[currentDateKey]["userPracticeCreated"] ?? ['No data'];
+      List<dynamic> goalcreated =
+          TimeLineRes[currentDateKey]["userGoalsCreated"] ?? ['No data'];
+      List<dynamic> goaldeleted =
+          TimeLineRes[currentDateKey]["deleteGoals"] ?? ['No data'];
+      List<dynamic> practicedeleted =
+          TimeLineRes[currentDateKey]["deletePractices"] ?? ['No data'];
+      List<dynamic> goalupdate =
+          TimeLineRes[currentDateKey]["userGoalsUpdated"] ?? ['No data'];
+      List<dynamic> practiceupdate =
+          TimeLineRes[currentDateKey]["userPracticeUpdated"] ?? ['No data'];
+      List<dynamic> practiceRecordings =
+          TimeLineRes[currentDateKey]["recordings"] ?? ['No data'];
+
+      if (usercreated.isNotEmpty) {
+        addUniqueNames(usercreated);
+      }
+      if (goalcreated.isNotEmpty) {
+        addUniqueNames(goalcreated);
+      }
+      if (goaldeleted.isNotEmpty) {
+        addUniqueNames(goaldeleted);
+      }
+      if (practicedeleted.isNotEmpty) {
+        addUniqueNames(practicedeleted);
+      }
+      if (goalupdate.isNotEmpty) {
+        addUniqueNames(goalupdate);
+      }
+      if (practiceupdate.isNotEmpty) {
+        addUniqueNames(practiceupdate);
+      }
+      if (practiceRecordings.isNotEmpty) {
+        addUniqueNamesFromPractice(practiceRecordings);
       }
     }
   }
@@ -159,9 +179,32 @@ class _timelineState extends State<timeline> {
     // Create a set to store unique names
 
     // Iterate over the usercreated list
+    print("Data list $userList");
     userList.forEach((user) {
       String name = user["name"].toString();
       String id = user['id'].toString();
+
+      // Check if the name is not already in the set
+
+      if (uniqueNames.contains(id)) {
+        // Add the name to the list and the set
+      } else {
+        usernameList.add(name);
+        uniqueNames.add(id);
+      }
+    });
+  }
+
+  void addUniqueNamesFromPractice(
+    userList,
+  ) {
+    // Create a set to store unique names
+
+    // Iterate over the usercreated list
+    print("Data list $userList");
+    userList.forEach((user) {
+      String name = user['userGoal']["name"].toString();
+      String id = user['userGoal']['id'].toString();
 
       // Check if the name is not already in the set
 
@@ -196,7 +239,7 @@ class _timelineState extends State<timeline> {
         actions: [
           GestureDetector(
             onTap: () {
-              _scrollToSelectedWidget();
+              //    _scrollToSelectedWidget();
             },
             child: Container(
               child: Image.asset(
@@ -239,140 +282,6 @@ class _timelineState extends State<timeline> {
                           SizedBox(
                             height:
                                 AppDimensionsUpdated.height10(context) * 8.0,
-                          ),
-                          Column(
-                            children: [
-                              ListView.builder(
-                                itemCount: 7,
-                                shrinkWrap: true,
-                                reverse: true,
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (context, index1) {
-                                  // Calculate the date for the current index
-                                  DateTime currentDate =
-                                      date.add(Duration(days: index1 + 1));
-                                  String currentDateKey =
-                                      DateFormat('yyyy-MM-dd')
-                                          .format(currentDate);
-                                  var scheduleList =
-                                      TimeLineRes[currentDateKey]['recordings'];
-                                  return Column(
-                                    children: [
-                                      // Check if the data exists for the current date in TimeLineRes
-
-                                      scheduleList.length == 0
-                                          ? Container(
-                                              height:
-                                                  AppDimensionsUpdated.height10(
-                                                          context) *
-                                                      4)
-                                          : Container(),
-
-                                      scheduleList.length == 0
-                                          ? Center(
-                                              child: Text(
-                                                'No scheduled practices',
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize:
-                                                        AppDimensionsUpdated
-                                                                .height10(
-                                                                    context) *
-                                                            2.2),
-                                              ),
-                                            )
-                                          : ListView.builder(
-                                              itemCount: scheduleList.length,
-                                              shrinkWrap: true,
-                                              physics:
-                                                  const NeverScrollableScrollPhysics(),
-                                              itemBuilder: (context, index3) {
-                                                return ListView.builder(
-                                                  itemCount:
-                                                      scheduleList[index3]
-                                                                  ['schedule']
-                                                              .length -
-                                                          1,
-                                                  shrinkWrap: true,
-                                                  physics:
-                                                      const NeverScrollableScrollPhysics(),
-                                                  itemBuilder:
-                                                      ((context, index) {
-                                                    return PracticeSessionComponent(
-                                                      greenText:
-                                                          scheduleList[index3]
-                                                              ['name'],
-                                                      orangeText:
-                                                          scheduleList[index3]
-                                                                  ['userGoal']
-                                                              ['name'],
-                                                      scheduleTime: scheduleList[
-                                                                  index3]
-                                                              ['schedule']
-                                                          ['time${index + 1}'],
-                                                      image1:
-                                                          scheduleList[index3]
-                                                                  ['userGoal']
-                                                              ['color'],
-                                                      image2:
-                                                          scheduleList[index3]
-                                                              ['color'],
-                                                      status: 'Active',
-                                                    );
-                                                  }),
-                                                );
-                                              },
-                                            ),
-
-                                      DayTimeComponent(
-                                        DayText: DateFormat('EEE')
-                                            .format(currentDate),
-                                        TimeText: DateFormat('dd.MM')
-                                            .format(currentDate),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                          Container(
-                            key: _selectedWidgetKey,
-                            margin: EdgeInsets.only(
-                                top: AppDimensionsUpdated.height10(context) *
-                                    3.5),
-                            child: Image.asset(
-                              'assets/images/Arrow_up.webp',
-                              color: const Color(0xFF437296),
-                              width:
-                                  AppDimensionsUpdated.width10(context) * 2.5,
-                              height:
-                                  AppDimensionsUpdated.height10(context) * 2.5,
-                            ),
-                          ),
-                          Container(
-                            width: AppDimensionsUpdated.width10(context) * 7.2,
-                            height:
-                                AppDimensionsUpdated.height10(context) * 1.9,
-                            margin: EdgeInsets.only(
-                                top: AppDimensionsUpdated.height10(context) *
-                                    0.4),
-                            child: Center(
-                              child: Text(
-                                'Schedule',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensionsUpdated.font10(context) *
-                                            1.7,
-                                    fontWeight: FontWeight.w700,
-                                    height:
-                                        AppDimensionsUpdated.height10(context) *
-                                            0.12,
-                                    color: const Color(0xFF437296)),
-                              ),
-                            ),
                           ),
                           Container(
                               margin: EdgeInsets.only(
@@ -444,7 +353,7 @@ class _timelineState extends State<timeline> {
                                     1.4),
                             child: Center(
                               child: Text(
-                                'Past activities',
+                                pastActivities ? 'Past activities' : "Schedule",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
@@ -471,688 +380,667 @@ class _timelineState extends State<timeline> {
                                   AppDimensionsUpdated.height10(context) * 2.5,
                             ),
                           ),
-                          Column(
-                            children: [
-                              ListView.builder(
-                                itemCount: 7,
-                                shrinkWrap: true,
-                                padding: EdgeInsets.only(top: 0),
-                                physics: const NeverScrollableScrollPhysics(),
-                                itemBuilder: (context, index1) {
-                                  DateTime currentDate = DateTime.now()
-                                      .subtract(Duration(days: index1));
-                                  String currentDateKey =
-                                      DateFormat('yyyy-MM-dd')
-                                          .format(currentDate);
-
-                                  return Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      DayTimeComponent(
-                                        DayText: DateFormat('EEE')
-                                            .format(currentDate),
-                                        TimeText: DateFormat('dd.MM')
-                                            .format(currentDate),
-                                      ),
-                                      TimeLineRes[currentDateKey].length == 0
-                                          ? Container(
-                                              height:
-                                                  AppDimensionsUpdated.height10(
-                                                          context) *
-                                                      4)
-                                          : Container(),
-                                      TimeLineRes[currentDateKey].length == 0
-                                          ? Container(
-                                              height:
-                                                  AppDimensionsUpdated.height10(
-                                                          context) *
-                                                      3,
-                                              child: Center(
-                                                child: Text(
-                                                  'No activity',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      color: Colors.white,
-                                                      fontWeight: FontWeight
-                                                          .w500,
-                                                      fontSize:
-                                                          AppDimensionsUpdated
-                                                                  .height10(
-                                                                      context) *
-                                                              2.2),
+                          selectedActivity != _statements[0]
+                              ? Container(
+                                  margin: EdgeInsets.only(
+                                    bottom:
+                                        AppDimensionsUpdated.height10(context) *
+                                            18,
+                                  ),
+                                  child: filterComponent(
+                                      context,
+                                      TimeLineRes[currentDateKey],
+                                      selectedActivity,
+                                      selectedGoal,
+                                      pastActivities))
+                              : Column(
+                                  children: [
+                                    Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        // DayTimeComponent(
+                                        //   DayText:
+                                        //       DateFormat('EEE').format('2024-07-11'),
+                                        //   TimeText:
+                                        //       DateFormat('dd.MM').format('2024-07-11'),
+                                        // ),
+                                        TimeLineRes[currentDateKey] == null
+                                            ? Container(
+                                                height: AppDimensionsUpdated
+                                                        .height10(context) *
+                                                    4)
+                                            : Container(),
+                                        TimeLineRes[currentDateKey] == null
+                                            ? Container(
+                                                height: AppDimensionsUpdated
+                                                        .height10(context) *
+                                                    3,
+                                                child: Center(
+                                                  child: Text(
+                                                    'No activity',
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        fontSize:
+                                                            AppDimensionsUpdated
+                                                                    .height10(
+                                                                        context) *
+                                                                2.2),
+                                                  ),
                                                 ),
-                                              ),
-                                            )
-                                          : Column(
-                                              children: [
-                                                TimeLineRes[currentDateKey][
-                                                                'userGoalsCreated']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
+                                              )
+                                            : Column(
+                                                children: [
+                                                  TimeLineRes[currentDateKey][
+                                                              'userGoalsCreated'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'userGoalsCreated']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
                                                                     currentDateKey]
                                                                 [
-                                                                'userGoalsCreated']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'userGoalsCreated'][index];
-                                                          return GoalPracticeComponent(
-                                                              image1:
-                                                                  data['color'],
-                                                              image2: '2',
-                                                              mainText:
-                                                                  data['name'],
-                                                              smallText: '',
-                                                              subText: data[
-                                                                      'identityStatement']
-                                                                  [0]['text'],
-                                                              status:
-                                                                  'Created');
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey][
-                                                                'userPracticeCreated']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
+                                                                'userGoalsCreated'][index];
+                                                            return GoalPracticeComponent(
+                                                                image1: data[
+                                                                    'color'],
+                                                                image2: '2',
+                                                                mainText: data[
+                                                                    'name'],
+                                                                smallText: '',
+                                                                subText: data[
+                                                                        'identityStatement']
+                                                                    [0]['text'],
+                                                                status:
+                                                                    'Created');
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey][
+                                                              'userPracticeCreated'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'userPracticeCreated']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
                                                                     currentDateKey]
                                                                 [
-                                                                'userPracticeCreated']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'userPracticeCreated'][index];
-                                                          return GoalPracticeComponent(
-                                                              image1: data[
-                                                                      'userGoal']
-                                                                  ['color'],
-                                                              image2:
-                                                                  data['color'],
-                                                              mainText: data[
-                                                                      'userGoal']
-                                                                  ['name'],
-                                                              smallText:
-                                                                  data['name'],
-                                                              subText: data[
-                                                                          'userGoal']
-                                                                      [
-                                                                      'identityStatement']
-                                                                  [0]['text'],
-                                                              status: ' ');
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey][
-                                                                'userHurdlesCreated']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
-                                                                    currentDateKey]
-                                                                [
-                                                                'userHurdlesCreated']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'userHurdlesCreated'][index];
-                                                          return HurdleComponent(
-                                                            mainText: data[
-                                                                'hurdleName'],
-                                                            subText: data[
-                                                                'triggerStatment'],
-                                                            status: 'Created',
-                                                          );
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey][
-                                                                'userInspirationsCreated']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
-                                                                    currentDateKey]
-                                                                [
-                                                                'userInspirationsCreated']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'userInspirationsCreated'][index];
-                                                          return InspirationComponent(
-                                                            Text1:
-                                                                data['title'],
-                                                            mainImage:
-                                                                data['file']
-                                                                    .toString(),
-                                                            inspirationId: data[
-                                                                    'inspirationId']
-                                                                .toString(),
-                                                            Text2: data[
-                                                                'description'],
-                                                            status: null,
-                                                          );
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey]
-                                                                ['recordings']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
-                                                                    currentDateKey]
-                                                                ['recordings']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.only(
-                                                                top: 0),
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'recordings'][index];
-                                                          return ListView
-                                                              .builder(
-                                                                  shrinkWrap:
-                                                                      true,
-                                                                  itemCount:
-                                                                      data['schedule']
-                                                                              .length -
-                                                                          1,
-                                                                  padding:
-                                                                      EdgeInsets
-                                                                          .zero,
-                                                                  physics:
-                                                                      const NeverScrollableScrollPhysics(),
-                                                                  itemBuilder:
-                                                                      (context,
-                                                                          index) {
-                                                                    var schedule =
-                                                                        data['schedule']
-                                                                            [
-                                                                            'time${index + 1}'];
-                                                                    return RecordedComponent(
-                                                                      afterText:
-                                                                          data['recordingAfterFeelingTime${index + 1}']
-                                                                              .toString(),
-                                                                      recordedText:
-                                                                          data[
-                                                                              'name'],
-                                                                      goalName:
-                                                                          data['userGoal']
-                                                                              [
-                                                                              'name'],
-                                                                      pracName:
-                                                                          data[
-                                                                              'name'],
-                                                                      beforeText:
-                                                                          data['recordingBeforeFeelingTime${index + 1}']
-                                                                              .toString(),
-                                                                      orangeImage:
-                                                                          data['userGoal']
-                                                                              [
-                                                                              'color'],
-                                                                      greenImage:
-                                                                          data[
-                                                                              'color'],
-                                                                      status: data[
-                                                                          'recordingStatusTime${index + 1}'],
-                                                                      missedGreenImage:
-                                                                          null,
-                                                                    );
-                                                                  });
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey][
-                                                                'practiceReport']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
-                                                                    currentDateKey]
-                                                                [
-                                                                'practiceReport']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'practiceReport'][index];
-                                                          return ReportComponent(
-                                                            pracName: data[
-                                                                    'userPractice']
-                                                                ['name'],
-                                                            color2:
-                                                                data['userPractice']
-                                                                        [
-                                                                        'color']
-                                                                    .toString(),
-                                                            goalName: data[
-                                                                        'userPractice']
-                                                                    ['userGoal']
-                                                                ['name'],
-                                                            color1: data['userPractice']
-                                                                        [
+                                                                'userPracticeCreated'][index];
+                                                            return GoalPracticeComponent(
+                                                                image1: data[
                                                                         'userGoal']
-                                                                    ['color']
-                                                                .toString(),
-                                                          );
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey]
-                                                                ['newGoalLevel']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
-                                                                    currentDateKey]
-                                                                [
-                                                                'userGoalsCreated']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'userGoalsCreated'][index];
-                                                          return GoalPracticeComponent(
-                                                              image1:
-                                                                  data['color'],
-                                                              image2: '2',
-                                                              mainText:
-                                                                  data['name'],
-                                                              smallText: '',
-                                                              subText: data[
-                                                                      'identityStatement']
-                                                                  [0]['text'],
-                                                              status:
-                                                                  'Created');
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey][
-                                                                'userGoalsUpdated']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
-                                                                    currentDateKey]
-                                                                [
-                                                                'userGoalsUpdated']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'userGoalsUpdated'][index];
-                                                          return GoalPracticeComponent(
-                                                              image1:
-                                                                  data['color'],
-                                                              image2: '2',
-                                                              mainText:
-                                                                  data['name'],
-                                                              smallText: '',
-                                                              subText: data[
-                                                                      'identityStatement']
-                                                                  [0]['text'],
-                                                              status: 'update');
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey][
-                                                                'userPracticeUpdated']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
-                                                                    currentDateKey]
-                                                                [
-                                                                'userPracticeUpdated']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'userPracticeUpdated'][index];
-                                                          return GoalPracticeComponent(
-                                                              image1: data[
-                                                                      'userGoal']
-                                                                  ['color'],
-                                                              image2:
-                                                                  data['color'],
-                                                              mainText: data[
-                                                                      'userGoal']
-                                                                  ['name'],
-                                                              smallText:
-                                                                  data['name'],
-                                                              subText: data[
-                                                                          'userGoal']
-                                                                      [
-                                                                      'identityStatement']
-                                                                  [0]['text'],
-                                                              status:
-                                                                  'practiceUpdate');
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey][
-                                                                'userHurdlesUpdated']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
-                                                                    currentDateKey]
-                                                                [
-                                                                'userGoalsCreated']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'userGoalsCreated'][index];
-                                                          return GoalPracticeComponent(
-                                                              image1:
-                                                                  data['color'],
-                                                              image2: '2',
-                                                              mainText:
-                                                                  data['name'],
-                                                              smallText: '',
-                                                              subText: data[
-                                                                      'identityStatement']
-                                                                  [0]['text'],
-                                                              status:
-                                                                  'Created');
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey][
-                                                                'userInspirationsUpdated']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
-                                                                    currentDateKey]
-                                                                [
-                                                                'userInspirationsUpdated']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'userInspirationsUpdated'][index];
-                                                          return InspirationComponent(
-                                                            Text1:
-                                                                data['title'],
-                                                            mainImage:
-                                                                data['file']
-                                                                    .toString(),
-                                                            inspirationId: data[
-                                                                    'inspirationId']
-                                                                .toString(),
-                                                            Text2: data[
-                                                                'description'],
-                                                            status: false,
-                                                          );
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey]
-                                                                ['newGoalLevel']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
-                                                                    currentDateKey]
-                                                                ['newGoalLevel']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'newGoalLevel'][index];
-
-                                                          return NewVisionComponent(
-                                                            image1:
-                                                                data['userGoal']
                                                                     ['color'],
-                                                            image2:
-                                                                'assets/images/medBlue_gradient.webp',
-                                                            mainText:
-                                                                data['userGoal']
-                                                                    ['name'],
-                                                            subText: data[
+                                                                image2: data[
+                                                                    'color'],
+                                                                mainText: data[
                                                                         'userGoal']
-                                                                    [
-                                                                    'identityStatement']
-                                                                [0]['text'],
-                                                            levelText: data['goalLevel']
-                                                                        .toString() ==
-                                                                    'null'
-                                                                ? '0'
-                                                                : data['goalLevel']
-                                                                    .toString(),
-                                                          );
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey]
-                                                                ['deleteGoals']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
-                                                                    currentDateKey]
-                                                                ['deleteGoals']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'deleteGoals'][index];
-                                                          return GoalPracticeComponent(
-                                                              image1:
-                                                                  data['color'],
-                                                              image2: '2',
-                                                              mainText:
-                                                                  data['name'],
-                                                              smallText: '',
-                                                              subText: data[
-                                                                      'identityStatement']
-                                                                  [0]['text'],
-                                                              status:
-                                                                  'deleted');
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey][
-                                                                'deletePractices']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
+                                                                    ['name'],
+                                                                smallText: data[
+                                                                    'name'],
+                                                                subText: data[
+                                                                            'userGoal']
+                                                                        [
+                                                                        'identityStatement']
+                                                                    [0]['text'],
+                                                                status: ' ');
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey][
+                                                              'userHurdlesCreated'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'userHurdlesCreated']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
                                                                     currentDateKey]
                                                                 [
-                                                                'deletePractices']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'deletePractices'][index];
-                                                          return NewPractice(
+                                                                'userHurdlesCreated'][index];
+                                                            return HurdleComponent(
+                                                              mainText: data[
+                                                                  'hurdleName'],
+                                                              subText: data[
+                                                                  'triggerStatment'],
+                                                              status: 'Created',
+                                                            );
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey][
+                                                              'userInspirationsCreated'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'userInspirationsCreated']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
+                                                                    currentDateKey]
+                                                                [
+                                                                'userInspirationsCreated'][index];
+                                                            return InspirationComponent(
+                                                              Text1:
+                                                                  data['title'],
+                                                              mainImage: data[
+                                                                      'file']
+                                                                  .toString(),
+                                                              inspirationId: data[
+                                                                      'inspirationId']
+                                                                  .toString(),
+                                                              Text2: data[
+                                                                  'description'],
+                                                              status: null,
+                                                            );
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey]
+                                                              ['recordings'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  ['recordings']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                                  top: 0),
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
+                                                                    currentDateKey]
+                                                                [
+                                                                'recordings'][index];
+                                                            return ListView
+                                                                .builder(
+                                                                    shrinkWrap:
+                                                                        true,
+                                                                    itemCount:
+                                                                        data['schedule'].length -
+                                                                            1,
+                                                                    padding:
+                                                                        EdgeInsets
+                                                                            .zero,
+                                                                    physics:
+                                                                        const NeverScrollableScrollPhysics(),
+                                                                    itemBuilder:
+                                                                        (context,
+                                                                            index) {
+                                                                      var schedule =
+                                                                          data['schedule']
+                                                                              [
+                                                                              'time${index + 1}'];
+                                                                      return RecordedComponent(
+                                                                        afterText:
+                                                                            data['recordingAfterFeelingTime${index + 1}'].toString(),
+                                                                        past:
+                                                                            pastActivities,
+                                                                        scheduleTime:
+                                                                            schedule,
+                                                                        recordedText:
+                                                                            data['name'],
+                                                                        goalName:
+                                                                            data['userGoal']['name'],
+                                                                        pracName:
+                                                                            data['name'],
+                                                                        beforeText:
+                                                                            data['recordingBeforeFeelingTime${index + 1}'].toString(),
+                                                                        orangeImage:
+                                                                            data['userGoal']['color'],
+                                                                        greenImage:
+                                                                            data['color'],
+                                                                        status:
+                                                                            data['recordingStatusTime${index + 1}'],
+                                                                        missedGreenImage:
+                                                                            null,
+                                                                      );
+                                                                    });
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey][
+                                                              'practiceReport'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'practiceReport']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
+                                                                    currentDateKey]
+                                                                [
+                                                                'practiceReport'][index];
+                                                            return ReportComponent(
+                                                              pracName: data[
+                                                                      'userPractice']
+                                                                  ['name'],
+                                                              color2: data[
+                                                                          'userPractice']
+                                                                      ['color']
+                                                                  .toString(),
+                                                              goalName: data[
+                                                                          'userPractice']
+                                                                      [
+                                                                      'userGoal']
+                                                                  ['name'],
+                                                              color1: data['userPractice']
+                                                                          [
+                                                                          'userGoal']
+                                                                      ['color']
+                                                                  .toString(),
+                                                            );
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey][
+                                                              'newGoalLevel'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'userGoalsCreated']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
+                                                                    currentDateKey]
+                                                                [
+                                                                'userGoalsCreated'][index];
+                                                            return GoalPracticeComponent(
+                                                                image1: data[
+                                                                    'color'],
+                                                                image2: '2',
+                                                                mainText: data[
+                                                                    'name'],
+                                                                smallText: '',
+                                                                subText: data[
+                                                                        'identityStatement']
+                                                                    [0]['text'],
+                                                                status:
+                                                                    'Created');
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey][
+                                                              'userGoalsUpdated'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'userGoalsUpdated']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
+                                                                    currentDateKey]
+                                                                [
+                                                                'userGoalsUpdated'][index];
+                                                            return GoalPracticeComponent(
+                                                                image1: data[
+                                                                    'color'],
+                                                                image2: '2',
+                                                                mainText: data[
+                                                                    'name'],
+                                                                smallText: '',
+                                                                subText: data[
+                                                                        'identityStatement']
+                                                                    [0]['text'],
+                                                                status:
+                                                                    'update');
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey][
+                                                              'userPracticeUpdated'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'userPracticeUpdated']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
+                                                                    currentDateKey]
+                                                                [
+                                                                'userPracticeUpdated'][index];
+                                                            return GoalPracticeComponent(
+                                                                image1: data[
+                                                                        'userGoal']
+                                                                    ['color'],
+                                                                image2: data[
+                                                                    'color'],
+                                                                mainText: data[
+                                                                        'userGoal']
+                                                                    ['name'],
+                                                                smallText: data[
+                                                                    'name'],
+                                                                subText: data[
+                                                                            'userGoal']
+                                                                        [
+                                                                        'identityStatement']
+                                                                    [0]['text'],
+                                                                status:
+                                                                    'practiceUpdate');
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey][
+                                                              'userHurdlesUpdated'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'userGoalsCreated']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
+                                                                    currentDateKey]
+                                                                [
+                                                                'userGoalsCreated'][index];
+                                                            return GoalPracticeComponent(
+                                                                image1: data[
+                                                                    'color'],
+                                                                image2: '2',
+                                                                mainText: data[
+                                                                    'name'],
+                                                                smallText: '',
+                                                                subText: data[
+                                                                        'identityStatement']
+                                                                    [0]['text'],
+                                                                status:
+                                                                    'Created');
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey][
+                                                              'userInspirationsUpdated'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'userInspirationsUpdated']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
+                                                                    currentDateKey]
+                                                                [
+                                                                'userInspirationsUpdated'][index];
+                                                            return InspirationComponent(
+                                                              Text1:
+                                                                  data['title'],
+                                                              mainImage: data[
+                                                                      'file']
+                                                                  .toString(),
+                                                              inspirationId: data[
+                                                                      'inspirationId']
+                                                                  .toString(),
+                                                              Text2: data[
+                                                                  'description'],
+                                                              status: false,
+                                                            );
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey][
+                                                              'newGoalLevel'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'newGoalLevel']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
+                                                                    currentDateKey]
+                                                                [
+                                                                'newGoalLevel'][index];
+
+                                                            return NewVisionComponent(
                                                               image1: data[
                                                                       'userGoal']
                                                                   ['color'],
-                                                              image2: '2',
-                                                              greenText:
-                                                                  data['name'],
-                                                              orangeText: data[
+                                                              image2:
+                                                                  'assets/images/medBlue_gradient.webp',
+                                                              mainText: data[
                                                                       'userGoal']
                                                                   ['name'],
-                                                              Status:
-                                                                  'deleted');
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey][
-                                                                'deleteHurdles']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
+                                                              subText: data[
+                                                                          'userGoal']
+                                                                      [
+                                                                      'identityStatement']
+                                                                  [0]['text'],
+                                                              levelText: data['goalLevel']
+                                                                          .toString() ==
+                                                                      'null'
+                                                                  ? '0'
+                                                                  : data['goalLevel']
+                                                                      .toString(),
+                                                            );
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey]
+                                                              ['deleteGoals'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'deleteGoals']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
                                                                     currentDateKey]
                                                                 [
-                                                                'deleteHurdles']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'deleteHurdles'][index];
-                                                          return HurdleComponent(
-                                                            mainText: data[
-                                                                'hurdleName'],
-                                                            subText: data[
-                                                                'triggerStatment'],
-                                                            status: true,
-                                                          );
-                                                        })
-                                                    : Container(),
-                                                TimeLineRes[currentDateKey][
-                                                                'deleteInspirations']
-                                                            .length !=
-                                                        0
-                                                    ? ListView.builder(
-                                                        shrinkWrap: true,
-                                                        itemCount: TimeLineRes[
+                                                                'deleteGoals'][index];
+                                                            return GoalPracticeComponent(
+                                                                image1: data[
+                                                                    'color'],
+                                                                image2: '2',
+                                                                mainText: data[
+                                                                    'name'],
+                                                                smallText: '',
+                                                                subText: data[
+                                                                        'identityStatement']
+                                                                    [0]['text'],
+                                                                status:
+                                                                    'deleted');
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey][
+                                                              'deletePractices'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'deletePractices']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
                                                                     currentDateKey]
                                                                 [
-                                                                'deleteInspirations']
-                                                            .length,
-                                                        padding:
-                                                            EdgeInsets.zero,
-                                                        physics:
-                                                            const NeverScrollableScrollPhysics(),
-                                                        itemBuilder:
-                                                            (context, index) {
-                                                          var data = TimeLineRes[
-                                                                  currentDateKey]
-                                                              [
-                                                              'deleteInspirations'][index];
-                                                          return InspirationComponent(
-                                                            Text1:
-                                                                data['title'],
-                                                            mainImage:
-                                                                data['file']
-                                                                    .toString(),
-                                                            inspirationId: data[
-                                                                    'inspirationId']
-                                                                .toString(),
-                                                            Text2: data[
-                                                                'description'],
-                                                            status: true,
-                                                          );
-                                                        })
-                                                    : Container(),
-                                              ],
-                                            ),
-                                    ],
-                                  );
-                                },
-                              ),
-                              Container(
-                                height:
-                                    AppDimensionsUpdated.height10(context) * 18,
-                              )
-                            ],
-                          ),
+                                                                'deletePractices'][index];
+                                                            return NewPractice(
+                                                                image1: data[
+                                                                        'userGoal']
+                                                                    ['color'],
+                                                                image2: '2',
+                                                                greenText: data[
+                                                                    'name'],
+                                                                orangeText: data[
+                                                                        'userGoal']
+                                                                    ['name'],
+                                                                Status:
+                                                                    'deleted');
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey][
+                                                              'deleteHurdles'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'deleteHurdles']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
+                                                                    currentDateKey]
+                                                                [
+                                                                'deleteHurdles'][index];
+                                                            return HurdleComponent(
+                                                              mainText: data[
+                                                                  'hurdleName'],
+                                                              subText: data[
+                                                                  'triggerStatment'],
+                                                              status: true,
+                                                            );
+                                                          })
+                                                      : Container(),
+                                                  TimeLineRes[currentDateKey][
+                                                              'deleteInspirations'] !=
+                                                          null
+                                                      ? ListView.builder(
+                                                          shrinkWrap: true,
+                                                          itemCount: TimeLineRes[
+                                                                      currentDateKey]
+                                                                  [
+                                                                  'deleteInspirations']
+                                                              .length,
+                                                          padding:
+                                                              EdgeInsets.zero,
+                                                          physics:
+                                                              const NeverScrollableScrollPhysics(),
+                                                          itemBuilder:
+                                                              (context, index) {
+                                                            var data = TimeLineRes[
+                                                                    currentDateKey]
+                                                                [
+                                                                'deleteInspirations'][index];
+                                                            return InspirationComponent(
+                                                              Text1:
+                                                                  data['title'],
+                                                              mainImage: data[
+                                                                      'file']
+                                                                  .toString(),
+                                                              inspirationId: data[
+                                                                      'inspirationId']
+                                                                  .toString(),
+                                                              Text2: data[
+                                                                  'description'],
+                                                              status: true,
+                                                            );
+                                                          })
+                                                      : Container(),
+                                                ],
+                                              ),
+                                      ],
+                                    ),
+                                    Container(
+                                      height: AppDimensionsUpdated.height10(
+                                              context) *
+                                          18,
+                                    )
+                                  ],
+                                ),
                         ],
                       ),
                     ),
@@ -1313,6 +1201,128 @@ class _timelineState extends State<timeline> {
                                                   0.5,
                                         ),
                                         GestureDetector(
+                                          onTap: () async {
+                                            DateTime? valueOne =
+                                                await _TimeBottomSheet(context);
+                                            print("Value! $valueOne");
+                                            String formattedDate =
+                                                DateFormat('yyyy-MM-dd')
+                                                    .format(valueOne!);
+                                            isDateInFuture(valueOne);
+                                            setState(() {
+                                              setValue = valueOne;
+                                              currentDateKey = formattedDate;
+                                              loader = true;
+                                            });
+                                            callTimeLine(valueOne);
+                                          },
+                                          child: Container(
+                                            //width: AppDimensions.width10(context) * 11.5,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                3.4,
+                                            decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.0),
+                                                border: Border.all(
+                                                    width:
+                                                        AppDimensions.width10(
+                                                                context) *
+                                                            0.1,
+                                                    color: const Color(
+                                                        0xFFE0E0E0))),
+                                            margin: EdgeInsets.only(
+                                                left: AppDimensions.height10(
+                                                        context) *
+                                                    1.3,
+                                                right: AppDimensions.width10(
+                                                        context) *
+                                                    1.0),
+                                            child: Row(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Container(
+                                                  margin: EdgeInsets.only(
+                                                      left: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.0),
+                                                  child: Text(
+                                                    'Date:',
+                                                    style: TextStyle(
+                                                        fontSize: AppDimensions
+                                                                .font10(
+                                                                    context) *
+                                                            1.4,
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: const Color(
+                                                            0xffFA9934)),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  //width: AppDimensions.width10(context) * 1.9,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          2.4,
+                                                  margin: EdgeInsets.only(
+                                                      left: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.8),
+                                                  child: Center(
+                                                    child: Text(
+                                                      setValue == null
+                                                          ? ''
+                                                          : '${setValue!.year}-${setValue!.month}-${setValue!.day}',
+                                                      style: TextStyle(
+                                                          fontSize: AppDimensions
+                                                                  .font10(
+                                                                      context) *
+                                                              1.4,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          color: const Color(
+                                                              0xffFA9934)),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width: AppDimensions.width10(
+                                                          context) *
+                                                      2.4,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          2.4,
+                                                  margin: EdgeInsets.only(
+                                                      left: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.8,
+                                                      right: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.0,
+                                                      bottom: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.3),
+                                                  child: const Icon(
+                                                    Icons.arrow_drop_down,
+                                                    color: Color(0xffFA9934),
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        GestureDetector(
                                           onTap: () {
                                             usernameList.clear();
                                             uniqueNames.clear();
@@ -1415,6 +1425,7 @@ class _timelineState extends State<timeline> {
                                                                           selectedGoal =
                                                                               usernameList[goalIndex];
                                                                         });
+
                                                                         Navigator.pop(
                                                                             context);
                                                                       },
@@ -1660,11 +1671,21 @@ class _timelineState extends State<timeline> {
                                                                     GestureDetector(
                                                                       onTap:
                                                                           () {
+                                                                        if (_selectedTag ==
+                                                                            0) {
+                                                                          setState(
+                                                                              () {
+                                                                            selectedActivity =
+                                                                                'All';
+                                                                          });
+                                                                        }
                                                                         setState(
                                                                             () {
                                                                           selectedActivity =
                                                                               _statements[_selectedTag];
                                                                         });
+                                                                        print(
+                                                                            "selectedctivity $_selectedTag $selectedActivity");
 
                                                                         Navigator.pop(
                                                                             context);
@@ -1728,6 +1749,14 @@ class _timelineState extends State<timeline> {
                                             height: AppDimensions.height10(
                                                     context) *
                                                 3.4,
+                                            margin: EdgeInsets.only(
+                                              left: AppDimensions.height10(
+                                                      context) *
+                                                  1.3,
+                                              right: AppDimensions.width10(
+                                                      context) *
+                                                  1.0,
+                                            ),
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(
@@ -1821,120 +1850,6 @@ class _timelineState extends State<timeline> {
                                           ),
                                         ),
                                         GestureDetector(
-                                          onTap: () async {
-                                            DateTime? valueOne =
-                                                await _TimeBottomSheet(context);
-                                            setState(() {
-                                              setValue = valueOne!;
-                                            });
-                                          },
-                                          child: Container(
-                                            //width: AppDimensions.width10(context) * 11.5,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                3.4,
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.0),
-                                                border: Border.all(
-                                                    width:
-                                                        AppDimensions.width10(
-                                                                context) *
-                                                            0.1,
-                                                    color: const Color(
-                                                        0xFFE0E0E0))),
-                                            margin: EdgeInsets.only(
-                                                left: AppDimensions.height10(
-                                                        context) *
-                                                    1.3,
-                                                right: AppDimensions.width10(
-                                                        context) *
-                                                    1.0),
-                                            child: Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.center,
-                                              children: [
-                                                Container(
-                                                  margin: EdgeInsets.only(
-                                                      left: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.0),
-                                                  child: Text(
-                                                    'Date:',
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .font10(
-                                                                    context) *
-                                                            1.4,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color: const Color(
-                                                            0xffFA9934)),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  //width: AppDimensions.width10(context) * 1.9,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.4,
-                                                  margin: EdgeInsets.only(
-                                                      left: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          0.8),
-                                                  child: Center(
-                                                    child: Text(
-                                                      setValue == null
-                                                          ? ''
-                                                          : '${setValue!.year}-${setValue!.month}-${setValue!.day}',
-                                                      style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .font10(
-                                                                      context) *
-                                                              1.4,
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                          color: const Color(
-                                                              0xffFA9934)),
-                                                    ),
-                                                  ),
-                                                ),
-                                                Container(
-                                                  width: AppDimensions.width10(
-                                                          context) *
-                                                      2.4,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.4,
-                                                  margin: EdgeInsets.only(
-                                                      left: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          0.8,
-                                                      right: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.0,
-                                                      bottom: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          0.3),
-                                                  child: const Icon(
-                                                    Icons.arrow_drop_down,
-                                                    color: Color(0xffFA9934),
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        GestureDetector(
                                           onTap: () {
                                             clearData();
                                           },
@@ -1970,29 +1885,29 @@ class _timelineState extends State<timeline> {
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Container(
-                              width: AppDimensions.width10(context) * 4.9,
-                              height: AppDimensions.height10(context) * 5.0,
-                              decoration: BoxDecoration(
-                                  color: const Color(0xFFFBFBFB),
-                                  borderRadius: BorderRadius.circular(100)),
-                              child: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isSearch = !isSearch;
-                                  });
-                                },
-                                child: Image.asset(
-                                  'assets/images/Search.webp',
-                                  width: AppDimensions.width10(context) * 5,
-                                  height: AppDimensions.height10(context) * 5,
-                                  fit: BoxFit.contain,
-                                ),
-                              ),
-                            ),
-                          ),
+                          // Align(
+                          //   alignment: Alignment.centerRight,
+                          //   child: Container(
+                          //     width: AppDimensions.width10(context) * 4.9,
+                          //     height: AppDimensions.height10(context) * 5.0,
+                          //     decoration: BoxDecoration(
+                          //         color: const Color(0xFFFBFBFB),
+                          //         borderRadius: BorderRadius.circular(100)),
+                          //     child: GestureDetector(
+                          //       onTap: () {
+                          //         setState(() {
+                          //           isSearch = !isSearch;
+                          //         });
+                          //       },
+                          //       child: Image.asset(
+                          //         'assets/images/Search.webp',
+                          //         width: AppDimensions.width10(context) * 5,
+                          //         height: AppDimensions.height10(context) * 5,
+                          //         fit: BoxFit.contain,
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
               ),

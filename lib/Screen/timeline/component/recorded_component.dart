@@ -10,6 +10,8 @@ class RecordedComponent extends StatefulWidget {
   String beforeText;
   String afterText;
   String pracName;
+  String scheduleTime;
+  bool past;
   final orangeImage;
   final greenImage;
   final status;
@@ -17,6 +19,8 @@ class RecordedComponent extends StatefulWidget {
   RecordedComponent(
       {super.key,
       required this.recordedText,
+      required this.scheduleTime,
+      required this.past,
       required this.goalName,
       required this.pracName,
       required this.beforeText,
@@ -123,7 +127,9 @@ class _RecordedComponentState extends State<RecordedComponent> {
                     fit: BoxFit.cover)),
             child: Stack(children: [
               Align(
-                alignment: const Alignment(-2.65, 0),
+                alignment: widget.past
+                    ? const Alignment(-1.65, 0)
+                    : const Alignment(-1.85, 0),
                 child: Container(
                   width: AppDimensionsUpdated.width10(context) * 22.6,
                   height: AppDimensionsUpdated.height10(context) * 24.2,
@@ -135,7 +141,7 @@ class _RecordedComponentState extends State<RecordedComponent> {
                   child: Align(
                       alignment: const Alignment(0.42, 0),
                       child: SizedBox(
-                        width: AppDimensionsUpdated.width10(context) * 7.5,
+                        width: AppDimensionsUpdated.width10(context) * 10.5,
                         height: AppDimensionsUpdated.height10(context) * 4.8,
                         //changed font family due to client's request
                         child: Text(
@@ -146,18 +152,22 @@ class _RecordedComponentState extends State<RecordedComponent> {
                               height:
                                   AppDimensionsUpdated.height10(context) * 0.15,
                               fontSize:
-                                  AppDimensionsUpdated.font10(context) * 1.6,
-                              fontWeight: FontWeight.w500,
+                                  AppDimensionsUpdated.font10(context) * 2,
+                              fontWeight: FontWeight.bold,
                               color: const Color(0xff5B74A6)),
                         ),
                       )),
                 ),
               ),
               Align(
-                alignment: const Alignment(-0.175, 0),
+                alignment: widget.past
+                    ? const Alignment(0.205, 0)
+                    : const Alignment(-0.105, 0),
                 child: Container(
                   width: AppDimensionsUpdated.width10(context) * 11.6,
                   height: AppDimensionsUpdated.height10(context) * 11.6,
+                  // ignore: prefer_const_constructors
+                  padding: EdgeInsets.symmetric(horizontal: 5),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: widget.status == 'missed'
@@ -177,6 +187,8 @@ class _RecordedComponentState extends State<RecordedComponent> {
                     child: Text(
                       widget.pracName,
                       textAlign: TextAlign.center,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: AppDimensionsUpdated.font10(context) * 1.6,
                         height: AppDimensionsUpdated.height10(context) * 0.12,
@@ -186,7 +198,59 @@ class _RecordedComponentState extends State<RecordedComponent> {
                     ),
                   ),
                 ),
-              )
+              ),
+              widget.past != true
+                  ? Align(
+                      alignment: const Alignment(0.9, 0),
+                      child: SizedBox(
+                        width: AppDimensionsUpdated.width10(context) * 8.2,
+                        height: AppDimensionsUpdated.height10(context) * 4.1,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width:
+                                  AppDimensionsUpdated.height10(context) * 8.2,
+                              height:
+                                  AppDimensionsUpdated.height10(context) * 2.0,
+                              child: Text(
+                                'Scheduled',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensionsUpdated.font10(context) *
+                                            1.4,
+                                    height:
+                                        AppDimensionsUpdated.height10(context) *
+                                            0.12,
+                                    fontWeight: FontWeight.w400,
+                                    color: const Color(0xffFA8552)),
+                              ),
+                            ),
+                            Container(
+                              width:
+                                  AppDimensionsUpdated.height10(context) * 6.5,
+                              height:
+                                  AppDimensionsUpdated.height10(context) * 1.9,
+                              alignment: Alignment.topCenter,
+                              child: Text(
+                                widget.scheduleTime,
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensionsUpdated.font10(context) *
+                                            1.6,
+                                    height:
+                                        AppDimensionsUpdated.height10(context) *
+                                            0.12,
+                                    fontWeight: FontWeight.w700,
+                                    color: const Color(0xffFBFBFB)),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    )
+                  : Container()
             ]),
           ),
           (widget.status != 'Not Started' && widget.status != 'missed')
