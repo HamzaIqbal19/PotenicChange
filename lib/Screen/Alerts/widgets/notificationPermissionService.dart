@@ -8,13 +8,18 @@ import 'notificationSheet.dart';
 class NotificationPermissionService {
   static const String _lastPromptDateKey = 'lastPromptDate';
 
+
   Future<bool> checkAndRequestNotificationPermission(
       BuildContext context, bool dashboard) async {
+    print("Notification started");
     final PermissionStatus status = await Permission.notification.status;
+    print("Notification status granted $status");
 
     if (status.isGranted) {
+      print("Notification granted");
       return true;
-    } else if (status.isDenied || status.isPermanentlyDenied) {
+    } else  {
+      print("Notification not granted");
       final SharedPreferences prefs = await SharedPreferences.getInstance();
       final DateTime? lastPromptDate =
           DateTime.tryParse(prefs.getString(_lastPromptDateKey) ?? '');
@@ -33,8 +38,6 @@ class NotificationPermissionService {
           _showSettingsDialog(context);
         }
       }
-      return false;
-    } else {
       return false;
     }
   }
