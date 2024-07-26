@@ -25,11 +25,11 @@ class _NewPracticeState extends State<NewPractice> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensionsUpdated.width10(context) * 39.5,
       height: AppDimensionsUpdated.height10(context) * 27.4,
       margin: EdgeInsets.only(
-        top: AppDimensionsUpdated.height10(context) * 1.9,
-      ),
+          top: AppDimensionsUpdated.height10(context) * 2.0,
+          right: AppDimensionsUpdated.height10(context) * 1.5,
+          left: AppDimensionsUpdated.height10(context) * 1.5),
       decoration: BoxDecoration(
         color: const Color(0xFFFBFBFB),
         borderRadius:

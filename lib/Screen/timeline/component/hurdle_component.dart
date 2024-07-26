@@ -22,8 +22,8 @@ class HurdleComponent extends StatelessWidget {
       height: AppDimensionsUpdated.height10(context) * 38.4,
       margin: EdgeInsets.only(
           top: AppDimensionsUpdated.height10(context) * 2.0,
-          left: AppDimensionsUpdated.width10(context) * 2,
-          right: AppDimensionsUpdated.width10(context) * 2),
+          right: AppDimensionsUpdated.height10(context) * 1.5,
+          left: AppDimensionsUpdated.height10(context) * 1.5),
       decoration: BoxDecoration(
         color: const Color(0xFFFBFBFB),
         borderRadius:
@@ -65,19 +65,35 @@ class HurdleComponent extends StatelessWidget {
             ),
           ),
           Container(
-            width: AppDimensionsUpdated.width10(context) * 34,
+           width: AppDimensionsUpdated.width10(context) * 34,
             height: AppDimensionsUpdated.height10(context) * 29.9,
             margin: EdgeInsets.only(
               top: AppDimensionsUpdated.height10(context) * 1.5,
             ),
             decoration: status == true
                 ? BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.4),
+                  spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
+                  blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
+                  offset: const Offset(0, 3),
+                )
+              ],
                     color: const Color(0xff828282),
                     borderRadius: BorderRadius.circular(
                         AppDimensionsUpdated.height10(context) * 2.0),
                   )
                 : status == false
                     ? BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.4),
+                  spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
+                  blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
+                  offset: const Offset(0, 3),
+                )
+              ],
                         image: const DecorationImage(
                             image: AssetImage('assets/images/timeline_3.webp'),
                             fit: BoxFit.cover),

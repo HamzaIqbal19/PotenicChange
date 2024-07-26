@@ -28,7 +28,7 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensionsUpdated.width10(context) * 33.5,
+
       height: AppDimensionsUpdated.height10(context) * 49.1,
       margin: EdgeInsets.only(
           top: AppDimensionsUpdated.height10(context) * 2.0,
@@ -92,17 +92,41 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                 top: AppDimensionsUpdated.height10(context) * 1.5),
             decoration: widget.status == 'deleted'
                 ? BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.4),
+                    spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
+                    blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
+                    offset: const Offset(0, 3),
+                  )
+                ],
                     borderRadius: BorderRadius.circular(
                         AppDimensionsUpdated.height10(context) * 2.0),
                     color: const Color(0xff828282))
                 : widget.status == 'inactive'
                     ? BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.4),
+                    spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
+                    blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
+                    offset: const Offset(0, 3),
+                  )
+                ],
                         borderRadius: BorderRadius.circular(
                             AppDimensionsUpdated.height10(context) * 2.0),
                         image: const DecorationImage(
                             image: AssetImage('assets/images/timeline_1.webp'),
                             fit: BoxFit.cover))
                     : BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.4),
+                    spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
+                    blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
+                    offset: const Offset(0, 3),
+                  )
+                ],
                         borderRadius: BorderRadius.circular(
                             AppDimensionsUpdated.height10(context) * 2.0),
                         image: const DecorationImage(

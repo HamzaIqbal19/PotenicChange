@@ -9,7 +9,7 @@ var client = SentryHttpClient();
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class TimelineService {
-  static Future getTimeLine(var givenDate) async {
+  static Future getTimeLine(var givenDate, goalId, type) async {
     final SharedPreferences prefs = await _prefs;
 
     var accessToken = prefs.getString("usertoken");
@@ -21,13 +21,27 @@ class TimelineService {
       'Content-Type': 'application/json',
       'x-access-token': '$accessToken'
     };
+
+    String url = '';
+
+    if(goalId!=null && type == null){
+      url = '${URL.BASE_URL}api/user/userTimelineByGivenDate/$userId?givenDate=$givenDate&userGoalId=$goalId';
+    }else if(goalId==null && type != null){
+      url = '${URL.BASE_URL}api/user/userTimelineByGivenDate/$userId?givenDate=$givenDate&type=$type';
+    }else if(goalId!=null && type !=null){
+      url = '${URL.BASE_URL}api/user/userTimelineByGivenDate/$userId?givenDate=$givenDate&userGoalId=$goalId&type=$type';
+    }else{
+      url ='${URL.BASE_URL}api/user/userTimelineByGivenDate/$userId?givenDate=$givenDate';
+    }
+
+    print("Timeline data $accessToken $url");
     var response = await http.get(
       Uri.parse(
-          '${URL.BASE_URL}api/user/userTimelineByGivenDate/$userId?givenDate=$givenDate'),
+          url),
       headers: headers,
     );
 
-    print("Timeline data $accessToken");
+
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);

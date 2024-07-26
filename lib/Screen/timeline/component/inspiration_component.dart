@@ -21,12 +21,11 @@ class InspirationComponent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensionsUpdated.width10(context) * 38.4,
       height: AppDimensionsUpdated.height10(context) * 42.4,
       margin: EdgeInsets.only(
           top: AppDimensionsUpdated.height10(context) * 2.0,
-          left: AppDimensionsUpdated.width10(context) * 1.4,
-          right: AppDimensionsUpdated.width10(context) * 1.4),
+          right: AppDimensionsUpdated.height10(context) * 1.5,
+          left: AppDimensionsUpdated.height10(context) * 1.5),
       decoration: BoxDecoration(
         color: const Color(0xFFFBFBFB),
         borderRadius:
@@ -74,12 +73,28 @@ class InspirationComponent extends StatelessWidget {
                 top: AppDimensionsUpdated.height10(context) * 1.5),
             decoration: status == true
                 ? BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.4),
+                  spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
+                  blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
+                  offset: const Offset(0, 3),
+                )
+              ],
                     color: const Color(0xff828282),
                     borderRadius: BorderRadius.circular(
                         AppDimensionsUpdated.height10(context) * 2.0),
                   )
                 : status == false
                     ? BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.4),
+                  spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
+                  blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
+                  offset: const Offset(0, 3),
+                )
+              ],
                         image: const DecorationImage(
                             image: AssetImage(
                                 'assets/images/bg_inpiration_purple.webp'),
@@ -88,6 +103,14 @@ class InspirationComponent extends StatelessWidget {
                             AppDimensionsUpdated.height10(context) * 2.0),
                       )
                     : BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.4),
+                  spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
+                  blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
+                  offset: const Offset(0, 3),
+                )
+              ],
                         image: const DecorationImage(
                             image: AssetImage(
                                 'assets/images/bg_inpiration_purple.webp'),

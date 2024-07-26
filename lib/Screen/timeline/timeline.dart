@@ -25,7 +25,7 @@ class _timelineState extends State<timeline> {
   late ScrollController _scrollController;
   late DateTime? setValue = DateTime.now();
   final searchController = TextEditingController();
-  bool isSearch = false;
+  bool isEmpty = true;
   bool loader = true;
   final GlobalKey _selectedWidgetKey = GlobalKey();
   List<String> usernameList = [];
@@ -46,6 +46,37 @@ class _timelineState extends State<timeline> {
     'New Vision Score'
   ];
 
+  setType(tag){
+    if(tag == 0){
+      setState(() {
+        type = null;
+      });
+    }else if(tag == 1){
+      setState(() {
+        type = 'practiceSession';
+      });
+    }else if(tag == 2){
+      setState(() {
+        type = 'hurdle';
+      });
+    }else if(tag == 3){
+      setState(() {
+        type = 'inspiration';
+      });
+    }else if(tag == 4){
+      setState(() {
+        type = 'report';
+      });
+    }else if(tag == 5){
+      setState(() {
+        type = 'goalLevel';
+      });
+    }
+    }
+
+  var goalId;
+  var type;
+
   String currentDateKey = '2024-07-11';
   int _selectedTag = 0;
   int goalIndex = 0;
@@ -56,7 +87,10 @@ class _timelineState extends State<timeline> {
       setValue = DateTime.now();
       selectedGoal = 'All';
       selectedActivity = _statements[0];
+      type=null;
+      goalId = null;
     });
+    callTimeLine(setValue,null,null,true);
   }
 
   @override
@@ -64,7 +98,7 @@ class _timelineState extends State<timeline> {
     setState(() {
       selectedActivity = _statements[0];
     });
-    callTimeLine(date);
+    callTimeLine(date,goalId,type, true);
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
@@ -81,17 +115,30 @@ class _timelineState extends State<timeline> {
 
   DateTime date = DateTime.now();
 
-  callTimeLine(givenDate) {
-    String formattedDate = DateFormat('MM-dd-yyyy').format(givenDate);
+  callTimeLine(givenDate, goal, type,bool getGoalNames) {
 
-    TimelineService.getTimeLine(formattedDate).then((value) {
+    String formattedDate = DateFormat('MM-dd-yyyy').format(givenDate);
+    setState(() {
+      currentDateKey = DateFormat("yyyy-MM-dd").format(givenDate);
+    });
+    TimelineService.getTimeLine(formattedDate,goal,type).then((value) {
       setState(() {
         TimeLineRes = value;
+
       });
+      bool result = areAllObjectsEmpty(TimeLineRes, currentDateKey);
+
+      if(getGoalNames){
+        usernameList.clear();
+        uniqueNames.clear();
+        addGoalNames();
+      }
+
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _scrollToSelectedWidget();
       });
       setState(() {
+        isEmpty = result;
         loader = false;
       });
     });
@@ -101,6 +148,24 @@ class _timelineState extends State<timeline> {
   void dispose() {
     _scrollController.dispose(); // dispose the controller
     super.dispose();
+  }
+
+  bool areAllObjectsEmpty( data, String currentDateKey) {
+    if (!data.containsKey(currentDateKey)) {
+      // If the currentDateKey is not in the data, return true as there's nothing to check
+      return true;
+    }
+
+    var dateData = TimeLineRes[currentDateKey];
+
+
+    for (var entry in dateData.entries) {
+      if (entry.value.isNotEmpty) {
+        return false; // If any list is not empty, return false
+      }
+    }
+
+    return true; // All lists are empty, return true
   }
 
   // This function is triggered when the user presses the back-to-top button
@@ -179,7 +244,6 @@ class _timelineState extends State<timeline> {
     // Create a set to store unique names
 
     // Iterate over the usercreated list
-    print("Data list $userList");
     userList.forEach((user) {
       String name = user["name"].toString();
       String id = user['id'].toString();
@@ -201,7 +265,6 @@ class _timelineState extends State<timeline> {
     // Create a set to store unique names
 
     // Iterate over the usercreated list
-    print("Data list $userList");
     userList.forEach((user) {
       String name = user['userGoal']["name"].toString();
       String id = user['userGoal']['id'].toString();
@@ -380,20 +443,7 @@ class _timelineState extends State<timeline> {
                                   AppDimensionsUpdated.height10(context) * 2.5,
                             ),
                           ),
-                          selectedActivity != _statements[0]
-                              ? Container(
-                                  margin: EdgeInsets.only(
-                                    bottom:
-                                        AppDimensionsUpdated.height10(context) *
-                                            18,
-                                  ),
-                                  child: filterComponent(
-                                      context,
-                                      TimeLineRes[currentDateKey],
-                                      selectedActivity,
-                                      selectedGoal,
-                                      pastActivities))
-                              : Column(
+                          Column(
                                   children: [
                                     Column(
                                       mainAxisSize: MainAxisSize.min,
@@ -404,20 +454,20 @@ class _timelineState extends State<timeline> {
                                         //   TimeText:
                                         //       DateFormat('dd.MM').format('2024-07-11'),
                                         // ),
-                                        TimeLineRes[currentDateKey] == null
+                                        isEmpty
                                             ? Container(
                                                 height: AppDimensionsUpdated
                                                         .height10(context) *
                                                     4)
                                             : Container(),
-                                        TimeLineRes[currentDateKey] == null
+                                        isEmpty
                                             ? Container(
                                                 height: AppDimensionsUpdated
                                                         .height10(context) *
                                                     3,
                                                 child: Center(
                                                   child: Text(
-                                                    'No activity',
+                                                    'No Record found',
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
                                                         color: Colors.white,
@@ -786,7 +836,7 @@ class _timelineState extends State<timeline> {
                                                           })
                                                       : Container(),
                                                   TimeLineRes[currentDateKey][
-                                                              'userHurdlesUpdated'] !=
+                                                              'userGoalsCreated'] !=
                                                           null
                                                       ? ListView.builder(
                                                           shrinkWrap: true,
@@ -1057,108 +1107,7 @@ class _timelineState extends State<timeline> {
                 decoration: const BoxDecoration(
                   color: Color(0xffFBFBFB),
                 ),
-                child: isSearch
-                    ? Container(
-                        color: Colors.transparent,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: AppDimensions.height10(context) *
-                                          2.0),
-                                  child: Container(
-                                    height:
-                                        AppDimensions.height10(context) * 3.6,
-                                    width:
-                                        AppDimensions.width10(context) * 29.3,
-                                    padding: const EdgeInsets.all(6.0),
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFF767680)
-                                            .withOpacity(0.12),
-                                        border: Border.all(
-                                            color: Colors.white, width: 2),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(
-                                                AppDimensions.height10(
-                                                    context)))),
-                                    child: TextFormField(
-                                        textCapitalization: TextCapitalization
-                                            .sentences,
-                                        onChanged: (value) {
-                                          setState(() {});
-                                        },
-                                        controller: searchController,
-                                        decoration: InputDecoration(
-                                            contentPadding:
-                                                const EdgeInsets.all(0.0),
-                                            prefixIcon: Image.asset(
-                                              'assets/images/Light.webp',
-                                              width: AppDimensions.width10(
-                                                      context) *
-                                                  1.5,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  1.5,
-                                            ),
-                                            suffixIcon: GestureDetector(
-                                                onTap: () {
-                                                  searchController.clear();
-                                                },
-                                                child: Icon(
-                                                  Icons.cancel,
-                                                  size: AppDimensions.height10(
-                                                          context) *
-                                                      1.8,
-                                                  color: const Color(0xff252525)
-                                                      .withOpacity(0.75),
-                                                )),
-                                            hintText: "Search",
-                                            hintStyle: TextStyle(
-                                              color: const Color(0xff3C3C43)
-                                                  .withOpacity(0.6),
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.11,
-                                            ),
-                                            focusedBorder:
-                                                const OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: Colors
-                                                            .transparent)),
-                                            enabledBorder:
-                                                const OutlineInputBorder(
-                                                    borderSide: BorderSide(
-                                                        color: Colors
-                                                            .transparent)))),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  isSearch = !isSearch;
-                                });
-                              },
-                              child: Text(
-                                "Cancel",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.7,
-                                  fontWeight: FontWeight.w400,
-                                  color: const Color(0xFF007AFF),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      )
-                    : Stack(
+                child: Stack(
                         children: [
                           Align(
                             alignment: Alignment.centerLeft,
@@ -1204,7 +1153,6 @@ class _timelineState extends State<timeline> {
                                           onTap: () async {
                                             DateTime? valueOne =
                                                 await _TimeBottomSheet(context);
-                                            print("Value! $valueOne");
                                             String formattedDate =
                                                 DateFormat('yyyy-MM-dd')
                                                     .format(valueOne!);
@@ -1214,7 +1162,7 @@ class _timelineState extends State<timeline> {
                                               currentDateKey = formattedDate;
                                               loader = true;
                                             });
-                                            callTimeLine(valueOne);
+                                            callTimeLine(valueOne,null,null,true);
                                           },
                                           child: Container(
                                             //width: AppDimensions.width10(context) * 11.5,
@@ -1324,9 +1272,7 @@ class _timelineState extends State<timeline> {
                                         ),
                                         GestureDetector(
                                           onTap: () {
-                                            usernameList.clear();
-                                            uniqueNames.clear();
-                                            addGoalNames();
+
 
                                             showModalBottomSheet(
                                               context: context,
@@ -1422,9 +1368,11 @@ class _timelineState extends State<timeline> {
                                                                           () {
                                                                         setState(
                                                                             () {
-                                                                          selectedGoal =
-                                                                              usernameList[goalIndex];
+                                                                              goalId = uniqueNames.elementAt(goalIndex);
+                                                                              selectedGoal = usernameList[goalIndex];
                                                                         });
+
+                                                                        callTimeLine(DateTime.parse(currentDateKey), goalId, type,false);
 
                                                                         Navigator.pop(
                                                                             context);
@@ -1684,8 +1632,7 @@ class _timelineState extends State<timeline> {
                                                                           selectedActivity =
                                                                               _statements[_selectedTag];
                                                                         });
-                                                                        print(
-                                                                            "selectedctivity $_selectedTag $selectedActivity");
+                                                                        callTimeLine(DateTime.parse(currentDateKey), goalId, type,false);
 
                                                                         Navigator.pop(
                                                                             context);
@@ -1732,6 +1679,8 @@ class _timelineState extends State<timeline> {
                                                                     _selectedTag =
                                                                         index;
                                                                   });
+                                                                  setType(_selectedTag);
+
                                                                 },
                                                               ),
                                                             ),
