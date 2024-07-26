@@ -213,7 +213,7 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                             Container(
                               width:
                                   AppDimensionsUpdated.width10(context) * 20.9,
-                              margin: EdgeInsets.only(top: 10),
+                              margin: const EdgeInsets.only(top: 10),
                               padding: EdgeInsets.symmetric(
                                   horizontal:
                                       AppDimensionsUpdated.height10(context) *
