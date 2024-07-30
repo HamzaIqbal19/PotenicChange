@@ -145,10 +145,9 @@ class PracticeGoalApi {
       headers: headers,
     );
 
-    print("response ${response.body}");
+    print("response ${response.statusCode}");
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      print("response $jsonData");
       final SharedPreferences prefs = await _prefs;
       if (jsonData['practiceEvaluations'] != null) {
         await prefs.setString(

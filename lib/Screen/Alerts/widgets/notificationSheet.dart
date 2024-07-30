@@ -197,6 +197,7 @@ void notificationsSheet(context) {
 void seeMoreSheet(context, data, final VoidCallback tap1) {
   showModalBottomSheet(
       context: context,
+      //isScrollControlled: true,
       backgroundColor: Colors.transparent,
       scrollControlDisabledMaxHeightRatio: 500,
       shape: const RoundedRectangleBorder(
