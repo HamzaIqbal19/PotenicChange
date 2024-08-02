@@ -25,13 +25,13 @@ class TimelineService {
     String url = '';
 
     if(goalId!=null && type == null){
-      url = '${URL.BASE_URL}api/user/userTimelineByGivenDate/$userId?givenDate=$givenDate&userGoalId=$goalId';
+      url = '${URL.BASE_URL}api/user/getTimeLineByUserId/$userId?givenDate=$givenDate&userGoalId=$goalId';
     }else if(goalId==null && type != null){
-      url = '${URL.BASE_URL}api/user/userTimelineByGivenDate/$userId?givenDate=$givenDate&type=$type';
+      url = '${URL.BASE_URL}api/user/getTimeLineByUserId/$userId?givenDate=$givenDate&type=$type';
     }else if(goalId!=null && type !=null){
-      url = '${URL.BASE_URL}api/user/userTimelineByGivenDate/$userId?givenDate=$givenDate&userGoalId=$goalId&type=$type';
+      url = '${URL.BASE_URL}api/user/getTimeLineByUserId/$userId?givenDate=$givenDate&userGoalId=$goalId&type=$type';
     }else{
-      url ='${URL.BASE_URL}api/user/userTimelineByGivenDate/$userId?givenDate=$givenDate';
+      url ='${URL.BASE_URL}api/user/getTimeLineByUserId/$userId?givenDate=$givenDate';
     }
 
     print("Timeline data $accessToken $url");
