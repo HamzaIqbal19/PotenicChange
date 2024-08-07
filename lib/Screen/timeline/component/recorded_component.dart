@@ -53,10 +53,10 @@ class _RecordedComponentState extends State<RecordedComponent> {
       child: Column(
         children: [
           Container(
-            width: AppDimensionsUpdated.width10(context) * 30.7,
+            width: AppDimensionsUpdated.width10(context) * 32.7,
             height: AppDimensionsUpdated.height10(context) * 3.5,
             margin: EdgeInsets.only(
-              right: AppDimensionsUpdated.width10(context) * 4.9,
+              right: AppDimensionsUpdated.width10(context) * 2.8,
               top: AppDimensionsUpdated.height10(context) * 1.5,
             ),
             child: Row(
@@ -73,12 +73,13 @@ class _RecordedComponentState extends State<RecordedComponent> {
                           fit: BoxFit.contain)),
                 ),
                 SizedBox(
-                    width: AppDimensionsUpdated.width10(context) * 23.6,
+                    width: AppDimensionsUpdated.width10(context) * 27.6,
                     height: AppDimensionsUpdated.height10(context) * 2.2,
                     child: RichText(
                         text: TextSpan(
-                            text: 'Practice session',
+                            text: 'Practice session ',
                             style: TextStyle(
+                                fontFamily: 'laila',
                                 fontWeight: FontWeight.w600,
                                 fontSize:
                                     AppDimensionsUpdated.font10(context) * 1.8,
@@ -170,18 +171,23 @@ class _RecordedComponentState extends State<RecordedComponent> {
                   padding: EdgeInsets.symmetric(horizontal: 5),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    border: widget.status == 'missed'
-                        ? Border.all(color: Colors.transparent)
-                        : Border.all(color: Colors.white, width: 1),
+                    border: widget.status == 'Not Started'
+                        ? Border.all(color: Colors.white, width: 1)
+                        : Border.all(color: Colors.transparent, width: 1),
                     image: widget.status == 'missed'
                         ? DecorationImage(
                             image: AssetImage(practiceImagesMissed(
                                 widget.greenImage.toString())),
                             fit: BoxFit.contain)
-                        : DecorationImage(
-                            image: AssetImage(
-                                practiceImages(widget.greenImage.toString())),
-                            fit: BoxFit.contain),
+                        : widget.status == 'Not Started'
+                            ? DecorationImage(
+                                image: AssetImage(practiceImages(
+                                    widget.greenImage.toString())),
+                                fit: BoxFit.contain)
+                            : DecorationImage(
+                                image: AssetImage(practiceImagesCompleted(
+                                    widget.greenImage.toString())),
+                                fit: BoxFit.contain),
                   ),
                   child: Center(
                     child: Text(

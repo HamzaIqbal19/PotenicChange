@@ -59,7 +59,7 @@ class InspirationComponent extends StatelessWidget {
                     'Inspiration',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: AppDimensionsUpdated.font10(context) * 1.8,
+                        fontSize: AppDimensionsUpdated.font10(context) * 2,
                         color: const Color(0xff437296)),
                   ),
                 )
@@ -73,28 +73,32 @@ class InspirationComponent extends StatelessWidget {
                 top: AppDimensionsUpdated.height10(context) * 1.5),
             decoration: status == true
                 ? BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
-                  spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
-                  blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
-                  offset: const Offset(0, 3),
-                )
-              ],
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.4),
+                        spreadRadius:
+                            AppDimensionsUpdated.height10(context) * 0.5,
+                        blurRadius:
+                            AppDimensionsUpdated.height10(context) * 0.7,
+                        offset: const Offset(0, 3),
+                      )
+                    ],
                     color: const Color(0xff828282),
                     borderRadius: BorderRadius.circular(
                         AppDimensionsUpdated.height10(context) * 2.0),
                   )
                 : status == false
                     ? BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
-                  spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
-                  blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
-                  offset: const Offset(0, 3),
-                )
-              ],
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.4),
+                            spreadRadius:
+                                AppDimensionsUpdated.height10(context) * 0.5,
+                            blurRadius:
+                                AppDimensionsUpdated.height10(context) * 0.7,
+                            offset: const Offset(0, 3),
+                          )
+                        ],
                         image: const DecorationImage(
                             image: AssetImage(
                                 'assets/images/bg_inpiration_purple.webp'),
@@ -103,14 +107,16 @@ class InspirationComponent extends StatelessWidget {
                             AppDimensionsUpdated.height10(context) * 2.0),
                       )
                     : BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
-                  spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
-                  blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
-                  offset: const Offset(0, 3),
-                )
-              ],
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.4),
+                            spreadRadius:
+                                AppDimensionsUpdated.height10(context) * 0.5,
+                            blurRadius:
+                                AppDimensionsUpdated.height10(context) * 0.7,
+                            offset: const Offset(0, 3),
+                          )
+                        ],
                         image: const DecorationImage(
                             image: AssetImage(
                                 'assets/images/bg_inpiration_purple.webp'),

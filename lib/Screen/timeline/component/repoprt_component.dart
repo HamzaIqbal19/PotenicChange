@@ -60,7 +60,7 @@ class ReportComponent extends StatelessWidget {
                     'Practice Report',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: AppDimensionsUpdated.font10(context) * 1.8,
+                        fontSize: AppDimensionsUpdated.font10(context) * 2,
                         color: const Color(0xff437296)),
                   ),
                 )

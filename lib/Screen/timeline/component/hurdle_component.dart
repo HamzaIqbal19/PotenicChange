@@ -57,7 +57,7 @@ class HurdleComponent extends StatelessWidget {
                     'Hurdle',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: AppDimensionsUpdated.font10(context) * 1.8,
+                        fontSize: AppDimensionsUpdated.font10(context) * 2,
                         color: const Color(0xff437296)),
                   ),
                 )
@@ -65,35 +65,39 @@ class HurdleComponent extends StatelessWidget {
             ),
           ),
           Container(
-           width: AppDimensionsUpdated.width10(context) * 34,
+            width: AppDimensionsUpdated.width10(context) * 34,
             height: AppDimensionsUpdated.height10(context) * 29.9,
             margin: EdgeInsets.only(
               top: AppDimensionsUpdated.height10(context) * 1.5,
             ),
             decoration: status == true
                 ? BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
-                  spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
-                  blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
-                  offset: const Offset(0, 3),
-                )
-              ],
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.4),
+                        spreadRadius:
+                            AppDimensionsUpdated.height10(context) * 0.5,
+                        blurRadius:
+                            AppDimensionsUpdated.height10(context) * 0.7,
+                        offset: const Offset(0, 3),
+                      )
+                    ],
                     color: const Color(0xff828282),
                     borderRadius: BorderRadius.circular(
                         AppDimensionsUpdated.height10(context) * 2.0),
                   )
                 : status == false
                     ? BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.4),
-                  spreadRadius: AppDimensionsUpdated.height10(context) * 0.5,
-                  blurRadius: AppDimensionsUpdated.height10(context) * 0.7,
-                  offset: const Offset(0, 3),
-                )
-              ],
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.4),
+                            spreadRadius:
+                                AppDimensionsUpdated.height10(context) * 0.5,
+                            blurRadius:
+                                AppDimensionsUpdated.height10(context) * 0.7,
+                            offset: const Offset(0, 3),
+                          )
+                        ],
                         image: const DecorationImage(
                             image: AssetImage('assets/images/timeline_3.webp'),
                             fit: BoxFit.cover),

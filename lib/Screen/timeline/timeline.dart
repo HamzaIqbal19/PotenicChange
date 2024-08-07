@@ -102,6 +102,7 @@ class _timelineState extends State<timeline> {
       setValue = DateTime.now();
       selectedGoal = 'All';
       selectedActivity = _statements[0];
+      loader = true;
       showUpcoming = true;
       pastLoaded = 0;
       pastLoader = false;
@@ -109,8 +110,8 @@ class _timelineState extends State<timeline> {
       goalId = null;
       pracId = null;
     });
-    callTimeLine(setValue, null, null, null, true);
     getFutureTimeLine(setValue, null, null);
+    callTimeLine(setValue, null, null, null, true);
   }
 
   @override
@@ -137,8 +138,6 @@ class _timelineState extends State<timeline> {
     setState(() {
       currentDateKey = DateFormat("yyyy-MM-dd").format(givenDate);
     });
-
-    print("practiceid : $pracId");
 
     TimelineService.getTimeLine(formattedDate, goal, pracId, type)
         .then((value) {
@@ -201,8 +200,6 @@ class _timelineState extends State<timeline> {
       });
 
       if (getGoalNames) {
-        print("getGoalNames called");
-
         usernameList.clear();
         uniqueNames.clear();
         addGoalNames();
@@ -249,7 +246,7 @@ class _timelineState extends State<timeline> {
     final double middleWidgetHeight = middleWidgetBox.size.height;
 
     final double offset = listView1Height +
-        470 +
+        460 +
         (middleWidgetHeight) -
         (MediaQuery.of(context).size.height / 2);
 
@@ -376,6 +373,8 @@ class _timelineState extends State<timeline> {
               _scrollToMiddleWidget();
             },
             child: Container(
+              padding: EdgeInsets.only(
+                  right: AppDimensionsUpdated.width10(context) * 1.1),
               child: Image.asset(
                 'assets/images/Asset 10 2.webp',
                 width: AppDimensionsUpdated.width10(context) * 4.1,
@@ -529,35 +528,6 @@ class _timelineState extends State<timeline> {
                                             2.5,
                                   ),
                                 ),
-                          !showUpcoming
-                              ? Container()
-                              : Container(
-                                  width: AppDimensionsUpdated.width10(context) *
-                                      7.2,
-                                  height:
-                                      AppDimensionsUpdated.height10(context) *
-                                          1.9,
-                                  margin: EdgeInsets.only(
-                                      top: AppDimensionsUpdated.height10(
-                                              context) *
-                                          0.4),
-                                  child: Center(
-                                    child: Text(
-                                      'Schedule',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensionsUpdated.font10(
-                                                      context) *
-                                                  1.6,
-                                          fontWeight: FontWeight.w700,
-                                          height: AppDimensionsUpdated.height10(
-                                                  context) *
-                                              0.12,
-                                          color: const Color(0xFF437296)),
-                                    ),
-                                  ),
-                                ),
                           Container(
                               margin: EdgeInsets.only(
                                   top: AppDimensionsUpdated.height10(context) *
@@ -619,10 +589,8 @@ class _timelineState extends State<timeline> {
                             ),
                           ),
                           Container(
-                            width:
-                                AppDimensionsUpdated.width10(context) * 11.20,
                             height:
-                                AppDimensionsUpdated.height10(context) * 1.9,
+                                AppDimensionsUpdated.height10(context) * 2.3,
                             margin: EdgeInsets.only(
                                 top: AppDimensionsUpdated.height10(context) *
                                     1.4),
@@ -633,8 +601,8 @@ class _timelineState extends State<timeline> {
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensionsUpdated.font10(context) *
-                                            1.6,
-                                    fontWeight: FontWeight.w700,
+                                            2,
+                                    fontWeight: FontWeight.w600,
                                     height:
                                         AppDimensionsUpdated.height10(context) *
                                             0.12,
@@ -645,8 +613,8 @@ class _timelineState extends State<timeline> {
                           Container(
                             key: _middleWidgetKey,
                             margin: EdgeInsets.only(
-                                top:
-                                    AppDimensionsUpdated.height10(context) * 1),
+                                top: AppDimensionsUpdated.height10(context) *
+                                    0.6),
                             child: Image.asset(
                               'assets/images/Arrow.webp',
                               color: const Color(0xFF437296),
@@ -951,41 +919,6 @@ class _timelineState extends State<timeline> {
                                                                       ['color']
                                                                   .toString(),
                                                             );
-                                                          })
-                                                      : Container(),
-                                                  TimeLineRes[DateKey][
-                                                              'newGoalLevel'] !=
-                                                          null
-                                                      ? ListView.builder(
-                                                          shrinkWrap: true,
-                                                          itemCount:
-                                                              TimeLineRes[DateKey]
-                                                                      [
-                                                                      'userGoalsCreated']
-                                                                  .length,
-                                                          padding:
-                                                              EdgeInsets.zero,
-                                                          physics:
-                                                              const NeverScrollableScrollPhysics(),
-                                                          itemBuilder:
-                                                              (context, index) {
-                                                            var data = TimeLineRes[
-                                                                        DateKey]
-                                                                    [
-                                                                    'userGoalsCreated']
-                                                                [index];
-                                                            return GoalPracticeComponent(
-                                                                image1: data[
-                                                                    'color'],
-                                                                image2: '2',
-                                                                mainText: data[
-                                                                    'name'],
-                                                                smallText: '',
-                                                                subText: data[
-                                                                        'identityStatement']
-                                                                    [0]['text'],
-                                                                status:
-                                                                    'Created');
                                                           })
                                                       : Container(),
                                                   TimeLineRes[DateKey][

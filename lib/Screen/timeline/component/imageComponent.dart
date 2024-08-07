@@ -48,6 +48,22 @@ practiceImagesMissed(String color) {
   }
 }
 
+practiceImagesCompleted(String color) {
+  if (color == '1') {
+    return "assets/images/Practice_Completed_1.webp";
+  } else if (color == '2') {
+    return "assets/images/Practice_Completed_2.webp";
+  } else if (color == '3') {
+    return "assets/images/Practice_Completed_3.webp";
+  } else if (color == '4') {
+    return "assets/images/Practice_Completed_4.webp";
+  } else if (color == '5') {
+    return "assets/images/Practice_Completed_4.webp";
+  } else {
+    return "assets/images/Practice_Completed_2.webp";
+  }
+}
+
 practiceColor(String color) {
   if (color == '1') {
     return 0XFFFC7133;
