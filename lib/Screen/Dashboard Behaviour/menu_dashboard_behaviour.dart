@@ -974,14 +974,14 @@ class _menu_behaviourState extends State<menu_behaviour> {
                           children: [
                             AnimatedScaleButton(
                               onTap: () {
-                                if (pracDetails['report'] == true ) {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const practice_progress(
-                                      days: 0,
-                                      route: 'pracice_menu_completed',
-                                    )));
+                                if (pracDetails['report'] == true) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: const practice_progress(
+                                        days: 0,
+                                        route: 'pracice_menu_completed',
+                                      )));
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
@@ -989,7 +989,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                               "Practice progress is not active")));
                                 }
                               },
-                              child:  const button_feilds(
+                              child: const button_feilds(
                                 feild_text: 'View practice progress',
                                 icon_viible: true,
                                 text_color: 0xff646464,
@@ -1031,16 +1031,22 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                   bottom:
                                       AppDimensions.height10(context) * 1.0),
                               child: AnimatedScaleButton(
-                                onTap: () {
-                                  if(subscripption == 'active'){
-                                 //   Navigator.push(context, FadePageRoute(page: const timeline()));
-                                  }else{
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(const SnackBar(
-                                        content: Text(
-                                            "This feature is only available for premium members")));
+                                onTap: () async {
+                                  final SharedPreferences prefs = await _prefs;
+                                  if (subscripption == 'active') {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: timeline(
+                                          goalId: null,
+                                          pracId: prefs.getInt("prac_num"),
+                                        )));
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        const SnackBar(
+                                            content: Text(
+                                                "This feature is only available for premium members")));
                                   }
-
                                 },
                                 child: button_feilds(
                                   feild_text: 'View upcoming schedules',
@@ -1074,7 +1080,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                               "Practice assessment is activated after first practice evaluation.")));
                                 }
                               },
-                              child:  button_feilds(
+                              child: button_feilds(
                                 feild_text: 'Practice assessment history',
                                 icon_viible: true,
                                 text_color: 0xff646464,

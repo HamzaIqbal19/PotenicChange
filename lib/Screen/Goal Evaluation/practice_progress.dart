@@ -37,6 +37,7 @@ class _practice_progressState extends State<practice_progress> {
   var report;
   var evaluation;
   int days = 30;
+  String subscription = '';
 
   int completedCount = 0;
   int missed = 0;
@@ -50,6 +51,13 @@ class _practice_progressState extends State<practice_progress> {
   void onDoneLoading() {
     setState(() {
       loader = false;
+    });
+  }
+
+  void getSubscription() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      subscription = prefs.getString('subscriptionStatus')!;
     });
   }
 
@@ -135,6 +143,7 @@ class _practice_progressState extends State<practice_progress> {
         activity_duration = 'Select Duration';
       });
     }
+    getSubscription();
     getReport();
   }
 
@@ -539,15 +548,24 @@ class _practice_progressState extends State<practice_progress> {
                                                                 context) *
                                                             1.99),
                                                 child: GestureDetector(
-                                                    onTap: () {
-                                                      //if(subscriptions == 'active'){
-                                                      //  Navigator.push(context, FadePageRoute(page: const timeline()));
-                                                      // }else{
-                                                      //   ScaffoldMessenger.of(context)
-                                                      //       .showSnackBar(const SnackBar(
-                                                      //       content: Text(
-                                                      //           "This feature is only available for premium members")));
-                                                      // }
+                                                    onTap: ()async {
+                                                      final SharedPreferences prefs = await _prefs;
+                                  if (subscription == 'active') {
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: timeline(
+                                          goalId: null,
+                                          pracId: prefs.getInt("prac_num"),
+                                        )));
+                                  } else {
+                                                        ScaffoldMessenger.of(
+                                                                context)
+                                                            .showSnackBar(
+                                                                const SnackBar(
+                                                                    content: Text(
+                                                                        "This feature is only available for premium members")));
+                                                      }
                                                     },
                                                     child: Text(
                                                       'View timeline',

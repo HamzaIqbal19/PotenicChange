@@ -725,9 +725,16 @@ class _missed_MenuState extends State<missed_Menu> {
                                   bottom:
                                       AppDimensions.height10(context) * 1.0),
                               child: AnimatedScaleButton(
-                                onTap: () {
+                                onTap: () async {
+                                  final SharedPreferences prefs = await _prefs;
                                   if (subscripption == 'active') {
-                                    // Navigator.push(context, FadePageRoute(page: const timeline()));
+                                    Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                            page: timeline(
+                                          goalId: null,
+                                          pracId: prefs.getInt("prac_num"),
+                                        )));
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                         const SnackBar(

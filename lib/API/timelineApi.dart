@@ -25,6 +25,9 @@ class TimelineService {
     if (goalId != null && type == null && pracId == null) {
       url =
           '${URL.BASE_URL}api/user/userPastDateTimeLine/$userId?givenDate=$givenDate&userGoalId=$goalId';
+    } else if (goalId == null && pracId != null) {
+      url =
+          '${URL.BASE_URL}api/user/userPastDateTimeLine/$userId?givenDate=$givenDate&userPracticeId=$pracId';
     } else if (goalId == null && type != null) {
       url =
           '${URL.BASE_URL}api/user/userPastDateTimeLine/$userId?givenDate=$givenDate&type=$type';

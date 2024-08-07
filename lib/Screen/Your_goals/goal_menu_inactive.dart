@@ -59,6 +59,13 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
 
+  void getSubscription() async {
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      subscriptions = prefs.getString('subscriptionStatus')!;
+    });
+  }
+
   void onDoneLoading() {
     setState(() {
       loader = false;
@@ -73,7 +80,6 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
           if (response.length != 0) {
             setState(() {
               goalDetails = response;
-              subscriptions = response['subscriptionsStatus'];
               inputDate = response['goalEvaluations'].length == 0
                   ? ""
                   : response['goalEvaluations']
@@ -163,6 +169,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
   @override
   void initState() {
     super.initState();
+    getSubscription();
     _fetchGoalDetails();
     getRoute();
   }
@@ -931,9 +938,16 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         child: Column(
                           children: [
                             AnimatedScaleButton(
-                              onTap: () {
+                              onTap: () async {
+                                final SharedPreferences prefs = await _prefs;
                                 if (subscriptions == 'active') {
-                                  // Navigator.push(context, FadePageRoute(page: const timeline()));
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: timeline(
+                                        goalId: prefs.get('goal_num'),
+                                        pracId: null,
+                                      )));
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(

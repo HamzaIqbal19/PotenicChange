@@ -29,12 +29,7 @@ class Buttons {
     );
   }
 
-  deleteButton(
-    context,
-    double height,
-    double width,
-      String text
-  ) {
+  deleteButton(context, double height, double width, String text) {
     return Container(
       width: width,
       height: height,
@@ -61,7 +56,6 @@ class Buttons {
             ),
           ),
           SizedBox(
-
             height: AppDimensions.height10(context) * 2.2,
             child: Center(
                 child: Text(
