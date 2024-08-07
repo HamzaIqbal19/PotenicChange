@@ -1,11 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:intl/intl.dart';
 import 'package:potenic_app/API/timelineApi.dart';
+import 'package:potenic_app/Screen/Subscription/methods.dart';
 import 'package:potenic_app/Screen/timeline/component/filterComponent.dart';
 import 'package:potenic_app/Screen/timeline/component/new_practice.dart';
 import 'package:potenic_app/Screen/timeline/component/newvision_component.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'component/Day_time_component.dart';
 import 'component/goal_practice_component.dart';
@@ -16,32 +20,33 @@ import 'component/recorded_component.dart';
 import 'component/repoprt_component.dart';
 
 class timeline extends StatefulWidget {
-  const timeline({super.key});
+  final goalId;
+  final pracId;
+  const timeline({super.key, required this.goalId, required this.pracId});
   @override
   State<timeline> createState() => _timelineState();
 }
 
 class _timelineState extends State<timeline> {
-  late ScrollController _scrollController;
+  final ScrollController _scrollController = ScrollController();
+  final GlobalKey _listView1Key = GlobalKey();
+  final GlobalKey _middleWidgetKey = GlobalKey();
   late DateTime? setValue = DateTime.now();
   final searchController = TextEditingController();
+  int pastLoaded = 0;
+  bool pastLoader = false;
   bool isEmpty = true;
   bool loader = true;
-  final GlobalKey _selectedWidgetKey = GlobalKey();
   List<String> usernameList = [];
   Map<String, dynamic> TimeLineRes = {};
+  Map<String, dynamic> FuturetimeLine = {};
   Set<String> uniqueNames = Set<String>();
   bool pastActivities = true;
   String? _name = 'All';
   bool dataFound = false;
-
-  bool filter = false;
   final List<String> _statements = [
     'All ',
     'Practice session',
-    // 'All',
-    //'Goal & Practice scheduled',
-    // 'Sessions missed',
     'Hurdle',
     'Inspiration',
     'Report',
@@ -49,19 +54,13 @@ class _timelineState extends State<timeline> {
   ];
 
   setType(tag) {
-    setState(() {
-      filter = true;
-    });
     if (tag == 0) {
       setState(() {
         type = null;
-        filter = false;
       });
     } else if (tag == 1) {
       setState(() {
         type = 'practiceSession';
-        loader = true;
-        filter = false;
       });
     } else if (tag == 2) {
       setState(() {
@@ -84,6 +83,7 @@ class _timelineState extends State<timeline> {
 
   var goalId;
   var type;
+  var pracId;
 
   String currentDateKey = '2024-07-11';
   int _selectedTag = 0;
@@ -95,60 +95,110 @@ class _timelineState extends State<timeline> {
       setValue = DateTime.now();
       selectedGoal = 'All';
       selectedActivity = _statements[0];
+      pastLoaded = 0;
+      pastLoader = false;
       type = null;
       goalId = null;
+      pracId = null;
     });
-    callTimeLine(setValue, null, null, true);
+    callTimeLine(setValue, null, null, null, true);
   }
 
   @override
   void initState() {
     setState(() {
       selectedActivity = _statements[0];
+      goalId = widget.goalId;
+      pracId = widget.pracId;
     });
-    callTimeLine(date, goalId, type, true);
-    _scrollController = ScrollController()
-      ..addListener(() {
-        setState(() {
-          if (_scrollController.offset >= 400) {
-// show the back-to-top button
-          } else {
-// hide the back-to-top button
-          }
-        });
-      });
+    getFutureTimeLine(date, goalId, pracId);
+    callTimeLine(date, goalId, pracId, type, true);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollToMiddleWidget();
+    });
 
     super.initState();
   }
 
   DateTime date = DateTime.now();
 
-  callTimeLine(givenDate, goal, type, bool getGoalNames) {
+  callTimeLine(givenDate, goal, pracId, type, bool getGoalNames) {
     String formattedDate = DateFormat('MM-dd-yyyy').format(givenDate);
+
     setState(() {
       currentDateKey = DateFormat("yyyy-MM-dd").format(givenDate);
     });
-    TimelineService.getTimeLine(formattedDate, goal, type).then((value) {
+
+    TimelineService.getTimeLine(formattedDate, goal, pracId, type)
+        .then((value) {
       setState(() {
         TimeLineRes = value;
       });
       //bool result = areAllObjectsEmpty(TimeLineRes, currentDateKey);
 
-      if(getGoalNames){
+      if (getGoalNames) {
         usernameList.clear();
         uniqueNames.clear();
         addGoalNames();
-        setState(() {
-          filter = false;
-        });
       }
 
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        _scrollToSelectedWidget();
+        _scrollToMiddleWidget();
       });
       setState(() {
         //  isEmpty = result;
         loader = false;
+      });
+    });
+  }
+
+  getFutureTimeLine(
+    givenDate,
+    goal,
+    prac,
+  ) {
+    String formattedDateFuture =
+        DateFormat('MM-dd-yyyy').format(givenDate.add(const Duration(days: 1)));
+    TimelineService.getFutureTimeLine(formattedDateFuture, goal, prac)
+        .then((value) {
+      setState(() {
+        FuturetimeLine = value;
+      });
+    });
+  }
+
+  callTimeLineLoad(
+    goal,
+    pracId,
+    type,
+  ) {
+    String formattedDate = DateFormat('MM-dd-yyyy')
+        .format(DateTime.now().add(Duration(days: -7 * pastLoaded)));
+    bool getGoalNames = true;
+    if (goalId != null || pracId != null || type != null) {
+      setState(() {
+        getGoalNames = false;
+      });
+    }
+
+    print("getGoalNames $getGoalNames type $type");
+
+    TimelineService.getTimeLine(formattedDate, goal, pracId, type)
+        .then((value) {
+      setState(() {
+        TimeLineRes.addAll(value);
+      });
+
+      if (getGoalNames) {
+        print("getGoalNames called");
+
+        usernameList.clear();
+        uniqueNames.clear();
+        addGoalNames();
+      }
+
+      setState(() {
+        pastLoader = false;
       });
     });
   }
@@ -178,19 +228,21 @@ class _timelineState extends State<timeline> {
 
   // This function is triggered when the user presses the back-to-top button
 
-  void _scrollToSelectedWidget() {
-    if (_selectedWidgetKey.currentContext != null) {
-      final RenderBox? renderBox =
-          _selectedWidgetKey.currentContext!.findRenderObject() as RenderBox?;
-      if (renderBox != null) {
-        final position = renderBox.localToGlobal(Offset.zero);
-        _scrollController.animateTo(
-          position.dy,
-          duration: const Duration(microseconds: 1),
-          curve: Curves.easeInOut,
-        );
-      }
-    }
+  void _scrollToMiddleWidget() {
+    final RenderBox listView1Box =
+        _listView1Key.currentContext!.findRenderObject() as RenderBox;
+    final double listView1Height = listView1Box.size.height;
+
+    final RenderBox middleWidgetBox =
+        _middleWidgetKey.currentContext!.findRenderObject() as RenderBox;
+    final double middleWidgetHeight = middleWidgetBox.size.height;
+
+    final double offset = listView1Height +
+        470 +
+        (middleWidgetHeight) -
+        (MediaQuery.of(context).size.height / 2);
+
+    _scrollController.jumpTo(offset);
   }
 
   isDateInFuture(date) {
@@ -206,51 +258,44 @@ class _timelineState extends State<timeline> {
   }
 
   addGoalNames() {
-    for(int i = 0; i < 7;i++){
-      String DateKey = DateFormat("yyyy-MM-dd")
-          .format(DateTime.now()
-          .add(Duration(days: -i)));
+    if (TimeLineRes[currentDateKey] != null) {
+      List<dynamic> usercreated =
+          TimeLineRes[currentDateKey]["userPracticeCreated"] ?? ['No data'];
+      List<dynamic> goalcreated =
+          TimeLineRes[currentDateKey]["userGoalsCreated"] ?? ['No data'];
+      List<dynamic> goaldeleted =
+          TimeLineRes[currentDateKey]["deleteGoals"] ?? ['No data'];
+      List<dynamic> practicedeleted =
+          TimeLineRes[currentDateKey]["deletePractices"] ?? ['No data'];
+      List<dynamic> goalupdate =
+          TimeLineRes[currentDateKey]["userGoalsUpdated"] ?? ['No data'];
+      List<dynamic> practiceupdate =
+          TimeLineRes[currentDateKey]["userPracticeUpdated"] ?? ['No data'];
+      List<dynamic> practiceRecordings =
+          TimeLineRes[currentDateKey]["recordings"] ?? ['No data'];
 
-      if (TimeLineRes[DateKey] != null) {
-        List<dynamic> usercreated =
-            TimeLineRes[DateKey]["userPracticeCreated"] ?? ['No data'];
-        List<dynamic> goalcreated =
-            TimeLineRes[DateKey]["userGoalsCreated"] ?? ['No data'];
-        List<dynamic> goaldeleted =
-            TimeLineRes[DateKey]["deleteGoals"] ?? ['No data'];
-        List<dynamic> practicedeleted =
-            TimeLineRes[DateKey]["deletePractices"] ?? ['No data'];
-        List<dynamic> goalupdate =
-            TimeLineRes[DateKey]["userGoalsUpdated"] ?? ['No data'];
-        List<dynamic> practiceupdate =
-            TimeLineRes[DateKey]["userPracticeUpdated"] ?? ['No data'];
-        List<dynamic> practiceRecordings =
-            TimeLineRes[DateKey]["recordings"] ?? ['No data'];
-
-        if (usercreated.isNotEmpty) {
-          addUniqueNames(usercreated);
-        }
-        if (goalcreated.isNotEmpty) {
-          addUniqueNames(goalcreated);
-        }
-        if (goaldeleted.isNotEmpty) {
-          addUniqueNames(goaldeleted);
-        }
-        if (practicedeleted.isNotEmpty) {
-          addUniqueNames(practicedeleted);
-        }
-        if (goalupdate.isNotEmpty) {
-          addUniqueNames(goalupdate);
-        }
-        if (practiceupdate.isNotEmpty) {
-          addUniqueNames(practiceupdate);
-        }
-        if (practiceRecordings.isNotEmpty) {
-          addUniqueNamesFromPractice(practiceRecordings);
-        }
+      if (usercreated.isNotEmpty) {
+        addUniqueNames(usercreated);
+      }
+      if (goalcreated.isNotEmpty) {
+        addUniqueNames(goalcreated);
+      }
+      if (goaldeleted.isNotEmpty) {
+        addUniqueNames(goaldeleted);
+      }
+      if (practicedeleted.isNotEmpty) {
+        addUniqueNames(practicedeleted);
+      }
+      if (goalupdate.isNotEmpty) {
+        addUniqueNames(goalupdate);
+      }
+      if (practiceupdate.isNotEmpty) {
+        addUniqueNames(practiceupdate);
+      }
+      if (practiceRecordings.isNotEmpty) {
+        addUniqueNamesFromPractice(practiceRecordings);
       }
     }
-
   }
 
   void addUniqueNames(
@@ -317,7 +362,7 @@ class _timelineState extends State<timeline> {
         actions: [
           GestureDetector(
             onTap: () {
-              //    _scrollToSelectedWidget();
+              _scrollToMiddleWidget();
             },
             child: Container(
               child: Image.asset(
@@ -361,8 +406,9 @@ class _timelineState extends State<timeline> {
                             height:
                                 AppDimensionsUpdated.height10(context) * 2.0,
                           ),
-                        filter?Container():  ListView.builder(
-                              itemCount: 7,
+                          ListView.builder(
+                              itemCount: FuturetimeLine.length,
+                              key: _listView1Key,
                               shrinkWrap: true,
                               reverse: true,
                               physics: const NeverScrollableScrollPhysics(),
@@ -371,7 +417,7 @@ class _timelineState extends State<timeline> {
                                     .format(DateTime.now()
                                         .add(Duration(days: index + 1)));
                                 var scheduleList =
-                                    TimeLineRes[DateKey]['recordings'];
+                                    FuturetimeLine[DateKey]['recordings'];
                                 return Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -456,7 +502,7 @@ class _timelineState extends State<timeline> {
                                   AppDimensionsUpdated.height10(context) * 2.5,
                             ),
                           ),
-                          filter?Container():   Container(
+                          Container(
                             width: AppDimensionsUpdated.width10(context) * 7.2,
                             height:
                                 AppDimensionsUpdated.height10(context) * 1.9,
@@ -549,7 +595,7 @@ class _timelineState extends State<timeline> {
                                     1.4),
                             child: Center(
                               child: Text(
-                                 'Past activities',
+                                'Past activities',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
@@ -564,6 +610,7 @@ class _timelineState extends State<timeline> {
                             ),
                           ),
                           Container(
+                            key: _middleWidgetKey,
                             margin: EdgeInsets.only(
                                 top:
                                     AppDimensionsUpdated.height10(context) * 1),
@@ -577,7 +624,7 @@ class _timelineState extends State<timeline> {
                             ),
                           ),
                           ListView.builder(
-                              itemCount: 8,
+                              itemCount: TimeLineRes.length,
                               shrinkWrap: true,
                               //reverse: true,
                               padding: EdgeInsets.zero,
@@ -586,8 +633,7 @@ class _timelineState extends State<timeline> {
                                 String DateKey = DateFormat("yyyy-MM-dd")
                                     .format(DateTime.now()
                                         .add(Duration(days: -index)));
-                                bool result = areAllObjectsEmpty(TimeLineRes, DateKey);
-                                return result?Container(): Column(
+                                return Column(
                                   children: [
                                     Column(
                                       mainAxisSize: MainAxisSize.min,
@@ -734,7 +780,8 @@ class _timelineState extends State<timeline> {
                                                                 ['recordings']
                                                             .length,
                                                     padding:
-                                                        EdgeInsets.only(top: 0),
+                                                        const EdgeInsets.only(
+                                                            top: 0),
                                                     physics:
                                                         const NeverScrollableScrollPhysics(),
                                                     itemBuilder:
@@ -1149,7 +1196,7 @@ class _timelineState extends State<timeline> {
                                         ),
                                       ],
                                     ),
-                                    Container(
+                                    SizedBox(
                                       height: AppDimensionsUpdated.height10(
                                               context) *
                                           2,
@@ -1157,7 +1204,59 @@ class _timelineState extends State<timeline> {
                                   ],
                                 );
                               }),
-                          SizedBox(height: AppDimensionsUpdated.height10(context) * 8.5,)
+                          SizedBox(
+                            height: AppDimensionsUpdated.height10(context) * 2,
+                          ),
+                          SizedBox(
+                            height: AppDimensionsUpdated.height10(context) * 4,
+                            child: AnimatedScaleButton(
+                              onTap: () {
+                                setState(() {
+                                  pastLoaded = pastLoaded + 1;
+                                  pastLoader = true;
+                                });
+
+                                print("type: $type");
+                                callTimeLineLoad(goalId, pracId, type);
+                              },
+                              child: pastLoader
+                                  ? const Center(
+                                      child: SpinKitFadingCircle(
+                                        color: Color(0xFFB1B8FF),
+                                        size: 30,
+                                      ),
+                                    )
+                                  : Container(
+                                      height: AppDimensionsUpdated.height10(
+                                              context) *
+                                          4,
+                                      width: AppDimensionsUpdated.height10(
+                                              context) *
+                                          15,
+                                      decoration: const BoxDecoration(
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(40.0)),
+                                          color: Colors.white),
+                                      child: Center(
+                                        child: Text(
+                                          'Load More',
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            color: const Color(0xFF5A4D73),
+                                            fontSize:
+                                                AppDimensionsUpdated.height10(
+                                                        context) *
+                                                    2,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: AppDimensionsUpdated.height10(context) * 20,
+                          )
                         ],
                       ),
                     ),
@@ -1209,113 +1308,115 @@ class _timelineState extends State<timeline> {
                                   SizedBox(
                                     width: AppDimensions.width10(context) * 0.5,
                                   ),
-                                  GestureDetector(
-                                    onTap: () async {
-                                      DateTime? valueOne =
-                                          await _TimeBottomSheet(context);
-                                      String formattedDate =
-                                          DateFormat('yyyy-MM-dd')
-                                              .format(valueOne!);
-                                      isDateInFuture(valueOne);
-                                      setState(() {
-                                        setValue = valueOne;
-                                        currentDateKey = formattedDate;
-                                        loader = true;
-                                      });
-                                      callTimeLine(valueOne, null, null, true);
-                                    },
-                                    child: Container(
-                                      //width: AppDimensions.width10(context) * 11.5,
-                                      height:
-                                          AppDimensions.height10(context) * 3.4,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                              AppDimensions.height10(context) *
-                                                  1.0),
-                                          border: Border.all(
-                                              width: AppDimensions.width10(
-                                                      context) *
-                                                  0.1,
-                                              color: const Color(0xFFE0E0E0))),
-                                      margin: EdgeInsets.only(
-                                          left:
-                                              AppDimensions.height10(context) *
-                                                  1.3,
-                                          right:
-                                              AppDimensions.width10(context) *
-                                                  1.0),
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                left: AppDimensions.height10(
-                                                        context) *
-                                                    1.0),
-                                            child: Text(
-                                              'Date:',
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.4,
-                                                  fontWeight: FontWeight.w400,
-                                                  color:
-                                                      const Color(0xffFA9934)),
-                                            ),
-                                          ),
-                                          Container(
-                                            //width: AppDimensions.width10(context) * 1.9,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.4,
-                                            margin: EdgeInsets.only(
-                                                left: AppDimensions.height10(
-                                                        context) *
-                                                    0.8),
-                                            child: Center(
-                                              child: Text(
-                                                setValue == null
-                                                    ? ''
-                                                    : '${setValue!.year}-${setValue!.month}-${setValue!.day}',
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.4,
-                                                    fontWeight: FontWeight.w700,
-                                                    color: const Color(
-                                                        0xffFA9934)),
-                                              ),
-                                            ),
-                                          ),
-                                          Container(
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    2.4,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.4,
-                                            margin: EdgeInsets.only(
-                                                left: AppDimensions.height10(
-                                                        context) *
-                                                    0.8,
-                                                right: AppDimensions.height10(
-                                                        context) *
-                                                    1.0,
-                                                bottom: AppDimensions.height10(
-                                                        context) *
-                                                    0.3),
-                                            child: const Icon(
-                                              Icons.arrow_drop_down,
-                                              color: Color(0xffFA9934),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
+                                  // GestureDetector(
+                                  //   onTap: () async {
+                                  //     DateTime? valueOne =
+                                  //         await _TimeBottomSheet(context);
+                                  //     String formattedDate =
+                                  //         DateFormat('yyyy-MM-dd')
+                                  //             .format(valueOne!);
+                                  //     isDateInFuture(valueOne);
+                                  //     setState(() {
+                                  //       setValue = valueOne;
+                                  //       currentDateKey = formattedDate;
+                                  //       loader = true;
+                                  //     });
+                                  //     callTimeLine(
+                                  //         valueOne, null, null, null, true);
+                                  //   },
+                                  //   child: Container(
+                                  //     //width: AppDimensions.width10(context) * 11.5,
+                                  //     height:
+                                  //         AppDimensions.height10(context) * 3.4,
+                                  //     decoration: BoxDecoration(
+                                  //         borderRadius: BorderRadius.circular(
+                                  //             AppDimensions.height10(context) *
+                                  //                 1.0),
+                                  //         border: Border.all(
+                                  //             width: AppDimensions.width10(
+                                  //                     context) *
+                                  //                 0.1,
+                                  //             color: const Color(0xFFE0E0E0))),
+                                  //     margin: EdgeInsets.only(
+                                  //         left:
+                                  //             AppDimensions.height10(context) *
+                                  //                 1.3,
+                                  //         right:
+                                  //             AppDimensions.width10(context) *
+                                  //                 1.0),
+                                  //     child: Row(
+                                  //       crossAxisAlignment:
+                                  //           CrossAxisAlignment.center,
+                                  //       children: [
+                                  //         Container(
+                                  //           margin: EdgeInsets.only(
+                                  //               left: AppDimensions.height10(
+                                  //                       context) *
+                                  //                   1.0),
+                                  //           child: Text(
+                                  //             'Date:',
+                                  //             style: TextStyle(
+                                  //                 fontSize:
+                                  //                     AppDimensions.font10(
+                                  //                             context) *
+                                  //                         1.4,
+                                  //                 fontWeight: FontWeight.w400,
+                                  //                 color:
+                                  //                     const Color(0xffFA9934)),
+                                  //           ),
+                                  //         ),
+                                  //         Container(
+                                  //           //width: AppDimensions.width10(context) * 1.9,
+                                  //           height: AppDimensions.height10(
+                                  //                   context) *
+                                  //               2.4,
+                                  //           margin: EdgeInsets.only(
+                                  //               left: AppDimensions.height10(
+                                  //                       context) *
+                                  //                   0.8),
+                                  //           child: Center(
+                                  //             child: Text(
+                                  //               setValue == null
+                                  //                   ? ''
+                                  //                   : '${setValue!.year}-${setValue!.month}-${setValue!.day}',
+                                  //               style: TextStyle(
+                                  //                   fontSize:
+                                  //                       AppDimensions.font10(
+                                  //                               context) *
+                                  //                           1.4,
+                                  //                   fontWeight: FontWeight.w700,
+                                  //                   color: const Color(
+                                  //                       0xffFA9934)),
+                                  //             ),
+                                  //           ),
+                                  //         ),
+                                  //         Container(
+                                  //           width:
+                                  //               AppDimensions.width10(context) *
+                                  //                   2.4,
+                                  //           height: AppDimensions.height10(
+                                  //                   context) *
+                                  //               2.4,
+                                  //           margin: EdgeInsets.only(
+                                  //               left: AppDimensions.height10(
+                                  //                       context) *
+                                  //                   0.8,
+                                  //               right: AppDimensions.height10(
+                                  //                       context) *
+                                  //                   1.0,
+                                  //               bottom: AppDimensions.height10(
+                                  //                       context) *
+                                  //                   0.3),
+                                  //           child: const Icon(
+                                  //             Icons.arrow_drop_down,
+                                  //             color: Color(0xffFA9934),
+                                  //           ),
+                                  //         )
+                                  //       ],
+                                  //     ),
+                                  //   ),
+                                  // ),
+
                                   GestureDetector(
                                     onTap: () {
                                       showModalBottomSheet(
@@ -1422,6 +1523,7 @@ class _timelineState extends State<timeline> {
                                                                       DateTime.parse(
                                                                           currentDateKey),
                                                                       goalId,
+                                                                      pracId,
                                                                       type,
                                                                       false);
 
@@ -1682,6 +1784,7 @@ class _timelineState extends State<timeline> {
                                                                       DateTime.parse(
                                                                           currentDateKey),
                                                                       goalId,
+                                                                      pracId,
                                                                       type,
                                                                       false);
 

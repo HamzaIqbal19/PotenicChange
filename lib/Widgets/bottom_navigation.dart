@@ -116,7 +116,12 @@ class Navigation_BarState extends State<Navigation_Bar> {
                 onTap: () {
                   if (widget.subscription == 'active') {
                     Navigator.push(
-                        context, FadePageRoute(page: const timeline()));
+                        context,
+                        FadePageRoute(
+                            page: const timeline(
+                          goalId: null,
+                          pracId: null,
+                        )));
                   } else {
                     timelinePopup(context);
                   }
