@@ -1573,6 +1573,8 @@ class _timelineState extends State<timeline> {
                                                                     selectedGoal =
                                                                         usernameList[
                                                                             goalIndex];
+                                                                    loader =
+                                                                        true;
                                                                   });
 
                                                                   callTimeLine(
@@ -1831,10 +1833,14 @@ class _timelineState extends State<timeline> {
                                                                           'All';
                                                                     });
                                                                   }
+                                                                  setType(
+                                                                      _selectedTag);
                                                                   setState(() {
                                                                     selectedActivity =
                                                                         _statements[
                                                                             _selectedTag];
+                                                                    loader =
+                                                                        true;
                                                                   });
                                                                   callTimeLine(
                                                                       DateTime.parse(
@@ -1896,8 +1902,6 @@ class _timelineState extends State<timeline> {
                                                               _selectedTag =
                                                                   index;
                                                             });
-                                                            setType(
-                                                                _selectedTag);
                                                           },
                                                         ),
                                                       ),
