@@ -21,9 +21,9 @@ class AppText {
 
   String login = 'Log in';
   String loginSubHead = 'Log in';
-  String logInEmail = '  Email and Password';
-  String logInGoogle = 'Sign in with Google';
-  String logInFacebook = 'Sign up with Facebook';
+  String logInEmail = 'Log in with Email';
+  String logInGoogle = 'Log in with Google';
+  String logInFacebook = 'Log up with Facebook';
   String newAccount = "New account";
   String forgotPass = "Forgot Password";
 
@@ -45,11 +45,11 @@ class AppText {
 
   //goal category
 
-  String starCreate1 = "Star Creation 1/5";
-  String starCreate2 = "Star Creation 2/5";
-  String starCreate3 = "Star Creation 3/5";
-  String starCreate4 = "Star Creation 4/5";
-  String starCreate5 = "Star Creation 5/5";
+  String starCreate1 = "Goal Creation 1/5";
+  String starCreate2 = "Goal Creation 2/5";
+  String starCreate3 = "Goal Creation 3/5";
+  String starCreate4 = "Goal Creation 4/5";
+  String starCreate5 = "Goal Creation 5/5";
   String viewAndEdit = 'View and edit mode';
   String selectCategory = 'Select Your Goal Category ';
   String selectCategoryBody = "Which category does your goal belong to? ";

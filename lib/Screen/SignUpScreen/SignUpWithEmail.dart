@@ -309,6 +309,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     AppDimensions.height10(context) * 1.8))),
                             child: TextFormField(
+                              keyboardType: TextInputType.name,
                               style: TextStyle(
                                   color: const Color(0xFF8C648A),
                                   fontWeight: FontWeight.w600,
@@ -348,7 +349,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                 });
                               },
                               controller: nameController,
-                              keyboardType: TextInputType.name,
                               validator: (val) {
                                 if (val == null || val == "") {
                                   setState(() {
@@ -393,6 +393,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                 borderRadius: BorderRadius.all(Radius.circular(
                                     AppDimensions.height10(context) * 1.8))),
                             child: TextFormField(
+                                keyboardType: TextInputType.emailAddress,
                                 style: TextStyle(
                                     color: const Color(0xFF8C648A),
                                     fontWeight: FontWeight.w600,
@@ -407,6 +408,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                         right: 10.0),
                                     floatingLabelBehavior:
                                         FloatingLabelBehavior.always,
+
                                     hintText: "abc@gmail.com",
                                     hintStyle: TextStyle(
                                       color: const Color(0xFF8C648A),
@@ -601,6 +603,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                               height: errorEmail
                                   ? AppDimensions.height10(context)
                                   : AppDimensions.height10(context) * 3),
+
                           SizedBox(
                               height: AppDimensions.height10(context) * 6.2,
                               width: AppDimensions.screenWidth(context) - 100,
@@ -620,65 +623,59 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                       });
                                     },
                                   ),
-                                  Text.rich(
-                                    TextSpan(
-                                      text:
-                                          'By signing up, you agree to Potenic’s \n ',
-                                      style: TextStyle(
+                                  Expanded(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text("By signing up, you agree to Potenic’s ", style: TextStyle(
                                         fontFamily: 'Laila',
                                         color: const Color(0xFFFFFFFF),
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.4,
+                                        AppDimensions.font10(context) * 1.4,
                                         fontWeight: FontWeight.w600,
-                                      ),
-                                      children: <TextSpan>[
-                                        TextSpan(
-                                            text: 'User Agreement',
-                                            recognizer: TapGestureRecognizer()
-                                              ..onTap = () async {
-                                                webVisit(
-                                                    AppLinks().termsOfService);
+                                                                          ),),
+                                        Row(
+                                          children: [
+                                            AnimatedScaleButton(
+                                              onTap: (){
+                                                webVisit(AppLinks().termsOfService);
                                               },
-                                            style: TextStyle(
-                                              fontFamily: 'Laila',
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              color: const Color(0xFFFFFFFF),
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  1.4,
-                                              fontWeight: FontWeight.w600,
-                                            )),
-                                        TextSpan(
-                                            text: ' and ',
-                                            style: TextStyle(
+                                              child: Text("User Agreement", style: TextStyle(
+                                                fontFamily: 'Laila',
+                                                color: const Color(0xFFFFFFFF),
+                                                fontSize:
+                                                AppDimensions.font10(context) * 1.4,
+                                                decoration: TextDecoration.underline,
+                                                fontWeight: FontWeight.w600,
+                                              ),),
+                                            ),
+                                            Text(" and ", style: TextStyle(
                                               fontFamily: 'Laila',
                                               color: const Color(0xFFFFFFFF),
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  1.4,
+                                              fontSize:
+                                              AppDimensions.font10(context) * 1.4,
                                               fontWeight: FontWeight.w600,
-                                            )),
-                                        TextSpan(
-                                            text: 'Privacy Policy',
-                                            recognizer: TapGestureRecognizer()
-                                              ..onTap = () async {
-                                                webVisit(
-                                                    AppLinks().privacyPolicy);
+                                            ),),
+                                            AnimatedScaleButton(
+                                              onTap: (){
+                                                webVisit(AppLinks().privacyPolicy);
                                               },
-                                            style: TextStyle(
-                                              fontFamily: 'Laila',
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              color: const Color(0xFFFFFFFF),
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  1.4,
-                                              fontWeight: FontWeight.w600,
-                                            )),
+                                              child: Text("Privacy Policy", style: TextStyle(
+                                                fontFamily: 'Laila',
+                                                color: const Color(0xFFFFFFFF),
+                                                fontSize:
+                                                AppDimensions.font10(context) * 1.4,
+                                                decoration: TextDecoration.underline,
+                                                fontWeight: FontWeight.w600,
+                                              ),),
+                                            ),
+                                          ],
+                                        ),
+
                                       ],
                                     ),
-                                  ),
+   )
                                 ],
                               )),
                           userExist != ""

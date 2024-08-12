@@ -79,6 +79,362 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         onWillPop: () async => false,
         child: Scaffold(
             backgroundColor: Colors.transparent,
+            extendBody: true,
+            bottomNavigationBar: BottomAppBar(
+              elevation: 0,
+              padding: EdgeInsets.only(bottom: UpdatedDimensions.height10(context)*2),
+              notchMargin: 0,
+              color:  Colors.transparent,
+              child: widget.login == true
+                  ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AnimatedScaleButton(
+                    onTap: () {
+                      showAnimatedDialog(
+                          animationType:
+                          DialogTransitionType.fadeScale,
+                          curve: Curves.easeInOut,
+                          duration: const Duration(seconds: 1),
+                          context: context,
+                          builder: (BuildContext context) =>
+                              SizedBox(
+                                width:
+                                UpdatedDimensions.width10(context) *
+                                    27.0,
+                                height: UpdatedDimensions.height10(
+                                    context) *
+                                    19.8,
+                                child: AlertDialog(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                      BorderRadius.circular(
+                                          UpdatedDimensions
+                                              .height10(
+                                              context) *
+                                              1.4)),
+                                  contentPadding: EdgeInsets.zero,
+                                  actionsPadding: EdgeInsets.zero,
+                                  titlePadding: EdgeInsets.zero,
+                                  title: Container(
+                                    margin: const EdgeInsets.only(
+                                        top: 19,
+                                        right: 16,
+                                        left: 16,
+                                        bottom: 2),
+                                    height: UpdatedDimensions.height10(
+                                        context) *
+                                        2.2,
+                                    width: UpdatedDimensions.height10(
+                                        context) *
+                                        23.8,
+                                    child: Text(
+                                      "Log out?",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize:
+                                        UpdatedDimensions.font10(
+                                            context) *
+                                            1.7,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                  content: Container(
+                                    margin: const EdgeInsets.only(
+                                        bottom: 19,
+                                        left: 16,
+                                        right: 16),
+                                    // height: UpdatedDimensions.height10(
+                                    //         context) *
+                                    //     4.8,
+                                    width: 238,
+                                    child: Text(
+                                      "Are you sure you want to log out? If you\ndo, you will be prompted to login again\nby entering your email and password.",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        height:
+                                        UpdatedDimensions.height10(
+                                            context) *
+                                            0.14,
+                                        fontSize:
+                                        UpdatedDimensions.font10(
+                                            context) *
+                                            1.5,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
+                                  ),
+                                  actions: <Widget>[
+                                    Column(
+                                      children: [
+                                        GestureDetector(
+                                          onTap: () async {
+                                            final SharedPreferences
+                                            prefs =
+                                            await _prefs;
+                                            await prefs.clear();
+
+                                            Navigator.push(
+                                              context,
+                                              FadePageRoute2(
+                                                false,
+                                                enterPage:
+                                                const HomeScreen(
+                                                  login: false,
+                                                ),
+                                                exitPage:
+                                                const HomeScreen(
+                                                  login: true,
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                          child: Container(
+                                            height: 44,
+                                            width: double.infinity,
+                                            color: const Color(
+                                                0xFF007AFF),
+                                            child: const Center(
+                                              child: Text(
+                                                'Yes',
+                                                style: TextStyle(
+                                                    color: Color(
+                                                        0xFFFBFBFB),
+                                                    fontSize: 17,
+                                                    fontFamily:
+                                                    "Laila",
+                                                    fontWeight:
+                                                    FontWeight
+                                                        .w400),
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: UpdatedDimensions
+                                              .height10(
+                                              context) *
+                                              0.1,
+                                          child: Divider(
+                                            color: const Color(
+                                                0XFF3C3C43)
+                                                .withOpacity(0.29),
+                                          ),
+                                        ),
+                                        Container(
+                                          height: 42,
+                                          width: double.infinity,
+                                          margin: EdgeInsets.only(
+                                              bottom: UpdatedDimensions
+                                                  .height10(
+                                                  context) *
+                                                  1.0),
+                                          color: Colors.white,
+                                          child: TextButton(
+                                            onPressed: () {
+                                              Navigator.pop(
+                                                  context);
+                                            },
+                                            child: const Text(
+                                              'Cancel',
+                                              style: TextStyle(
+                                                  color: Color(
+                                                      0xFF007AFF),
+                                                  fontSize: 17,
+                                                  fontFamily:
+                                                  "Laila",
+                                                  fontWeight:
+                                                  FontWeight
+                                                      .w400),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ));
+                    },
+                    child: Container(
+                      height: UpdatedDimensions.height10(context) * 5.2,
+                      width: UpdatedDimensions.width10(context) * 13,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF5F5F5),
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(
+                                UpdatedDimensions.height10(context) *
+                                    5.0)),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Log out",
+                          style: TextStyle(
+                            color: const Color(0xFF8C648A),
+                            fontSize:
+                            UpdatedDimensions.font10(context) * 1.6,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: UpdatedDimensions.width10(context) * 1.4,
+                  ),
+                  AnimatedScaleButton(
+                    onTap: () {
+                      signupSheet(context, "Introduction",
+                          "OnBoarding", admin);
+                    },
+                    child: Container(
+                      height: UpdatedDimensions.height10(context) * 5.2,
+                      width: UpdatedDimensions.width10(context) * 5,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        border:
+                        Border.all(color: Colors.transparent),
+                        borderRadius: const BorderRadius.all(
+                            Radius.circular(40.0)),
+                      ),
+                      child: Center(
+                        child: Image(
+                          // color: Colors.orange,
+                          image: const AssetImage(
+                              "assets/images/Moreactions.webp"),
+                          height:
+                          UpdatedDimensions.height10(context) * 5,
+                          width: UpdatedDimensions.width10(context) * 5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              )
+                  : Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  AnimatedScaleButton(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        FadePageRoute2(
+                          true,
+                          enterPage: const SignUpPage(),
+                          exitPage: const HomeScreen(
+                            login: false,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: UpdatedDimensions.height10(context) * 5.2,
+                      width: UpdatedDimensions.width10(context) * 13,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF5F5F5),
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.all(
+                            Radius.circular(
+                                UpdatedDimensions.height10(context) *
+                                    5.0)),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "I’m new here",
+                          style: TextStyle(
+                            color: const Color(0xFF8C648A),
+                            fontSize:
+                            UpdatedDimensions.font10(context) * 1.6,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    focusColor: Colors.black,
+                    splashColor: Colors.red,
+                    onTap: () {},
+                    child: AnimatedScaleButton(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          FadePageRoute2(
+                            true,
+                            enterPage: const LoginPage(),
+                            exitPage:
+                            const HomeScreen(login: false),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height:
+                        UpdatedDimensions.height10(context) * 5.2,
+                        width: UpdatedDimensions.width10(context) * 13,
+                        decoration: BoxDecoration(
+                          color: const Color(0xFF5A4D73),
+                          border: Border.all(
+                              color: const Color(0xFF5A4D73)),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(
+                                  UpdatedDimensions.height10(context) *
+                                      5.0)),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Log in",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize:
+                              UpdatedDimensions.font10(context) *
+                                  1.6,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  AnimatedScaleButton(
+                    onTap: () {
+                      if (widget.login == false) {
+                        ScaffoldMessenger.of(context)
+                            .showSnackBar(const SnackBar(
+                            content: Text(
+                              "You are not logged in.",
+                              style: TextStyle(color: Colors.red),
+                            )));
+                      } else {
+                        signupSheet(context, "Introduction",
+                            "OnBoarding", admin);
+                      }
+                    },
+                    child: Container(
+                      height: UpdatedDimensions.height10(context) * 5,
+                      width: UpdatedDimensions.width10(context) * 5,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        border:
+                        Border.all(color: Colors.transparent),
+                        borderRadius: const BorderRadius.all(
+                            Radius.circular(40.0)),
+                      ),
+                      child: Center(
+                        child: Image(
+                          // color: Colors.orange,
+                          image: const AssetImage(
+                              "assets/images/Moreactions.webp"),
+                          height:
+                          UpdatedDimensions.height10(context) * 5,
+                          width: UpdatedDimensions.width10(context) * 5,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
             body: Stack(
               children: <Widget>[
                 backgroundContainer(context),
@@ -91,7 +447,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         context, "assets/images/homelogo.webp", 10.0, 10.0),
                     verticalSpacing(context, 2.32),
                     SizedBox(
-                      height: AppDimensions.height10(context) * 8.5,
+                      height: UpdatedDimensions.height10(context) * 8.5,
                       child: buildText(
                         context,
                         AppText().homeScreenTitle,
@@ -101,7 +457,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     ),
                     verticalSpacing(context, 0.5),
                     SizedBox(
-                      height: AppDimensions.height10(context) * 11.5,
+                      height: UpdatedDimensions.height10(context) * 11.5,
                       child: buildText(
                         context,
                         AppText().homeScreenSubText,
@@ -130,12 +486,16 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             );
                           }
                         } else {
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(const SnackBar(
-                                  content: Text(
-                            "You are not logged in.",
-                            style: TextStyle(color: Colors.red),
-                          )));
+                          Navigator.push(
+                            context,
+                            FadePageRoute2(
+                              true,
+                              enterPage: const SignUpPage(),
+                              exitPage: const HomeScreen(
+                                login: false,
+                              ),
+                            ),
+                          );
                         }
                         final SharedPreferences prefs = await _prefs;
                         await prefs.remove('goal_route');
@@ -144,356 +504,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       child: centeredImage(
                           context, "assets/images/createstar.webp", 23, 26),
                     ),
-                    verticalSpacing(context, 12.1),
-                    widget.login == true
-                        ? Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              AnimatedScaleButton(
-                                onTap: () {
-                                  showAnimatedDialog(
-                                      animationType:
-                                          DialogTransitionType.fadeScale,
-                                      curve: Curves.easeInOut,
-                                      duration: const Duration(seconds: 1),
-                                      context: context,
-                                      builder: (BuildContext context) =>
-                                          SizedBox(
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    27.0,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                19.8,
-                                            child: AlertDialog(
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.4)),
-                                              contentPadding: EdgeInsets.zero,
-                                              actionsPadding: EdgeInsets.zero,
-                                              titlePadding: EdgeInsets.zero,
-                                              title: Container(
-                                                margin: const EdgeInsets.only(
-                                                    top: 19,
-                                                    right: 16,
-                                                    left: 16,
-                                                    bottom: 2),
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    2.2,
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    23.8,
-                                                child: Text(
-                                                  "Log out?",
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.7,
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                ),
-                                              ),
-                                              content: Container(
-                                                margin: const EdgeInsets.only(
-                                                    bottom: 19,
-                                                    left: 16,
-                                                    right: 16),
-                                                // height: AppDimensions.height10(
-                                                //         context) *
-                                                //     4.8,
-                                                width: 238,
-                                                child: Text(
-                                                  "Are you sure you want to log out? If you\ndo, you will be prompted to login again\nby entering your email and password.",
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.14,
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.5,
-                                                    fontWeight: FontWeight.w400,
-                                                  ),
-                                                ),
-                                              ),
-                                              actions: <Widget>[
-                                                Column(
-                                                  children: [
-                                                    GestureDetector(
-                                                      onTap: () async {
-                                                        final SharedPreferences
-                                                            prefs =
-                                                            await _prefs;
-                                                        await prefs.clear();
+                    //verticalSpacing(context, 12.1),
 
-                                                        Navigator.push(
-                                                          context,
-                                                          FadePageRoute2(
-                                                            false,
-                                                            enterPage:
-                                                                const HomeScreen(
-                                                              login: false,
-                                                            ),
-                                                            exitPage:
-                                                                const HomeScreen(
-                                                              login: true,
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                      child: Container(
-                                                        height: 44,
-                                                        width: double.infinity,
-                                                        color: const Color(
-                                                            0xFF007AFF),
-                                                        child: const Center(
-                                                          child: Text(
-                                                            'Yes',
-                                                            style: TextStyle(
-                                                                color: Color(
-                                                                    0xFFFBFBFB),
-                                                                fontSize: 17,
-                                                                fontFamily:
-                                                                    "Laila",
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          0.1,
-                                                      child: Divider(
-                                                        color: const Color(
-                                                                0XFF3C3C43)
-                                                            .withOpacity(0.29),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 42,
-                                                      width: double.infinity,
-                                                      margin: EdgeInsets.only(
-                                                          bottom: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.0),
-                                                      color: Colors.white,
-                                                      child: TextButton(
-                                                        onPressed: () {
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: const Text(
-                                                          'Cancel',
-                                                          style: TextStyle(
-                                                              color: Color(
-                                                                  0xFF007AFF),
-                                                              fontSize: 17,
-                                                              fontFamily:
-                                                                  "Laila",
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w400),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ));
-                                },
-                                child: Container(
-                                  height: AppDimensions.height10(context) * 5.2,
-                                  width: AppDimensions.width10(context) * 13,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFF5F5F5),
-                                    border: Border.all(color: Colors.white),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(
-                                            AppDimensions.height10(context) *
-                                                5.0)),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "Log out",
-                                      style: TextStyle(
-                                        color: const Color(0xFF8C648A),
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.4,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: AppDimensions.width10(context) * 1.4,
-                              ),
-                              AnimatedScaleButton(
-                                onTap: () {
-                                  signupSheet(context, "Introduction",
-                                      "OnBoarding", admin);
-                                },
-                                child: Container(
-                                  height: AppDimensions.height10(context) * 5.2,
-                                  width: AppDimensions.width10(context) * 5,
-                                  decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                    border:
-                                        Border.all(color: Colors.transparent),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(40.0)),
-                                  ),
-                                  child: Center(
-                                    child: Image(
-                                      // color: Colors.orange,
-                                      image: const AssetImage(
-                                          "assets/images/Moreactions.webp"),
-                                      height:
-                                          AppDimensions.height10(context) * 5,
-                                      width: AppDimensions.width10(context) * 5,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              AnimatedScaleButton(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    FadePageRoute2(
-                                      true,
-                                      enterPage: const SignUpPage(),
-                                      exitPage: const HomeScreen(
-                                        login: false,
-                                      ),
-                                    ),
-                                  );
-                                },
-                                child: Container(
-                                  height: AppDimensions.height10(context) * 5.2,
-                                  width: AppDimensions.width10(context) * 13,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0xFFF5F5F5),
-                                    border: Border.all(color: Colors.white),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(
-                                            AppDimensions.height10(context) *
-                                                5.0)),
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      "I’m new here",
-                                      style: TextStyle(
-                                        color: const Color(0xFF8C648A),
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.4,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              InkWell(
-                                focusColor: Colors.black,
-                                splashColor: Colors.red,
-                                onTap: () {},
-                                child: AnimatedScaleButton(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      FadePageRoute2(
-                                        true,
-                                        enterPage: const LoginPage(),
-                                        exitPage:
-                                            const HomeScreen(login: false),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    height:
-                                        AppDimensions.height10(context) * 5.2,
-                                    width: AppDimensions.width10(context) * 13,
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xFF5A4D73),
-                                      border: Border.all(
-                                          color: const Color(0xFF5A4D73)),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(
-                                              AppDimensions.height10(context) *
-                                                  5.0)),
-                                    ),
-                                    child: Center(
-                                      child: Text(
-                                        "Log in",
-                                        style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.4,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              AnimatedScaleButton(
-                                onTap: () {
-                                  if (widget.login == false) {
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(const SnackBar(
-                                            content: Text(
-                                      "You are not logged in.",
-                                      style: TextStyle(color: Colors.red),
-                                    )));
-                                  } else {
-                                    signupSheet(context, "Introduction",
-                                        "OnBoarding", admin);
-                                  }
-                                },
-                                child: Container(
-                                  height: AppDimensions.height10(context) * 5,
-                                  width: AppDimensions.width10(context) * 5,
-                                  decoration: BoxDecoration(
-                                    color: Colors.transparent,
-                                    border:
-                                        Border.all(color: Colors.transparent),
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(40.0)),
-                                  ),
-                                  child: Center(
-                                    child: Image(
-                                      // color: Colors.orange,
-                                      image: const AssetImage(
-                                          "assets/images/Moreactions.webp"),
-                                      height:
-                                          AppDimensions.height10(context) * 5,
-                                      width: AppDimensions.width10(context) * 5,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )
                   ],
                   // child:  Text("Hello background"),
                 )
@@ -510,7 +522,7 @@ Widget buildText(
     style: TextStyle(
       fontWeight: weight,
       color: Colors.white,
-      fontSize: AppDimensions.font10(context) * heightFactor,
+      fontSize: UpdatedDimensions.font10(context) * heightFactor,
     ),
   );
 }
@@ -520,15 +532,15 @@ Widget centeredImage(BuildContext context, String assetName,
   return Center(
     child: Image(
       image: AssetImage(assetName),
-      height: AppDimensions.height10(context) * heightFactor,
-      width: AppDimensions.width10(context) * widthFactor,
+      height: UpdatedDimensions.height10(context) * heightFactor,
+      width: UpdatedDimensions.width10(context) * widthFactor,
     ),
   );
 }
 
 Widget verticalSpacing(BuildContext context, double factor) {
   return SizedBox(
-    height: AppDimensions.height10(context) * factor,
+    height: UpdatedDimensions.height10(context) * factor,
   );
 }
 

@@ -772,7 +772,7 @@ class _VisualisingState extends State<Visualising> {
                             // height: AppDimensions.height10(context) * 4.9,
                             child: Center(
                               child: Text(
-                                AppText().goalIdentityBody,
+                                AppText().goalVisualBody,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
