@@ -510,93 +510,100 @@ class _practice_progressState extends State<practice_progress> {
                                               AppDimensions.height10(context) *
                                                   2.7),
                                     ),
-                                    Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                6.0,
-                                        width: AppDimensions.width10(context) *
-                                            34.2,
-                                        margin: EdgeInsets.only(
-                                          top: AppDimensions.height10(context) *
-                                              2.7,
-                                          // left: AppDimensions.width10(context) * 2.0,
-                                          //right: AppDimensions.width10(context) * 1.9,
-                                        ),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                              width: 1,
-                                              color: const Color(0xFFB695B7),
-                                            ),
-                                            borderRadius: BorderRadius.circular(
-                                                AppDimensions.height10(
-                                                        context) *
-                                                    2.0)),
-                                        child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Container(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    23.9,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    2.2,
-                                                margin: EdgeInsets.only(
-                                                    left:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.99),
-                                                child: GestureDetector(
-                                                    onTap: ()async {
-                                                      final SharedPreferences prefs = await _prefs;
-                                  if (subscription == 'active') {
-                                    Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: timeline(
-                                          goalId: null,
-                                          pracId: prefs.getInt("prac_num"),
-                                        )));
-                                  } else {
-                                                        ScaffoldMessenger.of(
-                                                                context)
-                                                            .showSnackBar(
-                                                                const SnackBar(
-                                                                    content: Text(
-                                                                        "This feature is only available for premium members")));
-                                                      }
-                                                    },
-                                                    child: Text(
-                                                      'View timeline',
-                                                      style: TextStyle(
-                                                        color: const Color(
-                                                            0xFF828282),
-                                                        fontSize: AppDimensions
-                                                                .font10(
-                                                                    context) *
-                                                            1.8,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                      ),
-                                                    )),
+                                    AnimatedScaleButton(
+                                      onTap: () async {
+                                        final SharedPreferences prefs =
+                                            await _prefs;
+                                        if (subscription == 'active') {
+                                          Navigator.push(
+                                              context,
+                                              FadePageRoute(
+                                                  page: timeline(
+                                                goalId: null,
+                                                pracId:
+                                                    prefs.getInt("prac_num"),
+                                              )));
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(const SnackBar(
+                                                  content: Text(
+                                                      "This feature is only available for premium members")));
+                                        }
+                                      },
+                                      child: Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  6.0,
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  34.2,
+                                          margin: EdgeInsets.only(
+                                            top: AppDimensions.height10(
+                                                    context) *
+                                                2.7,
+                                            // left: AppDimensions.width10(context) * 2.0,
+                                            //right: AppDimensions.width10(context) * 1.9,
+                                          ),
+                                          decoration: BoxDecoration(
+                                              color: subscription == 'active'
+                                                  ? Color(0xFF5F5F5)
+                                                  : Colors.black
+                                                      .withOpacity(0.1),
+                                              border: Border.all(
+                                                width: 1,
+                                                color: const Color(0xFFB695B7),
                                               ),
-                                              Container(
-                                                  width:
+                                              borderRadius:
+                                                  BorderRadius.circular(
                                                       AppDimensions.height10(
                                                               context) *
-                                                          2.4,
+                                                          2.0)),
+                                          child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Container(
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      23.9,
                                                   height:
                                                       AppDimensions.height10(
                                                               context) *
-                                                          1.39,
+                                                          2.2,
                                                   margin: EdgeInsets.only(
-                                                      right: AppDimensions
+                                                      left: AppDimensions
                                                               .height10(
                                                                   context) *
-                                                          2.391),
-                                                  child: GestureDetector(
-                                                    onTap: () {},
+                                                          1.99),
+                                                  child: Text(
+                                                    'View timeline',
+                                                    style: TextStyle(
+                                                      color: const Color(
+                                                          0xFF828282),
+                                                      fontSize:
+                                                          AppDimensions.font10(
+                                                                  context) *
+                                                              1.8,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                    width:
+                                                        AppDimensions.width10(
+                                                                context) *
+                                                            2.4,
+                                                    height:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            1.39,
+                                                    margin: EdgeInsets.only(
+                                                        right: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            2.391),
                                                     child: Image.asset(
                                                       'assets/images/BTN Back.webp',
                                                       //width: AppDimensions.width10(context) * 2.6,
@@ -604,9 +611,9 @@ class _practice_progressState extends State<practice_progress> {
                                                       color: const Color(
                                                           0xFF828282),
                                                       fit: BoxFit.cover,
-                                                    ),
-                                                  ))
-                                            ])),
+                                                    ))
+                                              ])),
+                                    ),
                                     SizedBox(
                                       height:
                                           AppDimensions.height10(context) * 4,
@@ -1137,80 +1144,102 @@ class _practice_progressState extends State<practice_progress> {
                                                   ),
                                                 )
                                               : Container(),
-                                      Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  6.0,
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  34.2,
-                                          margin: EdgeInsets.only(
-                                            top: AppDimensions.height10(
+                                      AnimatedScaleButton(
+                                        onTap: () async {
+                                          final SharedPreferences prefs =
+                                              await _prefs;
+                                          if (subscription == 'active') {
+                                            Navigator.push(
+                                                context,
+                                                FadePageRoute(
+                                                    page: timeline(
+                                                  goalId: null,
+                                                  pracId:
+                                                      prefs.getInt("prac_num"),
+                                                )));
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(const SnackBar(
+                                                    content: Text(
+                                                        "This feature is only available for premium members")));
+                                          }
+                                        },
+                                        child: Container(
+                                            height: AppDimensions.height10(
                                                     context) *
-                                                2.7,
-                                            // left: AppDimensions.width10(context) * 2.0,
-                                            //right: AppDimensions.width10(context) * 1.9,
-                                          ),
-                                          decoration: BoxDecoration(
-                                              border: Border.all(
-                                                width: 1,
-                                                color: const Color(0xFFB695B7),
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.0)),
-                                          child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Container(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      23.9,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.2,
-                                                  margin: EdgeInsets.only(
-                                                      left: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.99),
-                                                  child: GestureDetector(
-                                                      onTap: () {},
-                                                      child: Text(
-                                                        'View timeline',
-                                                        style: TextStyle(
-                                                          color: const Color(
-                                                              0xFF828282),
-                                                          fontSize: AppDimensions
-                                                                  .font10(
-                                                                      context) *
-                                                              1.8,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                        ),
-                                                      )),
+                                                6.0,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    34.2,
+                                            margin: EdgeInsets.only(
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  2.7,
+                                              // left: AppDimensions.width10(context) * 2.0,
+                                              //right: AppDimensions.width10(context) * 1.9,
+                                            ),
+                                            decoration: BoxDecoration(
+                                                color: subscription == 'active'
+                                                    ? Color(0xFF5F5F5)
+                                                    : Colors.black
+                                                        .withOpacity(0.1),
+                                                border: Border.all(
+                                                  width: 1,
+                                                  color:
+                                                      const Color(0xFFB695B7),
                                                 ),
-                                                Container(
-                                                    width:
-                                                        AppDimensions.width10(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        AppDimensions.height10(
                                                                 context) *
-                                                            2.4,
+                                                            2.0)),
+                                            child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Container(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            23.9,
                                                     height:
                                                         AppDimensions.height10(
                                                                 context) *
-                                                            1.39,
+                                                            2.2,
                                                     margin: EdgeInsets.only(
-                                                        right: AppDimensions
+                                                        left: AppDimensions
                                                                 .height10(
                                                                     context) *
-                                                            2.391),
-                                                    child: GestureDetector(
-                                                      onTap: () {},
+                                                            1.99),
+                                                    child: Text(
+                                                      'View timeline',
+                                                      style: TextStyle(
+                                                        color: const Color(
+                                                            0xFF828282),
+                                                        fontSize: AppDimensions
+                                                                .font10(
+                                                                    context) *
+                                                            1.8,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                      width: AppDimensions
+                                                              .width10(
+                                                                  context) *
+                                                          2.4,
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          1.39,
+                                                      margin: EdgeInsets.only(
+                                                          right: AppDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              2.391),
                                                       child: Image.asset(
                                                         'assets/images/BTN Back.webp',
                                                         //width: AppDimensions.width10(context) * 2.6,
@@ -1218,9 +1247,9 @@ class _practice_progressState extends State<practice_progress> {
                                                         color: const Color(
                                                             0xFF828282),
                                                         fit: BoxFit.cover,
-                                                      ),
-                                                    ))
-                                              ])),
+                                                      ))
+                                                ])),
+                                      ),
                                       SizedBox(
                                         height:
                                             AppDimensions.height10(context) * 4,
@@ -1365,70 +1394,91 @@ class _practice_progressState extends State<practice_progress> {
                                             AppDimensions.height10(context) *
                                                 2.7),
                                   ),
-                                  Container(
-                                      height:
-                                          AppDimensions.height10(context) * 6.0,
-                                      width:
-                                          AppDimensions.width10(context) * 34.2,
-                                      margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
-                                            2.7,
-                                        // left: AppDimensions.width10(context) * 2.0,
-                                        //right: AppDimensions.width10(context) * 1.9,
-                                      ),
-                                      decoration: BoxDecoration(
-                                          border: Border.all(
-                                            width: 1,
-                                            color: const Color(0xFFB695B7),
-                                          ),
-                                          borderRadius: BorderRadius.circular(
-                                              AppDimensions.height10(context) *
-                                                  2.0)),
-                                      child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  23.9,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.2,
-                                              margin: EdgeInsets.only(
-                                                  left: AppDimensions.height10(
-                                                          context) *
-                                                      1.99),
-                                              child: GestureDetector(
-                                                  onTap: () {},
-                                                  child: Text(
-                                                    'View timeline',
-                                                    style: TextStyle(
-                                                      color: const Color(
-                                                          0xFF828282),
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              1.8,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                    ),
-                                                  )),
+                                  AnimatedScaleButton(
+                                    onTap: () async {
+                                      final SharedPreferences prefs =
+                                          await _prefs;
+                                      if (subscription == 'active') {
+                                        Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: timeline(
+                                              goalId: null,
+                                              pracId: prefs.getInt("prac_num"),
+                                            )));
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(const SnackBar(
+                                                content: Text(
+                                                    "This feature is only available for premium members")));
+                                      }
+                                    },
+                                    child: Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                6.0,
+                                        width: AppDimensions.width10(context) *
+                                            34.2,
+                                        margin: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              2.7,
+                                          // left: AppDimensions.width10(context) * 2.0,
+                                          //right: AppDimensions.width10(context) * 1.9,
+                                        ),
+                                        decoration: BoxDecoration(
+                                            color: subscription == 'active'
+                                                ? Color(0xFF5F5F5)
+                                                : Colors.black.withOpacity(0.1),
+                                            border: Border.all(
+                                              width: 1,
+                                              color: const Color(0xFFB695B7),
                                             ),
-                                            Container(
+                                            borderRadius: BorderRadius.circular(
+                                                AppDimensions.height10(
+                                                        context) *
+                                                    2.0)),
+                                        child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Container(
                                                 width: AppDimensions.height10(
                                                         context) *
-                                                    2.4,
+                                                    23.9,
                                                 height: AppDimensions.height10(
                                                         context) *
-                                                    1.39,
+                                                    2.2,
                                                 margin: EdgeInsets.only(
-                                                    right:
+                                                    left:
                                                         AppDimensions.height10(
                                                                 context) *
-                                                            2.391),
-                                                child: GestureDetector(
-                                                  onTap: () {},
+                                                            1.99),
+                                                child: Text(
+                                                  'View timeline',
+                                                  style: TextStyle(
+                                                    color:
+                                                        const Color(0xFF828282),
+                                                    fontSize:
+                                                        AppDimensions.font10(
+                                                                context) *
+                                                            1.8,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                  width: AppDimensions.width10(
+                                                          context) *
+                                                      2.4,
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          1.39,
+                                                  margin: EdgeInsets.only(
+                                                      right: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          2.391),
                                                   child: Image.asset(
                                                     'assets/images/BTN Back.webp',
                                                     //width: AppDimensions.width10(context) * 2.6,
@@ -1436,9 +1486,9 @@ class _practice_progressState extends State<practice_progress> {
                                                     color:
                                                         const Color(0xFF828282),
                                                     fit: BoxFit.cover,
-                                                  ),
-                                                ))
-                                          ])),
+                                                  ))
+                                            ])),
+                                  ),
                                   SizedBox(
                                     height: AppDimensions.height10(context) * 4,
                                   )

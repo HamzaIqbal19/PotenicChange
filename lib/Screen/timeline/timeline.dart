@@ -245,10 +245,15 @@ class _timelineState extends State<timeline> {
         _middleWidgetKey.currentContext!.findRenderObject() as RenderBox;
     final double middleWidgetHeight = middleWidgetBox.size.height;
 
-    final double offset = listView1Height +
-        460 +
-        (middleWidgetHeight) -
-        (MediaQuery.of(context).size.height / 2);
+    final double offset = widget.pracId != null
+        ? (listView1Height +
+            300 +
+            (middleWidgetHeight) -
+            (MediaQuery.of(context).size.height / 2))
+        : (listView1Height +
+            460 +
+            (middleWidgetHeight) -
+            (MediaQuery.of(context).size.height / 2));
 
     _scrollController.jumpTo(offset);
   }
@@ -1180,72 +1185,6 @@ class _timelineState extends State<timeline> {
                                                                     ['name'],
                                                                 Status:
                                                                     'deleted');
-                                                          })
-                                                      : Container(),
-                                                  TimeLineRes[DateKey][
-                                                              'deleteHurdles'] !=
-                                                          null
-                                                      ? ListView.builder(
-                                                          shrinkWrap: true,
-                                                          itemCount:
-                                                              TimeLineRes[DateKey]
-                                                                      [
-                                                                      'deleteHurdles']
-                                                                  .length,
-                                                          padding:
-                                                              EdgeInsets.zero,
-                                                          physics:
-                                                              const NeverScrollableScrollPhysics(),
-                                                          itemBuilder:
-                                                              (context, index) {
-                                                            var data = TimeLineRes[
-                                                                        DateKey]
-                                                                    [
-                                                                    'deleteHurdles']
-                                                                [index];
-                                                            return HurdleComponent(
-                                                              mainText: data[
-                                                                  'hurdleName'],
-                                                              subText: data[
-                                                                  'triggerStatment'],
-                                                              status: true,
-                                                            );
-                                                          })
-                                                      : Container(),
-                                                  TimeLineRes[DateKey][
-                                                              'deleteInspirations'] !=
-                                                          null
-                                                      ? ListView.builder(
-                                                          shrinkWrap: true,
-                                                          itemCount:
-                                                              TimeLineRes[DateKey]
-                                                                      [
-                                                                      'deleteInspirations']
-                                                                  .length,
-                                                          padding:
-                                                              EdgeInsets.zero,
-                                                          physics:
-                                                              const NeverScrollableScrollPhysics(),
-                                                          itemBuilder:
-                                                              (context, index) {
-                                                            var data = TimeLineRes[
-                                                                        DateKey]
-                                                                    [
-                                                                    'deleteInspirations']
-                                                                [index];
-                                                            return InspirationComponent(
-                                                              Text1:
-                                                                  data['title'],
-                                                              mainImage: data[
-                                                                      'file']
-                                                                  .toString(),
-                                                              inspirationId: data[
-                                                                      'inspirationId']
-                                                                  .toString(),
-                                                              Text2: data[
-                                                                  'description'],
-                                                              status: true,
-                                                            );
                                                           })
                                                       : Container(),
                                                 ],
