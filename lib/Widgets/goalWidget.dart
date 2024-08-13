@@ -80,7 +80,8 @@ practiceWidget(BuildContext context, height, width, color, name, status) {
         EdgeInsets.symmetric(horizontal: UpdatedDimensions.width10(context)),
     decoration: BoxDecoration(
         //color: Colors.amber,
-        //shape: BoxShape.circle,
+      shape: status == 'Not Started'? BoxShape.circle:BoxShape.rectangle,
+      border: status == 'Not Started'?Border.all(color: Colors.white,width: 2):Border.all(color: Colors.transparent),
         image: DecorationImage(
             image: status == "missed"
                 ? AssetImage(color == "1"

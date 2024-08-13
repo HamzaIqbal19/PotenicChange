@@ -9,6 +9,7 @@ import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
+import 'package:potenic_app/Screen/timeline/component/imageComponent.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
@@ -106,43 +107,6 @@ class _PracticeFinishedState extends State<PracticeFinished> {
           centerTitle: true,
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
-          // leading: Center(
-          //   // alignment: Alignment.center,
-          //   child: IconButton(
-          //     icon: Image.asset(
-          //       'assets/images/Back.webp',
-          //       width: AppDimensions.width10(context) * 3,
-          //       height: AppDimensions.height10(context) * 3,
-          //       fit: BoxFit.contain,
-          //     ),
-          //     onPressed: () async {
-          //       if (route == 'view_all_goals') {
-          //         Navigator.pushReplacement(context,
-          //             FadePageRoute(page: const view_all_goals_menu()));
-          //       } else {
-          //         Navigator.push(
-          //           context,
-          //           FadePageRoute3(
-          //             exitPage: const PracticeFinished(),
-          //             enterPage: const CreatePractice(),
-          //           ),
-          //         );
-          //       }
-          //       final SharedPreferences prefs = await _prefs;
-
-          //       await prefs.remove('route');
-          //       // Navigator.pop(context);
-          //       // Navigator.pushReplacement(
-          //       //   context,
-          //       //   MaterialPageRoute(
-          //       //     builder: (context) => HomeScreen(),
-          //       //   ),
-          //       // );
-          //       // Add code for performing close action
-          //     },
-          //   ),
-          // ),
-
           actions: [
             Center(
               // alignment: Alignment.center,
@@ -414,18 +378,10 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                                       width:
                                           AppDimensions.width10(context) * 14.7,
                                       decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                          border: Border.all(color: Colors.white, width: 2),
                                           image: DecorationImage(
-                                        image: AssetImage('$pracColor' == '1'
-                                            ? "assets/images/Ellipse orange.webp"
-                                            : '$pracColor' == '2'
-                                                ? 'assets/images/Ellipse 158.webp'
-                                                : '$pracColor' == '3'
-                                                    ? "assets/images/Ellipse 157.webp"
-                                                    : '$pracColor' == '4'
-                                                        ? "assets/images/Ellipse light-blue.webp"
-                                                        : '$pracColor' == '5'
-                                                            ? "assets/images/Ellipse blue.webp"
-                                                            : 'assets/images/Ellipse 158.webp'),
+                                        image: AssetImage(practiceImages(pracColor??"2")),
                                         fit: BoxFit.contain,
                                       )),
                                       child: Column(

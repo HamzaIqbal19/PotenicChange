@@ -737,9 +737,10 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                           ),
                           widget.comingFromEditScreen
                               ? SizedBox(
-                                  height: AppDimensions.height10(context) * 3.5,
+                                  height: AppDimensions.height10(context) * 7.6,
                                 )
-                              : Container(
+                              :
+                          Container(
                                   // color: Colors.blue,
                                   width: AppDimensions.width10(context) * 10.4,
                                   height: AppDimensions.height10(context) * 7.6,

@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -17,14 +16,17 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
-
 import '../Alerts/widgets/notificationPermissionService.dart';
 import '../HomeScreen/HomeScreen.dart';
 import '../ReviewPractice/practiceReview.dart';
 
 class PracticeReminder extends StatefulWidget {
   final bool comingFromEditScreen;
-  const PracticeReminder({Key? key, required this.comingFromEditScreen})
+  final String praticeName;
+  final String goalName;
+  final String goalColor;
+  final String pracColor;
+  const PracticeReminder({Key? key, required this.comingFromEditScreen, required this.praticeName, required this.goalName, required this.goalColor, required this.pracColor})
       : super(key: key);
 
   @override
@@ -36,6 +38,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
   bool radio2 = false;
   bool updated = false;
   bool reminderSelected = false;
+
   var reminder;
   final NotificationPermissionService _notificationPermissionService =
       NotificationPermissionService();
@@ -99,8 +102,9 @@ class _PracticeReminderState extends State<PracticeReminder> {
     setState(() {
       color = goalColor;
       mygoal.text = myGoal!;
+      practiceName.text = practicename.toString();
       practice.text = practicename!;
-      practiceName.text = practicename;
+
     });
   }
 
@@ -461,7 +465,6 @@ class _PracticeReminderState extends State<PracticeReminder> {
             ),
           ),
           SingleChildScrollView(
-            reverse: true,
             physics: const ClampingScrollPhysics(),
             child: Column(
               children: [
@@ -490,7 +493,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   width: AppDimensions.width10(context) * 30,
                   child: Center(
                     child: Text(
-                      mygoal.text.toString(),
+                    widget.comingFromEditScreen? widget.goalName:  mygoal.text.toString(),
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
@@ -505,91 +508,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 SizedBox(
                   height: AppDimensions.height10(context) * 1.7,
                 ),
-                goalAndPractice(context, color, 2, practice.text.toString()),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   children: [
-                //     SizedBox(
-                //       width: AppDimensions.width10(context) * 7.9,
-                //       height: AppDimensions.height10(context) * 7.9,
-                //       // color: Colors.amber,
-                //
-                //       // color: Colors.blue,
-                //       child: Stack(
-                //         children: [
-                //           Align(
-                //             alignment: const Alignment(-3, 0),
-                //             child: Container(
-                //               width: AppDimensions.width10(context) * 7.9,
-                //               height: AppDimensions.height10(context) * 7.9,
-                //               decoration: BoxDecoration(
-                //                 shape: BoxShape.circle,
-                //                 // color: Colors.amber,
-                //                 image: DecorationImage(
-                //                     image: AssetImage(color == '1'
-                //                         ? "assets/images/red_gradient.webp"
-                //                         : color == '2'
-                //                             ? 'assets/images/orange_moon.webp'
-                //                             : color == '3'
-                //                                 ? "assets/images/lightGrey_gradient.webp"
-                //                                 : color == '4'
-                //                                     ? "assets/images/lightBlue_gradient.webp"
-                //                                     : color == '5'
-                //                                         ? "assets/images/medBlue_gradient.webp"
-                //                                         : color == '6'
-                //                                             ? "assets/images/Blue_gradient.webp"
-                //                                             : 'assets/images/orange_moon.webp'),
-                //                     fit: BoxFit.contain),
-                //               ),
-                //             ),
-                //           ),
-                //           Align(
-                //             alignment: const Alignment(1.5, 0),
-                //             child: Container(
-                //               height: AppDimensions.height10(context) * 4.9,
-                //               width: AppDimensions.width10(context) * 4.9,
-                //               decoration: const BoxDecoration(
-                //                   shape: BoxShape.circle,
-                //                   image: DecorationImage(
-                //                       image: AssetImage(
-                //                           'assets/images/Ellipse 158_wb.webp'),
-                //                       fit: BoxFit.cover)),
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //     Container(
-                //         //width: AppDimensions.width10(context) * 22,
-                //         margin: EdgeInsets.only(
-                //             left: AppDimensions.width10(context) * 1.5),
-                //         child: practice.text.toString().length > 20
-                //             ? Text(
-                //                 capitalizeFirstLetter(
-                //                   practice.text.substring(0, 19) + '...',
-                //                 ),
-                //                 textAlign: TextAlign.center,
-                //                 overflow: TextOverflow.ellipsis,
-                //                 style: TextStyle(
-                //                   fontWeight: FontWeight.w600,
-                //                   color: const Color(0xFF156F6D),
-                //                   fontSize: AppDimensions.font10(context) * 2.0,
-                //                 ),
-                //               )
-                //             : Text(
-                //                 capitalizeFirstLetter(
-                //                   practice.text.toString(),
-                //                 ),
-                //                 style: TextStyle(
-                //                   fontWeight: FontWeight.w600,
-                //                   color: const Color(0xFF156F6D),
-                //                   fontSize: AppDimensions.font10(context) * 2.0,
-                //                 ),
-                //               )),
-                //   ],
-                // ),
-                //
+               widget.comingFromEditScreen? goalAndPractice(context, widget.goalColor, widget.pracColor, widget.praticeName):goalAndPractice(context, color, 2, practice.text.toString()),
                 SizedBox(
                   height: AppDimensions.height10(context) * 2.3,
                 ),
@@ -1169,7 +1088,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                                                   true,
                                                   exitPage:
                                                       const PracticeReminder(
-                                                    comingFromEditScreen: false,
+                                                    comingFromEditScreen: false, praticeName: '', goalName: '', goalColor: '', pracColor: '',
                                                   ),
                                                   enterPage:
                                                       const PracticeFinished(),

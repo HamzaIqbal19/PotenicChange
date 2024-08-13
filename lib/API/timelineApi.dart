@@ -61,6 +61,8 @@ class TimelineService {
     var accessToken = prefs.getString("usertoken");
     var userId = prefs.getInt('userid');
 
+    print("Access Token : $accessToken");
+
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$accessToken'

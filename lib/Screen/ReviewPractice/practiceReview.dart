@@ -1211,8 +1211,8 @@ class _PracticeReviewState extends State<PracticeReview> {
                                               Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                  page: const PracticeReminder(
-                                                    comingFromEditScreen: true,
+                                                  page:  PracticeReminder(
+                                                    comingFromEditScreen: true, praticeName: pracName, goalName: goalName, goalColor: color, pracColor: pracColor,
                                                   ),
                                                 ),
                                               );

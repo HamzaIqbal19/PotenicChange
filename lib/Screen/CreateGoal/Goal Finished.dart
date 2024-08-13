@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
@@ -7,6 +8,7 @@ import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/utils/app_assets.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -134,6 +136,33 @@ class _GoalFinishedState extends State<GoalFinished> {
               Loading == false
                   ? Stack(
                       children: [
+                        Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: 5,
+                            child: Container(
+                              height: 626,
+                              width: 638,
+                              decoration: BoxDecoration(
+
+                                  image: DecorationImage(
+
+                                      image: AssetImage('$color' == '1'
+                                          ? AppAssets.glare1
+                                          : '$color' == '2'
+                                          ? AppAssets.glare2
+                                          : '$color' == '3'
+                                          ? AppAssets.glare3
+                                          : '$color' == '4'
+                                          ? AppAssets.glare4
+                                          : '$color' == '5'
+                                          ? AppAssets.glare5
+                                          : '$color' ==
+                                          '6'
+                                          ? AppAssets.glare6
+                                          : AppAssets.glare2),
+                                      fit: BoxFit.contain)),
+                            )),
                         Column(
                           children: [
                             Container(
@@ -175,33 +204,30 @@ class _GoalFinishedState extends State<GoalFinished> {
                             ),
                             Stack(
                               children: [
-                                AnimatedScaleButton(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                        page: const StarReview(
-                                          route: 'goal',
+                                Container(
+                                  height:
+                                  AppDimensions.height10(context) * 40.1,
+                                  width:
+                                  AppDimensions.width10(context) * 40.1,
+                                  padding: EdgeInsets.all(
+                                      AppDimensions.height10(context) * 3.5),
+
+                                  child: AnimatedScaleButton(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        FadePageRoute(
+                                          page: const StarReview(
+                                            route: 'goal',
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                  child: Container(
-                                    height:
-                                        AppDimensions.height10(context) * 40.1,
-                                    width:
-                                        AppDimensions.width10(context) * 40.1,
-                                    padding: EdgeInsets.all(
-                                        AppDimensions.height10(context) * 3.5),
-                                    // decoration: const BoxDecoration(
-                                    //     image: DecorationImage(
-                                    //         image: AssetImage(
-                                    //             'assets/images/anger_5.webp'))),
+                                      );
+                                    },
                                     child: Container(
                                       margin: EdgeInsets.only(
                                           bottom:
-                                              AppDimensions.height10(context) *
-                                                  4.0),
+                                          AppDimensions.height10(context) *
+                                              4.0),
                                       // padding: EdgeInsets.only(
                                       //     bottom: AppDimensions.height10(context) *
                                       //         10.0),
@@ -211,25 +237,25 @@ class _GoalFinishedState extends State<GoalFinished> {
                                               image: AssetImage('$color' == '1'
                                                   ? "assets/images/red_gradient.webp"
                                                   : '$color' == '2'
-                                                      ? 'assets/images/orange_moon.webp'
-                                                      : '$color' == '3'
-                                                          ? "assets/images/lightGrey_gradient.webp"
-                                                          : '$color' == '4'
-                                                              ? "assets/images/lightBlue_gradient.webp"
-                                                              : '$color' == '5'
-                                                                  ? "assets/images/medBlue_gradient.webp"
-                                                                  : '$color' ==
-                                                                          '6'
-                                                                      ? "assets/images/Blue_gradient.webp"
-                                                                      : 'assets/images/orange_moon.webp'),
+                                                  ? 'assets/images/orange_moon.webp'
+                                                  : '$color' == '3'
+                                                  ? "assets/images/lightGrey_gradient.webp"
+                                                  : '$color' == '4'
+                                                  ? "assets/images/lightBlue_gradient.webp"
+                                                  : '$color' == '5'
+                                                  ? "assets/images/medBlue_gradient.webp"
+                                                  : '$color' ==
+                                                  '6'
+                                                  ? "assets/images/Blue_gradient.webp"
+                                                  : 'assets/images/orange_moon.webp'),
                                               fit: BoxFit.cover)),
                                       child: Column(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        MainAxisAlignment.center,
                                         children: [
                                           SizedBox(
                                             height: AppDimensions.height10(
-                                                    context) *
+                                                context) *
                                                 2.5,
                                           ),
                                           Container(
@@ -238,65 +264,65 @@ class _GoalFinishedState extends State<GoalFinished> {
                                             //     AppDimensions.height10(context) *
                                             //         9.0,
                                             width:
-                                                AppDimensions.width10(context) *
-                                                    24.0,
+                                            AppDimensions.width10(context) *
+                                                24.0,
                                             padding: EdgeInsets.symmetric(
                                                 horizontal:
-                                                    AppDimensions.width10(
-                                                            context) *
-                                                        2.0),
+                                                AppDimensions.width10(
+                                                    context) *
+                                                    2.0),
                                             child: Column(
                                               children: [
                                                 Text(
                                                   "$goalName",
                                                   textAlign: TextAlign.center,
                                                   overflow:
-                                                      TextOverflow.ellipsis,
+                                                  TextOverflow.ellipsis,
                                                   maxLines: 1,
                                                   style: TextStyle(
                                                       fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              2.0,
+                                                      AppDimensions.font10(
+                                                          context) *
+                                                          2.0,
                                                       height: AppDimensions
-                                                              .height10(
-                                                                  context) *
+                                                          .height10(
+                                                          context) *
                                                           0.14,
                                                       fontWeight:
-                                                          FontWeight.w600,
+                                                      FontWeight.w600,
                                                       color: const Color(
                                                           0xff5B74A6)),
                                                 ),
                                                 SizedBox(
                                                   height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          0.3,
+                                                  AppDimensions.height10(
+                                                      context) *
+                                                      0.3,
                                                 ),
                                                 SizedBox(
                                                   // color: Colors.green,
                                                   height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          4.0,
+                                                  AppDimensions.height10(
+                                                      context) *
+                                                      4.0,
                                                   width: AppDimensions.width10(
-                                                          context) *
+                                                      context) *
                                                       22.0,
                                                   child: Text('"$identity"',
                                                       maxLines: 2,
                                                       textAlign:
-                                                          TextAlign.center,
+                                                      TextAlign.center,
                                                       overflow:
-                                                          TextOverflow.ellipsis,
+                                                      TextOverflow.ellipsis,
                                                       style: TextStyle(
                                                           fontStyle:
-                                                              FontStyle.italic,
+                                                          FontStyle.italic,
                                                           fontSize: AppDimensions
-                                                                  .font10(
-                                                                      context) *
+                                                              .font10(
+                                                              context) *
                                                               1.6,
                                                           fontWeight:
-                                                              FontWeight.w400,
+                                                          FontWeight.w400,
                                                           color: const Color(
                                                               0xff5B74A6))),
                                                 ),
@@ -305,28 +331,28 @@ class _GoalFinishedState extends State<GoalFinished> {
                                           ),
                                           SizedBox(
                                             height: AppDimensions.height10(
-                                                    context) *
+                                                context) *
                                                 1.1,
                                           ),
                                           Text('Review',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                   decoration:
-                                                      TextDecoration.underline,
+                                                  TextDecoration.underline,
                                                   fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          2.0,
+                                                  AppDimensions.font10(
+                                                      context) *
+                                                      2.0,
                                                   height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          0.14,
+                                                  AppDimensions.height10(
+                                                      context) *
+                                                      0.14,
                                                   fontWeight: FontWeight.w600,
                                                   color:
-                                                      const Color(0xff5B74A6))),
+                                                  const Color(0xff5B74A6))),
                                           SizedBox(
                                             height: AppDimensions.height10(
-                                                    context) *
+                                                context) *
                                                 4.3,
                                           )
                                         ],
@@ -344,14 +370,14 @@ class _GoalFinishedState extends State<GoalFinished> {
                                     alignment: Alignment(
                                         0.01,
                                         AppDimensions.height10(context) *
-                                                0.015 +
+                                            0.015 +
                                             1),
                                     //heightFactor: 0.5,
                                     child: Container(
                                       height: AppDimensions.height10(context) *
                                           17.5,
                                       width:
-                                          AppDimensions.width10(context) * 17.5,
+                                      AppDimensions.width10(context) * 17.5,
                                       decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
@@ -370,20 +396,23 @@ class _GoalFinishedState extends State<GoalFinished> {
                                           image: const AssetImage(
                                               'assets/images/practice.webp'),
                                           height:
-                                              AppDimensions.height10(context) *
-                                                  17.5,
+                                          AppDimensions.height10(context) *
+                                              17.5,
                                           width:
-                                              AppDimensions.width10(context) *
-                                                  17.5,
+                                          AppDimensions.width10(context) *
+                                              17.5,
                                         ),
                                       ),
                                     ),
                                   ),
                                 )
                               ],
-                            ),
+                            )
                           ],
                         ),
+
+
+
                         // Positioned(
                         //     bottom: 15,
                         //     child: Row(
@@ -408,6 +437,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                         //             )),
                         //       ],
                         //     ))
+
                       ],
                     )
                   : const Center(

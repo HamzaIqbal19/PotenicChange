@@ -580,7 +580,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                             context,
                             FadePageRoute(
                               page: const PracticeReminder(
-                                comingFromEditScreen: false,
+                                comingFromEditScreen: false, goalName: '', praticeName: '', goalColor: '', pracColor: '',
                               ),
                             ),
                           );
