@@ -364,7 +364,7 @@ class _timelineState extends State<timeline> {
         elevation: 0,
         padding: EdgeInsets.zero,
         notchMargin: 0,
-        color: Color(0xFFFBFBFB),
+        color: const Color(0xFFFBFBFB),
         child:loader?Container(
           height: AppDimensions.height10(context) * 7.0,
         ): Container(
@@ -926,21 +926,23 @@ class _timelineState extends State<timeline> {
                                                   child:
                                                   ListWheelScrollView(
                                                     itemExtent: 40,
-                                                    magnification: 1.2,
+                                                    magnification: 1.5,
                                                     useMagnifier:
                                                     true, // Set the height of each statement
                                                     children: _statements
                                                         .map((statement) =>
-                                                        Text(
-                                                            statement,
-                                                            style:
-                                                            TextStyle(
-                                                              fontSize:
-                                                              AppDimensions.height10(context) *
-                                                                  2.0,
-                                                              fontWeight:
-                                                              FontWeight.w400,
-                                                            )))
+                                                        SizedBox(
+                                                          width: AppDimensions.height10(context) * 26,
+                                                          child: Center(
+                                                            child: Text(statement,
+                                                                overflow: TextOverflow.ellipsis,
+                                                                textAlign: TextAlign.center,
+                                                                style: TextStyle(
+                                                                  fontSize: AppDimensions.height10(context) * 2.0,
+                                                                  fontWeight: FontWeight.w400,
+                                                                )),
+                                                          ),
+                                                        ))
                                                         .toList(),
                                                     onSelectedItemChanged:
                                                         (int index) {
@@ -1190,6 +1192,11 @@ class _timelineState extends State<timeline> {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
+                                        SizedBox(
+                                          height: AppDimensionsUpdated.height10(
+                                              context) *
+                                              2,
+                                        ),
                                         scheduleList.length == 0
                                             ? Container(
                                                 height: AppDimensionsUpdated
@@ -1214,6 +1221,7 @@ class _timelineState extends State<timeline> {
                                             : ListView.builder(
                                                 itemCount: scheduleList.length,
                                                 shrinkWrap: true,
+                                          padding: EdgeInsets.zero,
                                                 physics:
                                                     const NeverScrollableScrollPhysics(),
                                                 itemBuilder: (context, index3) {
@@ -1224,6 +1232,7 @@ class _timelineState extends State<timeline> {
                                                                 .length -
                                                             1,
                                                     shrinkWrap: true,
+                                                    padding: EdgeInsets.zero,
                                                     physics:
                                                         const NeverScrollableScrollPhysics(),
                                                     itemBuilder:
@@ -1247,7 +1256,8 @@ class _timelineState extends State<timeline> {
                                                         image2:
                                                             scheduleList[index3]
                                                                 ['color'],
-                                                        status: 'Active',
+                                                        status: scheduleList[index3]
+                                                        ['practiceStatus'],
                                                       );
                                                     }),
                                                   );
@@ -1733,24 +1743,26 @@ class _timelineState extends State<timeline> {
                                                                     [
                                                                     'userPracticeUpdated']
                                                                 [index];
-                                                            return GoalPracticeComponent(
+                                                            print("user practice updated ${data['practiceStatus']}}");
+                                                            return PracticeSessionComponent(
+                                                              scheduleTime: '',
                                                                 image1: data[
                                                                         'userGoal']
                                                                     ['color'],
                                                                 image2: data[
                                                                     'color'],
-                                                                mainText: data[
+                                                                orangeText: data[
                                                                         'userGoal']
                                                                     ['name'],
-                                                                smallText: data[
+                                                                greenText: data[
                                                                     'name'],
-                                                                subText: data[
-                                                                            'userGoal']
-                                                                        [
-                                                                        'identityStatement']
-                                                                    [0]['text'],
-                                                                status:
-                                                                    'practiceUpdate');
+                                                                // subText: data[
+                                                                //             'userGoal']
+                                                                //         [
+                                                                //         'identityStatement']
+                                                                //     [0]['text'],
+                                                                status:data['practiceStatus']
+                                                                    );
                                                           })
                                                       : Container(),
                                                   TimeLineRes[DateKey][
@@ -1975,25 +1987,26 @@ class _timelineState extends State<timeline> {
                                   : Container(
                                       height: AppDimensionsUpdated.height10(
                                               context) *
-                                          4,
+                                          6,
                                       width: AppDimensionsUpdated.height10(
                                               context) *
-                                          15,
-                                      decoration: const BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(40.0)),
-                                          color: Colors.white),
+                                          27.3,
+                                      decoration:  BoxDecoration(
+                                        border: Border.all(color: const Color(0xFFFFFFFF)),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(10.0)),
+                                          ),
                                       child: Center(
                                         child: Text(
                                           'Load More',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
-                                            color: const Color(0xFF5A4D73),
+                                            color: const Color(0xFFFFFFFF),
                                             fontSize:
                                                 AppDimensionsUpdated.height10(
                                                         context) *
-                                                    2,
+                                                    1.6,
                                           ),
                                         ),
                                       ),

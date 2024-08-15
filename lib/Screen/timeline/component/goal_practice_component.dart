@@ -177,6 +177,7 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                             bottom:
                                 AppDimensionsUpdated.height10(context) * 6.0),
                         decoration: BoxDecoration(
+
                             image: widget.status == 'inactive'
                                 ? DecorationImage(
                                     image: AssetImage(
@@ -190,6 +191,9 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+                            widget.status == 'update'||widget.status == 'Created'?
+                            SizedBox(height: AppDimensionsUpdated.height10(context) * 5.0,)
+                                :Container(),
                             Container(
                               alignment: Alignment.center,
                               padding: EdgeInsets.symmetric(
@@ -261,6 +265,7 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                                     12.8,
                                 height: AppDimensionsUpdated.height10(context) *
                                     12.8,
+                                padding: EdgeInsets.all(5),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
@@ -287,6 +292,8 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                                   child: Text(
                                     widget.smallText,
                                     textAlign: TextAlign.center,
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                       fontSize:
                                           AppDimensionsUpdated.font10(context) *

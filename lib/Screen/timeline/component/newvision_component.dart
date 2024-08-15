@@ -103,6 +103,7 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
+                          height: AppDimensionsUpdated.height10(context) * 0.12,
                           fontSize: AppDimensionsUpdated.font10(context) * 2.2,
                           color: const Color(0xff437296)),
                     ),
@@ -170,9 +171,9 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                                         width: AppDimensionsUpdated.width10(
                                                 context) *
                                             25.5,
-                                        height: AppDimensionsUpdated.height10(
-                                                context) *
-                                            5.366,
+                                        // height: AppDimensionsUpdated.height10(
+                                        //         context) *
+                                        //     5.366,
 
                                         ///color: Colors.amber,
                                         child: Center(
@@ -296,7 +297,7 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                                           3.5),
                                   child: Center(
                                     child: Text(
-                                      'LEVEL',
+                                      ' LEVEL',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                           fontSize: AppDimensionsUpdated.font10(
@@ -318,7 +319,7 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                                   margin: EdgeInsets.only(
                                       top: AppDimensionsUpdated.height10(
                                               context) *
-                                          0.8,
+                                          0.3,
                                       bottom: AppDimensionsUpdated.height10(
                                               context) *
                                           1.0),
@@ -333,16 +334,16 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                                               fontSize:
                                                   AppDimensionsUpdated.height10(
                                                           context) *
-                                                      2,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xFF646464)),
+                                                      2.8,
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color(0xFF464646)),
                                         ),
                                       ),
                                       Container(
                                         margin: EdgeInsets.only(
                                             top: AppDimensionsUpdated.height10(
                                                     context) *
-                                                0.7),
+                                                0.9),
                                         child: Text(
                                           '/5',
                                           textAlign: TextAlign.center,

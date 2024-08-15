@@ -89,7 +89,7 @@ class ReportComponent extends StatelessWidget {
                   margin: EdgeInsets.only(
                       top: AppDimensionsUpdated.height10(context) * 3.2),
                   child: Text(
-                    'Congratulations!',
+                    'Congratulations',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontWeight: FontWeight.w500,
@@ -113,10 +113,10 @@ class ReportComponent extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  width: AppDimensions.width10(context) * 23.7,
-                  height: AppDimensions.height10(context) * 25.5,
+                  width: AppDimensionsUpdated.width10(context) * 23.7,
+                  height: AppDimensionsUpdated.height10(context) * 25.5,
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 1.4),
+                      top: AppDimensionsUpdated.height10(context) * 1.4),
                   clipBehavior: Clip.antiAlias,
                   decoration: BoxDecoration(
                       gradient: const LinearGradient(
@@ -125,20 +125,20 @@ class ReportComponent extends StatelessWidget {
                           colors: [Color(0XffD9B4B4), Color(0xFFF5EDED)]),
                       borderRadius: BorderRadius.only(
                           topLeft:
-                              Radius.circular(AppDimensions.height10(context)),
+                              Radius.circular(AppDimensionsUpdated.height10(context)),
                           topRight:
-                              Radius.circular(AppDimensions.height10(context)),
+                              Radius.circular(AppDimensionsUpdated.height10(context)),
                           bottomLeft:
-                              Radius.circular(AppDimensions.height10(context)),
+                              Radius.circular(AppDimensionsUpdated.height10(context)),
                           bottomRight: Radius.circular(
-                              AppDimensions.height10(context) * 5))),
+                              AppDimensionsUpdated.height10(context) * 5))),
                   child: Stack(
                     children: [
                       Align(
                         alignment: const Alignment(-2.5, -2.0),
                         child: Container(
-                          width: AppDimensions.width10(context) * 18.7,
-                          height: AppDimensions.height10(context) * 18.7,
+                          width: AppDimensionsUpdated.width10(context) * 18.7,
+                          height: AppDimensionsUpdated.height10(context) * 18.7,
                           decoration: BoxDecoration(
                               image: DecorationImage(
                                   image: AssetImage(
@@ -146,11 +146,11 @@ class ReportComponent extends StatelessWidget {
                                   ),
                                   fit: BoxFit.cover)),
                           child: Container(
-                            width: AppDimensions.width10(context) * 11.5,
-                            height: AppDimensions.height10(context) * 4.8,
+                            width: AppDimensionsUpdated.width10(context) * 11.5,
+                            height: AppDimensionsUpdated.height10(context) * 4.8,
                             padding: EdgeInsets.symmetric(
                                 horizontal:
-                                    AppDimensions.height10(context) * 2),
+                                AppDimensionsUpdated.height10(context) * 2),
                             alignment: const Alignment(-0.2, -0.1),
                             child: Text(
                               capitalizeFirstLetter(goalName),
@@ -158,7 +158,7 @@ class ReportComponent extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                               style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 2.0,
+                                  fontSize: AppDimensionsUpdated.font10(context) * 2.0,
                                   height:
                                       AppDimensions.height10(context) * 0.15,
                                   fontWeight: FontWeight.w600,
@@ -170,19 +170,20 @@ class ReportComponent extends StatelessWidget {
                       Align(
                         alignment: const Alignment(0.3, -0.4),
                         child: Container(
-                          width: AppDimensions.width10(context) * 11.6,
-                          height: AppDimensions.height10(context) * 11.6,
+                          width: AppDimensionsUpdated.width10(context) * 11.6,
+                          height: AppDimensionsUpdated.height10(context) * 11.6,
                           padding: EdgeInsets.symmetric(
-                              horizontal: AppDimensions.width10(context)),
+                              horizontal: AppDimensionsUpdated.width10(context)),
                           decoration: BoxDecoration(
+                            border: Border.all(color: Colors.white, width: 2),
                               shape: BoxShape.circle,
                               image: DecorationImage(
                                   image: AssetImage(
                                       practiceImages(color2).toString()),
                                   fit: BoxFit.contain)),
                           child: SizedBox(
-                            width: AppDimensions.width10(context) * 9.5,
-                            height: AppDimensions.height10(context) * 5.0,
+                            width: AppDimensionsUpdated.width10(context) * 9.5,
+                            height: AppDimensionsUpdated.height10(context) * 5.0,
                             child: Center(
                               child: Text(
                                 capitalizeFirstLetter(pracName),
@@ -190,7 +191,7 @@ class ReportComponent extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.6,
+                                    AppDimensionsUpdated.font10(context) * 1.6,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xFFFBFBFB)),
                               ),
@@ -201,11 +202,11 @@ class ReportComponent extends StatelessWidget {
                       Align(
                         alignment: const Alignment(-1, 0.85),
                         child: Container(
-                          width: AppDimensions.width10(context) * 17.1,
-                          height: AppDimensions.height10(context) * 6.4,
+                          width: AppDimensionsUpdated.width10(context) * 17.1,
+                          height: AppDimensionsUpdated.height10(context) * 6.4,
                           padding: EdgeInsets.only(
-                              left: AppDimensions.width10(context) * 0.84,
-                              top: AppDimensions.height10(context) * 1.04),
+                              left: AppDimensionsUpdated.width10(context) * 0.84,
+                              top: AppDimensionsUpdated.height10(context) * 1.04),
                           decoration: BoxDecoration(
                               gradient: LinearGradient(
                                   // begin: Alignment.topCenter,
@@ -216,9 +217,9 @@ class ReportComponent extends StatelessWidget {
                                   ]),
                               borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(
-                                      AppDimensions.height10(context)),
+                                      AppDimensionsUpdated.height10(context)),
                                   bottomRight: Radius.circular(
-                                      AppDimensions.height10(context)))),
+                                      AppDimensionsUpdated.height10(context)))),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -226,28 +227,28 @@ class ReportComponent extends StatelessWidget {
                                 '20 day report',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.8,
+                                    AppDimensionsUpdated.font10(context) * 1.9,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xFFFBFBFB)),
                               ),
                               Container(
-                                width: AppDimensions.width10(context) * 5.03,
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.width10(context)),
+                                width: AppDimensionsUpdated.width10(context) * 5.03,
+                                // margin: EdgeInsets.only(
+                                //     left: AppDimensions.width10(context)),
                                 child: Divider(
-                                  height: AppDimensions.height10(context) * 0.1,
+                                  height: AppDimensionsUpdated.height10(context) * 0.1,
                                   color:
                                       const Color(0xFFFFFFFF).withOpacity(0.2),
                                 ),
                               ),
                               Container(
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.width10(context)),
+                                // margin: EdgeInsets.only(
+                                //     left: AppDimensions.width10(context)),
                                 child: Text(
                                   'Ready',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.1,
+                                      AppDimensionsUpdated.font10(context) * 1.3,
                                       fontWeight: FontWeight.w400,
                                       color: const Color(0xFFFBFBFB)),
                                 ),

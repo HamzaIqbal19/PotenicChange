@@ -743,7 +743,7 @@ class _missed_MenuState extends State<missed_Menu> {
                                   }
                                 },
                                 child: button_feilds(
-                                  feild_text: 'View upcoming schedules',
+                                  feild_text: 'Timeline',
                                   icon_viible: true,
                                   text_color: 0xff646464,
                                   premium: subscripption == 'active',

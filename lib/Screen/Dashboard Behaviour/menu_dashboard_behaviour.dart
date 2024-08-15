@@ -1049,7 +1049,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                   }
                                 },
                                 child: button_feilds(
-                                  feild_text: 'View upcoming schedules',
+                                  feild_text: 'Timeline',
                                   icon_viible: subscripption == 'active',
                                   text_color: 0xff646464,
                                   feild_text_2: '',

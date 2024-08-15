@@ -77,7 +77,7 @@ class _RecordedComponentState extends State<RecordedComponent> {
                     height: AppDimensionsUpdated.height10(context) * 2.2,
                     child: RichText(
                         text: TextSpan(
-                            text: 'Practice session ',
+                            text: 'Practice session',
                             style: TextStyle(
                                 fontFamily: 'laila',
                                 fontWeight: FontWeight.w600,
@@ -97,8 +97,9 @@ class _RecordedComponentState extends State<RecordedComponent> {
                                     AppDimensionsUpdated.font10(context) * 1.8,
                                 fontFamily: 'Laila',
                                 color: widget.status == 'Not Started'
-                                    ? const Color(0xff437296)
-                                    : const Color(0xffFA9934)),
+                                    ? const Color(0xff437296):
+                                    widget.status == 'missed'?Colors.red
+                                    : const Color(0xff156F6D)),
                           )
                         ])))
               ],
@@ -154,7 +155,7 @@ class _RecordedComponentState extends State<RecordedComponent> {
                                   AppDimensionsUpdated.height10(context) * 0.15,
                               fontSize:
                                   AppDimensionsUpdated.font10(context) * 2,
-                              fontWeight: FontWeight.bold,
+                              fontWeight: FontWeight.w600,
                               color: const Color(0xff5B74A6)),
                         ),
                       )),

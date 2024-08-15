@@ -109,7 +109,7 @@ class PracticeSessionComponent extends StatelessWidget {
                         colors: [Color(0xFFD9B4B4), Color(0xFFF5EDED)])),
             child: Stack(children: [
               Align(
-                alignment: const Alignment(-2.65, 0),
+                alignment: const Alignment(-2.3, 0),
                 child: Container(
                   width: AppDimensionsUpdated.width10(context) * 22.6,
                   height: AppDimensionsUpdated.height10(context) * 24.2,
@@ -118,21 +118,22 @@ class PracticeSessionComponent extends StatelessWidget {
                           image: AssetImage(goalImages(image1.toString())),
                           fit: BoxFit.cover)),
                   child: Align(
-                      alignment: const Alignment(0.32, 0),
+                      alignment: const Alignment(0.3, 0.2),
                       child: SizedBox(
                         width: AppDimensionsUpdated.width10(context) * 7.5,
                         height: AppDimensionsUpdated.height10(context) * 4.8,
                         //changed font family due to client's request
                         child: Text(
                           orangeText,
+                          textAlign: TextAlign.center,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               height:
-                                  AppDimensionsUpdated.height10(context) * 0.15,
+                              AppDimensionsUpdated.height10(context) * 0.15,
                               fontSize:
-                                  AppDimensionsUpdated.font10(context) * 1.6,
-                              fontWeight: FontWeight.w500,
+                              AppDimensionsUpdated.font10(context) * 1.8,
+                              fontWeight: FontWeight.w600,
                               color: const Color(0xff5B74A6)),
                         ),
                       )),
@@ -143,6 +144,7 @@ class PracticeSessionComponent extends StatelessWidget {
                 child: Container(
                   width: AppDimensionsUpdated.width10(context) * 11.6,
                   height: AppDimensionsUpdated.height10(context) * 11.6,
+                  padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(color: Colors.white, width: 1),
@@ -159,6 +161,8 @@ class PracticeSessionComponent extends StatelessWidget {
                     child: Text(
                       greenText,
                       textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 3,
                       style: TextStyle(
                         fontSize: AppDimensionsUpdated.font10(context) * 1.6,
                         height: AppDimensionsUpdated.height10(context) * 0.12,
@@ -174,10 +178,10 @@ class PracticeSessionComponent extends StatelessWidget {
                 ),
               ),
               Align(
-                alignment: const Alignment(0.9, 0),
+                alignment: const Alignment(0.96, 0),
                 child: SizedBox(
                   width: AppDimensionsUpdated.width10(context) * 8.2,
-                  height: AppDimensionsUpdated.height10(context) * 4.1,
+                  //height: AppDimensionsUpdated.height10(context) * 4.1,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -193,15 +197,15 @@ class PracticeSessionComponent extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize:
-                                  AppDimensionsUpdated.font10(context) * 1.4,
+                                  AppDimensionsUpdated.font10(context) * 1.6,
                               height:
                                   AppDimensionsUpdated.height10(context) * 0.12,
-                              fontWeight: FontWeight.w400,
+                              fontWeight: FontWeight.w500,
                               color: const Color(0xffFA8552)),
                         ),
                       ),
                       Container(
-                        width: AppDimensionsUpdated.height10(context) * 6.5,
+                        //width: AppDimensionsUpdated.height10(context) * 6.5,
                         height: AppDimensionsUpdated.height10(context) * 1.9,
                         alignment: Alignment.topCenter,
                         child: Text(
@@ -212,7 +216,7 @@ class PracticeSessionComponent extends StatelessWidget {
                                   : scheduleTime,
                           style: TextStyle(
                               fontSize:
-                                  AppDimensionsUpdated.font10(context) * 1.6,
+                                  AppDimensionsUpdated.font10(context) * 1.8,
                               height:
                                   AppDimensionsUpdated.height10(context) * 0.12,
                               fontWeight: FontWeight.w700,
