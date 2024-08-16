@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:potenic_app/Screen/timeline/component/imageComponent.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -22,6 +23,7 @@ class PracticeSessionComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("status $greenText $status");
     return Container(
       //width: AppDimensionsUpdated.width10(context) * 33.5,
       height: AppDimensionsUpdated.height10(context) * 25.4,
@@ -66,8 +68,11 @@ class PracticeSessionComponent extends StatelessWidget {
                         ? 'Practice deleted'
                         : status == 'inactive'
                             ? 'Practice inactive'
-                            : status == 'update'
-                                ? 'Practice session edited'
+                            :
+                    status == 'update'
+                                ? 'Practice session edited':
+                    status == 'active'
+                        ?"Practice active"
                                 : 'Practice session',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
@@ -109,7 +114,7 @@ class PracticeSessionComponent extends StatelessWidget {
                         colors: [Color(0xFFD9B4B4), Color(0xFFF5EDED)])),
             child: Stack(children: [
               Align(
-                alignment: const Alignment(-2.3, 0),
+                alignment:status != null?const Alignment(-1.85, 0): const Alignment(-2.3, 0),
                 child: Container(
                   width: AppDimensionsUpdated.width10(context) * 22.6,
                   height: AppDimensionsUpdated.height10(context) * 24.2,
@@ -120,19 +125,18 @@ class PracticeSessionComponent extends StatelessWidget {
                   child: Align(
                       alignment: const Alignment(0.3, 0.2),
                       child: SizedBox(
-                        width: AppDimensionsUpdated.width10(context) * 7.5,
+                        width: AppDimensionsUpdated.width10(context) * 10.5,
                         height: AppDimensionsUpdated.height10(context) * 4.8,
                         //changed font family due to client's request
                         child: Text(
                           orangeText,
-                          textAlign: TextAlign.center,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                               height:
                               AppDimensionsUpdated.height10(context) * 0.15,
                               fontSize:
-                              AppDimensionsUpdated.font10(context) * 1.8,
+                              AppDimensionsUpdated.font10(context) * 2,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xff5B74A6)),
                         ),
@@ -140,14 +144,14 @@ class PracticeSessionComponent extends StatelessWidget {
                 ),
               ),
               Align(
-                alignment: const Alignment(-0.175, 0),
+                alignment:  status != null?const Alignment(0.205, 0):const Alignment(-0.175, 0),
                 child: Container(
                   width: AppDimensionsUpdated.width10(context) * 11.6,
                   height: AppDimensionsUpdated.height10(context) * 11.6,
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      border: Border.all(color: Colors.white, width: 1),
+                      border: Border.all(color: Colors.white, width: 2),
                       image: DecorationImage(
                         image: AssetImage(practiceImages(image2.toString())),
                         fit: BoxFit.contain,
@@ -161,17 +165,13 @@ class PracticeSessionComponent extends StatelessWidget {
                     child: Text(
                       greenText,
                       textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
                       maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         fontSize: AppDimensionsUpdated.font10(context) * 1.6,
                         height: AppDimensionsUpdated.height10(context) * 0.12,
                         fontWeight: FontWeight.w500,
-                        color: status == 'deleted'
-                            ? const Color(0xffFBFBFB).withOpacity(0.4)
-                            : status == 'inactive'
-                                ? const Color(0xffFBFBFB).withOpacity(0.4)
-                                : const Color(0xffFBFBFB),
+                        color: const Color(0xffFBFBFB),
                       ),
                     ),
                   ),
@@ -189,10 +189,8 @@ class PracticeSessionComponent extends StatelessWidget {
                         width: AppDimensionsUpdated.height10(context) * 8.2,
                         height: AppDimensionsUpdated.height10(context) * 2.0,
                         child: Text(
-                          status == 'deleted'
-                              ? ''
-                              : status == 'inactive'
-                                  ? ''
+                          status == 'deleted' || status =='inactive' || status == 'active'
+                              ? ""
                                   : 'Scheduled',
                           textAlign: TextAlign.center,
                           style: TextStyle(

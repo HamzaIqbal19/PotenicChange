@@ -306,8 +306,7 @@ class _RecordedComponentState extends State<RecordedComponent> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  width: AppDimensionsUpdated.width10(context) *
-                                      16.7,
+
                                   height:
                                       AppDimensionsUpdated.height10(context) *
                                           1.7,
@@ -402,8 +401,8 @@ class _RecordedComponentState extends State<RecordedComponent> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  width: AppDimensionsUpdated.width10(context) *
-                                      16.7,
+                                  // width: AppDimensionsUpdated.width10(context) *
+                                  //     16.7,
                                   height:
                                       AppDimensionsUpdated.height10(context) *
                                           1.7,

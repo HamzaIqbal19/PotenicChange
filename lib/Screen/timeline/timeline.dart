@@ -1743,7 +1743,6 @@ class _timelineState extends State<timeline> {
                                                                     [
                                                                     'userPracticeUpdated']
                                                                 [index];
-                                                            print("user practice updated ${data['practiceStatus']}}");
                                                             return PracticeSessionComponent(
                                                               scheduleTime: '',
                                                                 image1: data[
@@ -1881,75 +1880,75 @@ class _timelineState extends State<timeline> {
                                                             );
                                                           })
                                                       : Container(),
-                                                  TimeLineRes[DateKey][
-                                                              'deleteGoals'] !=
-                                                          null
-                                                      ? ListView.builder(
-                                                          shrinkWrap: true,
-                                                          itemCount: TimeLineRes[
-                                                                      DateKey][
-                                                                  'deleteGoals']
-                                                              .length,
-                                                          padding:
-                                                              EdgeInsets.zero,
-                                                          physics:
-                                                              const NeverScrollableScrollPhysics(),
-                                                          itemBuilder:
-                                                              (context, index) {
-                                                            var data = TimeLineRes[
-                                                                        DateKey]
-                                                                    [
-                                                                    'deleteGoals']
-                                                                [index];
-                                                            return GoalPracticeComponent(
-                                                                image1: data[
-                                                                    'color'],
-                                                                image2: '2',
-                                                                mainText: data[
-                                                                    'name'],
-                                                                smallText: '',
-                                                                subText: data[
-                                                                        'identityStatement']
-                                                                    [0]['text'],
-                                                                status:
-                                                                    'deleted');
-                                                          })
-                                                      : Container(),
-                                                  TimeLineRes[DateKey][
-                                                              'deletePractices'] !=
-                                                          null
-                                                      ? ListView.builder(
-                                                          shrinkWrap: true,
-                                                          itemCount:
-                                                              TimeLineRes[DateKey]
-                                                                      [
-                                                                      'deletePractices']
-                                                                  .length,
-                                                          padding:
-                                                              EdgeInsets.zero,
-                                                          physics:
-                                                              const NeverScrollableScrollPhysics(),
-                                                          itemBuilder:
-                                                              (context, index) {
-                                                            var data = TimeLineRes[
-                                                                        DateKey]
-                                                                    [
-                                                                    'deletePractices']
-                                                                [index];
-                                                            return NewPractice(
-                                                                image1: data[
-                                                                        'userGoal']
-                                                                    ['color'],
-                                                                image2: '2',
-                                                                greenText: data[
-                                                                    'name'],
-                                                                orangeText: data[
-                                                                        'userGoal']
-                                                                    ['name'],
-                                                                Status:
-                                                                    'deleted');
-                                                          })
-                                                      : Container(),
+                                                  // TimeLineRes[DateKey][
+                                                  //             'deleteGoals'] !=
+                                                  //         null
+                                                  //     ? ListView.builder(
+                                                  //         shrinkWrap: true,
+                                                  //         itemCount: TimeLineRes[
+                                                  //                     DateKey][
+                                                  //                 'deleteGoals']
+                                                  //             .length,
+                                                  //         padding:
+                                                  //             EdgeInsets.zero,
+                                                  //         physics:
+                                                  //             const NeverScrollableScrollPhysics(),
+                                                  //         itemBuilder:
+                                                  //             (context, index) {
+                                                  //           var data = TimeLineRes[
+                                                  //                       DateKey]
+                                                  //                   [
+                                                  //                   'deleteGoals']
+                                                  //               [index];
+                                                  //           return GoalPracticeComponent(
+                                                  //               image1: data[
+                                                  //                   'color'],
+                                                  //               image2: '2',
+                                                  //               mainText: data[
+                                                  //                   'name'],
+                                                  //               smallText: '',
+                                                  //               subText: data[
+                                                  //                       'identityStatement']
+                                                  //                   [0]['text'],
+                                                  //               status:
+                                                  //                   'deleted');
+                                                  //         })
+                                                  //     : Container(),
+                                                  // TimeLineRes[DateKey][
+                                                  //             'deletePractices'] !=
+                                                  //         null
+                                                  //     ? ListView.builder(
+                                                  //         shrinkWrap: true,
+                                                  //         itemCount:
+                                                  //             TimeLineRes[DateKey]
+                                                  //                     [
+                                                  //                     'deletePractices']
+                                                  //                 .length,
+                                                  //         padding:
+                                                  //             EdgeInsets.zero,
+                                                  //         physics:
+                                                  //             const NeverScrollableScrollPhysics(),
+                                                  //         itemBuilder:
+                                                  //             (context, index) {
+                                                  //           var data = TimeLineRes[
+                                                  //                       DateKey]
+                                                  //                   [
+                                                  //                   'deletePractices']
+                                                  //               [index];
+                                                  //           return NewPractice(
+                                                  //               image1: data[
+                                                  //                       'userGoal']
+                                                  //                   ['color'],
+                                                  //               image2: '2',
+                                                  //               greenText: data[
+                                                  //                   'name'],
+                                                  //               orangeText: data[
+                                                  //                       'userGoal']
+                                                  //                   ['name'],
+                                                  //               Status:
+                                                  //                   'deleted');
+                                                  //         })
+                                                  //     : Container(),
                                                 ],
                                               ),
                                       ],

@@ -38,8 +38,7 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print(
-        'StartTime = ${widget.initialHour}, ${widget.initialMinute}, ${widget.initialPeriod}');
+    print('StartTime = ${widget.initialHour}, ${widget.initialMinute}, ${widget.initialPeriod}');
 
     if (widget.initialPeriod.toUpperCase() == 'PM') {
       setState(() {
@@ -223,11 +222,13 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
       height: 200,
       width: MediaQuery.of(context).size.width / 5,
       child: ListWheelScrollView.useDelegate(
-        itemExtent: 30,
+        controller: FixedExtentScrollController(),
+        itemExtent: 50,
         useMagnifier: true,
-        magnification: 1.2,
-        diameterRatio: 1.5,
+        magnification: 1.5,
+        diameterRatio: 2,
         squeeze: 0.8,
+        physics: FixedExtentScrollPhysics(),
         onSelectedItemChanged: (index) {
           setState(() {
             if (key == "Day") {
@@ -250,7 +251,7 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
                 child: Text(
               items[index],
               style: TextStyle(
-                  fontSize: AppDimensions.font10(context) * 2.2,
+                  fontSize: AppDimensions.font10(context) * 1.9,
                   fontWeight: FontWeight.w400),
             ));
           },
