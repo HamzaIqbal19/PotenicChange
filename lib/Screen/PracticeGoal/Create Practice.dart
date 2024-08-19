@@ -229,13 +229,6 @@ class _CreatePracticeState extends State<CreatePractice> {
 
                         await prefs.remove('route');
 
-                        // Navigator.pushReplacement(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => HomeScreen(),
-                        //   ),
-                        // );
-                        // Add code for performing close action
                       },
                     ),
                   ),
@@ -460,6 +453,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                                     );
                                   }),
                         ),
+                        SizedBox(height: AppDimensions.height10(context)*5,)
                       ],
                     ),
                   )

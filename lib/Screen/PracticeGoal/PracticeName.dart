@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -10,6 +8,7 @@ import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_text_styles.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -145,13 +144,7 @@ class _PracticeNameState extends State<PracticeName> {
                                 FadePageRouteReverse(
                                     page: const PracticeReview()))
                         : Navigator.pop(context);
-                    // Navigator.pushReplacement(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => HomeScreen(),
-                    //   ),
-                    // );
-                    // Add code for performing close action
+
                   },
                 ),
               ),
@@ -309,14 +302,6 @@ class _PracticeNameState extends State<PracticeName> {
                                 ),
                               );
                             }
-
-                            // Navigator.pushReplacement(
-                            //   context,
-                            //   MaterialPageRoute(
-                            //     builder: (context) => HomeScreen(),
-                            //   ),
-                            // );
-                            // Add code for performing close action
                           },
                         ),
                 ),
@@ -381,94 +366,6 @@ class _PracticeNameState extends State<PracticeName> {
                     height: AppDimensions.height10(context),
                   ),
                   goalAndPractice(context, color, 2, practice.text.toString()),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   crossAxisAlignment: CrossAxisAlignment.center,
-                  //   children: [
-                  //     Container(
-                  //       width: AppDimensions.width10(context) * 7.9,
-                  //       height: AppDimensions.height10(context) * 7.9,
-                  //       // color: Colors.amber,
-                  //
-                  //       // color: Colors.blue,
-                  //       child: Stack(
-                  //         children: [
-                  //           Align(
-                  //             alignment: const Alignment(-3, 0),
-                  //             child: Container(
-                  //               width: AppDimensions.width10(context) * 7.9,
-                  //               height: AppDimensions.height10(context) * 7.9,
-                  //               decoration: BoxDecoration(
-                  //                 shape: BoxShape.circle,
-                  //                 // color: Colors.amber,
-                  //                 image: DecorationImage(
-                  //                     image: AssetImage(color == '1'
-                  //                         ? "assets/images/red_gradient.webp"
-                  //                         : color == '2'
-                  //                             ? 'assets/images/orange_moon.webp'
-                  //                             : color == '3'
-                  //                                 ? "assets/images/lightGrey_gradient.webp"
-                  //                                 : color == '4'
-                  //                                     ? "assets/images/lightBlue_gradient.webp"
-                  //                                     : color == '5'
-                  //                                         ? "assets/images/medBlue_gradient.webp"
-                  //                                         : color == '6'
-                  //                                             ? "assets/images/Blue_gradient.webp"
-                  //                                             : 'assets/images/orange_moon.webp'),
-                  //                     fit: BoxFit.contain),
-                  //               ),
-                  //             ),
-                  //           ),
-                  //           Align(
-                  //             alignment: const Alignment(1.5, 0),
-                  //             child: Container(
-                  //               height: AppDimensions.height10(context) * 4.9,
-                  //               width: AppDimensions.width10(context) * 4.9,
-                  //               decoration: const BoxDecoration(
-                  //                   shape: BoxShape.circle,
-                  //                   image: DecorationImage(
-                  //                       image: AssetImage(
-                  //                           'assets/images/Ellipse 158_wb.webp'),
-                  //                       fit: BoxFit.cover)),
-                  //             ),
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     ),
-                  //     Container(
-                  //         //width: AppDimensions.width10(context) * 22,
-                  //         margin: EdgeInsets.only(
-                  //             left: AppDimensions.width10(context) * 1.5),
-                  //         child: practice.text.toString().length > 20
-                  //             ? Text(
-                  //                 capitalizeFirstLetter(
-                  //                   practice.text.substring(0, 19) + '...',
-                  //                 ),
-                  //                 textAlign: TextAlign.center,
-                  //                 overflow: TextOverflow.ellipsis,
-                  //                 style: TextStyle(
-                  //                   fontWeight: FontWeight.w600,
-                  //                   color: widget.comingFromEditScreen
-                  //                       ? const Color(0xff437296)
-                  //                       : const Color(0xFF156F6D),
-                  //                   fontSize:
-                  //                       AppDimensions.font10(context) * 2.0,
-                  //                 ),
-                  //               )
-                  //             : Text(
-                  //                 capitalizeFirstLetter(
-                  //                   practice.text.toString(),
-                  //                 ),
-                  //                 style: TextStyle(
-                  //                   fontWeight: FontWeight.w600,
-                  //                   color: const Color(0xFF156F6D),
-                  //                   fontSize:
-                  //                       AppDimensions.font10(context) * 2.0,
-                  //                 ),
-                  //               )),
-                  //   ],
-                  // ),
-                  //
                   SizedBox(
                     height: AppDimensions.height10(context) * 7.1,
                   ),
@@ -763,57 +660,6 @@ class _PracticeNameState extends State<PracticeName> {
                       : Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // widget.comingFromEditScreen
-                            //       ? Container(
-                            //           width: AppDimensions.width10(context) * 10.0,
-                            //           height: AppDimensions.height10(context) * 5.0,
-                            //           decoration: myTextFields[0]['text'] != ""
-                            //               ? BoxDecoration(
-                            //                   color: Colors.white,
-                            //                   border:
-                            //                       Border.all(color: Color(0xffFA9934)),
-                            //                   borderRadius: const BorderRadius.all(
-                            //                       Radius.circular(50.0)),
-                            //                 )
-                            //               : BoxDecoration(
-                            //                   // color: Color(0xFFFF7D50),
-                            //                   border: Border.all(
-                            //                       color: const Color(0xff282828)),
-                            //                   color: Colors.transparent,
-                            //                   borderRadius: const BorderRadius.all(
-                            //                       Radius.circular(50.0)),
-                            //                 ),
-                            //           child: AnimatedScaleButton(
-                            //             onTap: () {
-                            //               //   signupSheet(context, "Sign up / login", "login");
-                            //             },
-                            //             child: Center(
-                            //                 child: Text(
-                            //               "Reset",
-                            //               style: TextStyle(
-                            //                   fontFamily: "Laila",
-                            //                   fontWeight: FontWeight.w600,
-                            //                   color: myTextFields[0]['text'] != ""
-                            //                       ? Color(0xffFA9934)
-                            //                       : Color(0xff282828),
-                            //                   fontSize:
-                            //                       AppDimensions.height10(context) * 1.8),
-                            //             )),
-                            //           ))
-                            //       :
-
-                            // Container(
-                            //     // color: Colors.blue,
-                            //     width: AppDimensions.width10(context) * 5.0,
-                            //     height: AppDimensions.height10(context) * 5.0,
-                            //     child: Image.asset(
-                            //       "assets/images/Moreactions.webp",
-                            //       fit: BoxFit.contain,
-                            //     )),
-                            // SizedBox(
-                            //   width: AppDimensions.width10(context) * 2.0,
-                            // ),
-
                             ValueListenableBuilder<TextEditingValue>(
                                 valueListenable: practiceName,
                                 builder: (context, value, child) {
@@ -892,13 +738,7 @@ class _PracticeNameState extends State<PracticeName> {
                                           widget.comingFromEditScreen
                                               ? "Save"
                                               : "Next",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                            fontWeight: FontWeight.w600,
-                                          ),
+                                          style: AppTextStyles().onBoardingButtonStyle(context),
                                         ),
                                       ),
                                     ),

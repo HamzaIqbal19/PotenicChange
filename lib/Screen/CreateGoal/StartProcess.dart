@@ -46,21 +46,6 @@ class _StartProcessState extends State<StartProcess> {
             centerTitle: true,
             backgroundColor: Colors.transparent,
             automaticallyImplyLeading: false,
-            title: Container(
-              child: GradientText(
-                AppText().goalSetting,
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  // color: Colors.white,
-                  fontSize: AppDimensions.font10(context) * 3,
-                ),
-                colors: const [
-                  Color(0xFFFA9934),
-                  Color(0xFFEDD15E),
-                ],
-              ),
-            ),
             actions: [
               Center(
                 // alignment: Alignment.center,
@@ -105,26 +90,25 @@ class _StartProcessState extends State<StartProcess> {
                 children: [
                   Column(
                     children: [
-                      // Container(
-                      //   padding: EdgeInsets.only(
-                      //       top: AppDimensions.height10(context) * 5.7),
-                      //   child: Center(
-                      //     child: GradientText(
-                      //       AppText().goalSetting,
-                      //       style: TextStyle(
-                      //         fontWeight: FontWeight.w700,
-                      //         // color: Colors.white,
-                      //         fontSize: AppDimensions.font10(context) * 3,
-                      //       ),
-                      //       colors: const [
-                      //         Color(0xFFFA9934),
-                      //         Color(0xFFEDD15E),
-                      //       ],
-                      //     ),
-                      //   ),
-                      // ),
+                      Container(
+                        padding: EdgeInsets.only(
+                            top: AppDimensions.height10(context) * 5.7),
+                        child: GradientText(
+                          AppText().goalSetting,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            // color: Colors.white,
+                            fontSize: AppDimensions.font10(context) * 3,
+                          ),
+                          colors: const [
+                            Color(0xFFFA9934),
+                            Color(0xFFEDD15E),
+                          ],
+                        ),
+                      ),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 12.4,
+                        height: AppDimensions.height10(context) * 2.4,
                       ),
                       SizedBox(
                         height: AppDimensions.height10(context) * 7.5,
@@ -153,38 +137,48 @@ class _StartProcessState extends State<StartProcess> {
                       SizedBox(
                         height: AppDimensions.height10(context) * 3,
                       ),
+                      Center(
+                        child: Text(
+                          AppText().step1,
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                            fontSize:
+                                AppDimensions.font10(context) * 2.4,
+                          ),
+                        ),
+                      ),
                       SizedBox(
-                          // color: Colors.black,
-                          height: AppDimensions.height10(context) * 7.4,
-                          width: AppDimensions.width10(context) * 36.6,
-                          child: Column(
-                            children: [
-                              Center(
-                                child: Text(
-                                  AppText().step1,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.4,
-                                  ),
-                                ),
+                        height: AppDimensions.height10(context) * 1.1,
+                      ),
+                      RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontSize:
+                                AppDimensions.font10(context) * 1.7,
                               ),
-                              Center(
-                                child: Text(
-                                  AppText().step1Head,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.4,
-                                  ),
-                                ),
+                          children: [
+                            const TextSpan(
+                                text: 'Set'
+                            ),
+                            TextSpan(
+                                text: AppText().step1Head,
+                              style: const TextStyle(
+                                fontWeight: FontWeight.w700,
                               ),
-                            ],
-                          )),
+                            ),
+                            TextSpan(
+                                text: AppText().step1Body
+                            ),
+                          ]
+                      )),
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 2.1,
+                      ),
                       Center(
                         child: Image(
                           image: const AssetImage('assets/images/image1.webp'),
@@ -192,55 +186,52 @@ class _StartProcessState extends State<StartProcess> {
                           width: AppDimensions.width10(context) * 6.5,
                         ),
                       ),
+
                       SizedBox(
-                        height: AppDimensions.height10(context) * 1.1,
+                        height: AppDimensions.height10(context) * 3,
                       ),
                       Center(
                         child: Text(
-                          AppText().step1Body,
+                          AppText().step2,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontWeight: FontWeight.w400,
+                            fontWeight: FontWeight.w600,
                             color: Colors.white,
-                            fontSize: AppDimensions.font10(context) * 1.8,
+                            fontSize:
+                                AppDimensions.font10(context) * 2.4,
                           ),
                         ),
                       ),
                       SizedBox(
+                        height: AppDimensions.height10(context) * 1.1,
+                      ),
+                      RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontSize:
+                                AppDimensions.font10(context) * 1.7,
+                              ),
+                              children: [
+                                const TextSpan(
+                                    text: 'Add'
+                                ),
+                                TextSpan(
+                                  text: AppText().step2Head,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                TextSpan(
+                                    text: AppText().step2Body
+                                ),
+                              ]
+                          )),
+                      SizedBox(
                         height: AppDimensions.height10(context) * 3,
                       ),
-                      SizedBox(
-                          // color: Colors.black,
-                          height: AppDimensions.height10(context) * 8.3,
-                          width: AppDimensions.width10(context) * 36.6,
-                          child: Column(
-                            children: [
-                              Center(
-                                child: Text(
-                                  AppText().step2,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.4,
-                                  ),
-                                ),
-                              ),
-                              Center(
-                                child: Text(
-                                  AppText().step2Head,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.4,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
                       Center(
                         child: Image(
                           image: const AssetImage('assets/images/image2.webp'),
@@ -249,26 +240,36 @@ class _StartProcessState extends State<StartProcess> {
                         ),
                       ),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 1.3,
+                        height: AppDimensions.height10(context) * 4,
                       ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 8.6,
-                        child: Center(
-                          child: Text(
-                            AppText().step2Body,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white,
-                              fontSize: AppDimensions.font10(context) * 1.8,
-                            ),
-                          ),
-                        ),
-                      ),
+                      RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                fontSize:
+                                AppDimensions.font10(context) * 1.5,
+                              ),
+                              children: [
+                                const TextSpan(
+                                    text: 'In less than '
+                                ),
+                                const TextSpan(
+                                  text: '20 minutes',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                TextSpan(
+                                    text: AppText().footerBody
+                                ),
+                              ]
+                          )),
                     ],
                   ),
                   Positioned(
-                    bottom: 30,
+                    bottom: 50,
                     child: AnimatedScaleButton(
                       onTap: () {
                         Navigator.push(

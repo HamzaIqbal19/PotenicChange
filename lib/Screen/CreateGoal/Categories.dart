@@ -130,9 +130,6 @@ class _CategoriesState extends State<Categories> {
               ),
             ),
           ),
-          // : Container(
-          //     color: Colors.white,
-          //   ),
           loading == false
               ? Column(
                   children: [

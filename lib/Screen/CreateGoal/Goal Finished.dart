@@ -410,34 +410,6 @@ class _GoalFinishedState extends State<GoalFinished> {
                             )
                           ],
                         ),
-
-
-
-                        // Positioned(
-                        //     bottom: 15,
-                        //     child: Row(
-                        //       mainAxisAlignment: MainAxisAlignment.start,
-                        //       children: [
-                        //         SizedBox(
-                        //           width: AppDimensions.width10(context) * 1.6,
-                        //         ),
-                        //         Container(
-                        //             // color: Colors.blue,
-                        //             width: AppDimensions.width10(context) * 5.0,
-                        //             height:
-                        //                 AppDimensions.height10(context) * 5.0,
-                        //             child: AnimatedScaleButton(
-                        //               onTap: () {
-                        //                 //  signupSheet(context, "Sign up / login", "login");
-                        //               },
-                        //               child: Image.asset(
-                        //                 "assets/images/Moreactions.webp",
-                        //                 fit: BoxFit.contain,
-                        //               ),
-                        //             )),
-                        //       ],
-                        //     ))
-
                       ],
                     )
                   : const Center(

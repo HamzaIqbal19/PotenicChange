@@ -12,6 +12,7 @@ import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Screen/timeline/component/imageComponent.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_text_styles.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -501,12 +502,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                               child: Center(
                                 child: Text(
                                   "Next",
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.6,
-                                    fontWeight: FontWeight.w600,
-                                  ),
+                                  style: AppTextStyles().onBoardingButtonStyle(context),
                                 ),
                               ),
                             ),

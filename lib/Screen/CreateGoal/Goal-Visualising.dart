@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -19,7 +18,6 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading.dart';
 import '../ReviewGoal/StarReview.dart';
@@ -1534,7 +1532,7 @@ class _VisualisingState extends State<Visualising> {
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
-                                                              1.8),
+                                                              2),
                                                 ))),
                                           )
                                         : Container(),
@@ -1639,23 +1637,6 @@ class _VisualisingState extends State<Visualising> {
                                                         Radius.circular(50.0)),
                                               ),
                                         child:
-                                            //  widget.comingFromEditScreen
-                                            //     ? Center(
-                                            //         child: Text(
-                                            //           visualize[0]['text'] != ""
-                                            //               ? "Create your goal"
-                                            //               : "Save",
-                                            //           style: TextStyle(
-                                            //             color: visualize[0]['text'] != ""
-                                            //                 ? Colors.white
-                                            //                 : Colors.white.withOpacity(0.5),
-                                            //             fontSize:
-                                            //                 AppDimensions.height10(context) * 1.6,
-                                            //             fontWeight: FontWeight.w600,
-                                            //           ),
-                                            //         ),
-                                            //       )
-                                            //     :
                                             Center(
                                           child: Text(
                                             widget.comingFromEditScreen
@@ -1675,7 +1656,7 @@ class _VisualisingState extends State<Visualising> {
                                                       .withOpacity(0.5),
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.6,
+                                                  2,
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),

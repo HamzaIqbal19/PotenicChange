@@ -13,6 +13,7 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_text_styles.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:intl/intl.dart';
@@ -353,106 +354,13 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             );
                           }
 
-                          // showDialog<String>(
-                          //   context: context,
-                          //   builder: (BuildContext context) => Container(
-                          //     width: AppDimensions.width10(context) * 27.0,
-                          //     height: AppDimensions.height10(context) * 15.8,
-                          //     child: AlertDialog(
-                          //       shape: RoundedRectangleBorder(
-                          //           borderRadius: BorderRadius.circular(
-                          //               AppDimensions.height10(context) * 1.4)),
-                          //       contentPadding: EdgeInsets.zero,
-                          //       actionsPadding: EdgeInsets.zero,
-                          //       titlePadding: EdgeInsets.zero,
-                          //       title: Container(
-                          //         margin: const EdgeInsets.only(
-                          //             top: 19, right: 16, left: 16, bottom: 0),
-                          //         height: AppDimensions.height10(context) * 2.4,
-                          //         width: AppDimensions.width10(context) * 23.8,
-                          //         child: Text(
-                          //           "Exit Practice?",
-                          //           textAlign: TextAlign.center,
-                          //           style: TextStyle(
-                          //             fontSize: AppDimensions.font10(context) * 1.7,
-                          //             fontWeight: FontWeight.w600,
-                          //           ),
-                          //         ),
-                          //       ),
-                          //       content: Container(
-                          //         margin: EdgeInsets.only(
-                          //             bottom: AppDimensions.height10(context) * 1.9,
-                          //             left: AppDimensions.height10(context) * 1.6,
-                          //             left: AppDimensions.width10(context) * 1.6,
-                          //             right: AppDimensions.width10(context) * 1.6),
-                          //         height: AppDimensions.height10(context) * 1.8,
-                          //         width: AppDimensions.width10(context) * 23.8,
-                          //         child: const Text(
-                          //           "Are you sure you want to exit?",
-                          //           textAlign: TextAlign.center,
-                          //           style: TextStyle(
-                          //             fontSize: 13,
-                          //             fontWeight: FontWeight.w400,
-                          //           ),
-                          //         ),
-                          //       ),
-                          //       actions: <Widget>[
-                          //         Column(
-                          //           children: [
-                          //             Container(
-                          //               height: 42,
-                          //               width: double.infinity,
-                          //               color: const Color(0xFF007AFF),
-                          //               child: TextButton(
-                          //                 onPressed: () {
-                          //                   Navigator.pushReplacement(
-                          //                     context,
-                          //                     MaterialPageRoute(
-                          //                       builder: (context) => HomeScreen(
-                          //                         login: true,
-                          //                       ),
-                          //                     ),
-                          //                   );
-                          //                 },
-                          //                 child: const Text(
-                          //                   'Yes',
-                          //                   style: TextStyle(
-                          //                       color: Color(0xFFFFFFFF),
-                          //                       fontSize: 17,
-                          //                       fontFamily: "Laila",
-                          //                       fontWeight: FontWeight.w400),
-                          //                 ),
-                          //               ),
-                          //             ),
-                          //             Container(
-                          //               height: 44,
-                          //               width: double.infinity,
-                          //               child: TextButton(
-                          //                 onPressed: () {
-                          //                   Navigator.pop(context);
-                          //                 },
-                          //                 child: const Text(
-                          //                   'No',
-                          //                   style: TextStyle(
-                          //                       fontSize: 17,
-                          //                       fontFamily: "Laila",
-                          //                       fontWeight: FontWeight.w400,
-                          //                       color: Color(0xFF007AFF)),
-                          //                 ),
-                          //               ),
-                          //             ),
-                          //           ],
-                          //         ),
-                          //       ],
-                          //     ),
-                          //   ),
-                          // );
                         },
                       ),
               ),
             ],
           )),
       body: Stack(
+        alignment: AlignmentDirectional.topCenter,
         children: [
           Container(
             decoration: BoxDecoration(
@@ -532,32 +440,22 @@ class _PracticeReminderState extends State<PracticeReminder> {
                 SizedBox(
                   height: AppDimensions.height10(context) - 2,
                 ),
-                Container(
-                  height: AppDimensions.height10(context) * 8.6,
-                  width: AppDimensions.width10(context) * 37.2,
-                  padding: EdgeInsets.only(
-                      left: AppDimensions.width10(context) * 2.1,
-                      right: AppDimensions.width10(context) * 2.1),
-                  child: Center(
-                    child: Text(
-                      AppText().pracReminderBody,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: widget.comingFromEditScreen
-                            ? const Color(0xff437296)
-                            : Colors.white,
-                        fontFamily: 'Laila',
-                        fontSize: AppDimensions.font10(context) * 1.8,
-                      ),
-                    ),
+                Text(
+                  AppText().pracReminderBody,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: widget.comingFromEditScreen
+                        ? const Color(0xff437296)
+                        : Colors.white,
+                    fontSize: AppDimensions.font10(context) * 1.8,
                   ),
                 ),
                 SizedBox(
                   height: AppDimensions.height10(context) * 3.4,
                 ),
                 Container(
-                  height: AppDimensions.height10(context) * 19,
+                  //height: AppDimensions.height10(context) * 16,
                   width: AppDimensions.width10(context) * 38.2,
                   decoration: BoxDecoration(
                       // color: Colors.white,
@@ -574,9 +472,10 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
-                        height: AppDimensions.height10(context) * 2.0,
+                        height: AppDimensions.height10(context) * 2.8,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -678,7 +577,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         ],
                       ),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 2.0,
+                        height: AppDimensions.height10(context) * 2.8,
                       ),
                     ],
                   ),
@@ -687,7 +586,6 @@ class _PracticeReminderState extends State<PracticeReminder> {
                   height: AppDimensions.height10(context) * 2.0,
                 ),
                 Container(
-                  height: AppDimensions.height10(context) * 19.0,
                   width: AppDimensions.width10(context) * 38.2,
                   decoration: BoxDecoration(
                       // color: Colors.white,
@@ -703,11 +601,12 @@ class _PracticeReminderState extends State<PracticeReminder> {
                       borderRadius: BorderRadius.all(Radius.circular(
                           AppDimensions.height10(context) * 2.0))),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       SizedBox(
-                        height: AppDimensions.height10(context) * 2.0,
+                        height: AppDimensions.height10(context) * 2.8,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -798,383 +697,355 @@ class _PracticeReminderState extends State<PracticeReminder> {
                         ],
                       ),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 2.0,
+                        height: AppDimensions.height10(context) * 2.8,
                       ),
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: AppDimensions.height10(context) * 7.0,
-                ),
-                updated
-                    ? GestureDetector(
-                        onPanUpdate: (details) {
-                          setState(() {
-                            swipeOffset += details.delta.dx;
-                          });
 
-                          if (swipeOffset.abs() >=
-                              MediaQuery.of(context).size.width / 3.0) {
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 50,
+            child: updated
+                ? GestureDetector(
+              onPanUpdate: (details) {
+                setState(() {
+                  swipeOffset += details.delta.dx;
+                });
+
+                if (swipeOffset.abs() >=
+                    MediaQuery.of(context).size.width / 3.0) {
+                  setState(() {
+                    showContainer = false;
+                  });
+                }
+              },
+              child: AnimatedOpacity(
+                duration: const Duration(milliseconds: 700),
+                opacity: showContainer ? 1.0 : 0.0,
+                child: Transform.translate(
+                  offset: Offset(swipeOffset, 0.0),
+                  child: Container(
+                    width: AppDimensions.width10(context) * 38.259,
+                    height: AppDimensions.height10(context) * 9.707,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 2.0),
+                        gradient: const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color(0xFFD4B7B9),
+                              Color(0xFF91698C)
+                            ])),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.width10(context) *
+                                  1.261),
+                          width:
+                          AppDimensions.width10(context) * 4.437,
+                          height:
+                          AppDimensions.height10(context) * 4.437,
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/circle_tick.webp'))),
+                        ),
+                        Container(
+                          //width: AppDimensions.width10(context) * 6.9,
+                          height:
+                          AppDimensions.height10(context) * 3.6,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.width10(context) *
+                                  1.232),
+                          child: Column(
+                            crossAxisAlignment:
+                            CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width:
+                                AppDimensions.width10(context) *
+                                    4.6,
+                                height:
+                                AppDimensions.height10(context) *
+                                    1.4,
+                                //   color: Colors.amber,
+                                child: Text(
+                                  'Updates saved',
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.font10(
+                                          context) *
+                                          1.3,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xFFFFFFFF)),
+                                ),
+                              ),
+                              SizedBox(
+                                width:
+                                AppDimensions.width10(context) *
+                                    16.9,
+                                height:
+                                AppDimensions.height10(context) *
+                                    2.2,
+                                child: Text(
+                                  'Your Reminder',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      fontSize: AppDimensions.font10(
+                                          context) *
+                                          1.8,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xFFFFFFFF)),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        AnimatedScaleButton(
+                          onTap: () {
                             setState(() {
-                              showContainer = false;
+                              updated = false;
                             });
-                          }
-                        },
-                        child: AnimatedOpacity(
-                          duration: const Duration(milliseconds: 700),
-                          opacity: showContainer ? 1.0 : 0.0,
-                          child: Transform.translate(
-                            offset: Offset(swipeOffset, 0.0),
-                            child: Container(
-                              width: AppDimensions.width10(context) * 38.259,
-                              height: AppDimensions.height10(context) * 9.707,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10(context) * 2.0),
-                                  gradient: const LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        Color(0xFFD4B7B9),
-                                        Color(0xFF91698C)
-                                      ])),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.width10(context) *
-                                            1.261),
-                                    width:
-                                        AppDimensions.width10(context) * 4.437,
-                                    height:
-                                        AppDimensions.height10(context) * 4.437,
-                                    decoration: const BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/circle_tick.webp'))),
-                                  ),
-                                  Container(
-                                    //width: AppDimensions.width10(context) * 6.9,
-                                    height:
-                                        AppDimensions.height10(context) * 3.6,
-                                    margin: EdgeInsets.only(
-                                        left: AppDimensions.width10(context) *
-                                            1.232),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  4.6,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  1.4,
-                                          //   color: Colors.amber,
-                                          child: Text(
-                                            'Updates saved',
-                                            style: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.3,
-                                                fontWeight: FontWeight.w500,
-                                                color: const Color(0xFFFFFFFF)),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  16.9,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.2,
-                                          child: Text(
-                                            'Your Reminder',
-                                            overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.8,
-                                                fontWeight: FontWeight.w500,
-                                                color: const Color(0xFFFFFFFF)),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  AnimatedScaleButton(
-                                    onTap: () {
-                                      setState(() {
-                                        updated = false;
-                                      });
-                                      stopTimer();
-                                    },
-                                    child: Container(
-                                      width:
-                                          AppDimensions.height10(context) * 8.1,
-                                      height:
-                                          AppDimensions.height10(context) * 6.0,
-                                      margin: EdgeInsets.only(
-                                          left:
-                                              AppDimensions.height10(context) *
-                                                  5,
-                                          right:
-                                              AppDimensions.height10(context) *
-                                                  1.23),
-                                      decoration: BoxDecoration(
-                                        border: Border.all(
-                                            color: const Color(0xFFFFFFFF),
-                                            width: 1),
-                                        borderRadius: BorderRadius.circular(
-                                            AppDimensions.height10(context) *
-                                                2.0),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'Undo',
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  1.8,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0xFFFFFFFF)),
-                                        ),
-                                      ),
-                                    ),
-                                  )
-                                ],
+                            stopTimer();
+                          },
+                          child: Container(
+                            width:
+                            AppDimensions.height10(context) * 8.1,
+                            height:
+                            AppDimensions.height10(context) * 6.0,
+                            margin: EdgeInsets.only(
+                                left:
+                                AppDimensions.height10(context) *
+                                    5,
+                                right:
+                                AppDimensions.height10(context) *
+                                    1.23),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: const Color(0xFFFFFFFF),
+                                  width: 1),
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10(context) *
+                                      2.0),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Undo',
+                                style: TextStyle(
+                                    fontSize: AppDimensions.font10(
+                                        context) *
+                                        1.8,
+                                    fontWeight: FontWeight.w500,
+                                    color: const Color(0xFFFFFFFF)),
                               ),
                             ),
                           ),
-                        ),
-                      )
-                    : Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          widget.comingFromEditScreen
-                              ? Container(
-                                  width: AppDimensions.width10(context) * 10.0,
-                                  height: AppDimensions.height10(context) * 4.8,
-                                  decoration: reminderSelected
-                                      ? BoxDecoration(
-                                          color: Colors.white,
-                                          border: Border.all(
-                                              color: const Color(0xffFA9934)),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(50.0)),
-                                        )
-                                      : BoxDecoration(
-                                          // color: Color(0xFFFF7D50),
-                                          border: Border.all(
-                                              color: const Color(0xff282828)),
-                                          color: Colors.transparent,
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(50.0)),
-                                        ),
-                                  child: AnimatedScaleButton(
-                                    onTap: () {
-                                      //   signupSheet(context, "Sign up / login", "login");
-                                    },
-                                    child: Center(
-                                        child: Text(
-                                      "Reset",
-                                      style: TextStyle(
-                                          fontFamily: "Laila",
-                                          fontWeight: FontWeight.w600,
-                                          color: reminderSelected
-                                              ? const Color(0xffFA9934)
-                                              : const Color(0xff282828),
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.8),
-                                    )),
-                                  ))
-                              : Container(),
-                          //  SizedBox(
-                          //     // color: Colors.blue,
-                          //     width: AppDimensions.width10(context) * 5.0,
-                          //     height: AppDimensions.height10(context) * 5.0,
-                          //     child: Image.asset(
-                          //       "assets/images/Moreactions.webp",
-                          //       fit: BoxFit.contain,
-                          //     )),
-                          Stack(alignment: Alignment.center, children: [
-                            AnimatedScaleButton(
-                              onTap: () async {
-                                if (widget.comingFromEditScreen) {
-                                  if (reminderSelected == true) {
-                                    setState(() {
-                                      loader =
-                                          true; // Show loader when the API call starts
-                                    });
-
-                                    // List<Map<String, dynamic>>
-                                    //     loadedTimesPerDay =
-                                    //     await loadTimesPerDay();
-                                    final SharedPreferences prefs =
-                                        await _prefs;
-
-                                    await prefs.setBool('pracReminder', radio1);
-                                    //add Id
-                                    PracticeGoalApi()
-                                        .updateUserPractice(
-                                          'reminder',
-                                          radio1,
-                                        )
-                                        .then((response) {
-                                          if (response == true) {
-                                            setState(() {
-                                              updated = true;
-                                              showContainer = true;
-                                            });
-                                            startTimer();
-                                          } else if (response == false) {}
-                                        })
-                                        .catchError((error) {})
-                                        .whenComplete(() {
-                                          setState(() {
-                                            loader =
-                                                false; // Hide loader when the API call completes
-                                          });
-                                        });
-                                  }
-                                } else {
-                                  if (reminderSelected == true) {
-                                    setState(() {
-                                      loader =
-                                          true; // Show loader when the API call starts
-                                    });
-
-                                    List<Map<String, dynamic>>
-                                        loadedTimesPerDay =
-                                        await loadTimesPerDay();
-                                    final SharedPreferences prefs =
-                                        await _prefs;
-
-                                    await prefs.setBool('pracReminder', radio1);
-                                    //add Id
-                                    PracticeGoalApi()
-                                        .userAddPractice(
-                                          practiceName.text.toString(),
-                                          radio1,
-                                          loadedTimesPerDay,
-                                        )
-                                        .then((response) async {
-                                          if (response == true) {
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(const SnackBar(
-                                                    content: Text(
-                                                        "Practice Added Successfully")));
-                                            if (route == 'view_all_goals') {
-                                              Navigator.pushReplacement(
-                                                  context,
-                                                  FadePageRoute(
-                                                      page:
-                                                          const view_all_goals_menu()));
-                                            } else if (route ==
-                                                'view_all_goals_2') {
-                                              Navigator.pushReplacement(
-                                                  context,
-                                                  FadePageRoute(
-                                                      page:
-                                                          const multiple_goal_inactive()));
-                                            } else {
-                                              Navigator.pushReplacement(
-                                                context,
-                                                FadePageRoute2(
-                                                  true,
-                                                  exitPage:
-                                                      const PracticeReminder(
-                                                    comingFromEditScreen: false, praticeName: '', goalName: '', goalColor: '', pracColor: '',
-                                                  ),
-                                                  enterPage:
-                                                      const PracticeFinished(),
-                                                ),
-                                              );
-                                            }
-                                            final SharedPreferences prefs =
-                                                await _prefs;
-
-                                            await prefs.remove('goal_route');
-                                            await prefs.remove('route');
-                                          } else if (response == false) {}
-                                        })
-                                        .catchError((error) {})
-                                        .whenComplete(() {
-                                          setState(() {
-                                            loader =
-                                                false; // Hide loader when the API call completes
-                                          });
-                                        });
-                                  }
-                                }
-                              },
-                              child: Container(
-                                height: AppDimensions.height10(context) * 5.2,
-                                width: widget.comingFromEditScreen
-                                    ? AppDimensions.width10(context) * 26.3
-                                    : AppDimensions.width10(context) * 31.3,
-                                decoration: BoxDecoration(
-                                  // color: Color(0xFFFF7D50),
-                                  border: Border.all(color: Colors.transparent),
-                                  gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: reminderSelected
-                                          ? [
-                                              const Color(0xFFFCC10D),
-                                              const Color(0xFFFDA210)
-                                            ]
-                                          : [
-                                              const Color(0xFFFCC10D)
-                                                  .withOpacity(0.5),
-                                              const Color(0xFFFDA210)
-                                                  .withOpacity(0.5)
-                                            ]),
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(50.0)),
-                                ),
-                                child: Center(
-                                  child: loader
-                                      ? SpinKitThreeBounce(
-                                          color: const Color(0xFF8C648A),
-                                          // delay: Duration(milliseconds: 0),
-                                          size:
-                                              AppDimensions.height10(context) *
-                                                  3.5,
-                                        )
-                                      : Text(
-                                          widget.comingFromEditScreen
-                                              ? "Save"
-                                              : "Finished",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontFamily: "Laila",
-                                            // height: AppDimensions.height10(context) *0.1,
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    2.0,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                ),
-                              ),
-                            ),
-                          ]),
-                        ],
-                      ),
-                SizedBox(
-                  height: AppDimensions.height10(context) * 2.5,
+                        )
+                      ],
+                    ),
+                  ),
                 ),
-                Padding(
-                    padding: EdgeInsets.only(
-                        bottom: MediaQuery.of(context).viewInsets.bottom))
+              ),
+            )
+                : Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                widget.comingFromEditScreen
+                    ? Container(
+                    width: AppDimensions.width10(context) * 10.0,
+                    height: AppDimensions.height10(context) * 4.8,
+                    decoration: reminderSelected
+                        ? BoxDecoration(
+                      color: Colors.white,
+                      border: Border.all(
+                          color: const Color(0xffFA9934)),
+                      borderRadius: const BorderRadius.all(
+                          Radius.circular(50.0)),
+                    )
+                        : BoxDecoration(
+                      // color: Color(0xFFFF7D50),
+                      border: Border.all(
+                          color: const Color(0xff282828)),
+                      color: Colors.transparent,
+                      borderRadius: const BorderRadius.all(
+                          Radius.circular(50.0)),
+                    ),
+                    child: Center(
+                        child: Text(
+                          "Reset",
+                          style: TextStyle(
+                              fontFamily: "Laila",
+                              fontWeight: FontWeight.w600,
+                              color: reminderSelected
+                                  ? const Color(0xffFA9934)
+                                  : const Color(0xff282828),
+                              fontSize:
+                              AppDimensions.font10(context) *
+                                  2),
+                        )))
+                    : Container(),
+                widget.comingFromEditScreen? SizedBox(width: AppDimensions.width10(context) * 1,):Container(),
+                AnimatedScaleButton(
+                  onTap: () async {
+                    if (widget.comingFromEditScreen) {
+                      if (reminderSelected == true) {
+                        setState(() {
+                          loader =
+                          true; // Show loader when the API call starts
+                        });
+
+                        // List<Map<String, dynamic>>
+                        //     loadedTimesPerDay =
+                        //     await loadTimesPerDay();
+                        final SharedPreferences prefs =
+                        await _prefs;
+
+                        await prefs.setBool('pracReminder', radio1);
+                        //add Id
+                        PracticeGoalApi()
+                            .updateUserPractice(
+                          'reminder',
+                          radio1,
+                        )
+                            .then((response) {
+                          if (response == true) {
+                            setState(() {
+                              updated = true;
+                              showContainer = true;
+                            });
+                            startTimer();
+                          } else if (response == false) {}
+                        })
+                            .catchError((error) {})
+                            .whenComplete(() {
+                          setState(() {
+                            loader =
+                            false; // Hide loader when the API call completes
+                          });
+                        });
+                      }
+                    } else {
+                      if (reminderSelected == true) {
+                        setState(() {
+                          loader =
+                          true; // Show loader when the API call starts
+                        });
+
+                        List<Map<String, dynamic>>
+                        loadedTimesPerDay =
+                        await loadTimesPerDay();
+                        final SharedPreferences prefs =
+                        await _prefs;
+
+                        await prefs.setBool('pracReminder', radio1);
+                        //add Id
+                        PracticeGoalApi()
+                            .userAddPractice(
+                          practiceName.text.toString(),
+                          radio1,
+                          loadedTimesPerDay,
+                        )
+                            .then((response) async {
+                          if (response == true) {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(const SnackBar(
+                                content: Text(
+                                    "Practice Added Successfully")));
+                            if (route == 'view_all_goals') {
+                              Navigator.pushReplacement(
+                                  context,
+                                  FadePageRoute(
+                                      page:
+                                      const view_all_goals_menu()));
+                            } else if (route ==
+                                'view_all_goals_2') {
+                              Navigator.pushReplacement(
+                                  context,
+                                  FadePageRoute(
+                                      page:
+                                      const multiple_goal_inactive()));
+                            } else {
+                              Navigator.pushReplacement(
+                                context,
+                                FadePageRoute2(
+                                  true,
+                                  exitPage:
+                                  const PracticeReminder(
+                                    comingFromEditScreen: false, praticeName: '', goalName: '', goalColor: '', pracColor: '',
+                                  ),
+                                  enterPage:
+                                  const PracticeFinished(),
+                                ),
+                              );
+                            }
+                            final SharedPreferences prefs =
+                            await _prefs;
+
+                            await prefs.remove('goal_route');
+                            await prefs.remove('route');
+                          } else if (response == false) {}
+                        })
+                            .catchError((error) {})
+                            .whenComplete(() {
+                          setState(() {
+                            loader =
+                            false; // Hide loader when the API call completes
+                          });
+                        });
+                      }
+                    }
+                  },
+                  child: Container(
+                    height: AppDimensions.height10(context) * 5.2,
+                    width: widget.comingFromEditScreen
+                        ? AppDimensions.width10(context) * 26.3
+                        : AppDimensions.width10(context) * 31.3,
+                    decoration: BoxDecoration(
+                      // color: Color(0xFFFF7D50),
+                      border: Border.all(color: Colors.transparent),
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: reminderSelected
+                              ? [
+                            const Color(0xFFFCC10D),
+                            const Color(0xFFFDA210)
+                          ]
+                              : [
+                            const Color(0xFFFCC10D)
+                                .withOpacity(0.5),
+                            const Color(0xFFFDA210)
+                                .withOpacity(0.5)
+                          ]),
+                      borderRadius: const BorderRadius.all(
+                          Radius.circular(50.0)),
+                    ),
+                    child: Center(
+                      child: loader
+                          ? SpinKitThreeBounce(
+                        color: const Color(0xFF8C648A),
+                        // delay: Duration(milliseconds: 0),
+                        size:
+                        AppDimensions.height10(context) *
+                            3.5,
+                      )
+                          : Text(
+                        widget.comingFromEditScreen
+                            ? "Save"
+                            : "Finished",
+                        style: AppTextStyles().onBoardingButtonStyle(context),
+                      ),
+                    ),
+                  ),
+                ),
               ],
-            ),
-          )
+            ),)
         ],
       ),
     );

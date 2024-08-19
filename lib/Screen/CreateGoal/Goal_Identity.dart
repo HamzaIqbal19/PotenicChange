@@ -1542,7 +1542,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
-                                                              1.8),
+                                                              2),
                                                 ))),
                                           )
                                         : Container(),
@@ -1657,7 +1657,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                                       .withOpacity(0.5),
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.6,
+                                                  2,
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),

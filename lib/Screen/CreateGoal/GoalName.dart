@@ -12,6 +12,7 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_text_styles.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -838,13 +839,14 @@ class _GoalNameState extends State<GoalName> {
                                             child: Text(
                                               'Undo',
                                               style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.8,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      const Color(0xFFFFFFFF)),
+                                                  fontSize: AppDimensions
+                                                      .font10(
+                                                      context) *
+                                                      1.8,
+                                                  fontWeight:
+                                                  FontWeight.w500,
+                                                  color: const Color(
+                                                      0xFFFFFFFF)),
                                             ),
                                           ),
                                         ),
@@ -947,13 +949,7 @@ class _GoalNameState extends State<GoalName> {
                                           widget.comingFromEditScreen
                                               ? "Update"
                                               : "Next",
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                            fontWeight: FontWeight.w600,
-                                          ),
+                                          style: AppTextStyles().onBoardingButtonStyle(context),
                                         ),
                                       ),
                                     ),

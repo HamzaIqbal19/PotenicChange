@@ -1208,27 +1208,28 @@ class _PracticeReviewState extends State<PracticeReview> {
 
                                           AnimatedScaleButton(
                                             onTap: () {
+                                              print("Printed press $pracName $pracColor $goalName $color");
                                               Navigator.push(
                                                 context,
                                                 FadePageRoute(
-                                                  page:  PracticeReminder(
-                                                    comingFromEditScreen: true, praticeName: pracName, goalName: goalName, goalColor: color, pracColor: pracColor,
+                                                  page: PracticeReminder(
+                                                    comingFromEditScreen: true, praticeName: pracName, goalName: goalName, goalColor: color??"2", pracColor: pracColor??"2",
                                                   ),
                                                 ),
                                               );
                                             },
                                             child: Container(
                                               height: AppDimensions.height10(
-                                                      context) *
+                                                  context) *
                                                   3.0,
                                               width: AppDimensions.height10(
-                                                      context) *
+                                                  context) *
                                                   3.0,
 
                                               // color: Colors.blue,
                                               margin: EdgeInsets.only(
                                                 bottom: AppDimensions.height10(
-                                                        context) *
+                                                    context) *
                                                     1.5,
                                               ),
                                               decoration: const BoxDecoration(

@@ -1,7 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:dotted_decoration/dotted_decoration.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -26,6 +25,7 @@ class clocks extends StatefulWidget {
 class _clocksState extends State<clocks> {
   String pracName = "";
   var behaviour_route;
+
 
   @override
   void initState() {
@@ -284,7 +284,7 @@ class watch_time extends StatefulWidget {
 class _watch_timeState extends State<watch_time> {
   String button_text = 'Start';
   bool clock_state = true;
-
+  final AudioPlayer _audioPlayer = AudioPlayer();
   final Stopwatch _stopwatch = Stopwatch();
   Timer? _timer;
   String _elapsedTime = "00:00";
@@ -316,7 +316,10 @@ class _watch_timeState extends State<watch_time> {
             } else {
               _isRunning = false;
               enabled = false;
+              _audioPlayer.play(AssetSource('sounds/timerRingtone.mp3'));
               _timer?.cancel();
+
+
             }
           }
         }
@@ -395,7 +398,7 @@ class _watch_timeState extends State<watch_time> {
                   onPressed: () {
                     _resetStopwatch();
                     setState(() {
-                      button_text = "start";
+                      button_text = "Start";
                       clock_state = true;
                     });
                   },
@@ -440,7 +443,7 @@ class _watch_timeState extends State<watch_time> {
                     onPressed: () {
                       _cancelTimer();
                       setState(() {
-                        button_text = "start";
+                        button_text = "Start";
                         clock_state = false;
                       });
                     },
@@ -550,7 +553,7 @@ class _watch_timeState extends State<watch_time> {
                       if (button_text == 'Pause') {
                         _stopStopwatch();
                         setState(() {
-                          button_text = 'start';
+                          button_text = 'Start';
                         });
                       } else {
                         _startStopwatch();
@@ -563,7 +566,7 @@ class _watch_timeState extends State<watch_time> {
                         if (_isRunning) {
                           _pauseTimer();
                           setState(() {
-                            button_text = 'start';
+                            button_text = 'Start';
                           });
                         } else {
                           _startTimer();
@@ -655,12 +658,12 @@ class _watch_timeState extends State<watch_time> {
                     if (clock_state == true) {
                       _resetStopwatch();
                       setState(() {
-                        button_text = 'start';
+                        button_text = 'Start';
                       });
                     } else {
                       _cancelTimer();
                       setState(() {
-                        button_text = 'start';
+                        button_text = 'Start';
                       });
                     }
                   },

@@ -18,7 +18,6 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../API/Goal.dart';
 import '../ReviewGoal/StarReview.dart';
 
@@ -1467,7 +1466,7 @@ class _goalwhyState extends State<GoalWhy> {
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
-                                                              1.8,
+                                                              2,
                                                       fontWeight:
                                                           FontWeight.w500,
                                                       color: const Color(
@@ -1548,27 +1547,10 @@ class _goalwhyState extends State<GoalWhy> {
                                                     fontSize:
                                                         AppDimensions.font10(
                                                                 context) *
-                                                            1.8),
+                                                            2),
                                               ))),
                                         )
                                       : Container(),
-                                  // Container(
-                                  //     // color: Colors.blue,
-                                  //     width:
-                                  //         AppDimensions.width10(context) *
-                                  //             5.0,
-                                  //     height:
-                                  //         AppDimensions.height10(context) *
-                                  //             5.0,
-                                  //     child: AnimatedScaleButton(
-                                  //       onTap: () {
-                                  //         //   signupSheet(context, "Sign up / login", "login");
-                                  //       },
-                                  //       child: Image.asset(
-                                  //         "assets/images/Moreactions.webp",
-                                  //         fit: BoxFit.contain,
-                                  //       ),
-                                  //     )),
                                   SizedBox(
                                     width: AppDimensions.width10(context) * 2.0,
                                   ),
@@ -1696,7 +1678,7 @@ class _goalwhyState extends State<GoalWhy> {
                                                         .withOpacity(0.5),
                                             fontSize:
                                                 AppDimensions.font10(context) *
-                                                    1.6,
+                                                    2,
                                             fontWeight: FontWeight.w600,
                                           ),
                                         ),
@@ -1727,34 +1709,6 @@ class _goalwhyState extends State<GoalWhy> {
     );
   }
 }
-
-// class OvalBottomBorderClipper extends CustomClipper<Path> {
-//   final double clipHeight;
-
-//   OvalBottomBorderClipper(this.clipHeight);
-
-//   @override
-//   Path getClip(Size size) {
-//     final path = Path();
-//     final height = size.height;
-//     final width = size.width;
-
-//     // Define the oval shape path
-//     path.moveTo(0, height);
-//     path.lineTo(0, height - clipHeight);
-//     path.quadraticBezierTo(
-//         width * 0.5, height - (clipHeight / 2), width, height - clipHeight);
-//     path.lineTo(width, height);
-
-//     return path;
-//   }
-
-//   @override
-//   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-//     return false;
-//   }
-// }
-
 class ClipPainter extends CustomPainter {
   final CustomClipper<Path> clipper;
 

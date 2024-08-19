@@ -4,6 +4,7 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   advance_expansion_tile
+  audioplayers_linux
   awesome_notifications
   file_selector_linux
   sentry_flutter

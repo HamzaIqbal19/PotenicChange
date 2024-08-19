@@ -1,10 +1,22 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+
+import 'app_dimensions.dart';
 // import 'package:potenic_app/utils/utils.dart';
 
-// TextStyle heading1 = TextStyle(
-//   fontSize: AppDimensions.font16 * 2,
-//   fontWeight: FontWeight.bold,
-// );
+class AppTextStyles{
+
+  TextStyle onBoardingButtonStyle(BuildContext context){
+    return TextStyle(
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+      fontSize: AppDimensions.font10(context) * 2.0,
+    );
+  }
+
+
+}
+
+
 
 // TextStyle heading2 = TextStyle(
 //   fontSize: AppDimensions.font20 + 2,

@@ -275,13 +275,6 @@ class _GoalCategoryState extends State<GoalCategory> {
                   ),
                 ),
               ),
-              // : Container(
-              //     color: Colors.white,
-              //   ),
-
-              // SingleChildScrollView(
-              //   child: ,
-              // )
               loading == false
                   ? SingleChildScrollView(
                       scrollDirection: Axis.vertical,
@@ -436,6 +429,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                       );
                                     }),
                           ),
+                          SizedBox(height: AppDimensions.height10(context)*5,)
                         ],
                       ),
                     )

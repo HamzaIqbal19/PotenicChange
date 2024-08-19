@@ -1288,8 +1288,8 @@ class _practice_summaryState extends State<practice_summary> {
                                     activeReport(context, goalName, pracName,
                                         int.parse(color), int.parse(pracColor));
                                   } else {
-                                    __share_experience(context, goalName,
-                                        identity, color, pracColor, pracName);
+                                    // __share_experience(context, goalName,
+                                    //     identity, color, pracColor, pracName);
                                   }
                                 },
                                 child: Container(

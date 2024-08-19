@@ -29,18 +29,19 @@ class AppText {
 
   //Create Goal
 
-  String goalSetting = 'Onboarding';
-  String step1 = "Step 1: ";
-  String step1Head = "Create your ‘star’ (goal) ";
+  String goalSetting = 'Your\njourney awaits';
+  String step1 = "Step 1";
+  String step1Head = " your goal ";
   String step1Body =
-      'Create a personal development goal by\ndefining your vision to help you stay\nfocused and self-motivated.';
-  String step2 = "Step 2: ";
-  String step2Head = "Add your ‘planet’ (practice)";
+      'by defining your vision to\nhelp you stay focused and self-motivated.';
+  String step2 = "Step 2";
+  String step2Head = " your practice ";
   String step2Body =
-      "Select a practice you’ll be using and set a\nroutine (you are encouraged to do this 3 or\nmore times a week)";
+      "and create a routine\nthat fits your lifestyle.";
   String step2Body2 =
-      "It’s a self-driven process that takes you\non a journey of self-discovery towards\nimproving yourself";
+      "Embark on a self-driven journey toward\nself-discovery and personal growth.";
   String startJourney = 'Start your journey';
+  String footerBody= ", you’ll be on your way\ntoward more clarity and self-fulfilment.";
   String startJourney2 = "You can save and exit at any time. ";
 
   //goal category
@@ -90,17 +91,17 @@ class AppText {
       "You can change the name of your practice later by going into your Dashboard.  ";
   String practiceRotine = "Your routine commitment";
   String practiceRotineBody1 =
-      'It’s important to set a consistent routine that works for you. Please select time slots\n ';
+      'It’s important to set a consistent routine\nthat works for you. Please select time slots\n ';
   String practiceRotineBody2 = 'for 3 or more days.';
   String pracReminder = "Your Reminders";
   String pracReminderBody =
-      "In order to build consistent behaviour, \n allow us to gently nudge you to remind you to do your practice.";
+      "To build consistent behaviour, would you\nlike to receive gentle reminders from us?";
   String remindMe = "Yes, remind me";
   String remindMeBody =
-      "We will check in with you to remind you about your practices.You would be able to customise your notifications later in your Account Settings. ";
+      "You would be able to customise your\nnotifications later in your Account Settings. ";
   String dontRemindMe = "No, don’t remind me";
   String dontRemindMeBody =
-      "You confirm that you don’t want us to send you reminders and notifications to perform your practices. You can always enable and update your notification preferences later in Account Settings. ";
+      "You can always enable and update your\nnotification preferences later in Account\nSettings.";
 
   String starPlanet = "Star & planet created! ";
   String reviewCont = "Please review and continue ";

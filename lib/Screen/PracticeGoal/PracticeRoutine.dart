@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
@@ -11,7 +10,6 @@ import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../Widgets/animatedButton.dart';
 import '../HomeScreen/HomeScreen.dart';
 
@@ -319,90 +317,6 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   height: AppDimensions.height10(context),
                 ),
                 goalAndPractice(context, color, 2, practice.text.toString()),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.center,
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   children: [
-                //     SizedBox(
-                //       width: AppDimensions.width10(context) * 7.9,
-                //       height: AppDimensions.height10(context) * 7.9,
-                //       // color: Colors.amber,
-                //
-                //       // color: Colors.blue,
-                //       child: Stack(
-                //         children: [
-                //           Align(
-                //             alignment: const Alignment(-3, 0),
-                //             child: Container(
-                //               width: AppDimensions.width10(context) * 7.9,
-                //               height: AppDimensions.height10(context) * 7.9,
-                //               decoration: BoxDecoration(
-                //                 shape: BoxShape.circle,
-                //                 // color: Colors.amber,
-                //                 image: DecorationImage(
-                //                     image: AssetImage(color == '1'
-                //                         ? "assets/images/red_gradient.webp"
-                //                         : color == '2'
-                //                             ? 'assets/images/orange_moon.webp'
-                //                             : color == '3'
-                //                                 ? "assets/images/lightGrey_gradient.webp"
-                //                                 : color == '4'
-                //                                     ? "assets/images/lightBlue_gradient.webp"
-                //                                     : color == '5'
-                //                                         ? "assets/images/medBlue_gradient.webp"
-                //                                         : color == '6'
-                //                                             ? "assets/images/Blue_gradient.webp"
-                //                                             : 'assets/images/orange_moon.webp'),
-                //                     fit: BoxFit.contain),
-                //               ),
-                //             ),
-                //           ),
-                //           Align(
-                //             alignment: const Alignment(1.5, 0),
-                //             child: Container(
-                //               height: AppDimensions.height10(context) * 4.9,
-                //               width: AppDimensions.width10(context) * 4.9,
-                //               decoration: const BoxDecoration(
-                //                   shape: BoxShape.circle,
-                //                   image: DecorationImage(
-                //                       image: AssetImage(
-                //                           'assets/images/Ellipse 158_wb.webp'),
-                //                       fit: BoxFit.cover)),
-                //             ),
-                //           ),
-                //         ],
-                //       ),
-                //     ),
-                //     Container(
-                //         //width: AppDimensions.width10(context) * 22,
-                //         margin: EdgeInsets.only(
-                //             left: AppDimensions.width10(context) * 1.5),
-                //         child: practice.text.toString().length > 20
-                //             ? Text(
-                //                 capitalizeFirstLetter(
-                //                   practice.text.substring(0, 19) + '...',
-                //                 ),
-                //                 textAlign: TextAlign.center,
-                //                 overflow: TextOverflow.ellipsis,
-                //                 style: TextStyle(
-                //                   fontWeight: FontWeight.w600,
-                //                   color: const Color(0xFF156F6D),
-                //                   fontSize: AppDimensions.font10(context) * 2.0,
-                //                 ),
-                //               )
-                //             : Text(
-                //                 capitalizeFirstLetter(
-                //                   practice.text.toString(),
-                //                 ),
-                //                 style: TextStyle(
-                //                   fontWeight: FontWeight.w600,
-                //                   color: const Color(0xFF156F6D),
-                //                   fontSize: AppDimensions.font10(context) * 2.0,
-                //                 ),
-                //               )),
-                //   ],
-                // ),
-                //
                 SizedBox(
                   height: AppDimensions.height10(context) * 2.3,
                 ),
@@ -621,7 +535,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                             "More than 2 days selected - Next",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: AppDimensions.font10(context) * 1.6,
+                              fontSize: AppDimensions.font10(context) * 1.8,
                               fontWeight: FontWeight.w600,
                             ),
                           ),

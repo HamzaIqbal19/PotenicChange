@@ -222,13 +222,6 @@ class _AllGoalsState extends State<AllGoals> {
                             ),
                           ),
                         );
-                        // Navigator.pushReplacement(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //     builder: (context) => HomeScreen(),
-                        //   ),
-                        // );
-                        // Add code for performing close action
                       },
                     ),
                   ),
@@ -247,13 +240,6 @@ class _AllGoalsState extends State<AllGoals> {
                 ),
               ),
             ),
-            // : Container(
-            //     color: Colors.white,
-            //   ),
-
-            // SingleChildScrollView(
-            //   child: ,
-            // )
             loading == false
                 ? SingleChildScrollView(
                     scrollDirection: Axis.vertical,
@@ -509,11 +495,13 @@ class _AllGoalsState extends State<AllGoals> {
                                                       ),
                                                     ]));
                                               }),
-                                        )
+                                        ),
+
                                       ],
                                     );
                                   }),
                         ),
+                    //    SizedBox(height: AppDimensions.height10(context)*3,)
                       ],
                     ),
                   )
@@ -700,8 +688,6 @@ class _AllGoalsState extends State<AllGoals> {
                             ),
                           ),
                         ),
-
-                        //const Padding(padding: EdgeInsets.all(10))
                       ],
                     ),
                   ),
