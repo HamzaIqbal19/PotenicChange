@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Screen/PracticeGoal/widgets/glares.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/ReviewPractice/Activateyourstar.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
@@ -151,366 +152,372 @@ class _PracticeFinishedState extends State<PracticeFinished> {
               ),
             ),
             loading == false
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 8.9,
-                      ),
-                      SizedBox(
-                        width: AppDimensions.width10(context) * 20.7,
-                        height: AppDimensions.height10(context) * 7.8,
-                        // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
-                        child: Center(
-                          child: GradientText(
-                            AppText().starPlanet,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              // color: Colors.white,
-                              fontSize: AppDimensions.font10(context) * 3,
-                            ),
-                            colors: [
-                              const Color(0xFFFA9934),
-                              const Color(0xFFEDD15E).withOpacity(0.90),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 2.2,
-                      ),
-                      SizedBox(
-                          // color: Colors.black,
-                          height: AppDimensions.height10(context) * 5.1,
-                          width: AppDimensions.width10(context) * 34.0,
-                          child: Column(
-                            children: [
-                              Center(
-                                child: Text(
-                                  AppText().reviewCont,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.2,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          )),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 5.7,
-                      ),
-                      Stack(
-                        children: [
-                          AnimatedScaleButton(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                FadePageRoute(
-                                  page: const StarReview(
-                                    route: 'practice',
-                                  ),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              height: AppDimensions.height10(context) * 40.1,
-                              width: AppDimensions.width10(context) * 40.1,
-                              padding: EdgeInsets.all(
-                                  AppDimensions.height10(context) * 3.5),
-                              // decoration: const BoxDecoration(
-                              //     image: DecorationImage(
-                              //         image: AssetImage(
-                              //             'assets/images/anger_5.webp'))),
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                    bottom:
-                                        AppDimensions.height10(context) * 4.0),
-                                // padding: EdgeInsets.only(
-                                //     bottom: AppDimensions.height10(context) *
-                                //         10.0),
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    image: DecorationImage(
-                                        image: AssetImage('$color' == '1'
-                                            ? "assets/images/red_gradient.webp"
-                                            : '$color' == '2'
-                                                ? 'assets/images/orange_moon.webp'
-                                                : '$color' == '3'
-                                                    ? "assets/images/lightGrey_gradient.webp"
-                                                    : '$color' == '4'
-                                                        ? "assets/images/lightBlue_gradient.webp"
-                                                        : '$color' == '5'
-                                                            ? "assets/images/medBlue_gradient.webp"
-                                                            : '$color' == '6'
-                                                                ? "assets/images/Blue_gradient.webp"
-                                                                : 'assets/images/orange_moon.webp'))),
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      top: AppDimensions.height10(context) *
-                                          3.0),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        // color: Colors.red,
-                                        width: AppDimensions.width10(context) *
-                                            24.0,
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: AppDimensions.height10(
-                                                    context) *
-                                                2.0),
-                                        child: Column(
-                                          children: [
-                                            Text(
-                                              "$goalName",
-                                              //  "Control my anger",
-                                              textAlign: TextAlign.center,
-                                              overflow: TextOverflow.ellipsis,
-                                              maxLines: 1,
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          2.0,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          0.14,
-                                                  fontWeight: FontWeight.w600,
-                                                  color:
-                                                      const Color(0xff5B74A6)),
-                                            ),
-                                            SizedBox(
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.3,
-                                            ),
-                                            SizedBox(
-                                              // color: Colors.green,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.0,
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  22.0,
-                                              child: Text('"$identity"',
-                                                  // "“I am someone who is in control of my anger”",
-                                                  textAlign: TextAlign.center,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  maxLines: 2,
-                                                  style: TextStyle(
-                                                      fontStyle:
-                                                          FontStyle.italic,
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              1.6,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: const Color(
-                                                          0xff5B74A6))),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.0,
-                                      ),
-                                      Text('Review',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  2.0,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  0.14,
-                                              fontWeight: FontWeight.w600,
-                                              color: const Color(0xff5B74A6))),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                4.3,
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            top: 0,
-                            bottom: 0,
-                            left: 0,
-                            right: 0,
-                            child: Align(
-                              // alignment: Alignment.bottomCenter,
+                ? Stack(
 
-                              alignment: const Alignment(0.49, 0.9),
-                              //heightFactor: 0.5,
-                              child: Container(
-                                // height: AppDimensions.height10(context) *17.5,
-                                // width:  AppDimensions.height10(context) *17.5,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
+                  children: [
+                    getGlares(context, color),
+                    Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            height: AppDimensions.height10(context) * 8.9,
+                          ),
+                          SizedBox(
+                            width: AppDimensions.width10(context) * 20.7,
+                            height: AppDimensions.height10(context) * 7.8,
+                            // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
+                            child: Center(
+                              child: GradientText(
+                                AppText().starPlanet,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  // color: Colors.white,
+                                  fontSize: AppDimensions.font10(context) * 3,
                                 ),
-                                child: AnimatedScaleButton(
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                        page: const PracticeReview(),
+                                colors: [
+                                  const Color(0xFFFA9934),
+                                  const Color(0xFFEDD15E).withOpacity(0.90),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: AppDimensions.height10(context) * 2.2,
+                          ),
+                          SizedBox(
+                              // color: Colors.black,
+                              height: AppDimensions.height10(context) * 5.1,
+                              width: AppDimensions.width10(context) * 34.0,
+                              child: Column(
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      AppText().reviewCont,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                        fontSize:
+                                            AppDimensions.font10(context) * 2.2,
                                       ),
-                                    );
-                                  },
+                                    ),
+                                  ),
+                                ],
+                              )),
+                          SizedBox(
+                            height: AppDimensions.height10(context) * 5.7,
+                          ),
+                          Stack(
+                            children: [
+                              AnimatedScaleButton(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                      page: const StarReview(
+                                        route: 'practice',
+                                      ),
+                                    ),
+                                  );
+                                },
+                                child: Container(
+                                  height: AppDimensions.height10(context) * 40.1,
+                                  width: AppDimensions.width10(context) * 40.1,
+                                  padding: EdgeInsets.all(
+                                      AppDimensions.height10(context) * 3.5),
+                                  // decoration: const BoxDecoration(
+                                  //     image: DecorationImage(
+                                  //         image: AssetImage(
+                                  //             'assets/images/anger_5.webp'))),
                                   child: Container(
-                                      height:
-                                          AppDimensions.width10(context) * 14.7,
-                                      width:
-                                          AppDimensions.width10(context) * 14.7,
-                                      decoration: BoxDecoration(
+                                    margin: EdgeInsets.only(
+                                        bottom:
+                                            AppDimensions.height10(context) * 4.0),
+                                    // padding: EdgeInsets.only(
+                                    //     bottom: AppDimensions.height10(context) *
+                                    //         10.0),
+                                    decoration: BoxDecoration(
                                         shape: BoxShape.circle,
-                                          border: Border.all(color: Colors.white, width: 2),
-                                          image: DecorationImage(
-                                        image: AssetImage(practiceImages(pracColor??"2")),
-                                        fit: BoxFit.contain,
-                                      )),
+                                        image: DecorationImage(
+                                            image: AssetImage('$color' == '1'
+                                                ? "assets/images/red_gradient.webp"
+                                                : '$color' == '2'
+                                                    ? 'assets/images/orange_moon.webp'
+                                                    : '$color' == '3'
+                                                        ? "assets/images/lightGrey_gradient.webp"
+                                                        : '$color' == '4'
+                                                            ? "assets/images/lightBlue_gradient.webp"
+                                                            : '$color' == '5'
+                                                                ? "assets/images/medBlue_gradient.webp"
+                                                                : '$color' == '6'
+                                                                    ? "assets/images/Blue_gradient.webp"
+                                                                    : 'assets/images/orange_moon.webp'))),
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          top: AppDimensions.height10(context) *
+                                              3.0),
                                       child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          SizedBox(
-                                            //color: Colors.red,
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    11.8,
+                                          Container(
+                                            // color: Colors.red,
+                                            width: AppDimensions.width10(context) *
+                                                24.0,
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal: AppDimensions.height10(
+                                                        context) *
+                                                    2.0),
                                             child: Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
                                               children: [
                                                 Text(
-                                                  pracName,
-                                                  //  "Meditation",
+                                                  "$goalName",
+                                                  //  "Control my anger",
                                                   textAlign: TextAlign.center,
-                                                  maxLines: 2,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
+                                                  overflow: TextOverflow.ellipsis,
+                                                  maxLines: 1,
                                                   style: TextStyle(
-                                                      color: const Color(
-                                                          0xFFFBFBFB),
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
-                                                              1.8,
-                                                      fontWeight:
-                                                          FontWeight.w500),
+                                                              2.0,
+                                                      height:
+                                                          AppDimensions.height10(
+                                                                  context) *
+                                                              0.14,
+                                                      fontWeight: FontWeight.w600,
+                                                      color:
+                                                          const Color(0xff5B74A6)),
                                                 ),
                                                 SizedBox(
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.0,
+                                                  height: AppDimensions.height10(
+                                                          context) *
+                                                      0.3,
                                                 ),
-                                                Text('Review',
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                        decoration:
-                                                            TextDecoration
-                                                                .underline,
-                                                        fontSize: AppDimensions
-                                                                .font10(
-                                                                    context) *
-                                                            2.0,
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            0.14,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        color: const Color(
-                                                            0xFFFBFBFB))),
                                                 SizedBox(
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          0.5,
+                                                  // color: Colors.green,
+                                                  height: AppDimensions.height10(
+                                                          context) *
+                                                      4.0,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      22.0,
+                                                  child: Text('"$identity"',
+                                                      // "“I am someone who is in control of my anger”",
+                                                      textAlign: TextAlign.center,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      maxLines: 2,
+                                                      style: TextStyle(
+                                                          fontStyle:
+                                                              FontStyle.italic,
+                                                          fontSize:
+                                                              AppDimensions.font10(
+                                                                      context) *
+                                                                  1.6,
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: const Color(
+                                                              0xff5B74A6))),
                                                 ),
                                               ],
                                             ),
                                           ),
-                                          // SizedBox(
-                                          //   height: AppDimensions.height10(
-                                          //           context) *
-                                          //       3.0,
-                                          // )
+                                          SizedBox(
+                                            height:
+                                                AppDimensions.height10(context) *
+                                                    1.0,
+                                          ),
+                                          Text('Review',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  decoration:
+                                                      TextDecoration.underline,
+                                                  fontSize: AppDimensions.font10(
+                                                          context) *
+                                                      2.0,
+                                                  height: AppDimensions.height10(
+                                                          context) *
+                                                      0.14,
+                                                  fontWeight: FontWeight.w600,
+                                                  color: const Color(0xff5B74A6))),
+                                          SizedBox(
+                                            height:
+                                                AppDimensions.height10(context) *
+                                                    4.3,
+                                          )
                                         ],
-                                      )),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          )
-                        ],
-                      ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 10.7,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          // Container(
-                          //     // color: Colors.blue,
-                          //     width: AppDimensions.width10(context) * 5.0,
-                          //     height: AppDimensions.height10(context) * 5.0,
-                          //     child: Image.asset(
-                          //       "assets/images/Moreactions.webp",
-                          //       fit: BoxFit.contain,
-                          //     )),
-                          AnimatedScaleButton(
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                    page: const ActivateStar(),
-                                  ));
-                            },
-                            child: Container(
-                              height: AppDimensions.height10(context) * 5.2,
-                              width: AppDimensions.width10(context) * 31.3,
-                              decoration: BoxDecoration(
-                                // color: Color(0xFFFF7D50),
-                                border: Border.all(color: Colors.transparent),
-                                gradient: const LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: [
-                                      Color(0xFFFCC10D),
-                                      Color(0xFFFDA210)
-                                    ]),
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(50.0)),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "Next",
-                                  style: AppTextStyles().onBoardingButtonStyle(context),
+                              Positioned(
+                                top: 0,
+                                bottom: 0,
+                                left: 0,
+                                right: 0,
+                                child: Align(
+                                  // alignment: Alignment.bottomCenter,
+
+                                  alignment: const Alignment(0.49, 0.9),
+                                  //heightFactor: 0.5,
+                                  child: Container(
+                                    // height: AppDimensions.height10(context) *17.5,
+                                    // width:  AppDimensions.height10(context) *17.5,
+                                    decoration: const BoxDecoration(
+                                      shape: BoxShape.circle,
+                                    ),
+                                    child: AnimatedScaleButton(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                            page: const PracticeReview(),
+                                          ),
+                                        );
+                                      },
+                                      child: Container(
+                                          height:
+                                              AppDimensions.width10(context) * 14.7,
+                                          width:
+                                              AppDimensions.width10(context) * 14.7,
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                              border: Border.all(color: Colors.white, width: 2),
+                                              image: DecorationImage(
+                                            image: AssetImage(practiceImages(pracColor??"2")),
+                                            fit: BoxFit.contain,
+                                          )),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              SizedBox(
+                                                //color: Colors.red,
+                                                width:
+                                                    AppDimensions.width10(context) *
+                                                        11.8,
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  children: [
+                                                    Text(
+                                                      pracName,
+                                                      //  "Meditation",
+                                                      textAlign: TextAlign.center,
+                                                      maxLines: 2,
+                                                      overflow:
+                                                          TextOverflow.ellipsis,
+                                                      style: TextStyle(
+                                                          color: const Color(
+                                                              0xFFFBFBFB),
+                                                          fontSize:
+                                                              AppDimensions.font10(
+                                                                      context) *
+                                                                  1.8,
+                                                          fontWeight:
+                                                              FontWeight.w500),
+                                                    ),
+                                                    SizedBox(
+                                                      height:
+                                                          AppDimensions.height10(
+                                                                  context) *
+                                                              1.0,
+                                                    ),
+                                                    Text('Review',
+                                                        textAlign: TextAlign.center,
+                                                        style: TextStyle(
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .underline,
+                                                            fontSize: AppDimensions
+                                                                    .font10(
+                                                                        context) *
+                                                                2.0,
+                                                            height: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                0.14,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                            color: const Color(
+                                                                0xFFFBFBFB))),
+                                                    SizedBox(
+                                                      height:
+                                                          AppDimensions.height10(
+                                                                  context) *
+                                                              0.5,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                              // SizedBox(
+                                              //   height: AppDimensions.height10(
+                                              //           context) *
+                                              //       3.0,
+                                              // )
+                                            ],
+                                          )),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: AppDimensions.height10(context) * 10.7,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              // Container(
+                              //     // color: Colors.blue,
+                              //     width: AppDimensions.width10(context) * 5.0,
+                              //     height: AppDimensions.height10(context) * 5.0,
+                              //     child: Image.asset(
+                              //       "assets/images/Moreactions.webp",
+                              //       fit: BoxFit.contain,
+                              //     )),
+                              AnimatedScaleButton(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                        page: const ActivateStar(),
+                                      ));
+                                },
+                                child: Container(
+                                  height: AppDimensions.height10(context) * 5.2,
+                                  width: AppDimensions.width10(context) * 31.3,
+                                  decoration: BoxDecoration(
+                                    // color: Color(0xFFFF7D50),
+                                    border: Border.all(color: Colors.transparent),
+                                    gradient: const LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          Color(0xFFFCC10D),
+                                          Color(0xFFFDA210)
+                                        ]),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(50.0)),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      "Next",
+                                      style: AppTextStyles().onBoardingButtonStyle(context),
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
+                            ],
                           ),
                         ],
                       ),
-                    ],
-                  )
+                  ],
+                )
                 : const Center(
                     child: SpinKitFadingCircle(
                       color: Color(0xFFB1B8FF),

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/CreateGoal/widgets/glareCircles.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
@@ -136,33 +137,7 @@ class _GoalFinishedState extends State<GoalFinished> {
               Loading == false
                   ? Stack(
                       children: [
-                        Positioned(
-                            left: 0,
-                            right: 0,
-                            bottom: 5,
-                            child: Container(
-                              height: 626,
-                              width: 638,
-                              decoration: BoxDecoration(
-
-                                  image: DecorationImage(
-
-                                      image: AssetImage('$color' == '1'
-                                          ? AppAssets.glare1
-                                          : '$color' == '2'
-                                          ? AppAssets.glare2
-                                          : '$color' == '3'
-                                          ? AppAssets.glare3
-                                          : '$color' == '4'
-                                          ? AppAssets.glare4
-                                          : '$color' == '5'
-                                          ? AppAssets.glare5
-                                          : '$color' ==
-                                          '6'
-                                          ? AppAssets.glare6
-                                          : AppAssets.glare2),
-                                      fit: BoxFit.contain)),
-                            )),
+                        getGlares(context, color.toString()??"2"),
                         Column(
                           children: [
                             Container(
