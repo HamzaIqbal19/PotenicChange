@@ -184,7 +184,7 @@ class _CategoriesState extends State<Categories> {
                         controller: scrollController,
                         scrollDirection: Axis.horizontal,
                         padding: EdgeInsets.zero,
-                        itemCount: min(4, goalCategories!.length),
+                        itemCount: min(5, goalCategories!.length),
                         itemBuilder: (context, index) {
                           return Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -294,9 +294,9 @@ class _CategoriesState extends State<Categories> {
                         child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           padding: EdgeInsets.zero,
-                          itemCount: min(4, goalCategories!.length - 4),
+                          itemCount: min(5, goalCategories!.length - 5),
                           itemBuilder: (context, index) {
-                            final dataIndex = index + 4;
+                            final dataIndex = index + 5;
                             return Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               crossAxisAlignment: CrossAxisAlignment.start,
