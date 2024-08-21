@@ -12,12 +12,12 @@ class AppAssets{
   static const goal6 = "$_imagesPath/Blue_gradient.webp";
 
   //glareAssests
-  static const glare1 = "$_imagesPath/redGlare.png";
-  static const glare2 = "$_imagesPath/yellowGlare.png";
-  static const glare3 = "$_imagesPath/greyGlare.png";
-  static const glare4 = "$_imagesPath/whiteGlare.png";
-  static const glare5 = "$_imagesPath/lightBlueGlare.png";
-  static const glare6 = "$_imagesPath/blueGlare.png";
+  static const glare1 = "$_imagesPath/redGlare.webp";
+  static const glare2 = "$_imagesPath/yellowGlare.webp";
+  static const glare3 = "$_imagesPath/greyGlare.webp";
+  static const glare4 = "$_imagesPath/whiteGlare.webp";
+  static const glare5 = "$_imagesPath/lightBlueGlare.webp";
+  static const glare6 = "$_imagesPath/blueGlare.webp";
 
 
   //practiceAssets
