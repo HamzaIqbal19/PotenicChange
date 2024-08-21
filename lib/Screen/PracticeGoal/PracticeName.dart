@@ -320,14 +320,13 @@ class _PracticeNameState extends State<PracticeName> {
               ),
             ),
             SingleChildScrollView(
-              reverse: true,
+              //reverse: true,
               physics: const ClampingScrollPhysics(),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
-                    padding: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 5.2),
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 6),
                     child: Center(
                       child: Text(
                         widget.comingFromEditScreen
@@ -367,7 +366,7 @@ class _PracticeNameState extends State<PracticeName> {
                   ),
                   goalAndPractice(context, color, 2, practice.text.toString()),
                   SizedBox(
-                    height: AppDimensions.height10(context) * 7.1,
+                    height: AppDimensions.height10(context) * 5.1,
                   ),
                   Center(
                     child: Text(

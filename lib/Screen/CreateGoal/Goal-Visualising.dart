@@ -688,8 +688,8 @@ class _VisualisingState extends State<Visualising> {
                       child: Column(
                         children: [
                           Container(
-                            padding: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 5.2),
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 6),
                             child: Center(
                               child: Text(
                                 widget.comingFromEditScreen

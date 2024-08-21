@@ -377,8 +377,8 @@ class _PracticeReminderState extends State<PracticeReminder> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 5.3),
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 6),
                   child: Center(
                     child: Text(
                       widget.comingFromEditScreen
@@ -707,7 +707,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
             ),
           ),
           Positioned(
-            bottom: 50,
+            bottom: 30,
             child: updated
                 ? GestureDetector(
               onPanUpdate: (details) {

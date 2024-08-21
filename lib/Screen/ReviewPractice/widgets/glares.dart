@@ -8,7 +8,7 @@ greyGlared(BuildContext context){
   return Positioned(
     left: 0,
     right: 0,
-    top: -45,
+    top: 10,
     child: Container(
       height: AppDimensionsUpdated.height10(context)*100,
       decoration: const BoxDecoration(
@@ -23,7 +23,7 @@ redGlared(BuildContext context){
   return Positioned(
     left: 0,
     right: 0,
-    top: -45,
+    top: 10,
     child: Container(
       height: AppDimensionsUpdated.height10(context)*100,
       decoration: const BoxDecoration(
@@ -38,7 +38,7 @@ yellowGlared(BuildContext context){
   return Positioned(
     left: 0,
     right: 0,
-    top: -10,
+    top: 40,
     child: Container(
       height: AppDimensionsUpdated.height10(context)*100,
       decoration: const BoxDecoration(
@@ -53,7 +53,7 @@ whiteGlared(BuildContext context){
   return Positioned(
     left: 0,
     right: 0,
-    top: -45,
+    top: 10,
     child: Container(
       height: AppDimensionsUpdated.height10(context)*100,
       decoration: const BoxDecoration(
@@ -68,7 +68,7 @@ lightBlueGlared(BuildContext context){
   return Positioned(
     left: 0,
     right: 0,
-    top: -10,
+    top: 40,
     child: Container(
       height: AppDimensionsUpdated.height10(context)*100,
       decoration: const BoxDecoration(
@@ -83,7 +83,7 @@ blueGlared(BuildContext context){
   return Positioned(
     left: 0,
     right: 0,
-    top: -10,
+    top: 40,
     child: Container(
       height: AppDimensionsUpdated.height10(context)*100,
       decoration: const BoxDecoration(

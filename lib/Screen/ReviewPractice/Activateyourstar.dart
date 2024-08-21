@@ -6,6 +6,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/ReviewPractice/widgets/glares.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -152,556 +153,561 @@ class _ActivateStarState extends State<ActivateStar> {
             ),
           ),
           Loading == false
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: AppDimensions.height10(context) * 8.9,
-                    ),
-                    SizedBox(
-                      width: AppDimensions.width10(context) * 28.3,
-                      height: AppDimensions.height10(context) * 7.2,
-                      // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
-                      child: Center(
-                        child: GradientText(
-                          AppText().activateStar,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w700,
-                            // color: Colors.white,
-                            fontSize: AppDimensions.font10(context) * 3,
-                          ),
-                          colors: [
-                            const Color(0xFFFFFFFF),
-                            const Color(0xFFFFFFFF).withOpacity(0.90),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: AppDimensions.height10(context) * 2.5,
-                    ),
-                    SizedBox(
-                        // color: Colors.black,
-                        height: AppDimensions.height10(context) * 13.2,
-                        width: AppDimensions.width10(context) * 35.7,
-                        child: Column(
-                          children: [
-                            Center(
-                              child: Text(
-                                AppText().activateStarBody,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white,
-                                  fontSize: AppDimensions.font10(context) * 1.8,
-                                ),
-                              ),
-                            ),
-                          ],
-                        )),
-                    SizedBox(
-                      height: AppDimensions.height10(context) * 3.6,
-                    ),
-                    Stack(
+              ? Stack(
+                children: [
+                  getGlares(context, color),
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          height: AppDimensions.height10(context) * 40.1,
-                          width: AppDimensions.width10(context) * 40.1,
-                          padding: EdgeInsets.all(
-                              AppDimensions.height10(context) * 3.5),
-                          // decoration: const BoxDecoration(
-                          //     image: DecorationImage(
-                          //         image: AssetImage(
-                          //             'assets/images/anger_5.webp'))),
-                          child: Container(
-                            margin: EdgeInsets.only(
-                                bottom: AppDimensions.height10(context) * 4.0),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                    image: AssetImage('$color' == '1'
-                                        ? "assets/images/red_gradient.webp"
-                                        : '$color' == '2'
-                                            ? 'assets/images/orange_moon.webp'
-                                            : '$color' == '3'
-                                                ? "assets/images/lightGrey_gradient.webp"
-                                                : '$color' == '4'
-                                                    ? "assets/images/lightBlue_gradient.webp"
-                                                    : '$color' == '5'
-                                                        ? "assets/images/medBlue_gradient.webp"
-                                                        : '$color' == '6'
-                                                            ? "assets/images/Blue_gradient.webp"
-                                                            : 'assets/images/orange_moon.webp'),
-                                    fit: BoxFit.cover)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: AppDimensions.width10(context) * 24.0,
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal:
-                                          AppDimensions.height10(context) *
-                                              2.0),
-                                  child: Text(
-                                    "$goalName",
-                                    textAlign: TextAlign.center,
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 1,
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.font10(context) * 2.0,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.14,
-                                        fontWeight: FontWeight.w600,
-                                        color: const Color(0xff5B74A6)),
-                                  ),
-                                ),
-                                SizedBox(
-                                  height: AppDimensions.height10(context) * 0.3,
-                                ),
-                                Container(
-                                  width: AppDimensions.width10(context) * 22.0,
-                                  //height: AppDimensions.height10(context)*4.0,
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal:
-                                          AppDimensions.height10(context) *
-                                              2.0),
-                                  child: Text('"$identity"',
-                                      textAlign: TextAlign.center,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
-                                      style: TextStyle(
-                                          fontStyle: FontStyle.italic,
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.6,
-                                          fontWeight: FontWeight.w400,
-                                          color: const Color(0xff5B74A6))),
-                                ),
-                                SizedBox(
-                                  height: AppDimensions.height10(context) * 1.0,
-                                ),
-                                /*
-                                Text('Review',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        decoration: TextDecoration.underline,
-                                        fontSize:
-                                                    AppDimensions.font10(
-                                                            context) *
-                                                2.0,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.14,
-                                        fontWeight: FontWeight.w600,
-                                        color: const Color(0xff5B74A6))),
-                             */
+                        SizedBox(
+                          height: AppDimensions.height10(context) * 8.9,
+                        ),
+                        SizedBox(
+                          width: AppDimensions.width10(context) * 28.3,
+                          height: AppDimensions.height10(context) * 7.2,
+                          // padding: EdgeInsets.only(top: AppDimensions.height10(context) * 10),
+                          child: Center(
+                            child: GradientText(
+                              AppText().activateStar,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                // color: Colors.white,
+                                fontSize: AppDimensions.font10(context) * 3,
+                              ),
+                              colors: [
+                                const Color(0xFFFFFFFF),
+                                const Color(0xFFFFFFFF).withOpacity(0.90),
                               ],
                             ),
                           ),
                         ),
-                        Positioned(
-                          top: 0,
-                          bottom: 0,
-                          left: 0,
-                          right: 0,
-                          child: Align(
-                            // alignment: Alignment.bottomCenter,
-                            alignment: Alignment(0.01,
-                                AppDimensions.height10(context) * 0.016 + 0.9),
-                            //heightFactor: 0.5,
-                            child: Container(
-                              // height: AppDimensions.height10(context)*17.5,
-                              // width:  AppDimensions.height10(context)*17.5,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                              ),
-                              child: AnimatedScaleButton(
-                                onTap: () {
-                                  PracticeGoalApi()
-                                      .updateUserPracticeGoalStatus('active')
-                                      .then((response) {
-                                    if (response == true) {
-                                      Navigator.push(
-                                        context,
-                                        FadePageRoute2(
-                                          true,
-                                          exitPage: const ActivateStar(),
-                                          enterPage: const ViewDashboard(
-                                            missed: false,
-                                            name: '',
-                                            update: false,
-                                            helpfulTips: false,
-                                            record: 0,
-                                          ),
-                                        ),
-                                      );
-                                    } else if (response == false) {
-                                      Navigator.push(
-                                        context,
-                                        FadePageRoute2(
-                                          true,
-                                          exitPage: const ActivateStar(),
-                                          enterPage: const ViewDashboard(
-                                            missed: false,
-                                            name: '',
-                                            update: false,
-                                            helpfulTips: true,
-                                            record: 0,
-                                          ),
-                                        ),
-                                      );
-                                      journeyBottomSheet(
-                                          context,
-                                          AppText().dashboardTitle,
-                                          AppText().dashboardBody,
-                                          AppLinks().dashboardLink);
-
-                                      //dashboard_sheet(context);
-                                    } else if (response == 400) {
-                                      Navigator.push(
-                                        context,
-                                        FadePageRoute2(
-                                          true,
-                                          exitPage: const ActivateStar(),
-                                          enterPage: const ViewDashboard(
-                                            missed: false,
-                                            name: '',
-                                            update: false,
-                                            helpfulTips: false,
-                                            record: 0,
-                                          ),
-                                        ),
-                                      );
-                                      showAnimatedDialog(
-                                          animationType:
-                                              DialogTransitionType.fadeScale,
-                                          curve: Curves.easeInOut,
-                                          duration: const Duration(seconds: 1),
-                                          context: context,
-                                          builder: (BuildContext context) =>
-                                              SizedBox(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    27.0,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    23.6,
-                                                child: AlertDialog(
-                                                  shape: RoundedRectangleBorder(
-                                                      borderRadius: BorderRadius
-                                                          .circular(AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.4)),
-                                                  contentPadding:
-                                                      EdgeInsets.zero,
-                                                  actionsPadding:
-                                                      EdgeInsets.zero,
-                                                  titlePadding: EdgeInsets.zero,
-                                                  title: Container(
-                                                      margin: EdgeInsets.only(
-                                                          top: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.9,
-                                                          bottom: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              0.2),
-                                                      height:
-                                                          AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              4.4,
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              23.8,
-                                                      child: Center(
-                                                        child: Text(
-                                                          'Maximum active goal limit\nreached',
-                                                          textAlign:
-                                                              TextAlign.center,
-                                                          style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.7,
-                                                            fontWeight:
-                                                                FontWeight.w400,
-                                                          ),
-                                                        ),
-                                                      )),
-                                                  content: Container(
-                                                    margin: EdgeInsets.only(
-                                                        bottom: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.5,
-                                                        left: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.6,
-                                                        right: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.6),
-                                                    width:
-                                                        AppDimensions.width10(
-                                                                context) *
-                                                            23.8,
-                                                    child: Text(
-                                                      subscription == 'active'
-                                                          ? "You can't start this goal because you\nalready have the maximum of 3 active\ngoals. You must stop one of your active\ngoals to start a new one."
-                                                          : "You can't start this goal because you\nalready have the maximum of 1 active\ngoals. You must stop one of your active\ngoals to start a new one.",
-                                                      textAlign:
-                                                          TextAlign.center,
-                                                      style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .font10(
-                                                                    context) *
-                                                            1.3,
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  actions: <Widget>[
-                                                    Column(
-                                                      children: [
-                                                        SizedBox(
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              0.1,
-                                                          child: Divider(
-                                                            color: const Color(
-                                                                    0XFF3C3C43)
-                                                                .withOpacity(
-                                                                    0.29),
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              4.2,
-                                                          width:
-                                                              double.infinity,
-                                                          child: TextButton(
-                                                            onPressed: () {
-                                                              Navigator.push(
-                                                                  context,
-                                                                  FadePageRoute(
-                                                                      page:
-                                                                          const view_all_goals_menu()));
-                                                            },
-                                                            child: Text(
-                                                              'View goal',
-                                                              style: TextStyle(
-                                                                color: const Color(
-                                                                    0xFF007AFF),
-                                                                fontSize: AppDimensions
-                                                                        .font10(
-                                                                            context) *
-                                                                    1.7,
-                                                                fontFamily:
-                                                                    "Laila",
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              0.1,
-                                                          child: Divider(
-                                                            color: const Color(
-                                                                    0XFF3C3C43)
-                                                                .withOpacity(
-                                                                    0.29),
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              4.4,
-                                                          width:
-                                                              double.infinity,
-                                                          child: TextButton(
-                                                            onPressed: () {
-                                                              Navigator.pop(
-                                                                  context);
-                                                            },
-                                                            child: Text(
-                                                              'Exit',
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      AppDimensions.font10(
-                                                                              context) *
-                                                                          1.7,
-                                                                  fontFamily:
-                                                                      "Laila",
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                  color: const Color(
-                                                                      0xFF007AFF)),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        SizedBox(
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              0.1,
-                                                          child: Divider(
-                                                            color: const Color(
-                                                                    0XFF3C3C43)
-                                                                .withOpacity(
-                                                                    0.29),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ));
-                                    } else {
-                                      // const ScaffoldMessenger(
-                                      //     child: Text('Goal status not changed'));
-                                    }
-                                  });
-
-                                  //  dashboard_sheet(context);
-                                },
-                                child: Container(
-                                  width: AppDimensions.height10(context) * 16,
-                                  height: AppDimensions.height10(context) * 16,
-                                  padding: EdgeInsets.all(
-                                      AppDimensions.height10(context) * 0.5),
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  0.3,
-                                          color: Colors.white)),
-                                  child: Container(
-                                    height:
-                                        AppDimensions.height10(context) * 14.7,
-                                    width:
-                                        AppDimensions.height10(context) * 14.7,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                      image: AssetImage('$pracColor' == '1'
-                                          ? "assets/images/Ellipse orange.webp"
-                                          : '$pracColor' == '2'
-                                              ? 'assets/images/Ellipse 158.webp'
-                                              : '$pracColor' == '3'
-                                                  ? "assets/images/Ellipse 157.webp"
-                                                  : '$pracColor' == '4'
-                                                      ? "assets/images/Ellipse light-blue.webp"
-                                                      : '$pracColor' == '5'
-                                                          ? "assets/images/Ellipse blue.webp"
-                                                          : 'assets/images/Ellipse 158.webp'),
-                                    )),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.1,
-                                        ),
-                                        Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      2.0),
-                                          // width:
-                                          //     AppDimensions.height10(context) * 12.8,
-
-                                          child: Text(
-                                            pracName,
-                                            maxLines: 2,
-                                            textAlign: TextAlign.center,
-                                            overflow: TextOverflow.ellipsis,
-                                            style: TextStyle(
-                                                color: const Color(0xFFFBFBFB),
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.8,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  0.3,
-                                        ),
-                                        Image(
-                                          image: const AssetImage(
-                                              'assets/images/ic_fingerprint.webp'),
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  6.0,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  6.0,
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: AppDimensions.height10(context) * 1.1,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
+                        SizedBox(
+                          height: AppDimensions.height10(context) * 2.5,
+                        ),
                         SizedBox(
                             // color: Colors.black,
-
-                            height: AppDimensions.height10(context) * 5.4,
-                            width: AppDimensions.width10(context) * 27.4,
+                            height: AppDimensions.height10(context) * 13.2,
+                            width: AppDimensions.width10(context) * 35.7,
                             child: Column(
                               children: [
                                 Center(
                                   child: Text(
-                                    AppText().activateStarFoot,
+                                    AppText().activateStarBody,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white,
-                                      fontSize:
-                                          AppDimensions.font10(context) * 1.8,
+                                      fontSize: AppDimensions.font10(context) * 1.8,
                                     ),
                                   ),
                                 ),
                               ],
                             )),
+                        SizedBox(
+                          height: AppDimensions.height10(context) * 3.6,
+                        ),
+                        Stack(
+                          children: [
+                            Container(
+                              height: AppDimensions.height10(context) * 40.1,
+                              width: AppDimensions.width10(context) * 40.1,
+                              padding: EdgeInsets.all(
+                                  AppDimensions.height10(context) * 3.5),
+                              // decoration: const BoxDecoration(
+                              //     image: DecorationImage(
+                              //         image: AssetImage(
+                              //             'assets/images/anger_5.webp'))),
+                              child: Container(
+                                margin: EdgeInsets.only(
+                                    bottom: AppDimensions.height10(context) * 4.0),
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                        image: AssetImage('$color' == '1'
+                                            ? "assets/images/red_gradient.webp"
+                                            : '$color' == '2'
+                                                ? 'assets/images/orange_moon.webp'
+                                                : '$color' == '3'
+                                                    ? "assets/images/lightGrey_gradient.webp"
+                                                    : '$color' == '4'
+                                                        ? "assets/images/lightBlue_gradient.webp"
+                                                        : '$color' == '5'
+                                                            ? "assets/images/medBlue_gradient.webp"
+                                                            : '$color' == '6'
+                                                                ? "assets/images/Blue_gradient.webp"
+                                                                : 'assets/images/orange_moon.webp'),
+                                        fit: BoxFit.cover)),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: AppDimensions.width10(context) * 24.0,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal:
+                                              AppDimensions.height10(context) *
+                                                  2.0),
+                                      child: Text(
+                                        "$goalName",
+                                        textAlign: TextAlign.center,
+                                        overflow: TextOverflow.ellipsis,
+                                        maxLines: 1,
+                                        style: TextStyle(
+                                            fontSize:
+                                                AppDimensions.font10(context) * 2.0,
+                                            height:
+                                                AppDimensions.height10(context) *
+                                                    0.14,
+                                            fontWeight: FontWeight.w600,
+                                            color: const Color(0xff5B74A6)),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: AppDimensions.height10(context) * 0.3,
+                                    ),
+                                    Container(
+                                      width: AppDimensions.width10(context) * 22.0,
+                                      //height: AppDimensions.height10(context)*4.0,
+                                      padding: EdgeInsets.symmetric(
+                                          horizontal:
+                                              AppDimensions.height10(context) *
+                                                  2.0),
+                                      child: Text('"$identity"',
+                                          textAlign: TextAlign.center,
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
+                                          style: TextStyle(
+                                              fontStyle: FontStyle.italic,
+                                              fontSize:
+                                                  AppDimensions.font10(context) *
+                                                      1.6,
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xff5B74A6))),
+                                    ),
+                                    SizedBox(
+                                      height: AppDimensions.height10(context) * 1.0,
+                                    ),
+                                    /*
+                                    Text('Review',
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            decoration: TextDecoration.underline,
+                                            fontSize:
+                                                        AppDimensions.font10(
+                                                                context) *
+                                                    2.0,
+                                            height:
+                                                AppDimensions.height10(context) *
+                                                    0.14,
+                                            fontWeight: FontWeight.w600,
+                                            color: const Color(0xff5B74A6))),
+                                 */
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Positioned(
+                              top: 0,
+                              bottom: 0,
+                              left: 0,
+                              right: 0,
+                              child: Align(
+                                // alignment: Alignment.bottomCenter,
+                                alignment: Alignment(0.01,
+                                    AppDimensions.height10(context) * 0.016 + 0.9),
+                                //heightFactor: 0.5,
+                                child: Container(
+                                  // height: AppDimensions.height10(context)*17.5,
+                                  // width:  AppDimensions.height10(context)*17.5,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: AnimatedScaleButton(
+                                    onTap: () {
+                                      PracticeGoalApi()
+                                          .updateUserPracticeGoalStatus('active')
+                                          .then((response) {
+                                        if (response == true) {
+                                          Navigator.push(
+                                            context,
+                                            FadePageRoute2(
+                                              true,
+                                              exitPage: const ActivateStar(),
+                                              enterPage: const ViewDashboard(
+                                                missed: false,
+                                                name: '',
+                                                update: false,
+                                                helpfulTips: false,
+                                                record: 0,
+                                              ),
+                                            ),
+                                          );
+                                        } else if (response == false) {
+                                          Navigator.push(
+                                            context,
+                                            FadePageRoute2(
+                                              true,
+                                              exitPage: const ActivateStar(),
+                                              enterPage: const ViewDashboard(
+                                                missed: false,
+                                                name: '',
+                                                update: false,
+                                                helpfulTips: true,
+                                                record: 0,
+                                              ),
+                                            ),
+                                          );
+                                          journeyBottomSheet(
+                                              context,
+                                              AppText().dashboardTitle,
+                                              AppText().dashboardBody,
+                                              AppLinks().dashboardLink);
+
+                                          //dashboard_sheet(context);
+                                        } else if (response == 400) {
+                                          Navigator.push(
+                                            context,
+                                            FadePageRoute2(
+                                              true,
+                                              exitPage: const ActivateStar(),
+                                              enterPage: const ViewDashboard(
+                                                missed: false,
+                                                name: '',
+                                                update: false,
+                                                helpfulTips: false,
+                                                record: 0,
+                                              ),
+                                            ),
+                                          );
+                                          showAnimatedDialog(
+                                              animationType:
+                                                  DialogTransitionType.fadeScale,
+                                              curve: Curves.easeInOut,
+                                              duration: const Duration(seconds: 1),
+                                              context: context,
+                                              builder: (BuildContext context) =>
+                                                  SizedBox(
+                                                    width: AppDimensions.height10(
+                                                            context) *
+                                                        27.0,
+                                                    height: AppDimensions.height10(
+                                                            context) *
+                                                        23.6,
+                                                    child: AlertDialog(
+                                                      shape: RoundedRectangleBorder(
+                                                          borderRadius: BorderRadius
+                                                              .circular(AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.4)),
+                                                      contentPadding:
+                                                          EdgeInsets.zero,
+                                                      actionsPadding:
+                                                          EdgeInsets.zero,
+                                                      titlePadding: EdgeInsets.zero,
+                                                      title: Container(
+                                                          margin: EdgeInsets.only(
+                                                              top: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  1.9,
+                                                              bottom: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  0.2),
+                                                          height:
+                                                              AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  4.4,
+                                                          width:
+                                                              AppDimensions.width10(
+                                                                      context) *
+                                                                  23.8,
+                                                          child: Center(
+                                                            child: Text(
+                                                              'Maximum active goal limit\nreached',
+                                                              textAlign:
+                                                                  TextAlign.center,
+                                                              style: TextStyle(
+                                                                fontSize: AppDimensions
+                                                                        .height10(
+                                                                            context) *
+                                                                    1.7,
+                                                                fontWeight:
+                                                                    FontWeight.w400,
+                                                              ),
+                                                            ),
+                                                          )),
+                                                      content: Container(
+                                                        margin: EdgeInsets.only(
+                                                            bottom: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.5,
+                                                            left: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.6,
+                                                            right: AppDimensions
+                                                                    .height10(
+                                                                        context) *
+                                                                1.6),
+                                                        width:
+                                                            AppDimensions.width10(
+                                                                    context) *
+                                                                23.8,
+                                                        child: Text(
+                                                          subscription == 'active'
+                                                              ? "You can't start this goal because you\nalready have the maximum of 3 active\ngoals. You must stop one of your active\ngoals to start a new one."
+                                                              : "You can't start this goal because you\nalready have the maximum of 1 active\ngoals. You must stop one of your active\ngoals to start a new one.",
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .font10(
+                                                                        context) *
+                                                                1.3,
+                                                            fontWeight:
+                                                                FontWeight.w400,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      actions: <Widget>[
+                                                        Column(
+                                                          children: [
+                                                            SizedBox(
+                                                              height: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  0.1,
+                                                              child: Divider(
+                                                                color: const Color(
+                                                                        0XFF3C3C43)
+                                                                    .withOpacity(
+                                                                        0.29),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              height: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  4.2,
+                                                              width:
+                                                                  double.infinity,
+                                                              child: TextButton(
+                                                                onPressed: () {
+                                                                  Navigator.push(
+                                                                      context,
+                                                                      FadePageRoute(
+                                                                          page:
+                                                                              const view_all_goals_menu()));
+                                                                },
+                                                                child: Text(
+                                                                  'View goal',
+                                                                  style: TextStyle(
+                                                                    color: const Color(
+                                                                        0xFF007AFF),
+                                                                    fontSize: AppDimensions
+                                                                            .font10(
+                                                                                context) *
+                                                                        1.7,
+                                                                    fontFamily:
+                                                                        "Laila",
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w400,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              height: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  0.1,
+                                                              child: Divider(
+                                                                color: const Color(
+                                                                        0XFF3C3C43)
+                                                                    .withOpacity(
+                                                                        0.29),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              height: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  4.4,
+                                                              width:
+                                                                  double.infinity,
+                                                              child: TextButton(
+                                                                onPressed: () {
+                                                                  Navigator.pop(
+                                                                      context);
+                                                                },
+                                                                child: Text(
+                                                                  'Exit',
+                                                                  style: TextStyle(
+                                                                      fontSize:
+                                                                          AppDimensions.font10(
+                                                                                  context) *
+                                                                              1.7,
+                                                                      fontFamily:
+                                                                          "Laila",
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w400,
+                                                                      color: const Color(
+                                                                          0xFF007AFF)),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                            SizedBox(
+                                                              height: AppDimensions
+                                                                      .height10(
+                                                                          context) *
+                                                                  0.1,
+                                                              child: Divider(
+                                                                color: const Color(
+                                                                        0XFF3C3C43)
+                                                                    .withOpacity(
+                                                                        0.29),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ));
+                                        } else {
+                                          // const ScaffoldMessenger(
+                                          //     child: Text('Goal status not changed'));
+                                        }
+                                      });
+
+                                      //  dashboard_sheet(context);
+                                    },
+                                    child: Container(
+                                      width: AppDimensions.height10(context) * 16,
+                                      height: AppDimensions.height10(context) * 16,
+                                      padding: EdgeInsets.all(
+                                          AppDimensions.height10(context) * 0.5),
+                                      decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                              width:
+                                                  AppDimensions.width10(context) *
+                                                      0.3,
+                                              color: Colors.white)),
+                                      child: Container(
+                                        height:
+                                            AppDimensions.height10(context) * 14.7,
+                                        width:
+                                            AppDimensions.height10(context) * 14.7,
+                                        decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                          image: AssetImage('$pracColor' == '1'
+                                              ? "assets/images/Ellipse orange.webp"
+                                              : '$pracColor' == '2'
+                                                  ? 'assets/images/Ellipse 158.webp'
+                                                  : '$pracColor' == '3'
+                                                      ? "assets/images/Ellipse 157.webp"
+                                                      : '$pracColor' == '4'
+                                                          ? "assets/images/Ellipse light-blue.webp"
+                                                          : '$pracColor' == '5'
+                                                              ? "assets/images/Ellipse blue.webp"
+                                                              : 'assets/images/Ellipse 158.webp'),
+                                        )),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            SizedBox(
+                                              height:
+                                                  AppDimensions.height10(context) *
+                                                      2.1,
+                                            ),
+                                            Container(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          2.0),
+                                              // width:
+                                              //     AppDimensions.height10(context) * 12.8,
+
+                                              child: Text(
+                                                pracName,
+                                                maxLines: 2,
+                                                textAlign: TextAlign.center,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: TextStyle(
+                                                    color: const Color(0xFFFBFBFB),
+                                                    fontSize: AppDimensions.font10(
+                                                            context) *
+                                                        1.8,
+                                                    fontWeight: FontWeight.w500),
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height:
+                                                  AppDimensions.height10(context) *
+                                                      0.3,
+                                            ),
+                                            Image(
+                                              image: const AssetImage(
+                                                  'assets/images/ic_fingerprint.webp'),
+                                              width:
+                                                  AppDimensions.width10(context) *
+                                                      6.0,
+                                              height:
+                                                  AppDimensions.height10(context) *
+                                                      6.0,
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: AppDimensions.height10(context) * 1.1,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            SizedBox(
+                                // color: Colors.black,
+
+                                height: AppDimensions.height10(context) * 5.4,
+                                width: AppDimensions.width10(context) * 27.4,
+                                child: Column(
+                                  children: [
+                                    Center(
+                                      child: Text(
+                                        AppText().activateStarFoot,
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.white,
+                                          fontSize:
+                                              AppDimensions.font10(context) * 1.8,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )),
+                          ],
+                        ),
                       ],
                     ),
-                  ],
-                )
+                ],
+              )
               : const Center(
                   child: SpinKitFadingCircle(
                     color: Color(0xFFB1B8FF),

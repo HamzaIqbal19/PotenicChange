@@ -281,8 +281,8 @@ class _GoalCategoryState extends State<GoalCategory> {
                       child: Column(
                         children: [
                           Container(
-                            padding: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 4.2),
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 6),
                             child: Center(
                               child: Text(
                                 AppText().starCreate2,

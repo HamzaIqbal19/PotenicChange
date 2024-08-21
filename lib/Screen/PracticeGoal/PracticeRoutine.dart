@@ -283,8 +283,8 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
             child: Column(
               children: [
                 Container(
-                  padding: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 5.3),
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 6),
                   child: Center(
                     child: Text(
                       AppText().createPrac3,
