@@ -322,7 +322,7 @@ class _practice_summaryState extends State<practice_summary> {
                         height: AppDimensions.height10(context) * 3.4,
                         // color: Colors.amber,
                         margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 6.0),
+                            top: AppDimensions.height10(context) * 9.0),
                         child: Center(
                           child: Text(
                             AppText().pracRecSum,
@@ -624,9 +624,9 @@ class _practice_summaryState extends State<practice_summary> {
                                       : before == 3
                                           ? const Color(0xffE1C44F)
                                           : before == 4
-                                              ? const Color(0xffFA9458)
+                                              ? const Color(0xffFF7C42)
                                               : before == 5
-                                                  ? const Color(0xffFF7C42)
+                                                  ? const Color(0xff219653)
                                                   : const Color(0xffFA9458)),
                           child: Stack(children: [
                             Center(
@@ -769,9 +769,9 @@ class _practice_summaryState extends State<practice_summary> {
                                       : after == 3
                                           ? const Color(0xffE1C44F)
                                           : after == 4
-                                              ? const Color(0xffFA9458)
+                                              ? const Color(0xffFF7C42)
                                               : after == 5
-                                                  ? const Color(0xffFF7C42)
+                                                  ? const Color(0xff219653)
                                                   : const Color(0xffFA9458)),
                           child: Stack(children: [
                             Center(

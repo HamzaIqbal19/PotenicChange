@@ -4,11 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:potenic_app/utils/app_assets.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
-greyGlared(BuildContext context){
+greyGlared(BuildContext context,bool smallScreen){
   return Positioned(
     left: 0,
     right: 0,
-    top: 10,
+    top: smallScreen?-50:10,
     child: Container(
       height: AppDimensionsUpdated.height10(context)*100,
       decoration: const BoxDecoration(
@@ -19,11 +19,11 @@ greyGlared(BuildContext context){
   );
 }
 
-redGlared(BuildContext context){
+redGlared(BuildContext context,bool smallScreen){
   return Positioned(
     left: 0,
     right: 0,
-    top: 10,
+    top: smallScreen?-50:10,
     child: Container(
       height: AppDimensionsUpdated.height10(context)*100,
       decoration: const BoxDecoration(
@@ -34,11 +34,11 @@ redGlared(BuildContext context){
   );
 }
 
-yellowGlared(BuildContext context){
+yellowGlared(BuildContext context,bool smallScreen){
   return Positioned(
     left: 0,
     right: 0,
-    top: 40,
+    top: smallScreen?-20:40,
     child: Container(
       height: AppDimensionsUpdated.height10(context)*100,
       decoration: const BoxDecoration(
@@ -49,11 +49,11 @@ yellowGlared(BuildContext context){
   );
 }
 
-whiteGlared(BuildContext context){
+whiteGlared(BuildContext context,bool smallScreen){
   return Positioned(
     left: 0,
     right: 0,
-    top: 10,
+    top: smallScreen?-50:10,
     child: Container(
       height: AppDimensionsUpdated.height10(context)*100,
       decoration: const BoxDecoration(
@@ -64,11 +64,11 @@ whiteGlared(BuildContext context){
   );
 }
 
-lightBlueGlared(BuildContext context){
+lightBlueGlared(BuildContext context,bool smallScreen){
   return Positioned(
     left: 0,
     right: 0,
-    top: 40,
+    top: smallScreen?-20:40,
     child: Container(
       height: AppDimensionsUpdated.height10(context)*100,
       decoration: const BoxDecoration(
@@ -79,11 +79,11 @@ lightBlueGlared(BuildContext context){
   );
 }
 
-blueGlared(BuildContext context){
+blueGlared(BuildContext context,bool smallScreen){
   return Positioned(
     left: 0,
     right: 0,
-    top: 40,
+    top: smallScreen?-20:40,
     child: Container(
       height: AppDimensionsUpdated.height10(context)*100,
       decoration: const BoxDecoration(
@@ -96,19 +96,21 @@ blueGlared(BuildContext context){
 
 
 getGlares(BuildContext context, color){
+  bool smallScreen = MediaQuery.of(context).size.height < 690;
+
   if(color == "1"){
-    return redGlared(context);
+    return redGlared(context,smallScreen);
   }else if(color == "2"){
-    return yellowGlared(context);
+    return yellowGlared(context,smallScreen);
   }else if(color == "3"){
-    return greyGlared(context);
+    return greyGlared(context,smallScreen);
   }else if(color == "4"){
-    return whiteGlared(context);
+    return whiteGlared(context,smallScreen);
   }else if(color == "5"){
-    return lightBlueGlared(context);
+    return lightBlueGlared(context,smallScreen);
   }else if(color == "6"){
-    return blueGlared(context);
+    return blueGlared(context,smallScreen);
   }else {
-    return yellowGlared(context);
+    return yellowGlared(context,smallScreen);
   }
 }

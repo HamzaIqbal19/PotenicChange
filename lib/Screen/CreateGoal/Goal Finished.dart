@@ -43,6 +43,11 @@ class _GoalFinishedState extends State<GoalFinished> {
     //aveAddPracRoute();
   }
 
+  setRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.setBool('pracRoute', true) ;
+  }
+
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
@@ -110,6 +115,7 @@ class _GoalFinishedState extends State<GoalFinished> {
                           FadePageRouteReverse(
                               page: const view_all_goals_menu()));
                     } else {
+                      setRoute();
                       Navigator.pushReplacement(
                         context,
                         FadePageRouteReverse(

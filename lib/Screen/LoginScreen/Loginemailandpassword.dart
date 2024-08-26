@@ -24,12 +24,10 @@ class Loginemailandpassword extends StatefulWidget {
   _LoginemailandpasswordState createState() => _LoginemailandpasswordState();
 }
 
-class _LoginemailandpasswordState extends State<Loginemailandpassword>
-    with SingleTickerProviderStateMixin {
+class _LoginemailandpasswordState extends State<Loginemailandpassword> {
   // controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  late AnimationController _controller;
 
   String passwordMsg = "Minimum 8 characters";
   String emailMsg = "Ooops! Needs to be an email format";
@@ -38,7 +36,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
   bool passObscure = true;
   final formKey = GlobalKey<FormState>();
   bool isPasswordNotVisible = true;
-  bool rememberMe = true;
+  bool rememberMe = false;
   bool boolean = true;
   bool errorEmail = false;
   bool errorPassword = false;
@@ -54,18 +52,20 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
 
   @override
   void initState() {
-    _controller = AnimationController(
-        vsync: this,
-        duration: const Duration(milliseconds: 200), // increased duration
-        lowerBound: 0.0,
-        upperBound: 0.1)
-      ..addListener(() {
-        setState(() {});
-      });
+    getEmailAndPass();
     super.initState();
   }
 
-  onLoggedIn() {
+  onLoggedIn() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if(rememberMe){
+
+      prefs.setString('loginEmail', emailController.text.toString());
+      prefs.setString('loginPass', passwordController.text.toString());
+    }else{
+      await prefs.remove('loginEmail');
+      await prefs.remove('loginPass');
+    }
     AdminGoal.checkUserGoalByUserId().then((response) {
       if (response == false) {
         Navigator.push(
@@ -94,6 +94,15 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
     });
   }
 
+  getEmailAndPass()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      emailController.text = prefs.getString('loginEmail')??"";
+      passwordController.text = prefs.getString('loginPass')??"";
+    });
+
+  }
+
   late bool checkBool;
   booleanValue(value) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -105,7 +114,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
     // TODO: implement dispose
     emailController.dispose();
     passwordController.dispose();
-    _controller.dispose();
     super.dispose();
   }
 
@@ -173,7 +181,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
         Navigator.pushReplacement(
           context,
           FadePageRouteReverse(
-            page: LoginPage(),
+            page: const LoginPage(),
           ),
         );
         return Future.value(false);
@@ -204,7 +212,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                         Navigator.pushReplacement(
                           context,
                           FadePageRouteReverse(
-                            page: LoginPage(),
+                            page: const LoginPage(),
                           ),
                         );
                         // Add code for performing close action
@@ -607,14 +615,14 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                     : AppDimensions.height10(context) * 3),
                             Container(
                                 height: AppDimensions.height10(context) * 2.2,
-                                width: AppDimensions.width10(context) * 26.1,
+
                                 padding: EdgeInsets.only(
-                                    left: AppDimensions.width10(context) * 1.2),
+                                    left: AppDimensions.width10(context) * 1.2,right: 5),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    GestureDetector(
+                                    AnimatedScaleButton(
                                       onTap: () {
                                         Navigator.push(
                                           context,
@@ -634,6 +642,34 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                                                   1.5,
                                           fontWeight: FontWeight.w600,
                                         ),
+                                      ),
+                                    ),
+                                    GestureDetector(
+                                      onTap: (){
+                                        setState(() {
+                                          rememberMe = !rememberMe;
+                                        });
+                                      },
+                                      child: Row(
+                                        children: [
+                                           Icon(
+                                              rememberMe?Icons.check_box: Icons.check_box_outline_blank,
+                                              color: Colors.white,
+                                             size: 18,
+                                            ),
+
+                                          const SizedBox(width: 2,),
+                                          Text(
+                                            AppText().remember,
+                                            style: TextStyle(
+                                              color: const Color(0xFFFFFFFF),
+                                              fontSize:
+                                              AppDimensions.font10(context) *
+                                                  1.5,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
                                   ],
@@ -693,28 +729,15 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
 
                       SizedBox(height: AppDimensions.height10(context) * 3.0),
 
-                      GestureDetector(
-                        onTapDown: (TapDownDetails details) {
-                          setState(() {
-                            loading = true;
-                          });
-                          _controller.forward();
-                        },
+                      AnimatedScaleButton(
+
                         onTap: () async {
                           setState(() {
                             loading = true;
                             emailError = "";
                             passwordError = "";
                           });
-                          _controller.forward();
 
-                          await Future.delayed(
-                              const Duration(milliseconds: 200));
-
-                          _controller.reverse();
-
-                          await Future.delayed(
-                              const Duration(milliseconds: 200));
                           if (_formkey.currentState!.validate() &&
                               errorPassword == false) {
                             Authentication()
@@ -766,37 +789,33 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword>
                               loading = false;
                             });
                           }
-                          FocusScope.of(context).unfocus();
                         },
-                        child: Transform.scale(
-                          scale: 1 - _controller.value,
-                          child: Container(
-                            height: AppDimensions.height10(context) * 5.0,
-                            width: AppDimensions.width10(context) * 26.7,
-                            decoration: BoxDecoration(
-                              color: const Color(0xFFF5F5F5),
-                              border: Border.all(color: Colors.white),
-                              borderRadius: BorderRadius.all(Radius.circular(
-                                  AppDimensions.height10(context) * 5.0)),
-                            ),
-                            child: loading
-                                ? SpinKitThreeBounce(
-                                    color: const Color(0xFF8C648A),
-                                    // delay: Duration(milliseconds: 0),
-                                    size: AppDimensions.height10(context) * 3.5,
-                                  )
-                                : Center(
-                                    child: Text(
-                                      AppText().login,
-                                      style: TextStyle(
-                                        color: const Color(0xFF8C648A),
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.6,
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                        child: Container(
+                          height: AppDimensions.height10(context) * 5.0,
+                          width: AppDimensions.width10(context) * 26.7,
+                          decoration: BoxDecoration(
+                            color: const Color(0xFFF5F5F5),
+                            border: Border.all(color: Colors.white),
+                            borderRadius: BorderRadius.all(Radius.circular(
+                                AppDimensions.height10(context) * 5.0)),
+                          ),
+                          child: loading
+                              ? SpinKitThreeBounce(
+                                  color: const Color(0xFF8C648A),
+                                  // delay: Duration(milliseconds: 0),
+                                  size: AppDimensions.height10(context) * 3.5,
+                                )
+                              : Center(
+                                  child: Text(
+                                    AppText().login,
+                                    style: TextStyle(
+                                      color: const Color(0xFF8C648A),
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.8,
+                                      fontWeight: FontWeight.w600,
                                     ),
                                   ),
-                          ),
+                                ),
                         ),
                       ),
 

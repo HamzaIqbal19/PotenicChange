@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:dotted_decoration/dotted_decoration.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeWelldone.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -237,7 +238,14 @@ class _clocksState extends State<clocks> {
               AnimatedScaleButton(
                 onTap: () {
                   Navigator.push(
-                      context, FadePageRoute(page: (const welldone_splash())));
+                    context,
+                    FadePageRoute(
+                      page: const feelingsAfter(
+                        summary: false,
+                        selected: 0,
+                      ),
+                    ),
+                  );
                 },
                 child: Container(
                     height: AppDimensions.height10(context) * 5.0,
@@ -634,14 +642,16 @@ class _watch_timeState extends State<watch_time> {
                             height: AppDimensions.height10(context) * 2.2,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 0.5,
-                                left: AppDimensions.width10(context) * 0.5),
-                            child: Text(button_text,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.4,
-                                    fontWeight: FontWeight.w500,
-                                    color: const Color(0xffFFA511))),
+                               ),
+                            child: Center(
+                              child: Text(button_text,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.4,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(0xffFFA511))),
+                            ),
                           )
                         ],
                       ),

@@ -1,11 +1,14 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:potenic_app/API/Practice.dart';
+import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/PracticeReminder.dart';
 import 'package:potenic_app/Screen/Your_goals/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
@@ -23,6 +26,10 @@ class PracticeRoutine extends StatefulWidget {
 class _PracticeRoutineState extends State<PracticeRoutine> {
   bool buttonActive = false;
   int count1 = 0;
+  bool loader= false;
+
+  bool notificationStatus = false;
+  bool status2 = false;
 
   List<Map<String, dynamic>> timesPerDay = [
     {'day': 'Monday', 'time1': '9:00 am'},
@@ -50,12 +57,86 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
     });
   }
 
+  getReminderStatus() {
+    PracticeGoalApi.getUserReminder().then((value) {
+      print("Reminder status: $value");
+      if (value != null) {
+        setState(() {
+            notificationStatus = value['beforePractice'];
+            status2 = value['missedPractice'];
+        });
+      }
+    });
+  }
+
   var mygoal = TextEditingController();
   var practiceName = TextEditingController();
   var practice = TextEditingController();
   var color;
   String route = '';
   int index1 = 0;
+
+
+
+
+  savePractice(){
+    setState(() {
+      loader = true;
+    });
+    PracticeGoalApi()
+        .userAddPractice(
+      practiceName.text.toString(),
+      true,
+      selectedDays,
+    )
+        .then((response) async {
+      if (response == true) {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(const SnackBar(
+            content: Text(
+                "Practice Added Successfully")));
+        if (route == 'view_all_goals') {
+          Navigator.pushReplacement(
+              context,
+              FadePageRoute(
+                  page:
+                  const view_all_goals_menu()));
+        } else if (route ==
+            'view_all_goals_2') {
+          Navigator.pushReplacement(
+              context,
+              FadePageRoute(
+                  page:
+                  const multiple_goal_inactive()));
+        } else {
+          Navigator.pushReplacement(
+            context,
+            FadePageRoute2(
+              true,
+              exitPage:
+              const PracticeReminder(
+                comingFromEditScreen: false, praticeName: '', goalName: '', goalColor: '', pracColor: '',
+              ),
+              enterPage:
+              const PracticeFinished(),
+            ),
+          );
+        }
+        final SharedPreferences prefs =
+        await _prefs;
+
+        await prefs.remove('goal_route');
+        await prefs.remove('route');
+      } else if (response == false) {}
+    })
+        .catchError((error) {})
+        .whenComplete(() {
+      setState(() {
+        loader =
+        false; // Hide loader when the API call completes
+      });
+    });
+  }
 
   Future<void> saveTimesPerDay(List<Map<String, dynamic>> timesPerDay) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -72,6 +153,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
     super.initState();
     getGoalName();
     getRoute();
+    getReminderStatus();
   }
 
   Future<void> getRoute() async {
@@ -284,7 +366,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
               children: [
                 Container(
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 6),
+                      top: AppDimensions.height10(context) * 5.5),
                   child: Center(
                     child: Text(
                       AppText().createPrac3,
@@ -488,21 +570,29 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                     AnimatedScaleButton(
                       onTap: () async {
                         if (count1 >= 3) {
-                          saveTimesPerDay(selectedDays);
+                          if(notificationStatus == true || status2 == true){
+                            savePractice();
+                          }else {
+                            saveTimesPerDay(selectedDays);
 
-                          Navigator.push(
-                            context,
-                            FadePageRoute(
-                              page: const PracticeReminder(
-                                comingFromEditScreen: false, goalName: '', praticeName: '', goalColor: '', pracColor: '',
+                            Navigator.push(
+                              context,
+                              FadePageRoute(
+                                page: const PracticeReminder(
+                                  comingFromEditScreen: false,
+                                  goalName: '',
+                                  praticeName: '',
+                                  goalColor: '',
+                                  pracColor: '',
+                                ),
                               ),
-                            ),
-                          );
-                          final SharedPreferences prefs = await _prefs;
-                          await prefs.setBool('pracRoute', false);
-                          // setState(() {
-                          //   count = 0;
-                          // });
+                            );
+                            final SharedPreferences prefs = await _prefs;
+                            await prefs.setBool('pracRoute', false);
+                            // setState(() {
+                            //   count = 0;
+                            // });
+                          }
                         } else {}
                       },
                       child: Container(

@@ -128,14 +128,16 @@ class _ActivateStarState extends State<ActivateStar> {
                 fit: BoxFit.contain,
               ),
               onPressed: () {
-                Navigator.pushReplacement(
-                  context,
-                  FadePageRouteReverse(
-                    page: const HomeScreen(
-                      login: true,
-                    ),
-                  ),
-                );
+                Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page: const ViewDashboard(
+                          missed: false,
+                          name: '',
+                          update: false,
+                          helpfulTips: false,
+                          record: 0,
+                        )));
                 // Add code for performing close action
               },
             ),

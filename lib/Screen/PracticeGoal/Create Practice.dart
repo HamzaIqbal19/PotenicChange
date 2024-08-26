@@ -250,7 +250,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 6),
+                              top: AppDimensions.height10(context) * 5.5),
                           child: Center(
                             child: Text(
                               AppText().createPrac1,

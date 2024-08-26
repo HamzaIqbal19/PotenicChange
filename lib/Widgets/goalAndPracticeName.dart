@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 goalAndPractice(
@@ -12,9 +14,11 @@ goalAndPractice(
     height: AppDimensions.height10(BuildContext) * 11.2,
     margin: EdgeInsets.only(
         top: AppDimensions.height10(BuildContext) * 0.6,
-        left: AppDimensions.width10(BuildContext) * 5),
+      left: AppDimensions.height10(BuildContext) * 6
+        ),
     // color: Colors.blue,
     child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
           width: AppDimensions.width10(BuildContext) * 7.5,
@@ -82,13 +86,15 @@ goalAndPractice(
             ],
           ),
         ),
+        const SizedBox(width: 5,),
         SizedBox(
-          width: AppDimensions.width10(BuildContext) * 21.6,
+          width: AppDimensions.width10(BuildContext) * 16.6,
           height: AppDimensions.height10(BuildContext) * 2.4,
+
           child: Text(
             pracName ?? 'No data found',
             style: TextStyle(
-                color: const Color(0xff156F6D),
+                color:  const Color(0xff156F6D),
                 height: 1.2,
                 overflow: TextOverflow.ellipsis,
                 fontSize: AppDimensions.font10(BuildContext) * 2.0,

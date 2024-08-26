@@ -331,7 +331,7 @@ class _emotionsState extends State<emotions> {
                               width: AppDimensions.width10(context) * 13.7,
                               height: AppDimensions.width10(context) * 13.7,
                               margin: EdgeInsets.only(
-                                  left: AppDimensions.width10(context) * 4.0,
+                                  left: AppDimensions.width10(context) * 3.0,
                                   right: AppDimensions.width10(context) * 1.5),
                               decoration: BoxDecoration(
                                   color: Colors.transparent,
@@ -505,7 +505,7 @@ class _emotionsState extends State<emotions> {
                                       width:
                                           AppDimensions.width10(context) * 0.2,
                                       color: Colors.white),
-                                  color: const Color(0xffFA9458),
+                                  color: const Color(0xffFF7C42),
                                 ),
                                 child: Text(
                                   'Motivated and \nready to start',
@@ -554,7 +554,7 @@ class _emotionsState extends State<emotions> {
                                       width:
                                           AppDimensions.width10(context) * 0.2,
                                       color: Colors.white),
-                                  color: const Color(0xffFF7C42),
+                                  color: const Color(0xff219653),
                                 ),
                                 child: Text(
                                   'Great, cannot \nwait to start!',
@@ -729,9 +729,9 @@ class _emotionsState extends State<emotions> {
                                       AppDimensions.height10(context) * 5.0),
                                 ),
                                 child: Center(
-                                  child: widget.summary
-                                      ? Text(
-                                          'Update Summary',
+                                  child:  Text(
+                                    widget.summary
+                                        ? 'Update Summary':"Next",
                                           style: TextStyle(
                                               color: Colors.white,
                                               fontSize: AppDimensions.font10(
@@ -739,15 +739,7 @@ class _emotionsState extends State<emotions> {
                                                   2,
                                               fontWeight: FontWeight.w600),
                                         )
-                                      : Text(
-                                          'Next',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  2.0,
-                                              fontWeight: FontWeight.w600),
-                                        ),
+
                                 ),
                               ),
                             )
@@ -893,7 +885,7 @@ class _addNotesState extends State<addNotes> {
                       state: widget.state_,
                     ))
                 : SizedBox(
-                    height: AppDimensions.height10(context) * 9.1,
+                    height: AppDimensions.height10(context) * 12.1,
                   )),
       ],
     );

@@ -710,13 +710,12 @@ class _goalwhyState extends State<GoalWhy> {
             ),
             loading == false
                 ? SingleChildScrollView(
-                    reverse: true,
                     physics: const ClampingScrollPhysics(),
                     child: Column(
                       children: [
                         Container(
                           margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 6),
+                              top: AppDimensions.height10(context) * 5.5),
                           child: Center(
                             child: Text(
                               widget.comingFromEditScreen

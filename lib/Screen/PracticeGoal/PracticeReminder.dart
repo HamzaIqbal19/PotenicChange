@@ -40,6 +40,12 @@ class _PracticeReminderState extends State<PracticeReminder> {
   bool updated = false;
   bool reminderSelected = false;
 
+  setNotifications(){
+    setUserReminder('receiveNotification', true);
+    setUserReminder('beforePractice', radio1);
+    setUserReminder('missedPractice', radio1);
+  }
+
   var reminder;
   final NotificationPermissionService _notificationPermissionService =
       NotificationPermissionService();
@@ -54,6 +60,10 @@ class _PracticeReminderState extends State<PracticeReminder> {
         });
       } else {}
     }).catchError((error) {});
+  }
+
+  setUserReminder(name, reminder) {
+    PracticeGoalApi().updateUserReminder(name, reminder);
   }
 
   String currentDay = DateFormat('EEEE').format(DateTime.now());
@@ -378,7 +388,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
               children: [
                 Container(
                   margin: EdgeInsets.only(
-                      top: AppDimensions.height10(context) * 6),
+                      top: AppDimensions.height10(context) * 5.5),
                   child: Center(
                     child: Text(
                       widget.comingFromEditScreen
@@ -929,6 +939,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             false; // Hide loader when the API call completes
                           });
                         });
+                        setNotifications();
                       }
                     } else {
                       if (reminderSelected == true) {
@@ -998,6 +1009,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
                             false; // Hide loader when the API call completes
                           });
                         });
+                        setNotifications();
                       }
                     }
                   },

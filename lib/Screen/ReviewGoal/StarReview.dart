@@ -56,6 +56,33 @@ class _StarReviewState extends State<StarReview> {
   void _onFocus() {
     setState(() {});
   }
+  setColor(){
+    if(color1 == true){
+      setState(() {
+        color = '1';
+      });
+    }else if(color2 == true){
+      setState(() {
+        color = '2';
+      });
+    } else if(color3 == true){
+      setState(() {
+        color = '3';
+      });
+    } else if(color4 == true){
+      setState(() {
+        color = '4';
+      });
+    } else if(color5 == true){
+      setState(() {
+        color = '5';
+      });
+    }else if(color6 == true){
+      setState(() {
+        color = '6';
+      });
+    }
+  }
 
   Future<void> getRoute() async {
     final SharedPreferences prefs = await _prefs;
@@ -542,6 +569,7 @@ class _StarReviewState extends State<StarReview> {
                                                         color5 = false;
                                                         color6 = false;
                                                       });
+                                                      setColor();
                                                       if (color1 == true) {
                                                         AdminGoal()
                                                             .updateUserGoalColor(
@@ -622,6 +650,7 @@ class _StarReviewState extends State<StarReview> {
                                                         color5 = false;
                                                         color6 = false;
                                                       });
+                                                      setColor();
                                                       if (color2 == true) {
                                                         // #FFFEE8, #F9B410
                                                         AdminGoal()
@@ -703,6 +732,7 @@ class _StarReviewState extends State<StarReview> {
                                                         color5 = false;
                                                         color6 = false;
                                                       });
+                                                      setColor();
                                                       if (color3 == true) {
                                                         // #FFFFFF, #DEDEDE
                                                         AdminGoal()
@@ -787,6 +817,7 @@ class _StarReviewState extends State<StarReview> {
                                                         color5 = false;
                                                         color6 = false;
                                                       });
+                                                      setColor();
                                                       if (color4 == true) {
                                                         // #FFFFFF, #CAD2F8
                                                         AdminGoal()
@@ -868,6 +899,7 @@ class _StarReviewState extends State<StarReview> {
                                                         color5 = true;
                                                         color6 = false;
                                                       });
+                                                      setColor();
                                                       if (color5 == true) {
                                                         // #FFFFFF, #9CAAF8
                                                         AdminGoal()
@@ -949,6 +981,7 @@ class _StarReviewState extends State<StarReview> {
                                                         color5 = false;
                                                         color6 = true;
                                                       });
+                                                      setColor();
                                                       if (color6 == true) {
                                                         // #C6CFF0, #6181F2
                                                         AdminGoal()

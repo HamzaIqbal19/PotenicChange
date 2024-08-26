@@ -247,7 +247,7 @@ class _AllGoalsState extends State<AllGoals> {
                       children: [
                         Container(
                           margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 6),
+                              top: AppDimensions.height10(context) * 5.5),
                           child: Center(
                             child: Text(
                               AppText().starCreate1,

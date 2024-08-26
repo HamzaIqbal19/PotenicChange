@@ -416,88 +416,89 @@ class _startTimerStateState extends State<startTimerState> {
           color: const Color.fromRGBO(0, 0, 0, 0.1),
           borderRadius: BorderRadius.circular(18),
           border: Border.all(width: 3, color: Colors.transparent)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Row(
-            children: [
-              Text(
-                text_state,
-                //textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: const Color.fromRGBO(100, 100, 100, 1),
-                  fontSize: AppDimensions.font10(context) * 1.6,
-                  fontFamily: "Laila",
-                  fontWeight: FontWeight.w700,
-                ),
+      child: GestureDetector(
+        onTap: (){
+          showModalBottomSheet(
+            context: context,
+            builder: (context) {
+              return MyListWheelForm(
+                key: Key("$widget.key"),
+                onSelectionChanged: (selectedDay, selectedHour,
+                    selectedMinute, selectedPeriod, Done) {
+                  String startTime =
+                      "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
+                  widget.onChanged(startTime);
+                  widget.onChangedStart(
+                      startTime); // Pass the selected value to the onChanged callback
+                  setState(() {
+                    start_time = startTime;
+
+                    day = selectedDay;
+                    hour = selectedHour;
+                    minute = selectedMinute;
+                    period = selectedPeriod;
+                    Done = true;
+                  });
+                  Done = true;
+
+                  widget.onChanged(start_time);
+                  Navigator.pop(context);
+                },
+                initialHour: widget.start_Time.substring(0, 1),
+                initialMinute: widget.start_Time.substring(2, 4),
+                initialPeriod: widget.start_Time.substring(5, 7),
+              );
+            },
+            isScrollControlled: true,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(16),
               ),
-              SizedBox(
-                width: AppDimensions.width10(context) * 17.2,
-                child: Text(
-                  widget.start_Time,
+            ),
+          );
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Row(
+              children: [
+                Text(
+                  text_state,
+                  //textAlign: TextAlign.left,
                   style: TextStyle(
-                    color: const Color.fromRGBO(250, 153, 52, 1),
+                    color: const Color.fromRGBO(100, 100, 100, 1),
                     fontSize: AppDimensions.font10(context) * 1.6,
                     fontFamily: "Laila",
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-              ),
-            ],
-          ),
-          SizedBox(
-            width: AppDimensions.width10(context) * 2.4,
-            child: Center(
-              child: GestureDetector(
-                  onTap: () {
-                    showModalBottomSheet(
-                      context: context,
-                      builder: (context) {
-                        return MyListWheelForm(
-                          key: Key("$widget.key"),
-                          onSelectionChanged: (selectedDay, selectedHour,
-                              selectedMinute, selectedPeriod, Done) {
-                            String startTime =
-                                "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
-                            widget.onChanged(startTime);
-                            widget.onChangedStart(
-                                startTime); // Pass the selected value to the onChanged callback
-                            setState(() {
-                              start_time = startTime;
-
-                              day = selectedDay;
-                              hour = selectedHour;
-                              minute = selectedMinute;
-                              period = selectedPeriod;
-                              Done = true;
-                            });
-                            Done = true;
-
-                            widget.onChanged(start_time);
-                            Navigator.pop(context);
-                          },
-                          initialHour: widget.start_Time.substring(0, 1),
-                          initialMinute: widget.start_Time.substring(2, 4),
-                          initialPeriod: widget.start_Time.substring(5, 7),
-                        );
-                      },
-                      isScrollControlled: true,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(16),
-                        ),
-                      ),
-                    );
-                  },
-                  child: SizedBox(
-                      child: Image.asset(
-                    'assets/images/Polygon_orange.webp',
-                    width: AppDimensions.width10(context) * 1.7,
-                    height: AppDimensions.height10(context) * 1.7,
-                  ))),
+                SizedBox(
+                  width: AppDimensions.width10(context) * 17.2,
+                  child: Text(
+                    widget.start_Time,
+                    style: TextStyle(
+                      color: const Color.fromRGBO(250, 153, 52, 1),
+                      fontSize: AppDimensions.font10(context) * 1.6,
+                      fontFamily: "Laila",
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
+            SizedBox(
+              width: AppDimensions.width10(context) * 2.4,
+              child: Center(
+                child: SizedBox(
+                    child: Image.asset(
+                  'assets/images/Polygon_orange.webp',
+                  width: AppDimensions.width10(context) * 1.7,
+                  height: AppDimensions.height10(context) * 1.7,
+                )),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

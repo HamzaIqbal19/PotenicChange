@@ -1634,9 +1634,9 @@ class _timelineState extends State<timeline> {
                                                                         beforeText:
                                                                             data['recordingBeforeFeelingTime${index + 1}'].toString(),
                                                                         orangeImage:
-                                                                            data['userGoal']['color'],
+                                                                            data['userGoal']['color']??"2",
                                                                         greenImage:
-                                                                            data['color'],
+                                                                            data['color']??'2',
                                                                         status:
                                                                             data['recordingStatusTime${index + 1}'],
                                                                         missedGreenImage:

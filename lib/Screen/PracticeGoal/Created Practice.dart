@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/PracticeGoal/widgets/glares.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
@@ -126,14 +127,16 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                         FadePageRouteReverse(
                             page: const view_all_goals_menu()));
                   } else {
-                    Navigator.pushReplacement(
-                      context,
-                      FadePageRouteReverse(
-                        page: const HomeScreen(
-                          login: true,
-                        ),
-                      ),
-                    );
+                    Navigator.push(
+                        context,
+                        FadePageRoute(
+                            page: const ViewDashboard(
+                              missed: false,
+                              name: '',
+                              update: false,
+                              helpfulTips: false,
+                              record: 0,
+                            )));
                   }
                   // Add code for performing close action
                 },

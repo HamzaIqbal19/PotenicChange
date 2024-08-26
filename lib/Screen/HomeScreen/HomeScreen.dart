@@ -173,7 +173,15 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                             final SharedPreferences
                                             prefs =
                                             await _prefs;
+                                            var email = prefs.getString('loginEmail');
+                                            var pass = prefs.getString('loginPass');
                                             await prefs.clear();
+                                            if(email !=null && pass !=null){
+                                              prefs.setString('loginEmail', email);
+                                              prefs.setString('loginPass', pass);
+                                            }
+
+
 
                                             Navigator.push(
                                               context,
@@ -273,7 +281,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           style: TextStyle(
                             color: const Color(0xFF8C648A),
                             fontSize:
-                            AppDimensions.font10(context) * 1.6,
+                            AppDimensions.font10(context) * 1.8,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -345,7 +353,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           style: TextStyle(
                             color: const Color(0xFF8C648A),
                             fontSize:
-                            AppDimensions.font10(context) * 1.6,
+                            AppDimensions.font10(context) * 1.8,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -388,7 +396,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               color: Colors.white,
                               fontSize:
                               AppDimensions.font10(context) *
-                                  1.6,
+                                  1.8,
                               fontWeight: FontWeight.w600,
                             ),
                           ),

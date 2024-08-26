@@ -61,6 +61,12 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
     super.initState();
   }
 
+  rememberCredentails()async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('loginEmail', emailController.text.toString());
+      prefs.setString('loginPass', passwordController.text.toString());
+  }
+
   signUp() {
     setState(() {
       loading = true;
@@ -92,6 +98,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
             response["message"],
             style: TextStyle(color: Colors.red.withOpacity(0.8)),
           )));
+          rememberCredentails();
           Navigator.push(
             context,
             FadePageRoute(
@@ -781,6 +788,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                 style: TextStyle(
                                     color: Colors.red.withOpacity(0.8)),
                               )));
+                              rememberCredentails();
                               Navigator.push(
                                 context,
                                 FadePageRoute(
@@ -868,7 +876,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                     style: TextStyle(
                                       color: const Color(0xFF8C648A),
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.6,
+                                          AppDimensions.font10(context) * 1.8,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),

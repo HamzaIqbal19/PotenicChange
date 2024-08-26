@@ -271,7 +271,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                                 style: TextStyle(
                                   color: const Color(0xFFFFFFFF),
                                   fontSize: AppDimensions.font10(context) * 1.8,
-                                  fontWeight: FontWeight.w700,
+                                  fontWeight: FontWeight.w600,
                                 ),
                               )),
                             ],
@@ -307,7 +307,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                         AppText().alreadySignedUpButton,
                         style: TextStyle(
                           color: const Color(0xFF8C648A),
-                          fontSize: AppDimensions.font10(context) * 1.6,
+                          fontSize: AppDimensions.font10(context) * 1.8,
                           fontWeight: FontWeight.w600,
                         ),
                       ),

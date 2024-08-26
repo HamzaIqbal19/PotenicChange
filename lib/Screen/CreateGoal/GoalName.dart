@@ -471,13 +471,13 @@ class _GoalNameState extends State<GoalName> {
                 ),
               ),
               SingleChildScrollView(
-                reverse: true,
+
                 physics: const ClampingScrollPhysics(),
                 child: Column(
                   children: [
                     Container(
                       margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 6),
+                          top: AppDimensions.height10(context) * 5.5),
                       child: Center(
                         child: Text(
                           widget.comingFromEditScreen
@@ -686,10 +686,10 @@ class _GoalNameState extends State<GoalName> {
                     MediaQuery.of(context).viewInsets.bottom == 0
                         ? updated
                             ? SizedBox(
-                                height: AppDimensions.height10(context) * 26.3,
+                                height: AppDimensions.height10(context) * 25.3,
                               )
                             : SizedBox(
-                                height: AppDimensions.height10(context) * 29.3,
+                                height: AppDimensions.height10(context) * 28.3,
                               )
                         : SizedBox(
                             height: AppDimensions.height10(context) * 9.6,
@@ -959,7 +959,7 @@ class _GoalNameState extends State<GoalName> {
                             ],
                           ),
                     SizedBox(
-                      height: AppDimensions.height10(context) * 1.0,
+                      height: AppDimensions.height10(context) * 2.5,
                     ),
                     Padding(
                         padding: EdgeInsets.only(

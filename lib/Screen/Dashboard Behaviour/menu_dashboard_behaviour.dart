@@ -202,7 +202,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                         height: AppDimensions.height10(context) * 18.9,
                         // color: Colors.grey.withOpacity(0.5),
                         margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 5.0,
+                            top: AppDimensions.height10(context) * 6.2,
                             bottom: AppDimensions.height10(context) * 1.0),
                         child: Column(
                           children: [
@@ -345,12 +345,14 @@ class _menu_behaviourState extends State<menu_behaviour> {
                         height: AppDimensions.height10(context) * 11.8,
                         // color: Colors.amber,
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             SizedBox(
                               width: AppDimensions.width10(context) * 9.6,
                               height: AppDimensions.height10(context) * 11.8,
                               //margin: EdgeInsets.only(bottom: 19),
                               child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   AnimatedScaleButton(
                                     onTap: () {
@@ -390,30 +392,35 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                       )),
                                     ),
                                   ),
+                                  const SizedBox(height: 5,),
                                   Text(
-                                    'View/Edit',
+                                    'View/Edit\nsession',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: Colors.white,
+                                        height:
+                                        AppDimensions.height10(context) *
+                                            0.14,
                                         fontSize:
                                             AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500),
                                   ),
-                                  Text(
-                                    'session',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.12,
-                                        color: Colors.white,
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.6,
-                                        fontWeight: FontWeight.w500),
-                                  )
+                                  // Text(
+                                  //   'session',
+                                  //   textAlign: TextAlign.center,
+                                  //   style: TextStyle(
+                                  //       height:
+                                  //           AppDimensions.height10(context) *
+                                  //               0.12,
+                                  //       color: Colors.white,
+                                  //       fontSize:
+                                  //           AppDimensions.font10(context) * 1.6,
+                                  //       fontWeight: FontWeight.w500),
+                                  // )
                                 ],
                               ),
                             ),
+                            SizedBox(width: AppDimensions.width10(context) * 2,),
                             SizedBox(
                               width: AppDimensions.width10(context) * 9.3,
                               height: AppDimensions.height10(context) * 11.8,
@@ -678,27 +685,20 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                       ),
                                     ),
                                   ),
+                                  const SizedBox(height: 5,),
                                   Text(
-                                    'Missed',
+                                    'Missed\nsession',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: Colors.white,
+                                        height:
+                                        AppDimensions.height10(context) *
+                                            0.14,
                                         fontSize:
                                             AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500),
                                   ),
-                                  Text(
-                                    'session',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.12,
-                                        color: Colors.white,
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.6,
-                                        fontWeight: FontWeight.w500),
-                                  )
+
                                 ],
                               ),
                             ),

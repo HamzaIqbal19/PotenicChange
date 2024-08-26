@@ -263,7 +263,7 @@ class _practiceMenuState extends State<practiceMenu> {
                             //width: AppDimensions.width10(context) * 30.4,
                             height: AppDimensions.height10(context) * 18.2,
                             margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 5.2,
+                              top: AppDimensions.height10(context) * 6.2,
                             ),
                             child: Column(
                               children: [

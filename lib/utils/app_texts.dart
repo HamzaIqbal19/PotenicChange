@@ -26,6 +26,7 @@ class AppText {
   String logInFacebook = 'Log up with Facebook';
   String newAccount = "New account";
   String forgotPass = "Forgot Password";
+  String remember = "Remember me";
 
   //Create Goal
 

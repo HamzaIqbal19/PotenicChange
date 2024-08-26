@@ -386,6 +386,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                             width: AppDimensions.width10(context) * 13.7,
                             height: AppDimensions.width10(context) * 13.7,
                             margin: EdgeInsets.only(
+                                left: AppDimensions.width10(context) * 3.0,
                                 right: AppDimensions.width10(context) * 1.5),
                             decoration: BoxDecoration(
                                 color: Colors.transparent,
@@ -548,7 +549,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                 border: Border.all(
                                     width: AppDimensions.width10(context) * 0.2,
                                     color: Colors.white),
-                                color: const Color(0xffFA9458),
+                                color: const Color(0xffFF7C42),
                               ),
                               child: Text(
                                 ' I feel focused\nand motivated',
@@ -594,7 +595,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                                 border: Border.all(
                                     width: AppDimensions.width10(context) * 0.2,
                                     color: Colors.white),
-                                color: const Color(0xffFF7C42),
+                                color: const Color(0xff219653),
                               ),
                               child: Text(
                                 'I feel excited\nand good in\nmyself',
@@ -837,7 +838,7 @@ class _addNotesState extends State<addNotes> {
                       state: widget.state_,
                     ))
                 : SizedBox(
-                    height: AppDimensions.height10(context) * 9.1,
+                    height: AppDimensions.height10(context) * 12.1,
                   )),
       ],
     );

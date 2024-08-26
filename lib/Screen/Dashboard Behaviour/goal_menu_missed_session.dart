@@ -202,7 +202,7 @@ class _missed_MenuState extends State<missed_Menu> {
                         height: AppDimensions.height10(context) * 18.9,
                         // color: Colors.grey.withOpacity(0.5),
                         margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 5.0,
+                            top: AppDimensions.height10(context) * 6.2,
                             bottom: AppDimensions.height10(context) * 1.0),
                         child: Column(
                           children: [

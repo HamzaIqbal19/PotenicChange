@@ -691,13 +691,12 @@ class _Goal_IdentityState extends State<Goal_Identity> {
               ),
               loading == false
                   ? SingleChildScrollView(
-                      reverse: true,
                       physics: const ClampingScrollPhysics(),
                       child: Column(
                         children: [
                           Container(
                             margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 6),
+                                top: AppDimensions.height10(context) * 5.5),
                             child: Center(
                               child: Text(
                                 widget.comingFromEditScreen
@@ -1299,11 +1298,11 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                               : MediaQuery.of(context).viewInsets.bottom == 0
                                   ? SizedBox(
                                       height: AppDimensions.height10(context) *
-                                          22.4,
+                                          21.4,
                                     )
                                   : SizedBox(
                                       height:
-                                          AppDimensions.height10(context) * 5.0,
+                                          AppDimensions.height10(context) * 4.0,
                                     ),
                           update
                               ? GestureDetector(

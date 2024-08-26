@@ -316,7 +316,7 @@ class _endofSessionState extends State<endofSession> {
                           width: AppDimensions.width10(context) * 13.7,
                           height: AppDimensions.width10(context) * 13.7,
                           margin: EdgeInsets.only(
-                              left: AppDimensions.width10(context) * 4.0,
+                              left: AppDimensions.width10(context) * 3.0,
                               right: AppDimensions.width10(context) * 1.5),
                           decoration: BoxDecoration(
                             shape: BoxShape.circle,
@@ -713,10 +713,10 @@ class _endofSessionState extends State<endofSession> {
                                   .then((response) {
                                     if (response == true) {
                                       feedback.clear();
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(const SnackBar(
-                                              content: Text(
-                                                  "Recording Added Successfully")));
+                                      // ScaffoldMessenger.of(context)
+                                      //     .showSnackBar(const SnackBar(
+                                      //         content: Text(
+                                      //             "Recording Added Successfully")));
                                       feedback3.clear();
                                       Navigator.push(
                                           context,
@@ -872,7 +872,7 @@ class _addNotesState extends State<addNotes> {
                       state: widget.state_,
                     ))
                 : SizedBox(
-                    height: AppDimensions.height10(context) * 9.1,
+                    height: AppDimensions.height10(context) * 14.1,
                   )),
       ],
     );

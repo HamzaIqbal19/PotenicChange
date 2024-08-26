@@ -326,7 +326,7 @@ class _PracticeNameState extends State<PracticeName> {
                 children: [
                   Container(
                     margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 6),
+                        top: AppDimensions.height10(context) * 5.5),
                     child: Center(
                       child: Text(
                         widget.comingFromEditScreen
@@ -366,7 +366,7 @@ class _PracticeNameState extends State<PracticeName> {
                   ),
                   goalAndPractice(context, color, 2, practice.text.toString()),
                   SizedBox(
-                    height: AppDimensions.height10(context) * 5.1,
+                    height: AppDimensions.height10(context) * 2.3,
                   ),
                   Center(
                     child: Text(
@@ -501,10 +501,10 @@ class _PracticeNameState extends State<PracticeName> {
                   ),
                   MediaQuery.of(context).viewInsets.bottom == 0
                       ? SizedBox(
-                          height: AppDimensions.height10(context) * 26.3,
+                          height: AppDimensions.height10(context) * 28.3,
                         )
                       : SizedBox(
-                          height: AppDimensions.height10(context) * 11.2,
+                          height: AppDimensions.height10(context) * 13.2,
                         ),
                   updated
                       ? GestureDetector(

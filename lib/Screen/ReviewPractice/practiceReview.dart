@@ -104,6 +104,30 @@ class _PracticeReviewState extends State<PracticeReview> {
     });
   }
 
+  setColor(){
+    if(color1 == true){
+      setState(() {
+        pracColor = '1';
+      });
+    }else if(color2 == true){
+      setState(() {
+        pracColor = '2';
+      });
+    } else if(color3 == true){
+      setState(() {
+        pracColor = '3';
+      });
+    } else if(color4 == true){
+      setState(() {
+        pracColor = '4';
+      });
+    } else if(color5 == true){
+      setState(() {
+        pracColor = '5';
+      });
+    }
+  }
+
   void _fetchPracticeDetails() async {
     PracticeGoalApi.getUserPractice().then((response) {
       if (response.length != 0) {
@@ -589,6 +613,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                         color5 = false;
                                                         color6 = false;
                                                       });
+                                                      setColor();
                                                       if (color1 == true) {
                                                         PracticeGoalApi()
                                                             .updateUserPracticeColor(
@@ -668,6 +693,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                         color5 = false;
                                                         color6 = false;
                                                       });
+                                                      setColor();
                                                       if (color2 == true) {
                                                         //  #FFFEE8, #F9B410
                                                         PracticeGoalApi()
@@ -748,6 +774,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                         color5 = false;
                                                         color6 = false;
                                                       });
+                                                      setColor();
                                                       if (color3 == true) {
                                                         // #FFFFFF, #DEDEDE
                                                         PracticeGoalApi()
@@ -831,6 +858,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                         color5 = false;
                                                         color6 = false;
                                                       });
+                                                      setColor();
                                                       if (color4 == true) {
                                                         // #FFFFFF, #CAD2F8
                                                         PracticeGoalApi()
@@ -911,6 +939,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                                         color5 = true;
                                                         color6 = false;
                                                       });
+                                                      setColor();
                                                       if (color5 == true) {
                                                         // #96AEE4, #315291
                                                         PracticeGoalApi()

@@ -1036,7 +1036,14 @@ class _SettingsState extends State<Settings> {
                                         onPressed: () async {
                                           final SharedPreferences prefs =
                                               await _prefs;
+                                          var email = prefs.getString('loginEmail');
+                                          var pass = prefs.getString('loginPass');
                                           await prefs.clear();
+
+                                          if(email !=null && pass !=null){
+                                            prefs.setString('loginEmail', email);
+                                            prefs.setString('loginPass', pass);
+                                          }
                                           Navigator.push(
                                               context,
                                               FadePageRoute(

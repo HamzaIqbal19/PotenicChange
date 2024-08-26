@@ -343,7 +343,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               AppText().newAccount,
               style: TextStyle(
                 color: const Color(0xFF8C648A),
-                fontSize: AppDimensions.font10(context) * 1.6,
+                fontSize: AppDimensions.font10(context) * 1.8,
                 fontWeight: FontWeight.w600,
               ),
             ),
