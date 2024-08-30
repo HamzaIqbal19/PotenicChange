@@ -321,45 +321,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 ],
               )
                   : Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AnimatedScaleButton(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        FadePageRoute2(
-                          true,
-                          enterPage: const SignUpPage(),
-                          exitPage: const HomeScreen(
-                            login: false,
-                          ),
-                        ),
-                      );
-                    },
-                    child: Container(
-                      height: AppDimensions.height10(context) * 5.2,
-                      width: AppDimensions.width10(context) * 13,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF5F5F5),
-                        border: Border.all(color: Colors.white),
-                        borderRadius: BorderRadius.all(
-                            Radius.circular(
-                                AppDimensions.height10(context) *
-                                    5.0)),
-                      ),
-                      child: Center(
-                        child: Text(
-                          "I’m new here",
-                          style: TextStyle(
-                            color: const Color(0xFF8C648A),
-                            fontSize:
-                            AppDimensions.font10(context) * 1.8,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+
                   InkWell(
                     focusColor: Colors.black,
                     splashColor: Colors.red,
@@ -404,42 +368,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       ),
                     ),
                   ),
-                  AnimatedScaleButton(
-                    onTap: () {
-                      if (widget.login == false) {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                            content: Text(
-                              "You are not logged in.",
-                              style: TextStyle(color: Colors.red),
-                            )));
-                      } else {
-                        signupSheet(context, "Introduction",
-                            "OnBoarding", admin);
-                      }
-                    },
-                    child: Container(
-                      height: AppDimensions.height10(context) * 5,
-                      width: AppDimensions.width10(context) * 5,
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        border:
-                        Border.all(color: Colors.transparent),
-                        borderRadius: const BorderRadius.all(
-                            Radius.circular(40.0)),
-                      ),
-                      child: Center(
-                        child: Image(
-                          // color: Colors.orange,
-                          image: const AssetImage(
-                              "assets/images/Moreactions.webp"),
-                          height:
-                          AppDimensions.height10(context) * 5,
-                          width: AppDimensions.width10(context) * 5,
-                        ),
-                      ),
-                    ),
-                  ),
+
                 ],
               ),
             ),

@@ -80,7 +80,6 @@ Future<void> main(context) async {
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  print("onMessage background: ${message.data}");
   await Firebase.initializeApp();
 }
 
