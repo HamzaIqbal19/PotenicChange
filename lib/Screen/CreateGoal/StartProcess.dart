@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/CreateGoal/Categories.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
@@ -50,25 +51,16 @@ class _StartProcessState extends State<StartProcess> {
               Center(
                 // alignment: Alignment.center,
 
-                child: IconButton(
-                  icon: Image.asset(
-                    'assets/images/Close.webp',
-                    //width: AppDimensions.width10(context) * 3,
-                    height: AppDimensions.height10(context) * 2.8,
-                    fit: BoxFit.cover,
+                child: Buttons().closeButton(context,(){Navigator.push(
+                  context,
+                  FadePageRouteReverse(
+                    page: const HomeScreen(
+                      login: true,
+                    ),
                   ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      FadePageRouteReverse(
-                        page: const HomeScreen(
-                          login: true,
-                        ),
-                      ),
-                    );
-                    // Add code for performing close action
-                  },
-                ),
+                );})
+
+
               ),
               SizedBox(
                 width: AppDimensions.width10(context),
@@ -98,6 +90,7 @@ class _StartProcessState extends State<StartProcess> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontWeight: FontWeight.w700,
+                            fontFamily: 'Laila',
                             // color: Colors.white,
                             fontSize: AppDimensions.font10(context) * 3,
                           ),
@@ -158,6 +151,7 @@ class _StartProcessState extends State<StartProcess> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
+                                fontFamily: 'Laila',
                                 fontSize:
                                 AppDimensions.font10(context) * 1.7,
                               ),
@@ -211,6 +205,7 @@ class _StartProcessState extends State<StartProcess> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
+                                fontFamily: 'Laila',
                                 fontSize:
                                 AppDimensions.font10(context) * 1.7,
                               ),
@@ -248,6 +243,7 @@ class _StartProcessState extends State<StartProcess> {
                               style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
+                                fontFamily: 'Laila',
                                 fontSize:
                                 AppDimensions.font10(context) * 1.5,
                               ),

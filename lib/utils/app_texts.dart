@@ -23,7 +23,7 @@ class AppText {
   String loginSubHead = 'Log in';
   String logInEmail = 'Log in with Email';
   String logInGoogle = 'Log in with Google';
-  String logInFacebook = 'Log up with Facebook';
+  String logInFacebook = 'Log in with Facebook';
   String newAccount = "New account";
   String forgotPass = "Forgot Password";
   String remember = "Remember me";
@@ -75,7 +75,7 @@ class AppText {
       "What does it look like? What are you \n  doing? What emotions do you have and \n how does it feel?";
 
   //goal finished
-  String starCreated = "Star Created!";
+  String starCreated = "Goal Created!";
   String starCreatedBody =
       "You’ve created your first personal \n development goal and have taken the initial \n key steps towards self-fulfilment. \n \n Now, let’s create a practice to help you \n achieve this goal. You’ll be able to assess \n  how effective it’s been for you and if it’s not\n working, you can change it to another \n practice. ";
 
@@ -104,11 +104,11 @@ class AppText {
   String dontRemindMeBody =
       "You can always enable and update your\nnotification preferences later in Account\nSettings.";
 
-  String starPlanet = "Star & planet created! ";
+  String starPlanet = "Goal & practice created";
   String reviewCont = "Please review and continue ";
-  String activateStar = "Activate your star ";
+  String activateStar = "Activate your goal ";
   String activateStarBody =
-      "I desire to grow and improve my identity. By activating my star, I will be able to evaluate my chosen practice every 20 active days and evaluate my active goal progress monthly. ";
+      "I desire to grow and improve my identity. By activating my goal, I will be able to evaluate my chosen practice every 20 active days and evaluate my active goal progress monthly. ";
   String activateStarFoot = "To begin your journey\npress and hold here.  ";
 
   //Recording Practice Session

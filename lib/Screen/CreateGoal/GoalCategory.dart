@@ -9,6 +9,7 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
@@ -226,40 +227,18 @@ class _GoalCategoryState extends State<GoalCategory> {
                   ),
                 ),
                 actions: [
-                  Container(
-                    decoration: const BoxDecoration(shape: BoxShape.circle),
-                    child: Center(
-                      // alignment: Alignment.center,
-                      child: IconButton(
-                        icon: Image.asset(
-                          'assets/images/Close.webp',
-                          //width: AppDimensions.width10(context) * 3.0,
-                          height: AppDimensions.height10(context) * 3.0,
-                          fit: BoxFit.contain,
-                        ),
-                        onPressed: () async {
-                          if (route == 'view_all_goals') {
-                            Navigator.pushReplacement(
-                                context,
-                                FadePageRouteReverse(
-                                    page: const view_all_goals_menu()));
-                          } else {
-                            Navigator.pushReplacement(
-                              context,
-                              FadePageRouteReverse(
-                                page: const HomeScreen(
-                                  login: true,
-                                ),
-                              ),
-                            );
-                          }
+                  Center(
+                    child: Buttons().closeButton(context,()async{if (route == 'view_all_goals') {
+                      Navigator.pushReplacement(
+                          context,
+                          FadePageRouteReverse(
+                              page: const view_all_goals_menu()));
+                    } else {
+                     Navigator.pop(context);
+                    }
 
-                          final SharedPreferences prefs = await _prefs;
-                          await prefs.remove('goal_route');
-                          // Add code for performing close action
-                        },
-                      ),
-                    ),
+                    final SharedPreferences prefs = await _prefs;
+                    await prefs.remove('goal_route');}),
                   ),
                 ],
               )),

@@ -106,6 +106,7 @@ class _practice_summaryState extends State<practice_summary> {
 
   void recording() {
     RecordingPractice.getUserPracticeRecord().then((response) {
+      print("Api Response: $response");
       if (response.length != 0) {
         setState(() {
           details = response;
@@ -116,6 +117,7 @@ class _practice_summaryState extends State<practice_summary> {
           sessionFeedBack = response['recording']['notes'][0]['endNote'];
           session = response['recording']['practiceSummary'];
           recordedDate = response['recording']['recordingDate'];
+          dateTime = response['recording']['timeSlot'];
         });
         DateTime currentDate =
             DateTime.parse(DateTime.now().toString().substring(0, 10));
@@ -363,17 +365,17 @@ class _practice_summaryState extends State<practice_summary> {
                             // color: const Color(0xff7c94b6),
                             shape: BoxShape.circle,
                             image: DecorationImage(
-                                image: AssetImage('$color' == '1'
+                                image: AssetImage(color == '1'
                                     ? "assets/images/red_gradient.webp"
-                                    : '$color' == '2'
+                                    : color == '2'
                                         ? 'assets/images/orange_moon.webp'
-                                        : '$color' == '3'
+                                        : color == '3'
                                             ? "assets/images/lightGrey_gradient.webp"
-                                            : '$color' == '4'
+                                            : color == '4'
                                                 ? "assets/images/lightBlue_gradient.webp"
-                                                : '$color' == '5'
+                                                : color == '5'
                                                     ? "assets/images/medBlue_gradient.webp"
-                                                    : '$color' == '6'
+                                                    : color == '6'
                                                         ? "assets/images/Blue_gradient.webp"
                                                         : 'assets/images/orange_moon.webp'),
                                 colorFilter: const ColorFilter.mode(
@@ -436,15 +438,15 @@ class _practice_summaryState extends State<practice_summary> {
                                   // border: Border.all(
                                   //     width: 5, color: const Color(0xFF52855E)),
                                   image: DecorationImage(
-                                      image: AssetImage('$pracColor' == '1'
+                                      image: AssetImage(pracColor == '1'
                                           ? "assets/images/Practice_Completed_2.webp"
-                                          : '$pracColor' == '2'
+                                          : pracColor == '2'
                                               ? 'assets/images/Practice_Completed_2.webp'
-                                              : '$pracColor' == '3'
+                                              : pracColor == '3'
                                                   ? "assets/images/Practice_Completed_3.webp"
-                                                  : '$pracColor' == '4'
+                                                  : pracColor == '4'
                                                       ? "assets/images/Practice_Completed_4.webp"
-                                                      : '$pracColor' == '5'
+                                                      : pracColor == '5'
                                                           ? "assets/images/Practice_Completed_4.webp"
                                                           : 'assets/images/Practice_Completed_2.webp'))),
                               child: Center(
@@ -472,62 +474,63 @@ class _practice_summaryState extends State<practice_summary> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          showCupertinoModalPopup(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return _buildBottomPicker(CupertinoDatePicker(
-                                  mode: CupertinoDatePickerMode.dateAndTime,
-                                  //initialDateTime: date_time,
-                                  onDateTimeChanged: (DateTime newDateTime) {
-                                    if (mounted) {
-                                      setState(() {
-                                        if (newDateTime.weekday == 2) {
-                                          setState(() {
-                                            day = 'Tue';
-                                          });
-                                        } else if (newDateTime.weekday == 3) {
-                                          setState(() {
-                                            day = 'Wed';
-                                          });
-                                        } else if (newDateTime.weekday == 4) {
-                                          setState(() {
-                                            day = 'Thu';
-                                          });
-                                        } else if (newDateTime.weekday == 5) {
-                                          setState(() {
-                                            day = 'Fri';
-                                          });
-                                        } else if (newDateTime.weekday == 6) {
-                                          setState(() {
-                                            day = 'Sat';
-                                          });
-                                        } else if (newDateTime.weekday == 7) {
-                                          setState(() {
-                                            day = 'Sun';
-                                          });
-                                        } else {
-                                          setState(() {
-                                            day = 'Mon';
-                                          });
-                                        }
-                                      });
-                                      setState(() {
-                                        if (newDateTime.hour > 11) {
-                                          setState(() {
-                                            time = 'Pm';
-                                          });
-                                        } else {
-                                          setState(() {
-                                            time = 'Am';
-                                          });
-                                        }
-                                      });
-                                      setState(() => dateTime =
-                                          " $day:${newDateTime.hour}:${newDateTime.minute}:$time");
-                                    }
-                                  }));
-                            },
-                          );
+                          // showCupertinoModalPopup(
+                          //   context: context,
+                          //   builder: (BuildContext context) {
+                          //     return _buildBottomPicker(CupertinoDatePicker(
+                          //         mode: CupertinoDatePickerMode.dateAndTime,
+                          //         use24hFormat: false,
+                          //         //initialDateTime: date_time,
+                          //         onDateTimeChanged: (DateTime newDateTime) {
+                          //           if (mounted) {
+                          //             setState(() {
+                          //               if (newDateTime.weekday == 2) {
+                          //                 setState(() {
+                          //                   day = 'Tue';
+                          //                 });
+                          //               } else if (newDateTime.weekday == 3) {
+                          //                 setState(() {
+                          //                   day = 'Wed';
+                          //                 });
+                          //               } else if (newDateTime.weekday == 4) {
+                          //                 setState(() {
+                          //                   day = 'Thu';
+                          //                 });
+                          //               } else if (newDateTime.weekday == 5) {
+                          //                 setState(() {
+                          //                   day = 'Fri';
+                          //                 });
+                          //               } else if (newDateTime.weekday == 6) {
+                          //                 setState(() {
+                          //                   day = 'Sat';
+                          //                 });
+                          //               } else if (newDateTime.weekday == 7) {
+                          //                 setState(() {
+                          //                   day = 'Sun';
+                          //                 });
+                          //               } else {
+                          //                 setState(() {
+                          //                   day = 'Mon';
+                          //                 });
+                          //               }
+                          //             });
+                          //             setState(() {
+                          //               if (newDateTime.hour > 11) {
+                          //                 setState(() {
+                          //                   time = 'pm';
+                          //                 });
+                          //               } else {
+                          //                 setState(() {
+                          //                   time = 'am';
+                          //                 });
+                          //               }
+                          //             });
+                          //             setState(() => dateTime =
+                          //                 " ${newDateTime.hour}:${newDateTime.minute} $time");
+                          //           }
+                          //         }));
+                          //   },
+                          // );
                         },
                         child: Container(
                           width: AppDimensionsUpdated.width10(context) * 26.8,
@@ -547,22 +550,24 @@ class _practice_summaryState extends State<practice_summary> {
                                   //margin: EdgeInsets.only(left: 92, right: 66),
                                   height: AppDimensionsUpdated.height10(context) * 2.6,
                                   width: AppDimensionsUpdated.width10(context) * 21.0,
-                                  child: Text(
-                                    dateTime,
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize:
-                                          AppDimensionsUpdated.font10(context) * 2.0,
-                                      fontFamily: 'Laila',
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white,
+                                  child: Center(
+                                    child: Text(
+                                      dateTime,
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        fontSize:
+                                            AppDimensionsUpdated.font10(context) * 2.0,
+                                        fontFamily: 'Laila',
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   )),
-                              const Icon(
-                                Icons.arrow_drop_down,
-                                color: Colors.white,
-                                size: 30,
-                              )
+                              // const Icon(
+                              //   Icons.arrow_drop_down,
+                              //   color: Colors.white,
+                              //   size: 30,
+                              // )
                             ],
                           ),
                         ),

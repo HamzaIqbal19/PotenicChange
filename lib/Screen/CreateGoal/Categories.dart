@@ -8,6 +8,7 @@ import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:potenic_app/Screen/CreateGoal/AllGoals.dart';
 import 'package:potenic_app/Screen/CreateGoal/GoalCategory.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
@@ -101,17 +102,7 @@ class _CategoriesState extends State<Categories> {
         actions: [
           Center(
             // alignment: Alignment.center,
-            child: IconButton(
-              icon: Image.asset(
-                'assets/images/Close.webp',
-                width: 28.0,
-                height: 28.0,
-                fit: BoxFit.contain,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
+            child: Buttons().closeButton(context,(){Navigator.pop(context);})
           ),
           SizedBox(
             width: AppDimensions.width10(context),

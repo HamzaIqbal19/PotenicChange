@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:provider/provider.dart';
@@ -202,30 +203,10 @@ class _AllGoalsState extends State<AllGoals> {
                 ),
               ),
               actions: [
-                Container(
-                  decoration: const BoxDecoration(shape: BoxShape.circle),
-                  child: Center(
-                    // alignment: Alignment.center,
-                    child: IconButton(
-                      icon: Image.asset(
-                        'assets/images/Close.webp',
-                        //width: AppDimensions.width10(context) * 3.0,
-                        height: AppDimensions.height10(context) * 2.8,
-                        fit: BoxFit.contain,
-                      ),
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          FadePageRouteReverse(
-                            page: const HomeScreen(
-                              login: true,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ),
+                Center(
+                  child :Buttons().closeButton(context,(){Navigator.pop(context);})
                 ),
+
               ],
             )),
         body: Stack(

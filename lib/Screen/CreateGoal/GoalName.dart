@@ -10,6 +10,7 @@ import 'package:fdottedline_nullsafety/fdottedline__nullsafety.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_text_styles.dart';
@@ -275,187 +276,178 @@ class _GoalNameState extends State<GoalName> {
                 ),
                 actions: [
                   Center(
-                    // alignment: Alignment.center,
                     child: widget.comingFromEditScreen
                         ? Container()
-                        : IconButton(
-                            icon: Image.asset(
-                              'assets/images/Close.webp',
-                              // width: AppDimensions.width10(context) * 3.0,
-                              height: AppDimensions.height10(context) * 3.0,
-                              fit: BoxFit.contain,
-                            ),
-                            onPressed: () => showDialog<String>(
-                              context: context,
-                              builder: (BuildContext context) => SizedBox(
-                                width: AppDimensions.width10(context) * 27.0,
-                                height: AppDimensions.height10(context) * 21.0,
-                                child: AlertDialog(
-                                  contentPadding: EdgeInsets.zero,
-                                  actionsPadding: EdgeInsets.zero,
-                                  titlePadding: EdgeInsets.zero,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          AppDimensions.height10(context) *
-                                              1.4)),
-                                  title: Container(
-                                    margin: const EdgeInsets.only(
-                                        top: 19,
-                                        right: 16,
-                                        left: 16,
-                                        bottom: 2),
-                                    // height: AppDimensions.height10(context) * 2.2,
-                                    width:
-                                        AppDimensions.width10(context) * 23.8,
-                                    child: const Text(
-                                      "Exit onboarding?",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ),
-                                  content: Container(
-                                    margin: const EdgeInsets.only(
-                                        bottom: 19, left: 16, right: 16),
-                                    height: 32,
-                                    width: 238,
-                                    child: const Text(
-                                      "Please select from the options below",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ),
-                                  actions: <Widget>[
-                                    Column(
-                                      children: [
-                                        FDottedLine(
-                                          color: const Color(0xFF3C3C43)
-                                              .withOpacity(0.29),
-                                          width: double.infinity,
-                                          strokeWidth: 2.0,
-                                          dottedLength: 10.0,
-                                          space: 0.7,
-                                        ),
-                                        SizedBox(
-                                          height: 42,
-                                          width: double.infinity,
-                                          //color: Colors.white,
-                                          child: TextButton(
-                                            onPressed: () async {
-                                              getUserId(
-                                                mygoal.text.toString(),
-                                              );
-                                              Navigator.push(
-                                                context,
-                                                FadePageRouteReverse(
-                                                  page:
-                                                      const HomeScreenProgressSaved(
-                                                    login: true,
-                                                    route: 'GoalName',
-                                                  ),
-                                                ),
-                                              );
-
-                                              final SharedPreferences prefs =
-                                                  await _prefs;
-                                              await prefs.setString(
-                                                  'route', "GoalName");
-                                            },
-                                            child: const Text(
-                                              'Exit & save progress',
-                                              style: TextStyle(
-                                                  color: Color(0xFF007AFF),
-                                                  fontSize: 17,
-                                                  fontFamily: "Laila",
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                          ),
-                                        ),
-                                        FDottedLine(
-                                          color: const Color(0xFF3C3C43)
-                                              .withOpacity(0.29),
-                                          width: double.infinity,
-                                          strokeWidth: 2.0,
-                                          dottedLength: 10.0,
-                                          space: 0.7,
-                                        ),
-                                        SizedBox(
-                                          height: 44,
-                                          width: double.infinity,
-                                          child: TextButton(
-                                            onPressed: () async {
-                                              if (route == 'view_all_goals') {
-                                                Navigator.pushReplacement(
-                                                    context,
-                                                    FadePageRouteReverse(
-                                                        page:
-                                                            const view_all_goals_menu()));
-                                              } else {
-                                                Navigator.push(
-                                                  context,
-                                                  FadePageRouteReverse(
-                                                    page: const HomeScreen(
-                                                        login: true),
-                                                  ),
-                                                );
-                                              }
-                                              final SharedPreferences prefs =
-                                                  await _prefs;
-                                              await prefs.remove('goal');
-                                              await prefs.remove('route');
-                                              await prefs.remove('goal_route');
-                                            },
-                                            child: const Text(
-                                              'Exit & delete progress',
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  fontFamily: "Laila",
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Color(0xFF007AFF)),
-                                            ),
-                                          ),
-                                        ),
-                                        FDottedLine(
-                                          color: const Color(0xFF3C3C43)
-                                              .withOpacity(0.29),
-                                          width: double.infinity,
-                                          strokeWidth: 2.0,
-                                          dottedLength: 10.0,
-                                          space: 0.7,
-                                        ),
-                                        SizedBox(
-                                          height: 42,
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  27.0,
-                                          child: TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: const Text(
-                                              'Cancel exit',
-                                              style: TextStyle(
-                                                  color: Color(0xFF007AFF),
-                                                  fontSize: 17,
-                                                  fontFamily: "Laila",
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                        :Buttons().closeButton(context,(){showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => SizedBox(
+                        width: AppDimensions.width10(context) * 27.0,
+                        height: AppDimensions.height10(context) * 21.0,
+                        child: AlertDialog(
+                          contentPadding: EdgeInsets.zero,
+                          actionsPadding: EdgeInsets.zero,
+                          titlePadding: EdgeInsets.zero,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10(context) *
+                                      1.4)),
+                          title: Container(
+                            margin: const EdgeInsets.only(
+                                top: 19,
+                                right: 16,
+                                left: 16,
+                                bottom: 2),
+                            // height: AppDimensions.height10(context) * 2.2,
+                            width:
+                            AppDimensions.width10(context) * 23.8,
+                            child: const Text(
+                              "Exit onboarding?",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 17,
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
-                            // Add code for performing close action
                           ),
-                  ),
+                          content: Container(
+                            margin: const EdgeInsets.only(
+                                bottom: 19, left: 16, right: 16),
+                            height: 32,
+                            width: 238,
+                            child: const Text(
+                              "Please select from the options below",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
+                          actions: <Widget>[
+                            Column(
+                              children: [
+                                FDottedLine(
+                                  color: const Color(0xFF3C3C43)
+                                      .withOpacity(0.29),
+                                  width: double.infinity,
+                                  strokeWidth: 2.0,
+                                  dottedLength: 10.0,
+                                  space: 0.7,
+                                ),
+                                SizedBox(
+                                  height: 42,
+                                  width: double.infinity,
+                                  //color: Colors.white,
+                                  child: TextButton(
+                                    onPressed: () async {
+                                      getUserId(
+                                        mygoal.text.toString(),
+                                      );
+                                      Navigator.push(
+                                        context,
+                                        FadePageRouteReverse(
+                                          page:
+                                          const HomeScreenProgressSaved(
+                                            login: true,
+                                            route: 'GoalName',
+                                          ),
+                                        ),
+                                      );
+
+                                      final SharedPreferences prefs =
+                                      await _prefs;
+                                      await prefs.setString(
+                                          'route', "GoalName");
+                                    },
+                                    child: const Text(
+                                      'Exit & save progress',
+                                      style: TextStyle(
+                                          color: Color(0xFF007AFF),
+                                          fontSize: 17,
+                                          fontFamily: "Laila",
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ),
+                                ),
+                                FDottedLine(
+                                  color: const Color(0xFF3C3C43)
+                                      .withOpacity(0.29),
+                                  width: double.infinity,
+                                  strokeWidth: 2.0,
+                                  dottedLength: 10.0,
+                                  space: 0.7,
+                                ),
+                                SizedBox(
+                                  height: 44,
+                                  width: double.infinity,
+                                  child: TextButton(
+                                    onPressed: () async {
+                                      if (route == 'view_all_goals') {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            FadePageRouteReverse(
+                                                page:
+                                                const view_all_goals_menu()));
+                                      } else {
+                                        Navigator.push(
+                                          context,
+                                          FadePageRouteReverse(
+                                            page: const HomeScreen(
+                                                login: true),
+                                          ),
+                                        );
+                                      }
+                                      final SharedPreferences prefs =
+                                      await _prefs;
+                                      await prefs.remove('goal');
+                                      await prefs.remove('route');
+                                      await prefs.remove('goal_route');
+                                    },
+                                    child: const Text(
+                                      'Exit & delete progress',
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontFamily: "Laila",
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xFF007AFF)),
+                                    ),
+                                  ),
+                                ),
+                                FDottedLine(
+                                  color: const Color(0xFF3C3C43)
+                                      .withOpacity(0.29),
+                                  width: double.infinity,
+                                  strokeWidth: 2.0,
+                                  dottedLength: 10.0,
+                                  space: 0.7,
+                                ),
+                                SizedBox(
+                                  height: 42,
+                                  width:
+                                  AppDimensions.width10(context) *
+                                      27.0,
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text(
+                                      'Cancel exit',
+                                      style: TextStyle(
+                                          color: Color(0xFF007AFF),
+                                          fontSize: 17,
+                                          fontFamily: "Laila",
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    );}),
+                  )
+
                 ],
               )),
           body: Stack(

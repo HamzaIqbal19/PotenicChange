@@ -12,7 +12,6 @@ import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../API/Practice.dart';
 import '../../Widgets/animatedButton.dart';
 import '../../Widgets/fading2.dart';
@@ -249,8 +248,8 @@ class _CreatePracticeState extends State<CreatePractice> {
                     child: Column(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 5.5),
+                          margin: const EdgeInsets.only(
+                              top: 60),
                           child: Center(
                             child: Text(
                               AppText().createPrac1,

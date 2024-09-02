@@ -25,10 +25,7 @@ dashBoardSessionComponent(BuildContext context,data ,final VoidCallback action1,
                 .height10(
                 context) *
                 3.4,
-            top: UpdatedDimensions
-                .height10(
-                context) *
-                1.1),
+            ),
         child: Column(
             children: [
               GestureDetector(

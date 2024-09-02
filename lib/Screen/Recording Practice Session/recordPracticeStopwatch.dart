@@ -227,16 +227,19 @@ class _clocksState extends State<clocks> {
                 height: AppDimensionsUpdated.height10(context) * 14.8,
                 alignment: Alignment.center,
                 // margin: EdgeInsets.only(bottom: 86),
-                child: Text(
-                  AppText().clockText,
+                child: RichText(
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                      height: AppDimensionsUpdated.height10(context) * 0.16,
+                  text: TextSpan(
+                    text: AppText().clockText,
+                    style: TextStyle(
                       fontSize: AppDimensionsUpdated.font10(context) * 2.8,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white),
+                    fontWeight: FontWeight.w700,
+                    fontFamily: 'Laila',
+                    color: const Color(0xFFFBFBFB)),
+                  ),
                 ),
               ),
+
               const watch_time(),
               AnimatedScaleButton(
                 onTap: () {

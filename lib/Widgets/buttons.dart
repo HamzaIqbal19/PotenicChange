@@ -70,4 +70,16 @@ class Buttons {
       ),
     );
   }
+
+  closeButton(BuildContext context, action){
+    return IconButton(
+      icon: Image.asset(
+        'assets/images/Close.webp',
+        width: 28.0,
+        height: 28.0,
+        fit: BoxFit.contain,
+      ),
+      onPressed: action,
+    );
+  }
 }

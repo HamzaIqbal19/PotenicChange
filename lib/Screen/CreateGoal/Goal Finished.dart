@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/CreateGoal/widgets/glareCircles.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/ReviewGoal/StarReview.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_assets.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -102,32 +103,24 @@ class _GoalFinishedState extends State<GoalFinished> {
             automaticallyImplyLeading: false,
             actions: [
               Center(
-                child: IconButton(
-                  icon: Image.asset(
-                    'assets/images/Close.webp',
-                    height: AppDimensions.height10(context) * 3.0,
-                    fit: BoxFit.contain,
-                  ),
-                  onPressed: () {
-                    if (route == 'view_all_goals') {
-                      Navigator.pushReplacement(
-                          context,
-                          FadePageRouteReverse(
-                              page: const view_all_goals_menu()));
-                    } else {
-                      setRoute();
-                      Navigator.pushReplacement(
+                  child :Buttons().closeButton(context,(){if (route == 'view_all_goals') {
+                    Navigator.pushReplacement(
                         context,
                         FadePageRouteReverse(
-                          page: const HomeScreen(
-                            login: true,
-                          ),
+                            page: const view_all_goals_menu()));
+                  } else {
+                    setRoute();
+                    Navigator.pushReplacement(
+                      context,
+                      FadePageRouteReverse(
+                        page: const HomeScreen(
+                          login: true,
                         ),
-                      );
-                    }
-                  },
-                ),
+                      ),
+                    );
+                  }})
               ),
+
             ],
           ),
           body: Stack(

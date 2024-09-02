@@ -28,6 +28,7 @@ import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:intl/intl.dart';
 import 'package:potenic_app/Widgets/redaMessage.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:potenic_app/utils/formattedTime.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/bottom_navigation.dart';
@@ -36,6 +37,7 @@ import '../../utils/app_dimensions.dart';
 import '../capture_inspiration/inpiration_landing.dart';
 import 'calender_bottom_sheet.dart';
 import 'menu_dashboard_behaviour.dart';
+import 'dart:ui';
 
 class ViewDashboard extends StatefulWidget {
   final bool missed;
@@ -84,6 +86,11 @@ class _ViewDashboardState extends State<ViewDashboard>
   var notificationId;
   var notificationUrl;
   final ScrollController _scrollController = ScrollController();
+ // DateTime currentDate = DateTime.now();
+  int currentIndex = 7;
+  bool currentItem = false;
+  bool isCenterItem = false;
+  final CarouselController _controller = CarouselController();
   bool isVisible = true;
   final NotificationPermissionService _notificationPermissionService =
       NotificationPermissionService();
@@ -501,16 +508,21 @@ class _ViewDashboardState extends State<ViewDashboard>
                         FadeFunction: () {},
                         functionText: widget.missed ? 'Undo' : 'Edit'),
                   )
-                : BottomAppBar(
-                    elevation: 0,
-                    padding: EdgeInsets.zero,
-                    notchMargin: 0,
-                    color: const Color(0xffD9B4B4),
-                    child: Navigation_Bar(
-                      bg_colored: true,
-                      subscription: getSubscription.toString(),
-                    ),
+                :  BottomAppBar(
+                        elevation: 0,
+                        padding: EdgeInsets.zero,
+                        notchMargin: 0,
+                        color: const Color(0xffD9B4B4).withOpacity(0.8),
+                        child:  ClipRect(
+                          child: BackdropFilter(
+                            filter:  ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                            child: Navigation_Bar(
+                              bg_colored: true,
+                              subscription: getSubscription.toString(),
+                            ),
+                        ),
                   ),
+                ),
             body: Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
@@ -533,14 +545,114 @@ class _ViewDashboardState extends State<ViewDashboard>
                                 },
                                 child: SizedBox(
                                     width: double.infinity,
-                                    height:
-                                        UpdatedDimensions.height10(context) *
-                                            19.2,
+                                    // height:
+                                    //     UpdatedDimensions.height10(context) *
+                                    //         19.2,
                                     child: Stack(
                                       children: [
                                         SingleChildScrollView(
                                           child: Column(
                                             children: [
+                                              // SizedBox(
+                                              //   child: Container(
+                                              //     padding: EdgeInsets.only(top: AppDimensions.height10(context) * 3),
+                                              //     alignment: Alignment.topCenter,
+                                              //     //height: 300,
+                                              //     child: CarouselSlider.builder(
+                                              //       carouselController: _controller,
+                                              //       itemCount: 15,
+                                              //
+                                              //       itemBuilder: (context, index, realIndex) {
+                                              //         DateTime dayDate = currentDate.add(Duration(days: index - 7));
+                                              //
+                                              //         currentItem = realIndex == currentIndex;
+                                              //         if (currentDate == dayDate) {
+                                              //           isCenterItem = true;
+                                              //         } else {
+                                              //           isCenterItem = false;
+                                              //         }
+                                              //
+                                              //         return AnimatedContainer(
+                                              //           duration: const Duration(milliseconds: 300),
+                                              //           curve: Curves.easeInOut,
+                                              //           height: isCenterItem ? 160 : 110,
+                                              //           width: isCenterItem ? 140 : 100,
+                                              //           transform:
+                                              //           Matrix4.translationValues(0, currentItem ? -30 : 30, 0),
+                                              //           decoration: BoxDecoration(
+                                              //             image: isCenterItem
+                                              //                 ? const DecorationImage(
+                                              //                 image: AssetImage('assets/images/Asset 10 2.webp'),
+                                              //                 fit: BoxFit.cover)
+                                              //                 : null,
+                                              //             shape: BoxShape.circle,
+                                              //             border: isCenterItem
+                                              //                 ? null
+                                              //                 : Border.all(color: Colors.white, width: 4),
+                                              //           ),
+                                              //           child: Center(
+                                              //             child: RichText(
+                                              //               textAlign: TextAlign.center,
+                                              //               text: TextSpan(
+                                              //                 style: TextStyle(
+                                              //                   color: isCenterItem
+                                              //                       ? const Color(0xff5B74A6)
+                                              //                       : Colors.white,
+                                              //                   fontSize: 12,
+                                              //                 ),
+                                              //                 children: [
+                                              //                   TextSpan(
+                                              //                     text:
+                                              //                     "${DateFormat('EEE\n').format(dayDate).toUpperCase()}", // Day
+                                              //                   ),
+                                              //                   TextSpan(
+                                              //                     text: DateFormat('dd.MM\n').format(dayDate), // Date
+                                              //                   ),
+                                              //                   const WidgetSpan(
+                                              //                     child: SizedBox(
+                                              //                       height: 20,
+                                              //                       width: 40,
+                                              //                       child: DecoratedBox(
+                                              //                         decoration: BoxDecoration(
+                                              //                           color: Colors.white,
+                                              //                           shape: BoxShape.circle,
+                                              //                         ),
+                                              //                         child: Center(
+                                              //                           child: Text(
+                                              //                             "0/2",
+                                              //                             style: TextStyle(
+                                              //                               color: Color(0xff5B74A6),
+                                              //                               fontSize: 10,
+                                              //                             ),
+                                              //                           ),
+                                              //                         ),
+                                              //                       ),
+                                              //                     ),
+                                              //                   ),
+                                              //                 ],
+                                              //               ),
+                                              //             ),
+                                              //           ),
+                                              //         );
+                                              //       },
+                                              //       options: CarouselOptions(
+                                              //         enlargeCenterPage: true,
+                                              //         viewportFraction: 0.456,
+                                              //         enlargeFactor: 0.4,
+                                              //         enlargeStrategy: CenterPageEnlargeStrategy.scale,
+                                              //         scrollPhysics: const BouncingScrollPhysics(),
+                                              //         initialPage: 7,
+                                              //         enableInfiniteScroll: false,
+                                              //         onPageChanged: (index, reason) {
+                                              //           setState(() {
+                                              //             currentIndex = index;
+                                              //           });
+                                              //         },
+                                              //       ),
+                                              //     ),
+                                              //   ),
+                                              // ),
+
                                               SingleChildScrollView(
                                                 scrollDirection: Axis.horizontal,
                                                 controller: _scrollController,
@@ -977,16 +1089,13 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                   ),
                                                 ),
                                               ),
+
+
                                               Stack(children: [
                                                 Stack(
                                                   children: [
-
                                                     Container(
-                                                      margin: EdgeInsets.only(
-                                                        top: UpdatedDimensions.height10(
-                                                                context) *
-                                                            2.0,
-                                                      ),
+                                                      margin: EdgeInsets.only(top: UpdatedDimensions.height10(context) * 3),
                                                       child: SingleChildScrollView(
                                                         child: Column(
                                                           children: [
