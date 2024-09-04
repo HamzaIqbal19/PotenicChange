@@ -40,23 +40,23 @@ helpFulTips(BuildContext context,goalLevel, single,final VoidCallback action1,fi
           ? UpdatedDimensions
           .height10(
           context) *
-          22.3
+          23.3
           : goalLevel ==
           2
           ? UpdatedDimensions.height10(
           context) *
-          22.1
+          23.1
           : goalLevel ==
           3
           ? UpdatedDimensions.height10(context) *
-          18.3
+          19.3
           : goalLevel == 4
-          ? UpdatedDimensions.height10(context) * 20.6
+          ? UpdatedDimensions.height10(context) * 21.6
           : goalLevel == 5
-          ? UpdatedDimensions.height10(context) * 22.6
+          ? UpdatedDimensions.height10(context) * 23.6
           : goalLevel == 6
-          ? UpdatedDimensions.height10(context) * 18.4
-          : UpdatedDimensions.height10(context) * 20.6,
+          ? UpdatedDimensions.height10(context) * 19.4
+          : UpdatedDimensions.height10(context) * 21.6,
       child: Stack(
         children: [
           goalLevel == 0
@@ -96,18 +96,18 @@ helpFulTips(BuildContext context,goalLevel, single,final VoidCallback action1,fi
             width:
             UpdatedDimensions.width10(context) * 30.6,
             height: goalLevel == 1
-                ? UpdatedDimensions.height10(context) * 22.3
+                ? UpdatedDimensions.height10(context) * 23.3
                 : goalLevel == 2
-                ? UpdatedDimensions.height10(context) * 22.1
+                ? UpdatedDimensions.height10(context) * 23.1
                 : goalLevel == 3
-                ? UpdatedDimensions.height10(context) * 18.3
+                ? UpdatedDimensions.height10(context) * 19.3
                 : goalLevel == 4
-                ? UpdatedDimensions.height10(context) * 20.6
+                ? UpdatedDimensions.height10(context) * 21.6
                 : goalLevel == 5
-                ? UpdatedDimensions.height10(context) * 22.6
+                ? UpdatedDimensions.height10(context) * 23.6
                 : goalLevel == 6
-                ? UpdatedDimensions.height10(context) * 18.4
-                : UpdatedDimensions.height10(context) * 20.6,
+                ? UpdatedDimensions.height10(context) * 19.4
+                : UpdatedDimensions.height10(context) * 21.6,
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(UpdatedDimensions.height10(context) * 1.0)),
@@ -144,19 +144,19 @@ helpFulTips(BuildContext context,goalLevel, single,final VoidCallback action1,fi
                 ),
                 Container(
                   width: UpdatedDimensions.width10(context) * 27.4,
-                  height: goalLevel == 1
-                      ? UpdatedDimensions.height10(context) * 11.8
-                      : goalLevel == 2
-                      ? UpdatedDimensions.height10(context) * 11.6
-                      : goalLevel == 3
-                      ? UpdatedDimensions.height10(context) * 7.8
-                      : goalLevel == 4
-                      ? UpdatedDimensions.height10(context) * 10.1
-                      : goalLevel == 5
-                      ? UpdatedDimensions.height10(context) * 12.1
-                      : goalLevel == 6
-                      ? UpdatedDimensions.height10(context) * 7.9
-                      : UpdatedDimensions.height10(context) * 10.1,
+                  // height: goalLevel == 1
+                  //     ? UpdatedDimensions.height10(context) * 11.8
+                  //     : goalLevel == 2
+                  //     ? UpdatedDimensions.height10(context) * 11.6
+                  //     : goalLevel == 3
+                  //     ? UpdatedDimensions.height10(context) * 7.8
+                  //     : goalLevel == 4
+                  //     ? UpdatedDimensions.height10(context) * 10.1
+                  //     : goalLevel == 5
+                  //     ? UpdatedDimensions.height10(context) * 12.1
+                  //     : goalLevel == 6
+                  //     ? UpdatedDimensions.height10(context) * 7.9
+                  //     : UpdatedDimensions.height10(context) * 10.1,
                   margin: EdgeInsets.only(top: UpdatedDimensions.height10(context) * 0.3),
                   child: RichText(
                       text: TextSpan(style: TextStyle(fontWeight: FontWeight.w400, color: const Color(0xFF464646), decoration: TextDecoration.none, fontFamily: 'Laila', fontSize: UpdatedDimensions.font10(context) * 1.4, height: UpdatedDimensions.height10(context) * 0.15), children: [
@@ -343,7 +343,8 @@ helpFulTips(BuildContext context,goalLevel, single,final VoidCallback action1,fi
                       )
                     ],
                   ),
-                )
+                ),
+                const SizedBox(height: 5,)
               ],
             ),
           ),

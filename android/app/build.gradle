@@ -64,7 +64,7 @@ android {
         release {
             keyAlias keystoreProperties['keyAlias']
             keyPassword keystoreProperties['keyPassword']
-            storeFile keystoreProperties['storeFile'] ? file('D:\\Potenic\\potenic-mobile-app\\potenic-keystore.jks') : null
+            storeFile keystoreProperties['storeFile'] ? file('potenic-keystore.jks') : null
             storePassword keystoreProperties['storePassword']
         }
     }

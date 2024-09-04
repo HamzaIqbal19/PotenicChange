@@ -93,7 +93,7 @@ practiceWidget(BuildContext context, height, width, color, name, status) {
                             : color == "4"
                                 ? AppAssets.practiceMissed4
                                 : color == "5"
-                                    ? AppAssets.practiceMissed4
+                                    ? AppAssets.practiceMissed5
                                     : AppAssets.practiceMissed2)
                 : status == "completed"
                     ? AssetImage(color == "1"
@@ -105,7 +105,7 @@ practiceWidget(BuildContext context, height, width, color, name, status) {
                                 : color == "4"
                                     ? AppAssets.practiceComplete4
                                     : color == "5"
-                                        ? AppAssets.practiceComplete4
+                                        ? AppAssets.practiceComplete5
                                         : AppAssets.practiceComplete2)
                     : AssetImage(color == "1"
                         ? AppAssets.practice1

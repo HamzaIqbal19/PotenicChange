@@ -842,7 +842,6 @@ class pop_up_practices extends StatelessWidget {
                     Navigator.push(context,
                         FadePageRouteReverse(page: const PracticeReview()));
                     final SharedPreferences prefs = await _prefs;
-                    await prefs.setString('practice_review', 'practice_edit');
                   },
                   child: const Text(
                     'Yes, cancel and exit',

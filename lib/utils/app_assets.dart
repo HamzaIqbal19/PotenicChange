@@ -32,12 +32,14 @@ class AppAssets{
   static const practiceComplete2 = "$_imagesPath/Practice_Completed_2.webp";
   static const practiceComplete3 = "$_imagesPath/Practice_Completed_3.webp";
   static const practiceComplete4 = "$_imagesPath/Practice_Completed_4.webp";
+  static const practiceComplete5 = "$_imagesPath/Practice_Completed_5.webp";
 
   //practiceMissed
   static const practiceMissed1 = "$_imagesPath/Missed_3.webp";
   static const practiceMissed2 = "$_imagesPath/Missed_1.webp";
   static const practiceMissed3 = "$_imagesPath/Missed_2.webp";
   static const practiceMissed4 = "$_imagesPath/Missed_4.webp";
+  static const practiceMissed5 = "$_imagesPath/Missed_5.webp";
 
   //checkBox
   static const checkBox = "$_imagesPath/tick_circle.webp";

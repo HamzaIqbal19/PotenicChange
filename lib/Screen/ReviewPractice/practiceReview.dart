@@ -227,15 +227,17 @@ class _PracticeReviewState extends State<PracticeReview> {
                     ),
                   );
                 } else if (route == 'record_session') {
-                  Navigator.pushReplacement(
-                    context,
-                    FadePageRouteReverse(
-                      page: const record_session(
-                        past_session: false,
-                      ),
-                    ),
-                  );
-                } else {
+                  Navigator.push(
+                      context,
+                      FadePageRoute(
+                          page: const ViewDashboard(
+                            missed: false,
+                            name: '',
+                            update: false,
+                            helpfulTips: false,
+                            record: 0,
+                          )));
+                }  else {
                   Navigator.push(
                     context,
                     FadePageRouteReverse(
