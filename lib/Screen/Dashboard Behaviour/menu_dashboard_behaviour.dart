@@ -36,10 +36,7 @@ class menu_behaviour extends StatefulWidget {
 }
 
 class _menu_behaviourState extends State<menu_behaviour> {
-  String goalName = '';
-  String pracName = '';
-  String goalColor = '';
-  String pracColor = '';
+
   String reportDate = '';
   String recordDate = '';
   String subscripption = '';
@@ -58,16 +55,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
     });
   }
 
-  void getRecorDetails() async {
-    final SharedPreferences prefs = await _prefs;
 
-    setState(() {
-      goalName = prefs.getString('dash_goalName')!;
-      pracColor = prefs.getString('dash_pracColor')!;
-      pracName = prefs.getString('dash_pracName')!;
-      goalColor = prefs.getString('dash_goalColor')!;
-    });
-  }
 
   void getSubscription() async {
     final SharedPreferences prefs = await _prefs;
@@ -91,7 +79,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
           (value) {
             if (value.length != 0) {
               setState(() {
-                goalName = value["name"];
+
               });
             }
           },
@@ -120,7 +108,6 @@ class _menu_behaviourState extends State<menu_behaviour> {
   void initState() {
     super.initState();
     getRecordedDate();
-    getRecorDetails();
     getSubscription();
     _fetchPracticeDetails();
   }
@@ -217,7 +204,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                               width: AppDimensions.width10(context) * 30,
                               child: Center(
                                 child: Text(
-                                  goalName,
+                                  pracDetails['userGoal']['name'],
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       color: Colors.white,
@@ -228,7 +215,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                               ),
                             ),
                             goalAndPractice(
-                                context, goalColor, pracColor, pracName),
+                                context, pracDetails['userGoal']['color'], pracDetails['color'], pracDetails['name']),
                             // Container(
                             //   width: AppDimensions.width10(context) * 40.0,
                             //   height: AppDimensions.height10(context) * 11.2,
@@ -563,7 +550,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                                           missed:
                                                                               true,
                                                                           name:
-                                                                              pracName,
+                                                                          pracDetails['name'],
                                                                           update:
                                                                               true,
                                                                           helpfulTips:

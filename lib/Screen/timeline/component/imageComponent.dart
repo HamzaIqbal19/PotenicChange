@@ -42,7 +42,7 @@ practiceImagesMissed(String color) {
   } else if (color == '4') {
     return "assets/images/Missed_4.webp";
   } else if (color == '5') {
-    return "assets/images/Missed_4.webp";
+    return "assets/images/Missed_5.webp";
   } else {
     return "assets/images/Missed_1.webp";
   }
@@ -58,7 +58,7 @@ practiceImagesCompleted(String color) {
   } else if (color == '4') {
     return "assets/images/Practice_Completed_4.webp";
   } else if (color == '5') {
-    return "assets/images/Practice_Completed_4.webp";
+    return "assets/images/Practice_Completed_5.webp";
   } else {
     return "assets/images/Practice_Completed_2.webp";
   }

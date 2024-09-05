@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/goalEvaluation.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/menu_dashboard_behaviour.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_progress.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation/practice_score.dart';
@@ -100,14 +99,7 @@ class _practice_assesmentState extends State<practice_assesment> {
               page: const practiceMenu(
             goal_eval: false,
           )));
-    } else if (route == 'practice_menu_missed') {
-      Navigator.pushReplacement(
-          context,
-          FadePageRouteReverse(
-              page: const missed_Menu(
-            pracName: '',
-          )));
-    } else if (route == 'practice_completed') {
+    }  else if (route == 'practice_completed') {
       Navigator.pushReplacement(
           context, FadePageRouteReverse(page: const menu_behaviour()));
     } else if (route == 'practice_completed') {

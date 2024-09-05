@@ -36,30 +36,27 @@ dashboardCarousel(BuildContext context, CarouselController controller,dashboardD
           return AnimatedContainer(
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeInOut,
-            height: isCenterItem &&!currentData ? UpdatedDimensions.height10(context)*22.2 : UpdatedDimensions.height10(context)*9.2,
-            width: isCenterItem&&!currentData ? UpdatedDimensions.width10(context)*20.8 : UpdatedDimensions.width10(context)*8.8,
+            height: isCenterItem  ? UpdatedDimensions.height10(context)*22.2 : UpdatedDimensions.height10(context)*9.2,
+            width: isCenterItem ? UpdatedDimensions.width10(context)*20.8 : UpdatedDimensions.width10(context)*8.8,
             transform:
             Matrix4.translationValues(0, currentItem ? -30 : 30, 0),
-            decoration: isCenterItem ? !currentData? const BoxDecoration():BoxDecoration(
-                border: Border.all(color: Colors.white,width: 0.5),
-                shape: BoxShape.circle
-            ): currentItem? (currentDate.isAfter(dayDate)&&currentData)?BoxDecoration(
+            decoration: isCenterItem ?  const BoxDecoration(): currentItem? (currentDate.isAfter(dayDate)&&currentData)?BoxDecoration(
                 border: Border.all(color: Colors.white,width: 0.5),
                 shape: BoxShape.circle
             ):(currentDate.isBefore(dayDate)&& currentData)? BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(color: Colors.white,width: 0.5),
             ):const BoxDecoration():const BoxDecoration(),
-            padding:currentItem?(currentDate.isAfter(dayDate)&&currentData)?const EdgeInsets.all(4):(currentDate.isBefore(dayDate)&&currentData)?const EdgeInsets.all(4):isCenterItem? currentData ?const EdgeInsets.all(4):EdgeInsets.zero:EdgeInsets.zero: EdgeInsets.zero,
+            padding:currentItem?(currentDate.isAfter(dayDate)&&currentData)?const EdgeInsets.all(4):(currentDate.isBefore(dayDate)&&currentData)?const EdgeInsets.all(4):EdgeInsets.zero: EdgeInsets.zero,
             child: Container(
               decoration: BoxDecoration(
-                image: isCenterItem && !currentData
-                    ? const DecorationImage(
-                    image: AssetImage('assets/images/Asset 10 2.webp'),
+                image: isCenterItem
+                    ?  DecorationImage(
+                    image:currentData? const AssetImage('assets/images/currentbg2.webp'):const AssetImage('assets/images/Asset 10 2.webp'),
                     fit: BoxFit.contain)
                     : null,
                 shape: BoxShape.circle,
-                gradient: currentDate.isAfter(dayDate)?previousGradient(currentData):currentDate.isBefore(dayDate)?futureGradient(currentData):isCenterItem? currentGradient(currentData):LinearGradient(
+                gradient: currentDate.isAfter(dayDate)?previousGradient(currentData):currentDate.isBefore(dayDate)?futureGradient(currentData):LinearGradient(
                     begin: Alignment
                         .topCenter,
                     end: Alignment.bottomCenter,
@@ -69,7 +66,7 @@ dashboardCarousel(BuildContext context, CarouselController controller,dashboardD
                       isCenterItem?Colors.transparent: const Color(
                           0xffEDDC97)
                     ]),
-                border: isCenterItem &&!currentData?
+                border: isCenterItem ?
                 null
                     : Border.all(color: Colors.white, width: 3),
               ),
@@ -81,6 +78,7 @@ dashboardCarousel(BuildContext context, CarouselController controller,dashboardD
                         fontSize:
                         UpdatedDimensions.font10(context) *
                             1.4,
+                        fontFamily: 'Laila',
                         fontWeight:
                         FontWeight
                             .w400,
@@ -94,6 +92,7 @@ dashboardCarousel(BuildContext context, CarouselController controller,dashboardD
                             fontSize:
                             UpdatedDimensions.font10(context) *
                                 1.2,
+                            fontFamily: 'Laila',
                             fontWeight:
                             FontWeight
                                 .w600,
@@ -106,6 +105,7 @@ dashboardCarousel(BuildContext context, CarouselController controller,dashboardD
                             fontSize:
                             UpdatedDimensions.font10(context) *
                                 1.4,
+                            fontFamily: 'Laila',
                             fontWeight:
                             FontWeight
                                 .w400,
@@ -216,7 +216,7 @@ decoratedBox(BuildContext context,Color backgroundColor,data,Color textColor,fut
        child:
        Text(
          data,
-         style: TextStyle(fontSize: UpdatedDimensions.font10(context) * 1.0, fontWeight: FontWeight.w400, color: Colors.white),
+         style: TextStyle(fontSize: UpdatedDimensions.font10(context) * 1.0,fontFamily: 'Laila', fontWeight: FontWeight.w400, color: Colors.white),
        ),
      ),
    );
@@ -233,6 +233,7 @@ decoratedBox(BuildContext context,Color backgroundColor,data,Color textColor,fut
          style:  TextStyle(
              fontSize:
              UpdatedDimensions.font10(context),
+             fontFamily: 'Laila',
              fontWeight: FontWeight
                  .w400,
              color: textColor),

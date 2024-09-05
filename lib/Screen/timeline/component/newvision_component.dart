@@ -204,6 +204,10 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                             height:
                                 AppDimensionsUpdated.height10(context) * 25.8,
                             padding: EdgeInsets.only(
+                              left: AppDimensionsUpdated.height10(context) *
+                                  2.0,
+                                right: AppDimensionsUpdated.height10(context) *
+                                    2.0,
                                 bottom: AppDimensionsUpdated.height10(context) *
                                     6.0),
                             decoration: BoxDecoration(
@@ -240,8 +244,7 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                                   ),
                                 ),
                                 Container(
-                                  // width:
-                                  //     AppDimensionsUpdated.height10(context) * 20.9,
+
                                   height:
                                       AppDimensionsUpdated.height10(context) *
                                           3.63,
@@ -252,6 +255,8 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                                   alignment: Alignment.center,
                                   child: Text('"${widget.subText}"',
                                       textAlign: TextAlign.center,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensionsUpdated.font10(

@@ -5,7 +5,6 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/menu_dashboard_behaviour.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Create%20Practice.dart';
 import 'package:potenic_app/Screen/PracticeGoal/Created%20Practice.dart';
@@ -197,15 +196,6 @@ class _PracticeReviewState extends State<PracticeReview> {
                     FadePageRouteReverse(
                       page: const practiceMenu(
                         goal_eval: false,
-                      ),
-                    ),
-                  );
-                } else if (route == 'practice_missed') {
-                  Navigator.pushReplacement(
-                    context,
-                    FadePageRouteReverse(
-                      page: missed_Menu(
-                        pracName: pracName,
                       ),
                     ),
                   );

@@ -41,17 +41,13 @@ class practiceMenu extends StatefulWidget {
 }
 
 class _practiceMenuState extends State<practiceMenu> {
-  String goalName = '';
-  String pracName = '';
-  String identity = '';
+
   String reportDate = '';
   String subscripption = '';
   String route = '';
 
   var pracDetails;
   bool Loader = true;
-  var pracColor;
-  var color;
 
   int differenceInDays = 0;
 
@@ -66,16 +62,6 @@ class _practiceMenuState extends State<practiceMenu> {
     });
   }
 
-  // void getRecorDetails() async {
-  //   final SharedPreferences prefs = await _prefs;
-
-  //   setState(() {
-  //     goalName = prefs.getString('dash_goalName')!;
-  //     pracColor = prefs.getString('dash_pracColor')!;
-  //     pracName = prefs.getString('dash_pracName')!;
-  //     color = prefs.getString('dash_goalName')!;
-  //   });
-  // }
 
   void getSubscription() async {
     final SharedPreferences prefs = await _prefs;
@@ -89,8 +75,7 @@ class _practiceMenuState extends State<practiceMenu> {
       if (response.length != 0) {
         setState(() {
           pracDetails = response;
-          pracName = response["name"] ?? pracName;
-          pracColor = response["color"] ?? pracColor;
+
           reportDate = response['practiceEvaluations'] != null
               ? response['practiceEvaluations']['endDate'] ?? ''
               : '';
@@ -101,9 +86,6 @@ class _practiceMenuState extends State<practiceMenu> {
           (value) async {
             if (value.length != 0) {
               setState(() {
-                goalName = value["name"];
-                identity = value["identityStatement"][0]["text"];
-                color = value["color"];
               });
               if (value["goalEvaluations"] != null) {
                 final SharedPreferences prefs = await _prefs;
@@ -285,7 +267,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                   width: AppDimensions.width10(context) * 30,
                                   child: Center(
                                     child: Text(
-                                      goalName,
+                                      pracDetails['userGoal']['name'],
                                       overflow: TextOverflow.ellipsis,
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
@@ -301,7 +283,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                   ),
                                 ),
                                 goalAndPractice(
-                                    context, color, pracColor, pracName),
+                                    context, pracDetails['userGoal']['color'], pracDetails['color'], pracDetails['name']),
                               ],
                             ),
                           ),
@@ -329,7 +311,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                               ),
                                               enterPage: emotions(
                                                 summary: false,
-                                                pracName: pracName,
+                                                pracName: pracDetails['name'],
                                                 record: false,
                                                 selected: 0,
                                               )));

@@ -220,8 +220,6 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                               ),
                             ),
                             Container(
-                              width:
-                                  AppDimensionsUpdated.width10(context) * 20.9,
                               margin: const EdgeInsets.only(top: 10),
                               padding: EdgeInsets.symmetric(
                                   horizontal:
@@ -265,6 +263,7 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                                     12.8,
                                 height: AppDimensionsUpdated.height10(context) *
                                     12.8,
+
                                 padding: EdgeInsets.all(5),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,

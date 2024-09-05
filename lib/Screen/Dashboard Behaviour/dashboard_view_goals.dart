@@ -10,7 +10,6 @@ import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
 import 'package:potenic_app/MyServices/Notification/notificationController.dart';
 import 'package:potenic_app/Screen/Alerts/widgets/notificationPermissionService.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_record_session.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/goal_menu_missed_session.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/loaders/dashboard_behaviour_shimmer.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/widgets/dashboard_carousel.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/widgets/helpfulTips.dart';
@@ -207,7 +206,6 @@ class _ViewDashboardState extends State<ViewDashboard>
   toggleDates(date){
 
     var practiceData = allGoals[formatDates(date)]['practiceData'];
-    print("PracticeData $practiceData");
 
     timesList.clear();
 
@@ -311,8 +309,6 @@ class _ViewDashboardState extends State<ViewDashboard>
             responseData = value['data'];
 
           });
-
-          print("DashboardData ${allGoals['2024-08-28']['practiceData']} ");
 
           toggleDates(DateTime.now().toString());
 
@@ -483,7 +479,7 @@ class _ViewDashboardState extends State<ViewDashboard>
                 ]),
             extendBodyBehindAppBar: true,
             extendBody: true,
-            backgroundColor: const Color(0xffD9B4B4),
+            backgroundColor: const Color(0xffD9B4B4).withOpacity(0.8),
             bottomNavigationBar: contain
                 ? Container(
                     margin: EdgeInsets.all(
@@ -694,17 +690,13 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                                 index][
                                                                             'status'] ==
                                                                         "missed") {
+
                                                                       Navigator.push(
                                                                           context,
                                                                           FadePageRoute(
-                                                                              page:
-                                                                                  missed_Menu(
-                                                                            pracName: timesList[index]
-                                                                                    [
-                                                                                    'data']
-                                                                                [
-                                                                                'name'],
-                                                                          )));
+                                                                              page: const practiceMenu(
+                                                                                  goal_eval:
+                                                                                  false)));
                                                                     } else {
                                                                       Navigator.push(context, FadePageRoute(
                                                                               page:

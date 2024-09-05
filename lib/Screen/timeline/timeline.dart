@@ -193,8 +193,6 @@ class _timelineState extends State<timeline> {
       });
     }
 
-    print("getGoalNames $getGoalNames type $type");
-
     TimelineService.getTimeLine(formattedDate, goal, pracId, type)
         .then((value) {
       setState(() {
@@ -278,10 +276,6 @@ class _timelineState extends State<timeline> {
           TimeLineRes[currentDateKey]["userPracticeCreated"] ?? ['No data'];
       List<dynamic> goalcreated =
           TimeLineRes[currentDateKey]["userGoalsCreated"] ?? ['No data'];
-      List<dynamic> goaldeleted =
-          TimeLineRes[currentDateKey]["deleteGoals"] ?? ['No data'];
-      List<dynamic> practicedeleted =
-          TimeLineRes[currentDateKey]["deletePractices"] ?? ['No data'];
       List<dynamic> goalupdate =
           TimeLineRes[currentDateKey]["userGoalsUpdated"] ?? ['No data'];
       List<dynamic> practiceupdate =
@@ -295,12 +289,7 @@ class _timelineState extends State<timeline> {
       if (goalcreated.isNotEmpty) {
         addUniqueNames(goalcreated);
       }
-      if (goaldeleted.isNotEmpty) {
-        addUniqueNames(goaldeleted);
-      }
-      if (practicedeleted.isNotEmpty) {
-        addUniqueNames(practicedeleted);
-      }
+
       if (goalupdate.isNotEmpty) {
         addUniqueNames(goalupdate);
       }
@@ -581,31 +570,16 @@ class _timelineState extends State<timeline> {
                                                             Navigator.pop(
                                                                 context);
                                                           },
-                                                          child:
-                                                          Container(
-                                                            width: AppDimensions
-                                                                .width10(
-                                                                context) *
-                                                                5.0,
-                                                            margin:
-                                                            EdgeInsets
-                                                                .only(
-                                                              right: AppDimensions.height10(
-                                                                  context) *
-                                                                  2.0,
-                                                            ),
-                                                            child: Text(
-                                                              'Cancel',
-                                                              style:
-                                                              TextStyle(
-                                                                fontSize:
-                                                                AppDimensions.font10(context) *
-                                                                    1.4,
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w400,
-                                                                color: const Color(
-                                                                    0xFF2F80ED),
+                                                          child:SizedBox(
+                                                            // width: AppDimensions.width10(context) * 5.0,
+                                                            height: AppDimensions.width10(context) * 3.1,
+                                                            child: Center(
+                                                              child: Text(
+                                                                "Cancel",
+                                                                style: TextStyle(
+                                                                    fontSize: AppDimensions.font10(context) * 1.9,
+                                                                    height: AppDimensions.height10(context) * 0.1,
+                                                                    color: const Color(0xFF2F80ED)),
                                                               ),
                                                             ),
                                                           ),
@@ -635,22 +609,15 @@ class _timelineState extends State<timeline> {
                                                                 context);
                                                           },
                                                           child: SizedBox(
-                                                            width: AppDimensions
-                                                                .width10(
-                                                                context) *
-                                                                3.7,
-                                                            child: Text(
-                                                              'Done',
-                                                              style:
-                                                              TextStyle(
-                                                                fontSize:
-                                                                AppDimensions.font10(context) *
-                                                                    1.4,
-                                                                fontWeight:
-                                                                FontWeight
-                                                                    .w400,
-                                                                color: const Color(
-                                                                    0xFF2F80ED),
+                                                            // width: AppDimensions.width10(context) * 5.0,
+                                                            height: AppDimensions.width10(context) * 3.1,
+                                                            child: Center(
+                                                              child: Text(
+                                                                "Done",
+                                                                style: TextStyle(
+                                                                    fontSize: AppDimensions.font10(context) * 1.9,
+                                                                    height: AppDimensions.height10(context) * 0.1,
+                                                                    color: const Color(0xFF2F80ED)),
                                                               ),
                                                             ),
                                                           ),
@@ -1874,81 +1841,13 @@ class _timelineState extends State<timeline> {
                                                               levelText: data['goalLevel']
                                                                           .toString() ==
                                                                       'null'
-                                                                  ? '0'
+                                                                  ? '1'
                                                                   : data['goalLevel']
                                                                       .toString(),
                                                             );
                                                           })
                                                       : Container(),
-                                                  // TimeLineRes[DateKey][
-                                                  //             'deleteGoals'] !=
-                                                  //         null
-                                                  //     ? ListView.builder(
-                                                  //         shrinkWrap: true,
-                                                  //         itemCount: TimeLineRes[
-                                                  //                     DateKey][
-                                                  //                 'deleteGoals']
-                                                  //             .length,
-                                                  //         padding:
-                                                  //             EdgeInsets.zero,
-                                                  //         physics:
-                                                  //             const NeverScrollableScrollPhysics(),
-                                                  //         itemBuilder:
-                                                  //             (context, index) {
-                                                  //           var data = TimeLineRes[
-                                                  //                       DateKey]
-                                                  //                   [
-                                                  //                   'deleteGoals']
-                                                  //               [index];
-                                                  //           return GoalPracticeComponent(
-                                                  //               image1: data[
-                                                  //                   'color'],
-                                                  //               image2: '2',
-                                                  //               mainText: data[
-                                                  //                   'name'],
-                                                  //               smallText: '',
-                                                  //               subText: data[
-                                                  //                       'identityStatement']
-                                                  //                   [0]['text'],
-                                                  //               status:
-                                                  //                   'deleted');
-                                                  //         })
-                                                  //     : Container(),
-                                                  // TimeLineRes[DateKey][
-                                                  //             'deletePractices'] !=
-                                                  //         null
-                                                  //     ? ListView.builder(
-                                                  //         shrinkWrap: true,
-                                                  //         itemCount:
-                                                  //             TimeLineRes[DateKey]
-                                                  //                     [
-                                                  //                     'deletePractices']
-                                                  //                 .length,
-                                                  //         padding:
-                                                  //             EdgeInsets.zero,
-                                                  //         physics:
-                                                  //             const NeverScrollableScrollPhysics(),
-                                                  //         itemBuilder:
-                                                  //             (context, index) {
-                                                  //           var data = TimeLineRes[
-                                                  //                       DateKey]
-                                                  //                   [
-                                                  //                   'deletePractices']
-                                                  //               [index];
-                                                  //           return NewPractice(
-                                                  //               image1: data[
-                                                  //                       'userGoal']
-                                                  //                   ['color'],
-                                                  //               image2: '2',
-                                                  //               greenText: data[
-                                                  //                   'name'],
-                                                  //               orangeText: data[
-                                                  //                       'userGoal']
-                                                  //                   ['name'],
-                                                  //               Status:
-                                                  //                   'deleted');
-                                                  //         })
-                                                  //     : Container(),
+
                                                 ],
                                               ),
                                       ],
@@ -1973,7 +1872,6 @@ class _timelineState extends State<timeline> {
                                   pastLoader = true;
                                 });
 
-                                print("type: $type");
                                 callTimeLineLoad(goalId, pracId, type);
                               },
                               child: pastLoader
