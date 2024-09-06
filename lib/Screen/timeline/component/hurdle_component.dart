@@ -52,7 +52,6 @@ class HurdleComponent extends StatelessWidget {
                 ),
                 SizedBox(
                   width: AppDimensionsUpdated.width10(context) * 13.4,
-                  height: AppDimensionsUpdated.height10(context) * 2.2,
                   child: Text(
                     'Hurdle',
                     style: TextStyle(

@@ -94,7 +94,7 @@ class _timelineState extends State<timeline> {
   var type;
   var pracId;
 
-  String currentDateKey = '2024-07-11';
+  String currentDateKey = '2024-09-06';
   int _selectedTag = 0;
   int goalIndex = 0;
   String selectedActivity = 'All';
@@ -399,115 +399,6 @@ class _timelineState extends State<timeline> {
                             SizedBox(
                               width: AppDimensions.width10(context) * 0.5,
                             ),
-                            // GestureDetector(
-                            //   onTap: () async {
-                            //     DateTime? valueOne =
-                            //         await _TimeBottomSheet(context);
-                            //     String formattedDate =
-                            //         DateFormat('yyyy-MM-dd')
-                            //             .format(valueOne!);
-                            //     isDateInFuture(valueOne);
-                            //     setState(() {
-                            //       setValue = valueOne;
-                            //       currentDateKey = formattedDate;
-                            //       loader = true;
-                            //     });
-                            //     callTimeLine(
-                            //         valueOne, null, null, null, true);
-                            //   },
-                            //   child: Container(
-                            //     //width: AppDimensions.width10(context) * 11.5,
-                            //     height:
-                            //         AppDimensions.height10(context) * 3.4,
-                            //     decoration: BoxDecoration(
-                            //         borderRadius: BorderRadius.circular(
-                            //             AppDimensions.height10(context) *
-                            //                 1.0),
-                            //         border: Border.all(
-                            //             width: AppDimensions.width10(
-                            //                     context) *
-                            //                 0.1,
-                            //             color: const Color(0xFFE0E0E0))),
-                            //     margin: EdgeInsets.only(
-                            //         left:
-                            //             AppDimensions.height10(context) *
-                            //                 1.3,
-                            //         right:
-                            //             AppDimensions.width10(context) *
-                            //                 1.0),
-                            //     child: Row(
-                            //       crossAxisAlignment:
-                            //           CrossAxisAlignment.center,
-                            //       children: [
-                            //         Container(
-                            //           margin: EdgeInsets.only(
-                            //               left: AppDimensions.height10(
-                            //                       context) *
-                            //                   1.0),
-                            //           child: Text(
-                            //             'Date:',
-                            //             style: TextStyle(
-                            //                 fontSize:
-                            //                     AppDimensions.font10(
-                            //                             context) *
-                            //                         1.4,
-                            //                 fontWeight: FontWeight.w400,
-                            //                 color:
-                            //                     const Color(0xffFA9934)),
-                            //           ),
-                            //         ),
-                            //         Container(
-                            //           //width: AppDimensions.width10(context) * 1.9,
-                            //           height: AppDimensions.height10(
-                            //                   context) *
-                            //               2.4,
-                            //           margin: EdgeInsets.only(
-                            //               left: AppDimensions.height10(
-                            //                       context) *
-                            //                   0.8),
-                            //           child: Center(
-                            //             child: Text(
-                            //               setValue == null
-                            //                   ? ''
-                            //                   : '${setValue!.year}-${setValue!.month}-${setValue!.day}',
-                            //               style: TextStyle(
-                            //                   fontSize:
-                            //                       AppDimensions.font10(
-                            //                               context) *
-                            //                           1.4,
-                            //                   fontWeight: FontWeight.w700,
-                            //                   color: const Color(
-                            //                       0xffFA9934)),
-                            //             ),
-                            //           ),
-                            //         ),
-                            //         Container(
-                            //           width:
-                            //               AppDimensions.width10(context) *
-                            //                   2.4,
-                            //           height: AppDimensions.height10(
-                            //                   context) *
-                            //               2.4,
-                            //           margin: EdgeInsets.only(
-                            //               left: AppDimensions.height10(
-                            //                       context) *
-                            //                   0.8,
-                            //               right: AppDimensions.height10(
-                            //                       context) *
-                            //                   1.0,
-                            //               bottom: AppDimensions.height10(
-                            //                       context) *
-                            //                   0.3),
-                            //           child: const Icon(
-                            //             Icons.arrow_drop_down,
-                            //             color: Color(0xffFA9934),
-                            //           ),
-                            //         )
-                            //       ],
-                            //     ),
-                            //   ),
-                            // ),
-
                             GestureDetector(
                               onTap: () {
                                 showModalBottomSheet(
@@ -572,18 +463,20 @@ class _timelineState extends State<timeline> {
                                                           },
                                                           child:SizedBox(
                                                             // width: AppDimensions.width10(context) * 5.0,
-                                                            height: AppDimensions.width10(context) * 3.1,
+
                                                             child: Center(
                                                               child: Text(
                                                                 "Cancel",
                                                                 style: TextStyle(
                                                                     fontSize: AppDimensions.font10(context) * 1.9,
                                                                     height: AppDimensions.height10(context) * 0.1,
+                                                                    fontWeight: FontWeight.w400,
                                                                     color: const Color(0xFF2F80ED)),
                                                               ),
                                                             ),
                                                           ),
                                                         ),
+                                                        SizedBox(width: AppDimensions.width10(context) * 2.0,),
                                                         GestureDetector(
                                                           onTap: () {
                                                             setState(() {
@@ -610,13 +503,13 @@ class _timelineState extends State<timeline> {
                                                           },
                                                           child: SizedBox(
                                                             // width: AppDimensions.width10(context) * 5.0,
-                                                            height: AppDimensions.width10(context) * 3.1,
                                                             child: Center(
                                                               child: Text(
                                                                 "Done",
                                                                 style: TextStyle(
                                                                     fontSize: AppDimensions.font10(context) * 1.9,
                                                                     height: AppDimensions.height10(context) * 0.1,
+                                                                    fontWeight: FontWeight.w400,
                                                                     color: const Color(0xFF2F80ED)),
                                                               ),
                                                             ),
@@ -813,21 +706,12 @@ class _timelineState extends State<timeline> {
                                                                 context);
                                                           },
                                                           child:
-                                                          Container(
-                                                            width: AppDimensions
-                                                                .width10(
-                                                                context) *
-                                                                5.0,
-                                                            margin: EdgeInsets.only(
-                                                                right: AppDimensions.height10(
-                                                                    context) *
-                                                                    2.0),
+                                                          SizedBox(
                                                             child: Text(
                                                               'Cancel',
                                                               style: TextStyle(
-                                                                  fontSize:
-                                                                  AppDimensions.font10(context) *
-                                                                      1.4,
+                                                                  fontSize: AppDimensions.font10(context) * 1.9,
+                                                                  height: AppDimensions.height10(context) * 0.1,
                                                                   fontWeight:
                                                                   FontWeight
                                                                       .w400,
@@ -836,6 +720,7 @@ class _timelineState extends State<timeline> {
                                                             ),
                                                           ),
                                                         ),
+                                                        SizedBox(width: AppDimensions.width10(context) * 2,),
                                                         GestureDetector(
                                                           onTap: () {
                                                             if (_selectedTag ==
@@ -867,16 +752,12 @@ class _timelineState extends State<timeline> {
                                                                 context);
                                                           },
                                                           child: SizedBox(
-                                                            width: AppDimensions
-                                                                .width10(
-                                                                context) *
-                                                                3.7,
+
                                                             child: Text(
                                                               'Done',
                                                               style: TextStyle(
-                                                                  fontSize:
-                                                                  AppDimensions.font10(context) *
-                                                                      1.4,
+                                                                  fontSize: AppDimensions.font10(context) * 1.9,
+                                                                  height: AppDimensions.height10(context) * 0.1,
                                                                   fontWeight:
                                                                   FontWeight
                                                                       .w400,
@@ -1050,29 +931,6 @@ class _timelineState extends State<timeline> {
                   ),
                 ),
               ),
-              // Align(
-              //   alignment: Alignment.centerRight,
-              //   child: Container(
-              //     width: AppDimensions.width10(context) * 4.9,
-              //     height: AppDimensions.height10(context) * 5.0,
-              //     decoration: BoxDecoration(
-              //         color: const Color(0xFFFBFBFB),
-              //         borderRadius: BorderRadius.circular(100)),
-              //     child: GestureDetector(
-              //       onTap: () {
-              //         setState(() {
-              //           isSearch = !isSearch;
-              //         });
-              //       },
-              //       child: Image.asset(
-              //         'assets/images/Search.webp',
-              //         width: AppDimensions.width10(context) * 5,
-              //         height: AppDimensions.height10(context) * 5,
-              //         fit: BoxFit.contain,
-              //       ),
-              //     ),
-              //   ),
-              // ),
             ],
           ),
         ),
@@ -1262,6 +1120,26 @@ class _timelineState extends State<timeline> {
                                   ),
                                 ),
                           Container(
+                            margin: EdgeInsets.only(
+                                top: AppDimensionsUpdated.height10(context) *
+                                    0.4),
+                            child: Center(
+                              child: Text(
+                                'Schedule',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize:
+                                    AppDimensionsUpdated.font10(context) *
+                                    1.8,
+                                    fontWeight: FontWeight.w600,
+                                    height:
+                                    AppDimensionsUpdated.height10(context) *
+                                        0.12,
+                                    color: const Color(0xFF437296)),
+                              ),
+                            ),
+                          ),
+                          Container(
                               margin: EdgeInsets.only(
                                   top: AppDimensionsUpdated.height10(context) *
                                       3.5),
@@ -1274,8 +1152,6 @@ class _timelineState extends State<timeline> {
                               )),
                           Container(
                             width: AppDimensionsUpdated.width10(context) * 34.8,
-                            height:
-                                AppDimensionsUpdated.height10(context) * 3.6,
                             margin: EdgeInsets.only(
                                 top: AppDimensionsUpdated.height10(context) *
                                     2.0),
@@ -1299,8 +1175,7 @@ class _timelineState extends State<timeline> {
                           ),
                           Container(
                             width: AppDimensionsUpdated.width10(context) * 30.8,
-                            height:
-                                AppDimensionsUpdated.height10(context) * 5.4,
+
                             margin: EdgeInsets.only(
                                 top: AppDimensionsUpdated.height10(context) * 2,
                                 left:
@@ -1322,8 +1197,6 @@ class _timelineState extends State<timeline> {
                             ),
                           ),
                           Container(
-                            height:
-                                AppDimensionsUpdated.height10(context) * 2.3,
                             margin: EdgeInsets.only(
                                 top: AppDimensionsUpdated.height10(context) *
                                     1.4),
@@ -1767,6 +1640,36 @@ class _timelineState extends State<timeline> {
                                                           })
                                                       : Container(),
                                                   TimeLineRes[DateKey][
+                                                  'userHurdlesUpdated'] !=
+                                                      null
+                                                      ? ListView.builder(
+                                                      shrinkWrap: true,
+                                                      itemCount:
+                                                      TimeLineRes[DateKey]
+                                                      [
+                                                      'userHurdlesUpdated']
+                                                          .length,
+                                                      padding:
+                                                      EdgeInsets.zero,
+                                                      physics:
+                                                      const NeverScrollableScrollPhysics(),
+                                                      itemBuilder:
+                                                          (context, index) {
+                                                        var data = TimeLineRes[
+                                                        DateKey]
+                                                        [
+                                                        'userHurdlesUpdated']
+                                                        [index];
+                                                        return HurdleComponent(
+                                                          mainText: data[
+                                                          'hurdleName'],
+                                                          subText: data[
+                                                          'triggerStatment'],
+                                                          status: false,
+                                                        );
+                                                      })
+                                                      : Container(),
+                                                  TimeLineRes[DateKey][
                                                               'userInspirationsUpdated'] !=
                                                           null
                                                       ? ListView.builder(
@@ -1903,7 +1806,7 @@ class _timelineState extends State<timeline> {
                                             fontSize:
                                                 AppDimensionsUpdated.height10(
                                                         context) *
-                                                    1.6,
+                                                    2,
                                           ),
                                         ),
                                       ),

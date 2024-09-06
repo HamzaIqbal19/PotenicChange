@@ -74,7 +74,6 @@ class _RecordedComponentState extends State<RecordedComponent> {
                 ),
                 SizedBox(
                     width: AppDimensionsUpdated.width10(context) * 27.6,
-                    height: AppDimensionsUpdated.height10(context) * 2.2,
                     child: RichText(
                         text: TextSpan(
                             text: 'Practice session',

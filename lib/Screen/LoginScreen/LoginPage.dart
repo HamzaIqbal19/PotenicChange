@@ -160,6 +160,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+
           AnimatedScaleButton(
             onTap: () {
               Navigator.push(
@@ -192,7 +193,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        left: AppDimensions.width10(context) * 0.8,
+                        left: AppDimensions.width10(context) * 0.7,
                         top: AppDimensions.height10(context) * 0.1),
                     child: Text(
                       AppText().logInEmail,
@@ -289,14 +290,12 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
         ),
         label: Row(
           children: [
-            Expanded(
-              child: Text(
-                '  $label',
-                style: TextStyle(
-                  color: textColor,
-                  fontSize: AppDimensions.font10(context) * 1.8,
-                  fontWeight: FontWeight.w600,
-                ),
+            Text(
+              '$label',
+              style: TextStyle(
+                color: textColor,
+                fontSize: AppDimensions.font10(context) * 1.8,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ],

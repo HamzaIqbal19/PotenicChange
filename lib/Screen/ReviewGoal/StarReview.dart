@@ -292,7 +292,7 @@ class _StarReviewState extends State<StarReview> {
                         ),
                         Center(
                           child: Text(
-                            "Star Details",
+                            "Goal Details",
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFF437296),

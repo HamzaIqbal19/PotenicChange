@@ -23,7 +23,6 @@ class PracticeSessionComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("status $greenText $status");
     return Container(
       //width: AppDimensionsUpdated.width10(context) * 33.5,
       height: AppDimensionsUpdated.height10(context) * 25.4,
@@ -62,7 +61,6 @@ class PracticeSessionComponent extends StatelessWidget {
                 ),
                 SizedBox(
                   width: AppDimensionsUpdated.width10(context) * 23.6,
-                  height: AppDimensionsUpdated.height10(context) * 2.2,
                   child: Text(
                     status == 'deleted'
                         ? 'Practice deleted'
@@ -73,7 +71,7 @@ class PracticeSessionComponent extends StatelessWidget {
                                 ? 'Practice session edited':
                     status == 'active'
                         ?"Practice active"
-                                : 'Practice session',
+                                : 'Practice session ',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
                         fontSize: AppDimensionsUpdated.font10(context) * 2,

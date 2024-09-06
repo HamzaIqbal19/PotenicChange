@@ -7,6 +7,7 @@ goalWidget(BuildContext context, height, width, color, name, reason, font1,
   return Container(
     width: width,
     height: height,
+
     decoration: BoxDecoration(
         shape: BoxShape.circle,
         image: DecorationImage(
@@ -54,7 +55,7 @@ goalWidget(BuildContext context, height, width, color, name, reason, font1,
           alignment: const Alignment(0, -0.08),
           child: SizedBox(
            // height: UpdatedDimensions.height10(context) * 4.0,
-            width: UpdatedDimensions.width10(context) * 22.0,
+            width: UpdatedDimensions.width10(context) * 20.0,
             child: Text(reason,
                 maxLines: 2,
                 textAlign: TextAlign.center,
@@ -146,7 +147,7 @@ practiceWidget(BuildContext context, height, width, color, name, status) {
                                     ? const Color(0xFF5C75A6)
                                     : color == "5"
                                         ? const Color(0xFF315291)
-                                        : const Color(0xFFFBFBFB),
+                                        : const Color(0xFF1A481C),
                 height: UpdatedDimensions.height10(context) * 0.14,
                 fontSize: UpdatedDimensions.font10(context) * 1.8,
                 fontWeight: FontWeight.w500),

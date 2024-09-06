@@ -55,7 +55,6 @@ class ReportComponent extends StatelessWidget {
                 ),
                 SizedBox(
                   width: AppDimensionsUpdated.width10(context) * 13.4,
-                  height: AppDimensionsUpdated.height10(context) * 2.2,
                   child: Text(
                     'Practice Report',
                     style: TextStyle(
@@ -85,21 +84,20 @@ class ReportComponent extends StatelessWidget {
               children: [
                 Container(
                   width: AppDimensionsUpdated.width10(context) * 23.8,
-                  height: AppDimensionsUpdated.height10(context) * 3.4,
+
                   margin: EdgeInsets.only(
                       top: AppDimensionsUpdated.height10(context) * 3.2),
                   child: Text(
                     'Congratulations',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        fontSize: AppDimensionsUpdated.font10(context) * 2.2,
+                        fontWeight: FontWeight.w700,
+                        fontSize: AppDimensionsUpdated.font10(context) * 2.6,
                         color: const Color(0xff437296)),
                   ),
                 ),
                 Container(
                   width: AppDimensionsUpdated.width10(context) * 32.7,
-                  height: AppDimensionsUpdated.height10(context) * 5.0,
                   margin: EdgeInsets.only(
                       top: AppDimensionsUpdated.height10(context) * 0.9),
                   child: Text(
@@ -107,8 +105,8 @@ class ReportComponent extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         height: AppDimensionsUpdated.height10(context) * 0.12,
-                        fontWeight: FontWeight.w500,
-                        fontSize: AppDimensionsUpdated.font10(context) * 1.6,
+                        fontWeight: FontWeight.w600,
+                        fontSize: AppDimensionsUpdated.font10(context) * 2,
                         color: const Color(0xff437296)),
                   ),
                 ),

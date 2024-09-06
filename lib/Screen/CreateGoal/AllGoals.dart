@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Notifier/GoalNotifier.dart';
@@ -13,7 +12,6 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../API/Goal.dart';
 import '../../Widgets/fading.dart';
 import '../HomeScreen/HomeScreen.dart';

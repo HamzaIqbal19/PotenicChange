@@ -219,7 +219,7 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                             //<-- SEE HERE
                           ),
                           onPressed: () {
-                            termsSheet(context);
+
                           },
                           icon: Image.asset(
                             "assets/images/Google.webp",

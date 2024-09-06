@@ -62,7 +62,6 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                 ),
                 SizedBox(
                   width: AppDimensionsUpdated.width10(context) * 16.1,
-                  height: AppDimensionsUpdated.height10(context) * 2.2,
                   child: Text(
                     'New Vision Score',
                     style: TextStyle(

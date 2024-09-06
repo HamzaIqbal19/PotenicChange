@@ -102,9 +102,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 width:
                                 AppDimensions.width10(context) *
                                     27.0,
-                                height: AppDimensions.height10(
-                                    context) *
-                                    19.8,
                                 child: AlertDialog(
                                   shape: RoundedRectangleBorder(
                                       borderRadius:

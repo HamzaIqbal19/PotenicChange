@@ -47,12 +47,15 @@ class _PracticeReviewState extends State<PracticeReview> {
   var pracColor;
   var visualize;
   String route = '';
+  bool notificationStatus = false;
+  bool status2 = false;
 
   @override
   void initState() {
     //  getGoalDetail();
     super.initState();
     _fetchGoalNames();
+    getReminderStatus();
     getRoute();
   }
 
@@ -100,6 +103,18 @@ class _PracticeReviewState extends State<PracticeReview> {
       }
     }).catchError((error) {
       loadData();
+    });
+  }
+
+  getReminderStatus() {
+    PracticeGoalApi.getUserReminder().then((value) {
+      print("Reminder status: $value");
+      if (value != null) {
+        setState(() {
+          notificationStatus = value['beforePractice'];
+          status2 = value['missedPractice'];
+        });
+      }
     });
   }
 
@@ -1211,7 +1226,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                             width:
                                                 AppDimensions.width10(context) *
                                                     28.0,
-                                            margin: EdgeInsets.only(
+                                            margin:(notificationStatus || status2 )?EdgeInsets.zero: EdgeInsets.only(
                                                 left: AppDimensions.height10(
                                                         context) *
                                                     2.5),
@@ -1227,7 +1242,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                           ),
                                           // SizedBox(width: ),
 
-                                          AnimatedScaleButton(
+                                          (notificationStatus || status2 ) ?  Container():AnimatedScaleButton(
                                             onTap: () {
                                               print("Printed press $pracName $pracColor $goalName $color");
                                               Navigator.push(
@@ -1476,16 +1491,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                                 height: AppDimensions.height10(context) * 5.0,
                               ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            SizedBox(
-                                // color: Colors.blue,
-                                width: AppDimensions.width10(context) * 5.0,
-                                height: AppDimensions.height10(context) * 5.0,
-                                child: Image.asset(
-                                  "assets/images/Moreactions.webp",
-                                  fit: BoxFit.contain,
-                                )),
+
                             AnimatedScaleButton(
                               onTap: () => showAnimatedDialog(
                                 animationType: DialogTransitionType.fadeScale,
@@ -1774,6 +1782,7 @@ class _inner_text1State extends State<inner_text1> {
   @override
   void initState() {
     super.initState();
+
     _focusNode = FocusNode()..addListener(_onFocus);
   }
 

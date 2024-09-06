@@ -14,6 +14,7 @@ import 'package:potenic_app/Screen/Your_goals/veiw_goals_menu.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
+import 'package:potenic_app/Widgets/goalWidget.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -1275,20 +1276,21 @@ class _practice_summaryState extends State<practice_summary> {
                               ),
                               AnimatedScaleButton(
                                 onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute2(true,
-                                          exitPage: practice_summary(
-                                            view: widget.view,
-                                          ),
-                                          enterPage: ViewDashboard(
-                                            missed: false,
-                                            name: pracName,
-                                            update: true,
-                                            helpfulTips: false,
-                                            record: differenceInDays1,
-                                          )));
-
+                                  // Navigator.push(
+                                  //     context,
+                                  //     FadePageRoute2(true,
+                                  //         exitPage: practice_summary(
+                                  //           view: widget.view,
+                                  //         ),
+                                  //         enterPage: ViewDashboard(
+                                  //           missed: false,
+                                  //           name: pracName,
+                                  //           update: true,
+                                  //           helpfulTips: false,
+                                  //           record: differenceInDays1,
+                                  //         )));
+                                  _checkDialogDisplay(context, goalName,
+                                      identity, color, pracColor, pracName);
                                   if (report == true) {
                                     activeReport(context, goalName, pracName,
                                         int.parse(color), int.parse(pracColor));
@@ -1371,6 +1373,28 @@ Widget _buildBottomPicker(Widget picker) {
   });
 }
 
+
+Future<void> _checkDialogDisplay(context, String goalName, String identity, String color,
+    String pracColor, String pracName) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String lastShownKey = 'last_dialog_shown';
+  int currentTime = DateTime.now().millisecondsSinceEpoch;
+
+  // Check the last time the dialog was shown
+  int? lastShownTime = prefs.getInt(lastShownKey);
+
+  // 2 weeks in milliseconds
+  int twoWeeksInMillis = 14 * 24 * 60 * 60 * 1000;
+
+  // Show the dialog if it's the first time or if more than two weeks have passed
+  if (lastShownTime == null || currentTime - lastShownTime >= twoWeeksInMillis) {
+    __share_experience(context, goalName, identity, color,
+        pracColor, pracName);
+    // Update the last shown time to current time
+    prefs.setInt(lastShownKey, currentTime);
+  }
+}
+
 void __share_experience(context, String goalName, String identity, String color,
     String pracColor, String pracName) {
   showModalBottomSheet(
@@ -1433,22 +1457,22 @@ void __share_experience(context, String goalName, String identity, String color,
                   margin: EdgeInsets.only(
                       bottom: AppDimensionsUpdated.height10(context) * 1.4),
                   child: Text(
-                    'Share your\nfirst experience...',
+                    'Share your experience...',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         height: AppDimensionsUpdated.height10(context) * 0.12,
                         fontSize: AppDimensionsUpdated.font10(context) * 3,
                         // letterSpacing: AppDimensionsUpdated.height10(context) * 0.2,
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w700,
                         color: const Color(0xFF437296)),
                   )),
               Container(
                 child: Text(
-                  'True happiness comes from sharing and helping\nothers who are on the same journey as you.',
+                  'True happiness comes from sharing and\nhelping others who are on the same\njourney as you.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       height: AppDimensionsUpdated.height10(context) * 0.12,
-                      fontSize: AppDimensionsUpdated.font10(context) * 1.6,
+                      fontSize: AppDimensionsUpdated.font10(context) * 1.8,
                       // letterSpacing: AppDimensionsUpdated.height10(context) * 0.2,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF437296)),
@@ -1462,116 +1486,12 @@ void __share_experience(context, String goalName, String identity, String color,
                 child: Stack(children: [
                   Align(
                     alignment: Alignment.topRight,
-                    child: Container(
-                      width: AppDimensionsUpdated.width10(context) * 24.8,
-                      height: AppDimensionsUpdated.height10(context) * 24.8,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: AssetImage(color == '1'
-                                  ? "assets/images/red_gradient.webp"
-                                  : color == '2'
-                                      ? 'assets/images/orange_moon.webp'
-                                      : color == '3'
-                                          ? "assets/images/lightGrey_gradient.webp"
-                                          : color == '4'
-                                              ? "assets/images/lightBlue_gradient.webp"
-                                              : color == '5'
-                                                  ? "assets/images/medBlue_gradient.webp"
-                                                  : color == '6'
-                                                      ? "assets/images/Blue_gradient.webp"
-                                                      : 'assets/images/orange_moon.webp'),
-                              fit: BoxFit.cover)),
-                      child: Stack(
-                        children: [
-                          Align(
-                              alignment: const Alignment(0, -0.45),
-                              child: Container(
-                                width: AppDimensionsUpdated.width10(context) * 24.0,
-                                padding: EdgeInsets.symmetric(
-                                    horizontal:
-                                        AppDimensionsUpdated.height10(context) * 2.0),
-                                child: Text(
-                                  goalName,
-                                  textAlign: TextAlign.center,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensionsUpdated.font10(context) * 2.0,
-                                      height: AppDimensionsUpdated.height10(context) *
-                                          0.14,
-                                      fontWeight: FontWeight.w600,
-                                      color: const Color(0xff5B74A6)),
-                                ),
-                              )),
-                          Align(
-                            alignment: const Alignment(0, -0.3),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal:
-                                      AppDimensionsUpdated.height10(context) * 2.0),
-                              child: Text(identity,
-                                  textAlign: TextAlign.center,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 2,
-                                  style: TextStyle(
-                                      fontStyle: FontStyle.italic,
-                                      fontSize:
-                                          AppDimensionsUpdated.font10(context) * 1.6,
-                                      fontWeight: FontWeight.w400,
-                                      color: const Color(0xff5B74A6))),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+                    child: goalWidget(context, UpdatedDimensions.height10(context) * 28.8, UpdatedDimensions.width10(context) * 28.8, color, goalName, identity, UpdatedDimensions.font10(context) * 2.0, UpdatedDimensions.font10(context) * 1.6, const Color(0xff5B74A6))
                   ),
                   Align(
-                    alignment: const Alignment(0.9, 1),
-                    child: GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        height: AppDimensionsUpdated.height10(context) * 14.8,
-                        width: AppDimensionsUpdated.width10(context) * 14.8,
-                        padding: EdgeInsets.symmetric(
-                            horizontal: AppDimensionsUpdated.height10(context) * 0.7),
-                        decoration: BoxDecoration(
-                            //color: Colors.amber,
-                            image: DecorationImage(
-                                image: AssetImage(pracColor == '1'
-                                    ? "assets/images/Practice_Completed_1.webp"
-                                    : pracColor == '2'
-                                        ? 'assets/images/Practice_Completed_2.webp'
-                                        : pracColor == '3'
-                                            ? "assets/images/Practice_Completed_3.webp"
-                                            : pracColor == '4'
-                                                ? "assets/images/Practice_Completed_4.webp"
-                                                : pracColor == '5'
-                                                    ? "assets/images/Practice_Completed_4.webp"
-                                                    : 'assets/images/Practice_Completed_1.webp'),
-                                fit: BoxFit.contain)),
-                        child: Center(
-                          child: Text(
-                            pracName,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: pracColor == "1"
-                                    ? const Color(0XFFFC7133)
-                                    : pracColor == "2"
-                                        ? const Color(0xFF1A481C)
-                                        : pracColor == "3"
-                                            ? const Color(0xFF6D4B77)
-                                            : pracColor == "4"
-                                                ? const Color(0xFF5C75A6)
-                                                : pracColor == "5"
-                                                    ? const Color(0xFF315291)
-                                                    : const Color(0XFFFC7133),
-                                fontSize: AppDimensionsUpdated.font10(context) * 1.8,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ),
-                      ),
-                    ),
+                    alignment: const Alignment(0.9, 1.4),
+                    child: practiceWidget(context, UpdatedDimensions.height10(context) * 12.8, UpdatedDimensions.height10(context) * 12.8, pracColor, pracName, 'completed'),
+
                   ),
                 ]),
               ),

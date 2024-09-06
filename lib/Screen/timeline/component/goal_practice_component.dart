@@ -61,7 +61,6 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                 ),
                 SizedBox(
                   width: AppDimensionsUpdated.width10(context) * 22.5,
-                  height: AppDimensionsUpdated.height10(context) * 2.2,
                   child: Text(
                     widget.status == 'deleted'
                         ? 'Goal & Practice deleted'
@@ -140,7 +139,6 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
             child: Column(
               children: [
                 Container(
-                  height: AppDimensionsUpdated.height10(context) * 3.4,
                   margin: EdgeInsets.only(
                       top: AppDimensionsUpdated.height10(context) * 3.2),
                   child: Center(

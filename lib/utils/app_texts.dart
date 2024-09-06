@@ -10,8 +10,8 @@ class AppText {
       'Your Personalised Journey To Better \n  Self Starts Here';
   String signUp = "Sign up";
   String signUpEmail = '  Sign up with email';
-  String signUpGoogle = '  Sign up with Google';
-  String signUpFacebook = '  Sign up with Facebook';
+  String signUpGoogle = 'Sign up with Google';
+  String signUpFacebook = 'Sign up with Facebook';
   String alreadySignedUpButton = "I already have an account";
 
   String signUpSuccess = "Sign up successful";
@@ -21,7 +21,7 @@ class AppText {
 
   String login = 'Log in';
   String loginSubHead = 'Log in';
-  String logInEmail = 'Log in with Email';
+  String logInEmail = '  Log in with Email';
   String logInGoogle = 'Log in with Google';
   String logInFacebook = 'Log in with Facebook';
   String newAccount = "New account";
@@ -75,7 +75,7 @@ class AppText {
       "What does it look like? What are you \n  doing? What emotions do you have and \n how does it feel?";
 
   //goal finished
-  String starCreated = "Goal Created!";
+  String starCreated = "Goal Created";
   String starCreatedBody =
       "You’ve created your first personal \n development goal and have taken the initial \n key steps towards self-fulfilment. \n \n Now, let’s create a practice to help you \n achieve this goal. You’ll be able to assess \n  how effective it’s been for you and if it’s not\n working, you can change it to another \n practice. ";
 
@@ -109,7 +109,7 @@ class AppText {
   String activateStar = "Activate your goal ";
   String activateStarBody =
       "I desire to grow and improve my identity. By activating my goal, I will be able to evaluate my chosen practice every 20 active days and evaluate my active goal progress monthly. ";
-  String activateStarFoot = "To begin your journey\npress and hold here.  ";
+  String activateStarFoot = "To begin your journey\npress and hold here  ";
 
   //Recording Practice Session
 
