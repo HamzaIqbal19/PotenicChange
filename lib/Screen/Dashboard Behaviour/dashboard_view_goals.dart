@@ -305,6 +305,7 @@ class _ViewDashboardState extends State<ViewDashboard>
       if(response == 200){
         PracticeGoalApi.getUserDashboard(getFormattedDate(current)).then((value){
           setState(() {
+            noActive = false;
             allGoals = value['data'];
             responseData = value['data'];
 
@@ -316,6 +317,11 @@ class _ViewDashboardState extends State<ViewDashboard>
           setState(() {
 
           });
+
+        });
+      }else{
+        setState(() {
+          noActive = true;
 
         });
       }
@@ -517,7 +523,7 @@ class _ViewDashboardState extends State<ViewDashboard>
                 width: double.infinity,
                 height: UpdatedDimensions.height10(context) * 79.8,
                 child: loader == false
-                    ? GestureDetector(
+                    ?  GestureDetector(
                                 onTap: () {
                                   if (widget.helpfulTips) {
                                     if (goalLevel == 0) {
@@ -543,7 +549,7 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                 });
                                               }),
 
-                                              noActive?dashboardPlaceHolder(context):  Stack(children: [
+                                              noActive?dashboardPlaceHolder(context):   Stack(children: [
                                                 Stack(
                                                   children: [
                                                     SingleChildScrollView(
