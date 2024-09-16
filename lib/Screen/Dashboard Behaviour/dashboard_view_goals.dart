@@ -82,7 +82,7 @@ class _ViewDashboardState extends State<ViewDashboard>
   var notificationId;
   var notificationUrl;
   final ScrollController _scrollController = ScrollController();
- // DateTime currentDate = DateTime.now();
+  // DateTime currentDate = DateTime.now();
   int currentIndex = 7;
   bool currentItem = false;
   bool isCenterItem = false;
@@ -126,24 +126,18 @@ class _ViewDashboardState extends State<ViewDashboard>
     AdminGoal.getUserActiveGoal().then((response) {
       if (response.length != 0) {
         setState(() {
-          noActive = false;
           userGoals = response;
           practices.clear();
         });
 
         for (int i = 0; i < userGoals.length; i++) {
-
           for (int j = 0; j < userGoals[i]['userPractices'].length; j++) {
             if (userGoals[i]['userPractices'][j]['isActive'] == true) {
               practices.add(userGoals[i]['userPractices'][j]);
             }
-
           }
-
-
         }
-
-      }else{
+      } else {
         setState(() {
           noActive = true;
           loadData();
@@ -203,47 +197,45 @@ class _ViewDashboardState extends State<ViewDashboard>
     });
   }
 
-  toggleDates(date){
+  toggleDates(date) {
+    if (!noActive) {
+      var practiceData = allGoals[formatDates(date)]['practiceData'];
 
-    var practiceData = allGoals[formatDates(date)]['practiceData'];
+      timesList.clear();
 
-    timesList.clear();
-
-    for (int i = 0; i < practiceData.length; i++) {
-      for (int y = 0; y < practiceData[i]['schedule'].length - 1; y++) {
-        timesList.add({
-          'time': '${practiceData[i]['schedule']['time${y + 1}']}',
-          'data': practiceData[i],
-          'status': '${practiceData[i]['recordingStatusTime${y + 1}']}'
-        });
+      for (int i = 0; i < practiceData.length; i++) {
+        for (int y = 0; y < practiceData[i]['schedule'].length - 1; y++) {
+          timesList.add({
+            'time': '${practiceData[i]['schedule']['time${y + 1}']}',
+            'data': practiceData[i],
+            'status': '${practiceData[i]['recordingStatusTime${y + 1}']}'
+          });
+        }
       }
-    }
 
-    int convertToMinutes(String time) {
-      int hours = int.parse(time.split(':')[0]);
-      int minutes = int.parse(time.split(':')[1].split(' ')[0]);
-      if (time.toLowerCase().contains('pm') && hours != 12) {
-        hours += 12;
+      int convertToMinutes(String time) {
+        int hours = int.parse(time.split(':')[0]);
+        int minutes = int.parse(time.split(':')[1].split(' ')[0]);
+        if (time.toLowerCase().contains('pm') && hours != 12) {
+          hours += 12;
+        }
+        int totalMinutes = (hours * 60 + minutes) % (24 * 60);
+        return totalMinutes < 360
+            ? totalMinutes + (24 * 60 - 360)
+            : totalMinutes - 360;
       }
-      int totalMinutes = (hours * 60 + minutes) % (24 * 60);
-      return totalMinutes < 360
-          ? totalMinutes + (24 * 60 - 360)
-          : totalMinutes - 360;
+
+      // Sort the list based on converted times
+      timesList.sort((a, b) {
+        int timeA = convertToMinutes(a['time']);
+        int timeB = convertToMinutes(b['time']);
+        return timeA - timeB;
+      });
+
+      print("Toggle dates timelist $timesList");
+
+      setState(() {});
     }
-
-    // Sort the list based on converted times
-    timesList.sort((a, b) {
-      int timeA = convertToMinutes(a['time']);
-      int timeB = convertToMinutes(b['time']);
-      return timeA - timeB;
-    });
-
-    print("Toggle dates timelist $timesList");
-
-    setState(() {
-
-    });
-
   }
 
   DateTime currentDate =
@@ -300,35 +292,29 @@ class _ViewDashboardState extends State<ViewDashboard>
 
   final GlobalKey centerKey = GlobalKey();
 
-  void fetchDashboardData(){
+  void fetchDashboardData() {
     AdminGoal.checkUserActiveGoal().then((response) {
-      if(response == 200){
-        PracticeGoalApi.getUserDashboard(getFormattedDate(current)).then((value){
+      if (response == 200) {
+        PracticeGoalApi.getUserDashboard(getFormattedDate(current))
+            .then((value) {
           setState(() {
-            noActive = false;
             allGoals = value['data'];
             responseData = value['data'];
-
           });
 
           toggleDates(DateTime.now().toString());
-
-          loadData();
           setState(() {
-
+            noActive = false;
           });
-
+          loadData();
         });
-      }else{
+      } else {
         setState(() {
           noActive = true;
-
         });
       }
     });
   }
-
-
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -390,7 +376,6 @@ class _ViewDashboardState extends State<ViewDashboard>
         top: false,
         maintainBottomViewPadding: true,
         child: Scaffold(
-          
             appBar: AppBar(
                 backgroundColor: Colors.transparent,
                 elevation: 0,
@@ -403,18 +388,12 @@ class _ViewDashboardState extends State<ViewDashboard>
                           ? AnimatedScaleButton(
                               onTap: () {
                                 setState(() {
-                                  focusedDate = DateTime.parse(formatDates(DateTime.now().toString()));
+                                  focusedDate = DateTime.parse(
+                                      formatDates(DateTime.now().toString()));
                                   toggleDates(DateTime.now().toString());
                                   currentIndex = 7;
                                   _controller.jumpToPage(7);
                                 });
-
-
-
-
-
-                                // Navigator.push(context,
-                                //     FadePageRoute(page: view_goals(missed: false)));
                               },
                               child: Container(
                                 margin: EdgeInsets.only(
@@ -498,21 +477,21 @@ class _ViewDashboardState extends State<ViewDashboard>
                         FadeFunction: () {},
                         functionText: widget.missed ? 'Undo' : 'Edit'),
                   )
-                :  BottomAppBar(
-                        elevation: 0,
-                        padding: EdgeInsets.zero,
-                        notchMargin: 0,
-                        color: const Color(0xffD9B4B4).withOpacity(0.8),
-                        child:  ClipRect(
-                          child: BackdropFilter(
-                            filter:  ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
-                            child: Navigation_Bar(
-                              bg_colored: true,
-                              subscription: getSubscription.toString(),
-                            ),
+                : BottomAppBar(
+                    elevation: 0,
+                    padding: EdgeInsets.zero,
+                    notchMargin: 0,
+                    color: const Color(0xffD9B4B4).withOpacity(0.8),
+                    child: ClipRect(
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                        child: Navigation_Bar(
+                          bg_colored: true,
+                          subscription: getSubscription.toString(),
                         ),
+                      ),
+                    ),
                   ),
-                ),
             body: Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
@@ -523,400 +502,406 @@ class _ViewDashboardState extends State<ViewDashboard>
                 width: double.infinity,
                 height: UpdatedDimensions.height10(context) * 79.8,
                 child: loader == false
-                    ?  GestureDetector(
-                                onTap: () {
-                                  if (widget.helpfulTips) {
-                                    if (goalLevel == 0) {
-                                      _incrementValue();
-                                    }
-                                  }
-                                },
-                                child: SizedBox(
-                                    width: double.infinity,
-                                    // height:
-                                    //     UpdatedDimensions.height10(context) *
-                                    //         19.2,
+                    ? GestureDetector(
+                        onTap: () {
+                          if (widget.helpfulTips) {
+                            if (goalLevel == 0) {
+                              _incrementValue();
+                            }
+                          }
+                        },
+                        child: SizedBox(
+                            width: double.infinity,
+                            // height:
+                            //     UpdatedDimensions.height10(context) *
+                            //         19.2,
+                            child: Stack(
+                              children: [
+                                SingleChildScrollView(
+                                  child: Column(
+                                    children: [
+                                      noActive
+                                          ? dashboardCarousel(
+                                              context,
+                                              _controller,
+                                              null,
+                                              currentIndex, (value) {
+                                              setState(() {
+                                                currentIndex = value.value2;
+                                                toggleDates(value.value1);
+                                                focusedDate = DateTime.parse(
+                                                    formatDates(value.value1));
+                                              });
+                                            })
+                                          : dashboardCarousel(
+                                              context,
+                                              _controller,
+                                              allGoals,
+                                              currentIndex, (value) {
+                                              setState(() {
+                                                currentIndex = value.value2;
+                                                toggleDates(value.value1);
+                                                focusedDate = DateTime.parse(
+                                                    formatDates(value.value1));
+                                              });
+                                            }),
+                                      noActive
+                                          ? dashboardPlaceHolder(context)
+                                          : Stack(children: [
+                                              Stack(
+                                                children: [
+                                                  SingleChildScrollView(
+                                                    child: Column(
+                                                      children: [
+                                                        timesList.isEmpty
+                                                            ? dashboardNoPastSession(
+                                                                context,
+                                                                smallScreen,
+                                                                userGoals,
+                                                                currentIndex <
+                                                                    7,
+                                                                practices,
+                                                                currentIndex ==
+                                                                    7)
+                                                            : ListView.builder(
+                                                                physics:
+                                                                    const NeverScrollableScrollPhysics(),
+                                                                itemCount:
+                                                                    timesList
+                                                                        .length,
+                                                                shrinkWrap:
+                                                                    true,
+                                                                padding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                itemBuilder:
+                                                                    ((context,
+                                                                        index) {
+                                                                  return dashBoardSessionComponent(
+                                                                      context,
+                                                                      timesList[
+                                                                          index],
+                                                                      () {
+                                                                    _scrollToCurrentIndex();
+                                                                  }, () async {
+                                                                    if (_showOverlay ==
+                                                                        false) {
+                                                                      Navigator.push(
+                                                                          context,
+                                                                          FadePageRoute(
+                                                                              page: (const practiceMenu(
+                                                                            goal_eval:
+                                                                                false,
+                                                                            completed:
+                                                                                false,
+                                                                          ))));
+                                                                      final SharedPreferences
+                                                                          prefs =
+                                                                          await _prefs;
+                                                                      await prefs.setInt(
+                                                                          'goal_num',
+                                                                          timesList[index]['data']['userGoal']
+                                                                              [
+                                                                              'id']);
+
+                                                                      await prefs.setString(
+                                                                          'goal_menu_route',
+                                                                          'dashboard');
+                                                                    } else {
+                                                                      if (goalLevel ==
+                                                                          0) {
+                                                                        _incrementValue();
+                                                                      }
+                                                                    }
+                                                                  }, () async {
+                                                                    if (_showOverlay ==
+                                                                        false) {
+                                                                      final SharedPreferences
+                                                                          prefs =
+                                                                          await _prefs;
+                                                                      await prefs.setString(
+                                                                          'prac_menu_route',
+                                                                          'dashboard');
+                                                                      await prefs.setInt(
+                                                                          'prac_num',
+                                                                          timesList[index]['data']
+                                                                              [
+                                                                              'id']);
+                                                                      await prefs.setInt(
+                                                                          'goal_num',
+                                                                          timesList[index]['data']['userGoal']
+                                                                              [
+                                                                              'id']);
+
+                                                                      await prefs.setString(
+                                                                          'dash_pracName',
+                                                                          timesList[index]['data']
+                                                                              [
+                                                                              'name']);
+                                                                      await prefs.setString(
+                                                                          'dash_goalName',
+                                                                          timesList[index]['data']['userGoal']
+                                                                              [
+                                                                              'name']);
+                                                                      await prefs.setString(
+                                                                          'record_date',
+                                                                          getFormattedDate(current)
+                                                                              .toString());
+
+                                                                      await timesList[index]['data']['color'] !=
+                                                                              null
+                                                                          ? prefs.setString(
+                                                                              'dash_pracColor',
+                                                                              timesList[index]['data'][
+                                                                                  'color'])
+                                                                          : prefs.setString(
+                                                                              'dash_pracColor',
+                                                                              '0');
+                                                                      await prefs.setString(
+                                                                          'recording_Time1',
+                                                                          timesList[index]
+                                                                              [
+                                                                              'time']);
+                                                                      await prefs.setBool(
+                                                                          'behaviour_route',
+                                                                          true);
+                                                                      await timesList[index]['data']['userGoal']['color'] !=
+                                                                              null
+                                                                          ? prefs.setString(
+                                                                              'dash_goalColor',
+                                                                              timesList[index]['data']['userGoal']['color'])
+                                                                          : '0';
+                                                                      if (timesList[index]
+                                                                              [
+                                                                              'status'] ==
+                                                                          "Not Started") {
+                                                                        Navigator.push(
+                                                                            context,
+                                                                            FadePageRoute(
+                                                                                page: const practiceMenu(
+                                                                              goal_eval: false,
+                                                                              completed: false,
+                                                                            )));
+                                                                      } else if (timesList[index]
+                                                                              [
+                                                                              'status'] ==
+                                                                          "missed") {
+                                                                        Navigator.push(
+                                                                            context,
+                                                                            FadePageRoute(
+                                                                                page: const practiceMenu(
+                                                                              goal_eval: false,
+                                                                              completed: false,
+                                                                            )));
+                                                                      } else {
+                                                                        Navigator.push(
+                                                                            context,
+                                                                            FadePageRoute(
+                                                                                page: const practiceMenu(
+                                                                              goal_eval: false,
+                                                                              completed: true,
+                                                                            )));
+                                                                      }
+                                                                    } else {
+                                                                      if (goalLevel ==
+                                                                          0) {
+                                                                        _incrementValue();
+                                                                      }
+                                                                    }
+                                                                  });
+                                                                })),
+                                                        SizedBox(
+                                                          height: UpdatedDimensions
+                                                                  .height10(
+                                                                      context) *
+                                                              20.0,
+                                                        )
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              if (_showOverlay)
+                                                FutureBuilder(
+                                                    future: Future.delayed(
+                                                        const Duration(
+                                                            milliseconds: 200)),
+                                                    builder: (c, s) =>
+                                                        s.connectionState ==
+                                                                ConnectionState
+                                                                    .done
+                                                            ? helpFulTips(
+                                                                context,
+                                                                goalLevel,
+                                                                single, () {
+                                                                setState(() {
+                                                                  _showOverlay =
+                                                                      false;
+                                                                });
+                                                              }, () {
+                                                                _incrementValue();
+                                                                if (goalLevel >
+                                                                    7) {
+                                                                  setState(() {
+                                                                    _showOverlay =
+                                                                        false;
+                                                                  });
+                                                                  Authentication()
+                                                                      .userStatusUpdate(
+                                                                          'isTutorial',
+                                                                          false);
+                                                                }
+                                                              })
+                                                            : Container()),
+                                            ]),
+                                    ],
+                                  ),
+                                ),
+                                Positioned(
+                                    top: smallScreen
+                                        ? UpdatedDimensions.height10(context) *
+                                            50.0
+                                        : UpdatedDimensions.height10(context) *
+                                            54.0,
+                                    left: UpdatedDimensions.height10(context) *
+                                        1.3,
                                     child: Stack(
                                       children: [
-                                        SingleChildScrollView(
-                                          child: Column(
-                                            children: [
-                                              dashboardCarousel(context, _controller, allGoals,currentIndex,(value){
-                                                setState(() {
-                                                  currentIndex = value.value2;
-                                                  toggleDates(value.value1);
-                                                  focusedDate = DateTime.parse(formatDates(value.value1));
-                                                });
-                                              }),
-
-                                              noActive?dashboardPlaceHolder(context):   Stack(children: [
-                                                Stack(
-                                                  children: [
-                                                    SingleChildScrollView(
-                                                      child: Column(
-                                                        children: [
-                                                         timesList.isEmpty? dashboardNoPastSession(context,smallScreen,userGoals,currentIndex < 7,practices, currentIndex==7): ListView.builder(
-                                                              physics:
-                                                                  const NeverScrollableScrollPhysics(),
-                                                              itemCount:
-                                                                  timesList.length,
-                                                              shrinkWrap: true,
-                                                              padding: EdgeInsets.zero,
-                                                              itemBuilder:
-                                                                  ((context, index) {
-                                                                return dashBoardSessionComponent(
+                                        isVisible
+                                            ? Obx(() {
+                                                if (notificationsController
+                                                    .getAllNotifications()
+                                                    .isEmpty) {
+                                                  return const SizedBox(); // Return an empty widget if the string is empty
+                                                } else {
+                                                  return SizedBox(
+                                                    width:
+                                                        MediaQuery.of(context)
+                                                            .size
+                                                            .width,
+                                                    child: CarouselSlider
+                                                        .builder(
+                                                            itemCount:
+                                                                notificationsController
+                                                                    .getAllNotifications()
+                                                                    .length,
+                                                            itemBuilder: (BuildContext context,
+                                                                    int
+                                                                        itemIndex,
+                                                                    int
+                                                                        pageViewIndex) =>
+                                                                reda(
                                                                     context,
-                                                                    timesList[index],
+                                                                    notificationsController
+                                                                            .getAllNotifications()[
+                                                                        itemIndex],
                                                                     () {
-                                                                  _scrollToCurrentIndex();
-                                                                }, () async {
-                                                                  if (_showOverlay ==
-                                                                      false) {
-                                                                    Navigator.push(
-                                                                        context,
-                                                                        FadePageRoute(
-                                                                            page:
-                                                                                (const goal_menu_inactive(
-                                                                          isActive:
-                                                                              false,
-                                                                          goal_evaluation:
-                                                                              false,
-                                                                        ))));
-                                                                    final SharedPreferences
-                                                                        prefs =
-                                                                        await _prefs;
-                                                                    await prefs.setInt(
-                                                                        'goal_num',
-                                                                        timesList[index]
-                                                                                    [
-                                                                                    'data']
-                                                                                [
-                                                                                'userGoal']
-                                                                            ['id']);
-
-                                                                    await prefs.setString(
-                                                                        'goal_menu_route',
-                                                                        'dashboard');
-                                                                  } else {
-                                                                    if (goalLevel ==
-                                                                        0) {
-                                                                      _incrementValue();
-                                                                    }
-                                                                  }
-                                                                }, () async {
-                                                                  if (_showOverlay ==
-                                                                      false) {
-                                                                    final SharedPreferences
-                                                                        prefs =
-                                                                        await _prefs;
-                                                                    await prefs.setString(
-                                                                        'prac_menu_route',
-                                                                        'dashboard');
-                                                                    await prefs.setInt(
-                                                                        'prac_num',
-                                                                        timesList[index]
-                                                                                ['data']
-                                                                            ['id']);
-                                                                    await prefs.setInt(
-                                                                        'goal_num',
-                                                                        timesList[index]
-                                                                                    [
-                                                                                    'data']
-                                                                                [
-                                                                                'userGoal']
-                                                                            ['id']);
-
-                                                                    await prefs.setString(
-                                                                        'dash_pracName',
-                                                                        timesList[index]
-                                                                                ['data']
-                                                                            ['name']);
-                                                                    await prefs.setString(
-                                                                        'dash_goalName',
-                                                                        timesList[index]
-                                                                                    [
-                                                                                    'data']
-                                                                                [
-                                                                                'userGoal']
-                                                                            ['name']);
-                                                                    print("Difference in days: ${focusedDate}");
-                                                                    await prefs.setString(
-                                                                        'record_date',
-                                                                        focusedDate.toString());
-
-                                                                    await timesList[index]
-                                                                                    [
-                                                                                    'data']
-                                                                                [
-                                                                                'color'] !=
-                                                                            null
-                                                                        ? prefs.setString(
-                                                                            'dash_pracColor',
-                                                                            timesList[index]
-                                                                                    [
-                                                                                    'data']
-                                                                                [
-                                                                                'color'])
-                                                                        : prefs.setString(
-                                                                            'dash_pracColor',
-                                                                            '0');
-                                                                    await prefs.setString(
-                                                                        'recording_Time1',
-                                                                        timesList[index]
-                                                                            ['time']);
-                                                                    await prefs.setBool(
-                                                                        'behaviour_route',
-                                                                        true);
-                                                                    await timesList[index]['data']
-                                                                                    [
-                                                                                    'userGoal']
-                                                                                [
-                                                                                'color'] !=
-                                                                            null
-                                                                        ? prefs.setString(
-                                                                            'dash_goalColor',
-                                                                            timesList[index]
-                                                                                    [
-                                                                                    'data']['userGoal']
-                                                                                [
-                                                                                'color'])
-                                                                        : '0';
-                                                                    if (timesList[index]
-                                                                            [
-                                                                            'status'] ==
-                                                                        "Not Started") {
-                                                                      Navigator.push(
-                                                                          context,
-                                                                          FadePageRoute(
-                                                                              page: const practiceMenu(
-                                                                                  completed: false,
-                                                                                  goal_eval:
-                                                                                      false)));
-                                                                    } else if (timesList[
-                                                                                index][
-                                                                            'status'] ==
-                                                                        "missed") {
-
-                                                                      Navigator.push(
-                                                                          context,
-                                                                          FadePageRoute(
-                                                                              page: const practiceMenu(
-                                                                                  goal_eval:
-                                                                                  false,
-                                                                                completed: false,
-                                                                              )));
-                                                                    } else {
-                                                                      Navigator.push(
-                                                                          context,
-                                                                          FadePageRoute(
-                                                                              page: const practiceMenu(
-                                                                                goal_eval:
-                                                                                false,
-                                                                                completed: true,
-                                                                              )));
-                                                                    }
-                                                                  } else {
-                                                                    if (goalLevel ==
-                                                                        0) {
-                                                                      _incrementValue();
-                                                                    }
-                                                                  }
-                                                                });
-                                                              })),
-                                                          SizedBox(
-                                                            height: UpdatedDimensions
-                                                                    .height10(context) *
-                                                                20.0,
-                                                          )
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                if (_showOverlay)
-                                                  FutureBuilder(
-                                                      future: Future.delayed(
-                                                          const Duration(
-                                                              milliseconds: 200)),
-                                                      builder: (c, s) => s
-                                                                  .connectionState ==
-                                                              ConnectionState.done
-                                                          ? helpFulTips(
-                                                              context, goalLevel, single,
-                                                              () {
-                                                              setState(() {
-                                                                _showOverlay = false;
-                                                              });
-                                                            }, () {
-                                                              _incrementValue();
-                                                              if (goalLevel > 7) {
-                                                                setState(() {
-                                                                  _showOverlay = false;
-                                                                });
-                                                                Authentication()
-                                                                    .userStatusUpdate(
-                                                                        'isTutorial',
-                                                                        false);
-                                                              }
-                                                            })
-                                                          : Container()),
-                                              ]),
-                                            ],
-                                          ),
-                                        ),
-                                        Positioned(
-                                            top: smallScreen
-                                                ? UpdatedDimensions.height10(
-                                                context) *
-                                                50.0
-                                                : UpdatedDimensions
-                                                .height10(context) *
-                                                54.0,
-                                            left: UpdatedDimensions.height10(
-                                                context) *
-                                                1.3,
-                                            child: Stack(
-                                              children: [
-                                                isVisible
-                                                    ? Obx(() {
-                                                  if (notificationsController
-                                                      .getAllNotifications()
-                                                      .isEmpty) {
-                                                    return const SizedBox(); // Return an empty widget if the string is empty
-                                                  } else {
-                                                    return SizedBox(
-                                                      width: MediaQuery.of(
-                                                          context)
-                                                          .size
-                                                          .width,
-                                                      child: CarouselSlider
-                                                          .builder(
-                                                          itemCount:
-                                                          notificationsController
-                                                              .getAllNotifications()
-                                                              .length,
-                                                          itemBuilder: (BuildContext
-                                                          context,
-                                                              int
-                                                              itemIndex,
-                                                              int
-                                                              pageViewIndex) =>
-                                                              reda(
-                                                                  context,
-                                                                  notificationsController.getAllNotifications()[
-                                                                  itemIndex],
+                                                                  Timer(
+                                                                      const Duration(
+                                                                          seconds:
+                                                                              2),
                                                                       () {
-                                                                    Timer(
-                                                                        const Duration(seconds: 2),
-                                                                            () {
-                                                                          setState(
-                                                                                  () {});
-                                                                        });
-                                                                  }),
-                                                          options: CarouselOptions(
-                                                              enlargeCenterPage:
-                                                              true,
-                                                              height:
-                                                              200,
-                                                              viewportFraction:
-                                                              1,
-                                                              enableInfiniteScroll:
-                                                              false)),
-                                                    );
-                                                  }
-                                                })
-                                                    : Container(),
-                                                AnimatedScaleButton(
-                                                  onTap: () {
-                                                    // notifications_sheet(context);
-                                                    setState(() {
-                                                      isVisible = !isVisible;
-                                                    });
-                                                  },
-                                                  child: Container(
-                                                    width: UpdatedDimensions
-                                                        .height10(context) *
-                                                        4,
-                                                    height: UpdatedDimensions
-                                                        .height10(context) *
-                                                        4,
-                                                    padding: EdgeInsets.all(
-                                                        UpdatedDimensions
-                                                            .height10(
-                                                            context) *
-                                                            0.4),
-                                                    decoration:
-                                                    const BoxDecoration(
-                                                        shape:
-                                                        BoxShape.circle,
-                                                        color: Colors.white),
-                                                    child: Container(
-                                                      width: UpdatedDimensions
-                                                          .width10(context) *
-                                                          3.5,
-                                                      height: UpdatedDimensions
-                                                          .height10(context) *
-                                                          3.5,
-                                                      decoration: const BoxDecoration(
-                                                          shape: BoxShape.circle,
+                                                                    setState(
+                                                                        () {});
+                                                                  });
+                                                                }),
+                                                            options: CarouselOptions(
+                                                                enlargeCenterPage:
+                                                                    true,
+                                                                height: 200,
+                                                                viewportFraction:
+                                                                    1,
+                                                                enableInfiniteScroll:
+                                                                    false)),
+                                                  );
+                                                }
+                                              })
+                                            : Container(),
+                                        AnimatedScaleButton(
+                                          onTap: () {
+                                            // notifications_sheet(context);
+                                            setState(() {
+                                              isVisible = !isVisible;
+                                            });
+                                          },
+                                          child: Container(
+                                            width: UpdatedDimensions.height10(
+                                                    context) *
+                                                4,
+                                            height: UpdatedDimensions.height10(
+                                                    context) *
+                                                4,
+                                            padding: EdgeInsets.all(
+                                                UpdatedDimensions.height10(
+                                                        context) *
+                                                    0.4),
+                                            decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Colors.white),
+                                            child: Container(
+                                              width: UpdatedDimensions.width10(
+                                                      context) *
+                                                  3.5,
+                                              height:
+                                                  UpdatedDimensions.height10(
+                                                          context) *
+                                                      3.5,
+                                              decoration: const BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  color: Colors.white,
+                                                  image: DecorationImage(
+                                                      image: AssetImage(
+                                                          'assets/images/Smart Object_1.webp'))),
+                                              child: Align(
+                                                alignment:
+                                                    const Alignment(0, 2.8),
+                                                child: notificationsController
+                                                        .getAllNotifications()
+                                                        .isEmpty
+                                                    ? const SizedBox()
+                                                    : Container(
+                                                        width: UpdatedDimensions
+                                                                .width10(
+                                                                    context) *
+                                                            1.7,
+                                                        height: UpdatedDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            1.7,
+                                                        decoration:
+                                                            const BoxDecoration(
+                                                          shape:
+                                                              BoxShape.circle,
                                                           color: Colors.white,
-                                                          image: DecorationImage(
-                                                              image: AssetImage(
-                                                                  'assets/images/Smart Object_1.webp'))),
-                                                      child: Align(
-                                                        alignment:
-                                                        const Alignment(
-                                                            0, 2.8),
-                                                        child: notificationsController
-                                                            .getAllNotifications()
-                                                            .isEmpty
-                                                            ? const SizedBox()
-                                                            : Container(
-                                                          width: UpdatedDimensions
-                                                              .width10(
-                                                              context) *
-                                                              1.7,
-                                                          height: UpdatedDimensions
-                                                              .height10(
-                                                              context) *
-                                                              1.7,
-                                                          decoration:
-                                                          const BoxDecoration(
-                                                            shape: BoxShape
-                                                                .circle,
-                                                            color: Colors
-                                                                .white,
-                                                          ),
-                                                          child: Center(
-                                                            child: Text(
-                                                              notificationsController
-                                                                  .getAllNotifications()
-                                                                  .length
-                                                                  .toString(),
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                  UpdatedDimensions.font10(context) *
-                                                                      1,
-                                                                  fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                                  color: const Color(
-                                                                      0xFFFA9934)),
-                                                            ),
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            notificationsController
+                                                                .getAllNotifications()
+                                                                .length
+                                                                .toString(),
+                                                            style: TextStyle(
+                                                                fontSize: UpdatedDimensions
+                                                                        .font10(
+                                                                            context) *
+                                                                    1,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w500,
+                                                                color: const Color(
+                                                                    0xFFFA9934)),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ),
-                                                )
-                                              ],
-                                            )),
+                                              ),
+                                            ),
+                                          ),
+                                        )
                                       ],
                                     )),
-                              )
-
-
+                              ],
+                            )),
+                      )
                     : const DashBoardBehaviour_shimmer())),
       ),
     );

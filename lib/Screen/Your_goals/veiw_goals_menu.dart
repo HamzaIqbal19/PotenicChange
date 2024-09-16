@@ -90,14 +90,12 @@ class _your_goals_menuState extends State<your_goals_menu> {
               setState(() {
                 yearly = true;
               }),
-              print('Yearly plan: $yearly :: planId: $planId')
             }
         });
   }
 
   getUser() {
     Authentication().getUserData().then((value) {
-      print("New messages asdas ${value["unreadMessageCenterCount"]}");
       setState(() {
         newMessages = value["unreadMessageCenterCount"];
       });

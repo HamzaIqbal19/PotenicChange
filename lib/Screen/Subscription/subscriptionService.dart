@@ -136,8 +136,6 @@ class SubscriptionService {
     var accessToken = prefs.getString('usertoken');
     var customerId = prefs.getString('customerID');
 
-    print('Subscription data $customerId $accessToken');
-
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$accessToken',
@@ -149,8 +147,6 @@ class SubscriptionService {
       headers: headers,
     );
     var jsonData = jsonDecode(response.body);
-
-    print('Subscription data ${response.statusCode}  $jsonData');
 
     if (response.statusCode == 200) {
       return jsonData;
