@@ -807,7 +807,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                 color: Colors.white,
                                                 fontSize: AppDimensions.font10(
                                                         context) *
-                                                    1.6,
+                                                    2,
                                                 fontWeight: FontWeight.w700,
                                               ),
                                             ),
@@ -858,7 +858,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                 color: Colors.white,
                                                 fontSize: AppDimensions.font10(
                                                         context) *
-                                                    1.6,
+                                                    2,
                                                 fontWeight: FontWeight.w700,
                                               ),
                                             ))),

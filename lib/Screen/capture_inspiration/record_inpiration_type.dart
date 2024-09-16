@@ -97,19 +97,7 @@ class _record_inspirationState extends State<record_inspiration> {
           ],
           automaticallyImplyLeading: false,
           centerTitle: true,
-          // title: Container(
-          //   width: AppDimensions.width10(context) * 5.5,
-          //   height: AppDimensions.height10(context) * 2.4,
-          //   child: Center(
-          //     child: Text(
-          //       'Menu',
-          //       style: TextStyle(
-          //           fontSize: AppDimensions.font10(context) * 2.00,
-          //           fontWeight: FontWeight.w600,
-          //           color: Color(0xFFFFFFFF)),
-          //     ),
-          //   ),
-          // ),
+
         ),
         body: Container(
           width: double.infinity,
@@ -223,7 +211,6 @@ class _record_inspirationState extends State<record_inspiration> {
                             ),
                             Container(
                               width: AppDimensions.width10(context) * 16.7,
-                              height: AppDimensions.height10(context) * 1.9,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0.5,
                                   bottom:
@@ -245,7 +232,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                             : 'Content',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.6,
+                                        AppDimensions.font10(context) * 2.4,
                                     fontWeight: FontWeight.w600,
                                     color: const Color(0xFFFFFFFF)),
                               )),
@@ -265,7 +252,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                             AppDimensions.height10(context) *
                                                 0.14,
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.2,
+                                            AppDimensions.font10(context) * 1.8,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFFFFFFFF)),
                                   )),
@@ -331,7 +318,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                       style: TextStyle(
                                         color: const Color(0xFF646464),
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.8,
+                                            AppDimensions.font10(context) *2,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -436,7 +423,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                       style: TextStyle(
                                         color: const Color(0xFF646464),
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.8,
+                                            AppDimensions.font10(context) * 2,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
@@ -504,7 +491,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                     'Share',
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.8,
+                                            AppDimensions.font10(context) * 2,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFF646464)),
                                   )),
@@ -757,8 +744,7 @@ class _record_inspirationState extends State<record_inspiration> {
                                       'Delete',
                                       style: TextStyle(
                                           fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.8,
+                                              AppDimensions.font10(context) * 2,
                                           fontWeight: FontWeight.w500,
                                           color: const Color(0xffffffff)),
                                     )),

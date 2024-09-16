@@ -836,6 +836,7 @@ class video_EditState extends State<videoEdit> {
                                   maxLines: null,
                                   scrollPadding: EdgeInsets.zero,
                                   textAlignVertical: TextAlignVertical.center,
+                                  maxLength: 10000,
                                   style: TextStyle(
                                       fontSize:
                                           AppDimensions.font10(context) * 1.6,
@@ -877,7 +878,7 @@ class video_EditState extends State<videoEdit> {
                                         right: AppDimensions.height10(context) *
                                             8.9,
                                         top: AppDimensions.height10(context) *
-                                            3.9),
+                                            1.9),
                                     child: Text(
                                       'Content Author (optional)',
                                       style: TextStyle(
@@ -943,7 +944,7 @@ class video_EditState extends State<videoEdit> {
                               margin: EdgeInsets.only(
                                   left: AppDimensions.width10(context) * 2.0,
                                   right: AppDimensions.width10(context) * 8.9,
-                                  top: AppDimensions.height10(context) * 3.9),
+                                  top: AppDimensions.height10(context) * 1.9),
                               child: Text(
                                 'Tags (optional)',
                                 style: TextStyle(
@@ -1077,8 +1078,6 @@ class video_EditState extends State<videoEdit> {
                                     Container(
                                       width:
                                           AppDimensions.width10(context) * 23.9,
-                                      height:
-                                          AppDimensions.height10(context) * 2.2,
                                       margin: EdgeInsets.only(
                                           left: AppDimensions.width10(context) *
                                               1.99),

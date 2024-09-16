@@ -137,7 +137,7 @@ class AppText {
 
   //Hurdle
 
-  String hurdleTitle = 'My faced hurdles\n& obstacles';
+  String hurdleTitle = 'My faced hurdles  ';
   String newHurdle = 'New hurdle';
   String hurdleSumTitle = 'Your Hurdle Summary';
   String hurdleSumBody = 'Below is an overview of your faced hurdles';
@@ -156,12 +156,12 @@ class AppText {
   String captureHurdleSummText1 = 'Your current\nthoughts and feelings';
   String captureHurdleSummText2 = 'What or who has triggered\nyour hurdle?';
 
-  String hurdleBottomSheedTitle = 'My faced hurdle\n& obstacles';
+  String hurdleBottomSheedTitle = 'My faced hurdles';
   String hurdleBottomSheedBody =
       'This is your private space to capture any obstacles that may divert you of course.\n\nAt Potenic, our aim is to empower you to own and enjoy your personal development journey.\n\nWe want to help you stay focused and this is why we also want you to be prepared for challenges ahead, so you can build a self-reliance and grow awareness.\n\nWith time, you will start seeing patterns (with the help of Potenic’s frameworks) and will be more aware of situations that get you triggered.';
 
   //Inspiration
-  String inspirationTitle = 'My current\ninspirations';
+  String inspirationTitle = 'My inspirations';
   String inspirationBody =
       'Use this space to capture\ninspirational material that motivates and\npushes you forward towards achieving\nyour personal growth goals. ';
   String inspiration1 = 'Inspiration 1';

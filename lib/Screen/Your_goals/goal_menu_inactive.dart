@@ -865,6 +865,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             FadePageRoute(
                                                 page: const practiceMenu(
                                               goal_eval: false,
+                                                  completed: false,
                                             )));
 
                                         final SharedPreferences prefs =

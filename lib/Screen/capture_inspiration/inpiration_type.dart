@@ -155,63 +155,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                                               .withOpacity(0.29),
                                         ),
                                       ),
-                                      SizedBox(
-                                        height: 42,
-                                        width: double.infinity,
-                                        // color: Colors.white,
-                                        child: TextButton(
-                                          onPressed: () async {
-                                            InspirationApi()
-                                                .checkUserInspiration()
-                                                .then((response) {
-                                                  if (response == true) {
-                                                    Navigator.push(
-                                                        context,
-                                                        FadePageRouteReverse(
-                                                            page:
-                                                                const inspiration_landing(
-                                                                    is_Updated:
-                                                                        false)));
-                                                  } else if (response ==
-                                                      false) {
-                                                    Navigator.push(
-                                                        context,
-                                                        FadePageRouteReverse(
-                                                            page:
-                                                                const inspiration_motivation(
-                                                          goal_delete: false,
-                                                          inspirationName: '',
-                                                        )));
-                                                  }
-                                                })
-                                                .catchError((error) {})
-                                                .whenComplete(() {});
 
-                                            final SharedPreferences prefs =
-                                                await _prefs;
-                                            prefs.setString(
-                                                'inspiration_saved_route',
-                                                'type_inspiration');
-                                          },
-                                          child: const Text(
-                                            'Exit & save progress',
-                                            style: TextStyle(
-                                                color: Color(0xFF007AFF),
-                                                fontSize: 17,
-                                                fontFamily: "Laila",
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.1,
-                                        child: Divider(
-                                          color: const Color(0XFF3C3C43)
-                                              .withOpacity(0.29),
-                                        ),
-                                      ),
                                       SizedBox(
                                         height: 44,
                                         width: double.infinity,

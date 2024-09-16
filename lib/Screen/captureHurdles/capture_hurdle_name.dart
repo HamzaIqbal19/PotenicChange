@@ -463,7 +463,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.6,
+                                          AppDimensions.font10(context) * 2,
                                       fontWeight: FontWeight.w500),
                                 ),
                               ),
@@ -691,11 +691,8 @@ class _hurdle_nameState extends State<hurdle_name> {
                                       }
                                     },
                                     child: Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                5.0,
-                                        width: AppDimensions.width10(context) *
-                                            25.4,
+                                        width: AppDimensions.width10(context) * 31.3,
+                                        height: AppDimensions.height10(context) * 5.2,
                                         margin: EdgeInsets.only(
                                             bottom: MediaQuery.of(context)
                                                         .viewInsets
@@ -744,7 +741,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                                         .withOpacity(0.7),
                                                 fontSize: AppDimensions.font10(
                                                         context) *
-                                                    1.6,
+                                                    2,
                                                 fontWeight: FontWeight.w600,
                                                 fontFamily: 'Laila'),
                                           ),

@@ -432,7 +432,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.4,
+                                          AppDimensions.font10(context) * 2,
                                       fontWeight: FontWeight.w400),
                                 ),
                               ),
@@ -640,11 +640,8 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                       }
                                     },
                                     child: Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                5.0,
-                                        width: AppDimensions.width10(context) *
-                                            25.4,
+                                        width: AppDimensions.width10(context) * 31.3,
+                                        height: AppDimensions.height10(context) * 5.2,
                                         margin: EdgeInsets.only(
                                             bottom: MediaQuery.of(context)
                                                         .viewInsets
@@ -689,7 +686,7 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                               color: Colors.white,
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.6,
+                                                  2,
                                               fontWeight: FontWeight.w600,
                                               fontFamily: 'Laila'),
                                         ))),

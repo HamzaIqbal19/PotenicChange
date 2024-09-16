@@ -277,7 +277,8 @@ class _prac_scoreState extends State<prac_score> {
               context,
               FadePageRouteReverse(
                   page: const practiceMenu(
-                goal_eval: false,
+                    goal_eval: false,
+                    completed: false,
               )));
         }  else if (widget.route == 'assesment') {
           Navigator.pushReplacement(
@@ -315,7 +316,8 @@ class _prac_scoreState extends State<prac_score> {
                         context,
                         FadePageRouteReverse(
                             page: const practiceMenu(
-                          goal_eval: false,
+                              goal_eval: false,
+                              completed: false,
                         )));
                   } else if (widget.route == 'assesment') {
                     Navigator.pushReplacement(

@@ -130,7 +130,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
         circleState = myList.length - 1;
       });
     } else if (myList.isEmpty) {
-      statements.add('i feel');
+      statements.add('I feel');
       control.add(TextEditingController(text: 'I feel'));
     }
   }
@@ -506,155 +506,172 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                   i++) ...[
                                 Column(
                                   children: [
-                                    Container(
-                                        width: AppDimensions.width10(context) *
-                                            18.1,
-                                        height: AppDimensions.width10(context) *
-                                            18.1,
-                                        margin: EdgeInsets.only(
-                                            bottom: AppDimensions.height10(
-                                                    context) *
-                                                0.8),
-                                        decoration: const BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            gradient: LinearGradient(
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
-                                                colors: [
-                                                  Color(0xff546096),
-                                                  Color(0xff54A7BC)
-                                                ])),
-                                        child: Container(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  16.813,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  6.83,
-                                          decoration: const BoxDecoration(
-                                              shape: BoxShape.circle),
-                                          child: Center(
-                                            child: TextFormField(
-                                              maxLength: getMaxCharacters(),
-                                              textCapitalization:
-                                                  TextCapitalization.sentences,
-                                              enableInteractiveSelection: false,
-                                              controller: control[i],
-                                              expands: true,
-                                              maxLines: null,
-                                              minLines: null,
-                                              onChanged: (newText) {
-                                                if (widget.update == false) {
+                                    Column(
+                                      children: [
+                                        statements.length>1?  Container(
+                                            width: AppDimensions.width10(context) *
+                                                20.1,
+                                            alignment: Alignment.centerRight,
+                                            child: AnimatedScaleButton(
+                                                onTap: (){
+                                                  control.removeAt(i);
+                                                  statements.removeAt(i);
                                                   setState(() {
-                                                    statements[i] = newText;
-                                                    scroll = true;
+                                                    circleState--;
                                                   });
-                                                  if (!newText
-                                                      .startsWith("I feel ")) {
-                                                    control[i].text = "I feel ";
+                                                },
+                                                child: const Icon(Icons.delete, color: Colors.white,size: 20,))):Container(),
+                                        Container(
+                                            width: AppDimensions.width10(context) *
+                                                18.1,
+                                            height: AppDimensions.width10(context) *
+                                                18.1,
+                                            margin: EdgeInsets.only(
+                                                bottom: AppDimensions.height10(
+                                                        context) *
+                                                    0.8),
+                                            decoration: const BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                gradient: LinearGradient(
+                                                    begin: Alignment.topCenter,
+                                                    end: Alignment.bottomCenter,
+                                                    colors: [
+                                                      Color(0xff546096),
+                                                      Color(0xff54A7BC)
+                                                    ])),
+                                            child: Container(
+                                              width:
+                                                  AppDimensions.width10(context) *
+                                                      16.813,
+                                              height:
+                                                  AppDimensions.height10(context) *
+                                                      6.83,
+                                              decoration: const BoxDecoration(
+                                                  shape: BoxShape.circle),
+                                              child: Center(
+                                                child: TextFormField(
+                                                  maxLength: getMaxCharacters(),
+                                                  textCapitalization:
+                                                      TextCapitalization.sentences,
+                                                  enableInteractiveSelection: false,
+                                                  controller: control[i],
+                                                  expands: true,
+                                                  maxLines: null,
+                                                  minLines: null,
+                                                  onChanged: (newText) {
+                                                    if (widget.update == false) {
+                                                      setState(() {
+                                                        statements[i] = newText;
+                                                        scroll = true;
+                                                      });
+                                                      if (!newText
+                                                          .startsWith("I feel ")) {
+                                                        control[i].text = "I feel ";
 
-                                                    control[i].selection =
-                                                        TextSelection
-                                                            .fromPosition(
-                                                      TextPosition(
-                                                          offset: control[i]
-                                                              .text
-                                                              .length),
-                                                    );
-                                                  }
-                                                } else {
-                                                  setState(() {
-                                                    statements[i - 1] = newText;
-                                                    scroll = true;
-                                                  });
-                                                  if (!newText
-                                                      .startsWith("I feel ")) {
-                                                    control[i].text = "I feel ";
+                                                        control[i].selection =
+                                                            TextSelection
+                                                                .fromPosition(
+                                                          TextPosition(
+                                                              offset: control[i]
+                                                                  .text
+                                                                  .length),
+                                                        );
+                                                      }
+                                                    } else {
+                                                      setState(() {
+                                                        statements[i - 1] = newText;
+                                                        scroll = true;
+                                                      });
+                                                      if (!newText
+                                                          .startsWith("I feel ")) {
+                                                        control[i].text = "I feel ";
 
-                                                    control[i].selection =
-                                                        TextSelection
-                                                            .fromPosition(
-                                                      TextPosition(
-                                                          offset: control[i]
-                                                              .text
-                                                              .length),
-                                                    );
-                                                  }
-                                                }
-                                              },
-                                              onFieldSubmitted:
-                                                  (submittedText) {
-                                                // Check if the submitted text is empty
-                                                if (widget.update == false) {
-                                                  if (submittedText.isEmpty) {
-                                                    // Replace it with "I feel " and move the cursor to the end
-                                                    control[i].text = "I feel ";
-                                                    control[i].selection =
-                                                        TextSelection
-                                                            .fromPosition(
-                                                      TextPosition(
-                                                          offset: control[i]
-                                                              .text
-                                                              .length),
-                                                    );
-                                                  }
-                                                } else {
-                                                  if (submittedText.isEmpty) {
-                                                    // Replace it with "I feel " and move the cursor to the end
-                                                    control[i].text = "I feel ";
-                                                    control[i].selection =
-                                                        TextSelection
-                                                            .fromPosition(
-                                                      TextPosition(
-                                                          offset: control[i]
-                                                              .text
-                                                              .length),
-                                                    );
-                                                  }
-                                                }
-                                              },
-                                              scrollPhysics:
-                                                  const ClampingScrollPhysics(),
-                                              decoration: InputDecoration(
-                                                  counterText: "",
-                                                  counterStyle: const TextStyle(
-                                                    height: double.minPositive,
-                                                  ),
-                                                  hintText: 'I feel...',
-                                                  hintStyle: TextStyle(
+                                                        control[i].selection =
+                                                            TextSelection
+                                                                .fromPosition(
+                                                          TextPosition(
+                                                              offset: control[i]
+                                                                  .text
+                                                                  .length),
+                                                        );
+                                                      }
+                                                    }
+                                                  },
+                                                  onFieldSubmitted:
+                                                      (submittedText) {
+                                                    // Check if the submitted text is empty
+                                                    if (widget.update == false) {
+                                                      if (submittedText.isEmpty) {
+                                                        // Replace it with "I feel " and move the cursor to the end
+                                                        control[i].text = "I feel ";
+                                                        control[i].selection =
+                                                            TextSelection
+                                                                .fromPosition(
+                                                          TextPosition(
+                                                              offset: control[i]
+                                                                  .text
+                                                                  .length),
+                                                        );
+                                                      }
+                                                    } else {
+                                                      if (submittedText.isEmpty) {
+                                                        // Replace it with "I feel " and move the cursor to the end
+                                                        control[i].text = "I feel ";
+                                                        control[i].selection =
+                                                            TextSelection
+                                                                .fromPosition(
+                                                          TextPosition(
+                                                              offset: control[i]
+                                                                  .text
+                                                                  .length),
+                                                        );
+                                                      }
+                                                    }
+                                                  },
+                                                  scrollPhysics:
+                                                      const ClampingScrollPhysics(),
+                                                  decoration: InputDecoration(
+                                                      counterText: "",
+                                                      counterStyle: const TextStyle(
+                                                        height: double.minPositive,
+                                                      ),
+                                                      hintText: 'I feel...',
+                                                      hintStyle: TextStyle(
+                                                          fontSize:
+                                                              AppDimensions.font10(
+                                                                      context) *
+                                                                  2,
+                                                          fontFamily: 'laila',
+                                                          fontWeight:
+                                                              FontWeight.w400,
+                                                          color: Colors.white),
+                                                      focusedBorder:
+                                                          const OutlineInputBorder(
+                                                              borderSide: BorderSide(
+                                                                  color: Colors
+                                                                      .transparent)),
+                                                      enabledBorder:
+                                                          const OutlineInputBorder(
+                                                              borderSide: BorderSide(
+                                                                  color: Colors
+                                                                      .transparent))),
+                                                  textAlign: TextAlign.center,
+                                                  style: TextStyle(
+                                                      decoration:
+                                                          TextDecoration.none,
+                                                      fontFamily: 'laila',
+                                                      decorationThickness: 0,
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
-                                                              1.7,
-                                                      fontFamily: 'laila',
-                                                      fontWeight:
-                                                          FontWeight.w400,
+                                                              2,
+                                                      fontWeight: FontWeight.w400,
                                                       color: Colors.white),
-                                                  focusedBorder:
-                                                      const OutlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: Colors
-                                                                  .transparent)),
-                                                  enabledBorder:
-                                                      const OutlineInputBorder(
-                                                          borderSide: BorderSide(
-                                                              color: Colors
-                                                                  .transparent))),
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  decoration:
-                                                      TextDecoration.none,
-                                                  fontFamily: 'laila',
-                                                  decorationThickness: 0,
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.7,
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Colors.white),
-                                            ),
-                                          ),
-                                        )),
+                                                ),
+                                              ),
+                                            )),
+                                      ],
+                                    ),
                                     SizedBox(
                                       // width: AppDimensions.width10(context) * 12.2,
                                       height:
@@ -800,8 +817,8 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                             }
                           },
                           child: Container(
-                              height: AppDimensions.height10(context) * 5.0,
-                              width: AppDimensions.width10(context) * 16.7,
+                              width: AppDimensions.width10(context) * 31.3,
+                              height: AppDimensions.height10(context) * 5.2,
                               margin: EdgeInsets.only(
                                   top: MediaQuery.of(context)
                                               .viewInsets
@@ -831,7 +848,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.6,
+                                        AppDimensions.font10(context) * 2,
                                     fontWeight: FontWeight.w600,
                                     fontFamily: 'Laila'),
                               ))),

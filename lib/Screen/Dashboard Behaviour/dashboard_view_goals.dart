@@ -639,11 +639,10 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                                 [
                                                                                 'userGoal']
                                                                             ['name']);
+                                                                    print("Difference in days: ${focusedDate}");
                                                                     await prefs.setString(
                                                                         'record_date',
-                                                                        getFormattedDate(
-                                                                                current)
-                                                                            .toString());
+                                                                        focusedDate.toString());
 
                                                                     await timesList[index]
                                                                                     [
@@ -690,6 +689,7 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                           context,
                                                                           FadePageRoute(
                                                                               page: const practiceMenu(
+                                                                                  completed: false,
                                                                                   goal_eval:
                                                                                       false)));
                                                                     } else if (timesList[
@@ -702,11 +702,18 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                           FadePageRoute(
                                                                               page: const practiceMenu(
                                                                                   goal_eval:
-                                                                                  false)));
+                                                                                  false,
+                                                                                completed: false,
+                                                                              )));
                                                                     } else {
-                                                                      Navigator.push(context, FadePageRoute(
-                                                                              page:
-                                                                                  const menu_behaviour()));
+                                                                      Navigator.push(
+                                                                          context,
+                                                                          FadePageRoute(
+                                                                              page: const practiceMenu(
+                                                                                goal_eval:
+                                                                                false,
+                                                                                completed: true,
+                                                                              )));
                                                                     }
                                                                   } else {
                                                                     if (goalLevel ==

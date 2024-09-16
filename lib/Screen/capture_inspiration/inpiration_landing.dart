@@ -299,18 +299,14 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   //     top:
                                   //         AppDimensions.height10(context) * 7.5,
                                   //     left: AppDimensions.width10(context) * 2),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.width10(context) *
-                                                    2.0),
                                         child: GradientText(
-                                          'My current ',
+                                          'My inspirations ',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
                                             fontSize:
@@ -324,55 +320,29 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                           ],
                                         ),
                                       ),
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.width10(context) *
-                                                    2.0),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            GradientText(
-                                              'inspiration ',
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    3.0,
-                                                fontWeight: FontWeight.w700,
-                                              ),
-                                              colors: const [
-                                                Color(0xffFA9934),
-                                                Color(0xffEDD15E)
-                                              ],
-                                            ),
-                                            AnimatedScaleButton(
-                                              onTap: () {
-                                                //hurdleSheet(context);
-                                                journeyBottomSheet(
-                                                    context,
-                                                    AppText().inspirationTitle,
-                                                    AppText()
-                                                        .inspirationBottomSheedBody,
-                                                    "");
-                                              },
-                                              child: Container(
-                                                  width:
-                                                      AppDimensions.width10(
-                                                              context) *
-                                                          3.0,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          3.0,
-                                                  decoration: const BoxDecoration(
-                                                      image: DecorationImage(
-                                                          image: AssetImage(
-                                                              'assets/images/ic_info_outline_orange.webp')))),
-                                            ),
-                                          ],
-                                        ),
+                                      AnimatedScaleButton(
+                                        onTap: () {
+                                          //hurdleSheet(context);
+                                          journeyBottomSheet(
+                                              context,
+                                              AppText().inspirationTitle,
+                                              AppText()
+                                                  .inspirationBottomSheedBody,
+                                              "");
+                                        },
+                                        child: Container(
+                                            width:
+                                            AppDimensions.width10(
+                                                context) *
+                                                3.0,
+                                            height:
+                                            AppDimensions.height10(
+                                                context) *
+                                                3.0,
+                                            decoration: const BoxDecoration(
+                                                image: DecorationImage(
+                                                    image: AssetImage(
+                                                        'assets/images/ic_info_outline_orange.webp')))),
                                       ),
                                     ],
                                   )),
@@ -1541,6 +1511,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                             itemExtent: 40,
                                                             magnification: 1.3,
                                                             useMagnifier: true,
+                                                            physics: const FixedExtentScrollPhysics(),
                                                             onSelectedItemChanged:
                                                                 (int index) {
                                                               setState(() {
@@ -1851,6 +1822,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                               ListWheelScrollView(
                                                             itemExtent: 40,
                                                             magnification: 1.3,
+                                                                physics: const FixedExtentScrollPhysics(),
                                                             useMagnifier:
                                                                 true, // Set the height of each statement
                                                             children: tagNames
@@ -2151,6 +2123,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                               ListWheelScrollView(
                                                             itemExtent: 40,
                                                             magnification: 1.3,
+                                                                physics: const FixedExtentScrollPhysics(),
                                                             useMagnifier:
                                                                 true, // Set the height of each statement
                                                             children: type
@@ -2396,325 +2369,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
     );
   }
 }
-
-// _showBottomSheet(BuildContext context) {
-//   String goal = 'Goal Name';
-
-//   showModalBottomSheet(
-//     context: context,
-//     isScrollControlled: true,
-//     backgroundColor: Colors.transparent,
-//     shape: const RoundedRectangleBorder(
-//       borderRadius: BorderRadius.vertical(
-//         top: Radius.circular(16),
-//       ),
-//     ),
-//     builder: (context) {
-//       return GestureDetector(
-//         onTap: () => Navigator.of(context).pop(),
-//         child: Container(
-//           height: AppDimensions.height10(context) * 30.3,
-//           color: const Color.fromRGBO(0, 0, 0, 0.001),
-//           child: GestureDetector(
-//             onTap: () {},
-//             child: Container(
-//               decoration: const BoxDecoration(
-//                 color: Colors.white,
-//               ),
-//               child: Column(
-//                 children: [
-//                   Container(
-//                     height: AppDimensions.height10(context) * 4.0,
-//                     width: AppDimensions.width10(context) * 41.4,
-//                     decoration: BoxDecoration(
-//                         border: Border(
-//                             bottom: BorderSide(
-//                                 width: AppDimensions.width10(context) * 0.1,
-//                                 color: const Color(0xFF828282)))),
-//                     child: Row(
-//                       mainAxisAlignment: MainAxisAlignment.end,
-//                       children: [
-//                         GestureDetector(
-//                           onTap: () {
-//                             Navigator.pop(context);
-//                           },
-//                           child: Container(
-//                             margin: EdgeInsets.only(
-//                                 right: AppDimensions.width10(context) * 2.0),
-//                             child: Text(
-//                               'Cancel',
-//                               style: TextStyle(
-//                                   fontSize: AppDimensions.font10(context) * 1.9,
-//                                   height: AppDimensions.height10(context) * 0.1,
-//                                   color: const Color(0xFF2F80ED)),
-//                             ),
-//                           ),
-//                         ),
-//                         SizedBox(
-//                           child: Text(
-//                             'Done',
-//                             style: TextStyle(
-//                                 fontSize: AppDimensions.font10(context) * 1.9,
-//                                 height: AppDimensions.height10(context) * 0.1,
-//                                 color: const Color(0xFF2F80ED)),
-//                           ),
-//                         ),
-//                         SizedBox(
-//                           width: AppDimensions.width10(context),
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                   SizedBox(
-//                     width: AppDimensions.width10(context) * 37.5,
-//                     height: AppDimensions.height10(context) * 24.8,
-//                     // color: Colors.amber,
-//                     child: ListWheelScrollView(
-//                         onSelectedItemChanged: (value) {},
-//                         diameterRatio: 1.5,
-//                         // magnification: 1.5,
-//                         overAndUnderCenterOpacity: 0.5,
-//                         itemExtent: AppDimensions.height10(context) * 3.1,
-//                         children: [
-//                           Container(
-//                             decoration: BoxDecoration(
-//                                 border: Border(
-//                                     bottom: BorderSide(
-//                                         width: AppDimensions.width10(context) *
-//                                             0.1,
-//                                         color: const Color(0xFF828282)))),
-//                             child: Center(
-//                               child: Text(
-//                                 'All',
-//                                 style: TextStyle(
-//                                     fontSize:
-//                                         AppDimensions.font10(context) * 2.2,
-//                                     fontWeight: FontWeight.w400),
-//                               ),
-//                             ),
-//                           ),
-//                           Container(
-//                             decoration: BoxDecoration(
-//                                 border: Border(
-//                                     bottom: BorderSide(
-//                                         width: AppDimensions.width10(context) *
-//                                             0.1,
-//                                         color: const Color(0xFF828282)))),
-//                             child: Center(
-//                               child: Text(
-//                                 '$goal 1',
-//                                 style: TextStyle(
-//                                     fontSize:
-//                                         AppDimensions.font10(context) * 2.2,
-//                                     fontWeight: FontWeight.w400),
-//                               ),
-//                             ),
-//                           ),
-//                           Container(
-//                             decoration: BoxDecoration(
-//                                 border: Border(
-//                                     bottom: BorderSide(
-//                                         width: AppDimensions.width10(context) *
-//                                             0.1,
-//                                         color: const Color(0xFF828282)))),
-//                             child: Center(
-//                               child: Text(
-//                                 '$goal 2',
-//                                 style: TextStyle(
-//                                     fontSize:
-//                                         AppDimensions.font10(context) * 2.2,
-//                                     fontWeight: FontWeight.w400),
-//                               ),
-//                             ),
-//                           ),
-//                           Container(
-//                             decoration: BoxDecoration(
-//                                 border: Border(
-//                                     bottom: BorderSide(
-//                                         width: AppDimensions.width10(context) *
-//                                             0.1,
-//                                         color: const Color(0xFF828282)))),
-//                             child: Center(
-//                               child: Text(
-//                                 '$goal 3',
-//                                 style: TextStyle(
-//                                     fontSize:
-//                                         AppDimensions.font10(context) * 2.2,
-//                                     fontWeight: FontWeight.w400),
-//                               ),
-//                             ),
-//                           )
-//                         ]),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ),
-//       );
-//     },
-//   );
-// }
-
-// _showTagSheet(BuildContext context) {
-//   String goal = 'Tag';
-
-//   showModalBottomSheet(
-//     context: context,
-//     isScrollControlled: true,
-//     backgroundColor: Colors.transparent,
-//     shape: const RoundedRectangleBorder(
-//       borderRadius: BorderRadius.vertical(
-//         top: Radius.circular(16),
-//       ),
-//     ),
-//     builder: (context) {
-//       return GestureDetector(
-//         onTap: () => Navigator.of(context).pop(),
-//         child: Container(
-//           height: AppDimensions.height10(context) * 30.3,
-//           color: const Color.fromRGBO(0, 0, 0, 0.001),
-//           child: GestureDetector(
-//             onTap: () {},
-//             child: Container(
-//               decoration: const BoxDecoration(
-//                 color: Colors.white,
-//               ),
-//               child: Column(
-//                 children: [
-//                   Container(
-//                     height: AppDimensions.height10(context) * 4.0,
-//                     width: AppDimensions.width10(context) * 41.4,
-//                     decoration: BoxDecoration(
-//                         border: Border(
-//                             bottom: BorderSide(
-//                                 width: AppDimensions.width10(context) * 0.1,
-//                                 color: const Color(0xFF828282)))),
-//                     child: Row(
-//                       mainAxisAlignment: MainAxisAlignment.end,
-//                       children: [
-//                         GestureDetector(
-//                           onTap: () {
-//                             Navigator.pop(context);
-//                           },
-//                           child: Container(
-//                             margin: EdgeInsets.only(
-//                                 right: AppDimensions.width10(context) * 2.0),
-//                             child: Text(
-//                               'Cancel',
-//                               style: TextStyle(
-//                                   fontSize: AppDimensions.font10(context) * 1.9,
-//                                   height: AppDimensions.height10(context) * 0.1,
-//                                   color: const Color(0xFF2F80ED)),
-//                             ),
-//                           ),
-//                         ),
-//                         SizedBox(
-//                           child: Text(
-//                             'Done',
-//                             style: TextStyle(
-//                                 fontSize: AppDimensions.font10(context) * 1.9,
-//                                 height: AppDimensions.height10(context) * 0.1,
-//                                 color: const Color(0xFF2F80ED)),
-//                           ),
-//                         ),
-//                         SizedBox(
-//                           width: AppDimensions.width10(context),
-//                         ),
-//                       ],
-//                     ),
-//                   ),
-//                   SizedBox(
-//                     width: AppDimensions.width10(context) * 37.5,
-//                     height: AppDimensions.height10(context) * 24.8,
-//                     // color: Colors.amber,
-//                     child: ListWheelScrollView(
-//                         onSelectedItemChanged: (value) {},
-//                         diameterRatio: 1.5,
-//                         // magnification: 1.5,
-//                         overAndUnderCenterOpacity: 0.5,
-//                         itemExtent: AppDimensions.height10(context) * 3.1,
-//                         children: [
-//                           Container(
-//                             decoration: BoxDecoration(
-//                                 border: Border(
-//                                     bottom: BorderSide(
-//                                         width: AppDimensions.width10(context) *
-//                                             0.1,
-//                                         color: const Color(0xFF828282)))),
-//                             child: Center(
-//                               child: Text(
-//                                 'All',
-//                                 style: TextStyle(
-//                                     fontSize:
-//                                         AppDimensions.font10(context) * 2.2,
-//                                     fontWeight: FontWeight.w400),
-//                               ),
-//                             ),
-//                           ),
-//                           Container(
-//                             decoration: BoxDecoration(
-//                                 border: Border(
-//                                     //when it will be reconstructed bottom decororation will be set, at the moment it is there to show presence.
-//                                     bottom: BorderSide(
-//                                         width: AppDimensions.width10(context) *
-//                                             0.1,
-//                                         color: const Color(0xFF828282)))),
-//                             child: Center(
-//                               child: Text(
-//                                 '$goal 1',
-//                                 style: TextStyle(
-//                                     fontSize:
-//                                         AppDimensions.font10(context) * 2.2,
-//                                     fontWeight: FontWeight.w400),
-//                               ),
-//                             ),
-//                           ),
-//                           Container(
-//                             decoration: BoxDecoration(
-//                                 border: Border(
-//                                     bottom: BorderSide(
-//                                         width: AppDimensions.width10(context) *
-//                                             0.1,
-//                                         color: const Color(0xFF828282)))),
-//                             child: Center(
-//                               child: Text(
-//                                 '$goal 2',
-//                                 style: TextStyle(
-//                                     fontSize:
-//                                         AppDimensions.font10(context) * 2.2,
-//                                     fontWeight: FontWeight.w400),
-//                               ),
-//                             ),
-//                           ),
-//                           Container(
-//                             decoration: BoxDecoration(
-//                                 border: Border(
-//                                     bottom: BorderSide(
-//                                         width: AppDimensions.width10(context) *
-//                                             0.1,
-//                                         color: const Color(0xFF828282)))),
-//                             child: Center(
-//                               child: Text(
-//                                 '$goal 3',
-//                                 style: TextStyle(
-//                                     fontSize:
-//                                         AppDimensions.font10(context) * 2.2,
-//                                     fontWeight: FontWeight.w400),
-//                               ),
-//                             ),
-//                           )
-//                         ]),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ),
-//       );
-//     },
-//   );
-// }
 
 class updatedLandingPage extends StatefulWidget {
   final bool delete;
@@ -3121,177 +2775,6 @@ class _updatedLandingPageState extends State<updatedLandingPage> {
                         ),
                       ),
 
-                      // GestureDetector(
-                      //   onPanUpdate: (details) {
-                      //     setState(() {
-                      //       swipeOffset += details.delta.dx;
-                      //     });
-
-                      //     if (swipeOffset.abs() >=
-                      //         MediaQuery.of(context).size.width / 3.0) {
-                      //       setState(() {
-                      //         showContainer = false;
-                      //       });
-                      //     }
-                      //   },
-                      //   child: AnimatedOpacity(
-                      //     duration: const Duration(milliseconds: 700),
-                      //     opacity: showContainer ? 1.0 : 0.0,
-                      //     child: Transform.translate(
-                      //       offset: Offset(swipeOffset, 0.0),
-                      //       child: Container(
-                      //         width: AppDimensions.width10(context) * 38.259,
-                      //         height: AppDimensions.height10(context) * 9.707,
-                      //         margin: EdgeInsets.only(
-                      //             top: AppDimensions.height10(context) * 12.0),
-                      //         decoration: BoxDecoration(
-                      //             borderRadius: BorderRadius.circular(
-                      //                 AppDimensions.height10(context) * 2.0),
-                      //             gradient: const LinearGradient(
-                      //                 begin: Alignment.topCenter,
-                      //                 end: Alignment.bottomCenter,
-                      //                 colors: [
-                      //                   Color(0xFFD4B7B9),
-                      //                   Color(0xFF91698C)
-                      //                 ])),
-                      //         child: Row(
-                      //           crossAxisAlignment: CrossAxisAlignment.center,
-                      //           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      //           children: [
-                      //             Container(
-                      //               margin: EdgeInsets.only(
-                      //                   left: AppDimensions.width10(context) *
-                      //                       1.261),
-                      //               width:
-                      //                   AppDimensions.height10(context) * 4.437,
-                      //               height:
-                      //                   AppDimensions.height10(context) * 4.437,
-                      //               decoration: const BoxDecoration(
-                      //                   image: DecorationImage(
-                      //                       image: AssetImage(
-                      //                           'assets/images/circle_tick.webp'))),
-                      //             ),
-                      //             Container(
-                      //               //width: AppDimensions.width10(context) * 6.9,
-                      //               height:
-                      //                   AppDimensions.height10(context) * 3.6,
-                      //               margin: EdgeInsets.only(
-                      //                   left: AppDimensions.width10(context) *
-                      //                       1.232),
-                      //               child: Column(
-                      //                 crossAxisAlignment:
-                      //                     CrossAxisAlignment.start,
-                      //                 children: [
-                      //                   SizedBox(
-                      //                     width:
-                      //                         AppDimensions.height10(context) *
-                      //                             4.6,
-                      //                     height:
-                      //                         AppDimensions.height10(context) *
-                      //                             1.4,
-                      //                     //   color: Colors.amber,
-                      //                     child: Text(
-                      //                       widget.is_Updated
-                      //                           ? 'Updated'
-                      //                           : 'SAVED',
-                      //                       style: TextStyle(
-                      //                           fontSize:
-                      //                               AppDimensions.height10(
-                      //                                       context) *
-                      //                                   1.3,
-                      //                           fontWeight: FontWeight.w500,
-                      //                           color: const Color(0xFFFFFFFF)),
-                      //                     ),
-                      //                   ),
-                      //                   SizedBox(
-                      //                     width:
-                      //                         AppDimensions.height10(context) *
-                      //                             16.9,
-                      //                     height:
-                      //                         AppDimensions.height10(context) *
-                      //                             2.2,
-                      //                     child: Text(
-                      //                       inspirationDetails['inspiration']
-                      //                                   ['title']
-                      //                               .toString()
-                      //                               .isEmpty
-                      //                           ? 'Inspiraion'
-                      //                           : inspirationDetails[
-                      //                               'inspiration']['title'],
-                      //                       overflow: TextOverflow.ellipsis,
-                      //                       style: TextStyle(
-                      //                           fontSize:
-                      //                               AppDimensions.height10(
-                      //                                       context) *
-                      //                                   1.8,
-                      //                           fontWeight: FontWeight.w500,
-                      //                           color: const Color(0xFFFFFFFF)),
-                      //                     ),
-                      //                   ),
-                      //                 ],
-                      //               ),
-                      //             ),
-                      //             AnimatedScaleButton(
-                      //               onTap: () {
-                      //                 Navigator.push(
-                      //                   context,
-                      //                   FadePageRoute(
-                      //                       page: const view_details()),
-                      //                 );
-                      //               },
-                      //               child: Container(
-                      //                 width:
-                      //                     AppDimensions.height10(context) * 8.1,
-                      //                 height:
-                      //                     AppDimensions.height10(context) * 6.0,
-                      //                 margin: EdgeInsets.only(
-                      //                     left:
-                      //                         AppDimensions.height10(context) *
-                      //                             5,
-                      //                     right:
-                      //                         AppDimensions.height10(context) *
-                      //                             1.23),
-                      //                 decoration: BoxDecoration(
-                      //                   border: Border.all(
-                      //                       color: const Color(0xFFFFFFFF),
-                      //                       width: 1),
-                      //                   borderRadius: BorderRadius.circular(
-                      //                       AppDimensions.height10(context) *
-                      //                           2.0),
-                      //                 ),
-                      //                 child: Center(
-                      //                   child: Text(
-                      //                     'View',
-                      //                     style: TextStyle(
-                      //                         fontSize: AppDimensions.font10(
-                      //                                 context) *
-                      //                             1.8,
-                      //                         fontWeight: FontWeight.w500,
-                      //                         color: const Color(0xFFFFFFFF)),
-                      //                   ),
-                      //                 ),
-                      //               ),
-                      //             )
-                      //           ],
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // )
-
-                      // noData == false
-                      //     ? Container(
-                      //         width: AppDimensions.width10(context) * 17.0,
-                      //         height: AppDimensions.height10(context) * 0.5,
-                      //         margin: EdgeInsets.only(
-                      //             top: AppDimensions.height10(context) * 0.29),
-                      //         decoration: BoxDecoration(
-                      //             borderRadius: BorderRadius.circular(
-                      //                 AppDimensions.height10(context) * 2.0),
-                      //             color:
-                      //                 const Color(0xFFFFFFFF).withOpacity(0.3)),
-                      //       )
-                      //     : Container()
                     ],
                   ))
               : const Center(

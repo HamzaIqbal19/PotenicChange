@@ -203,6 +203,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
+      extendBody: true,
       appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
@@ -427,6 +428,103 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
             )
           ]),
       extendBodyBehindAppBar: true,
+      bottomNavigationBar: Container(
+        // padding: EdgeInsets.symmetric(
+        //     horizontal: AppDimensions.width10(context) * 8),
+        child: AnimatedScaleButton(
+          onTap: () async {
+            if (widget.summary == true) {
+              if (selectAll == true ||
+                  multiGoals.length != 0) {
+                if (selectAll == true) {
+                  Hurdles().updateHurdle(
+                      'userGoalId', allgoalsSelected);
+                  Navigator.push(
+                      context,
+                      FadePageRoute(
+                          page: const summary_hurdles(
+                              delete_hurdle: false)));
+                } else {
+                  Hurdles()
+                      .updateHurdle('userGoalId', multiGoals);
+                  Navigator.push(
+                      context,
+                      FadePageRoute(
+                          page: const summary_hurdles(
+                              delete_hurdle: false)));
+                }
+              }
+            } else {
+              final SharedPreferences prefs = await _prefs;
+              await prefs.setString('HurdleRoute', 'data');
+              if (selectAll == true ||
+                  multiGoals.length != 0) {
+                if (selectAll == true) {
+                  saveGoalsToSharedPreferences(
+                      allgoalsSelected);
+                  Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page: const select_hurdle(
+                          update: false,
+                        )),
+                  );
+                } else {
+                  saveGoalsToSharedPreferences(multiGoals);
+                  Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page: const select_hurdle(
+                          update: false,
+                        )),
+                  );
+                }
+              }
+            }
+          },
+          child: Container(
+            width: AppDimensions.width10(context) * 31.3,
+            height: AppDimensions.height10(context) * 5.2,
+            margin: EdgeInsets.only(
+                top: AppDimensions.height10(context) * 1.0,
+                bottom:
+                AppDimensions.height10(context) * 2.6),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  selectAll == true || multiGoals.length != 0
+                      ? const Color(0xffFCC10D)
+                      : const Color(0xffFCC10D)
+                      .withOpacity(0.5),
+                  selectAll == true || multiGoals.length != 0
+                      ? const Color(0xffFDA210)
+                      : const Color(0xffFDA210)
+                      .withOpacity(0.5),
+                ],
+              ),
+              borderRadius: BorderRadius.circular(
+                  AppDimensions.height10(context) * 5.0),
+            ),
+            child: Center(
+                child: Text(
+                  widget.summary
+                      ? "Update Summary"
+                      : selectAll == true
+                      ? '(${allgoalsSelected.length}/${goals.length} goals selected) Next'
+                      : '(${multiGoals.length}/${goals.length} goals selected) Next',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontFamily: 'Laila',
+                      fontSize:
+                      AppDimensions.font10(context) * 2,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white),
+                )),
+          ),
+        ),
+      ),
       body: Container(
         width: double.infinity,
         height: double.infinity,
@@ -438,501 +536,411 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                     Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                 fit: BoxFit.cover)),
         child: loading == false
-            ? SingleChildScrollView(
+            ? Container(
                 child: Column(children: [
                   Container(
-                    // width: AppDimensions.width10(context) * 36.0,
+                    height: AppDimensions.height10(context) * 70.0,
                     margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 9.3,
                     ),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: AppDimensions.width10(context) * 34.3,
-                            height: AppDimensions.height10(context) * 7.75,
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 8.7),
-                            child: Center(
-                              //Text alingment changes
-                              child: GradientText(
-                                AppText().captureHurdle1Body,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: 'Laila',
-                                  fontSize: AppDimensions.font10(context) * 2.8,
-                                  fontWeight: FontWeight.w700,
+                    child: SingleChildScrollView(
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: AppDimensions.width10(context) * 34.3,
+                              height: AppDimensions.height10(context) * 7.75,
+                              margin: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 8.7),
+                              child: Center(
+                                //Text alingment changes
+                                child: GradientText(
+                                  AppText().captureHurdle1Body,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontFamily: 'Laila',
+                                    fontSize: AppDimensions.font10(context) * 2.8,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                  colors: const [
+                                    Color(0xffFA9934),
+                                    Color(0xffEDD15E)
+                                  ],
                                 ),
-                                colors: const [
-                                  Color(0xffFA9934),
-                                  Color(0xffEDD15E)
-                                ],
                               ),
                             ),
-                          ),
-                          AnimatedScaleButton(
-                            onTap: () {
-                              if (selectAll == false) {
-                                setState(() {
-                                  selectAll = true;
-                                  selectBox = -1;
-                                  selectinActive = -1;
-                                  selectedIndices.clear();
-                                  selectedInActiveIndices.clear();
-                                  multiGoals.clear();
-                                });
-                                for (int i = 0; i < active.length; i++) {
-                                  selectedIndices.add(i);
-                                  multiGoals.add(active[i]['id']);
+                            AnimatedScaleButton(
+                              onTap: () {
+                                if (selectAll == false) {
+                                  setState(() {
+                                    selectAll = true;
+                                    selectBox = -1;
+                                    selectinActive = -1;
+                                    selectedIndices.clear();
+                                    selectedInActiveIndices.clear();
+                                    multiGoals.clear();
+                                  });
+                                  for (int i = 0; i < active.length; i++) {
+                                    selectedIndices.add(i);
+                                    multiGoals.add(active[i]['id']);
+                                  }
+                                  for (int i = 0; i < inActive.length; i++) {
+                                    selectedInActiveIndices.add(i);
+                                    multiGoals.add(inActive[i]['id']);
+                                  }
+                                } else if (selectAll == true) {
+                                  setState(() {
+                                    selectAll = false;
+                                    selectinActive = -1;
+                                    selectBox = -1;
+                                    selectedIndices.clear();
+                                    selectedInActiveIndices.clear();
+                                    selectedGoals.clear();
+                                    multiGoals.clear();
+                                  });
                                 }
-                                for (int i = 0; i < inActive.length; i++) {
-                                  selectedInActiveIndices.add(i);
-                                  multiGoals.add(inActive[i]['id']);
-                                }
-                              } else if (selectAll == true) {
-                                setState(() {
-                                  selectAll = false;
-                                  selectinActive = -1;
-                                  selectBox = -1;
-                                  selectedIndices.clear();
-                                  selectedInActiveIndices.clear();
-                                  selectedGoals.clear();
-                                  multiGoals.clear();
-                                });
-                              }
-                            },
-                            child: Container(
-                              width: !smallScreen
-                                  ? AppDimensions.width10(context) * 14.1
-                                  : AppDimensions.width10(context) * 13.5,
-                              height: !smallScreen
-                                  ? AppDimensions.width10(context) * 14.1
-                                  : AppDimensions.width10(context) * 13.5,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.width10(context) * 3,
-                                  right: AppDimensions.width10(context) * 19.0,
-                                  top: AppDimensions.height10(context) * 2.9),
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width: 2,
-                                      color: selectAll == true
-                                          ? Colors.white
-                                          : Colors.transparent)),
-                              padding: EdgeInsets.all(
-                                  AppDimensions.width10(context) * 0.5),
+                              },
                               child: Container(
                                 width: !smallScreen
-                                    ? AppDimensions.width10(context) * 13.1
-                                    : AppDimensions.width10(context) * 12.5,
+                                    ? AppDimensions.width10(context) * 14.1
+                                    : AppDimensions.width10(context) * 13.5,
                                 height: !smallScreen
-                                    ? AppDimensions.width10(context) * 13.1
-                                    : AppDimensions.width10(context) * 12.5,
+                                    ? AppDimensions.width10(context) * 14.1
+                                    : AppDimensions.width10(context) * 13.5,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.width10(context) * 3,
+                                    right: AppDimensions.width10(context) * 19.0,
+                                    top: AppDimensions.height10(context) * 2.9),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: Colors.white),
-                                    gradient: const LinearGradient(
-                                        begin: Alignment.topCenter,
-                                        end: Alignment.bottomCenter,
-                                        colors: [
-                                          Color(0xffBE3FC6),
-                                          Color(0xff642445)
-                                        ])),
-                                child: Center(
-                                  child: Text(
-                                    'All goals',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.6,
-                                        fontWeight: FontWeight.w500),
+                                        width: 2,
+                                        color: selectAll == true
+                                            ? Colors.white
+                                            : Colors.transparent)),
+                                padding: EdgeInsets.all(
+                                    AppDimensions.width10(context) * 0.5),
+                                child: Container(
+                                  width: !smallScreen
+                                      ? AppDimensions.width10(context) * 13.1
+                                      : AppDimensions.width10(context) * 12.5,
+                                  height: !smallScreen
+                                      ? AppDimensions.width10(context) * 13.1
+                                      : AppDimensions.width10(context) * 12.5,
+                                  decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      border: Border.all(
+                                          width: AppDimensions.width10(context) *
+                                              0.1,
+                                          color: Colors.white),
+                                      gradient: const LinearGradient(
+                                          begin: Alignment.topCenter,
+                                          end: Alignment.bottomCenter,
+                                          colors: [
+                                            Color(0xffBE3FC6),
+                                            Color(0xff642445)
+                                          ])),
+                                  child: Center(
+                                    child: Text(
+                                      'All goals',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize:
+                                              AppDimensions.font10(context) * 1.6,
+                                          fontWeight: FontWeight.w500),
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          Container(
-                            width: AppDimensions.width10(context) * 12.4,
-                            height: AppDimensions.height10(context) * 2.4,
-                            margin: EdgeInsets.only(
-                                right: AppDimensions.width10(context) * 21.2,
-                                left: AppDimensions.width10(context) * 2.8,
-                                top: AppDimensions.height10(context) * 2.0),
-                            child: Center(
-                              child: Text(
-                                AppText().activeGoals,
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(
-                                left: !smallScreen
-                                    ? AppDimensions.width10(context) * 5
-                                    : AppDimensions.width10(context) * 6,
-                                top: AppDimensions.height10(context) * 1.0,
-                                right: AppDimensions.width10(context) * 3,
-                                bottom: AppDimensions.height10(context) * 2.0),
-                            child: GridView.builder(
-                                shrinkWrap: true,
-                                padding: EdgeInsets.zero,
-                                physics: const NeverScrollableScrollPhysics(),
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  childAspectRatio:
-                                      3.5 / 3, // Two items in each row
-
-                                  mainAxisSpacing: 9.0,
-                                  crossAxisSpacing: 3,
-                                ),
-                                itemCount: active.length,
-                                itemBuilder: ((context, index) {
-                                  return AnimatedScaleButton(
-                                    onTap: () {
-                                      setState(() {
-                                        if (selectedIndices.contains(index)) {
-                                          multiGoals
-                                              .remove(active[index]['id']);
-                                          selectedIndices.remove(index);
-                                        } else {
-                                          selectedIndices.add(index);
-                                          multiGoals.add(active[index]['id']);
-                                        }
-                                      });
-                                      setState(() {
-                                        selectAll = false;
-                                      });
-                                    },
-                                    child: Container(
-                                      margin: EdgeInsets.only(
-                                          right: !smallScreen
-                                              ? AppDimensions.width10(context) *
-                                                  2.5
-                                              : AppDimensions.width10(context) *
-                                                  3),
-                                      height: selectedIndices.contains(index) ||
-                                              selectAll == true
-                                          ? AppDimensions.height10(context) *
-                                              14.1
-                                          : AppDimensions.height10(context) *
-                                              13.1,
-                                      width: selectedIndices.contains(index) ||
-                                              selectAll == true
-                                          ? AppDimensions.height10(context) *
-                                              14.1
-                                          : AppDimensions.height10(context) *
-                                              13.1,
-                                      padding: EdgeInsets.all(
-                                          AppDimensions.width10(context) * 0.8),
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            width: selectedIndices
-                                                        .contains(index) ||
-                                                    selectAll == true
-                                                ? AppDimensions.width10(
-                                                        context) *
-                                                    0.2
-                                                : 0,
-                                            color: selectedIndices
-                                                        .contains(index) ||
-                                                    selectAll == true
-                                                ? Colors.white
-                                                : Colors.transparent),
-                                      ),
-                                      child: Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                13.1,
-                                        width: AppDimensions.height10(context) *
-                                            13.1,
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal:
-                                                AppDimensions.width10(context) *
-                                                    0.8),
-                                        // margin: EdgeInsets.only(
-                                        //   right:
-                                        //       AppDimensions.height10(context) * 4.5,
-                                        // ),
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            border: Border.all(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                color: Colors.white),
-                                            gradient: const LinearGradient(
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
-                                                colors: [
-                                                  Color(0xffBE3FC6),
-                                                  Color(0xff642445)
-                                                ])),
-                                        child: Center(
-                                          child: Text(
-                                            active[index]['name'],
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.6,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                })),
-                          ),
-                          Container(
-                            width: AppDimensions.width10(context) * 13.7,
-                            height: AppDimensions.height10(context) * 2.4,
-                            margin: EdgeInsets.only(
-                                right: AppDimensions.width10(context) * 19.5,
-                                left: AppDimensions.width10(context) * 2.8),
-                            child: Center(
-                              child: Text(
-                                AppText().inActiveGoals,
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.0,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.only(
-                                left: !smallScreen
-                                    ? AppDimensions.width10(context) * 5
-                                    : AppDimensions.width10(context) * 6,
-                                top: AppDimensions.height10(context) * 1.0,
-                                right: AppDimensions.width10(context) * 3,
-                                bottom: AppDimensions.height10(context) * 2.0),
-                            child: GridView.builder(
-                                shrinkWrap: true,
-                                padding: EdgeInsets.zero,
-                                physics: const NeverScrollableScrollPhysics(),
-                                gridDelegate:
-                                    const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  childAspectRatio:
-                                      3.5 / 3, // Two items in each row
-
-                                  mainAxisSpacing: 9.0,
-                                  crossAxisSpacing: 3,
-                                ),
-                                itemCount: inActive.length,
-                                itemBuilder: ((context, index) {
-                                  return AnimatedScaleButton(
-                                    onTap: () {
-                                      setState(() {
-                                        if (selectedInActiveIndices
-                                            .contains(index)) {
-                                          multiGoals
-                                              .remove(inActive[index]['id']);
-                                          selectedInActiveIndices.remove(index);
-                                        } else {
-                                          multiGoals.add(inActive[index]['id']);
-                                          selectedInActiveIndices.add(index);
-                                        }
-                                      });
-                                      setState(() {
-                                        selectAll = false;
-                                      });
-                                    },
-                                    child: Container(
-                                      margin: EdgeInsets.only(
-                                          right: !smallScreen
-                                              ? AppDimensions.width10(context) *
-                                                  2.5
-                                              : AppDimensions.width10(context) *
-                                                  3),
-                                      height: selectedInActiveIndices
-                                                  .contains(index) ||
-                                              selectAll == true
-                                          ? AppDimensions.height10(context) *
-                                              14.1
-                                          : AppDimensions.height10(context) *
-                                              13.1,
-                                      width: selectedInActiveIndices
-                                                  .contains(index) ||
-                                              selectAll == true
-                                          ? AppDimensions.width10(context) *
-                                              14.1
-                                          : AppDimensions.width10(context) *
-                                              13.1,
-                                      padding: EdgeInsets.all(
-                                          AppDimensions.width10(context) * 0.8),
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            width: selectedInActiveIndices
-                                                        .contains(index) ||
-                                                    selectAll == true
-                                                ? AppDimensions.width10(
-                                                        context) *
-                                                    0.2
-                                                : 0,
-                                            color: selectedInActiveIndices
-                                                        .contains(index) ||
-                                                    selectAll == true
-                                                ? Colors.white
-                                                : Colors.transparent),
-                                      ),
-                                      child: Container(
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                13.1,
-                                        width: AppDimensions.width10(context) *
-                                            13.1,
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: AppDimensions.height10(
-                                                    context) *
-                                                1.2),
-                                        // margin: EdgeInsets.only(
-                                        //   right: AppDimensions.width10(context) *
-                                        //       4.5,
-                                        // ),
-                                        decoration: BoxDecoration(
-                                            shape: BoxShape.circle,
-                                            border: Border.all(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                color: Colors.white),
-                                            gradient: const LinearGradient(
-                                                begin: Alignment.topCenter,
-                                                end: Alignment.bottomCenter,
-                                                colors: [
-                                                  Color(0xffBE3FC6),
-                                                  Color(0xff642445)
-                                                ])),
-                                        child: Center(
-                                          child: Text(
-                                            inActive[index]['name'],
-                                            maxLines: 2,
-                                            overflow: TextOverflow.ellipsis,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.6,
-                                                fontWeight: FontWeight.w500),
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                })),
-                          ),
-                          AnimatedScaleButton(
-                            onTap: () async {
-                              if (widget.summary == true) {
-                                if (selectAll == true ||
-                                    multiGoals.length != 0) {
-                                  if (selectAll == true) {
-                                    Hurdles().updateHurdle(
-                                        'userGoalId', allgoalsSelected);
-                                    Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const summary_hurdles(
-                                                delete_hurdle: false)));
-                                  } else {
-                                    Hurdles()
-                                        .updateHurdle('userGoalId', multiGoals);
-                                    Navigator.push(
-                                        context,
-                                        FadePageRoute(
-                                            page: const summary_hurdles(
-                                                delete_hurdle: false)));
-                                  }
-                                }
-                              } else {
-                                final SharedPreferences prefs = await _prefs;
-                                await prefs.setString('HurdleRoute', 'data');
-                                if (selectAll == true ||
-                                    multiGoals.length != 0) {
-                                  if (selectAll == true) {
-                                    saveGoalsToSharedPreferences(
-                                        allgoalsSelected);
-                                    Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const select_hurdle(
-                                        update: false,
-                                      )),
-                                    );
-                                  } else {
-                                    saveGoalsToSharedPreferences(multiGoals);
-                                    Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: const select_hurdle(
-                                        update: false,
-                                      )),
-                                    );
-                                  }
-                                }
-                              }
-                            },
-                            child: Container(
-                              width: AppDimensions.width10(context) * 25.4,
-                              height: AppDimensions.height10(context) * 5.0,
+                            Container(
+                              width: AppDimensions.width10(context) * 12.4,
+                              height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 1.0,
-                                  bottom:
-                                      AppDimensions.height10(context) * 2.6),
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    selectAll == true || multiGoals.length != 0
-                                        ? const Color(0xffFCC10D)
-                                        : const Color(0xffFCC10D)
-                                            .withOpacity(0.5),
-                                    selectAll == true || multiGoals.length != 0
-                                        ? const Color(0xffFDA210)
-                                        : const Color(0xffFDA210)
-                                            .withOpacity(0.5),
-                                  ],
-                                ),
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10(context) * 5.0),
-                              ),
+                                  right: AppDimensions.width10(context) * 21.2,
+                                  left: AppDimensions.width10(context) * 2.8,
+                                  top: AppDimensions.height10(context) * 2.0),
                               child: Center(
-                                  child: Text(
-                                widget.summary
-                                    ? "Update Summary"
-                                    : selectAll == true
-                                        ? '(${allgoalsSelected.length}/${goals.length} goals selected) Next'
-                                        : '(${multiGoals.length}/${goals.length} goals selected) Next',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontFamily: 'Laila',
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.6,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white),
-                              )),
+                                child: Text(
+                                  AppText().activeGoals,
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.font10(context) * 2.0,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white),
+                                ),
+                              ),
                             ),
-                          ),
-                        ]),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left: !smallScreen
+                                      ? AppDimensions.width10(context) * 5
+                                      : AppDimensions.width10(context) * 6,
+                                  top: AppDimensions.height10(context) * 1.0,
+                                  right: AppDimensions.width10(context) * 3,
+                                  bottom: AppDimensions.height10(context) * 2.0),
+                              child: GridView.builder(
+                                  shrinkWrap: true,
+                                  padding: EdgeInsets.zero,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    childAspectRatio:
+                                        3.5 / 3, // Two items in each row
+
+                                    mainAxisSpacing: 9.0,
+                                    crossAxisSpacing: 3,
+                                  ),
+                                  itemCount: active.length,
+                                  itemBuilder: ((context, index) {
+                                    return AnimatedScaleButton(
+                                      onTap: () {
+                                        setState(() {
+                                          if (selectedIndices.contains(index)) {
+                                            multiGoals
+                                                .remove(active[index]['id']);
+                                            selectedIndices.remove(index);
+                                          } else {
+                                            selectedIndices.add(index);
+                                            multiGoals.add(active[index]['id']);
+                                          }
+                                        });
+                                        setState(() {
+                                          selectAll = false;
+                                        });
+                                      },
+                                      child: Container(
+                                        margin: EdgeInsets.only(
+                                            right: !smallScreen
+                                                ? AppDimensions.width10(context) *
+                                                    2.5
+                                                : AppDimensions.width10(context) *
+                                                    3),
+                                        height: selectedIndices.contains(index) ||
+                                                selectAll == true
+                                            ? AppDimensions.height10(context) *
+                                                14.1
+                                            : AppDimensions.height10(context) *
+                                                13.1,
+                                        width: selectedIndices.contains(index) ||
+                                                selectAll == true
+                                            ? AppDimensions.height10(context) *
+                                                14.1
+                                            : AppDimensions.height10(context) *
+                                                13.1,
+                                        padding: EdgeInsets.all(
+                                            AppDimensions.width10(context) * 0.8),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                              width: selectedIndices
+                                                          .contains(index) ||
+                                                      selectAll == true
+                                                  ? AppDimensions.width10(
+                                                          context) *
+                                                      0.2
+                                                  : 0,
+                                              color: selectedIndices
+                                                          .contains(index) ||
+                                                      selectAll == true
+                                                  ? Colors.white
+                                                  : Colors.transparent),
+                                        ),
+                                        child: Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  13.1,
+                                          width: AppDimensions.height10(context) *
+                                              13.1,
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal:
+                                                  AppDimensions.width10(context) *
+                                                      0.8),
+                                          // margin: EdgeInsets.only(
+                                          //   right:
+                                          //       AppDimensions.height10(context) * 4.5,
+                                          // ),
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              border: Border.all(
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      0.1,
+                                                  color: Colors.white),
+                                              gradient: const LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                    Color(0xffBE3FC6),
+                                                    Color(0xff642445)
+                                                  ])),
+                                          child: Center(
+                                            child: Text(
+                                              active[index]['name'],
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: AppDimensions.font10(
+                                                          context) *
+                                                      1.6,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  })),
+                            ),
+                            Container(
+                              width: AppDimensions.width10(context) * 13.7,
+                              height: AppDimensions.height10(context) * 2.4,
+                              margin: EdgeInsets.only(
+                                  right: AppDimensions.width10(context) * 19.5,
+                                  left: AppDimensions.width10(context) * 2.8),
+                              child: Center(
+                                child: Text(
+                                  AppText().inActiveGoals,
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.font10(context) * 2.0,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left: !smallScreen
+                                      ? AppDimensions.width10(context) * 5
+                                      : AppDimensions.width10(context) * 6,
+                                  top: AppDimensions.height10(context) * 1.0,
+                                  right: AppDimensions.width10(context) * 3,
+                                  bottom: AppDimensions.height10(context) * 2.0),
+                              child: GridView.builder(
+                                  shrinkWrap: true,
+                                  padding: EdgeInsets.zero,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  gridDelegate:
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    childAspectRatio:
+                                        3.5 / 3, // Two items in each row
+
+                                    mainAxisSpacing: 9.0,
+                                    crossAxisSpacing: 3,
+                                  ),
+                                  itemCount: inActive.length,
+                                  itemBuilder: ((context, index) {
+                                    return AnimatedScaleButton(
+                                      onTap: () {
+                                        setState(() {
+                                          if (selectedInActiveIndices
+                                              .contains(index)) {
+                                            multiGoals
+                                                .remove(inActive[index]['id']);
+                                            selectedInActiveIndices.remove(index);
+                                          } else {
+                                            multiGoals.add(inActive[index]['id']);
+                                            selectedInActiveIndices.add(index);
+                                          }
+                                        });
+                                        setState(() {
+                                          selectAll = false;
+                                        });
+                                      },
+                                      child: Container(
+                                        margin: EdgeInsets.only(
+                                            right: !smallScreen
+                                                ? AppDimensions.width10(context) *
+                                                    2.5
+                                                : AppDimensions.width10(context) *
+                                                    3),
+                                        height: selectedInActiveIndices
+                                                    .contains(index) ||
+                                                selectAll == true
+                                            ? AppDimensions.height10(context) *
+                                                14.1
+                                            : AppDimensions.height10(context) *
+                                                13.1,
+                                        width: selectedInActiveIndices
+                                                    .contains(index) ||
+                                                selectAll == true
+                                            ? AppDimensions.width10(context) *
+                                                14.1
+                                            : AppDimensions.width10(context) *
+                                                13.1,
+                                        padding: EdgeInsets.all(
+                                            AppDimensions.width10(context) * 0.8),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          border: Border.all(
+                                              width: selectedInActiveIndices
+                                                          .contains(index) ||
+                                                      selectAll == true
+                                                  ? AppDimensions.width10(
+                                                          context) *
+                                                      0.2
+                                                  : 0,
+                                              color: selectedInActiveIndices
+                                                          .contains(index) ||
+                                                      selectAll == true
+                                                  ? Colors.white
+                                                  : Colors.transparent),
+                                        ),
+                                        child: Container(
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  13.1,
+                                          width: AppDimensions.width10(context) *
+                                              13.1,
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: AppDimensions.height10(
+                                                      context) *
+                                                  1.2),
+                                          // margin: EdgeInsets.only(
+                                          //   right: AppDimensions.width10(context) *
+                                          //       4.5,
+                                          // ),
+                                          decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              border: Border.all(
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      0.1,
+                                                  color: Colors.white),
+                                              gradient: const LinearGradient(
+                                                  begin: Alignment.topCenter,
+                                                  end: Alignment.bottomCenter,
+                                                  colors: [
+                                                    Color(0xffBE3FC6),
+                                                    Color(0xff642445)
+                                                  ])),
+                                          child: Center(
+                                            child: Text(
+                                              inActive[index]['name'],
+                                              maxLines: 2,
+                                              overflow: TextOverflow.ellipsis,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  color: Colors.white,
+                                                  fontSize: AppDimensions.font10(
+                                                          context) *
+                                                      1.6,
+                                                  fontWeight: FontWeight.w500),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  })),
+                            ),
+
+                          ]),
+                    ),
                   ),
 
                   // Container(

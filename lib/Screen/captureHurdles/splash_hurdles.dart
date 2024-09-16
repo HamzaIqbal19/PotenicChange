@@ -7,6 +7,9 @@ import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_name.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_select_hurdle.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdle_statement.dart';
 import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_fellings.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
+import 'package:potenic_app/utils/app_link.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -112,29 +115,46 @@ class hurdles_splashState extends State<hurdles_splash> {
             )),
             child: Column(
               children: [
-                GestureDetector(
-                  onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   FadePageRoute(page: const landing_hurdles()),
-                    // );
-                  },
-                  child: Container(
-                    width: AppDimensions.width10(context) * 34.3,
-                    height: AppDimensions.height10(context) * 7.7,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 12.0,
-                        bottom: AppDimensions.height10(context) * 1.9),
-                    child: GradientText(
-                      AppText().hurdleTitle,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontFamily: 'Laila',
-                        fontSize: AppDimensions.font10(context) * 3.0,
-                        fontWeight: FontWeight.w700,
+                Container(
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 12.0,
+                      bottom: AppDimensions.height10(context) * 4.9),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      GradientText(
+                        AppText().hurdleTitle,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontFamily: 'Laila',
+                          fontSize: AppDimensions.font10(context) * 3.0,
+                          fontWeight: FontWeight.w700,
+                        ),
+                        colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
                       ),
-                      colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
-                    ),
+                      AnimatedScaleButton(
+                        onTap: () {
+                          //hurdleSheet(context);
+                          journeyBottomSheet(
+                              context,
+                              AppText().hurdleBottomSheedTitle,
+                              AppText().hurdleBottomSheedBody,
+                              AppLinks().hurdleTutorialLink);
+                        },
+                        child: Container(
+                            width:
+                            AppDimensions.width10(context) *
+                                3.0,
+                            height: AppDimensions.height10(
+                                context) *
+                                3.0,
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/ic_info_outline_orange.webp')))),
+                      ),
+                    ],
                   ),
                 ),
                 Container(

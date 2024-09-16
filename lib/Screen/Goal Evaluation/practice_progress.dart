@@ -161,7 +161,9 @@ class _practice_progressState extends State<practice_progress> {
               context,
               FadePageRouteReverse(
                   page: const practiceMenu(
-                goal_eval: false,
+
+                    goal_eval: false,
+                    completed: false,
               )));
         }
 
@@ -186,7 +188,8 @@ class _practice_progressState extends State<practice_progress> {
                         context,
                         FadePageRouteReverse(
                             page: const practiceMenu(
-                          goal_eval: false,
+                              goal_eval: false,
+                              completed: false,
                         )));
                   }
                 },

@@ -178,8 +178,8 @@ class _select_hurdleState extends State<select_hurdle> {
               }
             },
             child: Container(
-              width: AppDimensions.width10(context) * 25.4,
-              height: AppDimensions.height10(context) * 5.0,
+              width: AppDimensions.width10(context) * 31.3,
+              height: AppDimensions.height10(context) * 5.2,
               margin: EdgeInsets.only(
                   top: AppDimensions.height10(context) * 1.0,
                   bottom: AppDimensions.height10(context) * 2.6),
@@ -206,7 +206,7 @@ class _select_hurdleState extends State<select_hurdle> {
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontFamily: 'Laila',
-                      fontSize: AppDimensions.font10(context) * 1.6,
+                      fontSize: AppDimensions.font10(context) * 2,
                       fontWeight: FontWeight.w600,
                       color: selectBox != -1
                           ? Colors.white

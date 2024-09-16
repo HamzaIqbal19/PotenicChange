@@ -98,10 +98,16 @@ class _practice_assesmentState extends State<practice_assesment> {
           FadePageRouteReverse(
               page: const practiceMenu(
             goal_eval: false,
+                completed: false,
           )));
     }  else if (route == 'practice_completed') {
       Navigator.pushReplacement(
-          context, FadePageRouteReverse(page: const menu_behaviour()));
+          context,
+          FadePageRouteReverse(
+              page: const practiceMenu(
+                goal_eval: false,
+                completed: true,
+              )));
     } else if (route == 'practice_completed') {
       Navigator.pushReplacement(
           context,

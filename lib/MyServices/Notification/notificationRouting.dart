@@ -16,7 +16,7 @@ navigationRouting(BuildContext context, String route, String url) {
   switch (route) {
     case "dashboard":
       return Navigator.push(
-          context, FadePageRoute(page: const practiceMenu(goal_eval: false)));
+          context, FadePageRoute(page: const practiceMenu(goal_eval: false,completed: false,)));
     case "tutorial":
       return Navigator.push(
           context,
@@ -30,7 +30,7 @@ navigationRouting(BuildContext context, String route, String url) {
           )));
     case "practiceEvaluation":
       return Navigator.push(
-          context, FadePageRoute(page: const practiceMenu(goal_eval: false)));
+          context, FadePageRoute(page: const practiceMenu(goal_eval: false,completed: false,)));
     case "hurdle":
       return Navigator.push(
           context, FadePageRouteReverse(page: const landing_hurdles()));

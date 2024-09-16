@@ -221,6 +221,557 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
       },
       child: Scaffold(
         resizeToAvoidBottomInset: true,
+        extendBody: true,
+        bottomNavigationBar: Container(
+          // padding: EdgeInsets.symmetric(
+          //     horizontal: AppDimensions.width10(context) * 8),
+          child: widget.data_saved
+              ? widget.route == 'details'
+              ? Container()
+              : Container(
+            width: AppDimensions.width10(context) *
+                34.2,
+            height:
+            AppDimensions.height10(context) *
+                5.0,
+            margin: EdgeInsets.only(
+                left: AppDimensions.height10(
+                    context) *
+                    3.0,
+                right: AppDimensions.height10(
+                    context) *
+                    3.0,
+                bottom: AppDimensions.height10(
+                    context) *
+                    2.6),
+            child: Row(
+              mainAxisAlignment:
+              MainAxisAlignment.spaceBetween,
+              children: [
+                AnimatedScaleButton(
+                  onTap: () {
+                    multiGoals.clear();
+                    selectedGoals.clear();
+                    selectedInActiveIndices.clear();
+                    selectedIndices.clear();
+                    setState(() {
+                      selectAll = false;
+                    });
+                  },
+                  child: Container(
+                    width: AppDimensions.width10(
+                        context) *
+                        12.8,
+                    height: AppDimensions.height10(
+                        context) *
+                        5.0,
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      border: Border.all(
+                          width: 1,
+                          color: const Color(
+                              0xFFFFFFFF)
+                              .withOpacity(0.5)),
+                      borderRadius:
+                      BorderRadius.circular(
+                          AppDimensions
+                              .height10(
+                              context) *
+                              5.0),
+                    ),
+                    child: Center(
+                        child: Text(
+                          'Reset',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize:
+                              AppDimensions.font10(
+                                  context) *
+                                  2,
+                              fontWeight:
+                              FontWeight.w600,
+                              color: selectAll ==
+                                  true ||
+                                  multiGoals
+                                      .isNotEmpty
+                                  ? Colors.white
+                                  : Colors.white
+                                  .withOpacity(
+                                  0.5)),
+                        )),
+                  ),
+                ),
+                AnimatedScaleButton(
+                  onTap: () {
+                    if (selectAll == true ||
+                        multiGoals.isNotEmpty) {
+                      if (selectAll == true) {
+                        saveGoalsToSharedPreferences(
+                            allgoalsSelected);
+                        widget.route ==
+                            'photo_create'
+                            ? Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page:
+                              const photo_info(
+                                edit_details:
+                                false,
+                                image_detals:
+                                false,
+                                image_save: false,
+                                image_create:
+                                false,
+                              )),
+                        )
+                            : widget.route ==
+                            'video_create'
+                            ? Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: const video_info(
+                                  link_state:
+                                  false)),
+                        )
+                            : widget.route ==
+                            'note_create'
+                            ? Navigator
+                            .push(
+                          context,
+                          FadePageRoute(
+                              page:
+                              const note_info(
+                                note_saved:
+                                true,
+                                type_switch:
+                                1,
+                              )),
+                        )
+                            : widget.route ==
+                            'note_saved'
+                            ? Navigator
+                            .push(
+                          context,
+                          FadePageRoute(
+                              page:
+                              const noteSaved()),
+                        )
+                            : widget.route ==
+                            'note_link'
+                            ? Navigator
+                            .push(
+                          context,
+                          FadePageRoute(
+                              page: const link_info(
+                                link_state: false,
+                              )),
+                        )
+                            : Navigator
+                            .push(
+                          context,
+                          FadePageRoute(page: const inspiration_type()),
+                        );
+                      } else {
+                        saveGoalsToSharedPreferences(
+                            multiGoals);
+
+                        widget.route ==
+                            'photo_create'
+                            ? Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page:
+                              const photo_info(
+                                edit_details:
+                                false,
+                                image_detals:
+                                true,
+                                image_save: false,
+                                image_create:
+                                false,
+                              )),
+                        )
+                            : widget.route ==
+                            'video_create'
+                            ? Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page:
+                              const video_info(
+                                link_state:
+                                false,
+                              )),
+                        )
+                            : widget.route ==
+                            'note_create'
+                            ? Navigator
+                            .push(
+                          context,
+                          FadePageRoute(
+                              page:
+                              const note_info(
+                                note_saved:
+                                true,
+                                type_switch:
+                                1,
+                              )),
+                        )
+                            : widget.route ==
+                            'note_saved'
+                            ? Navigator
+                            .push(
+                          context,
+                          FadePageRoute(
+                              page:
+                              const noteSaved()),
+                        )
+                            : widget.route ==
+                            'note_link'
+                            ? Navigator
+                            .push(
+                          context,
+                          FadePageRoute(
+                              page: const link_info(
+                                link_state: false,
+                              )),
+                        )
+                            : widget.route ==
+                            'edit'
+                            ? Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: videoEdit(
+                                note: widget.note,
+                                context: widget.context,
+                                updateData: true,
+                              )),
+                        )
+                            : widget.route == 'photo_edit'
+                            ? Navigator.push(
+                          context,
+                          FadePageRoute(
+                              page: const photo_Edit(
+                                updateData: true,
+                              )),
+                        )
+                            : Navigator.push(
+                          context,
+                          FadePageRoute(page: const inspiration_type()),
+                        );
+                      }
+                    }
+                  },
+                  child: Container(
+                    width: AppDimensions.width10(
+                        context) *
+                        20.4,
+                    height: AppDimensions.height10(
+                        context) *
+                        5.0,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          selectAll == true ||
+                              multiGoals
+                                  .isNotEmpty
+                              ? const Color(
+                              0xffFCC10D)
+                              : const Color(
+                              0xffFCC10D)
+                              .withOpacity(0.5),
+                          selectAll == true ||
+                              multiGoals
+                                  .isNotEmpty
+                              ? const Color(
+                              0xffFDA210)
+                              : const Color(
+                              0xffFDA210)
+                              .withOpacity(0.5),
+                        ],
+                      ),
+                      borderRadius:
+                      BorderRadius.circular(
+                          AppDimensions
+                              .height10(
+                              context) *
+                              5.0),
+                    ),
+                    child: Center(
+                        child: Text(
+                          'Save',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize:
+                              AppDimensions.font10(
+                                  context) *
+                                  2,
+                              fontWeight:
+                              FontWeight.w600,
+                              color: selectAll ==
+                                  true ||
+                                  multiGoals
+                                      .isNotEmpty
+                                  ? Colors.white
+                                  : Colors.white
+                                  .withOpacity(
+                                  0.5)),
+                        )),
+                  ),
+                ),
+              ],
+            ),
+          )
+              : AnimatedScaleButton(
+            onTap: () async {
+              if (selectAll == true ||
+                  multiGoals.isNotEmpty) {
+                if (selectAll == true) {
+                  saveGoalsToSharedPreferences(
+                      allgoalsSelected);
+                  widget.route == 'photo_create'
+                      ? Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page: const photo_info(
+                          edit_details: false,
+                          image_detals: false,
+                          image_save: false,
+                          image_create: false,
+                        )),
+                  )
+                      : widget.route == 'video_create'
+                      ? Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page:
+                        const video_info(
+                            link_state:
+                            false)),
+                  )
+                      : widget.route ==
+                      'note_create'
+                      ? Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page:
+                        const note_info(
+                          note_saved: true,
+                          type_switch: 1,
+                        )),
+                  )
+                      : widget.route ==
+                      'note_saved'
+                      ? Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page:
+                        const photo_Edit(
+                          updateData:
+                          true,
+                        )),
+                  )
+                      : widget.route ==
+                      'note_saved_video'
+                      ? Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page:
+                        videoEdit(
+                          note: widget
+                              .note,
+                          context: widget
+                              .context,
+                          updateData:
+                          true,
+                        )),
+                  )
+                      : widget.route ==
+                      'edit'
+                      ? Navigator
+                      .push(
+                    context,
+                    FadePageRoute(
+                        page:
+                        videoEdit(
+                          context:
+                          widget.context,
+                          note: widget
+                              .note,
+                          updateData:
+                          true,
+                        )),
+                  )
+                      : widget.route ==
+                      'note_link'
+                      ? Navigator
+                      .push(
+                    context,
+                    FadePageRoute(
+                        page: const link_info(
+                          link_state:
+                          false,
+                        )),
+                  )
+                      : widget.route ==
+                      'details'
+                      ? Navigator
+                      .push(
+                    context,
+                    FadePageRoute(page: const view_details()),
+                  )
+                      : Navigator
+                      .push(
+                    context,
+                    FadePageRoute(page: const inspiration_type()),
+                  );
+                } else {
+                  saveGoalsToSharedPreferences(
+                      multiGoals);
+
+                  widget.route == 'photo_create'
+                      ? Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page: const photo_info(
+                          edit_details: false,
+                          image_detals: false,
+                          image_save: false,
+                          image_create: false,
+                        )),
+                  )
+                      : widget.route == 'details'
+                      ? Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page:
+                        const view_details()),
+                  )
+                      : widget.route ==
+                      'video_create'
+                      ? Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page: const video_info(
+                            link_state:
+                            false)),
+                  )
+                      : widget.route ==
+                      'note_create'
+                      ? Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page:
+                        const note_info(
+                          note_saved:
+                          true,
+                          type_switch: 1,
+                        )),
+                  )
+                      : widget.route ==
+                      'note_saved'
+                      ? Navigator.push(
+                    context,
+                    FadePageRoute(
+                        page:
+                        const photo_Edit(
+                          updateData:
+                          true,
+                        )),
+                  )
+                      : widget.route ==
+                      'note_saved_video'
+                      ? Navigator
+                      .push(
+                    context,
+                    FadePageRoute(
+                        page:
+                        videoEdit(
+                          note: widget
+                              .note,
+                          context:
+                          widget.context,
+                          updateData:
+                          true,
+                        )),
+                  )
+                      : widget.route ==
+                      'note_link'
+                      ? Navigator
+                      .push(
+                    context,
+                    FadePageRoute(
+                        page: const link_info(
+                          link_state:
+                          false,
+                        )),
+                  )
+                      : Navigator
+                      .push(
+                    context,
+                    FadePageRoute(
+                        page: const inspiration_type()),
+                  );
+                }
+              }
+              if (widget.update == false) {
+                final SharedPreferences prefs =
+                await _prefs;
+                await prefs.setString(
+                    'inspiration_saved_route',
+                    'goals_saved');
+              }
+            },
+            child: Container(
+              width: AppDimensions.width10(context) * 31.3,
+              height: AppDimensions.height10(context) * 5.2,
+              margin: EdgeInsets.only(
+                  left: AppDimensions.width10(context) *
+                      8,
+                  right:
+                  AppDimensions.width10(context) *
+                      8,
+                  bottom:
+                  AppDimensions.height10(context) *
+                      2.6),
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    selectAll == true ||
+                        multiGoals.isNotEmpty
+                        ? const Color(0xffFCC10D)
+                        : const Color(0xffFCC10D)
+                        .withOpacity(0.5),
+                    selectAll == true ||
+                        multiGoals.isNotEmpty
+                        ? const Color(0xffFDA210)
+                        : const Color(0xffFDA210)
+                        .withOpacity(0.5),
+                  ],
+                ),
+                borderRadius: BorderRadius.circular(
+                    AppDimensions.height10(context) *
+                        5.0),
+              ),
+              child: Center(
+                  child: Text(
+                    selectAll == true
+                        ? '(${allgoalsSelected.length}/${goals.length} goals selected) Next'
+                        : '(${multiGoals.length}/${goals.length} goals selected) Next',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        fontSize:
+                        AppDimensions.font10(context) *
+                            2,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white),
+                  )),
+            ),
+          )
+        ),
         appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
@@ -340,73 +891,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                         actions: <Widget>[
                                           Column(
                                             children: [
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 42,
-                                                width: double.infinity,
-                                                // color: Colors.white,
-                                                child: TextButton(
-                                                  onPressed: () async {
-                                                    if (selectAll == true) {
-                                                      saveGoalsToSharedPreferences(
-                                                          allgoalsSelected);
-                                                    } else {
-                                                      saveGoalsToSharedPreferences(
-                                                          multiGoals);
-                                                    }
-                                                    final SharedPreferences
-                                                        prefs = await _prefs;
-                                                    await prefs.setString(
-                                                        'inspiration_saved_route',
-                                                        'goals_inspiration');
-                                                    InspirationApi()
-                                                        .checkUserInspiration()
-                                                        .then((response) {
-                                                          if (response ==
-                                                              true) {
-                                                            Navigator.push(
-                                                                context,
-                                                                FadePageRouteReverse(
-                                                                    page: const inspiration_landing(
-                                                                        is_Updated:
-                                                                            false)));
-                                                          } else if (response ==
-                                                              false) {
-                                                            Navigator.push(
-                                                                context,
-                                                                FadePageRouteReverse(
-                                                                    page:
-                                                                        const inspiration_motivation(
-                                                                  goal_delete:
-                                                                      false,
-                                                                  inspirationName:
-                                                                      '',
-                                                                )));
-                                                          }
-                                                        })
-                                                        .catchError((error) {})
-                                                        .whenComplete(() {});
-                                                  },
-                                                  child: const Text(
-                                                    'Exit & save progress',
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xFF007AFF),
-                                                        fontSize: 17,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                ),
-                                              ),
+
                                               SizedBox(
                                                 height: AppDimensions.height10(
                                                         context) *
@@ -555,1001 +1040,452 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                       Color.fromRGBO(0, 0, 0, 1), BlendMode.dstATop),
                   fit: BoxFit.cover)),
           child: loading == false
-              ? SingleChildScrollView(
-                  child: Column(children: [
-                    Container(
-                      // width: AppDimensions.width10(context) * 36.0,
+              ? Column(children: [
+                Container(
+                  // width: AppDimensions.width10(context) * 36.0,
 
-                      // height: widget.route == 'details'
-                      //     ? AppDimensions.height10(context) * 76.9
-                      //     : AppDimensions.height10(context) * 66.9,
-                      margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 9.3,
-
-                        // left: AppDimensions.width10(context) * 3.0,
-                        // right: AppDimensions.width10(context) * 2.4
-                      ),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: AppDimensions.width10(context) * 34.3,
-                              height: AppDimensions.height10(context) * 7.3,
-                              margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 8.7),
-                              child: Center(
-                                //Text alingment changes
-                                child: GradientText(
-                                  AppText().inspiration1Body,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    height: 1.2,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.8,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                  colors: const [
-                                    Color(0xffFA9934),
-                                    Color(0xffEDD15E)
-                                  ],
+                  height: AppDimensions.height10(context) * 70.0,
+                  margin: EdgeInsets.only(
+                    top: AppDimensions.height10(context) * 9.3,
+              
+                    // left: AppDimensions.width10(context) * 3.0,
+                    // right: AppDimensions.width10(context) * 2.4
+                  ),
+                  child: SingleChildScrollView(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: AppDimensions.width10(context) * 34.3,
+                            height: AppDimensions.height10(context) * 7.3,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.height10(context) * 8.7),
+                            child: Center(
+                              //Text alingment changes
+                              child: GradientText(
+                                AppText().inspiration1Body,
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  height: 1.2,
+                                  fontSize:
+                                      AppDimensions.font10(context) * 2.8,
+                                  fontWeight: FontWeight.w700,
                                 ),
+                                colors: const [
+                                  Color(0xffFA9934),
+                                  Color(0xffEDD15E)
+                                ],
                               ),
                             ),
-                            AnimatedScaleButton(
-                              onTap: () {
-                                if (widget.route != 'details') {
-                                  if (selectAll == false) {
-                                    setState(() {
-                                      selectAll = true;
-                                      selectBox = -1;
-                                      selectinActive = -1;
-
-                                      selectedIndices.clear();
-                                      selectedInActiveIndices.clear();
-                                      multiGoals.clear();
-                                    });
-                                    for (int i = 0; i < active.length; i++) {
-                                      selectedIndices.add(i);
-                                      multiGoals.add(active[i]['id']);
-                                    }
-                                    for (int i = 0; i < inActive.length; i++) {
-                                      selectedInActiveIndices.add(i);
-                                      multiGoals.add(inActive[i]['id']);
-                                    }
-                                  } else if (selectAll == true) {
-                                    setState(() {
-                                      selectAll = false;
-                                      selectinActive = -1;
-                                      selectBox = -1;
-                                      selectedIndices.clear();
-                                      selectedInActiveIndices.clear();
-                                      selectedGoals.clear();
-                                      multiGoals.clear();
-                                    });
+                          ),
+                          AnimatedScaleButton(
+                            onTap: () {
+                              if (widget.route != 'details') {
+                                if (selectAll == false) {
+                                  setState(() {
+                                    selectAll = true;
+                                    selectBox = -1;
+                                    selectinActive = -1;
+                                  
+                                    selectedIndices.clear();
+                                    selectedInActiveIndices.clear();
+                                    multiGoals.clear();
+                                  });
+                                  for (int i = 0; i < active.length; i++) {
+                                    selectedIndices.add(i);
+                                    multiGoals.add(active[i]['id']);
                                   }
+                                  for (int i = 0; i < inActive.length; i++) {
+                                    selectedInActiveIndices.add(i);
+                                    multiGoals.add(inActive[i]['id']);
+                                  }
+                                } else if (selectAll == true) {
+                                  setState(() {
+                                    selectAll = false;
+                                    selectinActive = -1;
+                                    selectBox = -1;
+                                    selectedIndices.clear();
+                                    selectedInActiveIndices.clear();
+                                    selectedGoals.clear();
+                                    multiGoals.clear();
+                                  });
                                 }
-                              },
+                              }
+                            },
+                            child: Container(
+                              width: !smallScreen
+                                  ? AppDimensions.width10(context) * 14.1
+                                  : AppDimensions.width10(context) * 13.5,
+                              height: !smallScreen
+                                  ? AppDimensions.width10(context) * 14.1
+                                  : AppDimensions.width10(context) * 13.5,
+                              margin: EdgeInsets.only(
+                                  left: AppDimensions.width10(context) * 3,
+                                  right:
+                                      AppDimensions.width10(context) * 19.0,
+                                  top: AppDimensions.height10(context) * 2.9),
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                      width: 2,
+                                      color: selectAll == true
+                                          ? Colors.white
+                                          : Colors.transparent)),
+                              padding: EdgeInsets.all(
+                                  AppDimensions.width10(context) * 0.5),
                               child: Container(
-                                width: !smallScreen
-                                    ? AppDimensions.width10(context) * 14.1
-                                    : AppDimensions.width10(context) * 13.5,
                                 height: !smallScreen
-                                    ? AppDimensions.width10(context) * 14.1
-                                    : AppDimensions.width10(context) * 13.5,
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.width10(context) * 3,
-                                    right:
-                                        AppDimensions.width10(context) * 19.0,
-                                    top: AppDimensions.height10(context) * 2.9),
+                                    ? AppDimensions.width10(context) * 13.1
+                                    : AppDimensions.width10(context) * 12.5,
+                                width: !smallScreen
+                                    ? AppDimensions.width10(context) * 13.1
+                                    : AppDimensions.width10(context) * 12.5,
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                        width: 2,
-                                        color: selectAll == true
-                                            ? Colors.white
-                                            : Colors.transparent)),
-                                padding: EdgeInsets.all(
-                                    AppDimensions.width10(context) * 0.5),
-                                child: Container(
-                                  height: !smallScreen
-                                      ? AppDimensions.width10(context) * 13.1
-                                      : AppDimensions.width10(context) * 12.5,
-                                  width: !smallScreen
-                                      ? AppDimensions.width10(context) * 13.1
-                                      : AppDimensions.width10(context) * 12.5,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  0.1,
-                                          color: Colors.white),
-                                      gradient: const LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Color(0xffBE3FC6),
-                                            Color(0xff642445)
-                                          ])),
-                                  child: Center(
-                                    child: Text(
-                                      'All goals',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.6,
-                                          fontWeight: FontWeight.w500),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              width: AppDimensions.width10(context) * 12.4,
-                              height: AppDimensions.height10(context) * 2.4,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensions.width10(context) * 21.2,
-                                  left: AppDimensions.width10(context) * 2.8,
-                                  top: AppDimensions.height10(context) * 2.0),
-                              child: Center(
-                                child: Text(
-                                  'Active Goals',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.font10(context) * 2.0,
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                  left: !smallScreen
-                                      ? AppDimensions.width10(context) * 5
-                                      : AppDimensions.width10(context) * 6,
-                                  top: AppDimensions.height10(context) * 1.0,
-                                  right: AppDimensions.width10(context) * 3,
-                                  bottom:
-                                      AppDimensions.height10(context) * 2.0),
-                              child: GridView.builder(
-                                  shrinkWrap: true,
-                                  padding: EdgeInsets.zero,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    childAspectRatio:
-                                        3.5 / 3, // Two items in each row
-
-                                    mainAxisSpacing: 9.0,
-                                    crossAxisSpacing: 3,
-                                  ),
-                                  itemCount: active.length,
-                                  itemBuilder: ((context, index) {
-                                    return AnimatedScaleButton(
-                                      onTap: () {
-                                        if (widget.route != 'details') {
-                                          setState(() {
-                                            if (selectedIndices
-                                                .contains(index)) {
-                                              multiGoals
-                                                  .remove(active[index]['id']);
-                                              selectedIndices.remove(index);
-                                            } else {
-                                              selectedIndices.add(index);
-                                              multiGoals
-                                                  .add(active[index]['id']);
-                                            }
-                                          });
-
-                                          setState(() {
-                                            selectAll = false;
-                                          });
-                                        }
-                                      },
-                                      child: Container(
-                                        margin: EdgeInsets.only(
-                                            right: !smallScreen
-                                                ? AppDimensions.width10(
-                                                        context) *
-                                                    2.5
-                                                : AppDimensions.width10(
-                                                        context) *
-                                                    3),
-                                        height: selectedIndices
-                                                    .contains(index) ||
-                                                selectAll == true
-                                            ? AppDimensions.height10(context) *
-                                                14.1
-                                            : AppDimensions.height10(context) *
-                                                13.1,
-                                        width: selectedIndices
-                                                    .contains(index) ||
-                                                selectAll == true
-                                            ? AppDimensions.width10(context) *
-                                                14.1
-                                            : AppDimensions.width10(context) *
-                                                13.1,
-                                        padding: EdgeInsets.all(
+                                        width:
                                             AppDimensions.width10(context) *
-                                                0.8),
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                              width: selectedIndices
-                                                          .contains(index) ||
-                                                      selectAll == true
-                                                  ? AppDimensions.width10(
-                                                          context) *
-                                                      0.2
-                                                  : 0,
-                                              color: selectedIndices
-                                                          .contains(index) ||
-                                                      selectAll == true
-                                                  ? Colors.white
-                                                  : Colors.transparent),
-                                        ),
-                                        child: Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  13.1,
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  13.1,
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: AppDimensions.width10(
-                                                      context) *
-                                                  0.8),
-                                          // margin: EdgeInsets.only(
-                                          //   right:
-                                          //       AppDimensions.height10(context) * 4.5,
-                                          // ),
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              border: Border.all(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      0.1,
-                                                  color: Colors.white),
-                                              gradient: const LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                    Color(0xffBE3FC6),
-                                                    Color(0xff642445)
-                                                  ])),
-                                          child: Center(
-                                            child: Text(
-                                              active[index]['name'],
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.6,
-                                                  fontWeight: FontWeight.w500),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  })),
-                            ),
-                            Container(
-                              width: AppDimensions.width10(context) * 13.7,
-                              height: AppDimensions.height10(context) * 2.4,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensions.width10(context) * 19.5,
-                                  left: AppDimensions.width10(context) * 2.8),
-                              child: Center(
-                                child: Text(
-                                  'Inactive Goals',
-                                  style: TextStyle(
-                                      fontSize:
-                                          AppDimensions.font10(context) * 2.0,
-                                      fontWeight: FontWeight.w600,
-                                      height: 1.2,
-                                      color: Colors.white),
+                                                0.1,
+                                        color: Colors.white),
+                                    gradient: const LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          Color(0xffBE3FC6),
+                                          Color(0xff642445)
+                                        ])),
+                                child: Center(
+                                  child: Text(
+                                    'All goals',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize:
+                                            AppDimensions.font10(context) *
+                                                1.6,
+                                        fontWeight: FontWeight.w500),
+                                  ),
                                 ),
                               ),
                             ),
-                            Container(
-                              margin: EdgeInsets.only(
-                                  left: !smallScreen
-                                      ? AppDimensions.width10(context) * 5
-                                      : AppDimensions.width10(context) * 6,
-                                  top: AppDimensions.height10(context) * 1.0,
-                                  right: AppDimensions.width10(context) * 3,
-                                  bottom:
-                                      AppDimensions.height10(context) * 2.0),
-                              child: GridView.builder(
-                                  shrinkWrap: true,
-                                  padding: EdgeInsets.zero,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  gridDelegate:
-                                      const SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    childAspectRatio:
-                                        3.5 / 3, // Two items in each row
-
-                                    mainAxisSpacing: 9.0,
-                                    crossAxisSpacing: 3,
-                                  ),
-                                  itemCount: inActive.length,
-                                  itemBuilder: ((context, index) {
-                                    return AnimatedScaleButton(
-                                      onTap: () {
-                                        if (widget.route != 'details') {
-                                          setState(() {
-                                            if (selectedInActiveIndices
-                                                .contains(index)) {
-                                              multiGoals.remove(
-                                                  inActive[index]['id']);
-                                              selectedInActiveIndices
-                                                  .remove(index);
-                                            } else {
-                                              multiGoals
-                                                  .add(inActive[index]['id']);
-                                              selectedInActiveIndices
-                                                  .add(index);
-                                            }
-                                          });
-                                          setState(() {
-                                            selectAll = false;
-                                          });
-                                        }
-                                      },
-                                      child: Container(
-                                        margin: EdgeInsets.only(
-                                            right: !smallScreen
-                                                ? AppDimensions.width10(
-                                                        context) *
-                                                    2.5
-                                                : AppDimensions.width10(
-                                                        context) *
-                                                    3),
-                                        height: selectedInActiveIndices
-                                                    .contains(index) ||
-                                                selectAll == true
-                                            ? AppDimensions.height10(context) *
-                                                14.1
-                                            : AppDimensions.height10(context) *
-                                                13.1,
-                                        width: selectedInActiveIndices
-                                                    .contains(index) ||
-                                                selectAll == true
-                                            ? AppDimensions.width10(context) *
-                                                14.1
-                                            : AppDimensions.width10(context) *
-                                                13.1,
-                                        padding: EdgeInsets.all(
-                                            AppDimensions.height10(context) *
-                                                0.8),
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                              width: selectedInActiveIndices
-                                                          .contains(index) ||
-                                                      selectAll == true
-                                                  ? AppDimensions.width10(
-                                                          context) *
-                                                      0.2
-                                                  : 0,
-                                              color: selectedInActiveIndices
-                                                          .contains(index) ||
-                                                      selectAll == true
-                                                  ? Colors.white
-                                                  : Colors.transparent),
-                                        ),
-                                        child: Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  13.1,
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  13.1,
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: AppDimensions.width10(
-                                                      context) *
-                                                  1.2),
-                                          // margin: EdgeInsets.only(
-                                          //   right: AppDimensions.width10(context) *
-                                          //       4.5,
-                                          // ),
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              border: Border.all(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      0.1,
-                                                  color: Colors.white),
-                                              gradient: const LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                    Color(0xffBE3FC6),
-                                                    Color(0xff642445)
-                                                  ])),
-                                          child: Center(
-                                            child: Text(
-                                              inActive[index]['name'],
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.6,
-                                                  fontWeight: FontWeight.w500),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  })),
+                          ),
+                          Container(
+                            width: AppDimensions.width10(context) * 12.4,
+                            height: AppDimensions.height10(context) * 2.4,
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.width10(context) * 21.2,
+                                left: AppDimensions.width10(context) * 2.8,
+                                top: AppDimensions.height10(context) * 2.0),
+                            child: Center(
+                              child: Text(
+                                'Active Goals',
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.font10(context) * 2.0,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white),
+                              ),
                             ),
-                            SizedBox(
-                              height: AppDimensions.height10(context) * 2,
-                            ),
-                            widget.data_saved
-                                ? widget.route == 'details'
-                                    ? Container()
-                                    : Container(
-                                        width: AppDimensions.width10(context) *
-                                            34.2,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                5.0,
-                                        margin: EdgeInsets.only(
-                                            left: AppDimensions.height10(
-                                                    context) *
-                                                3.0,
-                                            right: AppDimensions.height10(
-                                                    context) *
-                                                3.0,
-                                            bottom: AppDimensions.height10(
-                                                    context) *
-                                                2.6),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            AnimatedScaleButton(
-                                              onTap: () {
-                                                multiGoals.clear();
-                                                selectedGoals.clear();
-                                                selectedInActiveIndices.clear();
-                                                selectedIndices.clear();
-                                                setState(() {
-                                                  selectAll = false;
-                                                });
-                                              },
-                                              child: Container(
-                                                width: AppDimensions.width10(
-                                                        context) *
-                                                    12.8,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    5.0,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.transparent,
-                                                  border: Border.all(
-                                                      width: 1,
-                                                      color: const Color(
-                                                              0xFFFFFFFF)
-                                                          .withOpacity(0.5)),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              5.0),
-                                                ),
-                                                child: Center(
-                                                    child: Text(
-                                                  'Reset',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              1.6,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color: selectAll ==
-                                                                  true ||
-                                                              multiGoals
-                                                                  .isNotEmpty
-                                                          ? Colors.white
-                                                          : Colors.white
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                )),
-                                              ),
-                                            ),
-                                            AnimatedScaleButton(
-                                              onTap: () {
-                                                if (selectAll == true ||
-                                                    multiGoals.isNotEmpty) {
-                                                  if (selectAll == true) {
-                                                    saveGoalsToSharedPreferences(
-                                                        allgoalsSelected);
-                                                    widget.route ==
-                                                            'photo_create'
-                                                        ? Navigator.push(
-                                                            context,
-                                                            FadePageRoute(
-                                                                page:
-                                                                    const photo_info(
-                                                              edit_details:
-                                                                  false,
-                                                              image_detals:
-                                                                  false,
-                                                              image_save: false,
-                                                              image_create:
-                                                                  false,
-                                                            )),
-                                                          )
-                                                        : widget.route ==
-                                                                'video_create'
-                                                            ? Navigator.push(
-                                                                context,
-                                                                FadePageRoute(
-                                                                    page: const video_info(
-                                                                        link_state:
-                                                                            false)),
-                                                              )
-                                                            : widget.route ==
-                                                                    'note_create'
-                                                                ? Navigator
-                                                                    .push(
-                                                                    context,
-                                                                    FadePageRoute(
-                                                                        page:
-                                                                            const note_info(
-                                                                      note_saved:
-                                                                          true,
-                                                                      type_switch:
-                                                                          1,
-                                                                    )),
-                                                                  )
-                                                                : widget.route ==
-                                                                        'note_saved'
-                                                                    ? Navigator
-                                                                        .push(
-                                                                        context,
-                                                                        FadePageRoute(
-                                                                            page:
-                                                                                const noteSaved()),
-                                                                      )
-                                                                    : widget.route ==
-                                                                            'note_link'
-                                                                        ? Navigator
-                                                                            .push(
-                                                                            context,
-                                                                            FadePageRoute(
-                                                                                page: const link_info(
-                                                                              link_state: false,
-                                                                            )),
-                                                                          )
-                                                                        : Navigator
-                                                                            .push(
-                                                                            context,
-                                                                            FadePageRoute(page: const inspiration_type()),
-                                                                          );
-                                                  } else {
-                                                    saveGoalsToSharedPreferences(
-                                                        multiGoals);
-
-                                                    widget.route ==
-                                                            'photo_create'
-                                                        ? Navigator.push(
-                                                            context,
-                                                            FadePageRoute(
-                                                                page:
-                                                                    const photo_info(
-                                                              edit_details:
-                                                                  false,
-                                                              image_detals:
-                                                                  true,
-                                                              image_save: false,
-                                                              image_create:
-                                                                  false,
-                                                            )),
-                                                          )
-                                                        : widget.route ==
-                                                                'video_create'
-                                                            ? Navigator.push(
-                                                                context,
-                                                                FadePageRoute(
-                                                                    page:
-                                                                        const video_info(
-                                                                  link_state:
-                                                                      false,
-                                                                )),
-                                                              )
-                                                            : widget.route ==
-                                                                    'note_create'
-                                                                ? Navigator
-                                                                    .push(
-                                                                    context,
-                                                                    FadePageRoute(
-                                                                        page:
-                                                                            const note_info(
-                                                                      note_saved:
-                                                                          true,
-                                                                      type_switch:
-                                                                          1,
-                                                                    )),
-                                                                  )
-                                                                : widget.route ==
-                                                                        'note_saved'
-                                                                    ? Navigator
-                                                                        .push(
-                                                                        context,
-                                                                        FadePageRoute(
-                                                                            page:
-                                                                                const noteSaved()),
-                                                                      )
-                                                                    : widget.route ==
-                                                                            'note_link'
-                                                                        ? Navigator
-                                                                            .push(
-                                                                            context,
-                                                                            FadePageRoute(
-                                                                                page: const link_info(
-                                                                              link_state: false,
-                                                                            )),
-                                                                          )
-                                                                        : widget.route ==
-                                                                                'edit'
-                                                                            ? Navigator.push(
-                                                                                context,
-                                                                                FadePageRoute(
-                                                                                    page: videoEdit(
-                                                                                  note: widget.note,
-                                                                                  context: widget.context,
-                                                                                  updateData: true,
-                                                                                )),
-                                                                              )
-                                                                            : widget.route == 'photo_edit'
-                                                                                ? Navigator.push(
-                                                                                    context,
-                                                                                    FadePageRoute(
-                                                                                        page: const photo_Edit(
-                                                                                      updateData: true,
-                                                                                    )),
-                                                                                  )
-                                                                                : Navigator.push(
-                                                                                    context,
-                                                                                    FadePageRoute(page: const inspiration_type()),
-                                                                                  );
-                                                  }
-                                                }
-                                              },
-                                              child: Container(
-                                                width: AppDimensions.width10(
-                                                        context) *
-                                                    20.4,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    5.0,
-                                                decoration: BoxDecoration(
-                                                  gradient: LinearGradient(
-                                                    begin: Alignment.topCenter,
-                                                    end: Alignment.bottomCenter,
-                                                    colors: [
-                                                      selectAll == true ||
-                                                              multiGoals
-                                                                  .isNotEmpty
-                                                          ? const Color(
-                                                              0xffFCC10D)
-                                                          : const Color(
-                                                                  0xffFCC10D)
-                                                              .withOpacity(0.5),
-                                                      selectAll == true ||
-                                                              multiGoals
-                                                                  .isNotEmpty
-                                                          ? const Color(
-                                                              0xffFDA210)
-                                                          : const Color(
-                                                                  0xffFDA210)
-                                                              .withOpacity(0.5),
-                                                    ],
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              5.0),
-                                                ),
-                                                child: Center(
-                                                    child: Text(
-                                                  'Save',
-                                                  textAlign: TextAlign.center,
-                                                  style: TextStyle(
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              1.6,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      color: selectAll ==
-                                                                  true ||
-                                                              multiGoals
-                                                                  .isNotEmpty
-                                                          ? Colors.white
-                                                          : Colors.white
-                                                              .withOpacity(
-                                                                  0.5)),
-                                                )),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      )
-                                : AnimatedScaleButton(
-                                    onTap: () async {
-                                      if (selectAll == true ||
-                                          multiGoals.isNotEmpty) {
-                                        if (selectAll == true) {
-                                          saveGoalsToSharedPreferences(
-                                              allgoalsSelected);
-                                          widget.route == 'photo_create'
-                                              ? Navigator.push(
-                                                  context,
-                                                  FadePageRoute(
-                                                      page: const photo_info(
-                                                    edit_details: false,
-                                                    image_detals: false,
-                                                    image_save: false,
-                                                    image_create: false,
-                                                  )),
-                                                )
-                                              : widget.route == 'video_create'
-                                                  ? Navigator.push(
-                                                      context,
-                                                      FadePageRoute(
-                                                          page:
-                                                              const video_info(
-                                                                  link_state:
-                                                                      false)),
-                                                    )
-                                                  : widget.route ==
-                                                          'note_create'
-                                                      ? Navigator.push(
-                                                          context,
-                                                          FadePageRoute(
-                                                              page:
-                                                                  const note_info(
-                                                            note_saved: true,
-                                                            type_switch: 1,
-                                                          )),
-                                                        )
-                                                      : widget.route ==
-                                                              'note_saved'
-                                                          ? Navigator.push(
-                                                              context,
-                                                              FadePageRoute(
-                                                                  page:
-                                                                      const photo_Edit(
-                                                                updateData:
-                                                                    true,
-                                                              )),
-                                                            )
-                                                          : widget.route ==
-                                                                  'note_saved_video'
-                                                              ? Navigator.push(
-                                                                  context,
-                                                                  FadePageRoute(
-                                                                      page:
-                                                                          videoEdit(
-                                                                    note: widget
-                                                                        .note,
-                                                                    context: widget
-                                                                        .context,
-                                                                    updateData:
-                                                                        true,
-                                                                  )),
-                                                                )
-                                                              : widget.route ==
-                                                                      'edit'
-                                                                  ? Navigator
-                                                                      .push(
-                                                                      context,
-                                                                      FadePageRoute(
-                                                                          page:
-                                                                              videoEdit(
-                                                                        context:
-                                                                            widget.context,
-                                                                        note: widget
-                                                                            .note,
-                                                                        updateData:
-                                                                            true,
-                                                                      )),
-                                                                    )
-                                                                  : widget.route ==
-                                                                          'note_link'
-                                                                      ? Navigator
-                                                                          .push(
-                                                                          context,
-                                                                          FadePageRoute(
-                                                                              page: const link_info(
-                                                                            link_state:
-                                                                                false,
-                                                                          )),
-                                                                        )
-                                                                      : widget.route ==
-                                                                              'details'
-                                                                          ? Navigator
-                                                                              .push(
-                                                                              context,
-                                                                              FadePageRoute(page: const view_details()),
-                                                                            )
-                                                                          : Navigator
-                                                                              .push(
-                                                                              context,
-                                                                              FadePageRoute(page: const inspiration_type()),
-                                                                            );
-                                        } else {
-                                          saveGoalsToSharedPreferences(
-                                              multiGoals);
-
-                                          widget.route == 'photo_create'
-                                              ? Navigator.push(
-                                                  context,
-                                                  FadePageRoute(
-                                                      page: const photo_info(
-                                                    edit_details: false,
-                                                    image_detals: false,
-                                                    image_save: false,
-                                                    image_create: false,
-                                                  )),
-                                                )
-                                              : widget.route == 'details'
-                                                  ? Navigator.push(
-                                                      context,
-                                                      FadePageRoute(
-                                                          page:
-                                                              const view_details()),
-                                                    )
-                                                  : widget.route ==
-                                                          'video_create'
-                                                      ? Navigator.push(
-                                                          context,
-                                                          FadePageRoute(
-                                                              page: const video_info(
-                                                                  link_state:
-                                                                      false)),
-                                                        )
-                                                      : widget.route ==
-                                                              'note_create'
-                                                          ? Navigator.push(
-                                                              context,
-                                                              FadePageRoute(
-                                                                  page:
-                                                                      const note_info(
-                                                                note_saved:
-                                                                    true,
-                                                                type_switch: 1,
-                                                              )),
-                                                            )
-                                                          : widget.route ==
-                                                                  'note_saved'
-                                                              ? Navigator.push(
-                                                                  context,
-                                                                  FadePageRoute(
-                                                                      page:
-                                                                          const photo_Edit(
-                                                                    updateData:
-                                                                        true,
-                                                                  )),
-                                                                )
-                                                              : widget.route ==
-                                                                      'note_saved_video'
-                                                                  ? Navigator
-                                                                      .push(
-                                                                      context,
-                                                                      FadePageRoute(
-                                                                          page:
-                                                                              videoEdit(
-                                                                        note: widget
-                                                                            .note,
-                                                                        context:
-                                                                            widget.context,
-                                                                        updateData:
-                                                                            true,
-                                                                      )),
-                                                                    )
-                                                                  : widget.route ==
-                                                                          'note_link'
-                                                                      ? Navigator
-                                                                          .push(
-                                                                          context,
-                                                                          FadePageRoute(
-                                                                              page: const link_info(
-                                                                            link_state:
-                                                                                false,
-                                                                          )),
-                                                                        )
-                                                                      : Navigator
-                                                                          .push(
-                                                                          context,
-                                                                          FadePageRoute(
-                                                                              page: const inspiration_type()),
-                                                                        );
-                                        }
-                                      }
-                                      if (widget.update == false) {
-                                        final SharedPreferences prefs =
-                                            await _prefs;
-                                        await prefs.setString(
-                                            'inspiration_saved_route',
-                                            'goals_saved');
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                                left: !smallScreen
+                                    ? AppDimensions.width10(context) * 5
+                                    : AppDimensions.width10(context) * 6,
+                                top: AppDimensions.height10(context) * 1.0,
+                                right: AppDimensions.width10(context) * 3,
+                                bottom:
+                                    AppDimensions.height10(context) * 2.0),
+                            child: GridView.builder(
+                                shrinkWrap: true,
+                                padding: EdgeInsets.zero,
+                                physics: const NeverScrollableScrollPhysics(),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio:
+                                      3.5 / 3, // Two items in each row
+                                  
+                                  mainAxisSpacing: 9.0,
+                                  crossAxisSpacing: 3,
+                                ),
+                                itemCount: active.length,
+                                itemBuilder: ((context, index) {
+                                  return AnimatedScaleButton(
+                                    onTap: () {
+                                      if (widget.route != 'details') {
+                                        setState(() {
+                                          if (selectedIndices
+                                              .contains(index)) {
+                                            multiGoals
+                                                .remove(active[index]['id']);
+                                            selectedIndices.remove(index);
+                                          } else {
+                                            selectedIndices.add(index);
+                                            multiGoals
+                                                .add(active[index]['id']);
+                                          }
+                                        });
+                                  
+                                        setState(() {
+                                          selectAll = false;
+                                        });
                                       }
                                     },
                                     child: Container(
-                                      width:
-                                          AppDimensions.width10(context) * 25.4,
-                                      height:
-                                          AppDimensions.height10(context) * 5.0,
                                       margin: EdgeInsets.only(
-                                          left: AppDimensions.width10(context) *
-                                              8,
-                                          right:
-                                              AppDimensions.width10(context) *
-                                                  8,
-                                          bottom:
-                                              AppDimensions.height10(context) *
-                                                  2.6),
+                                          right: !smallScreen
+                                              ? AppDimensions.width10(
+                                                      context) *
+                                                  2.5
+                                              : AppDimensions.width10(
+                                                      context) *
+                                                  3),
+                                      height: selectedIndices
+                                                  .contains(index) ||
+                                              selectAll == true
+                                          ? AppDimensions.height10(context) *
+                                              14.1
+                                          : AppDimensions.height10(context) *
+                                              13.1,
+                                      width: selectedIndices
+                                                  .contains(index) ||
+                                              selectAll == true
+                                          ? AppDimensions.width10(context) *
+                                              14.1
+                                          : AppDimensions.width10(context) *
+                                              13.1,
+                                      padding: EdgeInsets.all(
+                                          AppDimensions.width10(context) *
+                                              0.8),
                                       decoration: BoxDecoration(
-                                        gradient: LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            selectAll == true ||
-                                                    multiGoals.isNotEmpty
-                                                ? const Color(0xffFCC10D)
-                                                : const Color(0xffFCC10D)
-                                                    .withOpacity(0.5),
-                                            selectAll == true ||
-                                                    multiGoals.isNotEmpty
-                                                ? const Color(0xffFDA210)
-                                                : const Color(0xffFDA210)
-                                                    .withOpacity(0.5),
-                                          ],
-                                        ),
-                                        borderRadius: BorderRadius.circular(
-                                            AppDimensions.height10(context) *
-                                                5.0),
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                            width: selectedIndices
+                                                        .contains(index) ||
+                                                    selectAll == true
+                                                ? AppDimensions.width10(
+                                                        context) *
+                                                    0.2
+                                                : 0,
+                                            color: selectedIndices
+                                                        .contains(index) ||
+                                                    selectAll == true
+                                                ? Colors.white
+                                                : Colors.transparent),
                                       ),
-                                      child: Center(
+                                      child: Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                13.1,
+                                        width:
+                                            AppDimensions.width10(context) *
+                                                13.1,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: AppDimensions.width10(
+                                                    context) *
+                                                0.8),
+                                        // margin: EdgeInsets.only(
+                                        //   right:
+                                        //       AppDimensions.height10(context) * 4.5,
+                                        // ),
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    0.1,
+                                                color: Colors.white),
+                                            gradient: const LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Color(0xffBE3FC6),
+                                                  Color(0xff642445)
+                                                ])),
+                                        child: Center(
                                           child: Text(
-                                        selectAll == true
-                                            ? '(${allgoalsSelected.length}/${goals.length} goals selected) Next'
-                                            : '(${multiGoals.length}/${goals.length} goals selected) Next',
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                            fontWeight: FontWeight.w600,
-                                            color: Colors.white),
-                                      )),
+                                            active[index]['name'],
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize:
+                                                    AppDimensions.font10(
+                                                            context) *
+                                                        1.6,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                      ),
                                     ),
-                                  )
-                          ]),
-                    ),
-                  ]),
-                )
+                                  );
+                                })),
+                          ),
+                          Container(
+                            width: AppDimensions.width10(context) * 13.7,
+                            height: AppDimensions.height10(context) * 2.4,
+                            margin: EdgeInsets.only(
+                                right: AppDimensions.width10(context) * 19.5,
+                                left: AppDimensions.width10(context) * 2.8),
+                            child: Center(
+                              child: Text(
+                                'Inactive Goals',
+                                style: TextStyle(
+                                    fontSize:
+                                        AppDimensions.font10(context) * 2.0,
+                                    fontWeight: FontWeight.w600,
+                                    height: 1.2,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                                left: !smallScreen
+                                    ? AppDimensions.width10(context) * 5
+                                    : AppDimensions.width10(context) * 6,
+                                top: AppDimensions.height10(context) * 1.0,
+                                right: AppDimensions.width10(context) * 3,
+                                bottom:
+                                    AppDimensions.height10(context) * 2.0),
+                            child: GridView.builder(
+                                shrinkWrap: true,
+                                padding: EdgeInsets.zero,
+                                physics: const NeverScrollableScrollPhysics(),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio:
+                                      3.5 / 3, // Two items in each row
+                                  
+                                  mainAxisSpacing: 9.0,
+                                  crossAxisSpacing: 3,
+                                ),
+                                itemCount: inActive.length,
+                                itemBuilder: ((context, index) {
+                                  return AnimatedScaleButton(
+                                    onTap: () {
+                                      if (widget.route != 'details') {
+                                        setState(() {
+                                          if (selectedInActiveIndices
+                                              .contains(index)) {
+                                            multiGoals.remove(
+                                                inActive[index]['id']);
+                                            selectedInActiveIndices
+                                                .remove(index);
+                                          } else {
+                                            multiGoals
+                                                .add(inActive[index]['id']);
+                                            selectedInActiveIndices
+                                                .add(index);
+                                          }
+                                        });
+                                        setState(() {
+                                          selectAll = false;
+                                        });
+                                      }
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.only(
+                                          right: !smallScreen
+                                              ? AppDimensions.width10(
+                                                      context) *
+                                                  2.5
+                                              : AppDimensions.width10(
+                                                      context) *
+                                                  3),
+                                      height: selectedInActiveIndices
+                                                  .contains(index) ||
+                                              selectAll == true
+                                          ? AppDimensions.height10(context) *
+                                              14.1
+                                          : AppDimensions.height10(context) *
+                                              13.1,
+                                      width: selectedInActiveIndices
+                                                  .contains(index) ||
+                                              selectAll == true
+                                          ? AppDimensions.width10(context) *
+                                              14.1
+                                          : AppDimensions.width10(context) *
+                                              13.1,
+                                      padding: EdgeInsets.all(
+                                          AppDimensions.height10(context) *
+                                              0.8),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                            width: selectedInActiveIndices
+                                                        .contains(index) ||
+                                                    selectAll == true
+                                                ? AppDimensions.width10(
+                                                        context) *
+                                                    0.2
+                                                : 0,
+                                            color: selectedInActiveIndices
+                                                        .contains(index) ||
+                                                    selectAll == true
+                                                ? Colors.white
+                                                : Colors.transparent),
+                                      ),
+                                      child: Container(
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                13.1,
+                                        width:
+                                            AppDimensions.width10(context) *
+                                                13.1,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: AppDimensions.width10(
+                                                    context) *
+                                                1.2),
+                                        // margin: EdgeInsets.only(
+                                        //   right: AppDimensions.width10(context) *
+                                        //       4.5,
+                                        // ),
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    0.1,
+                                                color: Colors.white),
+                                            gradient: const LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Color(0xffBE3FC6),
+                                                  Color(0xff642445)
+                                                ])),
+                                        child: Center(
+                                          child: Text(
+                                            inActive[index]['name'],
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                color: Colors.white,
+                                                fontSize:
+                                                    AppDimensions.font10(
+                                                            context) *
+                                                        1.6,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                })),
+                          ),
+                          SizedBox(
+                            height: AppDimensions.height10(context) * 2,
+                          ),
+                                  
+                        ]),
+                  ),
+                ),
+              ])
               : const Center(
                   child: SpinKitFadingCircle(
                     color: Color(0xFFB1B8FF),

@@ -195,15 +195,13 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 7.5,
                           left: AppDimensions.width10(context) * 2),
-                      child: Column(
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            margin: EdgeInsets.only(
-                                right: AppDimensions.width10(context) * 2.0),
                             child: GradientText(
-                              'My current ',
+                              'My inspirations ',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 fontSize: AppDimensions.font10(context) * 3.0,
@@ -215,47 +213,26 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
                               ],
                             ),
                           ),
-                          Container(
-                            margin: EdgeInsets.only(
-                                right: AppDimensions.width10(context) * 2.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                GradientText(
-                                  'inspiration ',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 3.0,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                  colors: const [
-                                    Color(0xffFA9934),
-                                    Color(0xffEDD15E)
-                                  ],
-                                ),
-                                AnimatedScaleButton(
-                                  onTap: () {
-                                    //hurdleSheet(context);
-                                    journeyBottomSheet(
-                                        context,
-                                        AppText().inspirationTitle,
-                                        AppText().inspirationBottomSheedBody,
-                                        "");
-                                  },
-                                  child: Container(
-                                      width:
-                                          AppDimensions.width10(context) * 3.0,
-                                      height:
-                                          AppDimensions.height10(context) * 3.0,
-                                      decoration: const BoxDecoration(
-                                          image: DecorationImage(
-                                              image: AssetImage(
-                                                  'assets/images/ic_info_outline_orange.webp')))),
-                                ),
-                              ],
-                            ),
+                          AnimatedScaleButton(
+                            onTap: () {
+                              //hurdleSheet(context);
+                              journeyBottomSheet(
+                                  context,
+                                  AppText().inspirationTitle,
+                                  AppText().inspirationBottomSheedBody,
+                                  "");
+                            },
+                            child: Container(
+                                width:
+                                AppDimensions.width10(context) * 3.0,
+                                height:
+                                AppDimensions.height10(context) * 3.0,
+                                decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage(
+                                            'assets/images/ic_info_outline_orange.webp')))),
                           ),
+
                         ],
                       )),
                   SizedBox(

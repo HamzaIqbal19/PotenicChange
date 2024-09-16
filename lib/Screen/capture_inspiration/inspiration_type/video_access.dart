@@ -489,6 +489,7 @@ class _video_infoState extends State<video_info> {
                           controller: statement,
                           maxLines: null,
                           minLines: null,
+                          maxLength: 10000,
                           style: TextStyle(
                               fontSize: AppDimensions.font10(context) * 1.8,
                               fontWeight: FontWeight.w500,
@@ -519,7 +520,7 @@ class _video_infoState extends State<video_info> {
                         margin: EdgeInsets.only(
                             left: AppDimensions.width10(context) * 2.0,
                             right: AppDimensions.width10(context) * 8.9,
-                            top: AppDimensions.height10(context) * 3.9),
+                            top: AppDimensions.height10(context) * 1.9),
                         child: Text(
                           'Tags (optional)',
                           style: TextStyle(
@@ -646,7 +647,6 @@ class _video_infoState extends State<video_info> {
                             children: [
                               Container(
                                 width: AppDimensions.width10(context) * 23.9,
-                                height: AppDimensions.height10(context) * 2.2,
                                 margin: EdgeInsets.only(
                                     left:
                                         AppDimensions.width10(context) * 1.99),

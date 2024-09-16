@@ -125,6 +125,8 @@ class _practice_summaryState extends State<practice_summary> {
         DateTime date1 = DateTime.parse(recordedDate);
         setState(() {
           differenceInDays1 = currentDate.difference(date1).inDays;
+
+          print("Difference in days $differenceInDays1");
         });
       }
     });
@@ -1183,15 +1185,11 @@ class _practice_summaryState extends State<practice_summary> {
                                                                   FadePageRoute(
                                                                       page:
                                                                       ViewDashboard(
-                                                                    missed:
-                                                                        false,
+                                                                    missed: false,
                                                                     name: '',
-                                                                    update:
-                                                                        false,
-                                                                    helpfulTips:
-                                                                        false,
-                                                                    record:
-                                                                        differenceInDays1,
+                                                                    update: false,
+                                                                    helpfulTips: false,
+                                                                    record: differenceInDays1,
                                                                   )));
                                                             } else {}
                                                           });
@@ -1276,27 +1274,21 @@ class _practice_summaryState extends State<practice_summary> {
                               ),
                               AnimatedScaleButton(
                                 onTap: () {
-                                  // Navigator.push(
-                                  //     context,
-                                  //     FadePageRoute2(true,
-                                  //         exitPage: practice_summary(
-                                  //           view: widget.view,
-                                  //         ),
-                                  //         enterPage: ViewDashboard(
-                                  //           missed: false,
-                                  //           name: pracName,
-                                  //           update: true,
-                                  //           helpfulTips: false,
-                                  //           record: differenceInDays1,
-                                  //         )));
+                                  Navigator.push(
+                                      context,
+                                      FadePageRoute(
+                                          page: ViewDashboard(
+                                            missed: false,
+                                            name: pracName,
+                                            update: true,
+                                            helpfulTips: false,
+                                            record: differenceInDays1,
+                                          )));
                                   _checkDialogDisplay(context, goalName,
                                       identity, color, pracColor, pracName);
                                   if (report == true) {
                                     activeReport(context, goalName, pracName,
                                         int.parse(color), int.parse(pracColor));
-                                  } else {
-                                    // __share_experience(context, goalName,
-                                    //     identity, color, pracColor, pracName);
                                   }
                                 },
                                 child: Container(

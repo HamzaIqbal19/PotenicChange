@@ -417,67 +417,12 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                           SizedBox(
                             width: AppDimensions.width10(context) * 1.4,
                           ),
-                          AnimatedScaleButton(
-                            onTap: () {
-                              signupSheet(
-                                  context, "Introduction", "OnBoarding", admin);
-                            },
-                            child: Container(
-                              height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.width10(context) * 5,
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                border: Border.all(color: Colors.transparent),
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(40.0)),
-                              ),
-                              child: Center(
-                                child: Image(
-                                  // color: Colors.orange,
-                                  image: const AssetImage(
-                                      "assets/images/Moreactions.webp"),
-                                  height: AppDimensions.height10(context) * 5,
-                                  width: AppDimensions.width10(context) * 5,
-                                ),
-                              ),
-                            ),
-                          ),
+
                         ],
                       )
                     : Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SignUpPage(),
-                                ),
-                              );
-                            },
-                            child: Container(
-                              height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.width10(context) * 13,
-                              decoration: BoxDecoration(
-                                color: const Color(0xFFF5F5F5),
-                                border: Border.all(color: Colors.white),
-                                borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10(context) * 5.0)),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  "I’m new here",
-                                  style: TextStyle(
-                                    color: const Color(0xFF8C648A),
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.8,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
                           GestureDetector(
                             onTap: () {
                               Navigator.push(
@@ -506,31 +451,6 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                         AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w600,
                                   ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              signupSheet(
-                                  context, "Introduction", "OnBoarding", admin);
-                            },
-                            child: Container(
-                              height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.width10(context) * 5,
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                border: Border.all(color: Colors.transparent),
-                                borderRadius: const BorderRadius.all(
-                                    Radius.circular(40.0)),
-                              ),
-                              child: Center(
-                                child: Image(
-                                  // color: Colors.orange,
-                                  image: const AssetImage(
-                                      "assets/images/Moreactions.webp"),
-                                  height: AppDimensions.height10(context) * 5,
-                                  width: AppDimensions.width10(context) * 5,
                                 ),
                               ),
                             ),

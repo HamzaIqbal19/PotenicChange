@@ -1034,6 +1034,7 @@ class _photo_infoState extends State<photo_info> {
                                   textCapitalization:
                                       TextCapitalization.sentences,
                                   maxLines: null,
+                                  maxLength: 10000,
                                   style: TextStyle(
                                       fontSize:
                                           AppDimensions.font10(context) * 1.8,
@@ -1069,7 +1070,7 @@ class _photo_infoState extends State<photo_info> {
                                 margin: EdgeInsets.only(
                                     left: AppDimensions.width10(context) * 2.0,
                                     right: AppDimensions.width10(context) * 8.9,
-                                    top: AppDimensions.height10(context) * 4.0),
+                                    top: AppDimensions.height10(context) * 2.0),
                                 child: Text(
                                   'Destination website (optional)',
                                   style: TextStyle(
@@ -1374,11 +1375,7 @@ class _photo_infoState extends State<photo_info> {
                                         MainAxisAlignment.spaceBetween,
                                     children: [
                                       Container(
-                                        width: AppDimensions.width10(context) *
-                                            23.9,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.2,
+                                        width: AppDimensions.width10(context) * 23.9,
                                         margin: EdgeInsets.only(
                                             left: AppDimensions.height10(
                                                     context) *

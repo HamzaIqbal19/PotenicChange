@@ -211,6 +211,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                     FadePageRouteReverse(
                       page: const practiceMenu(
                         goal_eval: false,
+                        completed: false,
                       ),
                     ),
                   );
@@ -218,9 +219,9 @@ class _PracticeReviewState extends State<PracticeReview> {
                   Navigator.pushReplacement(
                     context,
                     FadePageRouteReverse(
-                      page: const goal_menu_inactive(
-                        goal_evaluation: false,
-                        isActive: false,
+                      page: const practiceMenu(
+                        goal_eval: false,
+                        completed: false,
                       ),
                     ),
                   );
@@ -228,7 +229,10 @@ class _PracticeReviewState extends State<PracticeReview> {
                   Navigator.pushReplacement(
                     context,
                     FadePageRouteReverse(
-                      page: const menu_behaviour(),
+                      page: const practiceMenu(
+                        goal_eval: false,
+                        completed: true,
+                      ),
                     ),
                   );
                 } else if (route == 'record_session') {
