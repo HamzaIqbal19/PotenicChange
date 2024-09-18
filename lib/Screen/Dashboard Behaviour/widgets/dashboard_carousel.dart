@@ -11,7 +11,7 @@ dashboardCarousel(
   BuildContext context,
   CarouselController controller,
   dashboardData,
-  currentIndex,
+  int currentIndex,
   final ValueChanged<TwoValues<String, int>> onCountChanged,
 ) {
   DateTime currentDate = DateTime.now();
@@ -27,22 +27,10 @@ dashboardCarousel(
         carouselController: controller,
         itemCount: 15,
         itemBuilder: (context, index, realIndex) {
-          DateTime dayDate = currentDate.add(Duration(days: index - 7));
-          var currentPractices = dashboardData == null
-              ? "0/0"
-              : "${dashboardData[formatDates(dayDate.toString())]['dashBoardData']['completePractice']}/${dashboardData[formatDates(dayDate.toString())]['dashBoardData']['totalPractice']}";
-          var currentData = dashboardData == null
-              ? false
-              : dashboardData[formatDates(dayDate.toString())]['dashBoardData']
-                      ['totalPractice'] ==
-                  0;
-          var currentCompleted = dashboardData == null
-              ? "0/0"
-              : dashboardData[formatDates(dayDate.toString())]['dashBoardData']
-                          ['completePractice'] /
-                      dashboardData[formatDates(dayDate.toString())]
-                          ['dashBoardData']['totalPractice'] ==
-                  1;
+          DateTime dayDate = currentDate.add(Duration(days: index -7));
+          var currentPractices = dashboardData == null ? "0/0" : "${dashboardData[formatDates(dayDate.toString())]['dashBoardData']['completePractice']}/${dashboardData[formatDates(dayDate.toString())]['dashBoardData']['totalPractice']}";
+          var currentData = dashboardData == null ? false : dashboardData[formatDates(dayDate.toString())]['dashBoardData']['totalPractice'] == 0;
+          var currentCompleted = dashboardData == null ? "0/0" : dashboardData[formatDates(dayDate.toString())]['dashBoardData']['completePractice'] / dashboardData[formatDates(dayDate.toString())]['dashBoardData']['totalPractice'] == 1;
 
           currentItem = realIndex == currentIndex;
           if (currentDate == dayDate) {

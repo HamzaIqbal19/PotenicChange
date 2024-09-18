@@ -407,6 +407,13 @@ class _VisualisingState extends State<Visualising> {
 
     return WillPopScope(
       onWillPop: () {
+      if(route == ''){
+        Navigator.pushReplacement(
+            context,
+            FadePageRouteReverse(
+                page:
+                const view_all_goals_menu()));
+      }else{
         widget.comingFromEditScreen
             ? update == false
                 ? showAnimatedDialog(
@@ -430,7 +437,7 @@ class _VisualisingState extends State<Visualising> {
                       route: '',
                       saved: true,
                     )))
-                : Navigator.pop(context);
+                : Navigator.pop(context);}
         return Future.value(false);
       },
       child: GestureDetector(
@@ -457,208 +464,228 @@ class _VisualisingState extends State<Visualising> {
                       fit: BoxFit.contain,
                     ),
                     onPressed: () {
-                      widget.comingFromEditScreen
-                          ? update == false
-                              ? showAnimatedDialog(
-                                  animationType: DialogTransitionType.fadeScale,
-                                  curve: Curves.easeInOut,
-                                  duration: const Duration(seconds: 1),
-                                  context: context,
-                                  builder: (BuildContext context) =>
-                                      const popUpGoals())
-                              : Navigator.push(
-                                  context,
-                                  FadePageRouteReverse(
-                                      page: const StarReview(
-                                    route: 'goal',
-                                  )))
-                          : widget.saved
-                              ? Navigator.push(
-                                  context,
-                                  FadePageRouteReverse(
-                                      page: const Goal_Identity(
-                                    comingFromEditScreen: false,
-                                    route: '',
-                                    saved: true,
-                                  )))
-                              : Navigator.pop(context);
+                      if (route == '') {
+                        Navigator.pushReplacement(
+                            context,
+                            FadePageRouteReverse(
+                                page: const view_all_goals_menu()));
+                      } else {
+                        widget.comingFromEditScreen
+                            ? update == false
+                                ? showAnimatedDialog(
+                                    animationType:
+                                        DialogTransitionType.fadeScale,
+                                    curve: Curves.easeInOut,
+                                    duration: const Duration(seconds: 1),
+                                    context: context,
+                                    builder: (BuildContext context) =>
+                                        const popUpGoals())
+                                : Navigator.push(
+                                    context,
+                                    FadePageRouteReverse(
+                                        page: const StarReview(
+                                      route: 'goal',
+                                    )))
+                            : widget.saved
+                                ? Navigator.push(
+                                    context,
+                                    FadePageRouteReverse(
+                                        page: const Goal_Identity(
+                                      comingFromEditScreen: false,
+                                      route: '',
+                                      saved: true,
+                                    )))
+                                : Navigator.pop(context);
+                      }
                       // Add code for performing close action
                     },
                   ),
                 ),
                 actions: [
                   Center(
-                      child :widget.comingFromEditScreen
+                      child: widget.comingFromEditScreen
                           ? Container()
-                          :Buttons().closeButton(context,(){showDialog<String>(
-                        context: context,
-                        builder: (BuildContext context) => SizedBox(
-                          width: AppDimensions.width10(context) * 27.0,
-                          height: AppDimensions.height10(context) * 21.0,
-                          child: AlertDialog(
-                            contentPadding: EdgeInsets.zero,
-                            actionsPadding: EdgeInsets.zero,
-                            titlePadding: EdgeInsets.zero,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10(context) *
-                                        1.4)),
-                            title: Container(
-                              margin: const EdgeInsets.only(
-                                  top: 19,
-                                  right: 16,
-                                  left: 16,
-                                  bottom: 2),
-                              // height: AppDimensions.height10(context) * 2.2,
-                              width:
-                              AppDimensions.width10(context) * 23.8,
-                              child: const Text(
-                                "Exit onboarding?",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 17,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ),
-                            content: Container(
-                              margin: const EdgeInsets.only(
-                                  bottom: 19, left: 16, right: 16),
-                              height: 32,
-                              width: 238,
-                              child: const Text(
-                                "Please select from the options below",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ),
-                            actions: <Widget>[
-                              Column(
-                                children: [
-                                  FDottedLine(
-                                    color: const Color(0xFF3C3C43)
-                                        .withOpacity(0.29),
-                                    width: double.infinity,
-                                    strokeWidth: 2.0,
-                                    dottedLength: 10.0,
-                                    space: 0.7,
-                                  ),
-                                  SizedBox(
-                                    height: 42,
-                                    width: double.infinity,
-                                    // color: Colors.white,
-                                    child: TextButton(
-                                      onPressed: () async {
-                                        // updateGoalReason(goalVisualising);
-
-                                        Navigator.push(
-                                          context,
-                                          FadePageRouteReverse(
-                                            page:
-                                            const HomeScreenProgressSaved(
-                                              login: true,
-                                              route: "goalVisualising",
+                          : Buttons().closeButton(context, () {
+                              showDialog<String>(
+                                context: context,
+                                builder: (BuildContext context) => SizedBox(
+                                  width: AppDimensions.width10(context) * 27.0,
+                                  height:
+                                      AppDimensions.height10(context) * 21.0,
+                                  child: AlertDialog(
+                                    contentPadding: EdgeInsets.zero,
+                                    actionsPadding: EdgeInsets.zero,
+                                    titlePadding: EdgeInsets.zero,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(
+                                            AppDimensions.height10(context) *
+                                                1.4)),
+                                    title: Container(
+                                      margin: const EdgeInsets.only(
+                                          top: 19,
+                                          right: 16,
+                                          left: 16,
+                                          bottom: 2),
+                                      // height: AppDimensions.height10(context) * 2.2,
+                                      width:
+                                          AppDimensions.width10(context) * 23.8,
+                                      child: const Text(
+                                        "Exit onboarding?",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ),
+                                    content: Container(
+                                      margin: const EdgeInsets.only(
+                                          bottom: 19, left: 16, right: 16),
+                                      height: 32,
+                                      width: 238,
+                                      child: const Text(
+                                        "Please select from the options below",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      ),
+                                    ),
+                                    actions: <Widget>[
+                                      Column(
+                                        children: [
+                                          FDottedLine(
+                                            color: const Color(0xFF3C3C43)
+                                                .withOpacity(0.29),
+                                            width: double.infinity,
+                                            strokeWidth: 2.0,
+                                            dottedLength: 10.0,
+                                            space: 0.7,
+                                          ),
+                                          SizedBox(
+                                            height: 42,
+                                            width: double.infinity,
+                                            // color: Colors.white,
+                                            child: TextButton(
+                                              onPressed: () async {
+                                                // updateGoalReason(goalVisualising);
+                                                if (route == 'view_all_goals') {
+                                                  Navigator.pushReplacement(
+                                                      context,
+                                                      FadePageRouteReverse(
+                                                          page:
+                                                              const view_all_goals_menu()));
+                                                } else {
+                                                  Navigator.push(
+                                                    context,
+                                                    FadePageRouteReverse(
+                                                      page:
+                                                          const HomeScreenProgressSaved(
+                                                        login: true,
+                                                        route:
+                                                            "goalVisualising",
+                                                      ),
+                                                    ),
+                                                  );
+                                                  final SharedPreferences
+                                                      prefs = await _prefs;
+                                                  await prefs.setString('route',
+                                                      "goalVisualising");
+                                                }
+                                              },
+                                              child: const Text(
+                                                'Exit & save progress',
+                                                style: TextStyle(
+                                                    color: Color(0xFF007AFF),
+                                                    fontSize: 17,
+                                                    fontFamily: "Laila",
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
                                             ),
                                           ),
-                                        );
-                                        final SharedPreferences prefs =
-                                        await _prefs;
-                                        await prefs.setString(
-                                            'route', "goalVisualising");
-                                      },
-                                      child: const Text(
-                                        'Exit & save progress',
-                                        style: TextStyle(
-                                            color: Color(0xFF007AFF),
-                                            fontSize: 17,
-                                            fontFamily: "Laila",
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                    ),
-                                  ),
-                                  FDottedLine(
-                                    color: const Color(0xFF3C3C43)
-                                        .withOpacity(0.29),
-                                    width: double.infinity,
-                                    strokeWidth: 2.0,
-                                    dottedLength: 10.0,
-                                    space: 0.7,
-                                  ),
-                                  SizedBox(
-                                    height: 44,
-                                    width: double.infinity,
-                                    child: TextButton(
-                                      onPressed: () async {
-                                        if (route == 'view_all_goals') {
-                                          Navigator.pushReplacement(
-                                              context,
-                                              FadePageRouteReverse(
-                                                  page:
-                                                  const view_all_goals_menu()));
-                                        } else {
-                                          Navigator.push(
-                                            context,
-                                            FadePageRouteReverse(
-                                              page: const HomeScreen(
-                                                  login: true),
+                                          FDottedLine(
+                                            color: const Color(0xFF3C3C43)
+                                                .withOpacity(0.29),
+                                            width: double.infinity,
+                                            strokeWidth: 2.0,
+                                            dottedLength: 10.0,
+                                            space: 0.7,
+                                          ),
+                                          SizedBox(
+                                            height: 44,
+                                            width: double.infinity,
+                                            child: TextButton(
+                                              onPressed: () async {
+                                                if (route == 'view_all_goals') {
+                                                  Navigator.pushReplacement(
+                                                      context,
+                                                      FadePageRouteReverse(
+                                                          page:
+                                                              const view_all_goals_menu()));
+                                                } else {
+                                                  Navigator.push(
+                                                    context,
+                                                    FadePageRouteReverse(
+                                                      page: const HomeScreen(
+                                                          login: true),
+                                                    ),
+                                                  );
+                                                }
+                                                final SharedPreferences prefs =
+                                                    await _prefs;
+                                                await prefs.remove('goal');
+                                                await prefs
+                                                    .remove('goal_route');
+                                                await prefs.remove('route');
+                                              },
+                                              child: const Text(
+                                                'Exit & delete progress',
+                                                style: TextStyle(
+                                                    fontSize: 17,
+                                                    fontFamily: "Laila",
+                                                    fontWeight: FontWeight.w400,
+                                                    color: Color(0xFF007AFF)),
+                                              ),
                                             ),
-                                          );
-                                        }
-                                        final SharedPreferences prefs =
-                                        await _prefs;
-                                        await prefs.remove('goal');
-                                        await prefs.remove('goal_route');
-                                        await prefs.remove('route');
-                                      },
-                                      child: const Text(
-                                        'Exit & delete progress',
-                                        style: TextStyle(
-                                            fontSize: 17,
-                                            fontFamily: "Laila",
-                                            fontWeight: FontWeight.w400,
-                                            color: Color(0xFF007AFF)),
+                                          ),
+                                          FDottedLine(
+                                            color: const Color(0xFF3C3C43)
+                                                .withOpacity(0.29),
+                                            width: double.infinity,
+                                            strokeWidth: 2.0,
+                                            dottedLength: 10.0,
+                                            space: 0.7,
+                                          ),
+                                          SizedBox(
+                                            height: 42,
+                                            width:
+                                                AppDimensions.width10(context) *
+                                                    27.0,
+                                            //color: Colors.white,
+                                            child: TextButton(
+                                              onPressed: () {
+                                                Navigator.pop(context);
+                                              },
+                                              child: const Text(
+                                                'Cancel exit',
+                                                style: TextStyle(
+                                                    color: Color(0xFF007AFF),
+                                                    fontSize: 17,
+                                                    fontFamily: "Laila",
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    ),
+                                    ],
                                   ),
-                                  FDottedLine(
-                                    color: const Color(0xFF3C3C43)
-                                        .withOpacity(0.29),
-                                    width: double.infinity,
-                                    strokeWidth: 2.0,
-                                    dottedLength: 10.0,
-                                    space: 0.7,
-                                  ),
-                                  SizedBox(
-                                    height: 42,
-                                    width:
-                                    AppDimensions.width10(context) *
-                                        27.0,
-                                    //color: Colors.white,
-                                    child: TextButton(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      child: const Text(
-                                        'Cancel exit',
-                                        style: TextStyle(
-                                            color: Color(0xFF007AFF),
-                                            fontSize: 17,
-                                            fontFamily: "Laila",
-                                            fontWeight: FontWeight.w400),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      );})
-                  ),
-
+                                ),
+                              );
+                            })),
                 ],
               )),
           body: Stack(
@@ -722,8 +749,7 @@ class _VisualisingState extends State<Visualising> {
                               ? SizedBox(
                                   height: AppDimensions.height10(context) * 7.6,
                                 )
-                              :
-                          Container(
+                              : Container(
                                   // color: Colors.blue,
                                   width: AppDimensions.width10(context) * 10.4,
                                   height: AppDimensions.height10(context) * 7.6,
@@ -1629,8 +1655,7 @@ class _VisualisingState extends State<Visualising> {
                                                     const BorderRadius.all(
                                                         Radius.circular(50.0)),
                                               ),
-                                        child:
-                                            Center(
+                                        child: Center(
                                           child: Text(
                                             widget.comingFromEditScreen
                                                 ? 'Save'

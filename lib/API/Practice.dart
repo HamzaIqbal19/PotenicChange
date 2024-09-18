@@ -290,7 +290,6 @@ class PracticeGoalApi {
     var accessToken = prefs.getString("usertoken");
 
     var userId = prefs.getInt('userid');
-    print("Date : $day userId: $userId");
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$accessToken'
@@ -300,10 +299,8 @@ class PracticeGoalApi {
           '${URL.BASE_URL}api/userPractice/userDashBoardDataById/$userId?givenDate=$day'),
       headers: headers,
     );
-    print("Dashboard Response Data ${response.statusCode}");
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
-      print("Dashboard Response Data $data");
       return data;
     } else if (response.statusCode == 404) {
       var data = jsonDecode(response.body);

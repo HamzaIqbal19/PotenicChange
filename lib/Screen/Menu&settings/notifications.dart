@@ -167,8 +167,6 @@ class _notificationsState extends State<notifications> {
                             status3 = val;
                             status4 = val;
                           }
-
-                          // color3 = val;
                         });
                         // await checkNotificationPermission();
                       },

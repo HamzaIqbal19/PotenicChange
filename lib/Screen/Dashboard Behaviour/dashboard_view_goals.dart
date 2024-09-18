@@ -57,30 +57,18 @@ class _ViewDashboardState extends State<ViewDashboard>
     with WidgetsBindingObserver {
   var allGoals;
   var userGoals;
-  var responseData;
-  var allPractice;
   var focusedDate = DateTime.now();
   List<dynamic> practices = [];
   bool noActive = false;
   bool noPlanned = false;
   bool noData = false;
   bool loader = true;
-  bool redaVisble = false;
   var getSubscription = '';
   bool maxViewDate = false;
   List<Map<String, dynamic>> timesList = [];
-  int pastPracCompleted = -1;
-  int presentPracCompleted = -1;
-  int nextPracCompleted = -1;
   bool contain = false;
   bool single = false;
-  int removeDay = 0;
-  String recordDate = '';
   int goalLevel = 0;
-  var notificationBody;
-  var notificationRoute;
-  var notificationId;
-  var notificationUrl;
   final ScrollController _scrollController = ScrollController();
   // DateTime currentDate = DateTime.now();
   int currentIndex = 7;
@@ -129,7 +117,6 @@ class _ViewDashboardState extends State<ViewDashboard>
           userGoals = response;
           practices.clear();
         });
-
         for (int i = 0; i < userGoals.length; i++) {
           for (int j = 0; j < userGoals[i]['userPractices'].length; j++) {
             if (userGoals[i]['userPractices'][j]['isActive'] == true) {
@@ -152,11 +139,9 @@ class _ViewDashboardState extends State<ViewDashboard>
     final SharedPreferences prefs = await _prefs;
     var levelChange = prefs.getBool('goalLevelUpdate');
     var goalUpdate = prefs.getString('goalLevelUpOrDown');
-    // var length = prefs.getInt('goalAchievedLenght');
     getSubscription = prefs.getString('subscriptionStatus').toString();
     var goalData = prefs.getString('goalAcieved');
     var newData = json.decode(goalData!);
-
     if (levelChange.toString() == 'true') {
       if (goalUpdate.toString() == 'up') {
         Timer(const Duration(seconds: 5), () {
@@ -172,8 +157,7 @@ class _ViewDashboardState extends State<ViewDashboard>
   }
 
   notificationPermissionSerice() {
-    _notificationPermissionService.checkAndRequestNotificationPermission(
-        context, true);
+    _notificationPermissionService.checkAndRequestNotificationPermission(context, true);
   }
 
   bool _showOverlay = false;
@@ -181,21 +165,6 @@ class _ViewDashboardState extends State<ViewDashboard>
   int next = -1;
   int past = 1;
 
-  previous() {
-    setState(() {
-      next++;
-      past++;
-      current++;
-    });
-  }
-
-  future() {
-    setState(() {
-      next--;
-      past--;
-      current--;
-    });
-  }
 
   toggleDates(date) {
     if (!noActive) {
@@ -232,35 +201,24 @@ class _ViewDashboardState extends State<ViewDashboard>
         return timeA - timeB;
       });
 
-      print("Toggle dates timelist $timesList");
-
       setState(() {});
     }
   }
 
-  DateTime currentDate =
-      DateTime.parse(DateTime.now().toString().substring(0, 10));
+  DateTime currentDate = DateTime.parse(DateTime.now().toString().substring(0, 10));
 
   @override
   void initState() {
     if (widget.record != 0) {
       setState(() {
         current = widget.record;
-        past = widget.record + 1;
-        next = widget.record - 1;
       });
     }
     notificationPermissionSerice();
-
     super.initState();
     getUserNotifications();
-
-    // _fetchUserGoal();
     _fetchGoalNames();
     fetchDashboardData();
-    //
-    // fetchPracticeByDay();
-
     if (widget.update == true) {
       setState(() {
         contain = true;
@@ -268,7 +226,6 @@ class _ViewDashboardState extends State<ViewDashboard>
       startTimer();
     }
     if (widget.helpfulTips == true) {
-      //dashboard_sheet(context);
       setState(() {
         _showOverlay = true;
         goalLevel = 1;
@@ -299,9 +256,7 @@ class _ViewDashboardState extends State<ViewDashboard>
             .then((value) {
           setState(() {
             allGoals = value['data'];
-            responseData = value['data'];
           });
-
           toggleDates(DateTime.now().toString());
           setState(() {
             noActive = false;
@@ -316,43 +271,16 @@ class _ViewDashboardState extends State<ViewDashboard>
     });
   }
 
-  Future<Timer> loadData() async {
-    return Timer(const Duration(seconds: 1), onDoneLoading);
-  }
+  Future<Timer> loadData() async {return Timer(const Duration(seconds: 1), onDoneLoading);}
 
   void onDoneLoading() {
     setState(() {
       loader = false;
     });
-    Future.delayed(
-        const Duration(milliseconds: 50), () => _scrollToCurrentIndex());
+    Future.delayed(const Duration(milliseconds: 50), () => _scrollToCurrentIndex());
   }
 
-  getSixthday() {
-    var currentDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
-    var providedDate = getFormattedDate(current);
-
-    // Check if the provided date is in the future
-    if (DateTime.parse(providedDate).isBefore(DateTime.parse(currentDate))) {
-    } else {
-      var difference = DateTime.parse(providedDate)
-          .difference(DateTime.parse(currentDate))
-          .inDays;
-      if (difference >= 6) {
-        maxViewDate = true;
-      } else {
-        maxViewDate = false;
-      }
-    }
-
-    // Calculate the difference in days
-
-    // Check if the difference is exactly six days
-  }
-
-  Future<Timer> startTimer() async {
-    return Timer(const Duration(seconds: 4), stop);
-  }
+  Future<Timer> startTimer() async {return Timer(const Duration(seconds: 4), stop);}
 
   void stop() {
     setState(() {
@@ -362,10 +290,8 @@ class _ViewDashboardState extends State<ViewDashboard>
 
   @override
   Widget build(BuildContext context) {
-    // getNotificationData();
     bool smallScreen = MediaQuery.of(context).size.height < 690;
-    final notificationController notificationsController =
-        Get.find<notificationController>();
+    final notificationController notificationsController = Get.find<notificationController>();
 
     return WillPopScope(
       onWillPop: () {
@@ -512,9 +438,6 @@ class _ViewDashboardState extends State<ViewDashboard>
                         },
                         child: SizedBox(
                             width: double.infinity,
-                            // height:
-                            //     UpdatedDimensions.height10(context) *
-                            //         19.2,
                             child: Stack(
                               children: [
                                 SingleChildScrollView(
@@ -529,8 +452,7 @@ class _ViewDashboardState extends State<ViewDashboard>
                                               setState(() {
                                                 currentIndex = value.value2;
                                                 toggleDates(value.value1);
-                                                focusedDate = DateTime.parse(
-                                                    formatDates(value.value1));
+                                                focusedDate = DateTime.parse(formatDates(value.value1));
                                               });
                                             })
                                           : dashboardCarousel(
@@ -541,8 +463,7 @@ class _ViewDashboardState extends State<ViewDashboard>
                                               setState(() {
                                                 currentIndex = value.value2;
                                                 toggleDates(value.value1);
-                                                focusedDate = DateTime.parse(
-                                                    formatDates(value.value1));
+                                                focusedDate = DateTime.parse(formatDates(value.value1));
                                               });
                                             }),
                                       noActive
@@ -579,113 +500,46 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                         index) {
                                                                   return dashBoardSessionComponent(
                                                                       context,
-                                                                      timesList[
-                                                                          index],
+                                                                      timesList[index],
                                                                       () {
                                                                     _scrollToCurrentIndex();
                                                                   }, () async {
-                                                                    if (_showOverlay ==
-                                                                        false) {
+                                                                    if (_showOverlay == false) {
                                                                       Navigator.push(
                                                                           context,
-                                                                          FadePageRoute(
-                                                                              page: (const practiceMenu(
-                                                                            goal_eval:
-                                                                                false,
-                                                                            completed:
-                                                                                false,
-                                                                          ))));
-                                                                      final SharedPreferences
-                                                                          prefs =
-                                                                          await _prefs;
-                                                                      await prefs.setInt(
-                                                                          'goal_num',
-                                                                          timesList[index]['data']['userGoal']
-                                                                              [
-                                                                              'id']);
-
-                                                                      await prefs.setString(
-                                                                          'goal_menu_route',
-                                                                          'dashboard');
+                                                                          FadePageRoute(page: (const goal_menu_inactive(isActive: false, goal_evaluation: false,))));
+                                                                      final SharedPreferences prefs = await _prefs;
+                                                                      await prefs.setInt('goal_num', timesList[index]['data']['userGoal']['id']);
+                                                                      await prefs.setString('goal_menu_route', 'dashboard');
                                                                     } else {
-                                                                      if (goalLevel ==
-                                                                          0) {
+                                                                      if (goalLevel == 0) {
                                                                         _incrementValue();
                                                                       }
                                                                     }
                                                                   }, () async {
-                                                                    if (_showOverlay ==
-                                                                        false) {
-                                                                      final SharedPreferences
-                                                                          prefs =
-                                                                          await _prefs;
-                                                                      await prefs.setString(
-                                                                          'prac_menu_route',
-                                                                          'dashboard');
-                                                                      await prefs.setInt(
-                                                                          'prac_num',
-                                                                          timesList[index]['data']
-                                                                              [
-                                                                              'id']);
-                                                                      await prefs.setInt(
-                                                                          'goal_num',
-                                                                          timesList[index]['data']['userGoal']
-                                                                              [
-                                                                              'id']);
-
-                                                                      await prefs.setString(
-                                                                          'dash_pracName',
-                                                                          timesList[index]['data']
-                                                                              [
-                                                                              'name']);
-                                                                      await prefs.setString(
-                                                                          'dash_goalName',
-                                                                          timesList[index]['data']['userGoal']
-                                                                              [
-                                                                              'name']);
-                                                                      await prefs.setString(
-                                                                          'record_date',
-                                                                          getFormattedDate(current)
-                                                                              .toString());
-
-                                                                      await timesList[index]['data']['color'] !=
-                                                                              null
-                                                                          ? prefs.setString(
-                                                                              'dash_pracColor',
-                                                                              timesList[index]['data'][
-                                                                                  'color'])
-                                                                          : prefs.setString(
-                                                                              'dash_pracColor',
-                                                                              '0');
-                                                                      await prefs.setString(
-                                                                          'recording_Time1',
-                                                                          timesList[index]
-                                                                              [
-                                                                              'time']);
-                                                                      await prefs.setBool(
-                                                                          'behaviour_route',
-                                                                          true);
-                                                                      await timesList[index]['data']['userGoal']['color'] !=
-                                                                              null
-                                                                          ? prefs.setString(
-                                                                              'dash_goalColor',
-                                                                              timesList[index]['data']['userGoal']['color'])
-                                                                          : '0';
-                                                                      if (timesList[index]
-                                                                              [
-                                                                              'status'] ==
-                                                                          "Not Started") {
-                                                                        Navigator.push(
-                                                                            context,
+                                                                    if (_showOverlay == false) {
+                                                                      final SharedPreferences prefs = await _prefs;
+                                                                      await prefs.setString('prac_menu_route', 'dashboard');
+                                                                      await prefs.setInt('prac_num', timesList[index]['data']['id']);
+                                                                      await prefs.setInt('goal_num', timesList[index]['data']['userGoal']['id']);
+                                                                      await prefs.setString('dash_pracName', timesList[index]['data']['name']);
+                                                                      await prefs.setString('dash_goalName', timesList[index]['data']['userGoal']['name']);
+                                                                      await prefs.setString('record_date', focusedDate.toString());
+                                                                      await timesList[index]['data']['color'] != null
+                                                                          ? prefs.setString('dash_pracColor', timesList[index]['data']['color'])
+                                                                          : prefs.setString('dash_pracColor', '0');
+                                                                      await prefs.setString('recording_Time1', timesList[index]['time']);
+                                                                      await prefs.setBool('behaviour_route', true);
+                                                                      await timesList[index]['data']['userGoal']['color'] != null
+                                                                          ? prefs.setString('dash_goalColor', timesList[index]['data']['userGoal']['color']) : '0';
+                                                                      if (timesList[index]['status'] == "Not Started") {
+                                                                        Navigator.push(context,
                                                                             FadePageRoute(
                                                                                 page: const practiceMenu(
                                                                               goal_eval: false,
                                                                               completed: false,
                                                                             )));
-                                                                      } else if (timesList[index]
-                                                                              [
-                                                                              'status'] ==
-                                                                          "missed") {
+                                                                      } else if (timesList[index]['status'] == "missed") {
                                                                         Navigator.push(
                                                                             context,
                                                                             FadePageRoute(
@@ -703,18 +557,14 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                             )));
                                                                       }
                                                                     } else {
-                                                                      if (goalLevel ==
-                                                                          0) {
+                                                                      if (goalLevel == 0) {
                                                                         _incrementValue();
                                                                       }
                                                                     }
                                                                   });
                                                                 })),
                                                         SizedBox(
-                                                          height: UpdatedDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              20.0,
+                                                          height: UpdatedDimensions.height10(context) * 20.0,
                                                         )
                                                       ],
                                                     ),
@@ -724,12 +574,8 @@ class _ViewDashboardState extends State<ViewDashboard>
                                               if (_showOverlay)
                                                 FutureBuilder(
                                                     future: Future.delayed(
-                                                        const Duration(
-                                                            milliseconds: 200)),
-                                                    builder: (c, s) =>
-                                                        s.connectionState ==
-                                                                ConnectionState
-                                                                    .done
+                                                        const Duration(milliseconds: 200)),
+                                                    builder: (c, s) => s.connectionState == ConnectionState.done
                                                             ? helpFulTips(
                                                                 context,
                                                                 goalLevel,
@@ -740,16 +586,11 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                 });
                                                               }, () {
                                                                 _incrementValue();
-                                                                if (goalLevel >
-                                                                    7) {
+                                                                if (goalLevel > 7) {
                                                                   setState(() {
-                                                                    _showOverlay =
-                                                                        false;
+                                                                    _showOverlay = false;
                                                                   });
-                                                                  Authentication()
-                                                                      .userStatusUpdate(
-                                                                          'isTutorial',
-                                                                          false);
+                                                                  Authentication().userStatusUpdate('isTutorial', false);
                                                                 }
                                                               })
                                                             : Container()),
@@ -759,132 +600,79 @@ class _ViewDashboardState extends State<ViewDashboard>
                                 ),
                                 Positioned(
                                     top: smallScreen
-                                        ? UpdatedDimensions.height10(context) *
-                                            50.0
-                                        : UpdatedDimensions.height10(context) *
-                                            54.0,
-                                    left: UpdatedDimensions.height10(context) *
-                                        1.3,
+                                        ? UpdatedDimensions.height10(context) * 50.0
+                                        : UpdatedDimensions.height10(context) * 54.0,
+                                    left: UpdatedDimensions.height10(context) * 1.3,
                                     child: Stack(
                                       children: [
                                         isVisible
                                             ? Obx(() {
-                                                if (notificationsController
-                                                    .getAllNotifications()
-                                                    .isEmpty) {
+                                                if (notificationsController.getAllNotifications().isEmpty) {
                                                   return const SizedBox(); // Return an empty widget if the string is empty
                                                 } else {
                                                   return SizedBox(
-                                                    width:
-                                                        MediaQuery.of(context)
-                                                            .size
-                                                            .width,
-                                                    child: CarouselSlider
-                                                        .builder(
+                                                    width: MediaQuery.of(context).size.width,
+                                                    child: CarouselSlider.builder(
                                                             itemCount:
-                                                                notificationsController
-                                                                    .getAllNotifications()
-                                                                    .length,
+                                                                notificationsController.getAllNotifications().length,
                                                             itemBuilder: (BuildContext context,
-                                                                    int
-                                                                        itemIndex,
-                                                                    int
-                                                                        pageViewIndex) =>
+                                                                    int itemIndex,
+                                                                    int pageViewIndex) =>
                                                                 reda(
-                                                                    context,
-                                                                    notificationsController
-                                                                            .getAllNotifications()[
-                                                                        itemIndex],
+                                                                    context, notificationsController.getAllNotifications()[itemIndex],
                                                                     () {
                                                                   Timer(
-                                                                      const Duration(
-                                                                          seconds:
-                                                                              2),
+                                                                      const Duration(seconds: 2),
                                                                       () {
-                                                                    setState(
-                                                                        () {});
+                                                                    setState(() {});
                                                                   });
                                                                 }),
                                                             options: CarouselOptions(
-                                                                enlargeCenterPage:
-                                                                    true,
+                                                                enlargeCenterPage: true,
                                                                 height: 200,
-                                                                viewportFraction:
-                                                                    1,
-                                                                enableInfiniteScroll:
-                                                                    false)),
+                                                                viewportFraction: 1,
+                                                                enableInfiniteScroll: false)),
                                                   );
                                                 }
                                               })
                                             : Container(),
                                         AnimatedScaleButton(
                                           onTap: () {
-                                            // notifications_sheet(context);
                                             setState(() {
                                               isVisible = !isVisible;
                                             });
                                           },
                                           child: Container(
-                                            width: UpdatedDimensions.height10(
-                                                    context) *
-                                                4,
-                                            height: UpdatedDimensions.height10(
-                                                    context) *
-                                                4,
-                                            padding: EdgeInsets.all(
-                                                UpdatedDimensions.height10(
-                                                        context) *
-                                                    0.4),
+                                            width: UpdatedDimensions.height10(context) * 4,
+                                            height: UpdatedDimensions.height10(context) * 4,
+                                            padding: EdgeInsets.all(UpdatedDimensions.height10(context) * 0.4),
                                             decoration: const BoxDecoration(
                                                 shape: BoxShape.circle,
                                                 color: Colors.white),
                                             child: Container(
-                                              width: UpdatedDimensions.width10(
-                                                      context) *
-                                                  3.5,
-                                              height:
-                                                  UpdatedDimensions.height10(
-                                                          context) *
-                                                      3.5,
+                                              width: UpdatedDimensions.width10(context) * 3.5,
+                                              height: UpdatedDimensions.height10(context) * 3.5,
                                               decoration: const BoxDecoration(
                                                   shape: BoxShape.circle,
                                                   color: Colors.white,
                                                   image: DecorationImage(
-                                                      image: AssetImage(
-                                                          'assets/images/Smart Object_1.webp'))),
+                                                      image: AssetImage('assets/images/Smart Object_1.webp'))),
                                               child: Align(
-                                                alignment:
-                                                    const Alignment(0, 2.8),
-                                                child: notificationsController
-                                                        .getAllNotifications()
-                                                        .isEmpty
+                                                alignment: const Alignment(0, 2.8),
+                                                child: notificationsController.getAllNotifications().isEmpty
                                                     ? const SizedBox()
                                                     : Container(
-                                                        width: UpdatedDimensions
-                                                                .width10(
-                                                                    context) *
-                                                            1.7,
-                                                        height: UpdatedDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.7,
-                                                        decoration:
-                                                            const BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
+                                                        width: UpdatedDimensions.width10(context) * 1.7,
+                                                        height: UpdatedDimensions.height10(context) * 1.7,
+                                                        decoration: const BoxDecoration(
+                                                          shape: BoxShape.circle,
                                                           color: Colors.white,
                                                         ),
                                                         child: Center(
                                                           child: Text(
-                                                            notificationsController
-                                                                .getAllNotifications()
-                                                                .length
-                                                                .toString(),
+                                                            notificationsController.getAllNotifications().length.toString(),
                                                             style: TextStyle(
-                                                                fontSize: UpdatedDimensions
-                                                                        .font10(
-                                                                            context) *
-                                                                    1,
+                                                                fontSize: UpdatedDimensions.font10(context) * 1,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,

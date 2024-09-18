@@ -351,6 +351,13 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                 ),
               )
             : Container();
+      }else if (route == 'view_all_goals'){
+        Navigator.pushReplacement(
+            context,
+            FadePageRouteReverse(
+                page:
+                const view_all_goals_menu()));
+
       } else {
         Navigator.push(
           context,
@@ -411,6 +418,13 @@ class _Goal_IdentityState extends State<Goal_Identity> {
 
     return WillPopScope(
       onWillPop: () {
+      if(route == ''){
+        Navigator.pushReplacement(
+            context,
+            FadePageRouteReverse(
+                page:
+                const view_all_goals_menu()));
+      }else{
         widget.comingFromEditScreen
             ? update == false
                 ? showAnimatedDialog(
@@ -433,7 +447,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                             comingFromEditScreen: false,
                             route: '',
                             saved: true)))
-                : Navigator.pop(context);
+                : Navigator.pop(context);}
         return Future.value(false);
       },
       child: GestureDetector(
@@ -460,6 +474,13 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                       fit: BoxFit.contain,
                     ),
                     onPressed: () {
+    if(route == ''){
+    Navigator.pushReplacement(
+    context,
+    FadePageRouteReverse(
+    page:
+    const view_all_goals_menu()));
+    }else{
                       widget.comingFromEditScreen
                           ? update == false
                               ? showAnimatedDialog(
@@ -483,7 +504,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                           comingFromEditScreen: false,
                                           route: '',
                                           saved: true)))
-                              : Navigator.pop(context);
+                              : Navigator.pop(context);}
                       // Add code for performing close action
                     },
                   ),
@@ -559,20 +580,7 @@ class _Goal_IdentityState extends State<Goal_Identity> {
                                         });
                                         updateGoalReason(myIdentity);
 
-                                        Navigator.push(
-                                          context,
-                                          FadePageRouteReverse(
-                                            page:
-                                            const HomeScreenProgressSaved(
-                                                login: true,
-                                                route:
-                                                "GoalIdentity"),
-                                          ),
-                                        );
-                                        final SharedPreferences prefs =
-                                        await _prefs;
-                                        await prefs.setString(
-                                            'route', "GoalIdentity");
+
                                       },
                                       child: const Center(
                                         child: Text(

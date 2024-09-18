@@ -347,6 +347,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                           context,
                                           FadePageRoute(
                                               page: const practice_summary(
+                                                  newSession: false,
                                                   view: true)));
                                     },
                                     child: Container(

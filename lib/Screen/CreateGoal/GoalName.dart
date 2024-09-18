@@ -198,7 +198,13 @@ class _GoalNameState extends State<GoalName> {
 
     return WillPopScope(
       onWillPop: () {
-        widget.comingFromEditScreen
+        if(route == ''){
+          Navigator.pushReplacement(
+              context,
+              FadePageRouteReverse(
+                  page:
+                  const view_all_goals_menu()));
+        }else{ widget.comingFromEditScreen
             ? updated == false
                 ? showAnimatedDialog(
                     animationType: DialogTransitionType.fadeScale,
@@ -222,7 +228,7 @@ class _GoalNameState extends State<GoalName> {
                             page: StarReview(
                           route: widget.route,
                         )))
-                    : Navigator.pop(context);
+                    : Navigator.pop(context);}
         return Future.value(false);
       },
       child: GestureDetector(
@@ -249,6 +255,13 @@ class _GoalNameState extends State<GoalName> {
                       fit: BoxFit.contain,
                     ),
                     onPressed: () {
+    if(route == ''){
+    Navigator.pushReplacement(
+    context,
+    FadePageRouteReverse(
+    page:
+    const view_all_goals_menu()));
+    }else{
                       widget.comingFromEditScreen
                           ? updated == false
                               ? showAnimatedDialog(
@@ -269,7 +282,7 @@ class _GoalNameState extends State<GoalName> {
                                   context,
                                   FadePageRouteReverse(
                                       page: const HomeScreen(login: true)))
-                              : Navigator.pop(context);
+                              : Navigator.pop(context);}
                       // Add code for performing close action
                     },
                   ),
@@ -340,22 +353,30 @@ class _GoalNameState extends State<GoalName> {
                                   //color: Colors.white,
                                   child: TextButton(
                                     onPressed: () async {
-                                      getUserId(
-                                        mygoal.text.toString(),
-                                      );
-                                      Navigator.push(
-                                        context,
-                                        FadePageRouteReverse(
-                                          page:
-                                          const HomeScreenProgressSaved(
-                                            login: true,
-                                            route: 'GoalName',
+                                      final SharedPreferences prefs = await _prefs;
+                                      if (route == 'view_all_goals') {
+                                        Navigator.pushReplacement(
+                                            context,
+                                            FadePageRouteReverse(
+                                                page:
+                                                const view_all_goals_menu()));
+                                      }else{
+                                        getUserId(
+                                          mygoal.text.toString(),
+                                        );
+                                        Navigator.push(
+                                          context,
+                                          FadePageRouteReverse(
+                                            page:
+                                            const HomeScreenProgressSaved(
+                                              login: true,
+                                              route: 'GoalName',
+                                            ),
                                           ),
-                                        ),
-                                      );
+                                        );
+                                      }
 
-                                      final SharedPreferences prefs =
-                                      await _prefs;
+
                                       await prefs.setString(
                                           'route', "GoalName");
                                     },

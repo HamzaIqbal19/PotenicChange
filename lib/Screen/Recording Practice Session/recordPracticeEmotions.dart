@@ -34,6 +34,7 @@ class _emotionsState extends State<emotions> {
   int pracEmotions = 0;
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   var behaviour_route;
+  var newSession;
 
   //int pracEmotions = 0;
 
@@ -43,6 +44,7 @@ class _emotionsState extends State<emotions> {
   void onLoad() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
+      newSession = prefs.getBool('newSession');
       behaviour_route = prefs.getBool('behaviour_route');
     });
   }
@@ -668,8 +670,10 @@ class _emotionsState extends State<emotions> {
                             AnimatedScaleButton(
                               onTap: () async {
                                 if (pracEmotions != 0) {
+
                                   final SharedPreferences prefs = await _prefs;
                                   await prefs.setInt('emotions', pracEmotions);
+
                                   await prefs.setString(
                                       'pracName', widget.pracName);
                                   feedback.text.toString().isNotEmpty
@@ -679,6 +683,15 @@ class _emotionsState extends State<emotions> {
                                           'emotionsFeedback', " ");
 
                                   if (widget.summary == true) {
+                                    if(newSession == true){
+                                      Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const practice_summary(
+                                                  view: false,newSession: true
+                                              )));
+
+                                    }else{
                                     RecordingPractice().updateRecording(
                                         'feelingsBeforeSession', pracEmotions, [
                                       {
@@ -694,10 +707,10 @@ class _emotionsState extends State<emotions> {
                                             context,
                                             FadePageRoute(
                                                 page: const practice_summary(
-                                              view: false,
+                                              view: false,newSession: false
                                             )));
                                       } else {}
-                                    });
+                                    });}
                                   } else {
                                     Navigator.push(context,
                                         FadePageRoute(page: const clocks()));

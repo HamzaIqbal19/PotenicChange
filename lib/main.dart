@@ -28,8 +28,7 @@ Future<void> main(context) async {
     systemNavigationBarIconBrightness: Brightness.dark,
     systemNavigationBarDividerColor: Colors.transparent,
   ));
-  Stripe.publishableKey =
-      "pk_test_51MP8GqRkeqntfFwkc7SudCslwib67ICcq4Oot6G6MvZ0fm3Gra2eEADbWba05wnSFvEBozpb47Q3db0l0G8eiary006dzhKTBs";
+  Stripe.publishableKey = "pk_test_51MP8GqRkeqntfFwkc7SudCslwib67ICcq4Oot6G6MvZ0fm3Gra2eEADbWba05wnSFvEBozpb47Q3db0l0G8eiary006dzhKTBs";
 
   //Load our .env file that contains our Stripe Secret key
   await dotenv.load(fileName: "assets/.env");

@@ -318,7 +318,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                             context,
                                             FadePageRoute(
                                                 page: const practice_summary(
-                                                    view: true)));
+                                                    view: true,newSession: false)));
                                       },
                                       child: Container(
                                         width:

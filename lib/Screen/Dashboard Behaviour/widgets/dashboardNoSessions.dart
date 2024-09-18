@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour/future_practice_menu.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
 import 'package:potenic_app/Screen/ReviewPractice/practiceReview.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -94,17 +95,15 @@ dashboardNoPastSession(BuildContext context, smallScreen,allGoals,pastSession ,a
                                   .length>1? index1==0? EdgeInsets.only(left: UpdatedDimensions.width10(context)*13):EdgeInsets.zero:EdgeInsets.zero,
                               child: AnimatedScaleButton(
                                 onTap: () async {
+                                  final SharedPreferences prefs = await _prefs;
                                if( pastSession || currentDay) {
+                                 await prefs.setBool('newSession', true);
                                  Navigator.push(
                                      context,
                                      FadePageRoute(
-                                         page: emotions(
-                                           summary: false,
-                                           pracName: allGoals[index][
-                                           'userPractices']
-                                           [index1]['name'],
-                                           record: true,
-                                           selected: 0,
+                                         page: const practice_summary(
+                                             view: false,
+                                             newSession: true
                                          )));
                                }else{
 

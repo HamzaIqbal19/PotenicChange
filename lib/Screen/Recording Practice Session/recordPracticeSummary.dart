@@ -24,7 +24,8 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class practice_summary extends StatefulWidget {
   final bool view;
-  const practice_summary({super.key, required this.view});
+  final newSession;
+  const practice_summary({super.key, required this.view,required this.newSession});
 
   @override
   State<practice_summary> createState() => _practice_summaryState();
@@ -35,14 +36,15 @@ class _practice_summaryState extends State<practice_summary> {
   String time = 'Am';
   String day = '';
   var behaviourRoute;
-
+  String selectedDate = "${DateTime.now().year}:${DateTime.now().month}:${DateTime.now().day}";
+  int differenceInDays = 0;
   String goalName = "";
   String identity = "";
   String pracName = "";
+  var pracId;
   var pracColor = '0';
   var color = '0';
   String recordedDate = '';
-  int differenceInDays1 = 0;
   bool loading = true;
   var report;
   int before = 0;
@@ -62,6 +64,78 @@ class _practice_summaryState extends State<practice_summary> {
     });
   }
 
+  getData()async{
+    final SharedPreferences prefs = await _prefs;
+    setState(() {
+      before = prefs.getInt('emotions')??0;
+      after = prefs.getInt('afterSession')??0;
+      session = prefs.getInt('endOfSession')??0;
+      afterSessionNotes = prefs.getString('sessionFeedback')??'';
+      emotionsNotes = prefs.getString('emotionsFeedback')??'';
+      sessionFeedBack = prefs.getString('endSessionFeedback')??'';
+    });
+
+
+  }
+
+  addRecording(){
+
+    RecordingPractice()
+        .userAddRecording(
+      before,
+      after,
+      [
+        {
+          "beforeNote": emotionsNotes,
+          "afterNote": afterSessionNotes,
+          "endNote": sessionFeedBack
+        }
+      ],
+      session,
+      pracId!,
+      dateTime,
+      selectedDate,
+    )
+        .then((response) {
+      if (response == true) {
+        clean();
+        // ScaffoldMessenger.of(context)
+        //     .showSnackBar(const SnackBar(
+        //         content: Text(
+        //             "Recording Added Successfully")));
+
+      } else if (response == false) {}
+    })
+        .catchError((error) {})
+        .whenComplete(() {});
+  }
+
+  clean()async{
+    final SharedPreferences prefs = await _prefs;
+    prefs.remove('newSession');
+    prefs.remove('emotions');
+    prefs.remove('afterSession');
+    prefs.remove('sessionFeedback');
+    prefs.remove('emotionsFeedback');
+    prefs.remove('recording_Time1');
+    prefs.getBool('endSessionFeedback');
+  }
+
+  Future<void> getRecordedDate() async {
+    final SharedPreferences prefs = await _prefs;
+    var isFuture ;
+
+    DateTime currentDate =
+    DateTime.parse(DateTime.now().toString());
+    DateTime date1 = DateTime.parse(prefs.getString('record_date')!);
+
+    setState(() {
+      differenceInDays = currentDate.difference(date1).inDays;
+      isFuture = date1.isAfter(currentDate);
+    });
+    print("date1 differenceInDays $isFuture $date1 $differenceInDays");
+  }
+
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
   }
@@ -76,6 +150,7 @@ class _practice_summaryState extends State<practice_summary> {
     PracticeGoalApi.getUserPractice().then((response) {
       if (response.length != 0) {
         setState(() {
+          pracId = response["id"];
           pracName = response["name"];
           pracColor = response["color"];
         });
@@ -105,6 +180,8 @@ class _practice_summaryState extends State<practice_summary> {
     }).catchError((error) {});
   }
 
+
+
   void recording() {
     RecordingPractice.getUserPracticeRecord().then((response) {
       print("Api Response: $response");
@@ -120,14 +197,7 @@ class _practice_summaryState extends State<practice_summary> {
           recordedDate = response['recording']['recordingDate'];
           dateTime = response['recording']['timeSlot'];
         });
-        DateTime currentDate =
-            DateTime.parse(DateTime.now().toString().substring(0, 10));
-        DateTime date1 = DateTime.parse(recordedDate);
-        setState(() {
-          differenceInDays1 = currentDate.difference(date1).inDays;
 
-          print("Difference in days $differenceInDays1");
-        });
       }
     });
   }
@@ -137,7 +207,14 @@ class _practice_summaryState extends State<practice_summary> {
   @override
   initState() {
     super.initState();
-    recording();
+    getRecordedDate();
+    print("New Session ${widget.newSession}");
+    if(widget.newSession == false){
+      recording();
+    }else{
+      getData();
+    }
+
     _fetchRoute();
     _fetchGoalNames();
     _fetchPracticeNames();
@@ -154,17 +231,17 @@ class _practice_summaryState extends State<practice_summary> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           leading: Center(
-            child: IconButton(
+            child:widget.view?Container(): IconButton(
                 onPressed: () {
                   Navigator.push(
                       context,
                       FadePageRouteReverse(
-                          page: const ViewDashboard(
+                          page:  ViewDashboard(
                         missed: false,
                         name: '',
                         update: false,
                         helpfulTips: false,
-                        record: 0,
+                        record: differenceInDays,
                       )));
                 },
                 icon: Image.asset(
@@ -176,7 +253,14 @@ class _practice_summaryState extends State<practice_summary> {
           ),
           actions: [
             widget.view
-                ? Container()
+                ? IconButton(onPressed: (){
+              Navigator.pop(context);
+            }, icon: Image.asset(
+              'assets/images/Close.webp',
+              // width: AppDimensionsUpdated.width10(context) * 2.6,
+              height: AppDimensionsUpdated.height10(context) * 2.8,
+              fit: BoxFit.contain,
+            ))
                 : Center(
                     child: IconButton(
                         onPressed: () {
@@ -245,23 +329,23 @@ class _practice_summaryState extends State<practice_summary> {
                                               Navigator.pushReplacement(
                                                   context,
                                                   FadePageRouteReverse(
-                                                      page: const ViewDashboard(
+                                                      page: ViewDashboard(
                                                     missed: false,
                                                     name: '',
                                                     update: false,
                                                     helpfulTips: false,
-                                                    record: 0,
+                                                    record: differenceInDays,
                                                   )));
                                             } else {
                                               Navigator.push(
                                                   context,
                                                   FadePageRouteReverse(
-                                                      page: const ViewDashboard(
+                                                      page: ViewDashboard(
                                                     missed: false,
                                                     name: '',
                                                     update: false,
                                                     helpfulTips: false,
-                                                    record: 0,
+                                                    record: differenceInDays,
                                                   )));
                                             }
                                           },
@@ -477,63 +561,65 @@ class _practice_summaryState extends State<practice_summary> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // showCupertinoModalPopup(
-                          //   context: context,
-                          //   builder: (BuildContext context) {
-                          //     return _buildBottomPicker(CupertinoDatePicker(
-                          //         mode: CupertinoDatePickerMode.dateAndTime,
-                          //         use24hFormat: false,
-                          //         //initialDateTime: date_time,
-                          //         onDateTimeChanged: (DateTime newDateTime) {
-                          //           if (mounted) {
-                          //             setState(() {
-                          //               if (newDateTime.weekday == 2) {
-                          //                 setState(() {
-                          //                   day = 'Tue';
-                          //                 });
-                          //               } else if (newDateTime.weekday == 3) {
-                          //                 setState(() {
-                          //                   day = 'Wed';
-                          //                 });
-                          //               } else if (newDateTime.weekday == 4) {
-                          //                 setState(() {
-                          //                   day = 'Thu';
-                          //                 });
-                          //               } else if (newDateTime.weekday == 5) {
-                          //                 setState(() {
-                          //                   day = 'Fri';
-                          //                 });
-                          //               } else if (newDateTime.weekday == 6) {
-                          //                 setState(() {
-                          //                   day = 'Sat';
-                          //                 });
-                          //               } else if (newDateTime.weekday == 7) {
-                          //                 setState(() {
-                          //                   day = 'Sun';
-                          //                 });
-                          //               } else {
-                          //                 setState(() {
-                          //                   day = 'Mon';
-                          //                 });
-                          //               }
-                          //             });
-                          //             setState(() {
-                          //               if (newDateTime.hour > 11) {
-                          //                 setState(() {
-                          //                   time = 'pm';
-                          //                 });
-                          //               } else {
-                          //                 setState(() {
-                          //                   time = 'am';
-                          //                 });
-                          //               }
-                          //             });
-                          //             setState(() => dateTime =
-                          //                 " ${newDateTime.hour}:${newDateTime.minute} $time");
-                          //           }
-                          //         }));
-                          //   },
-                          // );
+                          if(widget.view) {
+                            showCupertinoModalPopup(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return _buildBottomPicker(CupertinoDatePicker(
+                                    mode: CupertinoDatePickerMode.dateAndTime,
+                                    use24hFormat: false,
+                                    //initialDateTime: date_time,
+                                    onDateTimeChanged: (DateTime newDateTime) {
+                                      if (mounted) {
+                                        setState(() {
+                                          if (newDateTime.weekday == 2) {
+                                            setState(() {
+                                              day = 'Tue';
+                                            });
+                                          } else if (newDateTime.weekday == 3) {
+                                            setState(() {
+                                              day = 'Wed';
+                                            });
+                                          } else if (newDateTime.weekday == 4) {
+                                            setState(() {
+                                              day = 'Thu';
+                                            });
+                                          } else if (newDateTime.weekday == 5) {
+                                            setState(() {
+                                              day = 'Fri';
+                                            });
+                                          } else if (newDateTime.weekday == 6) {
+                                            setState(() {
+                                              day = 'Sat';
+                                            });
+                                          } else if (newDateTime.weekday == 7) {
+                                            setState(() {
+                                              day = 'Sun';
+                                            });
+                                          } else {
+                                            setState(() {
+                                              day = 'Mon';
+                                            });
+                                          }
+                                        });
+                                        setState(() {
+                                          if (newDateTime.hour > 11) {
+                                            setState(() {
+                                              time = 'pm';
+                                            });
+                                          } else {
+                                            setState(() {
+                                              time = 'am';
+                                            });
+                                          }
+                                        });
+                                        setState(() => dateTime =
+                                            " ${newDateTime.hour}:${newDateTime.minute} $time");
+                                      }
+                                    }));
+                              },
+                            );
+                          }
                         },
                         child: Container(
                           width: AppDimensionsUpdated.width10(context) * 26.8,
@@ -566,11 +652,11 @@ class _practice_summaryState extends State<practice_summary> {
                                       ),
                                     ),
                                   )),
-                              // const Icon(
-                              //   Icons.arrow_drop_down,
-                              //   color: Colors.white,
-                              //   size: 30,
-                              // )
+                             widget.view? const Icon(
+                                Icons.arrow_drop_down,
+                                color: Colors.white,
+                                size: 30,
+                              ):Container()
                             ],
                           ),
                         ),
@@ -635,8 +721,8 @@ class _practice_summaryState extends State<practice_summary> {
                                               ? const Color(0xffFF7C42)
                                               : before == 5
                                                   ? const Color(0xff219653)
-                                                  : const Color(0xffFA9458)),
-                          child: Stack(children: [
+                                                  :  Colors.transparent),
+                          child:before == 0?emptyBox(context):  Stack(children: [
                             Center(
                               child: Padding(
                                 padding: EdgeInsets.only(
@@ -780,8 +866,8 @@ class _practice_summaryState extends State<practice_summary> {
                                               ? const Color(0xffFF7C42)
                                               : after == 5
                                                   ? const Color(0xff219653)
-                                                  : const Color(0xffFA9458)),
-                          child: Stack(children: [
+                                                  : Colors.transparent),
+                          child:after == 0?emptyBox(context): Stack(children: [
                             Center(
                               child: Padding(
                                 padding: EdgeInsets.only(
@@ -908,14 +994,17 @@ class _practice_summaryState extends State<practice_summary> {
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(width: 2, color: Colors.white),
-                              gradient: const RadialGradient(
+                              gradient:  RadialGradient(
                                 radius: 0.5,
-                                colors: <Color>[
-                                  Color(0xFFBDA7C2), // yellow sun
-                                  Color(0xFFB38FB4), // blue sky
+                                colors: session == 0?<Color>[
+                                  Colors.transparent, // yellow sun
+                                  Colors.transparent, // blue sky
+                                ]: <Color>[
+                                  const Color(0xFFBDA7C2), // yellow sun
+                                  const Color(0xFFB38FB4), // blue sky
                                 ],
                               )),
-                          child: Stack(children: [
+                          child:session == 0?emptyBox(context): Stack(children: [
                             Center(
                               child: Padding(
                                 padding: EdgeInsets.only(
@@ -1006,7 +1095,7 @@ class _practice_summaryState extends State<practice_summary> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              AnimatedScaleButton(
+                         widget.view?     AnimatedScaleButton(
                                 // onTap: () {
 
                                 onTap: () {
@@ -1189,7 +1278,7 @@ class _practice_summaryState extends State<practice_summary> {
                                                                     name: '',
                                                                     update: false,
                                                                     helpfulTips: false,
-                                                                    record: differenceInDays1,
+                                                                    record: differenceInDays,
                                                                   )));
                                                             } else {}
                                                           });
@@ -1271,9 +1360,12 @@ class _practice_summaryState extends State<practice_summary> {
                                         ),
                                       ],
                                     )),
-                              ),
+                              ):Container(),
                               AnimatedScaleButton(
                                 onTap: () {
+                                  if(widget.view){
+
+                                  }
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
@@ -1282,7 +1374,7 @@ class _practice_summaryState extends State<practice_summary> {
                                             name: pracName,
                                             update: true,
                                             helpfulTips: false,
-                                            record: differenceInDays1,
+                                            record: differenceInDays,
                                           )));
                                   _checkDialogDisplay(context, goalName,
                                       identity, color, pracColor, pracName);
@@ -1501,5 +1593,42 @@ void __share_experience(context, String goalName, String identity, String color,
             ],
           )),
     ),
+  );
+}
+
+
+emptyBox(context){
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      const SizedBox(height: 10,),
+      Container(
+          height: AppDimensionsUpdated.height10(context) * 2.8,
+          width: AppDimensionsUpdated.width10(context) * 2.8,
+          padding: EdgeInsets.all(
+              AppDimensionsUpdated.height10(context) * 0.6),
+          decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.transparent,
+              border: Border.all(
+                  width: 1, color: Colors.white)),
+          child: const ImageIcon(
+            AssetImage('assets/images/edit_icon.webp'),
+            color: Colors.white,
+          )),
+      const SizedBox(height: 5,),
+      Text(
+        'Update',
+        textAlign: TextAlign.center, 
+        style: TextStyle(
+          fontSize:
+          AppDimensionsUpdated.font10(context) * 1.6,
+          height: AppDimensionsUpdated.height10(context) *
+              0.16,
+          fontWeight: FontWeight.w500,
+          color: Colors.white,
+          fontFamily: 'Laila'
+      )),
+    ],
   );
 }

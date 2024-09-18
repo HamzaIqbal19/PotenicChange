@@ -34,7 +34,7 @@ class _endofSessionState extends State<endofSession> {
   var afterSessionNotes;
   var emotionsNotes;
   var selectedDate;
-  //var sessionFeedback;
+  var newSession;
   int pracNum = 0;
 
   @override
@@ -64,11 +64,26 @@ class _endofSessionState extends State<endofSession> {
       recording();
     }
   }
+
+
   // String formattedDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+
+  clean()async{
+    final SharedPreferences prefs = await _prefs;
+     prefs.remove('newSession');
+     prefs.remove('emotions');
+     prefs.remove('afterSession');
+     prefs.remove('sessionFeedback');
+     prefs.remove('emotionsFeedback');
+     prefs.remove('recording_Time1');
+     prefs.getBool('behaviour_route');
+     prefs.remove('record_date');
+  }
 
   void onLoad() async {
     final SharedPreferences prefs = await _prefs;
     setState(() {
+      newSession = prefs.getBool('newSession');
       pracNum = prefs.getInt("prac_num")!;
       emotions = prefs.getInt('emotions');
       afterSession = prefs.getInt('afterSession');
@@ -668,6 +683,16 @@ class _endofSessionState extends State<endofSession> {
                                     feedback3.text.toString())
                                 : prefs.setString('endSessionFeedback', " ");
                             if (widget.summary == true) {
+                              if(newSession == true){
+                                await prefs.setInt('endSessionFeedback', sessionEnd);
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const practice_summary(
+                                            view: false,
+                                            newSession: false
+                                        )));
+                              }else{
                               RecordingPractice().updateRecording(
                                 'practiceSummary',
                                 sessionEnd,
@@ -688,9 +713,10 @@ class _endofSessionState extends State<endofSession> {
                                       FadePageRoute(
                                           page: const practice_summary(
                                         view: false,
+                                              newSession: false
                                       )));
                                 } else {}
-                              });
+                              });}
                             } else {
                               RecordingPractice()
                                   .userAddRecording(
@@ -713,6 +739,7 @@ class _endofSessionState extends State<endofSession> {
                                   .then((response) {
                                     if (response == true) {
                                       feedback.clear();
+                                      clean();
                                       // ScaffoldMessenger.of(context)
                                       //     .showSnackBar(const SnackBar(
                                       //         content: Text(
@@ -723,6 +750,7 @@ class _endofSessionState extends State<endofSession> {
                                           FadePageRoute(
                                               page: const practice_summary(
                                             view: false,
+                                                  newSession: false
                                           )));
                                     } else if (response == false) {}
                                   })
