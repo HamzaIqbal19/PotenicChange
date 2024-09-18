@@ -299,47 +299,47 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                     actions: <Widget>[
                                       Column(
                                         children: [
-                                          SizedBox(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                0.1,
-                                            child: Divider(
-                                              color: const Color(0XFF3C3C43)
-                                                  .withOpacity(0.29),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 42,
-                                            width: double.infinity,
-                                            child: TextButton(
-                                              onPressed: () async {
-                                                checkHurdle();
-                                                final SharedPreferences prefs =
-                                                    await _prefs;
-                                                await prefs.setString(
-                                                    'HurdleRoute', 'Impact');
-                                                if (selectAll == true ||
-                                                    multiGoals.isNotEmpty) {
-                                                  if (selectAll == true) {
-                                                    saveGoalsToSharedPreferences(
-                                                        allgoalsSelected);
-                                                  } else {
-                                                    saveGoalsToSharedPreferences(
-                                                        multiGoals);
-                                                  }
-                                                }
-                                              },
-                                              child: const Text(
-                                                'Exit & save progress',
-                                                style: TextStyle(
-                                                    color: Color(0xFF007AFF),
-                                                    fontSize: 17,
-                                                    fontFamily: "Laila",
-                                                    fontWeight:
-                                                        FontWeight.w400),
-                                              ),
-                                            ),
-                                          ),
+                                          // SizedBox(
+                                          //   height: AppDimensions.height10(
+                                          //           context) *
+                                          //       0.1,
+                                          //   child: Divider(
+                                          //     color: const Color(0XFF3C3C43)
+                                          //         .withOpacity(0.29),
+                                          //   ),
+                                          // ),
+                                          // SizedBox(
+                                          //   height: 42,
+                                          //   width: double.infinity,
+                                          //   child: TextButton(
+                                          //     onPressed: () async {
+                                          //       checkHurdle();
+                                          //       final SharedPreferences prefs =
+                                          //           await _prefs;
+                                          //       await prefs.setString(
+                                          //           'HurdleRoute', 'Impact');
+                                          //       if (selectAll == true ||
+                                          //           multiGoals.isNotEmpty) {
+                                          //         if (selectAll == true) {
+                                          //           saveGoalsToSharedPreferences(
+                                          //               allgoalsSelected);
+                                          //         } else {
+                                          //           saveGoalsToSharedPreferences(
+                                          //               multiGoals);
+                                          //         }
+                                          //       }
+                                          //     },
+                                          //     child: const Text(
+                                          //       'Exit & save progress',
+                                          //       style: TextStyle(
+                                          //           color: Color(0xFF007AFF),
+                                          //           fontSize: 17,
+                                          //           fontFamily: "Laila",
+                                          //           fontWeight:
+                                          //               FontWeight.w400),
+                                          //     ),
+                                          //   ),
+                                          // ),
                                           SizedBox(
                                             height: AppDimensions.height10(
                                                     context) *
@@ -429,8 +429,8 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
           ]),
       extendBodyBehindAppBar: true,
       bottomNavigationBar: Container(
-        // padding: EdgeInsets.symmetric(
-        //     horizontal: AppDimensions.width10(context) * 8),
+        padding: EdgeInsets.symmetric(
+            horizontal: AppDimensions.width10(context) * 8),
         child: AnimatedScaleButton(
           onTap: () async {
             if (widget.summary == true) {
@@ -483,7 +483,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
             }
           },
           child: Container(
-            width: AppDimensions.width10(context) * 31.3,
+
             height: AppDimensions.height10(context) * 5.2,
             margin: EdgeInsets.only(
                 top: AppDimensions.height10(context) * 1.0,

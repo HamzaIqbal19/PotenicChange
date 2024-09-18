@@ -14,7 +14,7 @@ import '../../Recording Practice Session/recordPracticeEmotions.dart';
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 
-dashboardNoPastSession(BuildContext context, smallScreen,allGoals,pastSession ,activePractices, currentDay){
+dashboardNoPastSession(BuildContext context, smallScreen,allGoals,pastSession ,activePractices, currentDay, currentDate){
 
   return  SingleChildScrollView(
     child:  Stack(
@@ -98,6 +98,9 @@ dashboardNoPastSession(BuildContext context, smallScreen,allGoals,pastSession ,a
                                   final SharedPreferences prefs = await _prefs;
                                if( pastSession || currentDay) {
                                  await prefs.setBool('newSession', true);
+                                 await prefs.setString('recordingDate', currentDate);
+                                 await prefs.setInt('goal_num', allGoals[index]['id']);
+                                 await prefs.setInt('prac_num', allGoals[index]['userPractices'][index1]['id']);
                                  Navigator.push(
                                      context,
                                      FadePageRoute(

@@ -299,51 +299,18 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                   //     top:
                                   //         AppDimensions.height10(context) * 7.5,
                                   //     left: AppDimensions.width10(context) * 2),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        child: GradientText(
-                                          'My inspirations ',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    3.0,
-                                            fontWeight: FontWeight.w700,
-                                          ),
-                                          colors: const [
-                                            Color(0xffFA9934),
-                                            Color(0xffEDD15E)
-                                          ],
-                                        ),
-                                      ),
-                                      AnimatedScaleButton(
-                                        onTap: () {
-                                          //hurdleSheet(context);
-                                          journeyBottomSheet(
-                                              context,
-                                              AppText().inspirationTitle,
-                                              AppText()
-                                                  .inspirationBottomSheedBody,
-                                              "");
-                                        },
-                                        child: Container(
-                                            width:
-                                            AppDimensions.width10(
-                                                context) *
-                                                3.0,
-                                            height:
-                                            AppDimensions.height10(
-                                                context) *
-                                                3.0,
-                                            decoration: const BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/ic_info_outline_orange.webp')))),
-                                      ),
+                                  child: GradientText(
+                                    'My inspirations',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.font10(context) *
+                                              3.0,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                    colors: const [
+                                      Color(0xffFA9934),
+                                      Color(0xffEDD15E)
                                     ],
                                   )),
 

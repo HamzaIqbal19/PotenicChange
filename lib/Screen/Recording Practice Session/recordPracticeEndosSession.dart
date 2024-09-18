@@ -684,13 +684,13 @@ class _endofSessionState extends State<endofSession> {
                                 : prefs.setString('endSessionFeedback', " ");
                             if (widget.summary == true) {
                               if(newSession == true){
-                                await prefs.setInt('endSessionFeedback', sessionEnd);
+                                await prefs.setInt('endOfSession', sessionEnd);
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
                                         page: const practice_summary(
                                             view: false,
-                                            newSession: false
+                                            newSession: true
                                         )));
                               }else{
                               RecordingPractice().updateRecording(
@@ -807,7 +807,6 @@ class _endofSessionState extends State<endofSession> {
   }
 }
 
-class DateFormat {}
 
 class addNotes extends StatefulWidget {
   final bool state_;

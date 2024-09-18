@@ -336,27 +336,28 @@ class _ViewDashboardState extends State<ViewDashboard>
                               ),
                             )
                           : const SizedBox(),
-                      AnimatedScaleButton(
-                        onTap: () {
-                          if (noData != true) {
-                            Navigator.push(
-                                context,
-                                FadePageRoute(
-                                    page: const record_session(
-                                  past_session: true,
-                                )));
-                          }
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              right: UpdatedDimensions.width10(context) * 1.7),
-                          child: Image.asset(
-                            'assets/images/Add goal.webp',
-                            height: UpdatedDimensions.width10(context) * 2.4,
-                            width: UpdatedDimensions.width10(context) * 2.4,
-                          ),
-                        ),
-                      ),
+                      // AnimatedScaleButton(
+                      //   onTap: () {
+                      //     if (noData != true) {
+                      //       Navigator.push(
+                      //           context,
+                      //           FadePageRoute(
+                      //               page: const record_session(
+                      //             past_session: true,
+                      //           )));
+                      //     }
+                      //   },
+                      //   child: Container(
+                      //     margin: EdgeInsets.only(
+                      //         right: UpdatedDimensions.width10(context) * 1.7),
+                      //     child: Image.asset(
+                      //       'assets/images/Add goal.webp',
+                      //       height: UpdatedDimensions.width10(context) * 2.4,
+                      //       width: UpdatedDimensions.width10(context) * 2.4,
+                      //     ),
+                      //   ),
+                      // ),
+                      //
                       AnimatedScaleButton(
                         onTap: () {
                           showModalBottomSheet(
@@ -483,7 +484,8 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                     7,
                                                                 practices,
                                                                 currentIndex ==
-                                                                    7)
+                                                                    7,
+                                                                focusedDate.toString())
                                                             : ListView.builder(
                                                                 physics:
                                                                     const NeverScrollableScrollPhysics(),

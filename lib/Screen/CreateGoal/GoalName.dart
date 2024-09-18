@@ -619,9 +619,9 @@ class _GoalNameState extends State<GoalName> {
                                 borderSide:
                                     BorderSide(color: Colors.transparent))),
                         controller: mygoal,
-                        onEditingComplete: () {
-                          setState(
-                              () {}); // This will trigger a re-build and update the condition
+                        onChanged: (String value){
+                          print("Value $value");
+                          goalProvider.updateName(value);
                         },
                         validator: (val) {
                           if (val == null || val == "") {
@@ -914,6 +914,10 @@ class _GoalNameState extends State<GoalName> {
                                         });
                                         // Navigator.pop(context, mygoal.text);
                                       } else {
+                                        final SharedPreferences prefs =
+                                        await _prefs;
+                                        prefs.setString(
+                                            'goalName', mygoal.text);
                                         goalProvider.updateName(mygoal.text);
                                         if (mygoal.text != "") {
                                           getUserId(

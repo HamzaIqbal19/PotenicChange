@@ -261,43 +261,43 @@ class _hurdle_nameState extends State<hurdle_name> {
                                         actions: <Widget>[
                                           Column(
                                             children: [
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 42,
-                                                width: double.infinity,
-                                                child: TextButton(
-                                                  onPressed: () async {
-                                                    checkHurdle();
-                                                    final SharedPreferences
-                                                        prefs = await _prefs;
-                                                    await prefs.setString(
-                                                        'HurdleRoute', 'Name');
-
-                                                    await prefs.setString(
-                                                        'NameHurdle',
-                                                        controller.text
-                                                            .toString());
-                                                  },
-                                                  child: const Text(
-                                                    'Exit & save progress',
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xFF007AFF),
-                                                        fontSize: 17,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                ),
-                                              ),
+                                              // SizedBox(
+                                              //   height: AppDimensions.height10(
+                                              //           context) *
+                                              //       0.1,
+                                              //   child: Divider(
+                                              //     color: const Color(0XFF3C3C43)
+                                              //         .withOpacity(0.29),
+                                              //   ),
+                                              // ),
+                                              // SizedBox(
+                                              //   height: 42,
+                                              //   width: double.infinity,
+                                              //   child: TextButton(
+                                              //     onPressed: () async {
+                                              //       checkHurdle();
+                                              //       final SharedPreferences
+                                              //           prefs = await _prefs;
+                                              //       await prefs.setString(
+                                              //           'HurdleRoute', 'Name');
+                                              //
+                                              //       await prefs.setString(
+                                              //           'NameHurdle',
+                                              //           controller.text
+                                              //               .toString());
+                                              //     },
+                                              //     child: const Text(
+                                              //       'Exit & save progress',
+                                              //       style: TextStyle(
+                                              //           color:
+                                              //               Color(0xFF007AFF),
+                                              //           fontSize: 17,
+                                              //           fontFamily: "Laila",
+                                              //           fontWeight:
+                                              //               FontWeight.w400),
+                                              //     ),
+                                              //   ),
+                                              // ),
                                               SizedBox(
                                                 height: AppDimensions.height10(
                                                         context) *
@@ -459,6 +459,7 @@ class _hurdle_nameState extends State<hurdle_name> {
                                           .toString()
                                       : hurdleName.toString(),
                                   maxLines: 2,
+                                  textAlign: TextAlign.center,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       color: Colors.white,

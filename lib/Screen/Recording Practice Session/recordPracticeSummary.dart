@@ -10,10 +10,11 @@ import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.da
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEmotions.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeEndosSession.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeFellingAftr.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/timepicker.dart';
 import 'package:potenic_app/Screen/Your_goals/veiw_goals_menu.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
-import 'package:potenic_app/Widgets/fading2.dart';
+import 'package:intl/intl.dart';
 import 'package:potenic_app/Widgets/goalWidget.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,6 +35,7 @@ class practice_summary extends StatefulWidget {
 class _practice_summaryState extends State<practice_summary> {
   String dateTime = 'Now';
   String time = 'Am';
+
   String day = '';
   var behaviourRoute;
   String selectedDate = "${DateTime.now().year}:${DateTime.now().month}:${DateTime.now().day}";
@@ -70,6 +72,7 @@ class _practice_summaryState extends State<practice_summary> {
       before = prefs.getInt('emotions')??0;
       after = prefs.getInt('afterSession')??0;
       session = prefs.getInt('endOfSession')??0;
+      selectedDate = prefs.getString('recordingDate')!;
       afterSessionNotes = prefs.getString('sessionFeedback')??'';
       emotionsNotes = prefs.getString('emotionsFeedback')??'';
       sessionFeedBack = prefs.getString('endSessionFeedback')??'';
@@ -93,12 +96,23 @@ class _practice_summaryState extends State<practice_summary> {
       ],
       session,
       pracId!,
-      dateTime,
+      DateFormat('h:mm a').format(DateTime.now()).toString(),
       selectedDate,
     )
         .then((response) {
+          print("Response $response");
       if (response == true) {
         clean();
+        Navigator.push(
+            context,
+            FadePageRoute(
+                page: ViewDashboard(
+                  missed: false,
+                  name: pracName,
+                  update: true,
+                  helpfulTips: false,
+                  record: differenceInDays,
+                )));
         // ScaffoldMessenger.of(context)
         //     .showSnackBar(const SnackBar(
         //         content: Text(
@@ -116,9 +130,11 @@ class _practice_summaryState extends State<practice_summary> {
     prefs.remove('emotions');
     prefs.remove('afterSession');
     prefs.remove('sessionFeedback');
+    prefs.remove('endOfSession');
     prefs.remove('emotionsFeedback');
     prefs.remove('recording_Time1');
-    prefs.getBool('endSessionFeedback');
+    prefs.remove('endSessionFeedback');
+    prefs.remove('recordingDate');
   }
 
   Future<void> getRecordedDate() async {
@@ -233,6 +249,7 @@ class _practice_summaryState extends State<practice_summary> {
           leading: Center(
             child:widget.view?Container(): IconButton(
                 onPressed: () {
+                  clean();
                   Navigator.push(
                       context,
                       FadePageRouteReverse(
@@ -254,6 +271,7 @@ class _practice_summaryState extends State<practice_summary> {
           actions: [
             widget.view
                 ? IconButton(onPressed: (){
+              clean();
               Navigator.pop(context);
             }, icon: Image.asset(
               'assets/images/Close.webp',
@@ -326,6 +344,7 @@ class _practice_summaryState extends State<practice_summary> {
                                         child: TextButton(
                                           onPressed: () {
                                             if (behaviourRoute == false) {
+                                              clean();
                                               Navigator.pushReplacement(
                                                   context,
                                                   FadePageRouteReverse(
@@ -337,6 +356,7 @@ class _practice_summaryState extends State<practice_summary> {
                                                     record: differenceInDays,
                                                   )));
                                             } else {
+                                              clean();
                                               Navigator.push(
                                                   context,
                                                   FadePageRouteReverse(
@@ -561,66 +581,33 @@ class _practice_summaryState extends State<practice_summary> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          if(widget.view) {
-                            showCupertinoModalPopup(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return _buildBottomPicker(CupertinoDatePicker(
-                                    mode: CupertinoDatePickerMode.dateAndTime,
-                                    use24hFormat: false,
-                                    //initialDateTime: date_time,
-                                    onDateTimeChanged: (DateTime newDateTime) {
-                                      if (mounted) {
-                                        setState(() {
-                                          if (newDateTime.weekday == 2) {
-                                            setState(() {
-                                              day = 'Tue';
-                                            });
-                                          } else if (newDateTime.weekday == 3) {
-                                            setState(() {
-                                              day = 'Wed';
-                                            });
-                                          } else if (newDateTime.weekday == 4) {
-                                            setState(() {
-                                              day = 'Thu';
-                                            });
-                                          } else if (newDateTime.weekday == 5) {
-                                            setState(() {
-                                              day = 'Fri';
-                                            });
-                                          } else if (newDateTime.weekday == 6) {
-                                            setState(() {
-                                              day = 'Sat';
-                                            });
-                                          } else if (newDateTime.weekday == 7) {
-                                            setState(() {
-                                              day = 'Sun';
-                                            });
-                                          } else {
-                                            setState(() {
-                                              day = 'Mon';
-                                            });
-                                          }
-                                        });
-                                        setState(() {
-                                          if (newDateTime.hour > 11) {
-                                            setState(() {
-                                              time = 'pm';
-                                            });
-                                          } else {
-                                            setState(() {
-                                              time = 'am';
-                                            });
-                                          }
-                                        });
-                                        setState(() => dateTime =
-                                            " ${newDateTime.hour}:${newDateTime.minute} $time");
-                                      }
-                                    }));
-                              },
-                            );
-                          }
-                        },
+                          // if(widget.newSession) {
+                          //   showModalBottomSheet(
+                          //       context: context,
+                          //       isDismissible: false,
+                          //       isScrollControlled: true,
+                          //       shape: const RoundedRectangleBorder(
+                          //         borderRadius: BorderRadius.vertical(
+                          //           top: Radius.circular(16),
+                          //         ),
+                          //       ),
+                          //       builder: (context){
+                          //     return SchedulePicker(
+                          //       onSelectionChanged: (selectedHour,
+                          //           selectedMinute, selectedPeriod,){
+                          //         setState(() {
+                          //           dateTime = "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
+                          //         });
+                          //       },
+                          //       initialHour: '1',
+                          //       initialMinute: '00',
+                          //       initialPeriod: 'am',
+                          //     );
+                          //   });
+                          //
+                          // }
+                          //
+                          },
                         child: Container(
                           width: AppDimensionsUpdated.width10(context) * 26.8,
                           height: AppDimensionsUpdated.height10(context) * 5.0,
@@ -652,11 +639,11 @@ class _practice_summaryState extends State<practice_summary> {
                                       ),
                                     ),
                                   )),
-                             widget.view? const Icon(
-                                Icons.arrow_drop_down,
-                                color: Colors.white,
-                                size: 30,
-                              ):Container()
+                             // widget.newSession? const Icon(
+                             //    Icons.arrow_drop_down,
+                             //    color: Colors.white,
+                             //    size: 30,
+                             //  ):Container()
                             ],
                           ),
                         ),
@@ -1095,7 +1082,7 @@ class _practice_summaryState extends State<practice_summary> {
                         child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                         widget.view?     AnimatedScaleButton(
+                         widget.newSession == false?     AnimatedScaleButton(
                                 // onTap: () {
 
                                 onTap: () {
@@ -1363,9 +1350,9 @@ class _practice_summaryState extends State<practice_summary> {
                               ):Container(),
                               AnimatedScaleButton(
                                 onTap: () {
-                                  if(widget.view){
-
-                                  }
+                                  if(widget.newSession){
+                                    addRecording();
+                                  }else{
                                   Navigator.push(
                                       context,
                                       FadePageRoute(
@@ -1381,7 +1368,7 @@ class _practice_summaryState extends State<practice_summary> {
                                   if (report == true) {
                                     activeReport(context, goalName, pracName,
                                         int.parse(color), int.parse(pracColor));
-                                  }
+                                  }}
                                 },
                                 child: Container(
                                     height:

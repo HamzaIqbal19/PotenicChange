@@ -157,7 +157,7 @@ class _ActivateStarState extends State<ActivateStar> {
           Loading == false
               ? Stack(
                 children: [
-                  getGlares(context, color),
+                  //getGlares(context, color),
                   Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.center,

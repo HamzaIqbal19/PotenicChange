@@ -419,7 +419,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                       style: TextStyle(
                                         color: const Color(0xFF646464),
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.6,
+                                        UpdatedDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     )),
@@ -440,7 +440,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                             AppDimensions.height10(context) *
                                                 0.2,
                                         fontSize:
-                                            AppDimensions.font10(context) *
+                                            UpdatedDimensions.font10(context) *
                                                 1.4),
                                   ))
                             ],

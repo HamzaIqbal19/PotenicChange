@@ -136,7 +136,7 @@ class _GoalFinishedState extends State<GoalFinished> {
               Loading == false
                   ? Stack(
                       children: [
-                        getGlares(context, color.toString()??"2"),
+                     //   getGlares(context, color.toString()??"2"),
                         Column(
                           children: [
                             Container(

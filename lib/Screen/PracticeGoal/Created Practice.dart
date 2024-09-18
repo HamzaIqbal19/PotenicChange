@@ -158,7 +158,7 @@ class _PracticeFinishedState extends State<PracticeFinished> {
                 ? Stack(
 
                   children: [
-                    getGlares(context, color),
+                  //  getGlares(context, color),
                     Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,

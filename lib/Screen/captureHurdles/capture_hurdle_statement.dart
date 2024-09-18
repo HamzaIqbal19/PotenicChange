@@ -245,45 +245,45 @@ class _hurdle_statementState extends State<hurdle_statement> {
                                         actions: <Widget>[
                                           Column(
                                             children: [
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 42,
-                                                width: double.infinity,
-                                                // color: Colors.white,
-                                                child: TextButton(
-                                                  onPressed: () async {
-                                                    checkHurdle();
-
-                                                    final SharedPreferences
-                                                        prefs = await _prefs;
-                                                    await prefs.setString(
-                                                        'HurdleRoute',
-                                                        'Statements');
-                                                    await prefs.setString(
-                                                        'hurdleStatement',
-                                                        controller.text
-                                                            .toString());
-                                                  },
-                                                  child: const Text(
-                                                    'Exit & save progress',
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xFF007AFF),
-                                                        fontSize: 17,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                ),
-                                              ),
+                                              // SizedBox(
+                                              //   height: AppDimensions.height10(
+                                              //           context) *
+                                              //       0.1,
+                                              //   child: Divider(
+                                              //     color: const Color(0XFF3C3C43)
+                                              //         .withOpacity(0.29),
+                                              //   ),
+                                              // ),
+                                              // SizedBox(
+                                              //   height: 42,
+                                              //   width: double.infinity,
+                                              //   // color: Colors.white,
+                                              //   child: TextButton(
+                                              //     onPressed: () async {
+                                              //       checkHurdle();
+                                              //
+                                              //       final SharedPreferences
+                                              //           prefs = await _prefs;
+                                              //       await prefs.setString(
+                                              //           'HurdleRoute',
+                                              //           'Statements');
+                                              //       await prefs.setString(
+                                              //           'hurdleStatement',
+                                              //           controller.text
+                                              //               .toString());
+                                              //     },
+                                              //     child: const Text(
+                                              //       'Exit & save progress',
+                                              //       style: TextStyle(
+                                              //           color:
+                                              //               Color(0xFF007AFF),
+                                              //           fontSize: 17,
+                                              //           fontFamily: "Laila",
+                                              //           fontWeight:
+                                              //               FontWeight.w400),
+                                              //     ),
+                                              //   ),
+                                              // ),
                                               SizedBox(
                                                 height: AppDimensions.height10(
                                                         context) *
