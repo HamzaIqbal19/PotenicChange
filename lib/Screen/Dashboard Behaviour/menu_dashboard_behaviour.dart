@@ -864,7 +864,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                   context,
                                                   FadePageRoute(
                                                       page:
-                                                          const progress_report(
+                                                          const ProgressReport(
                                                     index: 0,
                                                   )));
                                             } else if (subscripption !=
@@ -881,17 +881,17 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                           "Practice report is not active")));
                                             }
                                           },
-                                          child: button_feilds(
-                                            feild_text: 'Progress report',
-                                            icon_viible: true,
-                                            text_color: 0xff646464,
+                                          child: ButtonFields(
+                                            fieldText: 'Progress report',
+                                            iconVisible: true,
+                                            textColor: 0xff646464,
                                             premium: subscripption == 'active',
-                                            feild_text_2: reportDate != ''
+                                            fieldText2: reportDate != ''
                                                 ? '   ${formatDate(reportDate)}'
                                                 : '',
-                                            text_color_2: 0xff8EA1B1,
-                                            feild_text_3: '',
-                                            feild_text_4: '',
+                                            textColor2: 0xff8EA1B1,
+                                            fieldText3: '',
+                                            fieldText4: '',
                                           ),
                                         ),
                                       ),
@@ -914,14 +914,14 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                         "Practice score is not active")));
                                           }
                                         },
-                                        child: button_feilds(
-                                          feild_text: 'Evaluation level ',
-                                          icon_viible: true,
-                                          text_color: 0xff646464,
+                                        child: ButtonFields(
+                                          fieldText: 'Evaluation level ',
+                                          iconVisible: true,
+                                          textColor: 0xff646464,
                                           premium: true,
-                                          feild_text_2: '(',
-                                          text_color_2: 0xff8EA1B1,
-                                          feild_text_3: pracDetails[
+                                          fieldText2: '(',
+                                          textColor2: 0xff8EA1B1,
+                                          fieldText3: pracDetails[
                                                           'practiceLevel'] ==
                                                       null ||
                                                   pracDetails[
@@ -935,7 +935,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                           'practiceEvaluations']
                                                       ['totalPoint']
                                                   .toString(),
-                                          feild_text_4: '/5)',
+                                          fieldText4: '/5)',
                                         ),
                                       )
                                     ],
@@ -977,14 +977,14 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                               "Practice progress is not active")));
                                 }
                               },
-                              child: const button_feilds(
-                                feild_text: 'View practice progress',
-                                icon_viible: true,
-                                text_color: 0xff646464,
-                                feild_text_2: '',
-                                text_color_2: 0xffEA1B1,
-                                feild_text_3: '',
-                                feild_text_4: '',
+                              child: const ButtonFields(
+                                fieldText: 'View practice progress',
+                                iconVisible: true,
+                                textColor: 0xff646464,
+                                fieldText2: '',
+                                textColor2: 0xffEA1B1,
+                                fieldText3: '',
+                                fieldText4: '',
                                 premium: true,
                               ),
                             ),
@@ -1002,14 +1002,14 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                   await prefs.setString(
                                       'practice_review', 'practice_completed');
                                 },
-                                child: const button_feilds(
-                                  feild_text: 'View practice settings',
-                                  icon_viible: true,
-                                  text_color: 0xff646464,
-                                  feild_text_2: '',
-                                  text_color_2: 0xffEA1B1,
-                                  feild_text_3: '',
-                                  feild_text_4: '',
+                                child: const ButtonFields(
+                                  fieldText: 'View practice settings',
+                                  iconVisible: true,
+                                  textColor: 0xff646464,
+                                  fieldText2: '',
+                                  textColor2: 0xffEA1B1,
+                                  fieldText3: '',
+                                  fieldText4: '',
                                   premium: true,
                                 ),
                               ),
@@ -1036,14 +1036,14 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                 "This feature is only available for premium members")));
                                   }
                                 },
-                                child: button_feilds(
-                                  feild_text: 'Timeline',
-                                  icon_viible: subscripption == 'active',
-                                  text_color: 0xff646464,
-                                  feild_text_2: '',
-                                  text_color_2: 0xffEA1B1,
-                                  feild_text_3: '',
-                                  feild_text_4: '',
+                                child: ButtonFields(
+                                  fieldText: 'Timeline',
+                                  iconVisible: subscripption == 'active',
+                                  textColor: 0xff646464,
+                                  fieldText2: '',
+                                  textColor2: 0xffEA1B1,
+                                  fieldText3: '',
+                                  fieldText4: '',
                                   premium: subscripption == 'active',
                                 ),
                               ),
@@ -1068,14 +1068,14 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                               "Practice assessment is activated after first practice evaluation.")));
                                 }
                               },
-                              child: button_feilds(
-                                feild_text: 'Practice assessment history',
-                                icon_viible: true,
-                                text_color: 0xff646464,
-                                feild_text_2: '',
-                                text_color_2: 0xffEA1B1,
-                                feild_text_3: '',
-                                feild_text_4: '',
+                              child: ButtonFields(
+                                fieldText: 'Practice assessment history',
+                                iconVisible: true,
+                                textColor: 0xff646464,
+                                fieldText2: '',
+                                textColor2: 0xffEA1B1,
+                                fieldText3: '',
+                                fieldText4: '',
                                 premium: subscripption == 'active',
                               ),
                             )

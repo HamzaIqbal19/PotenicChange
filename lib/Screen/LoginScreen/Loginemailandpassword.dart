@@ -131,7 +131,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
       )
           .then((response) {
         if (response["statusCode"] == 200) {
-          print('Login response: $response');
           onLoggedIn();
           ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text("User Login Successfully")));

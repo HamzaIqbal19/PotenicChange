@@ -1200,15 +1200,15 @@ class progress_report_unsub extends StatelessWidget {
                               color: const Color(0xFFF5F5F5)),
                         ),
                       ),
-                      const button_feilds(
-                        feild_text: 'Practice score ',
-                        icon_viible: true,
-                        text_color: 0xff646464,
-                        feild_text_2: '(',
-                        text_color_2: 0xff8EA1B1,
-                        feild_text_3: '-',
+                      const ButtonFields(
+                        fieldText: 'Practice score ',
+                        iconVisible: true,
+                        textColor: 0xff646464,
+                        fieldText2: '(',
+                        textColor2: 0xff8EA1B1,
+                        fieldText3: '-',
                         premium: true,
-                        feild_text_4: '/5)',
+                        fieldText4: '/5)',
                       ),
                       GestureDetector(
                         onTap: () {

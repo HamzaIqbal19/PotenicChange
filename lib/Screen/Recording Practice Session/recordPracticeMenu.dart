@@ -918,7 +918,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                       context,
                                                       FadePageRoute(
                                                           page:
-                                                              const progress_report(
+                                                              const ProgressReport(
                                                         index: 0,
                                                       )));
                                                 } else if (subscripption !=
@@ -935,20 +935,20 @@ class _practiceMenuState extends State<practiceMenu> {
                                                               "Practice report is not active")));
                                                 }
                                               },
-                                              child: button_feilds(
-                                                feild_text: 'Progress report',
-                                                icon_viible: widget.goal_eval
+                                              child: ButtonFields(
+                                                fieldText: 'Progress report',
+                                                iconVisible: widget.goal_eval
                                                     ? true
                                                     : false,
-                                                text_color: 0xff646464,
+                                                textColor: 0xff646464,
                                                 premium:
                                                     subscripption == 'active',
-                                                feild_text_2: reportDate != ''
+                                                fieldText2: reportDate != ''
                                                     ? '   ${formatDate(reportDate)}'
                                                     : '',
-                                                text_color_2: 0xff8EA1B1,
-                                                feild_text_3: '',
-                                                feild_text_4: '',
+                                                textColor2: 0xff8EA1B1,
+                                                fieldText3: '',
+                                                fieldText4: '',
                                               ),
                                             ),
                                           ),
@@ -971,16 +971,16 @@ class _practiceMenuState extends State<practiceMenu> {
                                                             "Practice score is not active")));
                                               }
                                             },
-                                            child: button_feilds(
-                                              feild_text: 'Evaluation level ',
-                                              icon_viible: widget.goal_eval
+                                            child: ButtonFields(
+                                              fieldText: 'Evaluation level ',
+                                              iconVisible: widget.goal_eval
                                                   ? true
                                                   : false,
-                                              text_color: 0xff646464,
-                                              feild_text_2: '(',
-                                              text_color_2: 0xff8EA1B1,
+                                              textColor: 0xff646464,
+                                              fieldText2: '(',
+                                              textColor2: 0xff8EA1B1,
                                               premium: true,
-                                              feild_text_3: pracDetails[
+                                              fieldText3: pracDetails[
                                                               'practiceLevel'] ==
                                                           null ||
                                                       pracDetails[
@@ -994,7 +994,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                               'practiceEvaluations']
                                                           ['totalPoint']
                                                       .toString(),
-                                              feild_text_4: '/5)',
+                                              fieldText4: '/5)',
                                             ),
                                           )
                                         ],
@@ -1036,14 +1036,14 @@ class _practiceMenuState extends State<practiceMenu> {
                                     //               "Practice progress is not active")));
                                     // }
                                   },
-                                  child: const button_feilds(
-                                    feild_text: 'View practice progress',
-                                    icon_viible: true,
-                                    text_color: 0xff646464,
-                                    feild_text_2: '',
-                                    text_color_2: 0xff8EA1B1,
-                                    feild_text_4: '',
-                                    feild_text_3: '',
+                                  child: const ButtonFields(
+                                    fieldText: 'View practice progress',
+                                    iconVisible: true,
+                                    textColor: 0xff646464,
+                                    fieldText2: '',
+                                    textColor2: 0xff8EA1B1,
+                                    fieldText4: '',
+                                    fieldText3: '',
                                     premium: true,
                                   ),
                                 ),
@@ -1064,14 +1064,14 @@ class _practiceMenuState extends State<practiceMenu> {
                                       await prefs.setString(
                                           'practice_review', 'practice_menu');
                                     },
-                                    child: const button_feilds(
-                                      feild_text: 'View practice settings',
-                                      icon_viible: true,
-                                      text_color: 0xff646464,
-                                      feild_text_2: '',
-                                      text_color_2: 0xffEA1B1,
-                                      feild_text_3: '',
-                                      feild_text_4: '',
+                                    child: const ButtonFields(
+                                      fieldText: 'View practice settings',
+                                      iconVisible: true,
+                                      textColor: 0xff646464,
+                                      fieldText2: '',
+                                      textColor2: 0xffEA1B1,
+                                      fieldText3: '',
+                                      fieldText4: '',
                                       premium: true,
                                     ),
                                   ),
@@ -1099,22 +1099,23 @@ class _practiceMenuState extends State<practiceMenu> {
                                                     "This feature is only available for premium members")));
                                       }
                                     },
-                                    child: button_feilds(
-                                      feild_text: 'Timeline',
-                                      icon_viible: true,
-                                      text_color: 0xff646464,
+                                    child: ButtonFields(
+                                      fieldText: 'Timeline',
+                                      iconVisible: true,
+                                      textColor: 0xff646464,
                                       premium: subscripption == 'active',
-                                      feild_text_2: '',
-                                      text_color_2: 0xffEA1B1,
-                                      feild_text_3: subscripption == 'active'
+                                      fieldText2: '',
+                                      textColor2: 0xffEA1B1,
+                                      fieldText3: subscripption == 'active'
                                           ? ''
                                           : ' (Premium)',
-                                      feild_text_4: '',
+                                      fieldText4: '',
                                     ),
                                   ),
                                 ),
                                 AnimatedScaleButton(
                                   onTap: () async {
+                                    if(subscripption == 'active'){
                                     if (pracDetails['report'] == true) {
                                       Navigator.push(
                                           context,
@@ -1132,16 +1133,16 @@ class _practiceMenuState extends State<practiceMenu> {
                                           .showSnackBar(const SnackBar(
                                               content: Text(
                                                   "Practice assessment is activated after first practice evaluation.")));
-                                    }
+                                    }}
                                   },
-                                  child: button_feilds(
-                                    feild_text: 'Practice assesment history',
-                                    icon_viible: true,
-                                    text_color: 0xff646464,
-                                    feild_text_2: '',
-                                    text_color_2: 0xffEA1B1,
-                                    feild_text_3: '',
-                                    feild_text_4: '',
+                                  child: ButtonFields(
+                                    fieldText: 'Practice assesment history',
+                                    iconVisible: true,
+                                    textColor: 0xff646464,
+                                    fieldText2: '',
+                                    textColor2: 0xffEA1B1,
+                                    fieldText3: '',
+                                    fieldText4: '',
                                     premium: subscripption == 'active',
                                   ),
                                 )
@@ -1304,12 +1305,13 @@ void info_sheet(context) {
                             )),
                         const TextSpan(
                             text:
-                                'is broken down into two main\nsections:\n\n'),
+                                'is broken down into two main sections:\n\n'),
                         TextSpan(
                             text: '1.Progress Report\n',
                             style: TextStyle(
+                                fontWeight: FontWeight.w700,
                                 fontSize:
-                                    AppDimensions.height10(context) * 1.5)),
+                                    AppDimensions.height10(context) * 1.8)),
                         const TextSpan(text: 'See your '),
                         const TextSpan(
                             text: 'overall practice progress',
@@ -1318,12 +1320,13 @@ void info_sheet(context) {
                             )),
                         const TextSpan(
                             text:
-                                ', gain visibility on\nhow your personal development journey is going and\nwhether you’re making any progress to towards your\ngoal.\n\n'),
+                                ', gain visibility on how your personal development journey is going and whether you’re making any progress to towards your goal.\n\n'),
                         TextSpan(
                             text: '2.Practice Score\n',
                             style: TextStyle(
+                                fontWeight: FontWeight.w700,
                                 fontSize:
-                                    AppDimensions.height10(context) * 1.5)),
+                                    AppDimensions.height10(context) * 1.8)),
                         const TextSpan(text: 'Here you can'),
                         const TextSpan(
                             text: ' assess your practice effectiveness ',

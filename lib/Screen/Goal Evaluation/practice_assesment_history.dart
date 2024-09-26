@@ -353,7 +353,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                                                   Navigator.pushReplacement(
                                                       context,
                                                       FadePageRoute(
-                                                          page: progress_report(
+                                                          page: ProgressReport(
                                                         index: index,
                                                       )));
                                                 },
@@ -363,17 +363,17 @@ class _practice_assesmentState extends State<practice_assesment> {
                                                               .height10(
                                                                   context) *
                                                           1.2),
-                                                  child: button_feilds(
-                                                    feild_text:
+                                                  child: ButtonFields(
+                                                    fieldText:
                                                         'Progress report',
                                                     premium: true,
-                                                    icon_viible: true,
-                                                    text_color: 0xff646464,
-                                                    feild_text_2:
+                                                    iconVisible: true,
+                                                    textColor: 0xff646464,
+                                                    fieldText2:
                                                         " ${formatDate(pracDetails[index]['endDate'])}",
-                                                    text_color_2: 0xff8EA1B1,
-                                                    feild_text_3: '',
-                                                    feild_text_4: '',
+                                                    textColor2: 0xff8EA1B1,
+                                                    fieldText3: '',
+                                                    fieldText4: '',
                                                   ),
                                                 ),
                                               ),
@@ -397,17 +397,17 @@ class _practice_assesmentState extends State<practice_assesment> {
                                                       'prac_eval_id',
                                                       pracDetails[index]["id"]);
                                                 },
-                                                child: button_feilds(
-                                                  feild_text:
+                                                child: ButtonFields(
+                                                  fieldText:
                                                       'Evaluation level ',
                                                   premium: true,
-                                                  icon_viible: true,
-                                                  text_color: 0xff646464,
-                                                  feild_text_2: '(',
-                                                  text_color_2: 0xff8EA1B1,
-                                                  feild_text_3:
+                                                  iconVisible: true,
+                                                  textColor: 0xff646464,
+                                                  fieldText2: '(',
+                                                  textColor2: 0xff8EA1B1,
+                                                  fieldText3:
                                                       "${pracDetails[index]['totalPoint']}",
-                                                  feild_text_4: '/5)',
+                                                  fieldText4: '/5)',
                                                 ),
                                               )
                                             ],

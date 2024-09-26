@@ -853,7 +853,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        "More than 2 days selected - Update",
+                                        "Update",
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize:

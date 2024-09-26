@@ -428,7 +428,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                           width: AppDimensions.width10(context) * 23.9,
                           child: Center(
                             child: Text(
-                              "Review your summary here.",
+                              "Review your summary here",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: AppDimensions.font10(context) * 1.8,

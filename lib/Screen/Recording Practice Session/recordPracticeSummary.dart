@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -34,8 +35,9 @@ class practice_summary extends StatefulWidget {
 
 class _practice_summaryState extends State<practice_summary> {
   String dateTime = 'Now';
-  String time = 'Am';
-
+  String period = 'Am';
+  String hour = '1';
+  String minute = '00';
   String day = '';
   var behaviourRoute;
   String selectedDate = "${DateTime.now().year}:${DateTime.now().month}:${DateTime.now().day}";
@@ -51,7 +53,7 @@ class _practice_summaryState extends State<practice_summary> {
   var report;
   int before = 0;
   int after = 0;
-  String feedback = '';
+  String afterFeedback = '';
   int session = 0;
   String emotionFeedback = "";
   String sessionFeedBack = "";
@@ -59,7 +61,6 @@ class _practice_summaryState extends State<practice_summary> {
 
   void _fetchRoute() async {
     final SharedPreferences prefs = await _prefs;
-
     setState(() {
       behaviourRoute = prefs.getBool('behaviour_route');
       report = prefs.getBool('isReportActive');
@@ -73,24 +74,20 @@ class _practice_summaryState extends State<practice_summary> {
       after = prefs.getInt('afterSession')??0;
       session = prefs.getInt('endOfSession')??0;
       selectedDate = prefs.getString('recordingDate')!;
-      afterSessionNotes = prefs.getString('sessionFeedback')??'';
-      emotionsNotes = prefs.getString('emotionsFeedback')??'';
+      afterFeedback = prefs.getString('sessionFeedback')??'';
+      emotionFeedback = prefs.getString('emotionsFeedback')??'';
       sessionFeedBack = prefs.getString('endSessionFeedback')??'';
     });
-
-
   }
 
   addRecording(){
-
-    RecordingPractice()
-        .userAddRecording(
+    RecordingPractice().userAddRecording(
       before,
       after,
       [
         {
-          "beforeNote": emotionsNotes,
-          "afterNote": afterSessionNotes,
+          "beforeNote": emotionFeedback,
+          "afterNote": afterFeedback,
           "endNote": sessionFeedBack
         }
       ],
@@ -98,8 +95,7 @@ class _practice_summaryState extends State<practice_summary> {
       pracId!,
       DateFormat('h:mm a').format(DateTime.now()).toString(),
       selectedDate,
-    )
-        .then((response) {
+    ).then((response) {
           print("Response $response");
       if (response == true) {
         clean();
@@ -113,19 +109,16 @@ class _practice_summaryState extends State<practice_summary> {
                   helpfulTips: false,
                   record: differenceInDays,
                 )));
-        // ScaffoldMessenger.of(context)
-        //     .showSnackBar(const SnackBar(
-        //         content: Text(
-        //             "Recording Added Successfully")));
-
       } else if (response == false) {}
-    })
-        .catchError((error) {})
+    }).catchError((error) {})
         .whenComplete(() {});
   }
 
   clean()async{
     final SharedPreferences prefs = await _prefs;
+    feedback.clear();
+    feedback2.clear();
+    feedback3.clear();
     prefs.remove('newSession');
     prefs.remove('emotions');
     prefs.remove('afterSession');
@@ -140,7 +133,6 @@ class _practice_summaryState extends State<practice_summary> {
   Future<void> getRecordedDate() async {
     final SharedPreferences prefs = await _prefs;
     var isFuture ;
-
     DateTime currentDate =
     DateTime.parse(DateTime.now().toString());
     DateTime date1 = DateTime.parse(prefs.getString('record_date')!);
@@ -196,17 +188,14 @@ class _practice_summaryState extends State<practice_summary> {
     }).catchError((error) {});
   }
 
-
-
   void recording() {
     RecordingPractice.getUserPracticeRecord().then((response) {
-      print("Api Response: $response");
       if (response.length != 0) {
         setState(() {
           details = response;
           before = response['recording']['feelingsBeforeSession'];
           after = response['recording']['feelingsAfterSession'];
-          feedback = response['recording']['notes'][0]['afterNote'];
+          afterFeedback = response['recording']['notes'][0]['afterNote'];
           emotionFeedback = response['recording']['notes'][0]['beforeNote'];
           sessionFeedBack = response['recording']['notes'][0]['endNote'];
           session = response['recording']['practiceSummary'];
@@ -224,7 +213,6 @@ class _practice_summaryState extends State<practice_summary> {
   initState() {
     super.initState();
     getRecordedDate();
-    print("New Session ${widget.newSession}");
     if(widget.newSession == false){
       recording();
     }else{
@@ -581,32 +569,35 @@ class _practice_summaryState extends State<practice_summary> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          // if(widget.newSession) {
-                          //   showModalBottomSheet(
-                          //       context: context,
-                          //       isDismissible: false,
-                          //       isScrollControlled: true,
-                          //       shape: const RoundedRectangleBorder(
-                          //         borderRadius: BorderRadius.vertical(
-                          //           top: Radius.circular(16),
-                          //         ),
-                          //       ),
-                          //       builder: (context){
-                          //     return SchedulePicker(
-                          //       onSelectionChanged: (selectedHour,
-                          //           selectedMinute, selectedPeriod,){
-                          //         setState(() {
-                          //           dateTime = "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
-                          //         });
-                          //       },
-                          //       initialHour: '1',
-                          //       initialMinute: '00',
-                          //       initialPeriod: 'am',
-                          //     );
-                          //   });
-                          //
-                          // }
-                          //
+                          if(widget.newSession) {
+                            showModalBottomSheet(
+                                context: context,
+                                isDismissible: false,
+                                isScrollControlled: true,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(16),
+                                  ),
+                                ),
+                                builder: (context){
+                              return SchedulePicker(
+                                onSelectionChanged: (selectedHour,
+                                    selectedMinute, selectedPeriod,){
+                                  setState(() {
+                                    dateTime = "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
+                                    hour = selectedHour;
+                                    minute = selectedMinute;
+                                    period = selectedPeriod;
+                                  });
+                                  Navigator.pop(context);
+                                },
+                                initialHour: hour,
+                                initialMinute: minute,
+                                initialPeriod: period.toLowerCase(),
+                              );
+                            });
+
+                          }
                           },
                         child: Container(
                           width: AppDimensionsUpdated.width10(context) * 26.8,
@@ -639,11 +630,11 @@ class _practice_summaryState extends State<practice_summary> {
                                       ),
                                     ),
                                   )),
-                             // widget.newSession? const Icon(
-                             //    Icons.arrow_drop_down,
-                             //    color: Colors.white,
-                             //    size: 30,
-                             //  ):Container()
+                             widget.newSession? const Icon(
+                                Icons.arrow_drop_down,
+                                color: Colors.white,
+                                size: 30,
+                              ):Container()
                             ],
                           ),
                         ),
@@ -904,7 +895,7 @@ class _practice_summaryState extends State<practice_summary> {
                           ]),
                         ),
                       ),
-                      feedback != " " && feedback.isNotEmpty
+                      afterFeedback != " " && afterFeedback.isNotEmpty
                           ? Container(
                               width: AppDimensionsUpdated.width10(context) * 36.0,
                               // height: AppDimensionsUpdated.height10(context) * 7.3,
@@ -926,7 +917,7 @@ class _practice_summaryState extends State<practice_summary> {
                                         AppDimensionsUpdated.height10(context) * 2.0),
                                 width: AppDimensionsUpdated.width10(context) * 32.0,
                                 child: Text(
-                                  feedback.toString(),
+                                  afterFeedback.toString(),
                                   style: TextStyle(
                                       color: const Color(0xff646464),
                                       fontSize:
@@ -1533,6 +1524,7 @@ void __share_experience(context, String goalName, String identity, String color,
                     style: TextStyle(
                         height: AppDimensionsUpdated.height10(context) * 0.12,
                         fontSize: AppDimensionsUpdated.font10(context) * 3,
+                        fontFamily: 'Laila',
                         // letterSpacing: AppDimensionsUpdated.height10(context) * 0.2,
                         fontWeight: FontWeight.w700,
                         color: const Color(0xFF437296)),
@@ -1544,6 +1536,7 @@ void __share_experience(context, String goalName, String identity, String color,
                   style: TextStyle(
                       height: AppDimensionsUpdated.height10(context) * 0.12,
                       fontSize: AppDimensionsUpdated.font10(context) * 1.8,
+                      fontFamily: 'Laila',
                       // letterSpacing: AppDimensionsUpdated.height10(context) * 0.2,
                       fontWeight: FontWeight.w400,
                       color: const Color(0xFF437296)),
@@ -1560,7 +1553,7 @@ void __share_experience(context, String goalName, String identity, String color,
                     child: goalWidget(context, UpdatedDimensions.height10(context) * 28.8, UpdatedDimensions.width10(context) * 28.8, color, goalName, identity, UpdatedDimensions.font10(context) * 2.0, UpdatedDimensions.font10(context) * 1.6, const Color(0xff5B74A6))
                   ),
                   Align(
-                    alignment: const Alignment(0.9, 1.4),
+                    alignment: const Alignment(0.9, 1.7),
                     child: practiceWidget(context, UpdatedDimensions.height10(context) * 12.8, UpdatedDimensions.height10(context) * 12.8, pracColor, pracName, 'completed'),
 
                   ),
@@ -1570,7 +1563,7 @@ void __share_experience(context, String goalName, String identity, String color,
                   height: AppDimensionsUpdated.height10(context) * 12.5,
                   width: AppDimensionsUpdated.width10(context) * 12.5,
                   margin: EdgeInsets.only(
-                      top: AppDimensionsUpdated.height10(context) * 1.9,
+                      top: AppDimensionsUpdated.height10(context) * 3.9,
                       bottom: AppDimensionsUpdated.height10(context) * 3),
                   decoration: const BoxDecoration(
                       //color: Colors.amber,

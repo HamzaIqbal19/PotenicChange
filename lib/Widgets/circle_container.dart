@@ -62,7 +62,7 @@ class CircularFormationPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final center = Offset(size.width / 2, size.height / 2);
-    const circleRadius = 90.5;
+    const circleRadius = 130.5;
 
     // Draw outer circle
     final circlePaint = Paint()

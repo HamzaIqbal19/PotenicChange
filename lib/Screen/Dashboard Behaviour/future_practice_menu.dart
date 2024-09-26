@@ -205,15 +205,15 @@ class _futurePracticeMenuState extends State<futurePracticeMenu> {
                             await prefs.setString(
                                 'practice_review', 'record_session');
                           },
-                          child: const button_feilds(
-                            feild_text: 'View practice settings',
-                            icon_viible: true,
-                            text_color: 0xff646464,
-                            feild_text_2: '',
-                            text_color_2: 0xffEA1B1,
+                          child: const ButtonFields(
+                            fieldText: 'View practice settings',
+                            iconVisible: true,
+                            textColor: 0xff646464,
+                            fieldText2: '',
+                            textColor2: 0xffEA1B1,
                             premium: true,
-                            feild_text_3: '',
-                            feild_text_4: '',
+                            fieldText3: '',
+                            fieldText4: '',
                           ),
                         ),
                       ),

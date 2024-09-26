@@ -79,7 +79,6 @@ class Authentication {
     var response = jsonDecode(request.body);
 
     if (request.statusCode == 200) {
-      print('Login response: $response');
       final SharedPreferences prefs = await _prefs;
       await prefs.setString('usertoken', response["accessToken"]);
       await prefs.setInt('userid', response['id']);
@@ -287,8 +286,6 @@ class Authentication {
           body: body);
 
       var responses = jsonDecode(request.body);
-
-      print("App launch $responses");
 
       if (request.statusCode == 200) {
         final SharedPreferences prefs = await _prefs;

@@ -773,7 +773,7 @@ class _view_detailsState extends State<view_details> {
                                                       0.2,
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.4),
+                                                  1.8),
                                         ))
                                   ],
                                 ),

@@ -162,12 +162,14 @@ class PracticeEvaluation {
       'Content-Type': 'application/json',
       'x-access-token': '$accessToken'
     };
+    print("PracticeId $pracNum $reportDate $endDate");
 
     var response = await http.get(
       Uri.parse(
           '${URL.BASE_URL}api/userPractice/user-practice-report-by-id/$pracNum?activeDate=$reportDate&endDate=$endDate'),
       headers: headers,
     );
+
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);

@@ -292,7 +292,7 @@ class _prac_scoreState extends State<prac_score> {
           Navigator.pushReplacement(
               context,
               FadePageRouteReverse(
-                  page: progress_report(
+                  page: ProgressReport(
                 index: widget.index,
               )));
         }
@@ -331,7 +331,7 @@ class _prac_scoreState extends State<prac_score> {
                     Navigator.pushReplacement(
                         context,
                         FadePageRouteReverse(
-                            page: progress_report(
+                            page: ProgressReport(
                           index: widget.index,
                         )));
                   }

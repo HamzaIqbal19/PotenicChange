@@ -97,6 +97,7 @@ dashboardNoPastSession(BuildContext context, smallScreen,allGoals,pastSession ,a
                                 onTap: () async {
                                   final SharedPreferences prefs = await _prefs;
                                if( pastSession || currentDay) {
+                                 print("Past session ");
                                  await prefs.setBool('newSession', true);
                                  await prefs.setString('recordingDate', currentDate);
                                  await prefs.setInt('goal_num', allGoals[index]['id']);

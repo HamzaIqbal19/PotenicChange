@@ -5,12 +5,16 @@ import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.da
 // import 'package:flutter_offline/flutter_offline.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeStopwatch.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeSummary.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/widgets/SessionDialogs.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session/widgets/SessionNotes.dart';
 
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
+import 'widgets/optionCircles.dart';
 
 class emotions extends StatefulWidget {
   final bool summary;
@@ -101,153 +105,176 @@ class _emotionsState extends State<emotions> {
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Scaffold(
+          backgroundColor: Colors.transparent,
+          extendBody: true,
+          bottomNavigationBar:  Container(
+            margin: const EdgeInsets.only(bottom: 20),
+            height: AppDimensionsUpdated.height10(context) * 6.0,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  widget.summary
+                      ? AnimatedScaleButton(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                        height:
+                        AppDimensionsUpdated.height10(context) *
+                            5.0,
+                        width: AppDimensionsUpdated.width10(context) *
+                            14.3,
+                        margin: EdgeInsets.only(
+                            right:
+                            AppDimensionsUpdated.height10(context) *
+                                1.2),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(
+                                AppDimensionsUpdated.height10(context) *
+                                    5.0),
+                            border: Border.all(
+                                width: AppDimensionsUpdated.height10(
+                                    context) *
+                                    0.2,
+                                color:
+                                const Color(0xffFA9934))),
+                        child: Center(
+                            child: Text(
+                              'Cancel',
+                              style: TextStyle(
+                                  color: const Color(0xffFA9934),
+                                  fontSize: AppDimensionsUpdated.font10(
+                                      context) *
+                                      2,
+                                  fontWeight: FontWeight.w600),
+                            ))),
+                  )
+                      : Container(),
+                  AnimatedScaleButton(
+                    onTap: () async {
+                      if (pracEmotions != 0) {
+
+                        final SharedPreferences prefs = await _prefs;
+                        await prefs.setInt('emotions', pracEmotions);
+
+                        await prefs.setString(
+                            'pracName', widget.pracName);
+                        feedback.text.toString().isNotEmpty
+                            ? prefs.setString('emotionsFeedback',
+                            feedback.text.toString())
+                            : prefs.setString(
+                            'emotionsFeedback', " ");
+
+                        if (widget.summary == true) {
+                          if(newSession == true){
+                            Navigator.push(
+                                context,
+                                FadePageRoute(
+                                    page: const practice_summary(
+                                        view: false,newSession: true
+                                    )));
+
+                          }else{
+                            RecordingPractice().updateRecording(
+                                'feelingsBeforeSession', pracEmotions, [
+                              {
+                                "beforeNote": feedback.text.isNotEmpty
+                                    ? feedback.text.toString()
+                                    : " ",
+                                "afterNote": afterSessionNotes ?? " ",
+                                "endNote": endSession ?? " "
+                              }
+                            ]).then((reaponse) {
+                              if (reaponse == true) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const practice_summary(
+                                            view: false,newSession: false
+                                        )));
+                              } else {}
+                            });}
+                        } else {
+                          Navigator.push(context,
+                              FadePageRoute(page: const clocks()));
+                        }
+                      }
+                    },
+                    child: Container(
+                      height: AppDimensionsUpdated.height10(context) * 5.0,
+                      width: widget.summary
+                          ? AppDimensionsUpdated.width10(context) * 21.0
+                          : AppDimensionsUpdated.width10(context) * 25.4,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: pracEmotions != 0
+                              ? [
+                            const Color(0xffFCC10D),
+                            const Color(0xffFDA210),
+                          ]
+                              : [
+                            const Color(0xffFCC10D)
+                                .withOpacity(0.5),
+                            const Color(0xffFDA210)
+                                .withOpacity(0.5),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensionsUpdated.height10(context) * 5.0),
+                      ),
+                      child: Center(
+                          child:  Text(
+                            widget.summary
+                                ? 'Update Summary':"Next",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: AppDimensionsUpdated.font10(
+                                    context) *
+                                    2,
+                                fontWeight: FontWeight.w600),
+                          )
+
+                      ),
+                    ),
+                  )
+                ]),
+          ),
           appBar: AppBar(
             backgroundColor: Colors.transparent,
             elevation: 0,
+            centerTitle: true,
+            title: Text(
+              widget.pracName,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                  fontSize: AppDimensionsUpdated.font10(context) * 2.0,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white),
+            ),
             actions: [
               Center(
-                child: IconButton(
-                    onPressed: () {
-                      widget.record || widget.summary
-                          ? Navigator.pop(context)
-                          : showAnimatedDialog(
-                              animationType: DialogTransitionType.fadeScale,
-                              curve: Curves.easeInOut,
-                              duration: const Duration(seconds: 1),
-                              context: context,
-                              builder: (BuildContext context) => SizedBox(
-                                width: AppDimensionsUpdated.width10(context) * 27.0,
-                                height: AppDimensionsUpdated.height10(context) * 18.2,
-                                child: AlertDialog(
-                                  contentPadding: EdgeInsets.zero,
-                                  actionsPadding: EdgeInsets.zero,
-                                  titlePadding: EdgeInsets.zero,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(
-                                          AppDimensionsUpdated.height10(context) *
-                                              1.4)),
-                                  title: Container(
-                                    margin: const EdgeInsets.only(
-                                        top: 19,
-                                        right: 16,
-                                        left: 16,
-                                        bottom: 2),
-                                    height:
-                                        AppDimensionsUpdated.height10(context) * 2.2,
-                                    width:
-                                        AppDimensionsUpdated.width10(context) * 23.8,
-                                    child: Text(
-                                      "Are you sure?",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        color: const Color(0xFF000000),
-                                        fontSize:
-                                            AppDimensionsUpdated.font10(context) * 1.7,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ),
-                                  content: Container(
-                                    margin: EdgeInsets.only(
-                                        bottom:
-                                            AppDimensionsUpdated.height10(context) *
-                                                1.9,
-                                        left: AppDimensionsUpdated.height10(context) *
-                                            1.6,
-                                        right: AppDimensionsUpdated.width10(context) *
-                                            1.6),
-                                    height:
-                                        AppDimensionsUpdated.height10(context) * 3.2,
-                                    width:
-                                        AppDimensionsUpdated.width10(context) * 23.8,
-                                    child: Text(
-                                      "If you close it now, you will lose all your progress.",
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                        height:
-                                            AppDimensionsUpdated.height10(context) *
-                                                0.15,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    ),
-                                  ),
-                                  actions: <Widget>[
-                                    Column(
-                                      children: [
-                                        Container(
-                                          height: 42,
-                                          width: double.infinity,
-                                          color: const Color(0xFF007AFF),
-                                          child: TextButton(
-                                            onPressed: () {
-                                              if (behaviour_route == false) {
-                                                if (widget.summary == false) {
-                                                  Navigator.pushReplacement(
-                                                      context,
-                                                      FadePageRouteReverse(
-                                                          page: const ViewDashboard(
-                                                            missed: false,
-                                                            name: '',
-                                                            update: false,
-                                                            helpfulTips: false,
-                                                            record: 0,
-                                                          )));
-                                                }
-                                              } else {
-                                                Navigator.push(
-                                                    context,
-                                                    FadePageRouteReverse(
-                                                        page: const ViewDashboard(
-                                                      missed: false,
-                                                      name: '',
-                                                      update: false,
-                                                      helpfulTips: false,
-                                                      record: 0,
-                                                    )));
-                                              }
-                                            },
-                                            child: const Text(
-                                              'Close',
-                                              style: TextStyle(
-                                                  color: Color(0xFFFFFFFF),
-                                                  fontSize: 17,
-                                                  fontFamily: "Laila",
-                                                  fontWeight: FontWeight.w400),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: 44,
-                                          width: double.infinity,
-                                          child: TextButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: const Text(
-                                              'Cancel',
-                                              style: TextStyle(
-                                                  fontSize: 17,
-                                                  fontFamily: "Laila",
-                                                  fontWeight: FontWeight.w400,
-                                                  color: Color(0xFF007AFF)),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                    },
-                    icon: Image.asset(
-                      'assets/images/Close.webp',
-                      // width: AppDimensionsUpdated.width10(context) * 2.6,
-                      height: AppDimensionsUpdated.height10(context) * 2.8,
-                      fit: BoxFit.contain,
-                    )),
-              )
+                child: Buttons().closeButton(context,(){
+                  if(widget.record || widget.summary){
+                  Navigator.pop(context);}else{
+                    sessionDialog(context, (){
+                      Navigator.push(
+                          context,
+                          FadePageRouteReverse(
+                              page: const ViewDashboard(
+                                missed: false,
+                                name: '',
+                                update: false,
+                                helpfulTips: false,
+                                record: 0,
+                              )));
+                    });
+                  }
+    }
+              ))
+
             ],
             automaticallyImplyLeading: false,
           ),
@@ -268,19 +295,9 @@ class _emotionsState extends State<emotions> {
                   //crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Container(
-                      width: AppDimensionsUpdated.width10(context) * 30,
                       margin: EdgeInsets.only(
                           bottom: AppDimensionsUpdated.height10(context) * 10.5,
                           top: AppDimensionsUpdated.height10(context) * 5.0),
-                      alignment: Alignment.center,
-                      child: Text(
-                        widget.pracName,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                            fontSize: AppDimensionsUpdated.font10(context) * 2.0,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
-                      ),
                     ),
                     Container(
                       width: AppDimensionsUpdated.width10(context) * 35.9,
@@ -316,633 +333,36 @@ class _emotionsState extends State<emotions> {
                       ),
                     ),
                     Container(
+                      height: AppDimensionsUpdated.width10(context) * 13.7,
                       margin: EdgeInsets.only(
                           bottom: AppDimensionsUpdated.height10(context) * 5.2,
                           left: AppDimensionsUpdated.width10(context) * 1.0),
-                      height: AppDimensionsUpdated.width10(context) * 13.7,
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(children: [
-                          AnimatedScaleButton(
-                            onTap: () {
-                              setState(() {
-                                pracEmotions = 1;
-                              });
-                            },
-                            child: Container(
-                              width: AppDimensionsUpdated.width10(context) * 13.7,
-                              height: AppDimensionsUpdated.width10(context) * 13.7,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensionsUpdated.width10(context) * 3.0,
-                                  right: AppDimensionsUpdated.width10(context) * 1.5),
-                              decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width:
-                                          AppDimensionsUpdated.width10(context) * 0.2,
-                                      color: pracEmotions == 1
-                                          ? Colors.white
-                                          : Colors.transparent)),
-                              child: Container(
-                                height: AppDimensionsUpdated.width10(context) * 12.7,
-                                width: AppDimensionsUpdated.width10(context) * 12.5,
-                                margin: EdgeInsets.symmetric(
-                                    vertical:
-                                        AppDimensionsUpdated.height10(context) * 0.4,
-                                    horizontal:
-                                        AppDimensionsUpdated.width10(context) * 0.3),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width:
-                                          AppDimensionsUpdated.width10(context) * 0.2,
-                                      color: Colors.white),
-                                  color: const Color(0xff546096),
-                                ),
-                                child: Text(
-                                  'I feel very \nlow & \ndemotivated',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize:
-                                        AppDimensionsUpdated.font10(context) * 1.6,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          AnimatedScaleButton(
-                            onTap: () {
-                              setState(() {
-                                pracEmotions = 2;
-                              });
-                            },
-                            child: Container(
-                              width: AppDimensionsUpdated.width10(context) * 13.7,
-                              height: AppDimensionsUpdated.width10(context) * 13.7,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensionsUpdated.width10(context) * 1.5),
-                              decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width:
-                                          AppDimensionsUpdated.width10(context) * 0.2,
-                                      color: pracEmotions == 2
-                                          ? Colors.white
-                                          : Colors.transparent)),
-                              child: Container(
-                                height: AppDimensionsUpdated.width10(context) * 12.7,
-                                width: AppDimensionsUpdated.width10(context) * 12.5,
-                                margin: EdgeInsets.symmetric(
-                                    vertical:
-                                        AppDimensionsUpdated.height10(context) * 0.4,
-                                    horizontal:
-                                        AppDimensionsUpdated.width10(context) * 0.3),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width:
-                                          AppDimensionsUpdated.width10(context) * 0.2,
-                                      color: Colors.white),
-                                  color: const Color(0xff7291A0),
-                                ),
-                                child: Text(
-                                  'I feel slightly \nirritated, not \nfussed really',
-                                  style: TextStyle(
-                                    fontSize:
-                                        AppDimensionsUpdated.font10(context) * 1.6,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          AnimatedScaleButton(
-                            onTap: () {
-                              setState(() {
-                                pracEmotions = 3;
-                              });
-                            },
-                            child: Container(
-                              width: AppDimensionsUpdated.width10(context) * 13.7,
-                              height: AppDimensionsUpdated.width10(context) * 13.7,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensionsUpdated.width10(context) * 1.5),
-                              decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width:
-                                          AppDimensionsUpdated.width10(context) * 0.2,
-                                      color: pracEmotions == 3
-                                          ? Colors.white
-                                          : Colors.transparent)),
-                              child: Container(
-                                height: AppDimensionsUpdated.width10(context) * 12.7,
-                                width: AppDimensionsUpdated.width10(context) * 12.5,
-                                alignment: Alignment.center,
-                                margin: EdgeInsets.symmetric(
-                                    vertical:
-                                        AppDimensionsUpdated.height10(context) * 0.4,
-                                    horizontal:
-                                        AppDimensionsUpdated.width10(context) * 0.3),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width:
-                                          AppDimensionsUpdated.width10(context) * 0.2,
-                                      color: Colors.white),
-                                  color: const Color(0xffE1C44F),
-                                ),
-                                child: Text(
-                                  'I feel ok',
-                                  style: TextStyle(
-                                    fontSize:
-                                        AppDimensionsUpdated.font10(context) * 1.6,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          AnimatedScaleButton(
-                            onTap: () {
-                              setState(() {
-                                pracEmotions = 4;
-                              });
-                            },
-                            child: Container(
-                              width: AppDimensionsUpdated.width10(context) * 13.7,
-                              height: AppDimensionsUpdated.width10(context) * 13.7,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensionsUpdated.width10(context) * 1.5),
-                              decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width:
-                                          AppDimensionsUpdated.width10(context) * 0.2,
-                                      color: pracEmotions == 4
-                                          ? Colors.white
-                                          : Colors.transparent)),
-                              child: Container(
-                                height: AppDimensionsUpdated.width10(context) * 12.7,
-                                width: AppDimensionsUpdated.width10(context) * 12.5,
-                                margin: EdgeInsets.symmetric(
-                                    vertical:
-                                        AppDimensionsUpdated.height10(context) * 0.4,
-                                    horizontal:
-                                        AppDimensionsUpdated.width10(context) * 0.3),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width:
-                                          AppDimensionsUpdated.width10(context) * 0.2,
-                                      color: Colors.white),
-                                  color: const Color(0xffFF7C42),
-                                ),
-                                child: Text(
-                                  'Motivated and \nready to start',
-                                  style: TextStyle(
-                                    fontSize:
-                                        AppDimensionsUpdated.font10(context) * 1.6,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          AnimatedScaleButton(
-                            onTap: () {
-                              setState(() {
-                                pracEmotions = 5;
-                              });
-                            },
-                            child: Container(
-                              width: AppDimensionsUpdated.width10(context) * 13.7,
-                              height: AppDimensionsUpdated.width10(context) * 13.7,
-                              margin: EdgeInsets.only(
-                                  right: AppDimensionsUpdated.width10(context) * 5.0),
-                              decoration: BoxDecoration(
-                                  color: Colors.transparent,
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width:
-                                          AppDimensionsUpdated.width10(context) * 0.2,
-                                      color: pracEmotions == 5
-                                          ? Colors.white
-                                          : Colors.transparent)),
-                              child: Container(
-                                height: AppDimensionsUpdated.width10(context) * 12.7,
-                                width: AppDimensionsUpdated.width10(context) * 12.5,
-                                margin: EdgeInsets.symmetric(
-                                    vertical:
-                                        AppDimensionsUpdated.height10(context) * 0.4,
-                                    horizontal:
-                                        AppDimensionsUpdated.width10(context) * 0.3),
-                                alignment: Alignment.center,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  border: Border.all(
-                                      width:
-                                          AppDimensionsUpdated.width10(context) * 0.2,
-                                      color: Colors.white),
-                                  color: const Color(0xff219653),
-                                ),
-                                child: Text(
-                                  'Great, cannot \nwait to start!',
-                                  style: TextStyle(
-                                    fontSize:
-                                        AppDimensionsUpdated.font10(context) * 1.6,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ]),
-                      ),
+                      child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 5,
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (context, index){
+                        return AnimatedScaleButton(onTap: (){
+                          setState(() {
+                            pracEmotions = index +1;
+                          });
+                        },
+                        child: sessonCircles(context,pracEmotions == index+1,index,true),);
+                      }),
                     ),
-                    addNotes(state_: widget.summary),
-                    /*
-                    Container(
-                      width: AppDimensionsUpdated.width10(context) * 7.6,
-                      height: AppDimensionsUpdated.height10(context) * 7.6,
-                      margin: EdgeInsets.only(
-                          bottom: AppDimensionsUpdated.height10(context) * 11.3),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Container(
-                            width: AppDimensionsUpdated.width10(context) * 5.0,
-                            height: AppDimensionsUpdated.height10(context) * 5.0,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                    width: AppDimensionsUpdated.width10(context) * 0.2,
-                                    color: Colors.white)),
-                            child: Container(
-                              height: AppDimensionsUpdated.height10(context) * 2.7,
-                              width: AppDimensionsUpdated.width10(context) * 2.7,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensionsUpdated.width10(context) * 0.3),
-                              child: IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(
-                                    Icons.edit_note,
-                                    //size: 27,
-                                    color: Colors.white,
-                                  )),
-                            ),
-                          ),
-                          Container(
-                            width: AppDimensionsUpdated.width10(context) * 7.6,
-                            height: AppDimensionsUpdated.height10(context) * 1.9,
-                            margin: EdgeInsets.only(
-                                top: AppDimensionsUpdated.height10(context) * 0.6),
-                            child: Text(
-                              'Add Notes',
-                              style: TextStyle(
-                                  fontSize: AppDimensionsUpdated.font10(context) * 1.6,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                   */
-
-                    SizedBox(
-                      //width: AppDimensionsUpdated.width10(context) * 32.5,
-                      height: AppDimensionsUpdated.height10(context) * 6.0,
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            widget.summary
-                                ? AnimatedScaleButton(
-                                    onTap: () {
-                                      Navigator.pop(context);
-                                    },
-                                    child: Container(
-                                        height:
-                                            AppDimensionsUpdated.height10(context) *
-                                                5.0,
-                                        width: AppDimensionsUpdated.width10(context) *
-                                            14.3,
-                                        margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensionsUpdated.height10(context) *
-                                                    1.2),
-                                        decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius: BorderRadius.circular(
-                                                AppDimensionsUpdated.height10(context) *
-                                                    5.0),
-                                            border: Border.all(
-                                                width: AppDimensionsUpdated.height10(
-                                                        context) *
-                                                    0.2,
-                                                color:
-                                                    const Color(0xffFA9934))),
-                                        child: Center(
-                                            child: Text(
-                                          'Cancel',
-                                          style: TextStyle(
-                                              color: const Color(0xffFA9934),
-                                              fontSize: AppDimensionsUpdated.font10(
-                                                      context) *
-                                                  2,
-                                              fontWeight: FontWeight.w600),
-                                        ))),
-                                  )
-                                : Container(),
-                            AnimatedScaleButton(
-                              onTap: () async {
-                                if (pracEmotions != 0) {
-
-                                  final SharedPreferences prefs = await _prefs;
-                                  await prefs.setInt('emotions', pracEmotions);
-
-                                  await prefs.setString(
-                                      'pracName', widget.pracName);
-                                  feedback.text.toString().isNotEmpty
-                                      ? prefs.setString('emotionsFeedback',
-                                          feedback.text.toString())
-                                      : prefs.setString(
-                                          'emotionsFeedback', " ");
-
-                                  if (widget.summary == true) {
-                                    if(newSession == true){
-                                      Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const practice_summary(
-                                                  view: false,newSession: true
-                                              )));
-
-                                    }else{
-                                    RecordingPractice().updateRecording(
-                                        'feelingsBeforeSession', pracEmotions, [
-                                      {
-                                        "beforeNote": feedback.text.isNotEmpty
-                                            ? feedback.text.toString()
-                                            : " ",
-                                        "afterNote": afterSessionNotes ?? " ",
-                                        "endNote": endSession ?? " "
-                                      }
-                                    ]).then((reaponse) {
-                                      if (reaponse == true) {
-                                        Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const practice_summary(
-                                              view: false,newSession: false
-                                            )));
-                                      } else {}
-                                    });}
-                                  } else {
-                                    Navigator.push(context,
-                                        FadePageRoute(page: const clocks()));
-                                  }
-                                }
-                              },
-                              child: Container(
-                                height: AppDimensionsUpdated.height10(context) * 5.0,
-                                width: widget.summary
-                                    ? AppDimensionsUpdated.width10(context) * 21.0
-                                    : AppDimensionsUpdated.width10(context) * 25.4,
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
-                                    colors: pracEmotions != 0
-                                        ? [
-                                            const Color(0xffFCC10D),
-                                            const Color(0xffFDA210),
-                                          ]
-                                        : [
-                                            const Color(0xffFCC10D)
-                                                .withOpacity(0.5),
-                                            const Color(0xffFDA210)
-                                                .withOpacity(0.5),
-                                          ],
-                                  ),
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensionsUpdated.height10(context) * 5.0),
-                                ),
-                                child: Center(
-                                  child:  Text(
-                                    widget.summary
-                                        ? 'Update Summary':"Next",
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: AppDimensionsUpdated.font10(
-                                                      context) *
-                                                  2,
-                                              fontWeight: FontWeight.w600),
-                                        )
-
-                                ),
-                              ),
-                            )
-                          ]),
-                    ),
+                    addNotes(state_: widget.summary, controller: feedback,),
                     SizedBox(
                       height: AppDimensionsUpdated.height10(context) * 2,
                     )
                   ],
                 ),
               ),
-              // OfflineBuilder(
-              //     debounceDuration: const Duration(milliseconds: 3),
-              //     connectivityBuilder: (
-              //       BuildContext context,
-              //       ConnectivityResult connectivity,
-              //       Widget child,
-              //     ) {
-              //       final bool connected = connectivity != ConnectivityResult.none;
-              //       return Stack(
-              //         fit: StackFit.expand,
-              //         children: [
-              //           Positioned(
-              //               child: Align(
-              //             alignment: Alignment.bottomCenter,
-              //             child: Container(
-              //               width: double.infinity,
-              //               height: AppDimensionsUpdated.height10(context) * 3.0,
-              //               color: connected
-              //                   ? const Color(0xFF27AE60)
-              //                   : const Color(0xFFFE6624),
-              //               child: Center(
-              //                 child: Text(
-              //                   connected ? 'Back Online' : 'You’re Offline',
-              //                   style: TextStyle(
-              //                       fontSize: AppDimensionsUpdated.font10(context) * 1.4,
-              //                       fontWeight: FontWeight.w400,
-              //                       color: const Color(0xFFFBFBFB)),
-              //                 ),
-              //               ),
-              //             ),
-              //           ))
-              //         ],
-              //       );
-              //     },
-              //     child: Container())
+
             ]),
           ),
         ),
       ),
-    );
-  }
-}
-
-class addNotes extends StatefulWidget {
-  final bool state_;
-  const addNotes({
-    super.key,
-    required this.state_,
-  });
-
-  @override
-  State<addNotes> createState() => _addNotesState();
-}
-
-class _addNotesState extends State<addNotes> {
-  int iconColor = 0xffffffff;
-  int backColor = 0x000000ff;
-  bool noteCheck = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          width: AppDimensionsUpdated.width10(context) * 7.6,
-          height: AppDimensionsUpdated.height10(context) * 7.6,
-          //margin: EdgeInsets.only(bottom: 113),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              AnimatedScaleButton(
-                onTap: () {
-                  noteCheck
-                      ? setState(() {
-                          backColor = 0x000000ff;
-                          iconColor = 0xffffffff;
-                          noteCheck = false;
-                        })
-                      : setState(() {
-                          backColor = 0xffffffff;
-                          iconColor = 0xffFA9934;
-                          noteCheck = true;
-                          // icon_color = 0xffFA9934,
-                        });
-                },
-                child: Container(
-                  width: AppDimensionsUpdated.width10(context) * 5.0,
-                  height: AppDimensionsUpdated.height10(context) * 5.0,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(backColor),
-                      border: Border.all(
-                          width: AppDimensionsUpdated.width10(context) * 0.2,
-                          color: Color(iconColor))),
-                  child: Container(
-                    height: AppDimensionsUpdated.height10(context) * 2.7,
-                    width: AppDimensionsUpdated.width10(context) * 2.7,
-                    margin: const EdgeInsets.only(left: 3),
-                    child: Center(
-                        child: Icon(
-                      Icons.edit_note,
-                      //size: 27,
-                      color: Color(iconColor),
-                    )),
-                  ),
-                ),
-              ),
-              Container(
-                width: AppDimensionsUpdated.width10(context) * 7.6,
-                height: AppDimensionsUpdated.height10(context) * 1.9,
-                margin:
-                    EdgeInsets.only(top: AppDimensionsUpdated.height10(context) * 0.6),
-                child: Text(
-                  'Add Notes',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: AppDimensionsUpdated.font10(context) * 1.6,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
-                ),
-              ),
-            ],
-          ),
-        ),
-        Container(
-            child: noteCheck
-                ? Container(
-                    margin: EdgeInsets.only(
-                        top: AppDimensionsUpdated.height10(context) * 1.0,
-                        bottom: AppDimensionsUpdated.height10(context) * 2.0),
-                    child: notes(
-                      state: widget.state_,
-                    ))
-                : SizedBox(
-                    height: AppDimensionsUpdated.height10(context) * 12.1,
-                  )),
-      ],
-    );
-  }
-}
-
-class notes extends StatelessWidget {
-  final bool state;
-  const notes({super.key, required this.state});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: AppDimensionsUpdated.width10(context) * 36.0,
-          // height: AppDimensionsUpdated.height10(context) * 11.0,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
-                  Radius.circular(AppDimensionsUpdated.height10(context) * 1.8)),
-              color: Colors.white),
-          child: Column(
-            children: [
-              TextField(
-                controller: feedback,
-                maxLength: 200,
-                maxLines: null,
-                minLines: null,
-                decoration: InputDecoration(
-                    hintText: 'Add notes here',
-                    hintStyle: TextStyle(
-                      fontSize: AppDimensionsUpdated.font10(context) * 1.6,
-                      fontWeight: FontWeight.w500,
-                      color: const Color(0xff646464),
-                    ),
-                    focusedBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent)),
-                    enabledBorder: const OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.transparent))),
-              ),
-            ],
-          ),
-        ),
-      ],
     );
   }
 }

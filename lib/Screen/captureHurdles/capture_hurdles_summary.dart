@@ -441,7 +441,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                 0.2,
                                         fontSize:
                                             UpdatedDimensions.font10(context) *
-                                                1.4),
+                                                1.8),
                                   ))
                             ],
                           ),

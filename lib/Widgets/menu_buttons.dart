@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
-class button_feilds extends StatelessWidget {
-  final String feild_text;
-  final String feild_text_2;
-  final String feild_text_3;
-  final String feild_text_4;
-  final bool icon_viible;
-  final int text_color;
-  final int text_color_2;
+class ButtonFields extends StatelessWidget {
+  final String fieldText;
+  final String fieldText2;
+  final String fieldText3;
+  final String fieldText4;
+  final bool iconVisible;
+  final int textColor;
+  final int textColor2;
   final bool premium;
-  const button_feilds(
+  const ButtonFields(
       {super.key,
-      required this.feild_text,
-      required this.icon_viible,
-      required this.text_color,
-      required this.feild_text_2,
-      required this.text_color_2,
-      required this.feild_text_3,
-      required this.feild_text_4,
+      required this.fieldText,
+      required this.iconVisible,
+      required this.textColor,
+      required this.fieldText2,
+      required this.textColor2,
+      required this.fieldText3,
+      required this.fieldText4,
       required this.premium});
 
   @override
@@ -38,7 +38,7 @@ class button_feilds extends StatelessWidget {
         children: [
           Container(
             width: AppDimensions.width10(context) * 29.9,
-            height: AppDimensions.height10(context) * 2.5,
+
             margin:
                 EdgeInsets.only(left: AppDimensions.width10(context) * 0.99),
             child: Align(
@@ -46,29 +46,29 @@ class button_feilds extends StatelessWidget {
               child: RichText(
                   text: TextSpan(
                       style: TextStyle(
-                        color: Color(text_color),
+                        color: Color(textColor),
                         fontFamily: 'laila',
-                        fontSize: AppDimensions.font10(context) * 1.6,
+                        fontSize: AppDimensions.font10(context) * 2,
                         fontWeight: FontWeight.w500,
                       ),
                       children: [
-                    TextSpan(text: feild_text),
+                    TextSpan(text: fieldText),
                     TextSpan(
-                      text: feild_text_2,
+                      text: fieldText2,
                       style: TextStyle(
-                        color: Color(text_color_2),
+                        color: Color(textColor2),
                         fontFamily: 'laila',
-                        fontSize: AppDimensions.font10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.6,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    TextSpan(text: feild_text_3),
+                    TextSpan(text: fieldText3),
                     TextSpan(
-                      text: feild_text_4,
+                      text: fieldText4,
                       style: TextStyle(
-                        color: Color(text_color_2),
+                        color: Color(textColor2),
                         fontFamily: 'laila',
-                        fontSize: AppDimensions.font10(context) * 1.4,
+                        fontSize: AppDimensions.font10(context) * 1.6,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -80,7 +80,7 @@ class button_feilds extends StatelessWidget {
               height: AppDimensions.height10(context) * 1.39,
               margin: EdgeInsets.only(
                   right: AppDimensions.width10(context) * 2.391),
-              child: icon_viible
+              child: iconVisible
                   ? Image.asset(
                       'assets/images/BTN Back.webp',
                       //width: AppDimensions.width10(context) * 2.6,

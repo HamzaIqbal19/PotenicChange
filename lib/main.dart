@@ -100,7 +100,6 @@ class MyApp extends StatelessWidget with WidgetsBindingObserver {
             theme: ThemeData(
                 primarySwatch: Colors.grey,
                 fontFamily: "Laila",
-
                 useMaterial3: false),
             builder: (context, child) {
               return MediaQuery(

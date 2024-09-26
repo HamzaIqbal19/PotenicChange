@@ -563,7 +563,9 @@ class _your_goals_menuState extends State<your_goals_menu> {
                                     height: AppDimensions.height10(context),
                                   ),
                                   GestureDetector(
-                                    onTap: () {
+                                    onTap: ()async {
+                                      final SharedPreferences prefs = await _prefs;
+                                      prefs.remove('pracRoute');
                                       Navigator.push(
                                           context,
                                           FadePageRoute(
@@ -1779,8 +1781,7 @@ class _your_goals_menuState extends State<your_goals_menu> {
 //   );
 // }
 
-void activeReport(
-    context, String goalName, String pracName, int color1, int color2) {
+void activeReport(context, String goalName, String pracName, int color1, int color2) {
   //bool cancel = canceled;
   showModalBottomSheet(
       context: context,
@@ -1890,7 +1891,7 @@ void activeReport(
                       Navigator.push(
                           context,
                           FadePageRoute(
-                              page: const progress_report(
+                              page: const ProgressReport(
                             index: 0,
                           )));
                     },

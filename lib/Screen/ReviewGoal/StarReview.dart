@@ -308,7 +308,7 @@ class _StarReviewState extends State<StarReview> {
                           width: AppDimensions.width10(context) * 23.9,
                           child: Center(
                             child: Text(
-                              "Review your summary here.",
+                              "Review your summary here",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: AppDimensions.font10(context) * 1.8,
@@ -1513,20 +1513,6 @@ class _StarReviewState extends State<StarReview> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            SizedBox(
-                                // color: Colors.blue,
-                                width: AppDimensions.width10(context) * 5.0,
-                                height: AppDimensions.height10(context) * 5.0,
-                                child: AnimatedScaleButton(
-                                  onTap: () {
-                                    // signupSheet(
-                                    //     context, "Sign up / login", "login");
-                                  },
-                                  child: Image.asset(
-                                    "assets/images/Moreactions.webp",
-                                    fit: BoxFit.contain,
-                                  ),
-                                )),
                             AnimatedScaleButton(
                               onTap: () => showAnimatedDialog(
                                 animationType: DialogTransitionType.fadeScale,
