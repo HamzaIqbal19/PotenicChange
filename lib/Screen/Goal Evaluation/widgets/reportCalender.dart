@@ -128,7 +128,7 @@ calender(BuildContext context, noData, report,int completedCount){
                       fontFamily: 'laila',
                       height: 1.2,
                       fontSize:
-                      AppDimensions.font10(context) * 1.4,
+                      UpdatedDimensions.font10(context) * 1.4,
                       fontWeight: FontWeight.w500,
                       color: const Color(0xFF5B74A6),
                     ),

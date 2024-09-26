@@ -158,6 +158,8 @@ class PracticeEvaluation {
     var reportDate = prefs.getString('lastReportDate');
     var endDate = prefs.getString('lastReportEnd');
 
+    print(" Data $pracNum $reportDate $endDate");
+
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$accessToken'
@@ -187,6 +189,8 @@ class PracticeEvaluation {
     var accessToken = prefs.getString("usertoken");
     var pracNum = prefs.getInt("prac_num");
 
+    print("Data $accessToken");
+
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$accessToken'
@@ -198,8 +202,10 @@ class PracticeEvaluation {
       headers: headers,
     );
 
+
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
+
 
       return jsonData;
     } else if (response.statusCode == 404) {

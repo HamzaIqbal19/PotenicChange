@@ -32,7 +32,7 @@ identityComponent(BuildContext context,index, text){
                   fontWeight: FontWeight.w500,
                   fontFamily: "Laila",
                   color: const Color(0xFFFFFFFF),
-                  fontSize: AppDimensions.font10(context) * 2.2,
+                  fontSize: UpdatedDimensions.font10(context) * 2.2,
                 ))),
         Container(
             width: AppDimensions.width10(context) * 32.0,
@@ -47,7 +47,7 @@ identityComponent(BuildContext context,index, text){
                   fontWeight: FontWeight.w500,
                   fontFamily: "Laila",
                   color: const Color(0xFFFFFFFF),
-                  fontSize: AppDimensions.font10(context) * 1.8,
+                  fontSize: UpdatedDimensions.font10(context) * 1.8,
                 ))),
       ],
     ),

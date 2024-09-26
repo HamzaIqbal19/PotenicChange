@@ -163,7 +163,7 @@ class ProgressReportState extends State<ProgressReport> {
                         'Congratulations!',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 3.0,
+                            fontSize: UpdatedDimensions.font10(context) * 3.0,
                             height: 1.2,
                             fontWeight: FontWeight.w700,
                             color: const Color(0xFF437296)),
@@ -176,7 +176,7 @@ class ProgressReportState extends State<ProgressReport> {
                         'You have been consistently doing\nyour practice for 20 active days ',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 2.0,
+                            fontSize: UpdatedDimensions.font10(context) * 2.0,
                             height: 1.2,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF437296)),
@@ -192,7 +192,7 @@ class ProgressReportState extends State<ProgressReport> {
                             : 'from ${formatDate(report["startDate"])} to ${formatDate(report["endDate"])}',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.6,
+                            fontSize: UpdatedDimensions.font10(context) * 1.6,
                             height: 1.2,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFF437296)),
@@ -205,15 +205,16 @@ class ProgressReportState extends State<ProgressReport> {
                         'You are a rockstar! :)',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 2.2,
+                            fontSize: UpdatedDimensions.font10(context) * 2.2,
                             height: 1.2,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF437296)),
                       ),
                     ),
+                    const SizedBox(height: 20,),
                     Container(
                       width: AppDimensions.width10(context) * 34.0,
-                      height: AppDimensions.height10(context) * 11.2,
+                      //height: AppDimensions.height10(context) * 11.2,
                       margin: EdgeInsets.only(
                           left: AppDimensions.width10(context) * 1.5),
                       child: Center(
@@ -379,7 +380,7 @@ class ProgressReportState extends State<ProgressReport> {
                               'Your new\nidentity statement',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 2.4,
+                                  fontSize: UpdatedDimensions.font10(context) * 2.4,
                                   height: 1.2,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFFFFFFFF)),
@@ -402,7 +403,7 @@ class ProgressReportState extends State<ProgressReport> {
                             'Your inspirations',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 2.4,
+                                fontSize: UpdatedDimensions.font10(context) * 2.4,
                                 height: 1.2,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFFFFFFFF)),
@@ -429,7 +430,7 @@ class ProgressReportState extends State<ProgressReport> {
                         'You have completed 20\nactive days of practice!',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 2.4,
+                            fontSize: UpdatedDimensions.font10(context) * 2.4,
                             height: 1.2,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF437296)),
@@ -452,7 +453,7 @@ class ProgressReportState extends State<ProgressReport> {
                         'This is how you felt\nimplementing your new\npractice',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 2.4,
+                            fontSize: UpdatedDimensions.font10(context) * 2.4,
                             height: 1.2,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF437296)),
@@ -476,13 +477,13 @@ class ProgressReportState extends State<ProgressReport> {
                           children: [
                             SizedBox(
                               width: AppDimensions.width10(context) * 36.0,
-                              height: AppDimensions.height10(context) * 1.9,
+                              //height: AppDimensions.height10(context) * 1.9,
                               child: Text(
                                 'Practice Assessment',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.6,
+                                    UpdatedDimensions.font10(context) * 1.6,
                                     height: 1.2,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xFFF5F5F5)),
@@ -490,7 +491,7 @@ class ProgressReportState extends State<ProgressReport> {
                             ),
                             Container(
                               width: AppDimensions.width10(context) * 35.0,
-                              height: AppDimensions.height10(context) * 1.8,
+                              //height: AppDimensions.height10(context) * 1.8,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 0.8,
                                   bottom:
@@ -500,7 +501,7 @@ class ProgressReportState extends State<ProgressReport> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.4,
+                                    UpdatedDimensions.font10(context) * 1.4,
                                     height: 1.2,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xFFF5F5F5)),
@@ -559,8 +560,8 @@ class ProgressReportState extends State<ProgressReport> {
                                 child: Center(
                                   child: Container(
                                     //  width: AppDimensions.width10(context) * 7.2,
-                                    height:
-                                        AppDimensions.height10(context) * 2.1,
+                                    // height:
+                                    //     AppDimensions.height10(context) * 2.1,
                                     margin: EdgeInsets.only(
                                         top: AppDimensions.height10(context) *
                                             0.2),
@@ -570,7 +571,7 @@ class ProgressReportState extends State<ProgressReport> {
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
                                             fontSize:
-                                                AppDimensions.font10(context) *
+                                            UpdatedDimensions.font10(context) *
                                                     1.8,
                                             height: 1.2,
                                             fontWeight: FontWeight.w600,

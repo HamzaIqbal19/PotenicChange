@@ -61,7 +61,7 @@ inspirationComponent(BuildContext context,inspirationId,mainImage,String text2,i
         style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w400,
-            fontSize: AppDimensionsUpdated.height10(
+            fontSize: UpdatedDimensions.height10(
                 context) *
                 1.4),
       ),
@@ -85,7 +85,7 @@ emptyInspiration(BuildContext context){
         style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w400,
-            fontSize: AppDimensionsUpdated.height10(context) * 1.8),
+            fontSize: UpdatedDimensions.height10(context) * 1.8),
       ),
     ),
   );

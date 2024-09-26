@@ -12,21 +12,21 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 AfterSessionText( option){
   if(option == 1){
-    return "Not great, haven’t\nenjoyed it";
+    return '“Not great, haven’t\nenjoyed it”';
   }else if(option == 2){
-    return "I got distracted, it\was hard to focus";
+    return '“I got distracted, it\was hard to focus”';
   }else if(option == 3){
-    return "It was ok";
+    return '“It was ok”';
   }else if(option == 4){
-    return "Good, I quite\nliked it";
+    return '“Good, I quite\nliked it”';
   }else if(option == 5){
-    return "Great, I enjoyed the\nexperience";
+    return '“Great, I enjoyed the\nexperience”';
   }
 }
 
 
 habitComponent(BuildContext context, options, outerColor,subscription,report){
-  print("Outer Colors $outerColor");
+  print("options $options");
   return Container(
     width: AppDimensions.width10(context) * 38.2,
     //height: AppDimensions.height10(context) * 147.8,
@@ -49,7 +49,12 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
               gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: options![0].containsKey('option5')
+                  colors: options == null?[
+                    const Color(0xFF546096)
+                      .withOpacity(0.01),
+                    const Color(0xFF546096)
+                        .withOpacity(0.20)]
+                      :options![0].containsKey('option5')
                       ? [
                     const Color(0xFFFFFBF9),
                     const Color(0xFFBBE5CD)
@@ -95,7 +100,7 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                   child: CircularFormation(
                       size: 150,
                       circleColor: Colors.transparent,
-                      selection: options![0]
+                      selection: options == null?1: options![0]
                           .containsKey('option5')
                           ? 5
                           : options![0].containsKey('option4')
@@ -119,7 +124,7 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                    style: TextStyle(
                        color: const Color(0xFF437296),
                        height: 1.2,
-                       fontSize: AppDimensions.font10(
+                       fontSize: UpdatedDimensions.font10(
                            context) *
                            2.0,
                        fontWeight: FontWeight.w600),
@@ -146,10 +151,11 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize:
-                        AppDimensions.font10(context) *
+                        UpdatedDimensions.font10(context) *
                             1.8,
                         fontWeight: FontWeight.w600,
-                        color: options![0]
+                        color:options == null? const Color(
+                            0xFF546096):options![0]
                             .containsKey('option5')
                             ? const Color(0xFFFF6C2C)
                             : options![0]
@@ -176,7 +182,7 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                             1.0),
                     child: Center(
                       child: Text(
-                        options![0].containsKey('option5')
+                        options == null?'“I feel very low\n& irritated”': options![0].containsKey('option5')
                             ? '“I feel excited and\ngood in myself”'
                             : options![0]
                             .containsKey('option4')
@@ -193,11 +199,12 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                             height: AppDimensions.height10(
                                 context) *
                                 0.15,
-                            fontSize: AppDimensions.font10(
+                            fontSize: UpdatedDimensions.font10(
                                 context) *
                                 2.8,
                             fontWeight: FontWeight.w700,
-                            color: options![0]
+                            color:options == null?const Color(
+                                0xFF546096): options![0]
                                 .containsKey('option5')
                                 ? const Color(0xFF219653)
                                 : options![0].containsKey(
@@ -224,13 +231,13 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                     child: RichText(
                         text: TextSpan(
                             style: TextStyle(
-                                fontSize: AppDimensions
+                                fontSize: UpdatedDimensions
                                     .font10(context) *
                                     4.5,
                                 fontFamily: 'laila',
                                 height: 1.2,
                                 fontWeight: FontWeight.w400,
-                                color: options![0]
+                                color: options==null? const Color(0xFF546096):options![0]
                                     .containsKey(
                                     'option5')
                                     ? const Color(0xFF219653)
@@ -251,7 +258,7 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                                     0xFF546096)),
                             children: [
                               TextSpan(
-                                  text: options!
+                                  text: options == null?'0': options!
                                       .elementAt(0)
                                       .values
                                       .toString()
@@ -261,20 +268,21 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                                   text: 'x',
                                   style: TextStyle(
                                       fontSize:
-                                      AppDimensions.font10(
+                                      UpdatedDimensions.font10(
                                           context) *
                                           2.0))
                             ])),
                   ),
                   circlesInRowColored(
                       context,
-                      int.parse(options!
+                      options == null?0: int.parse(options!
                           .elementAt(0)
                           .values
                           .toString()
                           .replaceAll('(', '')
                           .replaceAll(')', '')),
-                      options![0].containsKey('option5')
+                          options ==null? const Color(0xFF546096)
+                          :options![0].containsKey('option5')
                           ? const Color(0xFF219653)
                           : options![0].containsKey('option4')
                           ? const Color(0xFFFF7C42)
@@ -298,7 +306,7 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
             shrinkWrap: true,
             padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: options!.length - 1,
+            itemCount: options == null?4: options!.length - 1,
             itemBuilder: (((context, index) {
               return Column(
                 children: [
@@ -309,7 +317,7 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                             4.0),
                     child: Center(
                       child: Text(
-                        options![index + 1]
+                        options == null?index==0?'“I feel alright, but\nslightly down”':index==1?'“I feel ok”':index==2?'“I feel focused and\nmotivated”': '“I feel excited and\ngood in myself”' :options![index + 1]
                             .containsKey('option5')
                             ? '“I feel excited and\ngood in myself”'
                             : options![index + 1]
@@ -329,11 +337,11 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                             height: AppDimensions.height10(
                                 context) *
                                 0.15,
-                            fontSize: AppDimensions.font10(
+                            fontSize: UpdatedDimensions.font10(
                                 context) *
                                 2.8,
                             fontWeight: FontWeight.w700,
-                            color: options![index + 1]
+                            color:options==null? const Color(0xFF546096):options![index + 1]
                                 .containsKey('option5')
                                 ? const Color(0xFF219653)
                                 : options![index + 1]
@@ -350,8 +358,7 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                                 'option2')
                                 ? const Color(
                                 0xFF7291A0)
-                                : const Color(
-                                0xFF546096)),
+                                : const Color(0xFF546096)),
                       ),
                     ),
                   ),
@@ -363,13 +370,13 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                         text: TextSpan(
                             style: TextStyle(
                                 fontSize:
-                                AppDimensions.font10(
+                                UpdatedDimensions.font10(
                                     context) *
                                     4.5,
                                 fontFamily: 'laila',
                                 height: 1.2,
                                 fontWeight: FontWeight.w400,
-                                color: options![index + 1]
+                                color: options==null?const Color(0xFF546096): options![index + 1]
                                     .containsKey(
                                     'option5')
                                     ? const Color(0xFF219653)
@@ -388,11 +395,10 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                                     'option2')
                                     ? const Color(
                                     0xFF7291A0)
-                                    : const Color(
-                                    0xFF546096)),
+                                    : const Color(0xFF546096)),
                             children: [
                               TextSpan(
-                                  text: options!
+                                  text: options==null?'0': options!
                                       .elementAt(index + 1)
                                       .values
                                       .toString()
@@ -402,20 +408,20 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                                   text: 'x',
                                   style: TextStyle(
                                       fontSize:
-                                      AppDimensions.font10(
+                                      UpdatedDimensions.font10(
                                           context) *
                                           2.0))
                             ])),
                   ),
                   circlesInRowColored(
                       context,
-                      int.parse(options!
+                      options==null?0: int.parse(options!
                           .elementAt(index + 1)
                           .values
                           .toString()
                           .replaceAll('(', '')
                           .replaceAll(')', '')),
-                      options![index + 1]
+                      options==null?const Color(0xFF546096): options![index + 1]
                           .containsKey('option5')
                           ? const Color(0xFF219653)
                           : options![index + 1]
@@ -429,8 +435,7 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
                           'option2')
                           ? const Color(
                           0xFF7291A0)
-                          : const Color(
-                          0xFF546096)),
+                          : const Color(0xFF546096)),
                   index != 3
                       ? Container(
                     width:
@@ -558,7 +563,6 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
 
 
 habitAfterSessionComponent(BuildContext context, practiceData,){
-
   return Container(
     width: AppDimensions.width10(context) * 38.2,
     //height: AppDimensions.height10(context) * 147.8,
@@ -598,7 +602,7 @@ habitAfterSessionComponent(BuildContext context, practiceData,){
                     style: TextStyle(
                         color: const Color(0xFF437296),
                         height: 1.2,
-                        fontSize: AppDimensions.font10(
+                        fontSize: UpdatedDimensions.font10(
                             context) *
                             2.0,
                         fontWeight: FontWeight.w600),
@@ -617,7 +621,7 @@ habitAfterSessionComponent(BuildContext context, practiceData,){
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize:
-                        AppDimensions.font10(context) *
+                        UpdatedDimensions.font10(context) *
                             1.8,
                         fontWeight: FontWeight.w600,
                         color: const Color(0xFFB695B7)),
@@ -633,13 +637,13 @@ habitAfterSessionComponent(BuildContext context, practiceData,){
                             1.0),
                     child: Center(
                       child: Text(
-                        '"${AfterSessionText(practiceData[0]['feelingsAfterSession'])}"',
+                       practiceData==null?AfterSessionText(1): AfterSessionText(practiceData[0]['feelingsAfterSession']),
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             height: AppDimensions.height10(
                                 context) *
                                 0.15,
-                            fontSize: AppDimensions.font10(
+                            fontSize: UpdatedDimensions.font10(
                                 context) *
                                 2.8,
                             fontFamily: 'Laila',
@@ -655,7 +659,7 @@ habitAfterSessionComponent(BuildContext context, practiceData,){
                     child: RichText(
                         text: TextSpan(
                             style: TextStyle(
-                                fontSize: AppDimensions
+                                fontSize: UpdatedDimensions
                                     .font10(context) *
                                     4.5,
                                 fontFamily: 'laila',
@@ -664,19 +668,19 @@ habitAfterSessionComponent(BuildContext context, practiceData,){
                                 color: const Color(0xFFB695B7)),
                             children: [
                               TextSpan(
-                                  text: practiceData[0]['AfterTotal'].toString()),
+                                  text: practiceData==null?'0': practiceData[0]['AfterTotal'].toString()),
                               TextSpan(
                                   text: 'x',
                                   style: TextStyle(
                                       fontSize:
-                                      AppDimensions.font10(
+                                      UpdatedDimensions.font10(
                                           context) *
                                           2.0))
                             ])),
                   ),
                   circlesInRowColored(
                       context,
-                      int.parse(practiceData[0]['AfterTotal']
+                      practiceData==null?0: int.parse(practiceData[0]['AfterTotal']
                           .toString()),
                       const Color(0xFFB695B7)),
                   SizedBox(
@@ -692,7 +696,7 @@ habitAfterSessionComponent(BuildContext context, practiceData,){
             shrinkWrap: true,
             padding: EdgeInsets.zero,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: practiceData!.length - 1,
+            itemCount: practiceData==null?4: practiceData!.length - 1,
             itemBuilder: (((context, index) {
               return Column(
                 children: [
@@ -703,13 +707,13 @@ habitAfterSessionComponent(BuildContext context, practiceData,){
                             4.0),
                     child: Center(
                       child: Text(
-                    '"${AfterSessionText(practiceData[index+1]['feelingsAfterSession'])}"',
+                        practiceData ==null? AfterSessionText(index+2):AfterSessionText(practiceData[index+1]['feelingsAfterSession']),
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             height: AppDimensions.height10(
                                 context) *
                                 0.15,
-                            fontSize: AppDimensions.font10(
+                            fontSize: UpdatedDimensions.font10(
                                 context) *
                                 2.8,
                             fontWeight: FontWeight.w700,
@@ -725,7 +729,7 @@ habitAfterSessionComponent(BuildContext context, practiceData,){
                         text: TextSpan(
                             style: TextStyle(
                                 fontSize:
-                                AppDimensions.font10(
+                                UpdatedDimensions.font10(
                                     context) *
                                     4.5,
                                 fontFamily: 'laila',
@@ -734,19 +738,19 @@ habitAfterSessionComponent(BuildContext context, practiceData,){
                                 color: const Color(0xFFB695B7)),
                             children: [
                               TextSpan(
-                                  text: practiceData[index+1]['AfterTotal'].toString()),
+                                  text: practiceData==null?'0': practiceData[index+1]['AfterTotal'].toString()),
                               TextSpan(
                                   text: 'x',
                                   style: TextStyle(
                                       fontSize:
-                                      AppDimensions.font10(
+                                      UpdatedDimensions.font10(
                                           context) *
                                           2.0))
                             ])),
                   ),
                   circlesInRowColored(
                       context,
-                      int.parse(practiceData[index+1]['AfterTotal']),
+                      practiceData==null?0: int.parse(practiceData[index+1]['AfterTotal']),
                       const Color(0xFFB695B7)),
                 ],
               );
