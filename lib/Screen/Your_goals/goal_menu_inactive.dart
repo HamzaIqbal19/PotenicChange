@@ -14,6 +14,7 @@ import 'package:potenic_app/Screen/timeline/component/imageComponent.dart';
 import 'package:potenic_app/Screen/timeline/timeline.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/menu_buttons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -355,7 +356,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           }
                         },
                         child: Container(
-                          width: AppDimensions.width10(context) * 37.4,
+                          width: AppDimensions.width10(context) * 38.4,
                           height: AppDimensions.height10(context) * 14.7,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 4.81),
@@ -366,7 +367,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           child: Stack(
                             children: [
                               Container(
-                                width: AppDimensions.width10(context) * 37.4,
+                                width: AppDimensions.width10(context) * 38.4,
                                 height: AppDimensions.height10(context) * 12.0,
                                 decoration: subscriptions == 'active'
                                     ? BoxDecoration(
@@ -686,13 +687,13 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                   page: const multiple_goal_inactive()));
                         },
                         child: Container(
-                          width: AppDimensions.width10(context) * 37.4,
+                          width: AppDimensions.width10(context) * 38.4,
                           height: AppDimensions.height10(context) * 6.0,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.0),
                           padding: EdgeInsets.only(
-                              left: AppDimensions.width10(context) * 2.0,
-                              right: AppDimensions.width10(context) * 1.9),
+                              left: AppDimensions.width10(context) * 2,
+                              right: AppDimensions.width10(context) * 2),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 2.0),
@@ -704,50 +705,26 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    'This goal is ',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.8,
-                                        fontWeight: FontWeight.w500,
+                              RichText(
+                                  text: TextSpan(
+                                      style: TextStyle(
                                         color: goalDetails['goalStatus'] ==
                                                 "active"
                                             ? const Color(0xFF156F6D)
-                                            : const Color(0xFFDE7A11)),
-                                  ),
-                                  widget.isActive
-                                      ? Text(
-                                          capitalizeFirstLetter(
-                                              goalDetails['goalStatus']),
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  1.8,
-                                              fontWeight: FontWeight.w700,
-                                              color: goalDetails[
-                                                          'goalStatus'] ==
-                                                      "active"
-                                                  ? const Color(0xFF156F6D)
-                                                  : const Color(0xFFDE7A11)),
-                                        )
-                                      : Text(
-                                          capitalizeFirstLetter(
-                                              goalDetails['goalStatus']),
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  1.8,
-                                              fontWeight: FontWeight.w700,
-                                              color: goalDetails[
-                                                          'goalStatus'] ==
-                                                      "active"
-                                                  ? const Color(0xFF156F6D)
-                                                  : const Color(0xFFDE7A11)),
-                                        )
-                                ],
-                              ),
+                                            : const Color(0xFFDE7A11),
+                                        fontFamily: 'laila',
+                                        fontSize:
+                                            AppDimensions.font10(context) * 1.9,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                      children: [
+                                    const TextSpan(text: 'This goal is '),
+                                    TextSpan(
+                                        text: capitalizeFirstLetter(
+                                            goalDetails['goalStatus']),
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.w700))
+                                  ])),
                               SizedBox(
                                 child: Center(
                                   child: Text(
@@ -865,7 +842,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             FadePageRoute(
                                                 page: const practiceMenu(
                                               goal_eval: false,
-                                                  completed: false,
+                                              completed: false,
                                             )));
 
                                         final SharedPreferences prefs =
@@ -930,7 +907,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         //     top: AppDimensions.height10(context) * 2.2),
                       ),
                       Container(
-                        width: AppDimensions.width10(context) * 36.0,
+                        // width: AppDimensions.width10(context) * 36.0,
                         height: AppDimensions.height10(context) * 20.0,
                         margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 2.0,
@@ -939,141 +916,171 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                         child: Column(
                           children: [
                             AnimatedScaleButton(
-                              onTap: () async {
-                                final SharedPreferences prefs = await _prefs;
-                                if (subscriptions == 'active') {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: timeline(
-                                        goalId: prefs.get('goal_num'),
-                                        pracId: null,
-                                      )));
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text(
-                                              "This feature is only available for premium members")));
-                                }
-                              },
-                              child: Container(
-                                width: AppDimensions.width10(context) * 36.0,
-                                height: AppDimensions.height10(context) * 6.0,
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 1.0),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10(context) * 2.0),
-                                  color: subscriptions == 'active'
-                                      ? const Color(0xFFFFFFFF)
-                                      : const Color(0xFFFFFFFF)
-                                          .withOpacity(0.5),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      width:
-                                          AppDimensions.width10(context) * 21.2,
-                                      margin: EdgeInsets.only(
-                                          left:
-                                              AppDimensions.height10(context) *
-                                                  1.99),
-                                      child: Text(
-                                        subscriptions == 'active'
-                                            ? 'Timeline'
-                                            : 'Timeline (Premium only)',
-                                        style: TextStyle(
-                                          color: const Color(0xff646464),
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  2.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                        width: AppDimensions.width10(context) *
-                                            2.4,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.39,
-                                        margin: EdgeInsets.only(
-                                            right: AppDimensions.height10(
-                                                    context) *
-                                                2.391),
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.width10(context) * 2.6,
-                                          //height: AppDimensions.height10(context) * 2.6,
-                                          fit: BoxFit.cover,
-                                        ))
-                                  ],
-                                ),
+                              onTap: () {},
+                              child: const ButtonFields(
+                                fieldText: 'Timeline',
+                                iconVisible: true,
+                                textColor: 0xff646464,
+                                fieldText2: '',
+                                textColor2: 0xffEA1B1,
+                                premium: true,
+                                fieldText3: '',
+                                fieldText4: '',
                               ),
+                            ),
+                            const SizedBox(
+                              height: 10,
                             ),
                             AnimatedScaleButton(
-                              onTap: () {
-                                Navigator.push(
-                                    context,
-                                    FadePageRoute(
-                                        page: const StarReview(
-                                      route: 'menu',
-                                    )));
-                              },
-                              child: Container(
-                                width: AppDimensions.width10(context) * 36.0,
-                                height: AppDimensions.height10(context) * 6.0,
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 1.0),
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10(context) * 2.0),
-                                  color: const Color(0xFFFFFFFF),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      width:
-                                          AppDimensions.width10(context) * 18.5,
-                                      margin: EdgeInsets.only(
-                                          left:
-                                              AppDimensions.height10(context) *
-                                                  1.99),
-                                      child: Text(
-                                        'Goal details',
-                                        style: TextStyle(
-                                          color: const Color(0xff646464),
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  2.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                        width: AppDimensions.width10(context) *
-                                            2.4,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.39,
-                                        margin: EdgeInsets.only(
-                                            right: AppDimensions.height10(
-                                                    context) *
-                                                2.391),
-                                        child: Image.asset(
-                                          'assets/images/BTN Back.webp',
-                                          //width: AppDimensions.width10(context) * 2.6,
-                                          //height: AppDimensions.height10(context) * 2.6,
-                                          fit: BoxFit.cover,
-                                        ))
-                                  ],
-                                ),
+                              onTap: () {},
+                              child: const ButtonFields(
+                                fieldText: 'Goal details',
+                                iconVisible: true,
+                                textColor: 0xff646464,
+                                fieldText2: '',
+                                textColor2: 0xffEA1B1,
+                                premium: true,
+                                fieldText3: '',
+                                fieldText4: '',
                               ),
                             ),
+
+                            // AnimatedScaleButton(
+                            //   onTap: () async {
+                            //     final SharedPreferences prefs = await _prefs;
+                            //     if (subscriptions == 'active') {
+                            //       Navigator.push(
+                            //           context,
+                            //           FadePageRoute(
+                            //               page: timeline(
+                            //             goalId: prefs.get('goal_num'),
+                            //             pracId: null,
+                            //           )));
+                            //     } else {
+                            //       ScaffoldMessenger.of(context).showSnackBar(
+                            //           const SnackBar(
+                            //               content: Text(
+                            //                   "This feature is only available for premium members")));
+                            //     }
+                            //   },
+                            //   child: Container(
+                            //     width: AppDimensions.width10(context) * 36.0,
+                            //     height: AppDimensions.height10(context) * 6.0,
+                            //     margin: EdgeInsets.only(
+                            //         top: AppDimensions.height10(context) * 1.0),
+                            //     decoration: BoxDecoration(
+                            //       borderRadius: BorderRadius.circular(
+                            //           AppDimensions.height10(context) * 2.0),
+                            //       color: subscriptions == 'active'
+                            //           ? const Color(0xFFFFFFFF)
+                            //           : const Color(0xFFFFFFFF)
+                            //               .withOpacity(0.5),
+                            //     ),
+                            //     child: Row(
+                            //       mainAxisAlignment:
+                            //           MainAxisAlignment.spaceBetween,
+                            //       children: [
+                            //         Container(
+                            //           width:
+                            //               AppDimensions.width10(context) * 21.2,
+                            //           margin: EdgeInsets.only(
+                            //               left:
+                            //                   AppDimensions.height10(context) *
+                            //                       1.99),
+                            //           child: Text(
+                            //             subscriptions == 'active'
+                            //                 ? 'Timeline'
+                            //                 : 'Timeline (Premium only)',
+                            //             style: TextStyle(
+                            //               color: const Color(0xff646464),
+                            //               fontSize:
+                            //                   AppDimensions.font10(context) *
+                            //                       2.0,
+                            //               fontWeight: FontWeight.w500,
+                            //             ),
+                            //           ),
+                            //         ),
+                            //         Container(
+                            //             width: AppDimensions.width10(context) *
+                            //                 2.4,
+                            //             height:
+                            //                 AppDimensions.height10(context) *
+                            //                     1.39,
+                            //             margin: EdgeInsets.only(
+                            //                 right: AppDimensions.height10(
+                            //                         context) *
+                            //                     2.391),
+                            //             child: Image.asset(
+                            //               'assets/images/BTN Back.webp',
+                            //               //width: AppDimensions.width10(context) * 2.6,
+                            //               //height: AppDimensions.height10(context) * 2.6,
+                            //               fit: BoxFit.cover,
+                            //             ))
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+                            // AnimatedScaleButton(
+                            //   onTap: () {
+                            //     Navigator.push(
+                            //         context,
+                            //         FadePageRoute(
+                            //             page: const StarReview(
+                            //           route: 'menu',
+                            //         )));
+                            //   },
+                            //   child: Container(
+                            //     width: AppDimensions.width10(context) * 36.0,
+                            //     height: AppDimensions.height10(context) * 6.0,
+                            //     margin: EdgeInsets.only(
+                            //         top: AppDimensions.height10(context) * 1.0),
+                            //     decoration: BoxDecoration(
+                            //       borderRadius: BorderRadius.circular(
+                            //           AppDimensions.height10(context) * 2.0),
+                            //       color: const Color(0xFFFFFFFF),
+                            //     ),
+                            //     child: Row(
+                            //       mainAxisAlignment:
+                            //           MainAxisAlignment.spaceBetween,
+                            //       children: [
+                            //         Container(
+                            //           width:
+                            //               AppDimensions.width10(context) * 18.5,
+                            //           margin: EdgeInsets.only(
+                            //               left:
+                            //                   AppDimensions.height10(context) *
+                            //                       1.99),
+                            //           child: Text(
+                            //             'Goal details',
+                            //             style: TextStyle(
+                            //               color: const Color(0xff646464),
+                            //               fontSize:
+                            //                   AppDimensions.font10(context) *
+                            //                       2.0,
+                            //               fontWeight: FontWeight.w500,
+                            //             ),
+                            //           ),
+                            //         ),
+                            //         Container(
+                            //             width: AppDimensions.width10(context) *
+                            //                 2.4,
+                            //             height:
+                            //                 AppDimensions.height10(context) *
+                            //                     1.39,
+                            //             margin: EdgeInsets.only(
+                            //                 right: AppDimensions.height10(
+                            //                         context) *
+                            //                     2.391),
+                            //             child: Image.asset(
+                            //               'assets/images/BTN Back.webp',
+                            //               //width: AppDimensions.width10(context) * 2.6,
+                            //               //height: AppDimensions.height10(context) * 2.6,
+                            //               fit: BoxFit.cover,
+                            //             ))
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                       ),

@@ -28,7 +28,7 @@ class ButtonFields extends StatelessWidget {
       //     left: AppDimensions.width10(context) * 0.8,
       //     right: AppDimensions.width10(context) * 0.8),
       height: AppDimensions.height10(context) * 6.0,
-      width: AppDimensions.width10(context) * 36.0,
+      width: AppDimensions.width10(context) * 38.4,
       decoration: BoxDecoration(
           borderRadius:
               BorderRadius.circular(AppDimensions.height10(context) * 2.0),
@@ -38,9 +38,7 @@ class ButtonFields extends StatelessWidget {
         children: [
           Container(
             width: AppDimensions.width10(context) * 29.9,
-
-            margin:
-                EdgeInsets.only(left: AppDimensions.width10(context) * 0.99),
+            margin: EdgeInsets.only(left: AppDimensions.width10(context) * 2),
             child: Align(
               alignment: Alignment.centerLeft,
               child: RichText(
@@ -48,7 +46,7 @@ class ButtonFields extends StatelessWidget {
                       style: TextStyle(
                         color: Color(textColor),
                         fontFamily: 'laila',
-                        fontSize: AppDimensions.font10(context) * 2,
+                        fontSize: AppDimensions.font10(context) * 1.9,
                         fontWeight: FontWeight.w500,
                       ),
                       children: [
@@ -78,8 +76,8 @@ class ButtonFields extends StatelessWidget {
           Container(
               width: AppDimensions.width10(context) * 2.4,
               height: AppDimensions.height10(context) * 1.39,
-              margin: EdgeInsets.only(
-                  right: AppDimensions.width10(context) * 2.391),
+              margin:
+                  EdgeInsets.only(right: AppDimensions.width10(context) * 2),
               child: iconVisible
                   ? Image.asset(
                       'assets/images/BTN Back.webp',

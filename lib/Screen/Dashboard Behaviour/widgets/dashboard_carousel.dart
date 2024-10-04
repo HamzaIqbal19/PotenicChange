@@ -3,6 +3,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/formattedTime.dart';
 import 'package:potenic_app/utils/utils.dart';
@@ -27,10 +28,22 @@ dashboardCarousel(
         carouselController: controller,
         itemCount: 15,
         itemBuilder: (context, index, realIndex) {
-          DateTime dayDate = currentDate.add(Duration(days: index -7));
-          var currentPractices = dashboardData == null ? "0/0" : "${dashboardData[formatDates(dayDate.toString())]['dashBoardData']['completePractice']}/${dashboardData[formatDates(dayDate.toString())]['dashBoardData']['totalPractice']}";
-          var currentData = dashboardData == null ? false : dashboardData[formatDates(dayDate.toString())]['dashBoardData']['totalPractice'] == 0;
-          var currentCompleted = dashboardData == null ? "0/0" : dashboardData[formatDates(dayDate.toString())]['dashBoardData']['completePractice'] / dashboardData[formatDates(dayDate.toString())]['dashBoardData']['totalPractice'] == 1;
+          DateTime dayDate = currentDate.add(Duration(days: index - 7));
+          var currentPractices = dashboardData == null
+              ? "0/0"
+              : "${dashboardData[formatDates(dayDate.toString())]['dashBoardData']['completePractice']}/${dashboardData[formatDates(dayDate.toString())]['dashBoardData']['totalPractice']}";
+          var currentData = dashboardData == null
+              ? false
+              : dashboardData[formatDates(dayDate.toString())]['dashBoardData']
+                      ['totalPractice'] ==
+                  0;
+          var currentCompleted = dashboardData == null
+              ? "0/0"
+              : dashboardData[formatDates(dayDate.toString())]['dashBoardData']
+                          ['completePractice'] /
+                      dashboardData[formatDates(dayDate.toString())]
+                          ['dashBoardData']['totalPractice'] ==
+                  1;
 
           currentItem = realIndex == currentIndex;
           if (currentDate == dayDate) {
@@ -38,163 +51,173 @@ dashboardCarousel(
           } else {
             isCenterItem = false;
           }
-          return AnimatedContainer(
-            duration: const Duration(milliseconds: 300),
-            curve: Curves.easeInOut,
-            height: isCenterItem
-                ? UpdatedDimensions.height10(context) * 22.2
-                : UpdatedDimensions.height10(context) * 9.2,
-            width: isCenterItem
-                ? UpdatedDimensions.width10(context) * 20.8
-                : UpdatedDimensions.width10(context) * 8.8,
-            transform: Matrix4.translationValues(0, currentItem ? -30 : 30, 0),
-            decoration: isCenterItem
-                ? const BoxDecoration()
-                : currentItem
-                    ? (currentDate.isAfter(dayDate) && currentData)
-                        ? BoxDecoration(
-                            border: Border.all(color: Colors.white, width: 0.5),
-                            shape: BoxShape.circle)
-                        : (currentDate.isBefore(dayDate) && currentData)
-                            ? BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(color: Colors.white, width: 0.5),
-                              )
-                            : const BoxDecoration()
-                    : const BoxDecoration(),
-            padding: currentItem
-                ? (currentDate.isAfter(dayDate) && currentData)
-                    ? const EdgeInsets.all(4)
-                    : (currentDate.isBefore(dayDate) && currentData)
-                        ? const EdgeInsets.all(4)
-                        : EdgeInsets.zero
-                : EdgeInsets.zero,
-            child: Container(
-              decoration: BoxDecoration(
-                image: isCenterItem
-                    ? DecorationImage(
-                        image: dashboardData == null || currentData
-                            ? const AssetImage('assets/images/currentbg2.webp')
-                            : const AssetImage('assets/images/Asset 10 2.webp'),
-                        fit: BoxFit.contain)
-                    : null,
-                shape: BoxShape.circle,
-                gradient: dashboardData == null
-                    ? futureGradient(true)
-                    : currentDate.isAfter(dayDate)
-                        ? previousGradient(currentData)
-                        : currentDate.isBefore(dayDate)
-                            ? futureGradient(currentData)
-                            : LinearGradient(
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                                colors: [
-                                    isCenterItem
-                                        ? Colors.transparent
-                                        : const Color(0xffF5F1E0),
-                                    isCenterItem
-                                        ? Colors.transparent
-                                        : const Color(0xffEDDC97)
-                                  ]),
-                border: isCenterItem
-                    ? null
-                    : Border.all(color: Colors.white, width: 3),
-              ),
-              child: Center(
-                child: RichText(
-                  textAlign: TextAlign.center,
-                  text: TextSpan(
-                    style: TextStyle(
-                        fontSize: UpdatedDimensions.font10(context) * 1.4,
-                        fontFamily: 'Laila',
-                        fontWeight: FontWeight.w400,
-                        color: dashboardData == null
-                            ? noDataColors(true)
-                            : currentDate.isAfter(dayDate)
-                                ? noDataColors(currentData)
-                                : currentDate.isBefore(dayDate)
-                                    ? noDataColors(currentData)
-                                    : noDataColors(currentData)),
-                    children: [
-                      WidgetSpan(
-                          child: SizedBox(
-                        height: UpdatedDimensions.height10(context) * 2,
-                      )),
-                      TextSpan(
-                        text: DateFormat('EEE\n').format(dayDate).toUpperCase(),
-                        style: TextStyle(
-                            fontSize: UpdatedDimensions.font10(context) * 1.2,
-                            fontFamily: 'Laila',
-                            fontWeight: FontWeight.w600,
-                            color: dashboardData == null
-                                ? noDataColors(true)
-                                : currentDate.isAfter(dayDate)
-                                    ? noDataColors(currentData)
-                                    : currentDate.isBefore(dayDate)
-                                        ? noDataColors(currentData)
-                                        : noDataColors(currentData)), // Day
-                      ),
-                      WidgetSpan(
-                          child: SizedBox(
-                        height: UpdatedDimensions.height10(context) * 2,
-                      )),
-                      TextSpan(
-                        text: DateFormat('dd.MM\n').format(dayDate),
-                        style: TextStyle(
-                            fontSize: UpdatedDimensions.font10(context) * 1.4,
-                            fontFamily: 'Laila',
-                            fontWeight: FontWeight.w400,
-                            color: dashboardData == null
-                                ? noDataColors(true)
-                                : currentDate.isAfter(dayDate)
-                                    ? noDataColors(currentData)
-                                    : currentDate.isBefore(dayDate)
-                                        ? noDataColors(currentData)
-                                        : noDataColors(currentData)), // Date
-                      ),
-                      WidgetSpan(
-                          child: SizedBox(
-                        height: UpdatedDimensions.height10(context) * 2.5,
-                      )),
-                      WidgetSpan(
-                        child: SizedBox(
-                          height: UpdatedDimensions.height10(context) * 2.1,
-                          width: UpdatedDimensions.width10(context) * 2.1,
-                          child: decoratedBox(
-                              context,
-                              dashboardData == null
-                                  ? circleColors(true, false)
-                                  : currentDate.isAfter(dayDate)
-                                      ? circleColors(
-                                          currentData, currentCompleted)
-                                      : currentDate.isBefore(dayDate)
-                                          ? circleColors(
-                                              currentData, currentCompleted)
-                                          : circleColors(
-                                              currentData, currentCompleted),
-                              currentDate.isAfter(dayDate)
-                                  ? currentPractices
+          return AnimatedScaleButton(
+            onTap: () {
+              controller.animateToPage(index);
+            },
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeInOut,
+              height: isCenterItem
+                  ? UpdatedDimensions.height10(context) * 22.2
+                  : UpdatedDimensions.height10(context) * 9.2,
+              width: isCenterItem
+                  ? UpdatedDimensions.width10(context) * 20.8
+                  : UpdatedDimensions.width10(context) * 8.8,
+              transform:
+                  Matrix4.translationValues(0, currentItem ? -30 : 30, 0),
+              decoration: isCenterItem
+                  ? const BoxDecoration(shape: BoxShape.circle)
+                  : currentItem
+                      ? (currentDate.isAfter(dayDate) && currentData)
+                          ? BoxDecoration(
+                              border:
+                                  Border.all(color: Colors.white, width: 0.5),
+                              shape: BoxShape.circle)
+                          : (currentDate.isBefore(dayDate) && currentData)
+                              ? BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                      color: Colors.white, width: 0.5),
+                                )
+                              : const BoxDecoration(shape: BoxShape.circle)
+                      : const BoxDecoration(shape: BoxShape.circle),
+              padding: currentItem
+                  ? (currentDate.isAfter(dayDate) && currentData)
+                      ? const EdgeInsets.all(4)
+                      : (currentDate.isBefore(dayDate) && currentData)
+                          ? const EdgeInsets.all(4)
+                          : EdgeInsets.zero
+                  : EdgeInsets.zero,
+              child: Container(
+                decoration: BoxDecoration(
+                  image: isCenterItem
+                      ? DecorationImage(
+                          image: dashboardData == null || currentData
+                              ? const AssetImage(
+                                  'assets/images/currentbg2.webp')
+                              : const AssetImage(
+                                  'assets/images/Asset 10 2.webp'),
+                          fit: BoxFit.contain)
+                      : null,
+                  shape: BoxShape.circle,
+                  gradient: dashboardData == null
+                      ? futureGradient(true)
+                      : currentDate.isAfter(dayDate)
+                          ? previousGradient(currentData)
+                          : currentDate.isBefore(dayDate)
+                              ? futureGradient(currentData)
+                              : LinearGradient(
+                                  begin: Alignment.topCenter,
+                                  end: Alignment.bottomCenter,
+                                  colors: [
+                                      isCenterItem
+                                          ? Colors.transparent
+                                          : const Color(0xffF5F1E0),
+                                      isCenterItem
+                                          ? Colors.transparent
+                                          : const Color(0xffEDDC97)
+                                    ]),
+                  border: isCenterItem
+                      ? null
+                      : Border.all(color: Colors.white, width: 3),
+                ),
+                child: Center(
+                  child: RichText(
+                    textAlign: TextAlign.center,
+                    text: TextSpan(
+                      style: TextStyle(
+                          fontSize: UpdatedDimensions.font10(context) * 1.4,
+                          fontFamily: 'Laila',
+                          fontWeight: FontWeight.w400,
+                          color: dashboardData == null
+                              ? noDataColors(true)
+                              : currentDate.isAfter(dayDate)
+                                  ? noDataColors(currentData)
                                   : currentDate.isBefore(dayDate)
-                                      ? currentPractices
-                                      : currentPractices,
-                              dashboardData == null
-                                  ? circleTextColors(true, false)
+                                      ? noDataColors(currentData)
+                                      : noDataColors(currentData)),
+                      children: [
+                        WidgetSpan(
+                            child: SizedBox(
+                          height: UpdatedDimensions.height10(context) * 2,
+                        )),
+                        TextSpan(
+                          text:
+                              DateFormat('EEE\n').format(dayDate).toUpperCase(),
+                          style: TextStyle(
+                              fontSize: UpdatedDimensions.font10(context) * 1.2,
+                              fontFamily: 'Laila',
+                              fontWeight: FontWeight.w600,
+                              color: dashboardData == null
+                                  ? noDataColors(true)
                                   : currentDate.isAfter(dayDate)
-                                      ? circleTextColors(
-                                          currentData, currentCompleted)
+                                      ? noDataColors(currentData)
                                       : currentDate.isBefore(dayDate)
-                                          ? circleTextColors(
-                                              currentData, currentCompleted)
-                                          : circleTextColors(
-                                              currentData, currentCompleted),
-                              currentDate.isAfter(dayDate),
-                              currentDate.isBefore(dayDate)
-                                  ? currentData
-                                  : currentData),
+                                          ? noDataColors(currentData)
+                                          : noDataColors(currentData)), // Day
                         ),
-                      ),
-                    ],
+                        WidgetSpan(
+                            child: SizedBox(
+                          height: UpdatedDimensions.height10(context) * 2,
+                        )),
+                        TextSpan(
+                          text: DateFormat('dd.MM\n').format(dayDate),
+                          style: TextStyle(
+                              fontSize: UpdatedDimensions.font10(context) * 1.4,
+                              fontFamily: 'Laila',
+                              fontWeight: FontWeight.w400,
+                              color: dashboardData == null
+                                  ? noDataColors(true)
+                                  : currentDate.isAfter(dayDate)
+                                      ? noDataColors(currentData)
+                                      : currentDate.isBefore(dayDate)
+                                          ? noDataColors(currentData)
+                                          : noDataColors(currentData)), // Date
+                        ),
+                        WidgetSpan(
+                            child: SizedBox(
+                          height: UpdatedDimensions.height10(context) * 2.5,
+                        )),
+                        WidgetSpan(
+                          child: SizedBox(
+                            height: UpdatedDimensions.height10(context) * 2.1,
+                            width: UpdatedDimensions.width10(context) * 2.1,
+                            child: decoratedBox(
+                                context,
+                                dashboardData == null
+                                    ? circleColors(true, false)
+                                    : currentDate.isAfter(dayDate)
+                                        ? circleColors(
+                                            currentData, currentCompleted)
+                                        : currentDate.isBefore(dayDate)
+                                            ? circleColors(
+                                                currentData, currentCompleted)
+                                            : circleColors(
+                                                currentData, currentCompleted),
+                                currentDate.isAfter(dayDate)
+                                    ? currentPractices
+                                    : currentDate.isBefore(dayDate)
+                                        ? currentPractices
+                                        : currentPractices,
+                                dashboardData == null
+                                    ? circleTextColors(true, false)
+                                    : currentDate.isAfter(dayDate)
+                                        ? circleTextColors(
+                                            currentData, currentCompleted)
+                                        : currentDate.isBefore(dayDate)
+                                            ? circleTextColors(
+                                                currentData, currentCompleted)
+                                            : circleTextColors(
+                                                currentData, currentCompleted),
+                                currentDate.isAfter(dayDate),
+                                currentDate.isBefore(dayDate)
+                                    ? currentData
+                                    : currentData),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
