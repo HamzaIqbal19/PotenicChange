@@ -1,16 +1,14 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
-import 'package:potenic_app/Screen/Your_goals/veiw_goals_menu.dart';
-import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
-import 'package:potenic_app/Screen/captureHurdles/splash_hurdles.dart';
-import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
-import 'package:potenic_app/Screen/capture_inspiration/inpiration_motivation.dart';
-import 'package:potenic_app/Screen/timeline/coming_soon.dart';
-import 'package:potenic_app/Screen/timeline/timeline.dart';
-import 'package:potenic_app/Screen/timeline/timelinePopup.dart';
-import 'package:potenic_app/Widgets/animatedButton.dart';
-
+import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inpiration_landing.dart';
+import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inpiration_motivation.dart';
+import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdles_landing_screen.dart';
+import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/splash_hurdles.dart';
+import 'package:potenic_app/Screen/Timeline%20Journey/timeline.dart';
+import 'package:potenic_app/Screen/Timeline%20Journey/timelinePopup.dart';
+import 'package:potenic_app/Screen/Your%20Goals%20Journey/Menu.dart';
 import '../utils/app_dimensions.dart';
 import 'fading.dart';
 
@@ -34,6 +32,25 @@ class Navigation_BarState extends State<Navigation_Bar> {
     setState(() {
       Navigation_Bar._selectedIndex = index;
     });
+    if (index == 0) {
+      if (widget.subscription == 'active') {
+        Navigator.push(
+            context,
+            FadePageRoute(
+                page: const timeline(
+              goalId: null,
+              pracId: null,
+            )));
+      } else {
+        timelinePopup(context);
+      }
+    } else if (index == 1) {
+      checkInspiraion();
+    } else if (index == 2) {
+      checkHurdle();
+    } else {
+      Navigator.push(context, FadePageRoute(page: const Menu()));
+    }
   }
 
   void checkInspiraion() async {
@@ -96,7 +113,7 @@ class Navigation_BarState extends State<Navigation_Bar> {
       //   child:
       Padding(
         padding: EdgeInsets.only(
-          top: UpdatedDimensions.height10(context) * 1,
+          //top: UpdatedDimensions.height10(context) * 1,
           left: UpdatedDimensions.width10(context) * 2,
           right: UpdatedDimensions.width10(context) * 2,
         ),
@@ -106,81 +123,93 @@ class Navigation_BarState extends State<Navigation_Bar> {
           fixedColor: const Color(0xffFBFBFB),
           unselectedFontSize: 15,
           selectedFontSize: 15,
+          showUnselectedLabels: false,
+          showSelectedLabels: false,
           type: BottomNavigationBarType.fixed,
           elevation: 0,
           landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
           backgroundColor: Colors.transparent,
+
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: AnimatedScaleButton(
-                onTap: () {
-                  if (widget.subscription == 'active') {
-                    Navigator.push(
-                        context,
-                        FadePageRoute(
-                            page: const timeline(
-                          goalId: null,
-                          pracId: null,
-                        )));
-                  } else {
-                    timelinePopup(context);
-                  }
-                },
-                child: Container(
-                  width: UpdatedDimensions.width10(context) * 3.0,
-                  height: UpdatedDimensions.height10(context) * 3.0,
-                  child: const ImageIcon(
-                    AssetImage('assets/images/timeline_icon.webp'),
-                    color: Colors.white,
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  SizedBox(
+                    width: UpdatedDimensions.width10(context) * 3.0,
+                    height: UpdatedDimensions.height10(context) * 3.0,
+                    child: const ImageIcon(
+                      AssetImage('assets/images/timeline_icon.webp'),
+                      color: Colors.white,
+                    ),
                   ),
-                ),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  labelText('Timeline'),
+                ],
               ),
               label: 'Timeline',
             ),
             BottomNavigationBarItem(
-                icon: AnimatedScaleButton(
-                  onTap: () {
-                    checkInspiraion();
-                  },
-                  child: Container(
-                      width: UpdatedDimensions.width10(context) * 3.0,
-                      height: UpdatedDimensions.height10(context) * 3.0,
-                      child: const ImageIcon(
-                        AssetImage('assets/images/insp (1).webp'),
-                        color: Colors.white,
-                      )),
+                icon: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                        width: UpdatedDimensions.width10(context) * 3.0,
+                        height: UpdatedDimensions.height10(context) * 3.0,
+                        child: const ImageIcon(
+                          AssetImage('assets/images/insp (1).webp'),
+                          color: Colors.white,
+                        )),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    labelText('Inspiration'),
+                  ],
                 ),
                 label: 'Inspiration'),
             BottomNavigationBarItem(
-                icon: AnimatedScaleButton(
-                  onTap: () {
-                    checkHurdle();
-                  },
-                  child: Container(
-                    width: UpdatedDimensions.width10(context) * 3.0,
-                    height: UpdatedDimensions.height10(context) * 3.0,
-                    child: const ImageIcon(
-                      AssetImage('assets/images/hurdle_icon.webp'),
-                      //size: ,
-                      color: Colors.white,
+                icon: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      width: UpdatedDimensions.width10(context) * 3.0,
+                      height: UpdatedDimensions.height10(context) * 3.0,
+                      child: const ImageIcon(
+                        AssetImage('assets/images/hurdle_icon.webp'),
+                        //size: ,
+                        color: Colors.white,
+                      ),
                     ),
-                  ),
+                    const SizedBox(
+                      height: 4,
+                    ),
+                    labelText('Hurdle'),
+                  ],
                 ),
                 label: 'Hurdle'),
             BottomNavigationBarItem(
-              icon: AnimatedScaleButton(
-                onTap: () {
-                  Navigator.push(
-                      context, FadePageRoute(page: your_goals_menu()));
-                },
-                child: Container(
-                    width: UpdatedDimensions.width10(context) * 3.0,
-                    height: UpdatedDimensions.height10(context) * 3.0,
-                    padding: EdgeInsets.all(2),
-                    child: const ImageIcon(
-                      AssetImage('assets/images/menu_icon.webp'),
-                      color: Colors.white,
-                    )),
+              icon: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Container(
+                      width: UpdatedDimensions.width10(context) * 3.0,
+                      height: UpdatedDimensions.height10(context) * 3.0,
+                      padding: const EdgeInsets.all(2),
+                      child: const ImageIcon(
+                        AssetImage('assets/images/menu_icon.webp'),
+                        color: Colors.white,
+                      )),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  labelText('Menu'),
+                ],
               ),
               label: 'Menu',
             ),
@@ -200,4 +229,16 @@ class Navigation_BarState extends State<Navigation_Bar> {
       //  ),
     ]);
   }
+}
+
+labelText(text) {
+  return Text(
+    text,
+    textAlign: TextAlign.center,
+    style: const TextStyle(
+      color: Color(0XFFFBFBFB),
+      fontSize: 14,
+      fontFamily: 'Laila',
+    ),
+  );
 }

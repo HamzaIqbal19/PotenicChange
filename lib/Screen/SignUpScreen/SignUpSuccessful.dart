@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -50,24 +51,14 @@ class _SignUpSuccessfulState extends State<SignUpSuccessful> {
               backgroundColor: Colors.transparent,
               automaticallyImplyLeading: false,
               actions: [
-                Center(
-                  child: IconButton(
-                    icon: Image.asset(
-                      'assets/images/Close.webp',
-                      // width: AppDimensions.width10(context) * 2.8,
-                      height: AppDimensions.height10(context) * 2.8,
-                      fit: BoxFit.contain,
+                Buttons().closeButton(context, () {
+                  Navigator.push(
+                    context,
+                    FadePageRouteReverse(
+                      page: const LoginPage(),
                     ),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        FadePageRouteReverse(
-                          page: const LoginPage(),
-                        ),
-                      );
-                    },
-                  ),
-                ),
+                  );
+                })
               ],
             ),
             body: Stack(

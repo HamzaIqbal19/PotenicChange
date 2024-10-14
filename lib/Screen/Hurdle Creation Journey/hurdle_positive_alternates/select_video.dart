@@ -1,0 +1,191 @@
+import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/hurdle_positive_alternates/hurdles_details/video_details.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
+
+import '../../../Widgets/fading.dart';
+import '../../../utils/app_dimensions.dart';
+
+class select_video extends StatefulWidget {
+  const select_video({super.key});
+
+  @override
+  State<select_video> createState() => _select_videoState();
+}
+
+class _select_videoState extends State<select_video> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: Buttons().backButton(context, () {
+            Navigator.pop(context);
+          }),
+          centerTitle: true,
+          title: SizedBox(
+            width: AppDimensions.width10(context) * 17.0,
+            height: AppDimensions.height10(context) * 4.8,
+            child: GradientText(
+              'Hurdle‘s positive\nalternatives',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: AppDimensions.font10(context) * 2.0,
+                fontWeight: FontWeight.w600,
+              ),
+              colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
+            ),
+          ),
+          actions: [Buttons().closeButton(context, () {})]),
+      extendBodyBehindAppBar: true,
+      body: Container(
+        width: double.infinity,
+        height: double.infinity,
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/practicebackground.webp'),
+                fit: BoxFit.cover)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: AppDimensions.width10(context) * 13.339,
+              height: AppDimensions.height10(context) * 16.674,
+              margin:
+                  EdgeInsets.only(right: AppDimensions.width10(context) * 1.4),
+              decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(10),
+                  image: const DecorationImage(
+                      image: AssetImage('assets/images/Video_Subtract.webp'))),
+              child: Container(
+                margin: EdgeInsets.all(AppDimensions.height10(context) * 0.758),
+                decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(5)),
+                child: DottedBorder(
+                    borderType: BorderType.RRect,
+                    color: Colors.white,
+                    radius:
+                        Radius.circular(AppDimensions.height10(context) * 1.5),
+                    child: Container(
+                      alignment: Alignment.center,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            width: AppDimensions.width10(context) * 3.032,
+                            height: AppDimensions.height10(context) * 3.032,
+                            margin: EdgeInsets.only(
+                                bottom: AppDimensions.height10(context) * 0.68),
+                            decoration: const BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/video_icon.webp'))),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(
+                                bottom: AppDimensions.height10(context) * 1.0),
+                            child: Text(
+                              'Video link',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontSize: AppDimensions.font10(context) * 1.4,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white),
+                            ),
+                          ),
+                          Container(
+                            width: AppDimensions.width10(context) * 2.122,
+                            height: AppDimensions.height10(context) * 2.122,
+                            margin: EdgeInsets.only(
+                                bottom:
+                                    AppDimensions.height10(context) * 0.178),
+                            decoration: const BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                    image: AssetImage(
+                                        'assets/images/Addgoal.webp'))),
+                          ),
+                          Text(
+                            'Attach',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: AppDimensions.font10(context) * 1.2,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ),
+            Container(
+              width: AppDimensions.width10(context) * 36.0,
+              height: AppDimensions.height10(context) * 6.0,
+              margin:
+                  EdgeInsets.only(top: AppDimensions.height10(context) * 8.026),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 2.0),
+                  color: Colors.white),
+              child: Container(
+                margin: EdgeInsets.only(
+                    left: AppDimensions.width10(context) * 2.0,
+                    right: AppDimensions.width10(context) * 2.0),
+                height: AppDimensions.height10(context) * 2.2,
+                width: AppDimensions.width10(context) * 30.5,
+                child: Center(
+                  child: TextField(
+                    decoration: InputDecoration(
+                        hintText: 'Video’s URL',
+                        hintStyle: TextStyle(
+                            fontSize: AppDimensions.font10(context) * 1.8,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xff828282)),
+                        focusedBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.transparent)),
+                        enabledBorder: const OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.transparent))),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+                height: AppDimensions.height10(context) * 5.0,
+                width: AppDimensions.width10(context) * 25.4,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
+                decoration: BoxDecoration(
+                  gradient: const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Color(0xffFCC10D),
+                      Color(0xffFDA210),
+                    ],
+                  ),
+                  borderRadius: BorderRadius.circular(
+                      AppDimensions.height10(context) * 5.0),
+                ),
+                child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context, FadePageRoute(page: const video_details()));
+                    },
+                    child: Text(
+                      'Confirm',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: AppDimensions.font10(context) * 1.6,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: 'Laila'),
+                    ))),
+          ],
+        ),
+      ),
+    );
+  }
+}

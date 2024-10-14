@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpWithEmail.dart';
 import 'package:potenic_app/Widgets/TermsAndConditionBottomSheet.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
+import 'package:potenic_app/utils/app_assets.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
@@ -54,48 +56,10 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
           centerTitle: true,
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
-          // leading: Center(
-          //   // alignment: Alignment.center,
-          //   child: IconButton(
-          //     icon: Image.asset(
-          //       'assets/images/Back.webp',
-          //       width: AppDimensions.width10(context) * 3,
-          //       height: AppDimensions.height10(context) * 3,
-          //       fit: BoxFit.contain,
-          //     ),
-          //     onPressed: () {
-          //       Navigator.pop(context);
-          //       // Add code for performing close action
-          //     },
-          //   ),
-          // ),
           actions: [
-            Center(
-              // alignment: Alignment.center,
-
-              child: IconButton(
-                icon: Image.asset(
-                  'assets/images/Close.webp',
-                  // width: AppDimensions.width10(context) * 2.8,
-                  height: AppDimensions.height10(context) * 2.8,
-                  fit: BoxFit.contain,
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                  // Navigator.pushReplacement(
-                  //   context,
-                  //   FadePageRoute2(
-                  //     enterPage:HomeScreen(
-                  //       login: false,
-                  //     ),
-                  //     exitPage:SignUpPage(),
-                  //
-                  //   ),
-                  // );
-                  // Add code for performing close action
-                },
-              ),
-            ),
+            Buttons().closeButton(context, () {
+              Navigator.pop(context);
+            })
           ],
         ),
         body: Stack(
@@ -163,121 +127,34 @@ class _SignUpPageState extends State<SignUpPage> with TickerProviderStateMixin {
                                 exitPage: const SignUpPage()),
                           );
                         },
-                        child: Container(
-                          height: AppDimensions.height10(context) * 5.6,
-                          width: AppDimensions.width10(context) * 34.1,
-                          decoration: BoxDecoration(
-                              color: const Color(0xFF5A4D73),
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10(context) * 4.0),
-                              border: Border.all(
-                                  width: AppDimensions.width10(context) * 0.1,
-                                  color: const Color(0xFFFFFFFF))),
-                          child: Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left:
-                                        AppDimensions.height10(context) * 1.6),
-                                child: Icon(
-                                  Icons.mail_outline,
-                                  color: Colors.white,
-                                  size: AppDimensions.height10(context) * 2.4,
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: AppDimensions.width10(context) * 0.8,
-                                    top: AppDimensions.height10(context) * 0.1),
-                                child: Text(
-                                  AppText().signUpEmail,
-                                  style: TextStyle(
-                                    color: const Color(0xFFFFFFFF),
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.8,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
+                        child: buildOutlinedButtonWithImage(
+                            context,
+                            AppAssets.mailLogo,
+                            AppText().signUpEmail,
+                            true,
+                            const Color(0xFF5A4D73),
+                            Colors.white),
                       ),
                       SizedBox(
                         height: AppDimensions.height10(context) * 2,
                       ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 5.6,
-                        width: AppDimensions.width10(context) * 34.1,
-                        child: OutlinedButton.icon(
-                          // <-- OutlinedButton
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: const Color(0xFFFFFFFF),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(40.0),
-                            ),
-                            //<-- SEE HERE
-                          ),
-                          onPressed: () {
-
-                          },
-                          icon: Image.asset(
-                            "assets/images/Google.webp",
-                            width: AppDimensions.width10(context) * 2.4,
-                            height: AppDimensions.height10(context) * 2.4,
-                          ),
-                          label: Row(
-                            children: [
-                              Expanded(
-                                  child: Text(
-                                AppText().signUpGoogle,
-                                style: TextStyle(
-                                  color: Colors.black45,
-                                  fontSize: AppDimensions.font10(context) * 1.8,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              )),
-                            ],
-                          ),
-                        ),
-                      ),
+                      buildOutlinedButtonWithImage(
+                          context,
+                          AppAssets.googleLogo,
+                          AppText().signUpGoogle,
+                          false,
+                          Colors.white,
+                          Colors.black45),
                       SizedBox(
                         height: AppDimensions.height10(context) * 2,
                       ),
-                      SizedBox(
-                        height: AppDimensions.height10(context) * 5.6,
-                        width: AppDimensions.width10(context) * 34.1,
-                        child: OutlinedButton.icon(
-                          // <-- OutlinedButton
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: const Color(0xFF1877F2),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  AppDimensions.height10(context) * 4.0),
-                            ),
-                            //<-- SEE HERE
-                          ),
-                          onPressed: () {},
-                          icon: Image.asset(
-                            "assets/images/fb.webp",
-                            width: AppDimensions.width10(context) * 2.4,
-                            height: AppDimensions.height10(context) * 2.4,
-                          ),
-                          label: Row(
-                            children: [
-                              Expanded(
-                                  child: Text(
-                                AppText().signUpFacebook,
-                                style: TextStyle(
-                                  color: const Color(0xFFFFFFFF),
-                                  fontSize: AppDimensions.font10(context) * 1.8,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              )),
-                            ],
-                          ),
-                        ),
-                      ),
+                      buildOutlinedButtonWithImage(
+                          context,
+                          AppAssets.fbLogo,
+                          AppText().signUpFacebook,
+                          false,
+                          const Color(0xFF1877F2),
+                          Colors.white),
                     ],
                   ),
                 ),

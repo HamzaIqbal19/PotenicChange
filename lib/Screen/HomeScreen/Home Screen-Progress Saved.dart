@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:potenic_app/Screen/CreateGoal/Goal-Visualising.dart';
-import 'package:potenic_app/Screen/CreateGoal/Goal-Why.dart';
-import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
-import 'package:potenic_app/Screen/CreateGoal/Goal_Identity.dart';
+import 'package:potenic_app/Screen/Goal%20Creation%20Journey/Goal-Visualising.dart';
+import 'package:potenic_app/Screen/Goal%20Creation%20Journey/Goal-Why.dart';
+import 'package:potenic_app/Screen/Goal%20Creation%20Journey/GoalName.dart';
+import 'package:potenic_app/Screen/Goal%20Creation%20Journey/Goal_Identity.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
-import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
-import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
-
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -287,7 +284,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                                 4.8,
                                             width: 238,
                                             child: Text(
-                                              "Are you sure you want to log out? If you\ndo, you will be prompted to login again\nby entering your email and password.",
+                                              "Are you sure you want to log out? If you do, you will be prompted to login again by entering your email and password.",
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
                                                 height: AppDimensions.height10(

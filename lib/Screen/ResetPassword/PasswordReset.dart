@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/ResetPassword/EmailSent.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -48,37 +49,10 @@ class _PasswordResetState extends State<PasswordReset> {
                 centerTitle: true,
                 backgroundColor: Colors.transparent,
                 automaticallyImplyLeading: false,
-                // leading: Center(
-                //   // alignment: Alignment.center,
-                //   child: IconButton(
-                //     icon: Image.asset(
-                //       'assets/images/Back.webp',
-                //       width: AppDimensions.width10(context) * 3,
-                //       height: AppDimensions.height10(context) * 3,
-                //       fit: BoxFit.contain,
-                //     ),
-                //     onPressed: () {
-                //       Navigator.pop(context);
-                //       // Add code for performing close action
-                //     },
-                //   ),
-                // ),
                 actions: [
-                  Center(
-                    // alignment: Alignment.center,
-                    child: IconButton(
-                      icon: Image.asset(
-                        'assets/images/Close.webp',
-                        // width: AppDimensions.width10(context) * 3.0,
-                        height: AppDimensions.height10(context) * 3.0,
-                        fit: BoxFit.contain,
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                        // Add code for performing close action
-                      },
-                    ),
-                  ),
+                  Buttons().closeButton(context, () {
+                    Navigator.pop(context);
+                  })
                 ],
               )),
           body: Stack(
@@ -102,13 +76,10 @@ class _PasswordResetState extends State<PasswordReset> {
                       height: AppDimensions.height10(context) * 8.02,
                     ),
                     Center(
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: Image(
-                          image: const AssetImage("assets/images/logo.webp"),
-                          height: AppDimensions.height10(context) * 7.75,
-                          width: AppDimensions.width10(context) * 7.75,
-                        ),
+                      child: Image(
+                        image: const AssetImage("assets/images/logo.webp"),
+                        height: AppDimensions.height10(context) * 7.75,
+                        width: AppDimensions.width10(context) * 7.75,
                       ),
                     ),
 

@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/ResetPassword/reset.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 import '../../Widgets/fading.dart';
@@ -83,37 +84,10 @@ class _VerificationState extends State<Verification> {
                 centerTitle: true,
                 backgroundColor: Colors.transparent,
                 automaticallyImplyLeading: false,
-                // leading: Center(
-                //   // alignment: Alignment.center,
-                //   child: IconButton(
-                //     icon: Image.asset(
-                //       'assets/images/Back.webp',
-                //       width: AppDimensions.width10(context) * 3,
-                //       height: AppDimensions.height10(context) * 3,
-                //       fit: BoxFit.contain,
-                //     ),
-                //     onPressed: () {
-                //       Navigator.pop(context);
-                //       // Add code for performing close action
-                //     },
-                //   ),
-                // ),
                 actions: [
-                  Center(
-                    // alignment: Alignment.center,
-                    child: IconButton(
-                      icon: Image.asset(
-                        'assets/images/Close.webp',
-                        //  width: AppDimensions.width10(context) * 3.0,
-                        height: AppDimensions.height10(context) * 3.0,
-                        fit: BoxFit.contain,
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                        // Add code for performing close action
-                      },
-                    ),
-                  ),
+                  Buttons().closeButton(context, () {
+                    Navigator.pop(context);
+                  })
                 ],
               )),
           body: Stack(
@@ -404,8 +378,7 @@ class _VerificationState extends State<Verification> {
                                       : 'Verify',
                                   style: TextStyle(
                                     color: const Color(0xFF8C648A),
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.6,
+                                    fontSize: AppDimensions.font10(context) * 2,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 )

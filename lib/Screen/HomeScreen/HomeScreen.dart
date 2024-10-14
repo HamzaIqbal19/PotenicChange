@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
-import 'package:potenic_app/Screen/CreateGoal/Goal%20Finished.dart';
-import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
+import 'package:potenic_app/Screen/Goal%20Creation%20Journey/Goal%20Finished.dart';
+import 'package:potenic_app/Screen/Goal%20Creation%20Journey/StartProcess.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
-import 'package:potenic_app/Widgets/SignupBottomSheet.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
-
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -147,7 +145,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     //     4.8,
                                     width: 238,
                                     child: Text(
-                                      "Are you sure you want to log out? If you\ndo, you will be prompted to login again\nby entering your email and password.",
+                                      "Are you sure you want to log out? If you do, you will be prompted to login again by entering your email and password.",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
                                         height:

@@ -9,7 +9,7 @@ class AppText {
   String signUpSubHead =
       'Your Personalised Journey To Better \n  Self Starts Here';
   String signUp = "Sign up";
-  String signUpEmail = '  Sign up with email';
+  String signUpEmail = 'Sign up with email';
   String signUpGoogle = 'Sign up with Google';
   String signUpFacebook = 'Sign up with Facebook';
   String alreadySignedUpButton = "I already have an account";
@@ -21,7 +21,7 @@ class AppText {
 
   String login = 'Log in';
   String loginSubHead = 'Log in';
-  String logInEmail = '  Log in with Email';
+  String logInEmail = 'Log in with Email';
   String logInGoogle = 'Log in with Google';
   String logInFacebook = 'Log in with Facebook';
   String newAccount = "New account";
@@ -37,12 +37,12 @@ class AppText {
       'by defining your vision to\nhelp you stay focused and self-motivated.';
   String step2 = "Step 2";
   String step2Head = " your practice ";
-  String step2Body =
-      "and create a routine\nthat fits your lifestyle.";
+  String step2Body = "and create a routine\nthat fits your lifestyle.";
   String step2Body2 =
       "Embark on a self-driven journey toward\nself-discovery and personal growth.";
   String startJourney = 'Start your journey';
-  String footerBody= ", you’ll be on your way\ntoward more clarity and self-fulfilment.";
+  String footerBody =
+      ", you’ll be on your way\ntoward more clarity and self-fulfilment.";
   String startJourney2 = "You can save and exit at any time. ";
 
   //goal category
@@ -193,6 +193,7 @@ class AppText {
   String question3 = 'Can I cancel my subscription?';
   String question4 =
       'I don’t want to upgrade to Ownership Plan, what happens to my Empowered Starter Plan?';
+  String question5 = 'Will I be charged for or after the 5-day trial?';
   String answer1 =
       'Yes, we offer a free 5-day trial period for both monthly and yearly plans.';
   String answer2 =
@@ -201,4 +202,6 @@ class AppText {
       'Yes you can by going into your Account Settings. Remember to cancel your subscription plan no earlier than 3 working days before your plan is due to renew.';
   String answer4 =
       'If you stay on our free Empowered Starter plan, you get it for lifetime. No subscription fees, it’s yours to own :)\n\nFor a more personalised experience and clarity on your growth progress towards self-fulfilment, we recommend you upgrade to our Ownership Plan (if you’re serious about your personal growth).';
+  String answer5 =
+      'As soon as you start a trial, your account is due to upgrade on day 6, at which point we will charge you a monthly or yearly upgrade fee. You will receive daily reminders from us when the trial is due to expiry, so you can decide if you wish to proceed with upgrade or, remain on our Empowered Starter plan. If you don’t cancel your trial, you will automatically be charged. The choice is yours.';
 }

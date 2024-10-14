@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
-import 'package:potenic_app/Screen/on-boarding/on-boarding.dart';
+import 'package:potenic_app/Screen/Onboarding%20Journey/on-boarding.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading3.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';

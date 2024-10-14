@@ -1,7 +1,11 @@
-
-class AppAssets{
+class AppAssets {
   static const String _imagesPath = "assets/images";
   static const String _logo = "assets/logo";
+  static const mailLogo = "$_imagesPath/mail_outline.webp";
+  static const googleLogo = "$_imagesPath/Google.webp";
+  static const fbLogo = "$_imagesPath/fb.webp";
+  static const closeButton = "$_imagesPath/Close.webp";
+  static const backButton = "$_imagesPath/Back.webp";
 
   //goalAssets
   static const goal1 = "$_imagesPath/red_gradient.webp";
@@ -18,7 +22,6 @@ class AppAssets{
   static const glare4 = "$_imagesPath/whiteGlare.webp";
   static const glare5 = "$_imagesPath/lightBlueGlare.webp";
   static const glare6 = "$_imagesPath/blueGlare.webp";
-
 
   //practiceAssets
   static const practice1 = "$_imagesPath/Ellipse orange_wb.webp";
@@ -43,4 +46,10 @@ class AppAssets{
 
   //checkBox
   static const checkBox = "$_imagesPath/tick_circle.webp";
+
+  //bottomAppBarAssets
+  static const inspirationItem = "$_imagesPath/insp (1).webp";
+  static const hurdleItem = "$_imagesPath/hurdle_icon.webp";
+  static const timelineItem = "$_imagesPath/timeline_icon.webp";
+  static const menuItem = "$_imagesPath/menu_icon.webp";
 }

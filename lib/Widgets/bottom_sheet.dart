@@ -3,7 +3,7 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Notifier/GoalNotifier.dart';
-import 'package:potenic_app/Screen/CreateGoal/GoalName.dart';
+import 'package:potenic_app/Screen/Goal%20Creation%20Journey/GoalName.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';

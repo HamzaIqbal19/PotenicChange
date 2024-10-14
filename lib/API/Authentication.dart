@@ -80,6 +80,7 @@ class Authentication {
 
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
+      print("Refreshtoken data $response");
       await prefs.setString('usertoken', response["accessToken"]);
       await prefs.setInt('userid', response['id']);
       await prefs.setString('customerID', response['userStripeId']);
@@ -309,6 +310,27 @@ class Authentication {
     var response = await client.get(
       Uri.parse('${URL.BASE_URL}api/auth/user-by-id/$userId'),
       headers: headers,
+    );
+    if (response.statusCode == 200) {
+      var jsonData = jsonDecode(response.body);
+
+      return jsonData;
+    } else {}
+  }
+
+  Future getUserTrials() async {
+    final SharedPreferences prefs = await _prefs;
+    var accessToken = prefs.getString("usertoken");
+    var customerId = prefs.getString('customerID');
+
+    var headers = {
+      'x-access-token': '$accessToken',
+    };
+    var body = {"userStripeId": "$customerId"};
+    var response = await client.post(
+      Uri.parse('${URL.BASE_URL}api/subscription/getUserFreeTrialDays'),
+      headers: headers,
+      body: body,
     );
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);

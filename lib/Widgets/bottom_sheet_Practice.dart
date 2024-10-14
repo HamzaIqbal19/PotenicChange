@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
+import 'package:potenic_app/Screen/Practice%20Creation%20Journey/PracticeName.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../Screen/PracticeGoal/Create Practice.dart';
+import '../Screen/Practice Creation Journey/Create Practice.dart';
 import 'fading2.dart';
 // import 'package:flutter_ui/utilities/app_contants.dart';
 

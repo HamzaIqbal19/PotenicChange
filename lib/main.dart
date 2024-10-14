@@ -28,7 +28,8 @@ Future<void> main(context) async {
     systemNavigationBarIconBrightness: Brightness.dark,
     systemNavigationBarDividerColor: Colors.transparent,
   ));
-  Stripe.publishableKey = "pk_test_51MP8GqRkeqntfFwkc7SudCslwib67ICcq4Oot6G6MvZ0fm3Gra2eEADbWba05wnSFvEBozpb47Q3db0l0G8eiary006dzhKTBs";
+  Stripe.publishableKey =
+      "pk_test_51MP8GqRkeqntfFwkc7SudCslwib67ICcq4Oot6G6MvZ0fm3Gra2eEADbWba05wnSFvEBozpb47Q3db0l0G8eiary006dzhKTBs";
 
   //Load our .env file that contains our Stripe Secret key
   await dotenv.load(fileName: "assets/.env");
@@ -65,7 +66,6 @@ Future<void> main(context) async {
     (options) {
       options.dsn =
           'https://591f2b424a6342c48fc692daed3d8bc3@o4504826441760768.ingest.sentry.io/4505311747702784';
-
       options.tracesSampleRate = 1.0;
     },
     appRunner: () => runApp(

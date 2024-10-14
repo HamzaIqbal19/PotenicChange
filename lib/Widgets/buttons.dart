@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/utils/app_assets.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
 class Buttons {
@@ -71,15 +72,32 @@ class Buttons {
     );
   }
 
-  closeButton(BuildContext context, action){
-    return IconButton(
-      icon: Image.asset(
-        'assets/images/Close.webp',
-        width: 28.0,
-        height: 28.0,
-        fit: BoxFit.contain,
+  closeButton(BuildContext context, action) {
+    return Container(
+      margin: const EdgeInsets.only(right: 15),
+      child: IconButton(
+        icon: Image.asset(
+          AppAssets.closeButton,
+          width: 28.0,
+          height: 28.0,
+          fit: BoxFit.contain,
+        ),
+        onPressed: action,
       ),
-      onPressed: action,
+    );
+  }
+
+  backButton(BuildContext context, action) {
+    return Container(
+      margin: const EdgeInsets.only(left: 15),
+      child: IconButton(
+          onPressed: action,
+          icon: Image.asset(
+            AppAssets.backButton,
+            // width: AppDimensions.width10(context) * 3,
+            height: AppDimensions.height10(context) * 3,
+            fit: BoxFit.contain,
+          )),
     );
   }
 }

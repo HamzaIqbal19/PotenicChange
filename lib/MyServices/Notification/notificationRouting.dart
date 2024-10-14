@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/MyServices/Notification/emailLauncher.dart';
-import 'package:potenic_app/Screen/Recording%20Practice%20Session/recordPracticeMenu.dart';
-import 'package:potenic_app/Screen/Your_goals/goal_menu_inactive.dart';
-import 'package:potenic_app/Screen/Your_goals/veiw_all_goals.dart';
-import 'package:potenic_app/Screen/Your_goals/veiw_goals_menu.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
-import 'package:potenic_app/Screen/captureHurdles/capture_hurdles_landing_screen.dart';
-import 'package:potenic_app/Screen/capture_inspiration/inpiration_landing.dart';
+import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inpiration_landing.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdles_landing_screen.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session%20Journey/recordPracticeMenu.dart';
+import 'package:potenic_app/Screen/Your%20Goals%20Journey/goal_menu_inactive.dart';
+import 'package:potenic_app/Screen/Your%20Goals%20Journey/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

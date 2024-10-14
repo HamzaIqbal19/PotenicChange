@@ -9,7 +9,7 @@ class AppTextStyles{
     return TextStyle(
       fontWeight: FontWeight.w600,
       color: Colors.white,
-      fontSize: AppDimensions.font10(context) * 2.0,
+      fontSize: UpdatedDimensions.font10(context) * 2.0,
     );
   }
 

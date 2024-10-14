@@ -2,13 +2,14 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/API/Goal.dart';
-import 'package:potenic_app/Screen/CreateGoal/StartProcess.dart';
-import 'package:potenic_app/Screen/Dashboard%20Behaviour/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
+import 'package:potenic_app/Screen/Goal%20Creation%20Journey/StartProcess.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/ResetPassword/PasswordReset.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
@@ -58,11 +59,10 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
 
   onLoggedIn() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if(rememberMe){
-
+    if (rememberMe) {
       prefs.setString('loginEmail', emailController.text.toString());
       prefs.setString('loginPass', passwordController.text.toString());
-    }else{
+    } else {
       await prefs.remove('loginEmail');
       await prefs.remove('loginPass');
     }
@@ -94,13 +94,12 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
     });
   }
 
-  getEmailAndPass()async{
+  getEmailAndPass() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      emailController.text = prefs.getString('loginEmail')??"";
-      passwordController.text = prefs.getString('loginPass')??"";
+      emailController.text = prefs.getString('loginEmail') ?? "";
+      passwordController.text = prefs.getString('loginPass') ?? "";
     });
-
   }
 
   late bool checkBool;
@@ -219,28 +218,16 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                     ),
                   ),
                   actions: [
-                    Center(
-                      // alignment: Alignment.center,
-                      child: IconButton(
-                        icon: Image.asset(
-                          'assets/images/Close.webp',
-                          //width: AppDimensions.width10(context) * 3.0,
-                          height: AppDimensions.height10(context) * 3.0,
-                          fit: BoxFit.cover,
+                    Buttons().closeButton(context, () {
+                      Navigator.pushReplacement(
+                        context,
+                        FadePageRouteReverse(
+                          page: const HomeScreen(
+                            login: false,
+                          ),
                         ),
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                            context,
-                            FadePageRouteReverse(
-                              page: const HomeScreen(
-                                login: false,
-                              ),
-                            ),
-                          );
-                          // Add code for performing close action
-                        },
-                      ),
-                    ),
+                      );
+                    }),
                   ],
                 )),
             body: Stack(
@@ -614,11 +601,12 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                     : AppDimensions.height10(context) * 3),
                             Container(
                                 height: AppDimensions.height10(context) * 2.2,
-
                                 padding: EdgeInsets.only(
-                                    left: AppDimensions.width10(context) * 1.2,right: 5),
+                                    left: AppDimensions.width10(context) * 1.2,
+                                    right: 5),
                                 child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     AnimatedScaleButton(
@@ -644,26 +632,29 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                       ),
                                     ),
                                     GestureDetector(
-                                      onTap: (){
+                                      onTap: () {
                                         setState(() {
                                           rememberMe = !rememberMe;
                                         });
                                       },
                                       child: Row(
                                         children: [
-                                           Icon(
-                                              rememberMe?Icons.check_box: Icons.check_box_outline_blank,
-                                              color: Colors.white,
-                                             size: 18,
-                                            ),
-
-                                          const SizedBox(width: 2,),
+                                          Icon(
+                                            rememberMe
+                                                ? Icons.check_box
+                                                : Icons.check_box_outline_blank,
+                                            color: Colors.white,
+                                            size: 18,
+                                          ),
+                                          const SizedBox(
+                                            width: 2,
+                                          ),
                                           Text(
                                             AppText().remember,
                                             style: TextStyle(
                                               color: const Color(0xFFFFFFFF),
-                                              fontSize:
-                                              AppDimensions.font10(context) *
+                                              fontSize: AppDimensions.font10(
+                                                      context) *
                                                   1.5,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -729,7 +720,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                       SizedBox(height: AppDimensions.height10(context) * 3.0),
 
                       AnimatedScaleButton(
-
                         onTap: () async {
                           setState(() {
                             loading = true;

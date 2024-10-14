@@ -1,13 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
-import 'package:potenic_app/MyServices/Notification/notificationRouting.dart';
-import 'package:potenic_app/Screen/Alerts/widgets/notificationSheet.dart';
-import 'package:potenic_app/Screen/PracticeGoal/PracticeName.dart';
+import 'package:potenic_app/Screen/Notification%20Journey/widgets/notificationSheet.dart';
+import 'package:potenic_app/Screen/Practice%20Creation%20Journey/PracticeName.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 reda(BuildContext context, notificationData, final VoidCallback onTap) {
   return AnimatedScaleButton(

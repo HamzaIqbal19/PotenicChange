@@ -4,6 +4,7 @@ class AppLinks {
   String contactUs = 'https://potenic.com/contact-potenic-team/';
   String ourStory = 'https://potenic.com/potenic-brand-story/';
   String feedbackForm = "https://forms.gle/fJ72m37zyhJd9QW98";
+  String faqs = "https://potenic.com/faqs/";
 
 //Tutorials
   String dashboardLink = 'https://youtu.be/f2fGU6MwZS4?si=Mt6Bcnm2v3OPf5UO';

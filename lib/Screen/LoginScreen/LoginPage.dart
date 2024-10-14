@@ -3,8 +3,10 @@ import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
+import 'package:potenic_app/utils/app_assets.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -64,24 +66,16 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       backgroundColor: Colors.transparent,
       automaticallyImplyLeading: false,
       actions: [
-        Center(
-          child: IconButton(
-            icon: Image.asset(
-              'assets/images/Close.webp',
-              //width: AppDimensions.width10(context) * 2.8,
-              height: AppDimensions.height10(context) * 3.0,
-              fit: BoxFit.cover,
-            ),
-            onPressed: () => Navigator.pushReplacement(
-              context,
-              FadePageRouteReverse(
-                page: const HomeScreen(
-                  login: false,
-                ),
+        Buttons().closeButton(context, () {
+          Navigator.pushReplacement(
+            context,
+            FadePageRouteReverse(
+              page: const HomeScreen(
+                login: false,
               ),
             ),
-          ),
-        ),
+          );
+        }),
       ],
     );
   }
@@ -160,7 +154,6 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
           AnimatedScaleButton(
             onTap: () {
               Navigator.push(
@@ -170,57 +163,27 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                     exitPage: const LoginPage()),
               );
             },
-            child: Container(
-              height: AppDimensions.height10(context) * 5.6,
-              width: AppDimensions.width10(context) * 34.1,
-              decoration: BoxDecoration(
-                  color: const Color(0xFF5A4D73),
-                  borderRadius: BorderRadius.circular(
-                      AppDimensions.height10(context) * 4.0),
-                  border: Border.all(
-                      width: AppDimensions.width10(context) * 0.1,
-                      color: const Color(0xFFFFFFFF))),
-              child: Row(
-                children: [
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.width10(context) * 1.6),
-                    child: Icon(
-                      Icons.mail_outline,
-                      color: Colors.white,
-                      size: AppDimensions.height10(context) * 2.4,
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.width10(context) * 0.7,
-                        top: AppDimensions.height10(context) * 0.1),
-                    child: Text(
-                      AppText().logInEmail,
-                      style: TextStyle(
-                        color: const Color(0xFFFFFFFF),
-                        fontSize: AppDimensions.font10(context) * 1.8,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+            child: buildOutlinedButtonWithImage(
+                context,
+                AppAssets.mailLogo,
+                AppText().logInEmail,
+                true,
+                const Color(0xFF5A4D73),
+                Colors.white),
           ),
           SizedBox(
             height: AppDimensions.height10(context) * 2,
           ),
-          _buildOutlinedButtonWithImage(context, 'assets/images/Google.webp',
-              AppText().logInGoogle, () {}, Colors.white, Colors.black45),
+          buildOutlinedButtonWithImage(context, AppAssets.googleLogo,
+              AppText().logInGoogle, false, Colors.white, Colors.black45),
           SizedBox(
             height: AppDimensions.height10(context) * 2,
           ),
-          _buildOutlinedButtonWithImage(
+          buildOutlinedButtonWithImage(
               context,
-              'assets/images/fb.webp',
+              AppAssets.fbLogo,
               AppText().logInFacebook,
-              () {},
+              false,
               const Color(0xFF1877F2),
               Colors.white),
         ],
@@ -229,7 +192,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   }
 
   Widget _buildOutlinedButton(BuildContext context, IconData icon, String label,
-      Function onPressed, Color backgroundColor, Color textColor) {
+      Color backgroundColor, Color textColor) {
     return SizedBox(
       height: AppDimensions.height10(context) * 5.5,
       width: AppDimensions.width10(context) * 34.1,
@@ -257,45 +220,6 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
                   fontSize: AppDimensions.font10(context) * 1.8,
                   fontWeight: FontWeight.w600,
                 ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildOutlinedButtonWithImage(
-      BuildContext context,
-      String imageAsset,
-      String label,
-      Function onPressed,
-      Color backgroundColor,
-      Color textColor) {
-    return SizedBox(
-      height: AppDimensions.height10(context) * 5.6,
-      width: AppDimensions.width10(context) * 34.1,
-      child: OutlinedButton.icon(
-        style: OutlinedButton.styleFrom(
-          backgroundColor: backgroundColor,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(40.0),
-          ),
-        ),
-        onPressed: onPressed as void Function()?,
-        icon: Image.asset(
-          imageAsset,
-          width: AppDimensions.width10(context) * 2.4,
-          height: AppDimensions.height10(context) * 2.4,
-        ),
-        label: Row(
-          children: [
-            Text(
-              '$label',
-              style: TextStyle(
-                color: textColor,
-                fontSize: AppDimensions.font10(context) * 1.8,
-                fontWeight: FontWeight.w600,
               ),
             ),
           ],
@@ -351,4 +275,36 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
       ),
     );
   }
+}
+
+buildOutlinedButtonWithImage(BuildContext context, String imageAsset,
+    String label, bool border, Color backgroundColor, Color textColor) {
+  return Container(
+      height: AppDimensions.height10(context) * 5.6,
+      width: AppDimensions.width10(context) * 34.1,
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      decoration: BoxDecoration(
+          border: Border.all(color: border ? Colors.white : Colors.transparent),
+          borderRadius: BorderRadius.circular(40),
+          color: backgroundColor),
+      child: Row(
+        children: [
+          Image.asset(
+            imageAsset,
+            width: AppDimensions.width10(context) * 2.4,
+            height: AppDimensions.height10(context) * 2.4,
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Text(
+            '$label',
+            style: TextStyle(
+              color: textColor,
+              fontSize: AppDimensions.font10(context) * 1.8,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ],
+      ));
 }
