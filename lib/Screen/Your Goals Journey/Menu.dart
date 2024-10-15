@@ -84,10 +84,19 @@ class _MenuState extends State<Menu> {
   }
 
   getUser() {
-    Authentication().getUserData().then((value) {
+    Authentication().getUserData().then((value) async{
+
+      final SharedPreferences prefs = await _prefs;
       setState(() {
         newMessages = value["unreadMessageCenterCount"];
       });
+      if(value['subscriptionStatus'] == 'active'){
+        setState(() {
+          subscribe = true;
+        });
+      }
+
+      prefs.setString('subscriptionStatus', value['subscriptionStatus']);
     });
   }
 

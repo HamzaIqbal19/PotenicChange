@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' ;
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -9,8 +9,7 @@ import 'package:potenic_app/utils/formattedTime.dart';
 import 'package:potenic_app/utils/utils.dart';
 
 dashboardCarousel(
-  BuildContext context,
-  CarouselController controller,
+  BuildContext context, CarouselSliderController controller,
   dashboardData,
   int currentIndex,
   final ValueChanged<TwoValues<String, int>> onCountChanged,

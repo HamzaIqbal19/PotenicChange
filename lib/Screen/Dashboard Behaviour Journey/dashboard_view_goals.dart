@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' ;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:potenic_app/API/Authentication.dart';
@@ -74,7 +74,7 @@ class _ViewDashboardState extends State<ViewDashboard>
   int currentIndex = 7;
   bool currentItem = false;
   bool isCenterItem = false;
-  final CarouselController _controller = CarouselController();
+  final CarouselSliderController _controller = CarouselSliderController();
   bool isVisible = true;
   final NotificationPermissionService _notificationPermissionService =
       NotificationPermissionService();
@@ -82,6 +82,19 @@ class _ViewDashboardState extends State<ViewDashboard>
   void _incrementValue() {
     setState(() {
       goalLevel++;
+    });
+  }
+
+  getUser() {
+    Authentication().getUserData().then((value) async{
+
+      final SharedPreferences prefs = await _prefs;
+
+        setState(() {
+          getSubscription = value['subscriptionStatus'];
+        });
+
+      prefs.setString('subscriptionStatus', value['subscriptionStatus']);
     });
   }
 
@@ -139,7 +152,6 @@ class _ViewDashboardState extends State<ViewDashboard>
     final SharedPreferences prefs = await _prefs;
     var levelChange = prefs.getBool('goalLevelUpdate');
     var goalUpdate = prefs.getString('goalLevelUpOrDown');
-    getSubscription = prefs.getString('subscriptionStatus').toString();
     var goalData = prefs.getString('goalAcieved');
     var newData = json.decode(goalData!);
     if (levelChange.toString() == 'true') {
@@ -217,6 +229,7 @@ class _ViewDashboardState extends State<ViewDashboard>
     }
     notificationPermissionSerice();
     super.initState();
+    getUser();
     getUserNotifications();
     _fetchGoalNames();
     fetchDashboardData();
