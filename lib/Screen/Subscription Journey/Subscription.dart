@@ -88,6 +88,7 @@ class _SubscriptionState extends State<Subscription>
           fit: BoxFit.cover,
         )),
         width: double.infinity,
+
         height: double.infinity,
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -124,7 +125,9 @@ class _SubscriptionState extends State<Subscription>
               Container(
                 // height: AppDimensionsUpdated.height10(context) * 148.3,
                 width: AppDimensionsUpdated.height10(context) * 38.4,
+
                 margin: EdgeInsets.only(
+
                     top: AppDimensionsUpdated.height10(context) * 2.8),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(
@@ -1274,8 +1277,10 @@ class _SubscriptionState extends State<Subscription>
               Container(
                 width: AppDimensionsUpdated.height10(context) * 38.4,
                 padding: EdgeInsets.only(
+
                     bottom: AppDimensionsUpdated.height10(context) * 2.4),
                 margin: EdgeInsets.only(
+
                     bottom: AppDimensionsUpdated.height10(context) * 9.4),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(

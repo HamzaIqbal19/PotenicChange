@@ -13,6 +13,7 @@ class SubscriptionService {
   Future<void> createCreditCard(
       String paymentIntentClientSecret, String customerId) async {
     await Stripe.instance.initPaymentSheet(
+
       paymentSheetParameters: SetupPaymentSheetParameters(
           style: ThemeMode.light,
           merchantDisplayName: 'Potenic',

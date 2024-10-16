@@ -260,8 +260,8 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                     ),
                     SizedBox(height: AppDimensions.height10(context) * 2.0),
                     SizedBox(
-                        height: AppDimensions.height10(context) * 7 + 4,
-                        width: AppDimensions.screenWidth(context) - 100,
+                        //height: AppDimensions.height10(context) * 7 + 4,
+                        //width: AppDimensions.screenWidth(context) - 100,
                         child: Text(
                           AppText().signUpSubHead,
                           textAlign: TextAlign.center,

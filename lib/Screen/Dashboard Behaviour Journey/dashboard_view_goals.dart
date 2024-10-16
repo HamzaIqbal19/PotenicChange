@@ -700,9 +700,9 @@ class _ViewDashboardState extends State<ViewDashboard>
                                 Positioned(
                                     top: smallScreen
                                         ? UpdatedDimensions.height10(context) *
-                                            50.0
+                                            48.0
                                         : UpdatedDimensions.height10(context) *
-                                            54.0,
+                                            52.0,
                                     left: UpdatedDimensions.height10(context) *
                                         1.3,
                                     child: Stack(
