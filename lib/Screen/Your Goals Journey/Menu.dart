@@ -248,7 +248,9 @@ class _MenuState extends State<Menu> {
                             //   }, true);
                             // } else
                             if (subscribe) {
-                              subscribedUser(context, yearly, subId);
+                              Navigator.push(context,
+                                  FadePageRoute(page: const Subscription()));
+                             // subscribedUser(context, yearly, subId);
                             } else {
                               Navigator.push(context,
                                   FadePageRoute(page: const Subscription()));
@@ -287,7 +289,7 @@ class _MenuState extends State<Menu> {
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          1.45,
+                                                          1.74,
                                                   fontWeight: FontWeight.w500,
                                                   color: colorC),
                                               children: [
@@ -295,22 +297,28 @@ class _MenuState extends State<Menu> {
                                                 text:
                                                     'Membership subscription\n'),
                                             admin
-                                                ? const TextSpan(
+                                                ?  TextSpan(
                                                     text: 'Current plan: Admin',
                                                     style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.w700,
+                                                        fontSize: AppDimensions.font10(
+                                                            context) *
+                                                            1.45,
                                                         color:
-                                                            Color(0xFF8C648A)))
+                                                            const Color(0xFF8C648A)))
                                                 : TextSpan(
                                                     text: !subscribe
                                                         ? 'Current plan: Empowered Starter'
                                                         : 'Current plan: Ownership Plan',
-                                                    style: const TextStyle(
+                                                    style:  TextStyle(
                                                         fontWeight:
                                                             FontWeight.w700,
+                                                        fontSize: AppDimensions.font10(
+                                                            context) *
+                                                            1.45,
                                                         color:
-                                                            Color(0xFF8C648A))),
+                                                            const Color(0xFF8C648A))),
                                             // trial != 0 && subscribe
                                             //     ? TextSpan(
                                             //         text:

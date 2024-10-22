@@ -9,22 +9,21 @@ import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
 import 'package:potenic_app/MyServices/Notification/notificationController.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inpiration_landing.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/widgets/tooltips.dart';
 import 'package:potenic_app/Screen/Goal%20Achieved%20Journey/congratulations.dart';
 import 'package:potenic_app/Screen/Notification%20Journey/widgets/notificationPermissionService.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session%20Journey/recordPracticeMenu.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:intl/intl.dart';
 import 'package:potenic_app/Widgets/redaMessage.dart';
 import 'package:potenic_app/utils/formattedTime.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:super_tooltip/super_tooltip.dart';
 import '../../Widgets/bottom_navigation.dart';
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
-import 'calender_bottom_sheet.dart';
 import 'future_practice_menu.dart';
 import 'loaders/dashboard_behaviour_shimmer.dart';
-import 'menu_dashboard_behaviour.dart';
 import 'dart:ui';
 import 'widgets/dashboardNoSessions.dart';
 import 'widgets/dashboardUI.dart';
@@ -55,6 +54,7 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class _ViewDashboardState extends State<ViewDashboard>
     with WidgetsBindingObserver {
+  final superTooltipController = SuperTooltipController();
   var allGoals;
   var userGoals;
   var focusedDate = DateTime.now();
@@ -80,9 +80,13 @@ class _ViewDashboardState extends State<ViewDashboard>
       NotificationPermissionService();
 
   void _incrementValue() {
-    setState(() {
+   // setState(() {
       goalLevel++;
-    });
+   // });
+    print("Tutorial $goalLevel");
+    superTooltipController.showTooltip();
+
+
   }
 
   getUser() {
@@ -122,6 +126,7 @@ class _ViewDashboardState extends State<ViewDashboard>
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
+
 
   void _fetchGoalNames() async {
     AdminGoal.getUserActiveGoal().then((response) {
@@ -233,6 +238,7 @@ class _ViewDashboardState extends State<ViewDashboard>
     getUserNotifications();
     _fetchGoalNames();
     fetchDashboardData();
+
     if (widget.update == true) {
       setState(() {
         contain = true;
@@ -329,33 +335,47 @@ class _ViewDashboardState extends State<ViewDashboard>
                 toolbarOpacity: 0.0,
                 actions: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      currentIndex != 7
-                          ? AnimatedScaleButton(
-                              onTap: () {
-                                setState(() {
-                                  focusedDate = DateTime.parse(
-                                      formatDates(DateTime.now().toString()));
-                                  toggleDates(DateTime.now().toString());
-                                  currentIndex = 7;
-                                  _controller.jumpToPage(7);
-                                });
-                              },
-                              child: Container(
-                                margin: EdgeInsets.only(
-                                    right: UpdatedDimensions.height10(context) *
-                                        1.32),
-                                child: Image.asset(
-                                  'assets/images/Asset 10 2.webp',
-                                  height:
-                                      UpdatedDimensions.width10(context) * 4.0,
-                                  width: UpdatedDimensions.width10(context) *
-                                      3.977,
-                                  fit: BoxFit.contain,
+                      // currentIndex != 7
+                      //     ?
+                      Stack(
+                        children: [
+                          AnimatedScaleButton(
+                                  onTap: () {
+                                    setState(() {
+                                      focusedDate = DateTime.parse(
+                                          formatDates(DateTime.now().toString()));
+                                      toggleDates(DateTime.now().toString());
+                                      currentIndex = 7;
+                                      _controller.jumpToPage(7);
+                                    });
+                                  },
+                                  child: Container(
+                                    margin: EdgeInsets.only(
+                                        right: UpdatedDimensions.height10(context) *
+                                            1.32),
+                                    child: Image.asset(
+                                      'assets/images/Asset 10 2.webp',
+                                      height:
+                                          UpdatedDimensions.width10(context) * 4.0,
+                                      width: UpdatedDimensions.width10(context) *
+                                          3.977,
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            )
-                          : const SizedBox(),
+
+                          // currentIndex  == 7? Positioned(
+                          //   right: 30,
+                          //   top: 30,
+                          //   //alignment: const Alignment(2, 1),
+                          //   child: dashboardTooltip(superTooltipController, context, 5, 'down',(){}, (){},Container(height: 0,width: 0,),
+                          //    ),
+                          // ):Container()
+                        ],
+                      )
+                          //: const SizedBox(),
                       // AnimatedScaleButton(
                       //   onTap: () {
                       //     if (noData != true) {
@@ -378,34 +398,6 @@ class _ViewDashboardState extends State<ViewDashboard>
                       //   ),
                       // ),
                       //
-                      AnimatedScaleButton(
-                        onTap: () {
-                          showModalBottomSheet(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return CalendarBottomSheet(
-                                onChangedStart: (int value) {
-                                  setState(() {
-                                    current = -value;
-                                    next = -value - 1;
-                                    past = -value + 1;
-                                    loader = true;
-                                  });
-                                },
-                              );
-                            },
-                          );
-                        },
-                        child: Container(
-                          margin: EdgeInsets.only(
-                              right: UpdatedDimensions.width10(context) * 1.32),
-                          child: Image.asset(
-                            'assets/images/calendar_month_black_24dp 1.webp',
-                            height: UpdatedDimensions.width10(context) * 2.4,
-                            width: UpdatedDimensions.width10(context) * 2.4,
-                          ),
-                        ),
-                      ),
                     ],
                   )
                 ]),
@@ -468,6 +460,7 @@ class _ViewDashboardState extends State<ViewDashboard>
                                           ? dashboardCarousel(
                                               context,
                                               _controller,
+                                              superTooltipController,
                                               null,
                                               currentIndex, (value) {
                                               setState(() {
@@ -480,6 +473,7 @@ class _ViewDashboardState extends State<ViewDashboard>
                                           : dashboardCarousel(
                                               context,
                                               _controller,
+                                              superTooltipController,
                                               allGoals,
                                               currentIndex, (value) {
                                               setState(() {
@@ -525,6 +519,8 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                         index) {
                                                                   return dashBoardSessionComponent(
                                                                       context,
+                                                                      superTooltipController,
+                                                                      index,
                                                                       timesList[
                                                                           index],
                                                                       () {
@@ -661,38 +657,38 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                   ),
                                                 ],
                                               ),
-                                              if (_showOverlay)
-                                                FutureBuilder(
-                                                    future: Future.delayed(
-                                                        const Duration(
-                                                            milliseconds: 200)),
-                                                    builder: (c, s) =>
-                                                        s.connectionState ==
-                                                                ConnectionState
-                                                                    .done
-                                                            ? helpFulTips(
-                                                                context,
-                                                                goalLevel,
-                                                                single, () {
-                                                                setState(() {
-                                                                  _showOverlay =
-                                                                      false;
-                                                                });
-                                                              }, () {
-                                                                _incrementValue();
-                                                                if (goalLevel >
-                                                                    7) {
-                                                                  setState(() {
-                                                                    _showOverlay =
-                                                                        false;
-                                                                  });
-                                                                  Authentication()
-                                                                      .userStatusUpdate(
-                                                                          'isTutorial',
-                                                                          false);
-                                                                }
-                                                              })
-                                                            : Container()),
+                                              // if (_showOverlay)
+                                              //   FutureBuilder(
+                                              //       future: Future.delayed(
+                                              //           const Duration(
+                                              //               milliseconds: 200)),
+                                              //       builder: (c, s) =>
+                                              //           s.connectionState ==
+                                              //                   ConnectionState
+                                              //                       .done
+                                              //               ? helpFulTips(
+                                              //                   context,
+                                              //                   goalLevel,
+                                              //                   single, () {
+                                              //                   setState(() {
+                                              //                     _showOverlay =
+                                              //                         false;
+                                              //                   });
+                                              //                 }, () {
+                                              //                   _incrementValue();
+                                              //                   if (goalLevel >
+                                              //                       6) {
+                                              //                     setState(() {
+                                              //                       _showOverlay =
+                                              //                           false;
+                                              //                     });
+                                              //                     Authentication()
+                                              //                         .userStatusUpdate(
+                                              //                             'isTutorial',
+                                              //                             false);
+                                              //                   }
+                                              //                 })
+                                              //               : Container()),
                                             ]),
                                     ],
                                   ),
@@ -707,6 +703,14 @@ class _ViewDashboardState extends State<ViewDashboard>
                                         1.3,
                                     child: Stack(
                                       children: [
+                                         // Container(
+                                         //   margin: const EdgeInsets.only(left: 180,top: 30),
+                                         //   child: Align(
+                                         //    alignment:  const Alignment(0,0),
+                                         //    child: dashboardTooltip(superTooltipController, context, 6, (){}, (){},Container(height: 0,width: 0,),
+                                         //    ),
+                                         //   ),
+                                         // ),
                                         isVisible
                                             ? Obx(() {
                                                 if (notificationsController
@@ -759,6 +763,7 @@ class _ViewDashboardState extends State<ViewDashboard>
                                             : Container(),
                                         AnimatedScaleButton(
                                           onTap: () {
+                                            _incrementValue();
                                             setState(() {
                                               isVisible = !isVisible;
                                             });

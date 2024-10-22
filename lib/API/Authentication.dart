@@ -338,4 +338,30 @@ class Authentication {
       return jsonData;
     } else {}
   }
+
+  Future contactUsRequest(subject, description) async {
+    final SharedPreferences prefs = await _prefs;
+    var accessToken = prefs.getString("usertoken");
+    var userId = prefs.getInt('userid');
+
+    var headers = {
+      'x-access-token': '$accessToken',
+    };
+    var body = {
+      "userId": userId,
+      "subject": subject,
+      "description": description
+    };
+    var response = await client.post(
+      Uri.parse('${URL.BASE_URL}api/user/sendContactRequest'),
+      headers: headers,
+      body: body,
+    );
+    if (response.statusCode == 200) {
+
+      return true;
+    } else {
+
+    }
+  }
 }

@@ -204,4 +204,8 @@ class AppText {
       'If you stay on our free Empowered Starter plan, you get it for lifetime. No subscription fees, it’s yours to own :)\n\nFor a more personalised experience and clarity on your growth progress towards self-fulfilment, we recommend you upgrade to our Ownership Plan (if you’re serious about your personal growth).';
   String answer5 =
       'As soon as you start a trial, your account is due to upgrade on day 6, at which point we will charge you a monthly or yearly upgrade fee. You will receive daily reminders from us when the trial is due to expiry, so you can decide if you wish to proceed with upgrade or, remain on our Empowered Starter plan. If you don’t cancel your trial, you will automatically be charged. The choice is yours.';
+
+  String contactUsHeading = 'Contact Us';
+  String contactUsBody = 'Your Personalised Journey To Better Self Starts Here';
+
 }

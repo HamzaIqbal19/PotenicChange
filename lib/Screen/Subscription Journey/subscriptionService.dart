@@ -174,16 +174,16 @@ class SubscriptionService {
     var customerId = prefs.getString('customerID');
 
     try {
-      final response = await http.delete(
+      final response = await http.post(
         Uri.parse('https://api.stripe.com/v1/subscriptions/$subId'),
         headers: {
           'Authorization': 'Bearer ${dotenv.env['STRIPE_SECRET']}',
           'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: {
-          "prorate": 'true',
-          "invoice_now": 'true',
-          //  'cancel_at_period_end': '${!trial}'
+          // "prorate": 'true',
+          // "invoice_now": 'true',
+            'cancel_at_period_end': "true"
         },
       );
 

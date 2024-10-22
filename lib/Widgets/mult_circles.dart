@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/widgets/tooltips.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/goalWidget.dart';
+import 'package:super_tooltip/super_tooltip.dart';
 
 import '../utils/app_dimensions.dart';
 
@@ -14,6 +16,8 @@ class align_circles extends StatelessWidget {
   final double headTextSize;
   final int headTextColor;
   final bool isRight;
+  final SuperTooltipController superTooltipController;
+  final int index;
 
   final String smallCircleText;
   // final VoidCallback? onTap1;
@@ -31,7 +35,7 @@ class align_circles extends StatelessWidget {
       required this.headTextSize,
       required this.headTextColor,
       required this.onTap1,
-      required this.onTap2, required this.practiceStatus, required this.practiceColor});
+      required this.onTap2, required this.practiceStatus, required this.practiceColor, required this.index, required this.superTooltipController});
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +50,11 @@ class align_circles extends StatelessWidget {
       // color: Colors.blue,
       // margin: const EdgeInsets.only(top: 29, bottom: 12, right: 45),
       child: Stack(children: [
+        // index == 0? Align(
+        //   alignment: const Alignment(0, -0.5),
+        //   child: dashboardTooltip(superTooltipController, context, 1, 'up',(){}, (){},Container(height: 0,width: 0,),
+        //   ),
+        // ):Container(),
         Align(
           alignment: Alignment.center,
           child: AnimatedScaleButton(
@@ -58,6 +67,11 @@ class align_circles extends StatelessWidget {
             ),
 
         ),
+        // index == 0? Align(
+        //   alignment: const Alignment(0.4, 0.3),
+        //   child: dashboardTooltip(superTooltipController, context, 2, 'up',(){}, (){},Container(height: 0,width: 0,),
+        //   ),
+        // ):Container(),
         Align(
           alignment:
           isRight ? const Alignment(0.7, 1.3) : const Alignment(-0.45, 1),

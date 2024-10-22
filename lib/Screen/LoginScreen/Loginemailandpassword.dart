@@ -364,7 +364,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                             setState(() {
                                               passwordMsg = "";
                                               errorPassword = false;
-                                              emailMsg = '';
+                                                  emailMsg = '';
                                               errorEmail = false;
                                             });
                                           },

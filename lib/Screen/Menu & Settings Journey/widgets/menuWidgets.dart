@@ -11,7 +11,7 @@ menuItems(BuildContext context, route, title) {
     onTap: route,
     child: Container(
       width: AppDimensions.width10(context) * 33.4,
-      height: AppDimensions.height10(context) * 5.0,
+      height: AppDimensions.height10(context) * 5.5,
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(
@@ -21,11 +21,11 @@ menuItems(BuildContext context, route, title) {
         children: [
           SizedBox(
             width: AppDimensions.width10(context) * 20.6,
-            height: AppDimensions.height10(context) * 1.9,
+            //height: AppDimensions.height10(context) * 1.9,
             child: Text(
               title,
               style: TextStyle(
-                  fontSize: AppDimensions.font10(context) * 1.6,
+                  fontSize: AppDimensions.font10(context) * 2,
                   fontWeight: FontWeight.w500,
                   color: colorC),
             ),

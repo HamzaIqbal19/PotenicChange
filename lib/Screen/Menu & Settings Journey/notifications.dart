@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:potenic_app/API/Practice.dart';
+import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/widgets/notificationBottomSheet.dart';
+import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/widgets/switchs.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import '../../Widgets/animatedButton.dart';
@@ -17,11 +19,26 @@ class notifications extends StatefulWidget {
 }
 
 class _notificationsState extends State<notifications> {
-  bool status = false;
-  bool status1 = false;
-  bool status2 = false;
-  bool status3 = false;
-  bool status4 = false;
+
+
+  List notificationStatus = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
+
+  List notificationTitles = [
+    'Goal evaluation ',
+    'Progress reports',
+    'Motivational messages',
+    'Hurdle reminders',
+    'Inspiration reminders'
+  ];
   List statements = [
     'None',
     '10 minutes',
@@ -45,25 +62,46 @@ class _notificationsState extends State<notifications> {
       print("Reminder status: $value");
       if (value != null) {
         setState(() {
-          status = value['receiveNotification'];
-          if (status != false) {
-            status1 = value['beforePractice'];
-            if (status1 != false) {
+          notificationStatus[0] = value['receiveNotification'];
+          if (notificationStatus[0] != false) {
+            notificationStatus[1] = value['beforePractice'];
+            if (notificationStatus[1] != false) {
               selectedIndex = statements.indexOf(value['beforePracticeTime']);
             }
 
-            status2 = value['missedPractice'];
-            if (status2 != false) {
+            notificationStatus[2] = value['missedPractice'];
+            if (notificationStatus[2] != false) {
               missedIndex =
                   missedPractices.indexOf(value['missedPracticeTime']);
             }
 
-            status3 = status2;
-            status4 = value['progressReport'];
+            notificationStatus[3] = value['goalEvaluation'];
+            notificationStatus[4] = value['progressReport'];
+            notificationStatus[5] = value['motivationalMessages'];
+            notificationStatus[6] = value['hurdleReminder'];
+            notificationStatus[7] = value['inspirationReminder'];
+            setState(() {
+
+            });
           }
         });
       }
     });
+  }
+
+  setPreferences(index,val){
+    if(index == 0){
+      setUserReminder('goalEvaluation', val);
+    }else if(index == 1){
+      setUserReminder('progressReport', val);
+    }else if(index == 2){
+      setUserReminder('motivationalMessages', val);
+    }else if(index == 3){
+      setUserReminder('hurdleReminder', val);
+    }else {
+      setUserReminder('inspirationReminder', val);
+    }
+
   }
 
   setUserReminder(name, reminder) {
@@ -110,410 +148,312 @@ class _notificationsState extends State<notifications> {
         )),
         width: double.infinity,
         height: double.infinity,
-        child: Column(
-          children: [
-            Container(
-              width: AppDimensions.width10(context) * 38.7,
-              height: AppDimensions.height10(context) * 6.9,
-              margin:
-                  EdgeInsets.only(top: AppDimensions.height10(context) * 15.0),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                      AppDimensions.height10(context) * 2.0),
-                  color: Colors.white),
-              child: Container(
-                width: AppDimensions.width10(context) * 33.4,
-                height: AppDimensions.height10(context) * 6.0,
-                padding: EdgeInsets.symmetric(
-                    vertical: 0,
-                    horizontal: AppDimensions.width10(context) * 2.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                      //width: AppDimensions.width10(context) * 20.6,
-                      height: AppDimensions.height10(context) * 1.9,
-                      child: Text(
-                        'Receive notifications',
-                        style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.6,
-                            fontWeight: FontWeight.w500,
-                            color: const Color(0XFF5B74A6)),
-                      ),
-                    ),
-                    FlutterSwitch(
-                      width: AppDimensions.width10(context) * 5.1,
-                      height: AppDimensions.height10(context) * 3.1,
-                      valueFontSize: 12.0,
-                      toggleSize: 18.0,
-                      activeColor: const Color(0xFF34C759),
-                      inactiveColor: const Color(0xFF2F3A4B),
-                      value: status,
-                      onToggle: (val) async {
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                width: AppDimensions.width10(context) * 38.4,
+          
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 15.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 2.0),
+                    color: Colors.white),
+                child: Container(
+                  width: AppDimensions.width10(context) * 33.4,
+                  //height: AppDimensions.height10(context) * 6.0,
+                  padding: EdgeInsets.symmetric(
+                      vertical: AppDimensions.width10(context) * 1.5,
+                      horizontal: AppDimensions.width10(context) * 2.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      notificationSwitch(context, 'Receive notifications', notificationStatus[0], (val) async {
                         setState(() {
-                          status = val;
-                          setUserReminder('receiveNotification', status);
+                          notificationStatus[0] = val;
+                          setUserReminder('receiveNotification', notificationStatus[0]);
                           if (val == false) {
-                            status1 = val;
-                            status2 = val;
-                            status3 = val;
-                            status4 = val;
+                            notificationStatus[2] = val;
+                            notificationStatus[2] = val;
+                            notificationStatus[3] = val;
+                            notificationStatus[4] = val;
                           }
                         });
                         // await checkNotificationPermission();
-                      },
+                      },),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                width: AppDimensions.width10(context) * 38.4,
+               // height: AppDimensions.height10(context) * 30.7,
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: SizedBox(
+                        child: Text(
+                          'Practice sessions',
+                          style: TextStyle(
+                              fontSize: AppDimensions.font10(context) * 2.0,
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0XFFFBFBFB)),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: AppDimensions.width10(context) * 38.4,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 1.0),
+                      padding:  EdgeInsets.symmetric(vertical: AppDimensions.width10(context) * 2),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 2.0),
+                          color: Colors.white),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            width: AppDimensions.width10(context) * 33.4,
+                            height: AppDimensions.height10(context) * 6.0,
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(
+                                        width:
+                                            AppDimensions.width10(context) * 0.1,
+                                        color: const Color(0xFF000000)))),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: AppDimensions.width10(context) * 24.7,
+                                 // height: AppDimensions.height10(context) * 4.7,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        //width: AppDimensions.width10(context) * 20.6,
+                                        // height:
+                                        //     AppDimensions.height10(context) * 1.9,
+                                        child: Text(
+                                          'Reminders before practice starts ',
+                                          style: TextStyle(
+                                              fontSize:
+                                                  AppDimensions.font10(context) *
+                                                      1.8,
+                                              fontWeight: FontWeight.w500,
+                                              color: const Color(0XFF5B74A6)),
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          _showBottomSheet(
+                                              const Key('missed'),
+                                              context,
+                                              statements,
+                                              selectedIndex, (value) {
+                                            setState(() {
+                                              selectedIndex = value;
+                                            });
+                                            setUserReminder(
+                                              'beforePracticeTime',
+                                              statements[selectedIndex]
+                                                  .toString(),
+                                            );
+                                          });
+                                        },
+                                        child: Container(
+                                          width: AppDimensions.width10(context) *
+                                              20.6,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.2,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  0.6),
+                                          child: Text(
+                                            selectedIndex != 0
+                                                ? "${statements[selectedIndex].toString()} before"
+                                                : statements[selectedIndex]
+                                                    .toString(),
+                                            style: TextStyle(
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.6,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0XFF8C648A)),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                switchWidget(context, notificationStatus[1], (val){
+                                  setState(() {
+                                    notificationStatus[1] = val;
+                                    setUserReminder('beforePractice', notificationStatus[1]);
+                                  });
+                                }),
+          
+                              ],
+                            ),
+                          ),
+                          const SizedBox(height: 10,),
+                          SizedBox(
+                            width: AppDimensions.width10(context) * 33.4,
+                            height: AppDimensions.height10(context) * 6.0,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: AppDimensions.width10(context) * 24.7,
+                                 // height: AppDimensions.height10(context) * 4.7,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        //width: AppDimensions.width10(context) * 20.6,
+                                        // height:
+                                        //     AppDimensions.height10(context) * 1.9,
+                                        child: Text(
+                                          'For missed practices remind me',
+                                          style: TextStyle(
+                                              fontSize:
+                                                  AppDimensions.font10(context) *
+                                                      1.8,
+                                              fontWeight: FontWeight.w500,
+                                              color: const Color(0XFF5B74A6)),
+                                        ),
+                                      ),
+                                      GestureDetector(
+                                        onTap: () {
+                                          _showBottomSheet(
+                                              const Key('missed'),
+                                              context,
+                                              missedPractices,
+                                              missedIndex, (value) {
+                                            setState(() {
+                                              missedIndex = value;
+                                            });
+                                            setUserReminder(
+                                                'missedPracticeTime',
+                                                missedPractices[missedIndex]
+                                                    .toString());
+                                          });
+                                        },
+                                        child: Container(
+                                          width: AppDimensions.width10(context) *
+                                              20.6,
+                                          height:
+                                              AppDimensions.height10(context) *
+                                                  2.2,
+                                          margin: EdgeInsets.only(
+                                              top: AppDimensions.height10(
+                                                      context) *
+                                                  0.6),
+                                          child: Text(
+                                            missedIndex != 0
+                                                ? "${missedPractices[missedIndex].toString()} after"
+                                                : missedPractices[missedIndex]
+                                                    .toString(),
+                                            style: TextStyle(
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.6,
+                                                fontWeight: FontWeight.w500,
+                                                color: const Color(0XFF8C648A)),
+                                          ),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                switchWidget(context, notificationStatus[2], (val){
+                                  setState(() {
+                                    notificationStatus[2] = val;
+                                    setUserReminder('missedPractice', notificationStatus[2]);
+                                  });
+                                }),
+          
+                              ],
+                            ),
+                          ),
+          
+                        ],
+                      ),
                     ),
                   ],
                 ),
               ),
-            ),
-            Container(
-              width: AppDimensions.width10(context) * 38.4,
-              height: AppDimensions.height10(context) * 30.7,
-              margin:
-                  EdgeInsets.only(top: AppDimensions.height10(context) * 3.0),
-              child: Column(
-                children: [
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: SizedBox(
-                      width: AppDimensions.width10(context) * 11.4,
-                      height: AppDimensions.height10(context) * 2.4,
-                      child: Text(
-                        'Preferences',
-                        style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 2.0,
-                            fontWeight: FontWeight.w600,
-                            color: const Color(0XFFFBFBFB)),
+              Container(
+                width: AppDimensions.width10(context) * 38.4,
+                // height: AppDimensions.height10(context) * 30.7,
+                margin:
+                EdgeInsets.only(top: AppDimensions.height10(context) * 3.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: SizedBox(
+                        child: Text(
+                          'Preferences',
+                          style: TextStyle(
+                              fontSize: AppDimensions.font10(context) * 2.0,
+                              fontWeight: FontWeight.w600,
+                              color: const Color(0XFFFBFBFB)),
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: AppDimensions.width10(context) * 38.4,
-                    height: AppDimensions.height10(context) * 27.3,
-                    margin: EdgeInsets.only(
-                        top: AppDimensions.height10(context) * 1.0),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                            AppDimensions.height10(context) * 2.0),
-                        color: Colors.white),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
+                    Container(
+                      width: AppDimensions.width10(context) * 38.4,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 1.0),
+                      padding:  EdgeInsets.symmetric(vertical: AppDimensions.width10(context) * 1.5, horizontal: AppDimensions.width10(context) * 2.0),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              AppDimensions.height10(context) * 2.0),
+                          color: Colors.white),
+                      child: ListView.builder(padding: EdgeInsets.zero,shrinkWrap: true,physics: const NeverScrollableScrollPhysics(),itemCount: 5,itemBuilder: (context,index){
+                        return Container(
                           width: AppDimensions.width10(context) * 33.4,
                           height: AppDimensions.height10(context) * 6.0,
-                          decoration: BoxDecoration(
+                          decoration:index == 4?const BoxDecoration(): BoxDecoration(
                               border: Border(
                                   bottom: BorderSide(
                                       width:
-                                          AppDimensions.width10(context) * 0.1,
+                                      AppDimensions.width10(context) * 0.1,
                                       color: const Color(0xFF000000)))),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                width: AppDimensions.width10(context) * 24.7,
-                                height: AppDimensions.height10(context) * 4.7,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      //width: AppDimensions.width10(context) * 20.6,
-                                      height:
-                                          AppDimensions.height10(context) * 1.9,
-                                      child: Text(
-                                        'Reminders before practice starts ',
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                            fontWeight: FontWeight.w500,
-                                            color: const Color(0XFF5B74A6)),
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        _showBottomSheet(
-                                            const Key('missed'),
-                                            context,
-                                            statements,
-                                            selectedIndex, (value) {
-                                          setState(() {
-                                            selectedIndex = value;
-                                          });
-                                          setUserReminder(
-                                            'beforePracticeTime',
-                                            statements[selectedIndex]
-                                                .toString(),
-                                          );
-                                        });
-                                      },
-                                      child: Container(
-                                        width: AppDimensions.width10(context) *
-                                            20.6,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.2,
-                                        margin: EdgeInsets.only(
-                                            top: AppDimensions.height10(
-                                                    context) *
-                                                0.6),
-                                        child: Text(
-                                          selectedIndex != 0
-                                              ? "${statements[selectedIndex].toString()} before"
-                                              : statements[selectedIndex]
-                                                  .toString(),
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  1.6,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0XFF8C648A)),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              FlutterSwitch(
-                                width: AppDimensions.width10(context) * 5.1,
-                                height: AppDimensions.height10(context) * 3.1,
-                                valueFontSize: 12.0,
-                                toggleSize: 18.0,
-                                activeColor: const Color(0xFF34C759),
-                                inactiveColor: const Color(0xFF2F3A4B),
-                                value: status1,
-                                onToggle: (val) {
-                                  setState(() {
-                                    status1 = val;
-                                    setUserReminder('beforePractice', status1);
-                                    // color3 = val;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: AppDimensions.width10(context) * 33.4,
-                          height: AppDimensions.height10(context) * 6.0,
-                          decoration: BoxDecoration(
-                              border: Border(
-                                  bottom: BorderSide(
-                                      width:
-                                          AppDimensions.width10(context) * 0.1,
-                                      color: const Color(0xFF000000)))),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                width: AppDimensions.width10(context) * 24.7,
-                                height: AppDimensions.height10(context) * 4.7,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      //width: AppDimensions.width10(context) * 20.6,
-                                      height:
-                                          AppDimensions.height10(context) * 1.9,
-                                      child: Text(
-                                        'For missed practices remind me',
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                            fontWeight: FontWeight.w500,
-                                            color: const Color(0XFF5B74A6)),
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        _showBottomSheet(
-                                            const Key('missed'),
-                                            context,
-                                            missedPractices,
-                                            missedIndex, (value) {
-                                          setState(() {
-                                            missedIndex = value;
-                                          });
-                                          setUserReminder(
-                                              'missedPracticeTime',
-                                              missedPractices[missedIndex]
-                                                  .toString());
-                                        });
-                                      },
-                                      child: Container(
-                                        width: AppDimensions.width10(context) *
-                                            20.6,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.2,
-                                        margin: EdgeInsets.only(
-                                            top: AppDimensions.height10(
-                                                    context) *
-                                                0.6),
-                                        child: Text(
-                                          missedIndex != 0
-                                              ? "${missedPractices[missedIndex].toString()} after"
-                                              : missedPractices[missedIndex]
-                                                  .toString(),
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  1.6,
-                                              fontWeight: FontWeight.w500,
-                                              color: const Color(0XFF8C648A)),
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              FlutterSwitch(
-                                width: AppDimensions.width10(context) * 5.1,
-                                height: AppDimensions.height10(context) * 3.1,
-                                valueFontSize: 12.0,
-                                toggleSize: 18.0,
-                                activeColor: const Color(0xFF34C759),
-                                inactiveColor: const Color(0xFF2F3A4B),
-                                value: status2,
-                                onToggle: (val) {
-                                  setState(() {
-                                    status2 = val;
-                                    setUserReminder('missedPractice', status2);
-                                    // color3 = val;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          width: AppDimensions.width10(context) * 33.4,
-                          height: AppDimensions.height10(context) * 7.3,
-                          decoration: BoxDecoration(
-                              border: Border(
-                                  bottom: BorderSide(
-                                      width:
-                                          AppDimensions.width10(context) * 0.1,
-                                      color: const Color(0xFF000000)))),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                width: AppDimensions.width10(context) * 24.7,
-                                height: AppDimensions.height10(context) * 4.7,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      //width: AppDimensions.width10(context) * 20.6,
-                                      height:
-                                          AppDimensions.height10(context) * 3.8,
-                                      child: Text(
-                                        'Check-ins and missed practice\nsessions',
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                            fontWeight: FontWeight.w500,
-                                            color: const Color(0XFF5B74A6)),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              FlutterSwitch(
-                                width: AppDimensions.width10(context) * 5.1,
-                                height: AppDimensions.height10(context) * 3.1,
-                                valueFontSize: 12.0,
-                                toggleSize: 18.0,
-                                activeColor: const Color(0xFF34C759),
-                                inactiveColor: const Color(0xFF2F3A4B),
-                                value: status3,
-                                onToggle: (val) {
-                                  setState(() {
-                                    status3 = val;
-                                    // color3 = val;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                        SizedBox(
-                          width: AppDimensions.width10(context) * 33.4,
-                          height: AppDimensions.height10(context) * 5.0,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SizedBox(
-                                width: AppDimensions.width10(context) * 24.7,
-                                height: AppDimensions.height10(context) * 4.7,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      //width: AppDimensions.width10(context) * 20.6,
-                                      height:
-                                          AppDimensions.height10(context) * 1.9,
-                                      child: Text(
-                                        'Progress Reports  ',
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                            fontWeight: FontWeight.w500,
-                                            color: const Color(0XFF5B74A6)),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              FlutterSwitch(
-                                width: AppDimensions.width10(context) * 5.1,
-                                height: AppDimensions.height10(context) * 3.1,
-                                valueFontSize: 12.0,
-                                toggleSize: 18.0,
-                                activeColor: const Color(0xFF34C759),
-                                inactiveColor: const Color(0xFF2F3A4B),
-                                value: status4,
-                                onToggle: (val) {
-                                  setState(() {
-                                    status4 = val;
-                                    setUserReminder('progressReport', status4);
-                                    // color3 = val;
-                                  });
-                                },
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                          child: notificationSwitch(context, notificationTitles[index], notificationStatus[index+3], (val){
+                            setState(() {
+                              notificationStatus[index+3] = val;
+                              setPreferences(index,val);
+                             // setUserReminder('beforePractice', notificationStatus[1]);
+                            });
+                          }),
+                        );
+                      })
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            Container(
-              width: AppDimensions.width10(context) * 17.0,
-              height: AppDimensions.height10(context) * 0.5,
-              margin:
-                  EdgeInsets.only(top: AppDimensions.height10(context) * 32.5),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                      AppDimensions.height10(context) * 5.0),
-                  color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-            )
-          ],
+          
+            ],
+          ),
         ),
       ),
     );
   }
 }
+
 
 void _showBottomSheet(
     Key? key, BuildContext context, statements, selectedIndex, onCountChanged) {
@@ -530,120 +470,4 @@ void _showBottomSheet(
       );
     },
   );
-}
-
-class MyBottomSheet extends StatefulWidget {
-  List statments;
-  int selectedIndex;
-  final ValueChanged<int> onCountChanged;
-  MyBottomSheet(
-      {Key? key,
-      required this.statments,
-      required this.selectedIndex,
-      required this.onCountChanged})
-      : super(key: key);
-
-  @override
-  _MyBottomSheetState createState() => _MyBottomSheetState();
-}
-
-class _MyBottomSheetState extends State<MyBottomSheet> {
-  int _selectedIndex = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    setState(() {
-      _selectedIndex = widget.selectedIndex;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: AppDimensions.height10(context) * 33.3,
-      color: const Color(0xFFFBFBFB), // Set the height of the bottom sheet
-      child: Column(
-        children: [
-          Container(
-            padding: EdgeInsets.only(
-                left: AppDimensions.width10(context) * 1.0,
-                right: AppDimensions.width10(context) * 1.9,
-                top: AppDimensions.height10(context) * 1.2),
-            width: AppDimensions.width10(context) * 41.5,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                AnimatedScaleButton(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: SizedBox(
-                    // width: AppDimensions.width10(context) * 5.0,
-                    height: AppDimensions.width10(context) * 3.1,
-                    child: Center(
-                      child: Text(
-                        "Cancel",
-                        style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.9,
-                            height: AppDimensions.height10(context) * 0.1,
-                            color: const Color(0xFF2F80ED)),
-                      ),
-                    ),
-                  ),
-                ),
-                // Row(
-                //   children: [
-                AnimatedScaleButton(
-                  onTap: () {
-                    widget.onCountChanged(_selectedIndex);
-                    Navigator.pop(context);
-                  },
-                  child: SizedBox(
-                    //width: AppDimensions.width10(context) * 2.9,
-                    height: AppDimensions.width10(context) * 3.1,
-                    child: Center(
-                      child: Text(
-                        "Add",
-                        style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.9,
-                            height: AppDimensions.height10(context) * 0.1,
-                            color: const Color(0xFF2F80ED)),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Divider(
-              height: AppDimensions.height10(context) * 0.1,
-              color: const Color(0xFF828282)),
-          Expanded(
-            child: ListWheelScrollView(
-              itemExtent: 26,
-              magnification: 1.2,
-              useMagnifier: true,
-              overAndUnderCenterOpacity:
-                  0.6, // Set the height of each statement
-              children: widget.statments
-                  .map((statement) => Text(statement,
-                      style: TextStyle(
-                        color: const Color(0xFF282828),
-                        fontSize: AppDimensions.font10(context) * 2.4,
-                        fontWeight: FontWeight.w400,
-                      )))
-                  .toList(),
-              onSelectedItemChanged: (int index) {
-                setState(() {
-                  _selectedIndex = index;
-                });
-              },
-            ),
-          ),
-          SizedBox(height: AppDimensions.height10(context) * 0.1),
-        ],
-      ),
-    );
-  }
 }

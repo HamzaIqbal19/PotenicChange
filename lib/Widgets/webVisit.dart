@@ -20,3 +20,12 @@ void webVisit(String url) {
     ),
   );
 }
+
+
+// String url = AppLinks().faqs;
+// print("Launched Url");
+// if (await canLaunchUrlString(url)) {
+// await launchUrlString(url,mode: LaunchMode.externalApplication);
+// } else {
+// throw 'Could not launch $url';
+// }

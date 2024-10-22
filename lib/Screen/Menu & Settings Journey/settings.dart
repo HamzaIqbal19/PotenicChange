@@ -4,6 +4,7 @@ import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
 // import 'package:flutter_offline/flutter_offline.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
+import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/ContactUs.dart';
 import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/account_deleted.dart';
 import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/edit_credentials.dart';
 import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/notifications.dart';
@@ -510,7 +511,8 @@ class _SettingsState extends State<Settings> {
                               webVisit(AppLinks().faqs);
                             }, 'FAQs'),
                             menuItems(context, () {
-                              webVisit(AppLinks().contactUs);
+                              Navigator.push(context, FadePageRoute(page: const ContactUs()));
+                              //webVisit(AppLinks().contactUs);
                             }, 'Contact us'),
                             menuItems(context, () {
                               export_data_sheet(context);
