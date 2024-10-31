@@ -75,14 +75,15 @@ class Acc_deleted extends StatelessWidget {
                 ),
                 Container(
                   width: AppDimensions.width10(context) * 35.4,
-                  height: AppDimensions.height10(context) * 25.1,
+
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 17.645),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       SizedBox(
                         width: AppDimensions.width10(context) * 25.4,
-                        height: AppDimensions.height10(context) * 7.2,
+
                         child: Text(
                           'Your account\nhas been deleted',
                           textAlign: TextAlign.center,
@@ -142,18 +143,12 @@ class Acc_deleted extends StatelessWidget {
                             end: Alignment.bottomCenter,
                             colors: [Color(0xFF5A4D73), Color(0xFFA57486)])),
                     child: Center(
-                      child: SizedBox(
-                        width: AppDimensions.width10(context) * 15.3,
-                        height: AppDimensions.height10(context) * 2.5,
-                        child: Center(
-                          child: Text(
-                            'Create new account',
-                            style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.6,
-                                fontWeight: FontWeight.w600,
-                                color: const Color(0xFFFFFFFF)),
-                          ),
-                        ),
+                      child: Text(
+                        'Create new account',
+                        style: TextStyle(
+                            fontSize: AppDimensions.font10(context) * 2,
+                            fontWeight: FontWeight.w600,
+                            color: const Color(0xFFFFFFFF)),
                       ),
                     ),
                   ),

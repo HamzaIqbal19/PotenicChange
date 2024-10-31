@@ -205,7 +205,7 @@ class _SubscriptionState extends State<Subscription>
                     AnimatedScaleButton(
                       onTap: () {
                         SubscriptionService()
-                            .makePayment('price_1OlQz5RkeqntfFwkHoelDUgz', 0)
+                            .makePayment('price_1OlQz5RkeqntfFwkHoelDUgz', trial)
                             .then((value) => {
                                   print("Subscriptiondata $value"),
                                   if (value['status'] == 'active' ||
@@ -232,7 +232,7 @@ class _SubscriptionState extends State<Subscription>
                     AnimatedScaleButton(
                       onTap: () {
                         SubscriptionService()
-                            .makePayment('price_1OlQz5RkeqntfFwk39D9nntN', 0)
+                            .makePayment('price_1OlQz5RkeqntfFwk39D9nntN', trial)
                             .then((value) => {
                                   print(
                                       'Response Stripe Value: ${value['status']}'),
@@ -305,11 +305,12 @@ class _SubscriptionState extends State<Subscription>
                     ),
                     Container(
                       width: AppDimensionsUpdated.width10(context) * 36.0,
-                      height: AppDimensionsUpdated.height10(context) * 58.8,
+
                       margin: EdgeInsets.only(
                           top: AppDimensionsUpdated.height10(context) * 2.1),
                       child: Stack(children: [
                         Column(
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             Align(
                               alignment: const Alignment(1, 0),
@@ -380,8 +381,7 @@ class _SubscriptionState extends State<Subscription>
                             Container(
                               width:
                                   AppDimensionsUpdated.width10(context) * 35.0,
-                              height:
-                                  AppDimensionsUpdated.height10(context) * 4.9,
+
                               margin: EdgeInsets.only(
                                   top: AppDimensionsUpdated.height10(context) *
                                       1.066),
@@ -391,34 +391,31 @@ class _SubscriptionState extends State<Subscription>
                                     width:
                                         AppDimensionsUpdated.height10(context) *
                                             13.9,
-                                    height:
-                                        AppDimensionsUpdated.height10(context) *
-                                            4.9,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: const [
-                                          TextSpan(
-                                              text: 'Active Goals',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                          TextSpan(
-                                              text:
-                                                  '\n(create and save as\nmany as you like)')
-                                        ]))),
+
+                                    child: RichText(
+                                        text: TextSpan(
+                                            style: TextStyle(
+                                                fontFamily: 'laila',
+                                                fontSize:
+                                                    AppDimensions.font10(
+                                                            context) *
+                                                        1.45,
+                                                fontWeight: FontWeight.w400,
+                                                height:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        0.12,
+                                                color: const Color(
+                                                    0xFF437296)),
+                                            children: const [
+                                      TextSpan(
+                                          text: 'Active Goals',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600)),
+                                      TextSpan(
+                                          text:
+                                              '\n(create and save as\nmany as you like)')
+                                    ])),
                                   ),
                                   Container(
                                     width:
@@ -485,42 +482,37 @@ class _SubscriptionState extends State<Subscription>
                             SizedBox(
                               width:
                                   AppDimensionsUpdated.width10(context) * 35.0,
-                              height:
-                                  AppDimensionsUpdated.height10(context) * 4.9,
+
                               child: Row(
                                 children: [
                                   SizedBox(
                                     width:
                                         AppDimensionsUpdated.height10(context) *
                                             13.9,
-                                    height:
-                                        AppDimensionsUpdated.height10(context) *
-                                            4.9,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: const [
-                                          TextSpan(
-                                              text: 'Active Practices\n',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                          TextSpan(
-                                              text:
-                                                  '(create and save as many as you like)')
-                                        ]))),
+                                    child: RichText(
+                                        text: TextSpan(
+                                            style: TextStyle(
+                                                fontFamily: 'laila',
+                                                fontSize:
+                                                    AppDimensions.font10(
+                                                            context) *
+                                                        1.45,
+                                                fontWeight: FontWeight.w400,
+                                                height:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        0.12,
+                                                color: const Color(
+                                                    0xFF437296)),
+                                            children: const [
+                                      TextSpan(
+                                          text: 'Active Practices\n',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600)),
+                                      TextSpan(
+                                          text:
+                                              '(create and save as many as you like)')
+                                    ])),
                                   ),
                                   Container(
                                     width:
@@ -613,46 +605,42 @@ class _SubscriptionState extends State<Subscription>
                             SizedBox(
                               width:
                                   AppDimensionsUpdated.width10(context) * 35.0,
-                              height:
-                                  AppDimensionsUpdated.height10(context) * 3.4,
+
                               child: Row(
                                 children: [
                                   SizedBox(
                                     width:
                                         AppDimensionsUpdated.height10(context) *
                                             13.9,
-                                    height:
-                                        AppDimensionsUpdated.height10(context) *
-                                            3.4,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: [
-                                          const TextSpan(
-                                            text: 'Define a ',
-                                          ),
-                                          TextSpan(
-                                              text: 'sticky inspiring vision',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.13,
-                                              ))
-                                        ]))),
+
+                                    child: RichText(
+                                        text: TextSpan(
+                                            style: TextStyle(
+                                                fontFamily: 'laila',
+                                                fontSize:
+                                                    AppDimensions.font10(
+                                                            context) *
+                                                        1.45,
+                                                fontWeight: FontWeight.w400,
+                                                height:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        0.12,
+                                                color: const Color(
+                                                    0xFF437296)),
+                                            children: [
+                                      const TextSpan(
+                                        text: 'Define a ',
+                                      ),
+                                      TextSpan(
+                                          text: 'sticky inspiring vision',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                0.13,
+                                          ))
+                                    ])),
                                   ),
                                   Container(
                                     width:
@@ -709,46 +697,42 @@ class _SubscriptionState extends State<Subscription>
                             SizedBox(
                               width:
                                   AppDimensionsUpdated.width10(context) * 35.0,
-                              height:
-                                  AppDimensionsUpdated.height10(context) * 3.4,
+
                               child: Row(
                                 children: [
                                   SizedBox(
                                     width:
                                         AppDimensionsUpdated.height10(context) *
                                             13.9,
-                                    height:
-                                        AppDimensionsUpdated.height10(context) *
-                                            3.4,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: [
-                                          const TextSpan(
-                                            text: 'Build your',
-                                          ),
-                                          TextSpan(
-                                              text: ' inspiration board',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.13,
-                                              ))
-                                        ]))),
+
+                                    child: RichText(
+                                        text: TextSpan(
+                                            style: TextStyle(
+                                                fontFamily: 'laila',
+                                                fontSize:
+                                                    AppDimensions.font10(
+                                                            context) *
+                                                        1.45,
+                                                fontWeight: FontWeight.w400,
+                                                height:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        0.12,
+                                                color: const Color(
+                                                    0xFF437296)),
+                                            children: [
+                                      const TextSpan(
+                                        text: 'Build your',
+                                      ),
+                                      TextSpan(
+                                          text: ' inspiration board',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                0.13,
+                                          ))
+                                    ])),
                                   ),
                                   Container(
                                     width:
@@ -805,49 +789,45 @@ class _SubscriptionState extends State<Subscription>
                             SizedBox(
                               width:
                                   AppDimensionsUpdated.width10(context) * 35.0,
-                              height:
-                                  AppDimensionsUpdated.height10(context) * 5.1,
+
                               child: Row(
                                 children: [
                                   SizedBox(
                                     width:
                                         AppDimensionsUpdated.height10(context) *
                                             13.9,
-                                    height:
-                                        AppDimensionsUpdated.height10(context) *
-                                            5.1,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: [
-                                          const TextSpan(
-                                            text: 'Build ',
-                                          ),
-                                          TextSpan(
-                                              text: ' self-reliance ',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.13,
-                                              )),
-                                          const TextSpan(
-                                              text:
-                                                  'by capturing your hurdles (unlimited)')
-                                        ]))),
+
+                                    child: RichText(
+                                        text: TextSpan(
+                                            style: TextStyle(
+                                                fontFamily: 'laila',
+                                                fontSize:
+                                                    AppDimensions.font10(
+                                                            context) *
+                                                        1.45,
+                                                fontWeight: FontWeight.w400,
+                                                height:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        0.12,
+                                                color: const Color(
+                                                    0xFF437296)),
+                                            children: [
+                                      const TextSpan(
+                                        text: 'Build a',
+                                      ),
+                                      TextSpan(
+                                          text: ' self-reliance ',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                0.13,
+                                          )),
+                                      const TextSpan(
+                                          text:
+                                              'by capturing your hurdles (unlimited)')
+                                    ])),
                                   ),
                                   Container(
                                     width:
@@ -904,46 +884,42 @@ class _SubscriptionState extends State<Subscription>
                             SizedBox(
                               width:
                                   AppDimensionsUpdated.width10(context) * 35.0,
-                              height:
-                                  AppDimensionsUpdated.height10(context) * 5.1,
+
                               child: Row(
                                 children: [
                                   SizedBox(
                                     width:
                                         AppDimensionsUpdated.height10(context) *
                                             13.9,
-                                    height:
-                                        AppDimensionsUpdated.height10(context) *
-                                            5.1,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: [
-                                          TextSpan(
-                                              text: 'Goal evaluation ',
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.13,
-                                              )),
-                                          const TextSpan(
-                                              text:
-                                                  'tools to help with clarity and focus')
-                                        ]))),
+
+                                    child: RichText(
+                                        text: TextSpan(
+                                            style: TextStyle(
+                                                fontFamily: 'laila',
+                                                fontSize:
+                                                    AppDimensions.font10(
+                                                            context) *
+                                                        1.45,
+                                                fontWeight: FontWeight.w400,
+                                                height:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        0.12,
+                                                color: const Color(
+                                                    0xFF437296)),
+                                            children: [
+                                      TextSpan(
+                                          text: 'Goal evaluation ',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                0.13,
+                                          )),
+                                      const TextSpan(
+                                          text:
+                                              'tools to help with clarity and focus')
+                                    ])),
                                   ),
                                   Container(
                                     width:
@@ -996,49 +972,45 @@ class _SubscriptionState extends State<Subscription>
                             SizedBox(
                               width:
                                   AppDimensionsUpdated.width10(context) * 35.0,
-                              height:
-                                  AppDimensionsUpdated.height10(context) * 4.9,
+
                               child: Row(
                                 children: [
                                   SizedBox(
                                     width:
                                         AppDimensionsUpdated.height10(context) *
                                             13.9,
-                                    height:
-                                        AppDimensionsUpdated.height10(context) *
-                                            4.9,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: const [
-                                          TextSpan(
-                                              text: 'Practice evaluation\n',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                          TextSpan(
-                                              text: ' and progress reports')
-                                        ]))),
+
+                                    child: RichText(
+                                        text: TextSpan(
+                                            style: TextStyle(
+                                                fontFamily: 'laila',
+                                                fontSize:
+                                                    AppDimensions.font10(
+                                                            context) *
+                                                        1.45,
+                                                fontWeight: FontWeight.w400,
+                                                height:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        0.12,
+                                                color: const Color(
+                                                    0xFF437296)),
+                                            children: const [
+                                      TextSpan(
+                                          text: 'Practice evaluation\n',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600)),
+                                      TextSpan(
+                                          text: 'and practice reports')
+                                    ])),
                                   ),
                                   Container(
                                     width:
                                         AppDimensionsUpdated.height10(context) *
                                             9.9,
-                                    height:
-                                        AppDimensionsUpdated.height10(context) *
-                                            4.6,
+                                    // height:
+                                    //     AppDimensionsUpdated.height10(context) *
+                                    //         4.6,
                                     margin: EdgeInsets.only(
                                         left: AppDimensionsUpdated.height10(
                                                 context) *
@@ -1097,41 +1069,37 @@ class _SubscriptionState extends State<Subscription>
                             SizedBox(
                               width:
                                   AppDimensionsUpdated.width10(context) * 35.0,
-                              height:
-                                  AppDimensionsUpdated.height10(context) * 5.1,
+
                               child: Row(
                                 children: [
                                   SizedBox(
                                     width:
                                         AppDimensionsUpdated.height10(context) *
                                             13.9,
-                                    height:
-                                        AppDimensionsUpdated.height10(context) *
-                                            5.1,
-                                    child: Center(
-                                        child: RichText(
-                                            text: TextSpan(
-                                                style: TextStyle(
-                                                    fontFamily: 'laila',
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.45,
-                                                    fontWeight: FontWeight.w400,
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.12,
-                                                    color: const Color(
-                                                        0xFF437296)),
-                                                children: const [
-                                          TextSpan(
-                                              text: 'Personalised\ntimeline  ',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.w600)),
-                                          TextSpan(
-                                              text: 'of recorded activities')
-                                        ]))),
+
+                                    child: RichText(
+                                        text: TextSpan(
+                                            style: TextStyle(
+                                                fontFamily: 'laila',
+                                                fontSize:
+                                                    AppDimensions.font10(
+                                                            context) *
+                                                        1.45,
+                                                fontWeight: FontWeight.w400,
+                                                height:
+                                                    AppDimensions.height10(
+                                                            context) *
+                                                        0.12,
+                                                color: const Color(
+                                                    0xFF437296)),
+                                            children: const [
+                                      TextSpan(
+                                          text: 'Personalised\ntimeline  ',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600)),
+                                      TextSpan(
+                                          text: 'of recorded activities')
+                                    ])),
                                   ),
                                   Container(
                                     width:

@@ -25,7 +25,7 @@ class _NewGoalState extends State<NewGoal> {
             backgroundColor: Colors.transparent,
             automaticallyImplyLeading: false,
             title: Text(
-              "Star Creation 1/5",
+              "Goal Creation 1/5",
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 color: Colors.white,

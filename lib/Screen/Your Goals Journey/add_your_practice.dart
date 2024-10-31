@@ -4,6 +4,7 @@ import 'package:potenic_app/Screen/Practice%20Creation%20Journey/Create%20Practi
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:potenic_app/Widgets/menu_buttons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/app_dimensions.dart';
@@ -177,6 +178,7 @@ class _add_your_practiceState extends State<add_your_practice> {
             color: const Color(0xFFFFFFFF).withOpacity(0.5),
             margin: EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
           ),
+          SizedBox(height: AppDimensions.height10(context) * 2.0),
           AnimatedScaleButton(
             onTap: () async {
               Navigator.push(
@@ -188,46 +190,15 @@ class _add_your_practiceState extends State<add_your_practice> {
               final SharedPreferences prefs = await _prefs;
               await prefs.setString('goal_route', 'view_all_goals');
             },
-            child: Container(
-              width: AppDimensions.width10(context) * 36.4,
-              height: AppDimensions.height10(context) * 6.0,
-              margin:
-                  EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                    AppDimensions.height10(context) * 2.0),
-                color: const Color(0xFFFFFFFF),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: AppDimensions.width10(context) * 18.5,
-                    height: AppDimensions.height10(context) * 2.2,
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.width10(context) * 1.99),
-                    child: Text(
-                      'Goal details',
-                      style: TextStyle(
-                        color: const Color(0xff646464),
-                        fontSize: AppDimensions.font10(context) * 1.8,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ),
-                  Container(
-                      width: AppDimensions.width10(context) * 2.4,
-                      height: AppDimensions.height10(context) * 1.39,
-                      margin: EdgeInsets.only(
-                          right: AppDimensions.width10(context) * 2.391),
-                      child: Image.asset(
-                        'assets/images/BTN Back.webp',
-                        //width: AppDimensions.width10(context) * 2.6,
-                        //height: AppDimensions.height10(context) * 2.6,
-                        fit: BoxFit.cover,
-                      ))
-                ],
-              ),
+            child: const ButtonFields(
+              fieldText: 'Goal details',
+              iconVisible: true,
+              textColor: 0xff646464,
+              fieldText2: '',
+              textColor2: 0xffEA1B1,
+              fieldText3: '',
+              fieldText4: '',
+              premium: true,
             ),
           ),
         ]),

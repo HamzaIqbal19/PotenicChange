@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdle_new_hurdle.dart';
-import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import 'package:potenic_app/Widgets/fading.dart';
@@ -23,9 +22,18 @@ class _what_hurdlesState extends State<what_hurdles> {
       appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          leading: Buttons().backButton(context, () {
-            Navigator.pop(context);
-          }),
+          leading: Center(
+            child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Image.asset(
+                  'assets/images/Back.webp',
+                  // width: AppDimensions.width10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.8,
+                  fit: BoxFit.contain,
+                )),
+          ),
           centerTitle: true,
           title: Container(
             width: AppDimensions.width10(context) * 17.0,
@@ -40,7 +48,18 @@ class _what_hurdlesState extends State<what_hurdles> {
               colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
             ),
           ),
-          actions: [Buttons().closeButton(context, () {})]),
+          actions: [
+            Center(
+              child: IconButton(
+                  onPressed: () {},
+                  icon: Image.asset(
+                    'assets/images/Close.webp',
+                    // width: AppDimensions.width10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.8,
+                    fit: BoxFit.contain,
+                  )),
+            )
+          ]),
       extendBodyBehindAppBar: true,
       body: Stack(children: [
         Container(

@@ -261,7 +261,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     },
                     child: Container(
                       height: AppDimensions.height10(context) * 5.2,
-                      width: AppDimensions.width10(context) * 13,
+                      width: AppDimensions.width10(context) * 20.4,
                       decoration: BoxDecoration(
                         color: const Color(0xFFF5F5F5),
                         border: Border.all(color: Colors.white),
@@ -276,7 +276,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           style: TextStyle(
                             color: const Color(0xFF8C648A),
                             fontSize:
-                            AppDimensions.font10(context) * 1.8,
+                            AppDimensions.font10(context) * 2,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -307,7 +307,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       child: Container(
                         height:
                         AppDimensions.height10(context) * 5.2,
-                        width: AppDimensions.width10(context) * 13,
+                        width: AppDimensions.width10(context) * 20.4,
                         decoration: BoxDecoration(
                           color: const Color(0xFF5A4D73),
                           border: Border.all(
@@ -319,12 +319,12 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         ),
                         child: Center(
                           child: Text(
-                            "Log in",
+                            AppText().login,
                             style: TextStyle(
                               color: Colors.white,
                               fontSize:
                               AppDimensions.font10(context) *
-                                  1.8,
+                                  2,
                               fontWeight: FontWeight.w600,
                             ),
                           ),

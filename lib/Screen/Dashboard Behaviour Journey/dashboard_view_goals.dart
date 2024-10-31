@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:carousel_slider/carousel_slider.dart' ;
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:potenic_app/API/Authentication.dart';
@@ -9,6 +9,8 @@ import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/MyServices/Notification/notificationApis.dart';
 import 'package:potenic_app/MyServices/Notification/notificationController.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inpiration_landing.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_record_session.dart';
+import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/loaders/TutorialController.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/widgets/tooltips.dart';
 import 'package:potenic_app/Screen/Goal%20Achieved%20Journey/congratulations.dart';
 import 'package:potenic_app/Screen/Notification%20Journey/widgets/notificationPermissionService.dart';
@@ -22,6 +24,7 @@ import 'package:super_tooltip/super_tooltip.dart';
 import '../../Widgets/bottom_navigation.dart';
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+import '../Capture Inspiration Journey/Widgets/updateBox.dart';
 import 'future_practice_menu.dart';
 import 'loaders/dashboard_behaviour_shimmer.dart';
 import 'dart:ui';
@@ -54,7 +57,13 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 class _ViewDashboardState extends State<ViewDashboard>
     with WidgetsBindingObserver {
-  final superTooltipController = SuperTooltipController();
+  final superTooltipController1 = SuperTooltipController();
+  final superTooltipController2 = SuperTooltipController();
+  final superTooltipController3 = SuperTooltipController();
+  final superTooltipController4 = SuperTooltipController();
+  final superTooltipController5 = SuperTooltipController();
+  final superTooltipController6 = SuperTooltipController();
+
   var allGoals;
   var userGoals;
   var focusedDate = DateTime.now();
@@ -68,7 +77,7 @@ class _ViewDashboardState extends State<ViewDashboard>
   List<Map<String, dynamic>> timesList = [];
   bool contain = false;
   bool single = false;
-  int goalLevel = 0;
+  int goalLevel = 1;
   final ScrollController _scrollController = ScrollController();
   // DateTime currentDate = DateTime.now();
   int currentIndex = 7;
@@ -80,23 +89,63 @@ class _ViewDashboardState extends State<ViewDashboard>
       NotificationPermissionService();
 
   void _incrementValue() {
-   // setState(() {
+    if (goalLevel == 1) {
+      superTooltipController1.showTooltip();
+    } else if (goalLevel == 2) {
+      superTooltipController1.hideTooltip();
+      superTooltipController2.showTooltip();
+    } else if (goalLevel == 3) {
+      superTooltipController2.hideTooltip();
+      superTooltipController3.showTooltip();
+    } else if (goalLevel == 4) {
+      superTooltipController3.hideTooltip();
+      superTooltipController4.showTooltip();
+    } else if (goalLevel == 5) {
+      superTooltipController4.hideTooltip();
+      superTooltipController5.showTooltip();
+    } else if (goalLevel == 6) {
+      superTooltipController5.hideTooltip();
+      superTooltipController6.showTooltip();
+      setState(() {
+        _showOverlay = false;
+      });
+    } else {
+      setState(() {
+        _showOverlay = false;
+      });
+      superTooltipController6.hideTooltip();
+    }
+
+    setState(() {
       goalLevel++;
-   // });
-    print("Tutorial $goalLevel");
-    superTooltipController.showTooltip();
+    });
+  }
 
+  initializeTutorial(){
+    if (widget.helpfulTips == true) {
+      Future.delayed(const Duration(seconds: 2), _incrementValue);
+    }
+  }
 
+  disposeTooltips() {
+    superTooltipController1.hideTooltip();
+    superTooltipController2.hideTooltip();
+    superTooltipController3.hideTooltip();
+    superTooltipController4.hideTooltip();
+    superTooltipController5.hideTooltip();
+    superTooltipController6.hideTooltip();
+    setState(() {
+      _showOverlay = false;
+    });
   }
 
   getUser() {
-    Authentication().getUserData().then((value) async{
-
+    Authentication().getUserData().then((value) async {
       final SharedPreferences prefs = await _prefs;
 
-        setState(() {
-          getSubscription = value['subscriptionStatus'];
-        });
+      setState(() {
+        getSubscription = value['subscriptionStatus'];
+      });
 
       prefs.setString('subscriptionStatus', value['subscriptionStatus']);
     });
@@ -124,9 +173,14 @@ class _ViewDashboardState extends State<ViewDashboard>
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+    superTooltipController1.dispose();
+    superTooltipController2.dispose();
+    superTooltipController3.dispose();
+    superTooltipController4.dispose();
+    superTooltipController5.dispose();
+    superTooltipController6.dispose();
     super.dispose();
   }
-
 
   void _fetchGoalNames() async {
     AdminGoal.getUserActiveGoal().then((response) {
@@ -248,10 +302,10 @@ class _ViewDashboardState extends State<ViewDashboard>
     if (widget.helpfulTips == true) {
       setState(() {
         _showOverlay = true;
-        goalLevel = 1;
       });
     }
     getGoalUpdates();
+
     WidgetsBinding.instance.addObserver(this);
   }
 
@@ -299,8 +353,10 @@ class _ViewDashboardState extends State<ViewDashboard>
     setState(() {
       loader = false;
     });
+
     Future.delayed(
         const Duration(milliseconds: 50), () => _scrollToCurrentIndex());
+
   }
 
   Future<Timer> startTimer() async {
@@ -318,7 +374,13 @@ class _ViewDashboardState extends State<ViewDashboard>
     bool smallScreen = MediaQuery.of(context).size.height < 690;
     final notificationController notificationsController =
         Get.find<notificationController>();
+    final TutorialController tutorialController = Get.put(TutorialController());
 
+     var startTutorial = tutorialController.showTutorial;
+    if(startTutorial == true){
+      tutorialController.stopTutorial();
+      initializeTutorial();
+    }
     return WillPopScope(
       onWillPop: () {
         return Future.value(false);
@@ -339,65 +401,74 @@ class _ViewDashboardState extends State<ViewDashboard>
                     children: [
                       // currentIndex != 7
                       //     ?
+                      //  : const SizedBox(),
                       Stack(
                         children: [
                           AnimatedScaleButton(
-                                  onTap: () {
-                                    setState(() {
-                                      focusedDate = DateTime.parse(
-                                          formatDates(DateTime.now().toString()));
-                                      toggleDates(DateTime.now().toString());
-                                      currentIndex = 7;
-                                      _controller.jumpToPage(7);
-                                    });
-                                  },
-                                  child: Container(
-                                    margin: EdgeInsets.only(
-                                        right: UpdatedDimensions.height10(context) *
-                                            1.32),
-                                    child: Image.asset(
-                                      'assets/images/Asset 10 2.webp',
-                                      height:
-                                          UpdatedDimensions.width10(context) * 4.0,
-                                      width: UpdatedDimensions.width10(context) *
-                                          3.977,
-                                      fit: BoxFit.contain,
-                                    ),
-                                  ),
-                                ),
-
-                          // currentIndex  == 7? Positioned(
-                          //   right: 30,
-                          //   top: 30,
-                          //   //alignment: const Alignment(2, 1),
-                          //   child: dashboardTooltip(superTooltipController, context, 5, 'down',(){}, (){},Container(height: 0,width: 0,),
-                          //    ),
-                          // ):Container()
+                            onTap: () {
+                              if (noData != true) {
+                                Navigator.push(
+                                    context,
+                                    FadePageRoute(
+                                        page: const record_session(
+                                      past_session: true,
+                                    )));
+                              }
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(
+                                  right:
+                                      UpdatedDimensions.width10(context) * 1.7),
+                              child: Image.asset(
+                                'assets/images/Add goal.webp',
+                                height:
+                                    UpdatedDimensions.width10(context) * 2.4,
+                                width: UpdatedDimensions.width10(context) * 2.4,
+                              ),
+                            ),
+                          ),
+                          Positioned(
+                            right: 30,
+                            top: 30,
+                            //alignment: const Alignment(2, 1),
+                            child: dashboardTooltip(
+                              superTooltipController5,
+                              context,
+                              5,
+                              'down',
+                              disposeTooltips,
+                              _incrementValue,
+                              Container(
+                                height: 0,
+                                width: 0,
+                              ),
+                            ),
+                          )
                         ],
-                      )
-                          //: const SizedBox(),
-                      // AnimatedScaleButton(
-                      //   onTap: () {
-                      //     if (noData != true) {
-                      //       Navigator.push(
-                      //           context,
-                      //           FadePageRoute(
-                      //               page: const record_session(
-                      //             past_session: true,
-                      //           )));
-                      //     }
-                      //   },
-                      //   child: Container(
-                      //     margin: EdgeInsets.only(
-                      //         right: UpdatedDimensions.width10(context) * 1.7),
-                      //     child: Image.asset(
-                      //       'assets/images/Add goal.webp',
-                      //       height: UpdatedDimensions.width10(context) * 2.4,
-                      //       width: UpdatedDimensions.width10(context) * 2.4,
-                      //     ),
-                      //   ),
-                      // ),
-                      //
+                      ),
+
+                      AnimatedScaleButton(
+                        onTap: () {
+                          setState(() {
+                            focusedDate = DateTime.parse(
+                                formatDates(DateTime.now().toString()));
+                            toggleDates(DateTime.now().toString());
+                            currentIndex = 7;
+                            _controller.jumpToPage(7);
+                          });
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              right:
+                                  UpdatedDimensions.height10(context) * 1.32),
+                          child: Image.asset(
+                            'assets/images/Asset 10 2.webp',
+                            height: UpdatedDimensions.width10(context) * 4.0,
+                            width: UpdatedDimensions.width10(context) * 3.977,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
+                      ),
                     ],
                   )
                 ]),
@@ -444,9 +515,7 @@ class _ViewDashboardState extends State<ViewDashboard>
                     ? GestureDetector(
                         onTap: () {
                           if (widget.helpfulTips) {
-                            if (goalLevel == 0) {
-                              _incrementValue();
-                            }
+                            _incrementValue();
                           }
                         },
                         child: SizedBox(
@@ -460,7 +529,9 @@ class _ViewDashboardState extends State<ViewDashboard>
                                           ? dashboardCarousel(
                                               context,
                                               _controller,
-                                              superTooltipController,
+                                              superTooltipController4,
+                                              disposeTooltips,
+                                              _incrementValue,
                                               null,
                                               currentIndex, (value) {
                                               setState(() {
@@ -473,7 +544,9 @@ class _ViewDashboardState extends State<ViewDashboard>
                                           : dashboardCarousel(
                                               context,
                                               _controller,
-                                              superTooltipController,
+                                              superTooltipController4,
+                                              disposeTooltips,
+                                              _incrementValue,
                                               allGoals,
                                               currentIndex, (value) {
                                               setState(() {
@@ -519,7 +592,11 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                         index) {
                                                                   return dashBoardSessionComponent(
                                                                       context,
-                                                                      superTooltipController,
+                                                                      superTooltipController1,
+                                                                      superTooltipController2,
+                                                                      superTooltipController3,
+                                                                      disposeTooltips,
+                                                                      _incrementValue,
                                                                       index,
                                                                       timesList[
                                                                           index],
@@ -532,9 +609,11 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                           context,
                                                                           FadePageRoute(
                                                                               page: const goal_menu_inactive(
-                                                                                isActive: false,
-                                                                                goal_evaluation: false,
-                                                                              )));
+                                                                            isActive:
+                                                                                false,
+                                                                            goal_evaluation:
+                                                                                false,
+                                                                          )));
                                                                       final SharedPreferences
                                                                           prefs =
                                                                           await _prefs;
@@ -547,13 +626,11 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                           'goal_menu_route',
                                                                           'dashboard');
                                                                     } else {
-                                                                      if (goalLevel ==
-                                                                          0) {
-                                                                        _incrementValue();
-                                                                      }
+                                                                      _incrementValue();
                                                                     }
                                                                   }, () async {
-                                                                    if (_showOverlay == false) {
+                                                                    if (_showOverlay ==
+                                                                        false) {
                                                                       final SharedPreferences
                                                                           prefs =
                                                                           await _prefs;
@@ -562,7 +639,9 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                           'dashboard');
                                                                       await prefs.setInt(
                                                                           'prac_num',
-                                                                          timesList[index]['data']['id']);
+                                                                          timesList[index]['data']
+                                                                              [
+                                                                              'id']);
                                                                       await prefs.setInt(
                                                                           'goal_num',
                                                                           timesList[index]['data']['userGoal']
@@ -605,44 +684,43 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                               'dash_goalColor',
                                                                               timesList[index]['data']['userGoal']['color'])
                                                                           : '0';
-                                                                      if(focusedDate.isAfter(DateTime.now())){
+                                                                      if (focusedDate
+                                                                          .isAfter(
+                                                                              DateTime.now())) {
                                                                         Navigator.pushReplacement(
                                                                             context,
-                                                                            FadePageRoute(
-                                                                                page:
-                                                                                futurePracticeMenu(pracName: timesList[index]['data']['name'])));
-                                                                      }else{
-                                                                        if (timesList[index]['status'] == "Not Started") {
+                                                                            FadePageRoute(page: futurePracticeMenu(pracName: timesList[index]['data']['name'])));
+                                                                      } else {
+                                                                        if (timesList[index]['status'] ==
+                                                                            "Not Started") {
                                                                           Navigator.push(
                                                                               context,
                                                                               FadePageRoute(
                                                                                   page: const practiceMenu(
-                                                                                    goal_eval: false,
-                                                                                    completed: false,
-                                                                                  )));
-                                                                        } else if (timesList[index]['status'] == "missed") {
+                                                                                goal_eval: false,
+                                                                                completed: false,
+                                                                              )));
+                                                                        } else if (timesList[index]['status'] ==
+                                                                            "missed") {
                                                                           Navigator.push(
                                                                               context,
                                                                               FadePageRoute(
                                                                                   page: const practiceMenu(
-                                                                                    goal_eval: false,
-                                                                                    completed: false,
-                                                                                  )));
+                                                                                goal_eval: false,
+                                                                                completed: false,
+                                                                              )));
                                                                         } else {
                                                                           Navigator.push(
                                                                               context,
                                                                               FadePageRoute(
                                                                                   page: const practiceMenu(
-                                                                                    goal_eval: false,
-                                                                                    completed: true,
-                                                                                  )));
+                                                                                goal_eval: false,
+                                                                                completed: true,
+                                                                              )));
                                                                         }
                                                                       }
                                                                     } else {
-                                                                      if (goalLevel ==
-                                                                          0) {
-                                                                        _incrementValue();
-                                                                      }
+                                                                      _incrementValue();
                                                                     }
                                                                   });
                                                                 })),
@@ -703,14 +781,23 @@ class _ViewDashboardState extends State<ViewDashboard>
                                         1.3,
                                     child: Stack(
                                       children: [
-                                         // Container(
-                                         //   margin: const EdgeInsets.only(left: 180,top: 30),
-                                         //   child: Align(
-                                         //    alignment:  const Alignment(0,0),
-                                         //    child: dashboardTooltip(superTooltipController, context, 6, (){}, (){},Container(height: 0,width: 0,),
-                                         //    ),
-                                         //   ),
-                                         // ),
+                                        Container(
+                                          margin: const EdgeInsets.only(
+                                              left: 180, top: 30),
+                                          child: Align(
+                                              alignment: const Alignment(0, 0),
+                                              child: dashboardTooltip(
+                                                  superTooltipController6,
+                                                  context,
+                                                  6,
+                                                  'up',
+                                                  disposeTooltips,
+                                                  disposeTooltips,
+                                                  Container(
+                                                    height: 0,
+                                                    width: 0,
+                                                  ))),
+                                        ),
                                         isVisible
                                             ? Obx(() {
                                                 if (notificationsController
@@ -763,7 +850,6 @@ class _ViewDashboardState extends State<ViewDashboard>
                                             : Container(),
                                         AnimatedScaleButton(
                                           onTap: () {
-                                            _incrementValue();
                                             setState(() {
                                               isVisible = !isVisible;
                                             });
@@ -807,11 +893,11 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                         width: UpdatedDimensions
                                                                 .width10(
                                                                     context) *
-                                                            1.7,
+                                                            1.9,
                                                         height: UpdatedDimensions
                                                                 .height10(
                                                                     context) *
-                                                            1.7,
+                                                            1.9,
                                                         decoration:
                                                             const BoxDecoration(
                                                           shape:
@@ -828,7 +914,7 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                 fontSize: UpdatedDimensions
                                                                         .font10(
                                                                             context) *
-                                                                    1,
+                                                                    1.2,
                                                                 fontWeight:
                                                                     FontWeight
                                                                         .w500,

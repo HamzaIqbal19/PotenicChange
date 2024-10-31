@@ -10,6 +10,7 @@ import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
+import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreenProgressSaved extends StatefulWidget {
@@ -121,7 +122,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                 SizedBox(
                     height: AppDimensions.height10(context) * 11.5,
                     child: Text(
-                      'Time waits for no one. The best time to \n start is TODAY. Begin creating your \n star followed by a plan to help you \n achieve your goal.',
+                      AppText().homeScreenSubText,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
@@ -390,8 +391,8 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                               // );
                             },
                             child: Container(
-                              height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.width10(context) * 13,
+                              height: AppDimensions.height10(context) * 5.2,
+                              width: AppDimensions.width10(context) * 20.4,
                               decoration: BoxDecoration(
                                 color: const Color(0xFFF5F5F5),
                                 border: Border.all(color: Colors.white),
@@ -404,7 +405,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                   style: TextStyle(
                                     color: const Color(0xFF8C648A),
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.8,
+                                        AppDimensions.font10(context) * 2,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),
@@ -430,8 +431,8 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                               );
                             },
                             child: Container(
-                              height: AppDimensions.height10(context) * 5,
-                              width: AppDimensions.width10(context) * 13,
+                              height: AppDimensions.height10(context) * 5.2,
+                              width: AppDimensions.width10(context) * 20.4,
                               decoration: BoxDecoration(
                                 color: const Color(0xFF5A4D73),
                                 border:
@@ -445,7 +446,7 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.8,
+                                        AppDimensions.font10(context) * 2,
                                     fontWeight: FontWeight.w600,
                                   ),
                                 ),

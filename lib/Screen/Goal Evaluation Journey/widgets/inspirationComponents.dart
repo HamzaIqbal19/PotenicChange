@@ -63,7 +63,7 @@ inspirationComponent(BuildContext context,inspirationId,mainImage,String text2,i
             fontWeight: FontWeight.w400,
             fontSize: UpdatedDimensions.height10(
                 context) *
-                1.4),
+                1.6),
       ),
     )
         : Container(),

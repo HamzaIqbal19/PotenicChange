@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inpiration_motivation.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
@@ -20,6 +21,7 @@ import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
+import '../Dashboard Behaviour Journey/loaders/TutorialController.dart';
 import '../community/community.dart';
 import 'goal_menu_inactive.dart';
 import 'veiw_all_goals.dart';
@@ -42,6 +44,8 @@ class _MenuState extends State<Menu> {
   String planId = '';
   bool yearly = false;
   int newMessages = 0;
+  bool cancelAtPeriodEnd = false;
+  String cancelDate = '1735549560';
 
   Future<void> getUserRole() async {
     final SharedPreferences prefs = await _prefs;
@@ -65,7 +69,8 @@ class _MenuState extends State<Menu> {
   }
 
   getSubscriptionData() {
-    SubscriptionService().getCustomerData().then((value) => {
+    SubscriptionService().getCustomerData().then((value)  {
+
           setState(() {
             subId = value['subscriptions'] == null
                 ? ''
@@ -73,12 +78,20 @@ class _MenuState extends State<Menu> {
             planId = value['subscriptions'] == null
                 ? ''
                 : value['subscriptions']['data'][0]['plan']['id'].toString();
-          }),
+
+            cancelAtPeriodEnd = value['subscriptions']['data'][0]['cancel_at_period_end'];
+            cancelDate = value['subscriptions']['data'][0]['cancel_at'];
+
+          });
+          Future.delayed(const Duration(seconds: 2),(){
+            setState(() {});
+          });
+
           if (planId == 'price_1OlQz5RkeqntfFwk39D9nntN')
             {
               setState(() {
                 yearly = true;
-              }),
+              });
             }
         });
   }
@@ -106,6 +119,10 @@ class _MenuState extends State<Menu> {
       setState(() {
         trial = value['remainingDays'];
       });
+      Future.delayed(const Duration(seconds: 2),(){
+        setState(() {
+        });
+      });
     });
   }
 
@@ -114,12 +131,13 @@ class _MenuState extends State<Menu> {
     super.initState();
     getUser();
     getUserRole();
-    getUserTrial();
     getSubscriptionData();
+    getUserTrial();
   }
 
   @override
   Widget build(BuildContext context) {
+    final TutorialController tutorialController = Get.put(TutorialController());
     final colorC = Color.alphaBlend(
         const Color(0xFF000000).withOpacity(0.2), const Color(0XFF5B74A6));
     return WillPopScope(
@@ -170,13 +188,13 @@ class _MenuState extends State<Menu> {
             centerTitle: true,
             title: SizedBox(
               width: AppDimensions.width10(context) * 17.0,
-              height: AppDimensions.height10(context) * 4.8,
+             // height: AppDimensions.height10(context) * 4.8,
               child: Center(
                 child: Text(
                   'Menu',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 1.8,
+                      fontSize: AppDimensions.font10(context) * 2.2,
                       fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
@@ -198,8 +216,6 @@ class _MenuState extends State<Menu> {
                   width: AppDimensions.width10(context) * 38.4,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 16.0),
-                  padding: EdgeInsets.symmetric(
-                      vertical: AppDimensions.height10(context) * 1.5),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(
                           AppDimensions.height10(context) * 2.0),
@@ -208,54 +224,59 @@ class _MenuState extends State<Menu> {
                     mainAxisSize: MainAxisSize.min,
                     //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      SizedBox(
+                        height: AppDimensions.height10(context)*0.5,
+                      ),
                       menuItems(context, () {
                         Navigator.push(context,
                             FadePageRoute(page: const view_all_goals_menu()));
-                      }, 'Your goals'),
+                      }, 'Your goals', true),
                       menuItems(context, () {
                         Navigator.push(context,
                             FadePageRoute(page: const MessageCenter()));
-                      }, 'Messages'),
+                      }, 'Messages', true),
                       AnimatedScaleButton(
                         onTap: () {
-                          if (admin) {
-                            dialog(context, "You are Potenic's admin.", () {
-                              Navigator.pop(context);
-                            }, false);
-                          } else {
-                            // if (trial != 0 && subscribe) {
-                            //   print("SubId $subId");
-                            //   dialog(context,
-                            //       'Are you sure you want to cancel your subscription',
-                            //       () {
-                            //     SubscriptionService()
-                            //         .cancelSubscription(subId, true)
-                            //         .then((value) {
-                            //       if (value == 200) {
-                            //         Navigator.push(
-                            //             context,
-                            //             FadePageRoute(
-                            //                 page: const ViewDashboard(
-                            //               missed: false,
-                            //               name: '',
-                            //               update: false,
-                            //               helpfulTips: false,
-                            //               record: 0,
-                            //             )));
-                            //         unsubscribed(context);
-                            //       }
-                            //     });
-                            //   }, true);
-                            // } else
+                          // if (admin) {
+                          //   dialog(context, "You are Potenic's admin.", () {
+                          //     Navigator.pop(context);
+                          //   }, false);
+                          // } else {
+                          if(cancelAtPeriodEnd){
+                            subscribedUser(context, yearly, subId,cancelAtPeriodEnd,false);
+                          }else if (trial != 0 && subscribe) {
+                            subscribedUser(context, yearly, subId,false,true);
+                              // dialog(context,
+                              //     'Are you sure you want to cancel your subscription',
+                              //     () {
+                              //   SubscriptionService()
+                              //       .cancelSubscriptionImmediatly(subId, true)
+                              //       .then((value) {
+                              //     if (value == 200) {
+                              //       Navigator.push(
+                              //           context,
+                              //           FadePageRoute(
+                              //               page: const ViewDashboard(
+                              //             missed: false,
+                              //             name: '',
+                              //             update: false,
+                              //             helpfulTips: false,
+                              //             record: 0,
+                              //           )));
+                              //       unsubscribed(context);
+                              //     }
+                              //   });
+                              // }, true);
+                            } else
                             if (subscribe) {
-                              Navigator.push(context,
-                                  FadePageRoute(page: const Subscription()));
-                             // subscribedUser(context, yearly, subId);
+                              // Navigator.push(context,
+                              //     FadePageRoute(page: const Subscription()));
+                              subscribedUser(context, yearly, subId,false,false);
                             } else {
                               Navigator.push(context,
                                   FadePageRoute(page: const Subscription()));
                             }
-                          }
+                          //}
                         },
                         child: Container(
                           width: AppDimensions.width10(context) * 33.4,
@@ -319,20 +340,33 @@ class _MenuState extends State<Menu> {
                                                             1.45,
                                                         color:
                                                             const Color(0xFF8C648A))),
-                                            // trial != 0 && subscribe
-                                            //     ? TextSpan(
-                                            //         text:
-                                            //             '\n5 day trial, $trial remaining (Tap here to cancel)',
-                                            //         style: TextStyle(
-                                            //             fontWeight:
-                                            //                 FontWeight.w400,
-                                            //             color: const Color(
-                                            //                 0xFF8C648A),
-                                            //             fontSize: AppDimensions
-                                            //                     .font10(
-                                            //                         context) *
-                                            //                 1.4))
-                                            //     : const TextSpan(text: '')
+                                            cancelAtPeriodEnd? TextSpan(
+                                                text:
+                                                '\nExpiry Date ${UnixTime().unixIntoDate(cancelDate)}',
+                                                style: TextStyle(
+                                                    fontWeight:
+                                                    FontWeight.w400,
+                                                    color: const Color(
+                                                        0xFF8C648A),
+                                                    fontSize: AppDimensions
+                                                        .font10(
+                                                        context) *
+                                                        1.4))
+                                                : const TextSpan(text: ''),
+                                                 trial != 0 && subscribe
+                                                ? TextSpan(
+                                                    text:
+                                                        '\n5 day trial, $trial remaining (Tap here to cancel)',
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w400,
+                                                        color: const Color(
+                                                            0xFF8C648A),
+                                                        fontSize: AppDimensions
+                                                                .font10(
+                                                                    context) *
+                                                            1.4))
+                                                : const TextSpan(text: '')
                                           ]))),
                                   SizedBox(
                                       width:
@@ -355,7 +389,10 @@ class _MenuState extends State<Menu> {
                       menuItems(context, () {
                         Navigator.push(
                             context, FadePageRoute(page: const Settings()));
-                      }, 'Settings'),
+                      }, 'Settings', false),
+                      SizedBox(
+                        height: AppDimensions.height10(context)*1,
+                      ),
                     ],
                   ),
                 ),
@@ -396,7 +433,7 @@ class _MenuState extends State<Menu> {
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   SizedBox(
-                                    height: AppDimensions.height10(context),
+                                    height: AppDimensions.height10(context)*0.5,
                                   ),
                                   menuItems(context, () async {
                                     final SharedPreferences prefs =
@@ -406,21 +443,21 @@ class _MenuState extends State<Menu> {
                                         context,
                                         FadePageRoute(
                                             page: const OnBoarding()));
-                                  }, 'J1 Onboarding'),
+                                  }, 'J1 Onboarding', true),
                                   menuItems(context, () {},
-                                      'J2 Record practice session'),
+                                      'J2 Record practice session', true),
                                   menuItems(context, () {
                                     Navigator.push(
                                         context,
                                         FadePageRoute(
                                             page: const view_all_goals_menu()));
-                                  }, 'J3 Your goals'),
+                                  }, 'J3 Your goals', true),
                                   menuItems(context, () {
                                     Navigator.push(
                                         context,
                                         FadePageRoute(
                                             page: const hurdles_splash()));
-                                  }, 'J4 Record hurdle'),
+                                  }, 'J4 Record hurdle', true),
                                   menuItems(context, () {
                                     Navigator.push(
                                         context,
@@ -429,7 +466,7 @@ class _MenuState extends State<Menu> {
                                           goal_delete: false,
                                           inspirationName: '',
                                         )));
-                                  }, 'J5 Record ispiration'),
+                                  }, 'J5 Record ispiration', true),
                                   menuItems(context, () {
                                     Navigator.push(
                                         context,
@@ -438,21 +475,21 @@ class _MenuState extends State<Menu> {
                                           isActive: true,
                                           goal_evaluation: true,
                                         )));
-                                  }, 'J6 Goal evaluation'),
+                                  }, 'J6 Goal evaluation', true),
                                   menuItems(
-                                      context, () {}, 'J7 Practice evaluation'),
+                                      context, () {}, 'J7 Practice evaluation', true),
                                   menuItems(context, () {
                                     Navigator.pop(context);
                                     community_sheet(context);
-                                  }, 'J8 Community'),
-                                  menuItems(context, () {}, 'J9 Timeline'),
+                                  }, 'J8 Community', true),
+                                  menuItems(context, () {}, 'J9 Timeline', true),
                                   menuItems(
-                                      context, () {}, 'J10 Goal achieved'),
-                                  menuItems(context, () {}, 'J11 Alerts'),
+                                      context, () {}, 'J10 Goal achieved', true),
+                                  menuItems(context, () {}, 'J11 Alerts', true),
                                   menuItems(context, () {
                                     Navigator.push(context,
                                         FadePageRoute(page: const Settings()));
-                                  }, 'J12 Menu & Settings'),
+                                  }, 'J12 Menu & Settings', true),
                                   menuItems(context, () {
                                     Navigator.push(
                                         context,
@@ -464,7 +501,7 @@ class _MenuState extends State<Menu> {
                                           helpfulTips: false,
                                           record: 0,
                                         )));
-                                  }, 'J13 Dashboard behaviour'),
+                                  }, 'J13 Dashboard behaviour', true),
                                   menuItems(context, () {
                                     Navigator.push(
                                         context,
@@ -473,21 +510,23 @@ class _MenuState extends State<Menu> {
                                           missed: false,
                                           name: '',
                                           update: false,
-                                          helpfulTips: false,
+                                          helpfulTips: true,
                                           record: 0,
                                         )));
                                     journeyBottomSheet(
                                         context,
                                         AppText().dashboardTitle,
                                         AppText().dashboardBody,
-                                        AppLinks().dashboardLink);
-                                  }, 'J14 Helpful tips'),
-                                  menuItems(context, () {}, 'J15 Subscription'),
-                                  menuItems(context, () {}, 'J16 Offline mode'),
+                                        AppLinks().dashboardLink,(){
+                                      tutorialController.startTutorial();
+                                    },false);
+                                  }, 'J14 Helpful tips', true),
+                                  menuItems(context, () {}, 'J15 Subscription', true),
+                                  menuItems(context, () {}, 'J16 Offline mode', true),
                                   menuItems(context, () {},
-                                      'Reset account to it’s default state'),
+                                      'Reset account to it’s default state', false),
                                   SizedBox(
-                                    height: AppDimensions.height10(context) * 3,
+                                    height: AppDimensions.height10(context) * 1,
                                   )
                                 ],
                               ),
@@ -745,7 +784,7 @@ void activeReport(
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 2.0),
                     child: Text(
-                      'You have been consistently working on your\npractice for 20 active days now. We’ve put together\na progress report for you to review and evaluate\nyour journey.',
+                      'You have been consistently working on your\npractice for 20 active days now. We’ve put together\na practice report for you to review and evaluate\nyour journey.',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,

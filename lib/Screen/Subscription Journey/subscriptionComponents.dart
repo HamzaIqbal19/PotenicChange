@@ -112,9 +112,6 @@ subscribed(context) {
                               color: const Color(0xFF437296)),
                           children: const [
                             TextSpan(
-                                text: 'Your first steps & 5 day trial\n\n',
-                                style: TextStyle(fontWeight: FontWeight.w700)),
-                            TextSpan(
                                 text:
                                     'You’re now on a 5-day trial.\n\nPlease check your email (you should have\nreceived a confirmation welcome email).\n\nWe look forward to supporting you on your\npersonal development journey!')
                           ]))),
@@ -394,7 +391,7 @@ unsubscribed(context) {
   );
 }
 
-subscribedUser(context, bool yearly, String subId) {
+subscribedUser(context, bool yearly, String subId, bool cancelled, bool trial) {
   String planId = !yearly
       ? 'price_1OlQz5RkeqntfFwk39D9nntN'
       : "price_1OlQz5RkeqntfFwkHoelDUgz";
@@ -495,10 +492,10 @@ subscribedUser(context, bool yearly, String subId) {
                                   AppDimensionsUpdated.height10(context) * 0.15,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFF437296)),
-                          children: const [
+                          children:  [
                             TextSpan(
                               text:
-                                  "We wanted to take a moment to express our gratitude for being part of of the Potenic family. Your commitment to enhancing your experience means the world to us.\n\nWe’re thrilled to have you on board, and look forward to continuing this journey together.\n\nIf you have any questions or need assistance, feel free to reach out to our support team. Thank you for choosing Potenic.",
+                                cancelled? "We wanted to remind you that your membership has been successfully canceled and will remain active until the end of your current billing period.\n\nIf you wish to continue enjoying your benefits and retain your ownership plan, you can easily renew your subscription at any time.": "Thank you for choosing Potenic:)\n\nWe’re thrilled to have you on board, and look forward to continuing this journey together.\n\nIf you have any questions or need assistance, feel free to reach out to our support team.",
                             ),
                           ]))),
               SizedBox(height: AppDimensionsUpdated.height10(context) * 2),
@@ -543,8 +540,35 @@ subscribedUser(context, bool yearly, String subId) {
               // SizedBox(height: AppDimensionsUpdated.height10(context) * 2),
               AnimatedScaleButton(
                 onTap: () {
+                  if(cancelled){
+                    Navigator.pop(context);
+                    Navigator.push(context,
+                        FadePageRoute(page: const Subscription()));
+                  }else{
                   dialog(context,
                       'Are you sure you want to cancel your subscription?', () {
+                    if(trial){
+                      SubscriptionService()
+                          .cancelSubscriptionImmediatly(subId, true)
+                          .then((value) async {
+                        if (value == 200) {
+                          Navigator.push(
+                              context,
+                              FadePageRoute(
+                                  page: const ViewDashboard(
+                                    missed: false,
+                                    name: '',
+                                    update: false,
+                                    helpfulTips: false,
+                                    record: 0,
+                                  )));
+                          final SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                          // prefs.setString('subscriptionStatus', 'inactive');
+                          unsubscribed(context);
+                        }
+                      });
+                    }else{
                     SubscriptionService()
                         .cancelSubscription(subId, true)
                         .then((value) async {
@@ -565,15 +589,16 @@ subscribedUser(context, bool yearly, String subId) {
                         unsubscribed(context);
                       }
                     });
-                  }, true);
+                    }
+                  }, true);}
                 },
                 child: Buttons().linearGradButton(
                     AppDimensionsUpdated.height10(context) * 5,
                     AppDimensionsUpdated.height10(context) * 33.5,
-                    'Cancel Membership',
+                   cancelled?"Renew Membership": 'Cancel Membership',
                     AppDimensionsUpdated.height10(context) * 2,
-                    const Color(0xFF5A4D73).withOpacity(0.5),
-                    const Color(0xFF5A4D73).withOpacity(0.5),
+                    cancelled?  const Color(0xFF5A4D73):const Color(0xFF5A4D73).withOpacity(0.5),
+                    cancelled?const Color(0xFF5A4D73): const Color(0xFF5A4D73).withOpacity(0.5),
                     false),
               ),
               SizedBox(height: AppDimensionsUpdated.height10(context) * 3),

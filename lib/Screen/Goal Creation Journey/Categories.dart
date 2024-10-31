@@ -7,6 +7,7 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:potenic_app/Screen/Goal%20Creation%20Journey/GoalCategory.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/appBarWidgets.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -99,14 +100,7 @@ class _CategoriesState extends State<Categories> {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        title: Text(
-          loading ? '' : AppText().starCreate1,
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            color: Colors.white,
-            fontSize: AppDimensions.font10(context) * 1.8,
-          ),
-        ),
+        title: appBarTitle(context,loading?'': AppText().starCreate1,false),
         actions: [
           Buttons().closeButton(context, () {
             Navigator.pop(context);

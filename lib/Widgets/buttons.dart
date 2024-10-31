@@ -62,7 +62,7 @@ class Buttons {
                 child: Text(
               text,
               style: TextStyle(
-                  fontSize: AppDimensions.font10(context) * 1.8,
+                  fontSize: AppDimensions.font10(context) * 2,
                   fontWeight: FontWeight.w500,
                   color: const Color(0xffffffff)),
             )),

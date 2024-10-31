@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/settings.dart';
 import 'package:potenic_app/Screen/ResetPassword/EmailSent.dart';
@@ -29,6 +30,7 @@ class _edit_credentialsState extends State<edit_credentials> {
   bool update = false;
   String emailMsg = '';
   bool errorEmail = false;
+  bool loader =false;
 
   TextEditingController feildController = TextEditingController();
   TextEditingController feildController2 = TextEditingController();
@@ -43,13 +45,23 @@ class _edit_credentialsState extends State<edit_credentials> {
       setState(() {
         feildController.text = userEmail;
       });
+    }else if(widget.email == false){
+      feildController.text =userName;
     }
   }
 
   updateUser() {
     if (widget.email) {
-      if (feildController.text == feildController2.text) {
+      if(feildController.text.isEmpty || feildController2.text.isEmpty){
         setState(() {
+          errorEmail = true;
+          emailMsg = "Ooops! Needs to be an email format";
+        });
+      }else{
+      if (feildController.text == feildController2.text) {
+
+        setState(() {
+            loader = true;
           errorEmail = false;
           emailMsg = "";
         });
@@ -59,6 +71,9 @@ class _edit_credentialsState extends State<edit_credentials> {
             .then((value) async {
           print("User update value $value");
           if (value == true) {
+            setState(() {
+              loader = false;
+            });
             final SharedPreferences prefs = await _prefs;
             prefs.setString('userEmail', feildController2.text);
             Navigator.pushReplacement(
@@ -72,15 +87,23 @@ class _edit_credentialsState extends State<edit_credentials> {
       } else {
         setState(() {
           errorEmail = true;
-          emailMsg = "Email doesnot match";
+          emailMsg = "Ooops! email Does not match";
         });
-      }
+      }}
     } else {
+      if(feildController.text.isEmpty){
+      }else{
+        setState(() {
+          loader = true;
+        });
       Authentication()
           .userUpdate(feildController.text, feildController2.text, widget.email)
           .then((value) async {
         print("User update value $value");
         if (value == true) {
+          setState(() {
+            loader = false;
+          });
           final SharedPreferences prefs = await _prefs;
           prefs.setString('userName', feildController.text);
           Navigator.pushReplacement(
@@ -91,7 +114,7 @@ class _edit_credentialsState extends State<edit_credentials> {
           }, false);
         }
       });
-    }
+    }}
   }
 
   @override
@@ -220,8 +243,15 @@ class _edit_credentialsState extends State<edit_credentials> {
                                               1.8))),
                               child: TextFormField(
                                   controller: feildController,
+                                  keyboardType: TextInputType.emailAddress,
                                   textCapitalization:
                                       TextCapitalization.sentences,
+                                  style: TextStyle(
+                                    color: const Color(0xFF8C648A),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize:
+                                    AppDimensions.font10(context) * 1.8,
+                                  ),
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                           top: 5.0,
@@ -283,9 +313,16 @@ class _edit_credentialsState extends State<edit_credentials> {
                                           AppDimensions.height10(context) *
                                               1.8))),
                               child: TextFormField(
+                                  keyboardType: TextInputType.emailAddress,
                                   textCapitalization:
                                       TextCapitalization.sentences,
                                   controller: feildController2,
+                                  style: TextStyle(
+                                    color: const Color(0xFF8C648A),
+                                    fontWeight: FontWeight.w600,
+                                    fontSize:
+                                    AppDimensions.font10(context) * 1.8,
+                                  ),
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
                                           top: 5.0,
@@ -373,6 +410,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                           AppDimensions.height10(context) *
                                               1.8))),
                               child: TextFormField(
+                                keyboardType:widget.password_edit?TextInputType.emailAddress: TextInputType.text,
                                 textCapitalization:
                                     TextCapitalization.sentences,
                                 controller: feildController,
@@ -454,7 +492,14 @@ class _edit_credentialsState extends State<edit_credentials> {
                 ),
                 AnimatedScaleButton(
                   onTap: () {
+
                     if (widget.password_edit == true) {
+                      if(feildController.text.isEmpty){
+
+                      }else{
+                        setState(() {
+                          loader = true;
+                        });
                       Authentication()
                           .passReset(
                         feildController.text.toString(),
@@ -462,8 +507,9 @@ class _edit_credentialsState extends State<edit_credentials> {
                           .then((response) {
                         if (response == true) {
                           setState(() {
-                            // loading = false;
-                            // noEmail = false;
+
+                              loader = false;
+
                           });
                           Navigator.pushReplacement(
                             context,
@@ -488,7 +534,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                         setState(() {
                           // loading = false;
                         });
-                      });
+                      });}
                     } else {
                       updateUser();
                     }
@@ -509,7 +555,13 @@ class _edit_credentialsState extends State<edit_credentials> {
                             ? const Color(0xFF282828).withOpacity(0.5)
                             : const Color(0xFFFBFBFB)),
                     child: Center(
-                      child: Text(
+                      child: loader
+                          ? SpinKitThreeBounce(
+                        color: const Color(0xFF8C648A),
+                        // delay: Duration(milliseconds: 0),
+                        size: AppDimensions.height10(context) * 3.5,
+                      )
+                          :Text(
                         widget.password_edit ? 'Send' : 'Save updates',
                         style: TextStyle(
                           color: feildController.text.isEmpty

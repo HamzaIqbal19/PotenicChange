@@ -767,7 +767,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                             }
                                           },
                                           child: ButtonFields(
-                                            fieldText: 'Progress report',
+                                            fieldText: 'Practice report',
                                             iconVisible: true,
                                             textColor: 0xff646464,
                                             premium: subscripption == 'active',

@@ -11,6 +11,7 @@ import 'package:potenic_app/Screen/Practice%20Review%20Journey/practiceReview.da
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/appBarWidgets.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
@@ -51,6 +52,11 @@ class _PracticeReminderState extends State<PracticeReminder> {
     setUserReminder('receiveNotification', true);
     setUserReminder('beforePractice', radio1);
     setUserReminder('missedPractice', radio1);
+    setUserReminder('goalEvaluation', radio1);
+    setUserReminder('progressReport', radio1);
+    setUserReminder('motivationalMessages', radio1);
+    setUserReminder('hurdleReminder', radio1);
+    setUserReminder('inspirationReminder', radio1);
   }
 
   var reminder;
@@ -200,18 +206,7 @@ class _PracticeReminderState extends State<PracticeReminder> {
             elevation: 0,
             centerTitle: true,
             backgroundColor: Colors.transparent,
-            title: Text(
-              widget.comingFromEditScreen
-                  ? "View and edit mode"
-                  : "Practice Creation 3/3",
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                color: widget.comingFromEditScreen
-                    ? const Color(0xff437296)
-                    : Colors.white,
-                fontSize: AppDimensions.font10(context) * 1.8,
-              ),
-            ),
+            title: appBarTitle(context,widget.comingFromEditScreen?AppText().viewAndEdit: AppText().createPrac3,widget.comingFromEditScreen),
             automaticallyImplyLeading: true,
             leading: Buttons().backButton(context, backPress),
             actions: [

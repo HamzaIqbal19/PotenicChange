@@ -249,6 +249,7 @@ bottom_sheet(BuildContext context) {
                         key: formkey,
                         child: TextFormField(
                           maxLength: 50,
+                          keyboardType: TextInputType.text,
                           textCapitalization: TextCapitalization.sentences,
                           style: TextStyle(
                             fontWeight: FontWeight.w600,

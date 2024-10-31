@@ -540,6 +540,7 @@ class _timelineState extends State<timeline> {
                                                                   },
                                                                   itemExtent:
                                                                       40,
+                                                                  physics: const FixedExtentScrollPhysics(),
                                                                   magnification:
                                                                       1.5,
                                                                   useMagnifier:
@@ -795,6 +796,7 @@ class _timelineState extends State<timeline> {
                                                             ListWheelScrollView(
                                                           itemExtent: 40,
                                                           magnification: 1.5,
+                                                              physics: const FixedExtentScrollPhysics(),
                                                           useMagnifier:
                                                               true, // Set the height of each statement
                                                           children: _statements
@@ -1146,12 +1148,12 @@ class _timelineState extends State<timeline> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensionsUpdated.font10(context) *
-                                            1.8,
+                                    AppDimensionsUpdated.font10(context) *
+                                        2,
                                     fontWeight: FontWeight.w600,
                                     height:
-                                        AppDimensionsUpdated.height10(context) *
-                                            0.12,
+                                    AppDimensionsUpdated.height10(context) *
+                                        0.12,
                                     color: const Color(0xFF437296)),
                               ),
                             ),

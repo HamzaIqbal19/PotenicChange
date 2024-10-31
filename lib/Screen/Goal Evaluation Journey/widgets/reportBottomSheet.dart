@@ -88,7 +88,7 @@ void report(context) {
                 margin:
                 EdgeInsets.only(top: AppDimensions.height10(context) * 1.5),
                 child: Text(
-                  'You have been consistently working on your\npractice for 20 active days now. We’ve put together\na progress report for you to review and evaluate\nyour journey.',
+                  'You have been consistently working on your\npractice for 20 active days now. We’ve put together\na practice report for you to review and evaluate\nyour journey.',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       fontWeight: FontWeight.w400,

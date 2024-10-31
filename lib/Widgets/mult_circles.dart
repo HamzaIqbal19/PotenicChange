@@ -16,7 +16,10 @@ class align_circles extends StatelessWidget {
   final double headTextSize;
   final int headTextColor;
   final bool isRight;
-  final SuperTooltipController superTooltipController;
+  final SuperTooltipController superTooltipController1;
+  final SuperTooltipController superTooltipController2;
+  final VoidCallback skipFunc;
+  final VoidCallback nextFunc;
   final int index;
 
   final String smallCircleText;
@@ -35,7 +38,7 @@ class align_circles extends StatelessWidget {
       required this.headTextSize,
       required this.headTextColor,
       required this.onTap1,
-      required this.onTap2, required this.practiceStatus, required this.practiceColor, required this.index, required this.superTooltipController});
+      required this.onTap2, required this.practiceStatus, required this.practiceColor, required this.index, required this.superTooltipController1, required this.superTooltipController2, required this.skipFunc, required this.nextFunc});
 
   @override
   Widget build(BuildContext context) {
@@ -50,11 +53,11 @@ class align_circles extends StatelessWidget {
       // color: Colors.blue,
       // margin: const EdgeInsets.only(top: 29, bottom: 12, right: 45),
       child: Stack(children: [
-        // index == 0? Align(
-        //   alignment: const Alignment(0, -0.5),
-        //   child: dashboardTooltip(superTooltipController, context, 1, 'up',(){}, (){},Container(height: 0,width: 0,),
-        //   ),
-        // ):Container(),
+        index == 0? Align(
+          alignment: const Alignment(0, -0.5),
+          child: dashboardTooltip(superTooltipController1, context, 1, 'up',skipFunc, nextFunc,Container(height: 0,width: 0,),
+          ),
+        ):Container(),
         Align(
           alignment: Alignment.center,
           child: AnimatedScaleButton(
@@ -67,11 +70,11 @@ class align_circles extends StatelessWidget {
             ),
 
         ),
-        // index == 0? Align(
-        //   alignment: const Alignment(0.4, 0.3),
-        //   child: dashboardTooltip(superTooltipController, context, 2, 'up',(){}, (){},Container(height: 0,width: 0,),
-        //   ),
-        // ):Container(),
+        index == 0? Align(
+          alignment: const Alignment(0.4, 0.3),
+          child: dashboardTooltip(superTooltipController2, context, 2, 'up',skipFunc,nextFunc,Container(height: 0,width: 0,),
+          ),
+        ):Container(),
         Align(
           alignment:
           isRight ? const Alignment(0.7, 1.3) : const Alignment(-0.45, 1),

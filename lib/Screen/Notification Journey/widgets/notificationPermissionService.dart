@@ -11,7 +11,6 @@ class NotificationPermissionService {
   Future<bool> checkAndRequestNotificationPermission(
       BuildContext context, bool dashboard) async {
     final PermissionStatus status = await Permission.notification.status;
-
     if (status.isGranted) {
       return true;
     } else {

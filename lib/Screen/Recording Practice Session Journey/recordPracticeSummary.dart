@@ -461,7 +461,7 @@ class _practice_summaryState extends State<practice_summary> {
                                 height: AppDimensionsUpdated.height10(context) *
                                     0.12,
                                 fontSize:
-                                    AppDimensionsUpdated.font10(context) * 1.7,
+                                    AppDimensionsUpdated.font10(context) * 2,
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                                 fontFamily: 'Laila'),

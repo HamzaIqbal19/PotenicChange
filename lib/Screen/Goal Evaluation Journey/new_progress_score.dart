@@ -1769,13 +1769,13 @@ void evaluation_sheet(context) {
                               children: const [
                             TextSpan(
                                 text:
-                                    'It’s important to have clarity on the progress you’re making with your personal development goals.\n\nThis is why we’ve created a '),
+                                    'It’s important to have clarity on the progress you’re making with your goals.\n\nThis is why we’ve created a '),
                             TextSpan(
                                 text: 'Goal Level Evaluation ',
                                 style: TextStyle(fontWeight: FontWeight.w700)),
                             TextSpan(
                                 text:
-                                    'feature to help you assess your goal progress in relation to your original reasons for wanting to achieve it (remember the statements you had to complete during onboarding when creating your goal)? We use these statements for you to evaluate.\n\n'),
+                                    'feature to help you assess your progress in relation to your reasons for wanting to achieve it (remember the statements you had to complete during onboarding when creating your goal)? We use these statements for you to evaluate your progress.\n\n'),
                             TextSpan(
                                 text: 'Goal Level Evaluation ',
                                 style: TextStyle(fontWeight: FontWeight.w700)),
@@ -1787,13 +1787,13 @@ void evaluation_sheet(context) {
                                 style: TextStyle(fontWeight: FontWeight.w700)),
                             TextSpan(
                                 text:
-                                    'Have fun with it, but also make sure you’re honest with yourself. It’s totally ok to give yourself a low score if you feel you’re not making a considerable progress. This way, we can better support you.\n\nDepending on a goal, some take longer that others to achieve. What matters is the '),
+                                    'Have fun with it, but also make sure you’re honest with yourself. It’s totally ok to give yourself a low score if you feel you’re not making a progress yet.\n\nDepending on a goal: some take longer than others to achieve. What matters is the '),
                             TextSpan(
-                                text: 'daily practices ',
+                                text: 'daily rituals ',
                                 style: TextStyle(fontWeight: FontWeight.w700)),
                             TextSpan(
                                 text:
-                                    ' you perform that will eventually help you observe meaningful changes into your life.'),
+                                    'you perform that will eventually help you observe meaningful changes in your life.'),
                           ])),
                     ),
                     SizedBox(

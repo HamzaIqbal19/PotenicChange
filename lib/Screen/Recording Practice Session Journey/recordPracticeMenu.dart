@@ -18,6 +18,7 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session%20Journey/reco
 import 'package:potenic_app/Screen/Timeline%20Journey/timeline.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/appBarWidgets.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/Widgets/goalAndPracticeName.dart';
@@ -200,6 +201,7 @@ class _practiceMenuState extends State<practiceMenu> {
                   fit: BoxFit.contain,
                 )),
           ),
+          centerTitle: true,
           actions: [
             Buttons().closeButton(context, () {
               if (route == 'dashboard') {
@@ -224,6 +226,7 @@ class _practiceMenuState extends State<practiceMenu> {
               }
             })
           ],
+          title: appBarTitle(context, AppText().pracMenu,false)
         ),
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.transparent,
@@ -243,26 +246,12 @@ class _practiceMenuState extends State<practiceMenu> {
                         children: [
                           Container(
                             //width: AppDimensions.width10(context) * 30.4,
-                            height: AppDimensions.height10(context) * 18.2,
+
                             margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 6.2,
+                              top: AppDimensions.height10(context) * 11.0,
                             ),
                             child: Column(
                               children: [
-                                SizedBox(
-                                  height: AppDimensions.height10(context) * 2.4,
-                                  child: Text(
-                                    AppText().pracMenu,
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                0.12,
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.8,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                ),
                                 SizedBox(
                                   width: AppDimensions.width10(context) * 30,
                                   child: Center(
@@ -937,6 +926,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                       pracDetails[
                                                               'practiceEvaluations']
                                                           ['endDate']);
+
                                                   Navigator.push(
                                                       context,
                                                       FadePageRoute(
@@ -959,7 +949,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                 }
                                               },
                                               child: ButtonFields(
-                                                fieldText: 'Progress report',
+                                                fieldText: 'Practice report',
                                                 iconVisible: widget.goal_eval
                                                     ? true
                                                     : false,
@@ -1326,7 +1316,7 @@ void info_sheet(context) {
                       children: [
                         const TextSpan(
                             text:
-                                'For each practice, you can evaluate your last 20 active days, and asses it to see if it is working for you or not.\n\n'),
+                                'For each practice, you can evaluate your last 20 active days, and assess it to see if it is working for you or not.\n\n'),
                         const TextSpan(
                             text: 'Practice Assessment ',
                             style: TextStyle(
@@ -1335,20 +1325,20 @@ void info_sheet(context) {
                         const TextSpan(
                             text: 'is broken down into two main sections:\n\n'),
                         TextSpan(
-                            text: '1.Progress Report\n',
+                            text: '1.Practice Report\n',
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
                                 fontSize:
                                     AppDimensions.height10(context) * 1.8)),
                         const TextSpan(text: 'See your '),
                         const TextSpan(
-                            text: 'overall practice progress',
+                            text: 'overall monthly progress',
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                             )),
                         const TextSpan(
                             text:
-                                ', gain visibility on how your personal development journey is going and whether you’re making any progress to towards your goal.\n\n'),
+                                ', gain visibility on how your journey is going and whether you’re making any progress towards your goal.\n\n'),
                         TextSpan(
                             text: '2.Practice Score\n',
                             style: TextStyle(

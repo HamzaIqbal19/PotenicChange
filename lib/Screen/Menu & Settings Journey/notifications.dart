@@ -125,20 +125,20 @@ class _notificationsState extends State<notifications> {
           Navigator.pop(context);
         }),
         centerTitle: true,
-        title: SizedBox(
-          width: AppDimensions.width10(context) * 17.0,
-          height: AppDimensions.height10(context) * 4.8,
-          child: Center(
-            child: Text(
-              'Notifications',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: AppDimensions.font10(context) * 1.8,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
-            ),
-          ),
-        ),
+        // title: SizedBox(
+        //   width: AppDimensions.width10(context) * 17.0,
+        //   height: AppDimensions.height10(context) * 4.8,
+        //   child: Center(
+        //     child: Text(
+        //       'Notifications',
+        //       textAlign: TextAlign.center,
+        //       style: TextStyle(
+        //           fontSize: AppDimensions.font10(context) * 1.8,
+        //           fontWeight: FontWeight.w600,
+        //           color: Colors.white),
+        //     ),
+        //   ),
+        // ),
       ),
       body: Container(
         decoration: const BoxDecoration(

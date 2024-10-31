@@ -8,7 +8,6 @@ import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdle_se
 import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdle_statement.dart';
 import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdles_fellings.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
 import 'package:potenic_app/utils/app_link.dart';
 import 'package:potenic_app/utils/app_texts.dart';
@@ -75,27 +74,36 @@ class hurdles_splashState extends State<hurdles_splash> {
             elevation: 0,
             automaticallyImplyLeading: false,
             actions: [
-              Buttons().closeButton(context, () async {
-                Navigator.push(
-                    context,
-                    FadePageRouteReverse(
-                        page: const ViewDashboard(
-                      missed: false,
-                      name: '',
-                      update: false,
-                      helpfulTips: false,
-                      record: 0,
-                    )));
-                final SharedPreferences prefs = await _prefs;
-                await prefs.remove('HurdleRoute');
-                await prefs.remove('hurdleName');
-                await prefs.remove('NameHurdle');
-                await prefs.remove('hurdleStatement');
-                await prefs.remove('hurdleId');
-                await prefs.remove('selected_goals');
-                await prefs.remove('feelingsList');
-                await prefs.remove("hurdle_selected");
-              })
+              Center(
+                child: IconButton(
+                    onPressed: () async {
+                      Navigator.push(
+                          context,
+                          FadePageRouteReverse(
+                              page: const ViewDashboard(
+                            missed: false,
+                            name: '',
+                            update: false,
+                            helpfulTips: false,
+                            record: 0,
+                          )));
+                      final SharedPreferences prefs = await _prefs;
+                      await prefs.remove('HurdleRoute');
+                      await prefs.remove('hurdleName');
+                      await prefs.remove('NameHurdle');
+                      await prefs.remove('hurdleStatement');
+                      await prefs.remove('hurdleId');
+                      await prefs.remove('selected_goals');
+                      await prefs.remove('feelingsList');
+                      await prefs.remove("hurdle_selected");
+                    },
+                    icon: Image.asset(
+                      'assets/images/Close.webp',
+                      // width: AppDimensions.width10(context) * 2.6,
+                      height: AppDimensions.height10(context) * 2.6,
+                      fit: BoxFit.contain,
+                    )),
+              ),
             ]),
         body: Container(
             width: double.infinity,
@@ -132,11 +140,15 @@ class hurdles_splashState extends State<hurdles_splash> {
                               context,
                               AppText().hurdleBottomSheedTitle,
                               AppText().hurdleBottomSheedBody,
-                              AppLinks().hurdleTutorialLink);
+                              AppLinks().hurdleTutorialLink,(){},true);
                         },
                         child: Container(
-                            width: AppDimensions.width10(context) * 3.0,
-                            height: AppDimensions.height10(context) * 3.0,
+                            width:
+                            AppDimensions.width10(context) *
+                                3.0,
+                            height: AppDimensions.height10(
+                                context) *
+                                3.0,
                             decoration: const BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(

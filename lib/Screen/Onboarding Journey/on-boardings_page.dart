@@ -137,7 +137,7 @@ class OnboardingPageState extends State<OnboardingPage>
               style: TextStyle(
                 fontWeight: FontWeight.w600,
                 color: Colors.white,
-                fontSize: AppDimensions.font10(context) * 2.0,
+                fontSize: AppDimensions.font10(context) * 2.2,
               ),
             ),
           ),

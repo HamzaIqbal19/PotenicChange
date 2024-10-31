@@ -271,7 +271,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                             fontSize: AppDimensions.font10(context) * 2.0,
                           ),
                         )),
-                    // SizedBox(height: AppDimensions.height0),
+                     SizedBox(height: AppDimensions.height10(context)),
 
                     SizedBox(
                       // height: AppDimensions.height10(context) * 34,
@@ -876,7 +876,7 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                     style: TextStyle(
                                       color: const Color(0xFF8C648A),
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.8,
+                                          AppDimensions.font10(context) * 2,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),

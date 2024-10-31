@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
+import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/constants/videothumbnail.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
 
@@ -77,9 +77,18 @@ class _view_detailsState extends State<view_details> {
           appBar: AppBar(
               backgroundColor: Colors.transparent,
               elevation: 0,
-              leading: Buttons().backButton(context, () {
-                Navigator.pop(context);
-              })),
+              leading: Center(
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: Image.asset(
+                      'assets/images/Back.webp',
+                      // width: AppDimensions.width10(context) * 2.6,
+                      height: AppDimensions.height10(context) * 2.8,
+                      fit: BoxFit.contain,
+                    )),
+              )),
           body: Container(
             width: double.infinity,
             height: double.infinity,
@@ -100,7 +109,7 @@ class _view_detailsState extends State<view_details> {
                                         ['inspirationId'] ==
                                     3
                                 ? const AssetImage(
-                                    'assets/images/video_image.webp')
+                                    'assets/images/bg_inpiration_purple.webp')
                                 : const AssetImage(
                                     'assets/images/bg_inpiration_purple.webp'),
                             colorFilter: const ColorFilter.mode(
@@ -140,17 +149,50 @@ class _view_detailsState extends State<view_details> {
                             // width: AppDimensions.width10(context) * 41.4,
                             // margin: EdgeInsets.only(bottom: AppDimensions.height10(context) * 20.0),
                             height: AppDimensions.height10(context) * 44.5,
-                            decoration: const BoxDecoration(
+                            margin: EdgeInsets.all(
+                                AppDimensions.width10(context) * 2),
+                            decoration: BoxDecoration(
                                 image: DecorationImage(
-                                    image: AssetImage(
-                                        'assets/images/video_image.webp'),
-                                    fit: BoxFit.cover)),
+                              fit: BoxFit.contain,
+                              image: inspirationDetails['inspiration']
+                                          ['inspirationId'] ==
+                                      3
+                                  ? Videothumbnail().extractThumbnailUrl(
+                                              inspirationDetails['inspiration']
+                                                  ['destinationLink']) ==
+                                          ''
+                                      ? AssetImage('assets/images/video.webp')
+                                      : NetworkImage(Videothumbnail()
+                                              .extractThumbnailUrl(
+                                                  inspirationDetails['inspiration']
+                                                      ['destinationLink'])
+                                          as String) as ImageProvider
+                                  : const AssetImage(
+                                          'assets/images/bg_inpiration_purple.webp')
+                                      as ImageProvider,
+                              colorFilter: const ColorFilter.mode(
+                                  Color.fromRGBO(0, 0, 0, 1),
+                                  BlendMode.dstATop),
+                            )),
                             child: Center(
                               child: SizedBox(
                                 width: AppDimensions.width10(context) * 8.6,
                                 height: AppDimensions.height10(context) * 8.6,
-                                child: Image.asset(
-                                    'assets/images/play_button.webp'),
+                                child: inspirationDetails['inspiration']
+                                            ['inspirationId'] ==
+                                        3
+                                    ? Videothumbnail().extractThumbnailUrl(
+                                                inspirationDetails[
+                                                        'inspiration']
+                                                    ['destinationLink']) ==
+                                            ''
+                                        ? Container()
+                                        : Image.asset(
+                                            'assets/images/videoicon.png',
+                                          )
+                                    : SizedBox(),
+                                // child: Image.asset(
+                                //     'assets/images/play_button.webp'),
                               ),
                             ),
                           ),

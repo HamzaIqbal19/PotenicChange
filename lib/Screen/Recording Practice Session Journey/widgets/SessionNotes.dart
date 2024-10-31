@@ -35,6 +35,7 @@ class _addNotesState extends State<addNotes> {
             children: [
               TextFormField(
                 controller: widget.controller,
+                keyboardType: TextInputType.text,
                 maxLength: 150,
                 maxLines: null,
                 minLines: null,

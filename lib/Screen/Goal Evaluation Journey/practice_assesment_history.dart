@@ -211,8 +211,8 @@ class _practice_assesmentState extends State<practice_assesment> {
                                   Align(
                                     alignment: const Alignment(0, -1),
                                     child: SizedBox(
-                                      width:
-                                          AppDimensions.width10(context) * 36.0,
+                                      // width:
+                                      //     AppDimensions.width10(context) * 36.0,
                                       height: AppDimensions.height10(context) *
                                           24.7,
                                       child: Column(
@@ -345,7 +345,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                                                           1.2),
                                                   child: ButtonFields(
                                                     fieldText:
-                                                        'Progress report',
+                                                        'Practice report',
                                                     premium: true,
                                                     iconVisible: true,
                                                     textColor: 0xff646464,

@@ -17,6 +17,7 @@ import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 
 import '../../utils/app_dimensions.dart';
+import '../Capture Inspiration Journey/Widgets/updateBox.dart';
 import '../Capture Inspiration Journey/inpiration_landing.dart';
 
 class prac_score extends StatefulWidget {
@@ -367,7 +368,7 @@ class _prac_scoreState extends State<prac_score> {
                         children: [
                           Container(
                             width: AppDimensions.width10(context) * 36.5,
-                            height: AppDimensions.height10(context) * 48.2,
+                           // height: AppDimensions.height10(context) * 48.2,
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 2.4),
                             decoration: BoxDecoration(
@@ -383,10 +384,11 @@ class _prac_scoreState extends State<prac_score> {
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 Container(
                                   width: AppDimensions.width10(context) * 30.1,
-                                  height: AppDimensions.height10(context) * 3.6,
+                                  //height: AppDimensions.height10(context) * 3.6,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
                                           7.1),
@@ -419,7 +421,7 @@ class _prac_scoreState extends State<prac_score> {
                                 ),
                                 Container(
                                   width: AppDimensions.width10(context) * 32.1,
-                                  height: AppDimensions.height10(context) * 1.9,
+                                 // height: AppDimensions.height10(context) * 1.9,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
                                           1.3),
@@ -428,7 +430,7 @@ class _prac_scoreState extends State<prac_score> {
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.6,
+                                            AppDimensions.font10(context) * 1.8,
                                         fontWeight: FontWeight.w500,
                                         color: const Color(0xFFFFFFFF)),
                                   ),
@@ -453,9 +455,7 @@ class _prac_scoreState extends State<prac_score> {
                                       SizedBox(
                                         width: AppDimensions.width10(context) *
                                             3.4,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                1.6,
+
                                         child: Text(
                                           'Level',
                                           textAlign: TextAlign.center,
@@ -470,9 +470,6 @@ class _prac_scoreState extends State<prac_score> {
                                       SizedBox(
                                         width: AppDimensions.width10(context) *
                                             3.2,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                3.7,
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
@@ -509,7 +506,7 @@ class _prac_scoreState extends State<prac_score> {
                                 ),
                                 Container(
                                   width: AppDimensions.width10(context) * 28.8,
-                                  height: AppDimensions.height10(context) * 4.5,
+                                 // height: AppDimensions.height10(context) * 4.5,
                                   alignment: Alignment.topCenter,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
@@ -562,7 +559,7 @@ class _prac_scoreState extends State<prac_score> {
                                 ),
                                 Container(
                                   width: AppDimensions.width10(context) * 37.0,
-                                  height: AppDimensions.height10(context) * 5.3,
+                                 // height: AppDimensions.height10(context) * 5.3,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
                                           1.3),
@@ -784,7 +781,7 @@ class _prac_scoreState extends State<prac_score> {
                                 ),
                                 Container(
                                   width: AppDimensions.width10(context) * 37.0,
-                                  height: AppDimensions.height10(context) * 5.3,
+                                  //height: AppDimensions.height10(context) * 5.3,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
                                           1.3),
@@ -1249,7 +1246,7 @@ class _prac_scoreState extends State<prac_score> {
                                 ),
                                 Container(
                                   width: AppDimensions.width10(context) * 37.0,
-                                  height: AppDimensions.height10(context) * 6.8,
+                                 // height: AppDimensions.height10(context) * 6.8,
                                   margin: EdgeInsets.only(
                                       top: AppDimensions.height10(context) *
                                           1.3),
@@ -1503,7 +1500,7 @@ class _prac_scoreState extends State<prac_score> {
                                             style: TextStyle(
                                                 fontSize: AppDimensions.font10(
                                                         context) *
-                                                    1.6,
+                                                    2,
                                                 fontWeight: FontWeight.w600,
                                                 color: selectedItemIndex >= 0 ||
                                                         selectedItemIndex2 >=
@@ -1556,7 +1553,7 @@ class _prac_scoreState extends State<prac_score> {
                                             style: TextStyle(
                                                 fontSize: AppDimensions.font10(
                                                         context) *
-                                                    1.6,
+                                                    2,
                                                 fontWeight: FontWeight.w600,
                                                 color: selectedItemIndex >= 0 ||
                                                         selectedItemIndex2 >=
@@ -1904,7 +1901,7 @@ class _prac_scoreState extends State<prac_score> {
                                             style: TextStyle(
                                                 fontSize: AppDimensions
                                                         .height10(context) *
-                                                    1.6,
+                                                    2.0,
                                                 fontWeight: FontWeight.w600,
                                                 color: selectedItemIndex >= 0 &&
                                                             selectedItemIndex2 >=
@@ -2047,13 +2044,13 @@ void enjoyment(context) {
                             style: TextStyle(fontWeight: FontWeight.w700)),
                         TextSpan(
                             text:
-                                "can mean different things for different people depending on time, environment and context.\n\nFor Potenic and this question specifically,"),
+                                " mean different things for different people depending on time, environment and context.\n\nFor Potenic ,"),
                         TextSpan(
                             text: ' ‘enjoyment’ ',
                             style: TextStyle(fontWeight: FontWeight.w700)),
                         TextSpan(
                             text:
-                                "means few things:\n\n1. Feeling empowered\n2. Being in control\n3. Making progress\n4. Having choice\n5. Having freedom\n\nWhen you evaluate your practice for this question, just bear this in mind to help you :)")
+                                "means few things:\n\n1. Having an “I can do it” attitude\n2. Believing in yourself\n3. Making a progress\n4. Having a choice\n5. Having a freedom\n\nWhen you evaluate your practice for this question, just bear this in mind:)")
                       ]))),
             ],
           )),

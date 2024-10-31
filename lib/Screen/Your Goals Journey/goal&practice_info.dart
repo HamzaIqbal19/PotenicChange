@@ -359,7 +359,7 @@ void prac_info_sheet(context) {
                       children: const [
                         TextSpan(
                           text:
-                              'This is a place to view your goals and their practices. You can view all your ',
+                              'This is a place to view your goals and practices. You can view all your ',
                         ),
                         TextSpan(
                             text: 'active goals',
@@ -370,7 +370,7 @@ void prac_info_sheet(context) {
                             text:
                                 ' that you’re currently working on and also check your '),
                         TextSpan(
-                            text: 'inactive goals',
+                            text: 'inactive goals ',
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                             )),
@@ -389,7 +389,7 @@ void prac_info_sheet(context) {
                             style: TextStyle(
                               fontWeight: FontWeight.w700,
                             )),
-                        TextSpan(text: ' by checking their '),
+                        TextSpan(text: ' by checking their'),
                         TextSpan(
                             text: ' status',
                             style: TextStyle(
@@ -397,7 +397,7 @@ void prac_info_sheet(context) {
                             )),
                         TextSpan(
                             text:
-                                '. If you click on a goal panel window it will take you to a menu, where you can further manage your goal status and practices assigned to it.'),
+                                '. Click on it to manage your goal status and practices assigned to it.'),
                         TextSpan(text: '\n\nIf your '),
                         TextSpan(
                             text: 'goal is active',

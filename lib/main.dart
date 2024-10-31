@@ -32,8 +32,8 @@ Future<void> main(context) async {
       "pk_test_51MP8GqRkeqntfFwkc7SudCslwib67ICcq4Oot6G6MvZ0fm3Gra2eEADbWba05wnSFvEBozpb47Q3db0l0G8eiary006dzhKTBs";
 
   //Load our .env file that contains our Stripe Secret key
-  await dotenv.load(fileName: "assets/.env");
   await Firebase.initializeApp();
+  await dotenv.load(fileName: "assets/.env");
   final notificationSettings =
       await FirebaseMessaging.instance.requestPermission(provisional: true);
   await FirebaseMessaging.instance.setAutoInitEnabled(true);
@@ -89,6 +89,7 @@ class MyApp extends StatelessWidget with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     bool smallScreen = MediaQuery.of(context).size.height < 690;
     final notificationController controller = Get.put(notificationController());
+
     return ScreenUtilInit(
         designSize: const Size(360, 660),
         minTextAdapt: true,

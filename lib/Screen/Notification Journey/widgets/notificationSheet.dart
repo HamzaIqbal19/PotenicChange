@@ -84,16 +84,16 @@ void notificationsSheet(context) {
                     ),
                   ),
                   Container(
-                    width: AppDimensions.width10(context) * 38.2,
-                    height: AppDimensions.height10(context) * 5.7,
+                   // width: AppDimensions.width10(context) * 38.2,
+                    //height: AppDimensions.height10(context) * 5.7,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.1),
                     child: Center(
                       child: Text(
-                        'In order to build consistent behaviour,\nallow us to gently nudge you to remind you to do\nyour practices and offer helpful tips.',
+                        "To build consistent behaviour would you\nlike to receive gentle reminders from us?",
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.4,
+                            fontSize: AppDimensions.font10(context) * 1.9,
                             height: AppDimensions.height10(context) * 0.15,
                             //letterSpacing: AppDimensions.height10(context) * 0.2,
                             fontWeight: FontWeight.w400,
@@ -103,7 +103,7 @@ void notificationsSheet(context) {
                   ),
                   Container(
                     width: AppDimensions.width10(context) * 38.2,
-                    height: AppDimensions.height10(context) * 21.0,
+                    //height: AppDimensions.height10(context) * 21.0,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.6),
                     decoration: BoxDecoration(
@@ -118,6 +118,7 @@ void notificationsSheet(context) {
                           Color(0xFFEF939D)
                         ])),
                     child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Container(
                           margin: EdgeInsets.only(
@@ -129,16 +130,16 @@ void notificationsSheet(context) {
                           ),
                         ),
                         Container(
-                          width: AppDimensions.width10(context) * 34.5,
-                          height: AppDimensions.height10(context) * 5.1,
+                         // width: AppDimensions.width10(context) * 34.5,
+                         // height: AppDimensions.height10(context) * 5.1,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.4),
                           child: Center(
                               child: Text(
-                            'We will check in with you to remind you about your\npractices. You would be able to customise your\nnotifications later in your Account Settings. ',
+                            'You would be able to customise your\nnotifications later in your Account Settings.',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 1.4,
+                                fontSize: AppDimensions.font10(context) * 1.9,
                                 height: AppDimensions.height10(context) * 0.15,
                                 //letterSpacing: AppDimensions.height10(context) * 0.2,
                                 fontWeight: FontWeight.w400,
@@ -154,7 +155,8 @@ void notificationsSheet(context) {
                             width: AppDimensions.width10(context) * 34.3,
                             height: AppDimensions.height10(context) * 5.0,
                             margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 1.7),
+                                top: AppDimensions.height10(context) * 1.7,
+                                bottom: AppDimensions.height10(context) * 1.7),
                             decoration: BoxDecoration(
                                 border: Border.all(
                                     width: AppDimensions.width10(context) * 0.1,
@@ -173,7 +175,7 @@ void notificationsSheet(context) {
                                 'Yes, remind Me',
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.6,
+                                        AppDimensions.font10(context) * 2,
                                     //  height: AppDimensions.height10(context) * 0.12,
                                     //letterSpacing: AppDimensions.height10(context) * 0.2,
                                     fontWeight: FontWeight.w600,
@@ -289,7 +291,7 @@ void seeMoreSheet(context, data, final VoidCallback tap1) {
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.8,
+                            fontSize: AppDimensions.font10(context) * 2,
                             height: AppDimensions.height10(context) * 0.15,
                             //letterSpacing: AppDimensions.height10(context) * 0.2,
                             fontWeight: FontWeight.w600,
@@ -309,7 +311,7 @@ void seeMoreSheet(context, data, final VoidCallback tap1) {
                       Text(
                         capitalizeFirstLetter(data["body"]),
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.8,
                             height: AppDimensions.height10(context) * 0.15,
                             //letterSpacing: AppDimensions.height10(context) * 0.2,
                             fontWeight: FontWeight.w400,
@@ -328,7 +330,7 @@ void seeMoreSheet(context, data, final VoidCallback tap1) {
                                 AppDimensionsUpdated.height10(context) * 5,
                                 AppDimensionsUpdated.width10(context) * 29.5,
                                 routeName(data["data"]["route"]),
-                                AppDimensionsUpdated.font10(context) * 1.6,
+                                AppDimensionsUpdated.font10(context) * 2,
                                 const Color(0xFFFCC10D),
                                 const Color(0xFFFDA210),
                                 false),

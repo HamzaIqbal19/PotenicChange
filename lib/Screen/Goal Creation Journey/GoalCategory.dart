@@ -6,6 +6,7 @@ import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:potenic_app/Screen/Goal%20Creation%20Journey/GoalName.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
+import 'package:potenic_app/Widgets/appBarWidgets.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -204,14 +205,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                 centerTitle: true,
                 backgroundColor: Colors.transparent,
                 automaticallyImplyLeading: false,
-                title: Text(
-                  loading ? '' : AppText().starCreate2,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                    fontSize: AppDimensions.font10(context) * 1.8,
-                  ),
-                ),
+                title: appBarTitle(context,loading?'': AppText().starCreate2,false),
                 leading: Buttons().backButton(context, () {
                   Navigator.pop(context);
                 }),
@@ -436,6 +430,7 @@ class _GoalCategoryState extends State<GoalCategory> {
                                       controller: _searchController,
                                       textCapitalization: TextCapitalization
                                           .sentences,
+                                      keyboardType: TextInputType.text,
                                       onChanged: (value) {
                                         setState(() {
                                           searchText = value;

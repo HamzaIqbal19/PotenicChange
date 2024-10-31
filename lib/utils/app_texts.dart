@@ -2,7 +2,7 @@ class AppText {
   //HomeScreen
   String homeScreenTitle = 'Your Destiny is at \n Your Fingertips';
   String homeScreenSubText =
-      'Time waits for no one. The best time to \n start is TODAY. Begin creating your \n star followed by a plan to help you \n achieve your goal.';
+      'Time waits for no one. The best time to\nstart is TODAY. Begin creating your\ngoal followed by a plan to help you\nachieve it.';
 
   //Authentication
   String welcomeText = 'Welcome to Potenic';
@@ -108,7 +108,7 @@ class AppText {
   String reviewCont = "Please review and continue ";
   String activateStar = "Activate your goal ";
   String activateStarBody =
-      "I desire to grow and improve my identity. By activating my goal, I will be able to evaluate my chosen practice every 20 active days and evaluate my active goal progress monthly. ";
+      "I desire to grow and improve my identity. By activating my goal, I will be able to evaluate my practice every 20 active days and assess my goal progress monthly. ";
   String activateStarFoot = "To begin your journey\npress and hold here  ";
 
   //Recording Practice Session
@@ -133,7 +133,7 @@ class AppText {
   String noPlannedBody = 'There are no scheduled\npractices for this date.';
   String dashboardTitle = 'Welcome to\nyour Dashboard';
   String dashboardBody =
-      'This is a one-stop place to manage your personal development journey. From Dashboard, you can quickly navigate to your goals, view your practices, record hurdles and inspirations.\n\nHave a tour of what’s available to you and how you can access the tools that are important to your personal growth.\n\nWe look forward to supporting you. Enjoy your journey :)';
+      'This is a one-stop place to manage your ritual building journey. From Dashboard, you can quickly navigate to your goals, view your practices, record hurdles and inspirations.\n\nHave a tour of what’s available to you and how you can access the tools that are important to your personal growth.\n\nWe look forward to supporting you. Enjoy your journey :)';
 
   //Hurdle
 
@@ -201,9 +201,9 @@ class AppText {
   String answer3 =
       'Yes you can by going into your Account Settings. Remember to cancel your subscription plan no earlier than 3 working days before your plan is due to renew.';
   String answer4 =
-      'If you stay on our free Empowered Starter plan, you get it for lifetime. No subscription fees, it’s yours to own :)\n\nFor a more personalised experience and clarity on your growth progress towards self-fulfilment, we recommend you upgrade to our Ownership Plan (if you’re serious about your personal growth).';
+      'If you stay on our free Empowered Starter plan, you get it for lifetime. No subscription fees, it’s yours to own :)';
   String answer5 =
-      'As soon as you start a trial, your account is due to upgrade on day 6, at which point we will charge you a monthly or yearly upgrade fee. You will receive daily reminders from us when the trial is due to expiry, so you can decide if you wish to proceed with upgrade or, remain on our Empowered Starter plan. If you don’t cancel your trial, you will automatically be charged. The choice is yours.';
+      'As soon as you start a trial, your account is due to an upgrade on day 6, at which point we will charge you a monthly or an yearly upgrade fee. You will receive daily reminders from us when the trial is due to expire, so you can decide if you wish to proceed with upgrade or, remain on our Empowered Starter plan. If you don’t cancel your trial, you will automatically be charged. The choice is yours.';
 
   String contactUsHeading = 'Contact Us';
   String contactUsBody = 'Your Personalised Journey To Better Self Starts Here';

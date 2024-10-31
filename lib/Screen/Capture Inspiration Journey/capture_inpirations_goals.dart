@@ -13,8 +13,8 @@ import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inspiration_t
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inspiration_type/photo_acess.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inspiration_type/video_access.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inspiratoinEdit/photoEdit.dart';
+import 'package:potenic_app/Widgets/alertbox.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -23,6 +23,7 @@ import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
 import 'inpiration_motivation.dart';
 import 'inpiration_veiw_detail.dart';
+
 import 'inspiratoinEdit/videoEdit.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -77,6 +78,155 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
   List multiGoals = [];
   List allgoalsSelected = [];
   bool selectAll = false;
+
+  // alertDialog() {
+  //   return showAnimatedDialog(
+  //       animationType: DialogTransitionType.fadeScale,
+  //       curve: Curves.easeInOut,
+  //       duration: const Duration(seconds: 1),
+  //       context: context,
+  //       builder: (BuildContext context) => SizedBox(
+  //             width: AppDimensions.width10(context) * 27.0,
+  //             height: AppDimensions.height10(context) * 24.0,
+  //             child: AlertDialog(
+  //               shape: RoundedRectangleBorder(
+  //                   borderRadius: BorderRadius.circular(
+  //                       AppDimensions.height10(context) * 1.4)),
+  //               contentPadding: EdgeInsets.zero,
+  //               actionsPadding: EdgeInsets.zero,
+  //               titlePadding: EdgeInsets.zero,
+  //               title: Container(
+  //                 margin: const EdgeInsets.only(
+  //                     top: 19, right: 16, left: 16, bottom: 2),
+  //                 // height:
+  //                 //     AppDimensions.height10(context) * 2.2,
+  //                 width: AppDimensions.width10(context) * 23.8,
+  //                 child: const Text(
+  //                   "Exit Inspiration?",
+  //                   textAlign: TextAlign.center,
+  //                   style: TextStyle(
+  //                     fontSize: 17,
+  //                     fontWeight: FontWeight.w400,
+  //                   ),
+  //                 ),
+  //               ),
+  //               content: Container(
+  //                 margin:
+  //                     const EdgeInsets.only(bottom: 19, left: 16, right: 16),
+  //                 // height:
+  //                 //     AppDimensions.height10(context) * 1.6,
+  //                 width: 238,
+  //                 child: const Text(
+  //                   "Please select from the options below",
+  //                   textAlign: TextAlign.center,
+  //                   style: TextStyle(
+  //                     fontSize: 13,
+  //                     fontWeight: FontWeight.w400,
+  //                   ),
+  //                 ),
+  //               ),
+  //               actions: <Widget>[
+  //                 Column(
+  //                   children: [
+  //                     SizedBox(
+  //                       height: AppDimensions.height10(context) * 0.1,
+  //                       child: Divider(
+  //                         color: const Color(0XFF3C3C43).withOpacity(0.29),
+  //                       ),
+  //                     ),
+  //                     SizedBox(
+  //                       height: 44,
+  //                       width: double.infinity,
+  //                       child: TextButton(
+  //                         onPressed: () async {
+  //                           InspirationApi()
+  //                               .checkUserInspiration()
+  //                               .then((response) async {
+  //                                 if (response == true) {
+  //                                   Navigator.push(
+  //                                       context,
+  //                                       FadePageRouteReverse(
+  //                                           page: const inspiration_landing(
+  //                                               is_Updated: false)));
+  //                                   selectedInActiveIndices.clear();
+  //                                   selectedIndices.clear();
+  //                                   selectedGoals.clear();
+  //                                   multiGoals.clear();
+  //                                   allgoalsSelected.clear();
+  //                                   setState(() {
+  //                                     selectAll = false;
+  //                                   });
+  //                                   final SharedPreferences prefs =
+  //                                       await _prefs;
+  //                                   await prefs
+  //                                       .remove('inspiration_saved_route');
+  //                                 } else if (response == false) {
+  //                                   Navigator.push(
+  //                                       context,
+  //                                       FadePageRouteReverse(
+  //                                           page: const inspiration_motivation(
+  //                                         goal_delete: false,
+  //                                         inspirationName: '',
+  //                                       )));
+  //                                   final SharedPreferences prefs =
+  //                                       await _prefs;
+  //                                   await prefs
+  //                                       .remove('inspiration_saved_route');
+  //                                   selectedInActiveIndices.clear();
+  //                                   selectedIndices.clear();
+  //                                   selectedGoals.clear();
+  //                                   multiGoals.clear();
+  //                                   allgoalsSelected.clear();
+  //                                   setState(() {
+  //                                     selectAll = false;
+  //                                   });
+  //                                 }
+  //                               })
+  //                               .catchError((error) {})
+  //                               .whenComplete(() {});
+  //                         },
+  //                         child: const Text(
+  //                           'Exit & delete progress',
+  //                           style: TextStyle(
+  //                               fontSize: 17,
+  //                               fontFamily: "Laila",
+  //                               fontWeight: FontWeight.w400,
+  //                               color: Color(0xFF007AFF)),
+  //                         ),
+  //                       ),
+  //                     ),
+  //                     SizedBox(
+  //                       height: AppDimensions.height10(context) * 0.1,
+  //                       child: Divider(
+  //                         color: const Color(0XFF3C3C43).withOpacity(0.29),
+  //                       ),
+  //                     ),
+  //                     Container(
+  //                       height: 42,
+  //                       width: double.infinity,
+  //                       margin: EdgeInsets.only(
+  //                           bottom: AppDimensions.height10(context) * 1.0),
+  //                       // color: Colors.white,
+  //                       child: TextButton(
+  //                         onPressed: () {
+  //                           Navigator.pop(context);
+  //                         },
+  //                         child: const Text(
+  //                           'Cancel exit',
+  //                           style: TextStyle(
+  //                               color: Color(0xFF007AFF),
+  //                               fontSize: 17,
+  //                               fontFamily: "Laila",
+  //                               fontWeight: FontWeight.w400),
+  //                         ),
+  //                       ),
+  //                     ),
+  //                   ],
+  //                 ),
+  //               ],
+  //             ),
+  //           ));
+  // }
 
   void _fetchUserGoal() {
     AdminGoal.getUserGoalByUserId().then((response) {
@@ -211,11 +361,59 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
     return WillPopScope(
       onWillPop: () {
         widget.route == 'landing'
-            ? Navigator.push(
+            ? AlertBox().alertDialog(
                 context,
-                FadePageRouteReverse(
-                    page: const inspiration_landing(is_Updated: false)),
+                "Inspiration?",
+                () async {
+                  InspirationApi()
+                      .checkUserInspiration()
+                      .then((response) async {
+                        if (response == true) {
+                          Navigator.push(
+                              context,
+                              FadePageRouteReverse(
+                                  page: const inspiration_landing(
+                                      is_Updated: false)));
+                          selectedInActiveIndices.clear();
+                          selectedIndices.clear();
+                          selectedGoals.clear();
+                          multiGoals.clear();
+                          allgoalsSelected.clear();
+                          setState(() {
+                            selectAll = false;
+                          });
+                          final SharedPreferences prefs = await _prefs;
+                          await prefs.remove('inspiration_saved_route');
+                        } else if (response == false) {
+                          Navigator.push(
+                              context,
+                              FadePageRouteReverse(
+                                  page: const inspiration_motivation(
+                                goal_delete: false,
+                                inspirationName: '',
+                              )));
+                          final SharedPreferences prefs = await _prefs;
+                          await prefs.remove('inspiration_saved_route');
+                          selectedInActiveIndices.clear();
+                          selectedIndices.clear();
+                          selectedGoals.clear();
+                          multiGoals.clear();
+                          allgoalsSelected.clear();
+                          setState(() {
+                            selectAll = false;
+                          });
+                        }
+                      })
+                      .catchError((error) {})
+                      .whenComplete(() {});
+                },
               )
+
+            // Navigator.push(
+            //     context,
+            //     FadePageRouteReverse(
+            //         page: const inspiration_landing(is_Updated: false)),
+            //   )
             : Navigator.pop(context);
         return Future.value(false);
       },
@@ -287,11 +485,11 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             context,
                                             FadePageRoute(
                                                 page: const photo_info(
-                                              edit_details: false,
-                                              image_detals: false,
-                                              image_save: false,
-                                              image_create: false,
-                                            )),
+                                                    // edit_details: false,
+                                                    // image_detals: false,
+                                                    // image_save: false,
+                                                    // image_create: false,
+                                                    )),
                                           )
                                         : widget.route == 'video_create'
                                             ? Navigator.push(
@@ -300,38 +498,38 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                     page: const video_info(
                                                         link_state: false)),
                                               )
-                                            : widget.route == 'note_create'
+                                            // : widget.route == 'note_create'
+                                            //     ?
+                                            //     Navigator.push(
+                                            //         context,
+                                            //         FadePageRoute(
+                                            //             page: const note_info(
+                                            //           note_saved: true,
+                                            //           type_switch: 1,
+                                            //         )),
+                                            //       )
+                                            : widget.route == 'note_saved'
                                                 ? Navigator.push(
                                                     context,
                                                     FadePageRoute(
-                                                        page: const note_info(
-                                                      note_saved: true,
-                                                      type_switch: 1,
-                                                    )),
+                                                        page:
+                                                            const noteSaved()),
                                                   )
-                                                : widget.route == 'note_saved'
+                                                : widget.route == 'note_link'
                                                     ? Navigator.push(
                                                         context,
                                                         FadePageRoute(
                                                             page:
-                                                                const noteSaved()),
+                                                                const link_info(
+                                                          link_state: false,
+                                                        )),
                                                       )
-                                                    : widget.route ==
-                                                            'note_link'
-                                                        ? Navigator.push(
-                                                            context,
-                                                            FadePageRoute(
-                                                                page:
-                                                                    const link_info(
-                                                              link_state: false,
-                                                            )),
-                                                          )
-                                                        : Navigator.push(
-                                                            context,
-                                                            FadePageRoute(
-                                                                page:
-                                                                    const inspiration_type()),
-                                                          );
+                                                    : Navigator.push(
+                                                        context,
+                                                        FadePageRoute(
+                                                            page:
+                                                                const inspiration_type()),
+                                                      );
                                   } else {
                                     saveGoalsToSharedPreferences(multiGoals);
 
@@ -340,11 +538,11 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             context,
                                             FadePageRoute(
                                                 page: const photo_info(
-                                              edit_details: false,
-                                              image_detals: true,
-                                              image_save: false,
-                                              image_create: false,
-                                            )),
+                                                    // edit_details: false,
+                                                    // image_detals: true,
+                                                    // image_save: false,
+                                                    // image_create: false,
+                                                    )),
                                           )
                                         : widget.route == 'video_create'
                                             ? Navigator.push(
@@ -354,65 +552,60 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                   link_state: false,
                                                 )),
                                               )
-                                            : widget.route == 'note_create'
+                                            // widget.route == 'note_create'
+                                            //     ? Navigator.push(
+                                            //         context,
+                                            //         FadePageRoute(
+                                            //             page: const note_info(
+                                            //           note_saved: true,
+                                            //           type_switch: 1,
+                                            //         )),
+                                            //       )
+                                            //     :
+                                            : widget.route == 'note_saved'
                                                 ? Navigator.push(
                                                     context,
                                                     FadePageRoute(
-                                                        page: const note_info(
-                                                      note_saved: true,
-                                                      type_switch: 1,
-                                                    )),
+                                                        page:
+                                                            const noteSaved()),
                                                   )
-                                                : widget.route == 'note_saved'
+                                                : widget.route == 'note_link'
                                                     ? Navigator.push(
                                                         context,
                                                         FadePageRoute(
                                                             page:
-                                                                const noteSaved()),
+                                                                const link_info(
+                                                          link_state: false,
+                                                        )),
                                                       )
-                                                    : widget.route ==
-                                                            'note_link'
+                                                    : widget.route == 'edit'
                                                         ? Navigator.push(
                                                             context,
                                                             FadePageRoute(
-                                                                page:
-                                                                    const link_info(
-                                                              link_state: false,
+                                                                page: videoEdit(
+                                                              note: widget.note,
+                                                              context: widget
+                                                                  .context,
+                                                              updateData: true,
                                                             )),
                                                           )
-                                                        : widget.route == 'edit'
+                                                        : widget.route ==
+                                                                'photo_edit'
                                                             ? Navigator.push(
                                                                 context,
                                                                 FadePageRoute(
                                                                     page:
-                                                                        videoEdit(
-                                                                  note: widget
-                                                                      .note,
-                                                                  context: widget
-                                                                      .context,
+                                                                        const photo_Edit(
                                                                   updateData:
                                                                       true,
                                                                 )),
                                                               )
-                                                            : widget.route ==
-                                                                    'photo_edit'
-                                                                ? Navigator
-                                                                    .push(
-                                                                    context,
-                                                                    FadePageRoute(
-                                                                        page:
-                                                                            const photo_Edit(
-                                                                      updateData:
-                                                                          true,
-                                                                    )),
-                                                                  )
-                                                                : Navigator
-                                                                    .push(
-                                                                    context,
-                                                                    FadePageRoute(
-                                                                        page:
-                                                                            const inspiration_type()),
-                                                                  );
+                                                            : Navigator.push(
+                                                                context,
+                                                                FadePageRoute(
+                                                                    page:
+                                                                        const inspiration_type()),
+                                                              );
                                   }
                                 }
                               },
@@ -465,11 +658,11 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                   context,
                                   FadePageRoute(
                                       page: const photo_info(
-                                    edit_details: false,
-                                    image_detals: false,
-                                    image_save: false,
-                                    image_create: false,
-                                  )),
+                                          // edit_details: false,
+                                          // image_detals: false,
+                                          // image_save: false,
+                                          // image_create: false,
+                                          )),
                                 )
                               : widget.route == 'video_create'
                                   ? Navigator.push(
@@ -478,16 +671,104 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                           page: const video_info(
                                               link_state: false)),
                                     )
-                                  : widget.route == 'note_create'
+                                  :
+                                  // widget.route == 'note_create'
+                                  //     ? Navigator.push(
+                                  //         context,
+                                  //         FadePageRoute(
+                                  //             page: const note_info(
+                                  //           note_saved: true,
+                                  //           type_switch: 1,
+                                  //         )),
+                                  //       )
+                                  //     :
+                                  widget.route == 'note_saved'
                                       ? Navigator.push(
                                           context,
                                           FadePageRoute(
-                                              page: const note_info(
-                                            note_saved: true,
-                                            type_switch: 1,
+                                              page: const photo_Edit(
+                                            updateData: true,
                                           )),
                                         )
-                                      : widget.route == 'note_saved'
+                                      : widget.route == 'note_saved_video'
+                                          ? Navigator.push(
+                                              context,
+                                              FadePageRoute(
+                                                  page: videoEdit(
+                                                note: widget.note,
+                                                context: widget.context,
+                                                updateData: true,
+                                              )),
+                                            )
+                                          : widget.route == 'edit'
+                                              ? Navigator.push(
+                                                  context,
+                                                  FadePageRoute(
+                                                      page: videoEdit(
+                                                    context: widget.context,
+                                                    note: widget.note,
+                                                    updateData: true,
+                                                  )),
+                                                )
+                                              : widget.route == 'note_link'
+                                                  ? Navigator.push(
+                                                      context,
+                                                      FadePageRoute(
+                                                          page: const link_info(
+                                                        link_state: false,
+                                                      )),
+                                                    )
+                                                  : widget.route == 'details'
+                                                      ? Navigator.push(
+                                                          context,
+                                                          FadePageRoute(
+                                                              page:
+                                                                  const view_details()),
+                                                        )
+                                                      : Navigator.push(
+                                                          context,
+                                                          FadePageRoute(
+                                                              page:
+                                                                  const inspiration_type()),
+                                                        );
+                        } else {
+                          saveGoalsToSharedPreferences(multiGoals);
+
+                          widget.route == 'photo_create'
+                              ? Navigator.push(
+                                  context,
+                                  FadePageRoute(
+                                      page: const photo_info(
+                                          // edit_details: false,
+                                          // image_detals: false,
+                                          // image_save: false,
+                                          // image_create: false,
+                                          )),
+                                )
+                              : widget.route == 'details'
+                                  ? Navigator.push(
+                                      context,
+                                      FadePageRoute(page: const view_details()),
+                                    )
+                                  : widget.route == 'video_create'
+                                      ? Navigator.push(
+                                          context,
+                                          FadePageRoute(
+                                              page: const video_info(
+                                                  link_state: false)),
+                                        )
+                                      :
+                                      //  widget.route == 'note_create'
+                                      //     ? Navigator.push(
+                                      //         context,
+                                      //         FadePageRoute(
+                                      //             page: const note_info(
+                                      //           note_saved: true,
+                                      //           type_switch: 1,
+                                      //         )),
+                                      //       )
+                                      //     :
+                                      widget.route == 'note_saved'
                                           ? Navigator.push(
                                               context,
                                               FadePageRoute(
@@ -505,108 +786,20 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                     updateData: true,
                                                   )),
                                                 )
-                                              : widget.route == 'edit'
+                                              : widget.route == 'note_link'
                                                   ? Navigator.push(
                                                       context,
                                                       FadePageRoute(
-                                                          page: videoEdit(
-                                                        context: widget.context,
-                                                        note: widget.note,
-                                                        updateData: true,
+                                                          page: const link_info(
+                                                        link_state: false,
                                                       )),
                                                     )
-                                                  : widget.route == 'note_link'
-                                                      ? Navigator.push(
-                                                          context,
-                                                          FadePageRoute(
-                                                              page:
-                                                                  const link_info(
-                                                            link_state: false,
-                                                          )),
-                                                        )
-                                                      : widget.route ==
-                                                              'details'
-                                                          ? Navigator.push(
-                                                              context,
-                                                              FadePageRoute(
-                                                                  page:
-                                                                      const view_details()),
-                                                            )
-                                                          : Navigator.push(
-                                                              context,
-                                                              FadePageRoute(
-                                                                  page:
-                                                                      const inspiration_type()),
-                                                            );
-                        } else {
-                          saveGoalsToSharedPreferences(multiGoals);
-
-                          widget.route == 'photo_create'
-                              ? Navigator.push(
-                                  context,
-                                  FadePageRoute(
-                                      page: const photo_info(
-                                    edit_details: false,
-                                    image_detals: false,
-                                    image_save: false,
-                                    image_create: false,
-                                  )),
-                                )
-                              : widget.route == 'details'
-                                  ? Navigator.push(
-                                      context,
-                                      FadePageRoute(page: const view_details()),
-                                    )
-                                  : widget.route == 'video_create'
-                                      ? Navigator.push(
-                                          context,
-                                          FadePageRoute(
-                                              page: const video_info(
-                                                  link_state: false)),
-                                        )
-                                      : widget.route == 'note_create'
-                                          ? Navigator.push(
-                                              context,
-                                              FadePageRoute(
-                                                  page: const note_info(
-                                                note_saved: true,
-                                                type_switch: 1,
-                                              )),
-                                            )
-                                          : widget.route == 'note_saved'
-                                              ? Navigator.push(
-                                                  context,
-                                                  FadePageRoute(
-                                                      page: const photo_Edit(
-                                                    updateData: true,
-                                                  )),
-                                                )
-                                              : widget.route ==
-                                                      'note_saved_video'
-                                                  ? Navigator.push(
+                                                  : Navigator.push(
                                                       context,
                                                       FadePageRoute(
-                                                          page: videoEdit(
-                                                        note: widget.note,
-                                                        context: widget.context,
-                                                        updateData: true,
-                                                      )),
-                                                    )
-                                                  : widget.route == 'note_link'
-                                                      ? Navigator.push(
-                                                          context,
-                                                          FadePageRoute(
-                                                              page:
-                                                                  const link_info(
-                                                            link_state: false,
-                                                          )),
-                                                        )
-                                                      : Navigator.push(
-                                                          context,
-                                                          FadePageRoute(
-                                                              page:
-                                                                  const inspiration_type()),
-                                                        );
+                                                          page:
+                                                              const inspiration_type()),
+                                                    );
                         }
                       }
                       if (widget.update == false) {
@@ -619,8 +812,8 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                       width: AppDimensions.width10(context) * 31.3,
                       height: AppDimensions.height10(context) * 5.2,
                       margin: EdgeInsets.only(
-                          left: AppDimensions.width10(context) * 8,
-                          right: AppDimensions.width10(context) * 8,
+                          left: AppDimensions.width10(context) * 6,
+                          right: AppDimensions.width10(context) * 6,
                           bottom: AppDimensions.height10(context) * 2.6),
                       decoration: BoxDecoration(
                         gradient: LinearGradient(
@@ -657,16 +850,25 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
             automaticallyImplyLeading: false,
             centerTitle: true,
             leading: widget.data_saved || widget.update
-                ? Buttons().backButton(context, () {
-                    widget.route == 'landing'
-                        ? Navigator.push(
-                            context,
-                            FadePageRouteReverse(
-                                page: const inspiration_landing(
-                                    is_Updated: false)),
-                          )
-                        : Navigator.pop(context);
-                  })
+                ? Center(
+                    child: IconButton(
+                        onPressed: () {
+                          widget.route == 'landing'
+                              ? Navigator.push(
+                                  context,
+                                  FadePageRouteReverse(
+                                      page: const inspiration_landing(
+                                          is_Updated: false)),
+                                )
+                              : Navigator.pop(context);
+                        },
+                        icon: Image.asset(
+                          'assets/images/Back.webp',
+                          // width: AppDimensions.width10(context) * 2.6,
+                          height: AppDimensions.height10(context) * 2.6,
+                          fit: BoxFit.contain,
+                        )),
+                  )
                 : Container(),
             title: widget.data_saved || widget.update
                 ? Container()
@@ -704,195 +906,248 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                   : Center(
                       child: IconButton(
                           onPressed: () {
-                            showAnimatedDialog(
-                                animationType: DialogTransitionType.fadeScale,
-                                curve: Curves.easeInOut,
-                                duration: const Duration(seconds: 1),
-                                context: context,
-                                builder: (BuildContext context) => SizedBox(
-                                      width:
-                                          AppDimensions.width10(context) * 27.0,
-                                      height: AppDimensions.height10(context) *
-                                          24.0,
-                                      child: AlertDialog(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(
-                                                AppDimensions.height10(
-                                                        context) *
-                                                    1.4)),
-                                        contentPadding: EdgeInsets.zero,
-                                        actionsPadding: EdgeInsets.zero,
-                                        titlePadding: EdgeInsets.zero,
-                                        title: Container(
-                                          margin: const EdgeInsets.only(
-                                              top: 19,
-                                              right: 16,
-                                              left: 16,
-                                              bottom: 2),
-                                          // height:
-                                          //     AppDimensions.height10(context) * 2.2,
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  23.8,
-                                          child: const Text(
-                                            "Exit Inspiration?",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: 17,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        content: Container(
-                                          margin: const EdgeInsets.only(
-                                              bottom: 19, left: 16, right: 16),
-                                          // height:
-                                          //     AppDimensions.height10(context) * 1.6,
-                                          width: 238,
-                                          child: const Text(
-                                            "Please select from the options below",
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontSize: 13,
-                                              fontWeight: FontWeight.w400,
-                                            ),
-                                          ),
-                                        ),
-                                        actions: <Widget>[
-                                          Column(
-                                            children: [
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: 44,
-                                                width: double.infinity,
-                                                child: TextButton(
-                                                  onPressed: () async {
-                                                    InspirationApi()
-                                                        .checkUserInspiration()
-                                                        .then((response) async {
-                                                          if (response ==
-                                                              true) {
-                                                            Navigator.push(
-                                                                context,
-                                                                FadePageRouteReverse(
-                                                                    page: const inspiration_landing(
-                                                                        is_Updated:
-                                                                            false)));
-                                                            selectedInActiveIndices
-                                                                .clear();
-                                                            selectedIndices
-                                                                .clear();
-                                                            selectedGoals
-                                                                .clear();
-                                                            multiGoals.clear();
-                                                            allgoalsSelected
-                                                                .clear();
-                                                            setState(() {
-                                                              selectAll = false;
-                                                            });
-                                                            final SharedPreferences
-                                                                prefs =
-                                                                await _prefs;
-                                                            await prefs.remove(
-                                                                'inspiration_saved_route');
-                                                          } else if (response ==
-                                                              false) {
-                                                            Navigator.push(
-                                                                context,
-                                                                FadePageRouteReverse(
-                                                                    page:
-                                                                        const inspiration_motivation(
-                                                                  goal_delete:
-                                                                      false,
-                                                                  inspirationName:
-                                                                      '',
-                                                                )));
-                                                            final SharedPreferences
-                                                                prefs =
-                                                                await _prefs;
-                                                            await prefs.remove(
-                                                                'inspiration_saved_route');
-                                                            selectedInActiveIndices
-                                                                .clear();
-                                                            selectedIndices
-                                                                .clear();
-                                                            selectedGoals
-                                                                .clear();
-                                                            multiGoals.clear();
-                                                            allgoalsSelected
-                                                                .clear();
-                                                            setState(() {
-                                                              selectAll = false;
-                                                            });
-                                                          }
-                                                        })
-                                                        .catchError((error) {})
-                                                        .whenComplete(() {});
-                                                  },
-                                                  child: const Text(
-                                                    'Exit & delete progress',
-                                                    style: TextStyle(
-                                                        fontSize: 17,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400,
-                                                        color:
-                                                            Color(0xFF007AFF)),
-                                                  ),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.1,
-                                                child: Divider(
-                                                  color: const Color(0XFF3C3C43)
-                                                      .withOpacity(0.29),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: 42,
-                                                width: double.infinity,
-                                                margin: EdgeInsets.only(
-                                                    bottom:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            1.0),
-                                                // color: Colors.white,
-                                                child: TextButton(
-                                                  onPressed: () {
-                                                    Navigator.pop(context);
-                                                  },
-                                                  child: const Text(
-                                                    'Cancel exit',
-                                                    style: TextStyle(
-                                                        color:
-                                                            Color(0xFF007AFF),
-                                                        fontSize: 17,
-                                                        fontFamily: "Laila",
-                                                        fontWeight:
-                                                            FontWeight.w400),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ));
+                            AlertBox().alertDialog(
+                              context,
+                              "Inspiration?",
+                              () async {
+                                InspirationApi()
+                                    .checkUserInspiration()
+                                    .then((response) async {
+                                      if (response == true) {
+                                        Navigator.push(
+                                            context,
+                                            FadePageRouteReverse(
+                                                page: const inspiration_landing(
+                                                    is_Updated: false)));
+                                        selectedInActiveIndices.clear();
+                                        selectedIndices.clear();
+                                        selectedGoals.clear();
+                                        multiGoals.clear();
+                                        allgoalsSelected.clear();
+                                        setState(() {
+                                          selectAll = false;
+                                        });
+                                        final SharedPreferences prefs =
+                                            await _prefs;
+                                        await prefs
+                                            .remove('inspiration_saved_route');
+                                      } else if (response == false) {
+                                        Navigator.push(
+                                            context,
+                                            FadePageRouteReverse(
+                                                page:
+                                                    const inspiration_motivation(
+                                              goal_delete: false,
+                                              inspirationName: '',
+                                            )));
+                                        final SharedPreferences prefs =
+                                            await _prefs;
+                                        await prefs
+                                            .remove('inspiration_saved_route');
+                                        selectedInActiveIndices.clear();
+                                        selectedIndices.clear();
+                                        selectedGoals.clear();
+                                        multiGoals.clear();
+                                        allgoalsSelected.clear();
+                                        setState(() {
+                                          selectAll = false;
+                                        });
+                                      }
+                                    })
+                                    .catchError((error) {})
+                                    .whenComplete(() {});
+                              },
+                            );
+
+                            // showAnimatedDialog(
+                            //     animationType: DialogTransitionType.fadeScale,
+                            //     curve: Curves.easeInOut,
+                            //     duration: const Duration(seconds: 1),
+                            //     context: context,
+                            //     builder: (BuildContext context) => SizedBox(
+                            //           width:
+                            //               AppDimensions.width10(context) * 27.0,
+                            //           height: AppDimensions.height10(context) *
+                            //               24.0,
+                            //           child: AlertDialog(
+                            //             shape: RoundedRectangleBorder(
+                            //                 borderRadius: BorderRadius.circular(
+                            //                     AppDimensions.height10(
+                            //                             context) *
+                            //                         1.4)),
+                            //             contentPadding: EdgeInsets.zero,
+                            //             actionsPadding: EdgeInsets.zero,
+                            //             titlePadding: EdgeInsets.zero,
+                            //             title: Container(
+                            //               margin: const EdgeInsets.only(
+                            //                   top: 19,
+                            //                   right: 16,
+                            //                   left: 16,
+                            //                   bottom: 2),
+                            //               // height:
+                            //               //     AppDimensions.height10(context) * 2.2,
+                            //               width:
+                            //                   AppDimensions.width10(context) *
+                            //                       23.8,
+                            //               child: const Text(
+                            //                 "Exit Inspiration?",
+                            //                 textAlign: TextAlign.center,
+                            //                 style: TextStyle(
+                            //                   fontSize: 17,
+                            //                   fontWeight: FontWeight.w400,
+                            //                 ),
+                            //               ),
+                            //             ),
+                            //             content: Container(
+                            //               margin: const EdgeInsets.only(
+                            //                   bottom: 19, left: 16, right: 16),
+                            //               // height:
+                            //               //     AppDimensions.height10(context) * 1.6,
+                            //               width: 238,
+                            //               child: const Text(
+                            //                 "Please select from the options below",
+                            //                 textAlign: TextAlign.center,
+                            //                 style: TextStyle(
+                            //                   fontSize: 13,
+                            //                   fontWeight: FontWeight.w400,
+                            //                 ),
+                            //               ),
+                            //             ),
+                            //             actions: <Widget>[
+                            //               Column(
+                            //                 children: [
+                            //                   SizedBox(
+                            //                     height: AppDimensions.height10(
+                            //                             context) *
+                            //                         0.1,
+                            //                     child: Divider(
+                            //                       color: const Color(0XFF3C3C43)
+                            //                           .withOpacity(0.29),
+                            //                     ),
+                            //                   ),
+                            //                   SizedBox(
+                            //                     height: 44,
+                            //                     width: double.infinity,
+                            //                     child: TextButton(
+                            //                       onPressed: () async {
+                            //                         InspirationApi()
+                            //                             .checkUserInspiration()
+                            //                             .then((response) async {
+                            //                               if (response ==
+                            //                                   true) {
+                            //                                 Navigator.push(
+                            //                                     context,
+                            //                                     FadePageRouteReverse(
+                            //                                         page: const inspiration_landing(
+                            //                                             is_Updated:
+                            //                                                 false)));
+                            //                                 selectedInActiveIndices
+                            //                                     .clear();
+                            //                                 selectedIndices
+                            //                                     .clear();
+                            //                                 selectedGoals
+                            //                                     .clear();
+                            //                                 multiGoals.clear();
+                            //                                 allgoalsSelected
+                            //                                     .clear();
+                            //                                 setState(() {
+                            //                                   selectAll = false;
+                            //                                 });
+                            //                                 final SharedPreferences
+                            //                                     prefs =
+                            //                                     await _prefs;
+                            //                                 await prefs.remove(
+                            //                                     'inspiration_saved_route');
+                            //                               } else if (response ==
+                            //                                   false) {
+                            //                                 Navigator.push(
+                            //                                     context,
+                            //                                     FadePageRouteReverse(
+                            //                                         page:
+                            //                                             const inspiration_motivation(
+                            //                                       goal_delete:
+                            //                                           false,
+                            //                                       inspirationName:
+                            //                                           '',
+                            //                                     )));
+                            //                                 final SharedPreferences
+                            //                                     prefs =
+                            //                                     await _prefs;
+                            //                                 await prefs.remove(
+                            //                                     'inspiration_saved_route');
+                            //                                 selectedInActiveIndices
+                            //                                     .clear();
+                            //                                 selectedIndices
+                            //                                     .clear();
+                            //                                 selectedGoals
+                            //                                     .clear();
+                            //                                 multiGoals.clear();
+                            //                                 allgoalsSelected
+                            //                                     .clear();
+                            //                                 setState(() {
+                            //                                   selectAll = false;
+                            //                                 });
+                            //                               }
+                            //                             })
+                            //                             .catchError((error) {})
+                            //                             .whenComplete(() {});
+                            //                       },
+                            //                       child: const Text(
+                            //                         'Exit & delete progress',
+                            //                         style: TextStyle(
+                            //                             fontSize: 17,
+                            //                             fontFamily: "Laila",
+                            //                             fontWeight:
+                            //                                 FontWeight.w400,
+                            //                             color:
+                            //                                 Color(0xFF007AFF)),
+                            //                       ),
+                            //                     ),
+                            //                   ),
+                            //                   SizedBox(
+                            //                     height: AppDimensions.height10(
+                            //                             context) *
+                            //                         0.1,
+                            //                     child: Divider(
+                            //                       color: const Color(0XFF3C3C43)
+                            //                           .withOpacity(0.29),
+                            //                     ),
+                            //                   ),
+                            //                   Container(
+                            //                     height: 42,
+                            //                     width: double.infinity,
+                            //                     margin: EdgeInsets.only(
+                            //                         bottom:
+                            //                             AppDimensions.height10(
+                            //                                     context) *
+                            //                                 1.0),
+                            //                     // color: Colors.white,
+                            //                     child: TextButton(
+                            //                       onPressed: () {
+                            //                         Navigator.pop(context);
+                            //                       },
+                            //                       child: const Text(
+                            //                         'Cancel exit',
+                            //                         style: TextStyle(
+                            //                             color:
+                            //                                 Color(0xFF007AFF),
+                            //                             fontSize: 17,
+                            //                             fontFamily: "Laila",
+                            //                             fontWeight:
+                            //                                 FontWeight.w400),
+                            //                       ),
+                            //                     ),
+                            //                   ),
+                            //                 ],
+                            //               ),
+                            //             ],
+                            //           ),
+                            //         ));
                           },
                           icon: Image.asset(
                             'assets/images/Close.webp',
                             // width: AppDimensions.width10(context) * 2.6,
-                            height: AppDimensions.height10(context) * 2.8,
+                            height: AppDimensions.height10(context) * 2.6,
                             fit: BoxFit.contain,
                           )),
                     )

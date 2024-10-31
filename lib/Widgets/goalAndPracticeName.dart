@@ -10,15 +10,17 @@ goalAndPractice(
   pracName,
 ) {
   return Container(
-    width: AppDimensions.width10(BuildContext) * 30.0,
+
     height: AppDimensions.height10(BuildContext) * 11.2,
     margin: EdgeInsets.only(
         top: AppDimensions.height10(BuildContext) * 0.6,
-      left: AppDimensions.height10(BuildContext) * 6
+      left: AppDimensions.height10(BuildContext) * 2,
+      right:  AppDimensions.height10(BuildContext) * 2,
         ),
     // color: Colors.blue,
     child: Row(
       mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         SizedBox(
           width: AppDimensions.width10(BuildContext) * 7.5,
@@ -87,18 +89,20 @@ goalAndPractice(
           ),
         ),
         const SizedBox(width: 5,),
-        SizedBox(
-          width: AppDimensions.width10(BuildContext) * 16.6,
-          height: AppDimensions.height10(BuildContext) * 2.4,
+        Flexible(
+          child: SizedBox(
+           // width: AppDimensions.width10(BuildContext) * 16.6,
+            height: AppDimensions.height10(BuildContext) * 2.4,
 
-          child: Text(
-            pracName ?? 'No data found',
-            style: TextStyle(
-                color:  const Color(0xff156F6D),
-                height: 1.2,
-                overflow: TextOverflow.ellipsis,
-                fontSize: AppDimensions.font10(BuildContext) * 2.0,
-                fontWeight: FontWeight.w600),
+            child: Text(
+              pracName ?? '',
+              style: TextStyle(
+                  color:  const Color(0xff156F6D),
+                  height: 1.2,
+                  overflow: TextOverflow.ellipsis,
+                  fontSize: AppDimensions.font10(BuildContext) * 2.0,
+                  fontWeight: FontWeight.w600),
+            ),
           ),
         ),
       ],

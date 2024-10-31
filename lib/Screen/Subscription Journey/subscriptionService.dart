@@ -82,7 +82,7 @@ class SubscriptionService {
         body = {
           'customer': customerId,
           'items[0][price]': priceId,
-          "trial_period_days": "5",
+          "trial_period_days": '$trialDays',
           'default_payment_method': paymentId,
           'expand[]': 'latest_invoice.payment_intent',
         };
@@ -124,7 +124,6 @@ class SubscriptionService {
 
   Future makePayment(String priceId, trialDays) async {
     final SharedPreferences prefs = await _prefs;
-    print("Trial Data $trialDays");
     var response;
     var customerId = prefs.getString('customerID');
     try {

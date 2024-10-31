@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
-
-
 class MyBottomSheet extends StatefulWidget {
   List statments;
   int selectedIndex;

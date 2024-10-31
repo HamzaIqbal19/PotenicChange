@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
-menuItems(BuildContext context, route, title) {
+menuItems(BuildContext context, route, title,bool border) {
   final colorC = Color.alphaBlend(
       const Color(0xFF000000).withOpacity(0.2), const Color(0XFF5B74A6));
   return AnimatedScaleButton(
@@ -12,7 +12,7 @@ menuItems(BuildContext context, route, title) {
     child: Container(
       width: AppDimensions.width10(context) * 33.4,
       height: AppDimensions.height10(context) * 5.5,
-      decoration: BoxDecoration(
+      decoration:border==false?const BoxDecoration(): BoxDecoration(
           border: Border(
               bottom: BorderSide(
                   width: AppDimensions.width10(context) * 0.1, color: colorC))),
@@ -20,7 +20,7 @@ menuItems(BuildContext context, route, title) {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            width: AppDimensions.width10(context) * 20.6,
+            //width: AppDimensions.width10(context) * 20.6,
             //height: AppDimensions.height10(context) * 1.9,
             child: Text(
               title,

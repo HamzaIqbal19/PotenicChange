@@ -25,7 +25,7 @@ calender(BuildContext context, noData, report,int completedCount){
         Circulardates(
           size: AppDimensions.width10(context) * 24.0,
           outerCircleContainers: noData == true
-              ? []
+              ? generateCircleContainers(context, 20)
               : completedCount > 19
               ? generateCircleContainers(context, 20)
               : generateCircleEmptyContainers(
@@ -61,7 +61,7 @@ calender(BuildContext context, noData, report,int completedCount){
                           //         7.7,
                           child: Text(
                             noData == true
-                                ? '-'
+                                ? '20'
                                 : completedCount > 19
                                 ? "20"
                                 : completedCount

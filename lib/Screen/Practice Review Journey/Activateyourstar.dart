@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
@@ -17,6 +18,7 @@ import 'package:potenic_app/utils/app_link.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
+import '../Dashboard Behaviour Journey/loaders/TutorialController.dart';
 import '../HomeScreen/HomeScreen.dart';
 
 class ActivateStar extends StatefulWidget {
@@ -87,6 +89,7 @@ class _ActivateStarState extends State<ActivateStar> {
 
   @override
   Widget build(BuildContext context) {
+    final TutorialController tutorialController = Get.put(TutorialController());
     return Scaffold(
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
@@ -344,7 +347,9 @@ class _ActivateStarState extends State<ActivateStar> {
                                               context,
                                               AppText().dashboardTitle,
                                               AppText().dashboardBody,
-                                              AppLinks().dashboardLink);
+                                              AppLinks().dashboardLink,(){
+                                            tutorialController.startTutorial();
+                                          },false);
 
                                           //dashboard_sheet(context);
                                         } else if (response == 400) {
@@ -914,7 +919,7 @@ void login_sheet(context) {
                           children: const [
                             TextSpan(text: 'In order to '),
                             TextSpan(
-                                text: 'activate your star ',
+                                text: 'activate your goal ',
                                 style: TextStyle(fontWeight: FontWeight.w700)),
                             TextSpan(text: 'and view your\n'),
                             TextSpan(

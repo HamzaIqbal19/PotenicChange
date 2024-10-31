@@ -14,7 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import '../../Widgets/fading.dart';
 import '../../utils/app_dimensions.dart';
-import '../Capture Inspiration Journey/inpiration_landing.dart';
+import '../Capture Inspiration Journey/Widgets/updateBox.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 

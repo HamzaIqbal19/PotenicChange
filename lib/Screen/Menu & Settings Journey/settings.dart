@@ -62,20 +62,20 @@ class _SettingsState extends State<Settings> {
           Navigator.pop(context);
         }),
         centerTitle: true,
-        title: SizedBox(
-          width: AppDimensions.width10(context) * 17.0,
-          height: AppDimensions.height10(context) * 4.8,
-          child: Center(
-            child: Text(
-              'Settings',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                  fontSize: AppDimensions.font10(context) * 1.8,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
-            ),
-          ),
-        ),
+        // title: SizedBox(
+        //   width: AppDimensions.width10(context) * 17.0,
+        //   height: AppDimensions.height10(context) * 4.8,
+        //   child: Center(
+        //     child: Text(
+        //       'Settings',
+        //       textAlign: TextAlign.center,
+        //       style: TextStyle(
+        //           fontSize: AppDimensions.font10(context) * 1.8,
+        //           fontWeight: FontWeight.w600,
+        //           color: Colors.white),
+        //     ),
+        //   ),
+        // ),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -92,10 +92,10 @@ class _SettingsState extends State<Settings> {
               children: [
                 Container(
                   width: AppDimensions.width10(context) * 38.4,
-                  height: AppDimensions.height10(context) * 23.6,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 15.0),
                   child: Column(
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Align(
                         alignment: Alignment.topLeft,
@@ -113,9 +113,11 @@ class _SettingsState extends State<Settings> {
                       ),
                       Container(
                         width: AppDimensions.width10(context) * 38.4,
-                        height: AppDimensions.height10(context) * 20.0,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 1.0),
+                        padding: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 1.5,
+                            bottom: AppDimensions.height10(context) * 0.5),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 2.0),
@@ -136,61 +138,57 @@ class _SettingsState extends State<Settings> {
                               },
                               child: Container(
                                 width: AppDimensions.width10(context) * 33.4,
-                                height: AppDimensions.height10(context) * 5.2,
+                                // height: AppDimensions.height10(context) * 6,
+                                alignment: Alignment.topLeft,
                                 margin: EdgeInsets.only(
                                     bottom:
-                                        AppDimensions.height10(context) * 1.0),
+                                    AppDimensions.height10(context) * 1.0),
                                 decoration: BoxDecoration(
                                     border: Border(
                                         bottom: BorderSide(
                                             width:
-                                                AppDimensions.width10(context) *
-                                                    0.1,
+                                            AppDimensions.width10(context) *
+                                                0.1,
                                             color: colorC))),
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Container(
-                                      width:
-                                          AppDimensions.height10(context) * 4.5,
-                                      height:
-                                          AppDimensions.height10(context) * 4.0,
-                                      margin: EdgeInsets.only(
-                                          bottom:
-                                              AppDimensions.height10(context) *
-                                                  0.9),
+                                    SizedBox(
+
                                       child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          SizedBox(
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    19.0,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                1.9,
+                                          Container(
+                                            // width:
+                                            // AppDimensions.width10(context) *
+                                            //     22.0,
+                                            alignment: Alignment.topLeft,
                                             child: Text(
                                               'Name',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.6,
+                                                  AppDimensions.font10(
+                                                      context) *
+                                                      2,
                                                   fontWeight: FontWeight.w500,
                                                   color: colorC),
                                             ),
                                           ),
                                           SizedBox(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.1,
+                                            width:
+                                            AppDimensions.width10(context) *
+                                                28.0,
                                             child: Text(
-                                              userName,
+                                              userName.trim(),
+                                              overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.8,
+                                                  AppDimensions.font10(
+                                                      context) *
+                                                      1.8,
                                                   fontWeight: FontWeight.w400,
                                                   color: colorC),
                                             ),
@@ -200,16 +198,16 @@ class _SettingsState extends State<Settings> {
                                     ),
                                     Container(
                                       width:
-                                          AppDimensions.width10(context) * 4.8,
+                                      AppDimensions.width10(context) * 4.8,
                                       height:
-                                          AppDimensions.height10(context) * 2.8,
+                                      AppDimensions.height10(context) * 2.8,
                                       alignment: Alignment.centerRight,
                                       child: Text(
                                         'EDIT',
                                         style: TextStyle(
                                             fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
+                                            AppDimensions.font10(context) *
+                                                1.8,
                                             fontWeight: FontWeight.w500,
                                             color: colorC),
                                       ),
@@ -217,6 +215,7 @@ class _SettingsState extends State<Settings> {
                                   ],
                                 ),
                               ),
+
                             ),
                             AnimatedScaleButton(
                               onTap: () {
@@ -229,7 +228,7 @@ class _SettingsState extends State<Settings> {
                               },
                               child: Container(
                                 width: AppDimensions.width10(context) * 33.4,
-                                height: AppDimensions.height10(context) * 5.2,
+                               // height: AppDimensions.height10(context) * 6,
                                 alignment: Alignment.topLeft,
                                 margin: EdgeInsets.only(
                                     bottom:
@@ -246,19 +245,14 @@ class _SettingsState extends State<Settings> {
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width:
-                                          AppDimensions.width10(context) * 19.0,
-                                      height:
-                                          AppDimensions.height10(context) * 4.0,
+
                                       child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Container(
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    19.0,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                1.9,
+
                                             alignment: Alignment.topLeft,
                                             child: Text(
                                               'Email address',
@@ -266,20 +260,18 @@ class _SettingsState extends State<Settings> {
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          1.6,
+                                                          2,
                                                   fontWeight: FontWeight.w500,
                                                   color: colorC),
                                             ),
                                           ),
                                           SizedBox(
                                             width:
-                                                AppDimensions.width10(context) *
-                                                    19.0,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.1,
+                                            AppDimensions.width10(context) *
+                                                28.0,
                                             child: Text(
-                                              userEmail,
+                                              userEmail.trim(),
+                                              overflow: TextOverflow.ellipsis,
                                               style: TextStyle(
                                                   fontSize:
                                                       AppDimensions.font10(
@@ -303,7 +295,7 @@ class _SettingsState extends State<Settings> {
                                         style: TextStyle(
                                             fontSize:
                                                 AppDimensions.font10(context) *
-                                                    1.6,
+                                                    1.8,
                                             fontWeight: FontWeight.w500,
                                             color: colorC),
                                       ),
@@ -321,53 +313,53 @@ class _SettingsState extends State<Settings> {
                                           email: false, password_edit: true)),
                                 );
                               },
-                              child: Container(
-                                alignment: Alignment.topLeft,
+                              child:Container(
                                 width: AppDimensions.width10(context) * 33.4,
-                                height: AppDimensions.height10(context) * 5.2,
+                                // height: AppDimensions.height10(context) * 6,
+                                alignment: Alignment.topLeft,
+                                margin: EdgeInsets.only(
+                                    bottom:
+                                    AppDimensions.height10(context) * 1.0),
+
                                 child: Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
-                                      width:
-                                          AppDimensions.width10(context) * 19.0,
-                                      height:
-                                          AppDimensions.height10(context) * 4.0,
+
                                       child: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          SizedBox(
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    19.0,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                1.9,
+                                          Container(
+                                            // width:
+                                            // AppDimensions.width10(context) *
+                                            //     22.0,
+                                            alignment: Alignment.topLeft,
                                             child: Text(
-                                              'Password (8+ character)',
+                                              'Password (8+ characters)',
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.6,
+                                                  AppDimensions.font10(
+                                                      context) *
+                                                      2,
                                                   fontWeight: FontWeight.w500,
                                                   color: colorC),
                                             ),
                                           ),
+                                          const SizedBox(height: 2,),
                                           SizedBox(
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    19.0,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.1,
+                                            // width:
+                                            // AppDimensions.width10(context) *
+                                            //     19.0,
                                             child: Text(
-                                              '**********',
+                                              "**********",
                                               style: TextStyle(
                                                   fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.8,
+                                                  AppDimensions.font10(
+                                                      context) *
+                                                      1.8,
                                                   fontWeight: FontWeight.w400,
                                                   color: colorC),
                                             ),
@@ -377,16 +369,16 @@ class _SettingsState extends State<Settings> {
                                     ),
                                     Container(
                                       width:
-                                          AppDimensions.width10(context) * 4.8,
+                                      AppDimensions.width10(context) * 4.8,
                                       height:
-                                          AppDimensions.height10(context) * 2.8,
+                                      AppDimensions.height10(context) * 2.8,
                                       alignment: Alignment.centerRight,
                                       child: Text(
                                         'EDIT',
                                         style: TextStyle(
                                             fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
+                                            AppDimensions.font10(context) *
+                                                1.8,
                                             fontWeight: FontWeight.w500,
                                             color: colorC),
                                       ),
@@ -394,6 +386,7 @@ class _SettingsState extends State<Settings> {
                                   ],
                                 ),
                               ),
+
                             ),
                           ],
                         ),
@@ -434,17 +427,17 @@ class _SettingsState extends State<Settings> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             SizedBox(
-                              height: AppDimensions.height10(context),
+                              height: AppDimensions.height10(context)*0.5,
                             ),
                             menuItems(context, () {
                               Navigator.push(
                                 context,
                                 FadePageRoute(page: const notifications()),
                               );
-                            }, 'Notifications'),
-                            menuItems(context, () {}, 'Invite a friend'),
+                            }, 'Notifications', true),
+                            menuItems(context, () {}, 'Invite a friend', false),
                             SizedBox(
-                              height: AppDimensions.height10(context) * 3,
+                              height: AppDimensions.height10(context) * 1,
                             ),
                           ],
                         ),
@@ -485,14 +478,14 @@ class _SettingsState extends State<Settings> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             SizedBox(
-                              height: AppDimensions.height10(context),
+                              height: AppDimensions.height10(context)*0.5,
                             ),
                             menuItems(context, () {
                               Navigator.push(
                                 context,
                                 FadePageRoute(page: const About_us()),
                               );
-                            }, 'About us'),
+                            }, 'About us', true),
                             menuItems(context, () {
                               Navigator.pushReplacement(
                                   context,
@@ -506,25 +499,25 @@ class _SettingsState extends State<Settings> {
                                     ),
                                   ));
                               dashboard_sheet(context);
-                            }, 'Tutorial'),
+                            }, 'Tutorial', true),
                             menuItems(context, () {
                               webVisit(AppLinks().faqs);
-                            }, 'FAQs'),
+                            }, 'FAQs', true),
                             menuItems(context, () {
                               Navigator.push(context, FadePageRoute(page: const ContactUs()));
                               //webVisit(AppLinks().contactUs);
-                            }, 'Contact us'),
+                            }, 'Contact us', true),
                             menuItems(context, () {
                               export_data_sheet(context);
-                            }, 'Export data'),
+                            }, 'Export data', true),
                             menuItems(context, () {
                               webVisit(AppLinks().termsOfService);
-                            }, 'Terms of service'),
+                            }, 'Terms of service', true),
                             menuItems(context, () {
                               webVisit(AppLinks().privacyPolicy);
-                            }, 'Privacy policy'),
+                            }, 'Privacy policy', false),
                             SizedBox(
-                              height: AppDimensions.height10(context) * 3,
+                              height: AppDimensions.height10(context) * 1,
                             ),
                           ],
                         ),
@@ -578,7 +571,7 @@ class _SettingsState extends State<Settings> {
                                     left: AppDimensions.width10(context) * 1.6,
                                     right:
                                         AppDimensions.height10(context) * 1.6),
-                                height: AppDimensions.height10(context) * 4.8,
+                                //height: AppDimensions.height10(context) * 4.8,
                                 width: AppDimensions.width10(context) * 23.8,
                                 child: Text(
                                   "Are you sure you want to log out? If you do, you will be prompted to login again by entering your email and password.",
@@ -701,7 +694,7 @@ class _SettingsState extends State<Settings> {
                       child: Text(
                         'Log out',
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 2,
                             fontWeight: FontWeight.w600,
                             color: const Color(0XFF8C648A)),
                       ),
@@ -893,18 +886,18 @@ class About_us extends StatelessWidget {
           Navigator.pop(context);
         }),
         centerTitle: true,
-        title: SizedBox(
-          width: AppDimensions.width10(context) * 17.0,
-          height: AppDimensions.height10(context) * 4.8,
-          child: Text(
-            'About',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                fontSize: AppDimensions.font10(context) * 1.8,
-                fontWeight: FontWeight.w600,
-                color: Colors.white),
-          ),
-        ),
+        // title: SizedBox(
+        //   width: AppDimensions.width10(context) * 17.0,
+        //   //height: AppDimensions.height10(context) * 4.8,
+        //   child: Text(
+        //     'About',
+        //     textAlign: TextAlign.center,
+        //     style: TextStyle(
+        //         fontSize: AppDimensions.font10(context) * 1.8,
+        //         fontWeight: FontWeight.w600,
+        //         color: Colors.white),
+        //   ),
+        // ),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -915,10 +908,10 @@ class About_us extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Container(
               width: AppDimensions.width10(context) * 38.4,
-              height: AppDimensions.height10(context) * 21.4,
               margin:
                   EdgeInsets.only(top: AppDimensions.height10(context) * 15.0),
               child: Column(
@@ -939,7 +932,6 @@ class About_us extends StatelessWidget {
                   ),
                   Container(
                     width: AppDimensions.width10(context) * 38.4,
-                    height: AppDimensions.height10(context) * 18.0,
                     margin: EdgeInsets.only(
                         top: AppDimensions.height10(context) * 1.0),
                     decoration: BoxDecoration(
@@ -948,136 +940,21 @@ class About_us extends StatelessWidget {
                         color: Colors.white),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
-                        GestureDetector(
-                          onTap: () {
-                            webVisit(AppLinks().ourStory);
-                          },
-                          child: Container(
-                            width: AppDimensions.width10(context) * 33.4,
-                            height: AppDimensions.height10(context) * 5.0,
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: colorC))),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: AppDimensions.width10(context) * 20.6,
-                                  height: AppDimensions.height10(context) * 1.9,
-                                  child: Text(
-                                    'Our story',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.6,
-                                        fontWeight: FontWeight.w500,
-                                        color: colorC),
-                                  ),
-                                ),
-                                SizedBox(
-                                    width: AppDimensions.width10(context) * 2.4,
-                                    height:
-                                        AppDimensions.height10(context) * 1.39,
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.webp',
-                                        //width: AppDimensions.width10(context) * 2.6,
-                                        //height: AppDimensions.height10(context) * 2.6,
-                                        color: colorC,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ))
-                              ],
-                            ),
-                          ),
+                        SizedBox(
+                          height: AppDimensions.height10(context)*0.5,
                         ),
-                        GestureDetector(
-                          onTap: () {},
-                          child: Container(
-                            width: AppDimensions.width10(context) * 33.4,
-                            height: AppDimensions.height10(context) * 5.0,
-                            decoration: BoxDecoration(
-                                border: Border(
-                                    bottom: BorderSide(
-                                        width: AppDimensions.width10(context) *
-                                            0.1,
-                                        color: colorC))),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: AppDimensions.width10(context) * 20.6,
-                                  height: AppDimensions.height10(context) * 1.9,
-                                  child: Text(
-                                    'Like us? Rate us',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.6,
-                                        fontWeight: FontWeight.w500,
-                                        color: colorC),
-                                  ),
-                                ),
-                                SizedBox(
-                                    width: AppDimensions.width10(context) * 2.4,
-                                    height:
-                                        AppDimensions.height10(context) * 1.39,
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.webp',
-                                        //width: AppDimensions.width10(context) * 2.6,
-                                        //height: AppDimensions.height10(context) * 2.6,
-                                        color: colorC,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ))
-                              ],
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            dialogs().FollowUsDialogs(context);
-                          },
-                          child: SizedBox(
-                            width: AppDimensions.width10(context) * 33.4,
-                            height: AppDimensions.height10(context) * 5.0,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  width: AppDimensions.width10(context) * 20.6,
-                                  height: AppDimensions.height10(context) * 1.9,
-                                  child: Text(
-                                    'Follow us',
-                                    style: TextStyle(
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.6,
-                                        fontWeight: FontWeight.w500,
-                                        color: colorC),
-                                  ),
-                                ),
-                                SizedBox(
-                                    width: AppDimensions.width10(context) * 2.4,
-                                    height:
-                                        AppDimensions.height10(context) * 1.39,
-                                    child: GestureDetector(
-                                      onTap: () {},
-                                      child: Image.asset(
-                                        'assets/images/BTN Back.webp',
-                                        //width: AppDimensions.width10(context) * 2.6,
-                                        //height: AppDimensions.height10(context) * 2.6,
-                                        color: colorC,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ))
-                              ],
-                            ),
-                          ),
+                        menuItems(context, () {
+                          webVisit(AppLinks().ourStory);
+                        }, 'Our story', true),
+                        menuItems(context, () {
+                        }, 'Like us? Rate us', true),
+                        menuItems(context, () {
+                          dialogs().FollowUsDialogs(context);
+                        }, 'Follow us', false),
+                        SizedBox(
+                          height: AppDimensions.height10(context)*1,
                         ),
                       ],
                     ),
@@ -1085,16 +962,7 @@ class About_us extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
-              width: AppDimensions.width10(context) * 17.0,
-              height: AppDimensions.height10(context) * 0.5,
-              margin:
-                  EdgeInsets.only(top: AppDimensions.height10(context) * 51.7),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                      AppDimensions.height10(context) * 5.0),
-                  color: const Color(0xFFFFFFFF).withOpacity(0.3)),
-            )
+
           ],
         ),
       ),
@@ -1112,13 +980,14 @@ void export_data_sheet(context) {
       )),
       builder: (context) => Container(
             width: AppDimensions.width10(context) * 41.4,
-            height: AppDimensions.height10(context) * 48.7,
+           // height: AppDimensions.height10(context) * 48.7,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.vertical(
                     top:
                         Radius.circular(AppDimensions.height10(context) * 2.0)),
                 color: const Color(0xFFF5F5F5)),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 Container(
                   //color: Colors.amber,
@@ -1161,7 +1030,7 @@ void export_data_sheet(context) {
                   child: Text(
                     'Export data',
                     style: TextStyle(
-                        fontSize: AppDimensions.font10(context) * 3.0,
+                        fontSize: AppDimensions.font10(context) * 2.8,
                         letterSpacing: AppDimensions.height10(context) * 0.2,
                         height: AppDimensions.height10(context) * 0.15,
                         fontWeight: FontWeight.w700,
@@ -1170,7 +1039,6 @@ void export_data_sheet(context) {
                 ),
                 Container(
                   width: AppDimensions.width10(context) * 35.2,
-                  height: AppDimensions.height10(context) * 17.6,
                   margin: EdgeInsets.only(
                       top: AppDimensions.height10(context) * 1.1),
                   child: Center(
@@ -1180,29 +1048,30 @@ void export_data_sheet(context) {
                             style: TextStyle(
                                 fontFamily: 'Laila',
                                 height: AppDimensions.height10(context) * 0.15,
-                                fontSize: AppDimensions.font10(context) * 1.4,
+                                fontSize: AppDimensions.font10(context) * 1.6,
                                 fontWeight: FontWeight.w400,
                                 color: const Color(0xFF437296)),
                             children: const [
                               TextSpan(
                                   text:
-                                      'To access your data, please email to us at\n'),
+                                      'To access your data, please email us at\n'),
                               TextSpan(
                                   text: 'support@potenic.com',
                                   style:
                                       TextStyle(fontWeight: FontWeight.w600)),
                               TextSpan(
                                   text:
-                                      ' and we will action your request as soon as possible.\n\n\nIn the email subject please state: '),
+                                      ' and we will action your request as soon as possible.\n\nIn the email subject please state: '),
                               TextSpan(
-                                text: 'Potenic App Export My Data\n\n\n',
+                                text: 'Potenic App Export My Data\n\n',
                                 style: TextStyle(fontWeight: FontWeight.w600),
                               ),
                               TextSpan(
                                   text: 'Thank you for your co-operation :)')
                             ])),
                   ),
-                )
+                ),
+                SizedBox(height: AppDimensions.font10(context) * 3,)
               ],
             ),
           ));

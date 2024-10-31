@@ -364,7 +364,7 @@ class ProgressReportState extends State<ProgressReport> {
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 7.0),
                             child: Text(
-                              'Your new\nidentity statement',
+                              'Your identity statement',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontSize: UpdatedDimensions.font10(context) * 2.4,
@@ -414,7 +414,7 @@ class ProgressReportState extends State<ProgressReport> {
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 7.0),
                       child: Text(
-                        'You have completed 20\nactive days of practice!',
+                        'You have completed 20\nactive days of practice',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: UpdatedDimensions.font10(context) * 2.4,
@@ -532,7 +532,7 @@ class ProgressReportState extends State<ProgressReport> {
                                 Navigator.pop(context);
                               },
                               child: Container(
-                                width: AppDimensions.width10(context) * 36.0,
+                                width: AppDimensions.width10(context) * 38.4,
                                 height: AppDimensions.height10(context) * 6.0,
                                 margin: EdgeInsets.only(
                                     top: AppDimensions.height10(context) * 1.2),

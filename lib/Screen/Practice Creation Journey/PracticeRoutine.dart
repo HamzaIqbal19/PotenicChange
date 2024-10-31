@@ -5,6 +5,7 @@ import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/goal_inactive_5goals.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/TimeWidget.dart';
+import 'package:potenic_app/Widgets/appBarWidgets.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
@@ -190,14 +191,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
             centerTitle: true,
             backgroundColor: Colors.transparent,
             automaticallyImplyLeading: false,
-            title: Text(
-              AppText().createPrac3,
-              style: TextStyle(
-                fontWeight: FontWeight.w600,
-                color: Colors.white,
-                fontSize: AppDimensions.font10(context) * 1.8,
-              ),
-            ),
+            title: appBarTitle(context, AppText().createPrac3,false),
             leading: Buttons().backButton(context, backPress),
             actions: [
               Buttons().closeButton(context, () {
@@ -358,7 +352,10 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 SizedBox(
                   height: AppDimensions.height10(context),
                 ),
-                goalAndPractice(context, color, 2, practice.text.toString()),
+                Center(
+                  child: goalAndPractice(context, color, 2, practice.text.toString()),
+                ),
+
                 SizedBox(
                   height: AppDimensions.height10(context) * 2.3,
                 ),
@@ -557,7 +554,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                       },
                       child: Container(
                         height: AppDimensions.height10(context) * 5.2,
-                        width: AppDimensions.width10(context) * 31.3,
+                        width: AppDimensions.width10(context) * 34.3,
                         decoration: BoxDecoration(
                           // color: Color(0xFFFF7D50),
                           border: Border.all(color: Colors.transparent),

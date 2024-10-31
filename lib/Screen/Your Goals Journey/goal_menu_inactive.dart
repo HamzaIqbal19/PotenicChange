@@ -442,17 +442,18 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                     SizedBox(
                                       width:
                                           AppDimensions.width10(context) * 20.9,
-                                      height:
-                                          AppDimensions.height10(context) * 9.1,
+                                      // height:
+                                      //     AppDimensions.height10(context) * 9.1,
                                       child: Column(
+                                        mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Align(
                                             alignment: Alignment.centerLeft,
                                             child: SizedBox(
                                               // width: AppDimensions.width10(context) * 16.5,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  1.9,
+                                              // height: AppDimensions.height10(
+                                              //         context) *
+                                              //     1.9,
 
                                               child: Text(
                                                 'Goal level evaluation',
@@ -475,9 +476,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             alignment: Alignment.centerLeft,
                                             child: SizedBox(
                                               // width: AppDimensions.width10(context) * 9.5,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.2,
+                                              // height: AppDimensions.height10(
+                                              //         context) *
+                                              //     2.2,
 
                                               child: Text(
                                                 inputDate == ''
@@ -487,7 +488,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                     fontSize:
                                                         AppDimensions.font10(
                                                                 context) *
-                                                            1.6,
+                                                            1.7,
                                                     fontWeight: FontWeight.w500,
                                                     color: subscriptions ==
                                                             'active'
@@ -517,7 +518,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          1.6,
+                                                          1.7,
                                                   fontWeight: FontWeight.w400,
                                                   color: subscriptions ==
                                                           'active'
@@ -633,9 +634,9 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             width:
                                                 AppDimensions.width10(context) *
                                                     11.9,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.9,
+                                            // height: AppDimensions.height10(
+                                            //         context) *
+                                            //     2.9,
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(
@@ -661,7 +662,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                                     fontSize:
                                                         AppDimensions.font10(
                                                                 context) *
-                                                            1.6,
+                                                            1.7,
                                                     fontWeight: FontWeight.w600,
                                                     color: const Color(
                                                         0xFF646464)),

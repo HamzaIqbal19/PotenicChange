@@ -6,6 +6,7 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session%20Journey/reco
 import 'package:potenic_app/Screen/Recording%20Practice%20Session%20Journey/recordPracticeEndosSession.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session%20Journey/recordPracticeSummary.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/appBarWidgets.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -254,14 +255,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
             backgroundColor: Colors.transparent,
             elevation: 0,
             centerTitle: true,
-            title: Text(
-              pracName,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                  fontSize: AppDimensionsUpdated.font10(context) * 2.0,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white),
-            ),
+            title: appBarTitle(context, pracName,false),
             leading: Center(
               child: IconButton(
                   onPressed: () {
@@ -327,48 +321,37 @@ class _feelingsAfterState extends State<feelingsAfter> {
                 children: [
                   Container(
                     margin: EdgeInsets.only(
+                        bottom: AppDimensionsUpdated.height10(context) * 10.5,
                         top: AppDimensionsUpdated.height10(context) * 5.0),
                   ),
-                  MediaQuery.of(context).viewInsets.bottom == 0
-                      ? SizedBox(
-                          height: AppDimensionsUpdated.height10(context) * 10.5,
-                        )
-                      : SizedBox(
-                          height: AppDimensionsUpdated.height10(context) * 0,
-                        ),
+
                   SizedBox(
                     width: AppDimensionsUpdated.width10(context) * 35.9,
                     height: AppDimensionsUpdated.height10(context) * 14.8,
                     // alignment: Alignment.center,
 
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                              style: TextStyle(
-                                  fontSize:
-                                      AppDimensionsUpdated.font10(context) *
-                                          2.8,
-                                  fontWeight: FontWeight.w700,
-                                  fontFamily: 'Laila',
-                                  color: const Color(0xFFFBFBFB)),
-                              children: const [
-                                TextSpan(
-                                  text: 'How do you feel',
-                                ),
-                                TextSpan(
-                                  text: ' after',
-                                  style: TextStyle(color: Color(0xff8C648A)),
-                                ),
-                                TextSpan(
-                                  text: '\nrecording your practice?',
-                                ),
-                              ]),
-                        )
-                      ],
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                          style: TextStyle(
+                              fontSize:
+                                  AppDimensionsUpdated.font10(context) *
+                                      2.8,
+                              fontWeight: FontWeight.w700,
+                              fontFamily: 'Laila',
+                              color: const Color(0xFFFBFBFB)),
+                          children: const [
+                            TextSpan(
+                              text: 'How do you feel',
+                            ),
+                            TextSpan(
+                              text: ' after',
+                              style: TextStyle(color: Color(0xff8C648A)),
+                            ),
+                            TextSpan(
+                              text: '\nrecording your practice?',
+                            ),
+                          ]),
                     ),
                   ),
                   MediaQuery.of(context).viewInsets.bottom == 0
@@ -397,7 +380,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                               });
                             },
                             child: sessonCircles(context,
-                                EmotionsAfter == index + 1, index, false),
+                                EmotionsAfter == index + 1, index, false,false),
                           );
                         }),
                   ),

@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_vie
 import 'package:potenic_app/Screen/Recording%20Practice%20Session%20Journey/recordPracticeFellingAftr.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session%20Journey/recordPracticeWelldone.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/appBarWidgets.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_texts.dart';
@@ -51,14 +52,7 @@ class _clocksState extends State<clocks> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
-        title: Text(
-          pracName,
-          overflow: TextOverflow.ellipsis,
-          style: TextStyle(
-              fontSize: AppDimensionsUpdated.font10(context) * 2.0,
-              fontWeight: FontWeight.w600,
-              color: Colors.white),
-        ),
+        title: appBarTitle(context, pracName,false),
         leading: Buttons().backButton(context, () {
           Navigator.pop(context);
         }),
@@ -258,9 +252,8 @@ class _clocksState extends State<clocks> {
             //crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Container(
-                width: AppDimensionsUpdated.width10(context) * 30,
                 margin: EdgeInsets.only(
-                    bottom: AppDimensionsUpdated.height10(context) * 10.5,
+                    bottom: AppDimensionsUpdated.height10(context) * 7.5,
                     top: AppDimensionsUpdated.height10(context) * 5.0),
               ),
               Container(

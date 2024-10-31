@@ -123,8 +123,8 @@ class Navigation_BarState extends State<Navigation_Bar> {
           fixedColor: const Color(0xffFBFBFB),
           unselectedFontSize: 15,
           selectedFontSize: 15,
-          showUnselectedLabels: false,
-          showSelectedLabels: false,
+          showUnselectedLabels: true,
+          showSelectedLabels: true,
           type: BottomNavigationBarType.fixed,
           elevation: 0,
           landscapeLayout: BottomNavigationBarLandscapeLayout.spread,
@@ -132,85 +132,45 @@ class Navigation_BarState extends State<Navigation_Bar> {
 
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  SizedBox(
-                    width: UpdatedDimensions.width10(context) * 3.0,
-                    height: UpdatedDimensions.height10(context) * 3.0,
-                    child: const ImageIcon(
-                      AssetImage('assets/images/timeline_icon.webp'),
-                      color: Colors.white,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 4,
-                  ),
-                  labelText('Timeline'),
-                ],
+              icon: SizedBox(
+                width: UpdatedDimensions.width10(context) * 3.0,
+                height: UpdatedDimensions.height10(context) * 3.0,
+                child: const ImageIcon(
+                  AssetImage('assets/images/timeline_icon.webp'),
+                  color: Colors.white,
+                ),
               ),
               label: 'Timeline',
             ),
             BottomNavigationBarItem(
-                icon: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SizedBox(
-                        width: UpdatedDimensions.width10(context) * 3.0,
-                        height: UpdatedDimensions.height10(context) * 3.0,
-                        child: const ImageIcon(
-                          AssetImage('assets/images/insp (1).webp'),
-                          color: Colors.white,
-                        )),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    labelText('Inspiration'),
-                  ],
-                ),
+                icon: SizedBox(
+                    width: UpdatedDimensions.width10(context) * 3.0,
+                    height: UpdatedDimensions.height10(context) * 3.0,
+                    child: const ImageIcon(
+                      AssetImage('assets/images/insp (1).webp'),
+                      color: Colors.white,
+                    )),
                 label: 'Inspiration'),
             BottomNavigationBarItem(
-                icon: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    SizedBox(
-                      width: UpdatedDimensions.width10(context) * 3.0,
-                      height: UpdatedDimensions.height10(context) * 3.0,
-                      child: const ImageIcon(
-                        AssetImage('assets/images/hurdle_icon.webp'),
-                        //size: ,
-                        color: Colors.white,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    labelText('Hurdle'),
-                  ],
+                icon: SizedBox(
+                  width: UpdatedDimensions.width10(context) * 3.0,
+                  height: UpdatedDimensions.height10(context) * 3.0,
+                  child: const ImageIcon(
+                    AssetImage('assets/images/hurdle_icon.webp'),
+                    //size: ,
+                    color: Colors.white,
+                  ),
                 ),
                 label: 'Hurdle'),
             BottomNavigationBarItem(
-              icon: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Container(
-                      width: UpdatedDimensions.width10(context) * 3.0,
-                      height: UpdatedDimensions.height10(context) * 3.0,
-                      padding: const EdgeInsets.all(2),
-                      child: const ImageIcon(
-                        AssetImage('assets/images/menu_icon.webp'),
-                        color: Colors.white,
-                      )),
-                  const SizedBox(
-                    height: 4,
-                  ),
-                  labelText('Menu'),
-                ],
-              ),
+              icon: Container(
+                  width: UpdatedDimensions.width10(context) * 3.0,
+                  height: UpdatedDimensions.height10(context) * 3.0,
+                  padding: const EdgeInsets.all(2),
+                  child: const ImageIcon(
+                    AssetImage('assets/images/menu_icon.webp'),
+                    color: Colors.white,
+                  )),
               label: 'Menu',
             ),
           ],

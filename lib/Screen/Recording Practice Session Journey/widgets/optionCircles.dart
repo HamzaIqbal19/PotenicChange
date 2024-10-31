@@ -18,6 +18,15 @@ List<String> afterSessionText = [
   'I feel excited\nand good in\nmyself',
 ];
 
+List<String> endOfSessionsText = [
+  'Not great,\nhaven’t\nenjoyed it',
+  'I got\ndistracted, it\nwas hard to\nfocus',
+  'It was ok',
+  'Good, I quite\nliked it',
+  'Great, I\nenjoyed the\nexperience',
+];
+
+
 List emotionSessionColor = [
   const Color(0xff546096),
   const Color(0xff7291A0),
@@ -26,10 +35,10 @@ List emotionSessionColor = [
   const Color(0xff219653)
 ];
 
-sessonCircles(BuildContext context,bool selected ,int index, before){
+sessonCircles(BuildContext context,bool selected ,int index, before,endeOfSession){
   return Container(
-    width: AppDimensionsUpdated.width10(context) * 13.7,
-    height: AppDimensionsUpdated.width10(context) * 13.7,
+    width: AppDimensionsUpdated.width10(context) * 14.1,
+    height: AppDimensionsUpdated.width10(context) * 14.1,
     margin: EdgeInsets.only(
         left: AppDimensionsUpdated.width10(context) * 3.0,
         right: AppDimensionsUpdated.width10(context) * 1.5),
@@ -43,16 +52,29 @@ sessonCircles(BuildContext context,bool selected ,int index, before){
                 ? Colors.white
                 : Colors.transparent)),
     child: Container(
-      height: AppDimensionsUpdated.width10(context) * 12.7,
-      width: AppDimensionsUpdated.width10(context) * 12.5,
+      height: AppDimensionsUpdated.width10(context) * 13.1,
+      width: AppDimensionsUpdated.width10(context) * 13.1,
       margin: EdgeInsets.symmetric(
           vertical:
           AppDimensionsUpdated.height10(context) * 0.4,
           horizontal:
           AppDimensionsUpdated.width10(context) * 0.3),
       alignment: Alignment.center,
-      decoration: BoxDecoration(
+      decoration:endeOfSession?BoxDecoration(
         shape: BoxShape.circle,
+        border: Border.all(
+            width:
+            AppDimensionsUpdated.width10(context) * 0.2,
+            color: Colors.white),
+        gradient: RadialGradient(colors: <Color>[
+          const Color(0xFFBDA7C2)
+              .withOpacity(0.19), // yellow sun
+          const Color(0xFFB38FB4)
+              .withOpacity(.81), // blue sky
+        ]),
+      ): BoxDecoration(
+        shape: BoxShape.circle,
+
         border: Border.all(
             width:
             AppDimensionsUpdated.width10(context) * 0.2,
@@ -60,11 +82,11 @@ sessonCircles(BuildContext context,bool selected ,int index, before){
         color: emotionSessionColor[index],
       ),
       child: Text(
-        before? emotionSessionText[index]:afterSessionText[index],
+       endeOfSession?endOfSessionsText[index]: before? emotionSessionText[index]:afterSessionText[index],
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize:
-          AppDimensionsUpdated.font10(context) * 1.6,
+          AppDimensionsUpdated.font10(context) * 1.7,
           fontWeight: FontWeight.w500,
           color: Colors.white,
         ),

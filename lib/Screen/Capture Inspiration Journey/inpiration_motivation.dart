@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/Widgets/updateBox.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
 import 'package:potenic_app/utils/app_texts.dart';
@@ -56,20 +56,29 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
             elevation: 0,
             automaticallyImplyLeading: false,
             actions: [
-              Buttons().closeButton(context, () async {
-                Navigator.push(
-                    context,
-                    FadePageRouteReverse(
-                        page: const ViewDashboard(
-                      missed: false,
-                      name: '',
-                      update: false,
-                      helpfulTips: false,
-                      record: 0,
-                    )));
-                final SharedPreferences prefs = await _prefs;
-                prefs.remove('inspiration_saved_route');
-              })
+              Center(
+                child: IconButton(
+                    onPressed: () async {
+                      Navigator.push(
+                          context,
+                          FadePageRouteReverse(
+                              page: const ViewDashboard(
+                            missed: false,
+                            name: '',
+                            update: false,
+                            helpfulTips: false,
+                            record: 0,
+                          )));
+                      final SharedPreferences prefs = await _prefs;
+                      prefs.remove('inspiration_saved_route');
+                    },
+                    icon: Image.asset(
+                      'assets/images/Close.webp',
+                      // width: AppDimensions.width10(context) * 2.6,
+                      height: AppDimensions.height10(context) * 2.6,
+                      fit: BoxFit.contain,
+                    )),
+              ),
             ]),
         body: Container(
           width: double.infinity,

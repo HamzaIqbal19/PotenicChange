@@ -128,7 +128,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
   Widget _buildText(BuildContext context, String text, double fontSize,
       FontWeight fontWeight) {
     return SizedBox(
-      height: AppDimensions.height10(context) * 4.4,
+      //height: AppDimensions.height10(context) * 4.4,
       child: Text(
         text,
         textAlign: TextAlign.center,
@@ -266,7 +266,7 @@ class _LoginPageState extends State<LoginPage> with TickerProviderStateMixin {
               AppText().newAccount,
               style: TextStyle(
                 color: const Color(0xFF8C648A),
-                fontSize: AppDimensions.font10(context) * 1.8,
+                fontSize: AppDimensions.font10(context) * 2,
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -301,7 +301,7 @@ buildOutlinedButtonWithImage(BuildContext context, String imageAsset,
             '$label',
             style: TextStyle(
               color: textColor,
-              fontSize: AppDimensions.font10(context) * 1.8,
+              fontSize: AppDimensions.font10(context) * 2,
               fontWeight: FontWeight.w600,
             ),
           ),

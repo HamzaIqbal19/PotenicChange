@@ -224,22 +224,7 @@ class _practice_progressState extends State<practice_progress> {
                   child: Column(
                       // mainAxisAlignment: ,
                       children: [
-                        Container(
-                          // width: AppDimensions.width10(context) * 12.5,
-                          //height: AppDimensions.height10(context) * 2.3,
-                          margin: EdgeInsets.only(
-                              top: AppDimensions.height10(context) * 5.2),
-                          child: Text(
-                            'Practice Progress',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                height: 1.2,
-                                color: Colors.white,
-                                fontSize:
-                                    UpdatedDimensions.font10(context) * 1.8,
-                                fontWeight: FontWeight.w600),
-                          ),
-                        ),
+                       SizedBox(height: AppDimensions.width10(context) * 10,),
                         Container(
                           width: AppDimensions.width10(context) * 30,
                           //height: AppDimensions.height10(context) * 2.6,
@@ -247,7 +232,7 @@ class _practice_progressState extends State<practice_progress> {
                               top: AppDimensions.height10(context) * 0.5),
                           child: Text(
                             noData == true
-                                ? 'No data found'
+                                ? ''
                                 : report['practice']["userGoal"]["name"],
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
@@ -708,7 +693,7 @@ class _practice_progressState extends State<practice_progress> {
                                               1.0),
                                       child: Center(
                                         child: Text(
-                                          '“It is not bad”',
+                                          '“It was not bad”',
                                           style: TextStyle(
                                               color: const Color(0xFFB695B7),
                                               height: 1.2,

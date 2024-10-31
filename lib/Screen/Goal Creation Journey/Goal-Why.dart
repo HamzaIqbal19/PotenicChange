@@ -13,6 +13,7 @@ import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dar
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/veiw_all_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/appBarWidgets.dart';
 import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -480,18 +481,7 @@ class _goalwhyState extends State<GoalWhy> {
                 centerTitle: true,
                 backgroundColor: Colors.transparent,
                 automaticallyImplyLeading: false,
-                title: Text(
-                  widget.comingFromEditScreen
-                      ? AppText().viewAndEdit
-                      : AppText().starCreate3,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: widget.comingFromEditScreen
-                        ? const Color(0xFF437296)
-                        : Colors.white,
-                    fontSize: AppDimensions.font10(context) * 1.8,
-                  ),
-                ),
+                title: appBarTitle(context,widget.comingFromEditScreen ?AppText().viewAndEdit: AppText().starCreate3,false),
                 leading: Buttons().backButton(context, backPress),
                 actions: [
                   widget.comingFromEditScreen
@@ -652,6 +642,268 @@ class _goalwhyState extends State<GoalWhy> {
                         }),
                 ],
               )),
+          bottomNavigationBar: update
+              ? GestureDetector(
+                  onPanUpdate: (details) {
+                    setState(() {
+                      swipeOffset += details.delta.dx;
+                    });
+
+                    if (swipeOffset.abs() >=
+                        MediaQuery.of(context).size.width / 3.0) {
+                      setState(() {
+                        showContainer = false;
+                      });
+                    }
+                  },
+                  child: AnimatedOpacity(
+                    duration: const Duration(milliseconds: 700),
+                    opacity: showContainer ? 1.0 : 0.0,
+                    child: Transform.translate(
+                      offset: Offset(swipeOffset, 0.0),
+                      child: Container(
+                        width: AppDimensions.width10(context) * 38.259,
+                        height: AppDimensions.height10(context) * 9.707,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 2.0),
+                            gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color(0xFFD4B7B9),
+                                  Color(0xFF91698C)
+                                ])),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left:
+                                      AppDimensions.height10(context) * 1.261),
+                              width: AppDimensions.width10(context) * 4.437,
+                              height: AppDimensions.height10(context) * 4.437,
+                              decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/circle_tick.webp'))),
+                            ),
+                            Container(
+                              //width: AppDimensions.width10(context) * 6.9,
+                              height: AppDimensions.height10(context) * 3.6,
+                              margin: EdgeInsets.only(
+                                  left:
+                                      AppDimensions.height10(context) * 1.232),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 4.6,
+                                    height:
+                                        AppDimensions.height10(context) * 1.4,
+                                    //   color: Colors.amber,
+                                    child: Text(
+                                      'Updates saved',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.font10(context) *
+                                                  1.3,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 16.9,
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
+                                    child: Text(
+                                      'The Why',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.font10(context) *
+                                                  1.8,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            AnimatedScaleButton(
+                              onTap: () {
+                                setState(() {
+                                  update = false;
+                                });
+                                stopTimer();
+                              },
+                              child: Container(
+                                width: AppDimensions.width10(context) * 8.1,
+                                height: AppDimensions.height10(context) * 6.0,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 5,
+                                    right:
+                                        AppDimensions.height10(context) * 1.23),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: const Color(0xFFFFFFFF), width: 1),
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 2.0),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Undo',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.font10(context) * 2,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xFFFFFFFF)),
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              : Container(
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 1.0,
+                      bottom: AppDimensions.height10(context) * 2.6),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      widget.comingFromEditScreen
+                          ? AnimatedScaleButton(
+                              onTap: () {
+                                resetDialog();
+                                // print(
+                                //     "ReasonReset $resetData ${reason == resetData}");
+                                // setState(() {
+                                //   reason = resetData;
+                                // });
+                                // print("Reason $reason");
+                                // print(
+                                //     "ReasonReset $resetData ${reason == resetData}");
+                                //   signupSheet(context, "Sign up / login", "login");
+                              },
+                              child: Container(
+                                  width: AppDimensions.width10(context) * 10.0,
+                                  height: AppDimensions.height10(context) * 5.0,
+                                  decoration: myTextFields[0]['text'] != ""
+                                      ? BoxDecoration(
+                                          color: Colors.white,
+                                          border: Border.all(
+                                              color: const Color(0xffFA9934)),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(50.0)),
+                                        )
+                                      : BoxDecoration(
+                                          // color: Color(0xFFFF7D50),
+                                          border: Border.all(
+                                              color: const Color(0xff282828)),
+                                          color: Colors.transparent,
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(50.0)),
+                                        ),
+                                  child: Center(
+                                      child: Text(
+                                    "Reset",
+                                    style: TextStyle(
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w600,
+                                        color: myTextFields[0]['text'] != ""
+                                            ? const Color(0xffFA9934)
+                                            : const Color(0xff282828),
+                                        fontSize:
+                                            AppDimensions.font10(context) * 2),
+                                  ))),
+                            )
+                          : Container(),
+                      widget.comingFromEditScreen
+                          ? SizedBox(
+                              width: AppDimensions.width10(context) * 2.0,
+                            )
+                          : Container(),
+                      AnimatedScaleButton(
+                        onTap: () async {
+                          if (widget.comingFromEditScreen) {
+                            if (reason[0]['text'] != "") {
+                              AdminGoal()
+                                  .updateUserGoal('reason', reason)
+                                  .then((value) {
+                                if (value == true) {
+                                  setState(() {
+                                    update = true;
+                                    showContainer = true;
+                                  });
+                                  startTimer();
+                                }
+                              });
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text("Field can't be empty")));
+                            }
+                          } else {
+                            updateGoalReason(myTextFields);
+                          }
+                        },
+                        child: Container(
+                          height: AppDimensions.height10(context) * 5.2,
+                          width: widget.comingFromEditScreen
+                              ? AppDimensions.width10(context) * 26.3
+                              : AppDimensions.width10(context) * 31.3,
+                          decoration: myTextFields[0]['text'] != ""
+                              ? BoxDecoration(
+                                  // color: Color(0xFFFF7D50),
+                                  border: Border.all(color: Colors.transparent),
+                                  gradient: const LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Color(0xFFFCC10D),
+                                        Color(0xFFFDA210)
+                                      ]),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(50.0)),
+                                )
+                              : BoxDecoration(
+                                  // color: Color(0xFFFF7D50),
+                                  border: Border.all(color: Colors.transparent),
+                                  color:
+                                      const Color(0xFF282828).withOpacity(0.5),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(50.0)),
+                                ),
+                          child: Center(
+                            child: Text(
+                              widget.comingFromEditScreen ? "Update" : "Next",
+                              style: TextStyle(
+                                color: widget.comingFromEditScreen
+                                    ? myTextFields[0]['text'] != "" ||
+                                            widget.comingFromEditScreen == true
+                                        ? Colors.white
+                                        : Colors.white.withOpacity(0.5)
+                                    : myTextFields[0]['text'] != ""
+                                        ? Colors.white
+                                        : Colors.white.withOpacity(0.5),
+                                fontSize: UpdatedDimensions.font10(context) * 2,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
           body: Stack(children: [
             Container(
               decoration: BoxDecoration(
@@ -748,13 +1000,13 @@ class _goalwhyState extends State<GoalWhy> {
                         ),
                         SizedBox(
                           width: AppDimensions.width10(context) * 38.2,
-                          // height: widget.comingFromEditScreen
-                          //     ? reason.length <= 1
-                          //         ? AppDimensions.height10(context) * 22.0
-                          //         : AppDimensions.height10(context) * 36.0
-                          //     : item <= 1
-                          //         ? AppDimensions.height10(context) * 22.0
-                          //         : AppDimensions.height10(context) * 36.0,
+                          height: widget.comingFromEditScreen
+                              ? reason.length <= 1
+                                  ? AppDimensions.height10(context) * 22.0
+                                  : AppDimensions.height10(context) * 36.0
+                              : item <= 1
+                                  ? AppDimensions.height10(context) * 22.0
+                                  : AppDimensions.height10(context) * 36.0,
                           // color: Colors.amber,
                           child: Stack(children: [
                             ClipPath(
@@ -785,7 +1037,6 @@ class _goalwhyState extends State<GoalWhy> {
                                       : myTextFields.length,
                                   padding: EdgeInsets.zero,
                                   shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
                                   itemBuilder: (BuildContext context, index) {
                                     if (widget.comingFromEditScreen) {
                                       if (reason == null ||
@@ -1004,7 +1255,7 @@ class _goalwhyState extends State<GoalWhy> {
                             ),
                             Positioned(
                               top: 0,
-                              bottom: 0,
+                              bottom: myTextFields.length>1?0: 20,
                               left: 0,
                               right: 0,
                               child: Align(
@@ -1236,356 +1487,24 @@ class _goalwhyState extends State<GoalWhy> {
                             )
                           ]),
                         ),
-                        widget.comingFromEditScreen
-                            ? SizedBox(
-                                height: reason.length > 1
-                                    ? AppDimensions.height10(context) * 14.5
-                                    : AppDimensions.height10(context) * 26.0,
-                              )
-                            : MediaQuery.of(context).viewInsets.bottom == 0
-                                ? SizedBox(
-                                    height:
-                                        AppDimensions.height10(context) * 24.7,
-                                  )
-                                : SizedBox(
-                                    height:
-                                        AppDimensions.height10(context) * 5.0,
-                                  ),
-                        update
-                            ? GestureDetector(
-                                onPanUpdate: (details) {
-                                  setState(() {
-                                    swipeOffset += details.delta.dx;
-                                  });
-
-                                  if (swipeOffset.abs() >=
-                                      MediaQuery.of(context).size.width / 3.0) {
-                                    setState(() {
-                                      showContainer = false;
-                                    });
-                                  }
-                                },
-                                child: AnimatedOpacity(
-                                  duration: const Duration(milliseconds: 700),
-                                  opacity: showContainer ? 1.0 : 0.0,
-                                  child: Transform.translate(
-                                    offset: Offset(swipeOffset, 0.0),
-                                    child: Container(
-                                      width: AppDimensions.width10(context) *
-                                          38.259,
-                                      height: AppDimensions.height10(context) *
-                                          9.707,
-                                      decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                              AppDimensions.height10(context) *
-                                                  2.0),
-                                          gradient: const LinearGradient(
-                                              begin: Alignment.topCenter,
-                                              end: Alignment.bottomCenter,
-                                              colors: [
-                                                Color(0xFFD4B7B9),
-                                                Color(0xFF91698C)
-                                              ])),
-                                      child: Row(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.center,
-                                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Container(
-                                            margin: EdgeInsets.only(
-                                                left: AppDimensions.height10(
-                                                        context) *
-                                                    1.261),
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    4.437,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                4.437,
-                                            decoration: const BoxDecoration(
-                                                image: DecorationImage(
-                                                    image: AssetImage(
-                                                        'assets/images/circle_tick.webp'))),
-                                          ),
-                                          Container(
-                                            //width: AppDimensions.width10(context) * 6.9,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                3.6,
-                                            margin: EdgeInsets.only(
-                                                left: AppDimensions.height10(
-                                                        context) *
-                                                    1.232),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                SizedBox(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      4.6,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          1.4,
-                                                  //   color: Colors.amber,
-                                                  child: Text(
-                                                    'Updates saved',
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .font10(
-                                                                    context) *
-                                                            1.3,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: const Color(
-                                                            0xFFFFFFFF)),
-                                                  ),
-                                                ),
-                                                SizedBox(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      16.9,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.2,
-                                                  child: Text(
-                                                    'The Why',
-                                                    overflow:
-                                                        TextOverflow.ellipsis,
-                                                    style: TextStyle(
-                                                        fontSize: AppDimensions
-                                                                .font10(
-                                                                    context) *
-                                                            1.8,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: const Color(
-                                                            0xFFFFFFFF)),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          AnimatedScaleButton(
-                                            onTap: () {
-                                              setState(() {
-                                                update = false;
-                                              });
-                                              stopTimer();
-                                            },
-                                            child: Container(
-                                              width: AppDimensions.width10(
-                                                      context) *
-                                                  8.1,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  6.0,
-                                              margin: EdgeInsets.only(
-                                                  left: AppDimensions.height10(
-                                                          context) *
-                                                      5,
-                                                  right: AppDimensions.height10(
-                                                          context) *
-                                                      1.23),
-                                              decoration: BoxDecoration(
-                                                border: Border.all(
-                                                    color:
-                                                        const Color(0xFFFFFFFF),
-                                                    width: 1),
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            2.0),
-                                              ),
-                                              child: Center(
-                                                child: Text(
-                                                  'Undo',
-                                                  style: TextStyle(
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              2,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: const Color(
-                                                          0xFFFFFFFF)),
-                                                ),
-                                              ),
-                                            ),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            : Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  widget.comingFromEditScreen
-                                      ? AnimatedScaleButton(
-                                          onTap: () {
-                                            resetDialog();
-                                            // print(
-                                            //     "ReasonReset $resetData ${reason == resetData}");
-                                            // setState(() {
-                                            //   reason = resetData;
-                                            // });
-                                            // print("Reason $reason");
-                                            // print(
-                                            //     "ReasonReset $resetData ${reason == resetData}");
-                                            //   signupSheet(context, "Sign up / login", "login");
-                                          },
-                                          child: Container(
-                                              width: AppDimensions.width10(
-                                                      context) *
-                                                  10.0,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  5.0,
-                                              decoration: myTextFields[0]
-                                                          ['text'] !=
-                                                      ""
-                                                  ? BoxDecoration(
-                                                      color: Colors.white,
-                                                      border: Border.all(
-                                                          color: const Color(
-                                                              0xffFA9934)),
-                                                      borderRadius:
-                                                          const BorderRadius
-                                                              .all(
-                                                              Radius.circular(
-                                                                  50.0)),
-                                                    )
-                                                  : BoxDecoration(
-                                                      // color: Color(0xFFFF7D50),
-                                                      border: Border.all(
-                                                          color: const Color(
-                                                              0xff282828)),
-                                                      color: Colors.transparent,
-                                                      borderRadius:
-                                                          const BorderRadius
-                                                              .all(
-                                                              Radius.circular(
-                                                                  50.0)),
-                                                    ),
-                                              child: Center(
-                                                  child: Text(
-                                                "Reset",
-                                                style: TextStyle(
-                                                    fontFamily: "Laila",
-                                                    fontWeight: FontWeight.w600,
-                                                    color: myTextFields[0]
-                                                                ['text'] !=
-                                                            ""
-                                                        ? const Color(
-                                                            0xffFA9934)
-                                                        : const Color(
-                                                            0xff282828),
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            2),
-                                              ))),
-                                        )
-                                      : Container(),
-                                  SizedBox(
-                                    width: AppDimensions.width10(context) * 2.0,
-                                  ),
-                                  AnimatedScaleButton(
-                                    onTap: () async {
-                                      if (widget.comingFromEditScreen) {
-                                        if (reason[0]['text'] != "") {
-                                          AdminGoal()
-                                              .updateUserGoal('reason', reason)
-                                              .then((value) {
-                                            if (value == true) {
-                                              setState(() {
-                                                update = true;
-                                                showContainer = true;
-                                              });
-                                              startTimer();
-                                            }
-                                          });
-                                        } else {
-                                          ScaffoldMessenger.of(context)
-                                              .showSnackBar(const SnackBar(
-                                                  content: Text(
-                                                      "Field can't be empty")));
-                                        }
-                                      } else {
-                                        updateGoalReason(myTextFields);
-                                      }
-                                    },
-                                    child: Container(
-                                      height:
-                                          AppDimensions.height10(context) * 5.2,
-                                      width: widget.comingFromEditScreen
-                                          ? AppDimensions.width10(context) *
-                                              26.3
-                                          : AppDimensions.width10(context) *
-                                              31.3,
-                                      decoration: myTextFields[0]['text'] != ""
-                                          ? BoxDecoration(
-                                              // color: Color(0xFFFF7D50),
-                                              border: Border.all(
-                                                  color: Colors.transparent),
-                                              gradient: const LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                    Color(0xFFFCC10D),
-                                                    Color(0xFFFDA210)
-                                                  ]),
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                                      Radius.circular(50.0)),
-                                            )
-                                          : BoxDecoration(
-                                              // color: Color(0xFFFF7D50),
-                                              border: Border.all(
-                                                  color: Colors.transparent),
-                                              color: const Color(0xFF282828)
-                                                  .withOpacity(0.5),
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                                      Radius.circular(50.0)),
-                                            ),
-                                      child: Center(
-                                        child: Text(
-                                          widget.comingFromEditScreen
-                                              ? "Update"
-                                              : "Next",
-                                          style: TextStyle(
-                                            color: widget.comingFromEditScreen
-                                                ? myTextFields[0]['text'] !=
-                                                            "" ||
-                                                        widget.comingFromEditScreen ==
-                                                            true
-                                                    ? Colors.white
-                                                    : Colors.white
-                                                        .withOpacity(0.5)
-                                                : myTextFields[0]['text'] != ""
-                                                    ? Colors.white
-                                                    : Colors.white
-                                                        .withOpacity(0.5),
-                                            fontSize: UpdatedDimensions.font10(
-                                                    context) *
-                                                2,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                        SizedBox(
-                          height: AppDimensions.height10(context) * 2.5,
-                        ),
+                        // widget.comingFromEditScreen
+                        //     ? SizedBox(
+                        //         height: reason.length > 1
+                        //             ? AppDimensions.height10(context) * 14.5
+                        //             : AppDimensions.height10(context) * 26.0,
+                        //       )
+                        //     : MediaQuery.of(context).viewInsets.bottom == 0
+                        //         ? SizedBox(
+                        //             height:
+                        //                 AppDimensions.height10(context) * 24.7,
+                        //           )
+                        //         : SizedBox(
+                        //             height:
+                        //                 AppDimensions.height10(context) * 5.0,
+                        //           ),
+                        // SizedBox(
+                        //   height: AppDimensions.height10(context) * 2.5,
+                        // ),
                         Padding(
                             padding: EdgeInsets.only(
                                 bottom:

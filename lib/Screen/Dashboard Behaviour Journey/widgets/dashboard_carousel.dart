@@ -11,7 +11,7 @@ import 'package:potenic_app/utils/utils.dart';
 import 'package:super_tooltip/super_tooltip.dart';
 
 dashboardCarousel(
-  BuildContext context, CarouselSliderController controller, SuperTooltipController superTooltipController,
+  BuildContext context, CarouselSliderController controller, SuperTooltipController superTooltipController,skipFunc,nextFunc,
   dashboardData,
   int currentIndex,
   final ValueChanged<TwoValues<String, int>> onCountChanged,
@@ -230,11 +230,11 @@ dashboardCarousel(
             ),
           ),
         ),
-        //  Positioned(
-        //   bottom: 100,
-        //   child: dashboardTooltip(superTooltipController, context, 4, 'down',(){}, (){},Container(height: 0,width: 0,),
-        //    ),
-        // )
+         Positioned(
+          bottom: 100,
+          child: dashboardTooltip(superTooltipController, context, 4, 'down',skipFunc, nextFunc,Container(height: 0,width: 0,),
+           ),
+        )
 
       ],
     ),

@@ -11,6 +11,7 @@ import 'package:potenic_app/Screen/Goal%20Review%20Journey/StarReview.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/veiw_all_goals.dart';
+import 'package:potenic_app/Widgets/appBarWidgets.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -232,6 +233,7 @@ class _GoalNameState extends State<GoalName> {
         child: Scaffold(
           extendBodyBehindAppBar: true,
           resizeToAvoidBottomInset: false,
+          extendBody: true,
           backgroundColor: Colors.transparent,
           appBar: PreferredSize(
               preferredSize:
@@ -241,18 +243,7 @@ class _GoalNameState extends State<GoalName> {
                 centerTitle: true,
                 backgroundColor: Colors.transparent,
                 automaticallyImplyLeading: false,
-                title: Text(
-                  widget.comingFromEditScreen
-                      ? AppText().viewAndEdit
-                      : AppText().starCreate2,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    color: widget.comingFromEditScreen
-                        ? const Color(0xff437296)
-                        : Colors.white,
-                    fontSize: AppDimensions.font10(context) * 1.8,
-                  ),
-                ),
+                title: appBarTitle(context,widget.comingFromEditScreen ?AppText().viewAndEdit: AppText().starCreate2,false),
                 leading: Buttons().backButton(context, backPress),
                 actions: [
                   widget.comingFromEditScreen
@@ -431,6 +422,261 @@ class _GoalNameState extends State<GoalName> {
                         })
                 ],
               )),
+          bottomNavigationBar: Container(
+            padding: EdgeInsets.symmetric(
+                horizontal: AppDimensions.width10(context) * 6),
+            child: updated
+                ? GestureDetector(
+              onPanUpdate: (details) {
+                setState(() {
+                  swipeOffset += details.delta.dx;
+                });
+
+                if (swipeOffset.abs() >=
+                    MediaQuery.of(context).size.width / 3.0) {
+                  setState(() {
+                    showContainer = false;
+                  });
+                }
+              },
+              child: AnimatedOpacity(
+                duration: const Duration(milliseconds: 700),
+                opacity: showContainer ? 1.0 : 0.0,
+                child: Transform.translate(
+                  offset: Offset(swipeOffset, 0.0),
+                  child: Container(
+                    width:
+                    AppDimensions.width10(context) * 38.259,
+                    height:
+                    AppDimensions.height10(context) * 9.707,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 1.0,
+                        bottom: AppDimensions.height10(context) * 2.6),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) *
+                                2.0),
+                        gradient: const LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Color(0xFFD4B7B9),
+                              Color(0xFF91698C)
+                            ])),
+                    child: Row(
+                      crossAxisAlignment:
+                      CrossAxisAlignment.center,
+                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10(
+                                  context) *
+                                  1.261),
+                          width: AppDimensions.width10(context) *
+                              4.437,
+                          height:
+                          AppDimensions.height10(context) *
+                              4.437,
+                          decoration: const BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/circle_tick.webp'))),
+                        ),
+                        Container(
+                          //width: AppDimensions.width10(context) * 6.9,
+                          height:
+                          AppDimensions.height10(context) *
+                              3.6,
+                          margin: EdgeInsets.only(
+                              left: AppDimensions.height10(
+                                  context) *
+                                  1.232),
+                          child: Column(
+                            crossAxisAlignment:
+                            CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(
+                                width: AppDimensions.width10(
+                                    context) *
+                                    4.6,
+                                height: AppDimensions.height10(
+                                    context) *
+                                    1.4,
+                                //   color: Colors.amber,
+                                child: Text(
+                                  'Updates saved',
+                                  style: TextStyle(
+                                      fontSize:
+                                      AppDimensions.font10(
+                                          context) *
+                                          1.3,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(
+                                          0xFFFFFFFF)),
+                                ),
+                              ),
+                              SizedBox(
+                                width: AppDimensions.width10(
+                                    context) *
+                                    16.9,
+                                height: AppDimensions.height10(
+                                    context) *
+                                    2.2,
+                                child: Text(
+                                  'Goal Name',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                      fontSize:
+                                      AppDimensions.font10(
+                                          context) *
+                                          1.8,
+                                      fontWeight: FontWeight.w500,
+                                      color: const Color(
+                                          0xFFFFFFFF)),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        AnimatedScaleButton(
+                          onTap: () {
+                            setState(() {
+                              updated = false;
+                            });
+                            stopTimer();
+                          },
+                          child: Container(
+                            width:
+                            AppDimensions.width10(context) *
+                                8.1,
+                            height:
+                            AppDimensions.height10(context) *
+                                6.0,
+                            margin: EdgeInsets.only(
+                                left: AppDimensions.height10(
+                                    context) *
+                                    5,
+                                right: AppDimensions.height10(
+                                    context) *
+                                    1.23),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: const Color(0xFFFFFFFF),
+                                  width: 1),
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensions.height10(
+                                      context) *
+                                      2.0),
+                            ),
+                            child: Center(
+                              child: Text(
+                                'Undo',
+                                style: TextStyle(
+                                    fontSize:
+                                    AppDimensions.font10(
+                                        context) *
+                                        1.8,
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                    const Color(0xFFFFFFFF)),
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            )
+                : ValueListenableBuilder<TextEditingValue>(
+              valueListenable: mygoal,
+              builder: (context, value, child) {
+                return AnimatedScaleButton(
+                  onTap: () async {
+                    _focusNode.unfocus();
+
+                    if (widget.comingFromEditScreen) {
+                      final SharedPreferences prefs =
+                      await _prefs;
+                      prefs.setString(
+                          'goalName', mygoal.text);
+                      AdminGoal()
+                          .updateUserGoal('name', mygoal.text)
+                          .then((value) {
+                        if (value == true) {
+                          setState(() {
+                            updated = true;
+                            showContainer = true;
+                          });
+                          startTimer();
+                        }
+                      });
+                      // Navigator.pop(context, mygoal.text);
+                    } else {
+                      final SharedPreferences prefs =
+                      await _prefs;
+                      prefs.setString(
+                          'goalName', mygoal.text);
+                      goalProvider.updateName(mygoal.text);
+                      if (mygoal.text != "") {
+                        getUserId(
+                          mygoal.text.toString(),
+                        );
+
+                        Navigator.push(
+                          context,
+                          FadePageRoute(
+                            page: const GoalWhy(
+                              route: '',
+                              comingFromEditScreen: false,
+                              saved: false,
+                            ),
+                          ),
+                        );
+                      } else {}
+                    }
+                  },
+                  child: Container(
+                    height:
+                    AppDimensions.height10(context) * 5.2,
+                    margin: EdgeInsets.only(
+                        top: AppDimensions.height10(context) * 1.0,
+                        bottom: AppDimensions.height10(context) * 2.6),
+                    decoration: value.text.isNotEmpty
+                        ? const BoxDecoration(
+                      gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Color(0xFFFCC10D),
+                            Color(0xFFFDA210)
+                          ]),
+                      borderRadius: BorderRadius.all(
+                          Radius.circular(50.0)),
+                    )
+                        : BoxDecoration(
+                      color: const Color(0xFF282828)
+                          .withOpacity(0.5),
+                      borderRadius:
+                      const BorderRadius.all(
+                          Radius.circular(50.0)),
+                    ),
+                    child: Center(
+                      child: Text(
+                        widget.comingFromEditScreen
+                            ? "Update"
+                            : "Next",
+                        style: AppTextStyles()
+                            .onBoardingButtonStyle(context),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
           body: Stack(
             children: [
               Container(
@@ -539,23 +785,28 @@ class _GoalNameState extends State<GoalName> {
                         expands: true,
                         maxLines: null,
                         minLines: null,
+                        keyboardType: TextInputType.text,
                         textCapitalization: TextCapitalization.sentences,
                         maxLength: 50,
                         focusNode: _focusNode,
                         textAlignVertical: TextAlignVertical.top,
-                        //  key: _formkey1,
                         style: TextStyle(
+                            fontFamily: 'Laila',
+                            decoration: TextDecoration.none,
+                            decorationThickness: 0,
+                            height: AppDimensions.height10(context) * 0.15,
                             fontSize: AppDimensions.font10(context) * 2.4,
-                            fontWeight: FontWeight.w500,
-                            height: AppDimensions.height10(context) * 0.14,
+                            fontWeight: FontWeight.w600,
                             color: const Color(0xFFFA9934)),
+                        //  key: _formkey1,
 
                         decoration: InputDecoration(
                             contentPadding: EdgeInsets.zero,
                             hintText: "",
                             hintStyle: TextStyle(
+                                fontFamily: 'Laila',
                                 fontSize: AppDimensions.font10(context) * 2.4,
-                                fontWeight: FontWeight.w500,
+                                fontWeight: FontWeight.w600,
                                 color: const Color(0xFFFA9934)),
                             focusedBorder: const OutlineInputBorder(
                                 borderSide:
@@ -641,288 +892,21 @@ class _GoalNameState extends State<GoalName> {
                         ),
                       ),
                     ),
-                    MediaQuery.of(context).viewInsets.bottom == 0
-                        ? updated
-                            ? SizedBox(
-                                height: AppDimensions.height10(context) * 25.3,
-                              )
-                            : SizedBox(
-                                height: AppDimensions.height10(context) * 26.3,
-                              )
-                        : SizedBox(
-                            height: AppDimensions.height10(context) * 9.6,
-                          ),
-                    updated
-                        ? GestureDetector(
-                            onPanUpdate: (details) {
-                              setState(() {
-                                swipeOffset += details.delta.dx;
-                              });
-
-                              if (swipeOffset.abs() >=
-                                  MediaQuery.of(context).size.width / 3.0) {
-                                setState(() {
-                                  showContainer = false;
-                                });
-                              }
-                            },
-                            child: AnimatedOpacity(
-                              duration: const Duration(milliseconds: 700),
-                              opacity: showContainer ? 1.0 : 0.0,
-                              child: Transform.translate(
-                                offset: Offset(swipeOffset, 0.0),
-                                child: Container(
-                                  width:
-                                      AppDimensions.width10(context) * 38.259,
-                                  height:
-                                      AppDimensions.height10(context) * 9.707,
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                          AppDimensions.height10(context) *
-                                              2.0),
-                                      gradient: const LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Color(0xFFD4B7B9),
-                                            Color(0xFF91698C)
-                                          ])),
-                                  child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        margin: EdgeInsets.only(
-                                            left: AppDimensions.height10(
-                                                    context) *
-                                                1.261),
-                                        width: AppDimensions.width10(context) *
-                                            4.437,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                4.437,
-                                        decoration: const BoxDecoration(
-                                            image: DecorationImage(
-                                                image: AssetImage(
-                                                    'assets/images/circle_tick.webp'))),
-                                      ),
-                                      Container(
-                                        //width: AppDimensions.width10(context) * 6.9,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                3.6,
-                                        margin: EdgeInsets.only(
-                                            left: AppDimensions.height10(
-                                                    context) *
-                                                1.232),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            SizedBox(
-                                              width: AppDimensions.width10(
-                                                      context) *
-                                                  4.6,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  1.4,
-                                              //   color: Colors.amber,
-                                              child: Text(
-                                                'Updates saved',
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.3,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xFFFFFFFF)),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: AppDimensions.width10(
-                                                      context) *
-                                                  16.9,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  2.2,
-                                              child: Text(
-                                                'Goal Name',
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.8,
-                                                    fontWeight: FontWeight.w500,
-                                                    color: const Color(
-                                                        0xFFFFFFFF)),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                      AnimatedScaleButton(
-                                        onTap: () {
-                                          setState(() {
-                                            updated = false;
-                                          });
-                                          stopTimer();
-                                        },
-                                        child: Container(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  8.1,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  6.0,
-                                          margin: EdgeInsets.only(
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  5,
-                                              right: AppDimensions.height10(
-                                                      context) *
-                                                  1.23),
-                                          decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: const Color(0xFFFFFFFF),
-                                                width: 1),
-                                            borderRadius: BorderRadius.circular(
-                                                AppDimensions.height10(
-                                                        context) *
-                                                    2.0),
-                                          ),
-                                          child: Center(
-                                            child: Text(
-                                              'Undo',
-                                              style: TextStyle(
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.8,
-                                                  fontWeight: FontWeight.w500,
-                                                  color:
-                                                      const Color(0xFFFFFFFF)),
-                                            ),
-                                          ),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                        : Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              // Container(
-                              //     // color: Colors.blue,
-                              //     width: AppDimensions.width10(context) * 5.0,
-                              //     height: AppDimensions.height10(context) * 5.0,
-                              //     child: AnimatedScaleButton(
-                              //       onTap: () {
-                              //         // signupSheet(context, "Sign up / login", "login");
-                              //       },
-                              //       child: Image.asset(
-                              //         "assets/images/Moreactions.webp",
-                              //         fit: BoxFit.contain,
-                              //       ),
-                              //     )),
-                              // SizedBox(
-                              //   width: AppDimensions.width10(context) * 2.0,
-                              // ),
-                              ValueListenableBuilder<TextEditingValue>(
-                                valueListenable: mygoal,
-                                builder: (context, value, child) {
-                                  return AnimatedScaleButton(
-                                    onTap: () async {
-                                      _focusNode.unfocus();
-
-                                      if (widget.comingFromEditScreen) {
-                                        final SharedPreferences prefs =
-                                            await _prefs;
-                                        prefs.setString(
-                                            'goalName', mygoal.text);
-                                        AdminGoal()
-                                            .updateUserGoal('name', mygoal.text)
-                                            .then((value) {
-                                          if (value == true) {
-                                            setState(() {
-                                              updated = true;
-                                              showContainer = true;
-                                            });
-                                            startTimer();
-                                          }
-                                        });
-                                        // Navigator.pop(context, mygoal.text);
-                                      } else {
-                                        final SharedPreferences prefs =
-                                            await _prefs;
-                                        prefs.setString(
-                                            'goalName', mygoal.text);
-                                        goalProvider.updateName(mygoal.text);
-                                        if (mygoal.text != "") {
-                                          getUserId(
-                                            mygoal.text.toString(),
-                                          );
-
-                                          Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                              page: const GoalWhy(
-                                                route: '',
-                                                comingFromEditScreen: false,
-                                                saved: false,
-                                              ),
-                                            ),
-                                          );
-                                        } else {}
-                                      }
-                                    },
-                                    child: Container(
-                                      height:
-                                          AppDimensions.height10(context) * 5.2,
-                                      width:
-                                          AppDimensions.width10(context) * 31.3,
-                                      decoration: value.text.isNotEmpty
-                                          ? const BoxDecoration(
-                                              gradient: LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                    Color(0xFFFCC10D),
-                                                    Color(0xFFFDA210)
-                                                  ]),
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(50.0)),
-                                            )
-                                          : BoxDecoration(
-                                              color: const Color(0xFF282828)
-                                                  .withOpacity(0.5),
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                                      Radius.circular(50.0)),
-                                            ),
-                                      child: Center(
-                                        child: Text(
-                                          widget.comingFromEditScreen
-                                              ? "Update"
-                                              : "Next",
-                                          style: AppTextStyles()
-                                              .onBoardingButtonStyle(context),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                    SizedBox(
-                      height: AppDimensions.height10(context) * 2.5,
-                    ),
+                    // MediaQuery.of(context).viewInsets.bottom == 0
+                    //     ? updated
+                    //         ? SizedBox(
+                    //             height: AppDimensions.height10(context) * 25.3,
+                    //           )
+                    //         : SizedBox(
+                    //             height: AppDimensions.height10(context) * 26.3,
+                    //           )
+                    //     : SizedBox(
+                    //         height: AppDimensions.height10(context) * 9.6,
+                    //       ),
+                    //
+                    // SizedBox(
+                    //   height: AppDimensions.height10(context) * 2.5,
+                    // ),
                     Padding(
                         padding: EdgeInsets.only(
                             bottom: MediaQuery.of(context).viewInsets.bottom))

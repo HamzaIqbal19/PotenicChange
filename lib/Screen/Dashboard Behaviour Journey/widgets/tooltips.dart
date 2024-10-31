@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:super_tooltip/super_tooltip.dart';
 
@@ -221,7 +222,7 @@ Widget tooltipComponent(BuildContext context, goalLevel, final VoidCallback acti
                         : goalLevel == 4
                         ? 'schedule.\nNavigate here if you want quick access to\nsee all your '
                         : goalLevel == 5
-                        ? 'that it’s not currently scheduled, navigate\nhere. You will see all your '
+                        ? 'that is not currently scheduled, navigate\nhere. You will see all your '
                     // : goalLevel == 6
                     // ? 'It’s very similar to your schedule. Navigate here if you want to see your '
                         : 'and '),
@@ -242,11 +243,11 @@ Widget tooltipComponent(BuildContext context, goalLevel, final VoidCallback acti
                     style: const TextStyle(fontWeight: FontWeight.w700)),
                 TextSpan(
                     text: goalLevel == 1
-                        ? 'They wil always look bigger and will have '
+                        ? 'They wil always look bigger and will have a '
                         : goalLevel == 2
                         ? 'that you’ve created to help you progress with your goal. The\n'
                         : goalLevel == 3
-                        ? 'for on that day (centred daily calendar view at the top shows you the actual date).'
+                        ? 'for on that day (centred daily calendar at the top shows you the actual date).'
                         : goalLevel == 4
                         ? 'for that day. Scroll left or right to see your\n'
                         : goalLevel == 5
@@ -321,7 +322,7 @@ Widget tooltipComponent(BuildContext context, goalLevel, final VoidCallback acti
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              GestureDetector(
+              AnimatedScaleButton(
                 onTap: action1,
                 child: Container(
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(UpdatedDimensions.height10(context) * 5.0), border: Border.all(width: UpdatedDimensions.width10(context) * 0.1, color: const Color(0xFFFBFBFB))),
@@ -336,7 +337,7 @@ Widget tooltipComponent(BuildContext context, goalLevel, final VoidCallback acti
                   ),
                 ),
               ),
-              GestureDetector(
+              AnimatedScaleButton(
                 onTap: action2,
                 child: Container(
                   width: UpdatedDimensions.width10(context) * 11.7,
@@ -358,7 +359,7 @@ Widget tooltipComponent(BuildContext context, goalLevel, final VoidCallback acti
                           ? '(6/6) Next'
                           : goalLevel == 1
                           ? '(1/6) Next'
-                          : '(6/6) Next',
+                          : '(6/6) Finish',
                       style: TextStyle(decoration: TextDecoration.none, fontFamily: 'Laila', fontSize: UpdatedDimensions.font10(context) * 1.6, color: const Color(0xFFFFFFFF), fontWeight: FontWeight.w600),
                     ),
                   ),

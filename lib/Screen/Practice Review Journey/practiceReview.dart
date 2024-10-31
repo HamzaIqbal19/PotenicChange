@@ -196,7 +196,7 @@ class _PracticeReviewState extends State<PracticeReview> {
             style: TextStyle(
               fontWeight: FontWeight.w600,
               color: const Color(0xFF5B74A6),
-              fontSize: AppDimensions.font10(context) * 2.0,
+              fontSize: AppDimensions.font10(context) * 2.2,
             ),
           ),
           leading: Center(
@@ -1079,10 +1079,10 @@ class _PracticeReviewState extends State<PracticeReview> {
                                 ),
                               ],
                             )),
-                        SizedBox(
+                        (notificationStatus || status2 ) ?  Container():  SizedBox(
                           height: AppDimensions.height10(context) * 3.1,
                         ),
-                        Container(
+                        (notificationStatus || status2 ) ?  Container():  Container(
                             width: AppDimensions.width10(context) * 38.2,
                             height: AppDimensions.height10(context) * 29.9,
                             decoration: BoxDecoration(
@@ -1137,7 +1137,7 @@ class _PracticeReviewState extends State<PracticeReview> {
                                           ),
                                           // SizedBox(width: ),
 
-                                          (notificationStatus || status2 ) ?  Container():AnimatedScaleButton(
+                                          AnimatedScaleButton(
                                             onTap: () {
                                               print("Printed press $pracName $pracColor $goalName $color");
                                               Navigator.push(

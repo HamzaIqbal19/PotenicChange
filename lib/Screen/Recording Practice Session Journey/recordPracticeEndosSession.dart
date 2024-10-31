@@ -4,7 +4,9 @@ import 'package:potenic_app/API/recordingPractice.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session%20Journey/recordPracticeFellingAftr.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session%20Journey/recordPracticeSummary.dart';
+import 'package:potenic_app/Screen/Recording%20Practice%20Session%20Journey/widgets/optionCircles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/appBarWidgets.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Widgets/fading.dart';
@@ -299,14 +301,7 @@ class _endofSessionState extends State<endofSession> {
                 )),
           ),
           centerTitle: true,
-          title: Text(
-            pracName,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-                fontSize: AppDimensionsUpdated.font10(context) * 2.0,
-                fontWeight: FontWeight.w600,
-                color: Colors.white),
-          ),
+          title: appBarTitle(context, pracName,false),
           actions: [
             Buttons().closeButton(context, () {
               if (widget.summary) {
@@ -351,10 +346,11 @@ class _endofSessionState extends State<endofSession> {
                 Container(
                   width: AppDimensionsUpdated.width10(context) * 35.9,
                   height: AppDimensionsUpdated.height10(context) * 14.8,
-                  alignment: Alignment.center,
+                 // alignment: Alignment.center,
                   margin: EdgeInsets.only(
                       bottom: AppDimensionsUpdated.height10(context) * 8.3),
                   child: RichText(
+                    textAlign: TextAlign.center,
                       text: TextSpan(
                     text: 'How did the practice go?',
                     style: TextStyle(
@@ -365,361 +361,26 @@ class _endofSessionState extends State<endofSession> {
                   )),
                 ),
                 Container(
+                  height: AppDimensionsUpdated.width10(context) * 13.7,
                   margin: EdgeInsets.only(
                       bottom: AppDimensionsUpdated.height10(context) * 5.2,
                       left: AppDimensionsUpdated.width10(context) * 1.0),
-                  height: AppDimensionsUpdated.width10(context) * 13.7,
-                  child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Row(children: [
-                      AnimatedScaleButton(
-                        onTap: () {
-                          setState(() {
-                            sessionEnd = 1;
-                          });
-                        },
-                        child: Container(
-                          width: AppDimensionsUpdated.width10(context) * 13.7,
-                          height: AppDimensionsUpdated.width10(context) * 13.7,
-                          margin: EdgeInsets.only(
-                              left: AppDimensionsUpdated.width10(context) * 3.0,
-                              right:
-                                  AppDimensionsUpdated.width10(context) * 1.5),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                                width:
-                                    AppDimensionsUpdated.width10(context) * 0.2,
-                                color: sessionEnd == 1
-                                    ? Colors.white
-                                    : Colors.transparent),
-                          ),
-                          child: Container(
-                            height:
-                                AppDimensionsUpdated.width10(context) * 12.7,
-                            width: AppDimensionsUpdated.width10(context) * 12.5,
-                            margin: EdgeInsets.symmetric(
-                                vertical:
-                                    AppDimensionsUpdated.height10(context) *
-                                        0.4,
-                                horizontal:
-                                    AppDimensionsUpdated.width10(context) *
-                                        0.3),
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(width: 1, color: Colors.white),
-                                gradient: RadialGradient(
-                                  // radius: 0.5,
-                                  colors: <Color>[
-                                    const Color(0xFFBDA7C2)
-                                        .withOpacity(0.19), // yellow sun
-                                    const Color(0xFFB38FB4)
-                                        .withOpacity(.81), // blue sky
-                                  ],
-                                )),
-                            child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontFamily: 'laila',
-                                      fontSize:
-                                          AppDimensionsUpdated.font10(context) *
-                                              1.6,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white,
-                                    ),
-                                    children: const [
-                                      TextSpan(
-                                        text: 'Not great,\nhaven’t\nenjoyed it',
-                                      ),
-                                      // TextSpan(text: ' it')
-                                    ])),
-                          ),
-                        ),
-                      ),
-                      AnimatedScaleButton(
-                        onTap: () {
-                          setState(() {
-                            sessionEnd = 2;
-                          });
-                        },
-                        child: Container(
-                          width: AppDimensionsUpdated.width10(context) * 13.7,
-                          height: AppDimensionsUpdated.width10(context) * 13.7,
-                          margin: EdgeInsets.only(
-                              right:
-                                  AppDimensionsUpdated.width10(context) * 1.5),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                                width:
-                                    AppDimensionsUpdated.width10(context) * 0.2,
-                                color: sessionEnd == 2
-                                    ? Colors.white
-                                    : Colors.transparent),
-                          ),
-                          child: Container(
-                            height:
-                                AppDimensionsUpdated.width10(context) * 12.7,
-                            width: AppDimensionsUpdated.width10(context) * 12.5,
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.symmetric(
-                                vertical:
-                                    AppDimensionsUpdated.height10(context) *
-                                        0.4,
-                                horizontal:
-                                    AppDimensionsUpdated.width10(context) *
-                                        0.3),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(width: 1, color: Colors.white),
-                                gradient: RadialGradient(
-                                  // radius: 0.5,
-                                  colors: <Color>[
-                                    const Color(0xFFBDA7C2)
-                                        .withOpacity(0.19), // yellow sun
-                                    const Color(0xFFB38FB4)
-                                        .withOpacity(.81), // blue sky
-                                  ],
-                                )),
-                            child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontFamily: 'laila',
-                                      fontSize:
-                                          AppDimensionsUpdated.font10(context) *
-                                              1.6,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white,
-                                    ),
-                                    children: const [
-                                      TextSpan(
-                                        text:
-                                            'I got\ndistracted, it\nwas hard to\nfocus',
-                                      ),
-                                      // TextSpan(
-                                      //   text: 'difficult',
-                                      //   style: TextStyle(
-                                      //       fontWeight: FontWeight.bold),
-                                      // )
-                                    ])),
-                          ),
-                        ),
-                      ),
-                      AnimatedScaleButton(
-                        onTap: () {
-                          setState(() {
-                            sessionEnd = 3;
-                          });
-                        },
-                        child: Container(
-                          width: AppDimensionsUpdated.width10(context) * 13.7,
-                          height: AppDimensionsUpdated.width10(context) * 13.7,
-                          margin: EdgeInsets.only(
-                              right:
-                                  AppDimensionsUpdated.width10(context) * 1.5),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                                width:
-                                    AppDimensionsUpdated.width10(context) * 0.2,
-                                color: sessionEnd == 3
-                                    ? Colors.white
-                                    : Colors.transparent),
-                          ),
-                          child: Container(
-                            height:
-                                AppDimensionsUpdated.width10(context) * 12.7,
-                            width: AppDimensionsUpdated.width10(context) * 12.5,
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.symmetric(
-                                vertical:
-                                    AppDimensionsUpdated.height10(context) *
-                                        0.4,
-                                horizontal:
-                                    AppDimensionsUpdated.width10(context) *
-                                        0.3),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(width: 1, color: Colors.white),
-                                gradient: RadialGradient(
-                                  //radius: 0.5,
-                                  colors: <Color>[
-                                    const Color(0xFFBDA7C2)
-                                        .withOpacity(0.19), // yellow sun
-                                    const Color(0xFFB38FB4)
-                                        .withOpacity(.81), // blue sky
-                                  ],
-                                )),
-                            child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontFamily: 'laila',
-                                      fontSize:
-                                          AppDimensionsUpdated.font10(context) *
-                                              1.6,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white,
-                                    ),
-                                    children: const [
-                                      TextSpan(text: 'It was ok'),
-                                      // TextSpan(
-                                      //   text: ' distractions',
-                                      //   style: TextStyle(
-                                      //       fontWeight: FontWeight.bold),
-                                      // ),
-                                      // TextSpan(text: ',\nit was hard to\nfocus')
-                                    ])),
-                          ),
-                        ),
-                      ),
-                      AnimatedScaleButton(
-                        onTap: () {
-                          setState(() {
-                            sessionEnd = 4;
-                          });
-                        },
-                        child: Container(
-                          width: AppDimensionsUpdated.width10(context) * 13.7,
-                          height: AppDimensionsUpdated.width10(context) * 13.7,
-                          margin: EdgeInsets.only(
-                              right:
-                                  AppDimensionsUpdated.width10(context) * 1.5),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                                width:
-                                    AppDimensionsUpdated.width10(context) * 0.2,
-                                color: sessionEnd == 4
-                                    ? Colors.white
-                                    : Colors.transparent),
-                          ),
-                          child: Container(
-                            height:
-                                AppDimensionsUpdated.width10(context) * 12.7,
-                            width: AppDimensionsUpdated.width10(context) * 12.5,
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.symmetric(
-                                vertical:
-                                    AppDimensionsUpdated.height10(context) *
-                                        0.4,
-                                horizontal:
-                                    AppDimensionsUpdated.width10(context) *
-                                        0.3),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(width: 1, color: Colors.white),
-                                gradient: RadialGradient(
-                                  // radius: 0.5,
-                                  colors: <Color>[
-                                    const Color(0xFFBDA7C2)
-                                        .withOpacity(0.19), // yellow sun
-                                    const Color(0xFFB38FB4)
-                                        .withOpacity(.81), // blue sky
-                                  ],
-                                )),
-                            child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontFamily: 'laila',
-                                      fontSize:
-                                          AppDimensionsUpdated.font10(context) *
-                                              1.6,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white,
-                                    ),
-                                    children: const [
-                                      TextSpan(
-                                        text: 'Good, I quite\nliked it',
-                                      ),
-                                      // TextSpan(
-                                      //     text: 'ok',
-                                      //     style: TextStyle(
-                                      //         fontWeight: FontWeight.bold))
-                                    ])),
-                          ),
-                        ),
-                      ),
-                      AnimatedScaleButton(
-                        onTap: () {
-                          setState(() {
-                            sessionEnd = 5;
-                          });
-                        },
-                        child: Container(
-                          width: AppDimensionsUpdated.width10(context) * 13.7,
-                          height: AppDimensionsUpdated.width10(context) * 13.7,
-                          margin: EdgeInsets.only(
-                              right:
-                                  AppDimensionsUpdated.width10(context) * 5.0),
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                                width:
-                                    AppDimensionsUpdated.width10(context) * 0.2,
-                                color: sessionEnd == 5
-                                    ? Colors.white
-                                    : Colors.transparent),
-                          ),
-                          child: Container(
-                            height:
-                                AppDimensionsUpdated.width10(context) * 12.7,
-                            width: AppDimensionsUpdated.width10(context) * 12.5,
-                            alignment: Alignment.center,
-                            margin: EdgeInsets.symmetric(
-                                vertical:
-                                    AppDimensionsUpdated.height10(context) *
-                                        0.4,
-                                horizontal:
-                                    AppDimensionsUpdated.width10(context) *
-                                        0.3),
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                border:
-                                    Border.all(width: 1, color: Colors.white),
-                                gradient: RadialGradient(
-                                  // radius: 0.5,
-                                  colors: <Color>[
-                                    const Color(0xFFBDA7C2)
-                                        .withOpacity(0.19), // yellow sun
-                                    const Color(0xFFB38FB4)
-                                        .withOpacity(.81), // blue sky
-                                  ],
-                                )),
-                            child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(
-                                    style: TextStyle(
-                                      fontFamily: 'laila',
-                                      fontSize:
-                                          AppDimensionsUpdated.font10(context) *
-                                              1.6,
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.white,
-                                    ),
-                                    children: const [
-                                      // TextSpan(
-                                      //   text: 'Good',
-                                      //   style: TextStyle(
-                                      //       fontWeight: FontWeight.bold),
-                                      // ),
-                                      TextSpan(
-                                          text:
-                                              'Great, I\nenjoyed the\nexperience')
-                                    ])),
-                          ),
-                        ),
-                      ),
-                    ]),
-                  ),
+                  child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 5,
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (context, index) {
+                        return AnimatedScaleButton(
+                          onTap: () {
+                            setState(() {
+                              sessionEnd = index + 1;
+                            });
+                          },
+                          child: sessonCircles(context,
+                              sessionEnd == index + 1, index, false,true),
+                        );
+                      }),
                 ),
                 addNotes(
                   state_: widget.summary,

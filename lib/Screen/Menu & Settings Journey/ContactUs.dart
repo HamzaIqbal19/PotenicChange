@@ -7,6 +7,7 @@ import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_vie
 import 'package:potenic_app/Screen/Goal%20Creation%20Journey/StartProcess.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
+import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/settings.dart';
 import 'package:potenic_app/Screen/ResetPassword/PasswordReset.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -172,6 +173,8 @@ class _ContactUsState extends State<ContactUs> {
                                     margin: EdgeInsets.only(
                                         left: AppDimensions.width10(context) *
                                             2.0,
+                                        top: AppDimensions.height10(context) *
+                                            0.5,
                                         bottom:
                                         AppDimensions.height10(context) *
                                             0.5),
@@ -190,13 +193,15 @@ class _ContactUsState extends State<ContactUs> {
                                     margin: EdgeInsets.only(
                                       left: AppDimensions.height10(context) *
                                           2.0,
+                                      right: AppDimensions.height10(context) *
+                                          1.0,
                                     ),
                                     width:
                                     AppDimensions.width10(context) * 36.0,
-
                                     child: TextFormField(
-                                      maxLength: 20,
+                                      maxLength: 50,
                                         maxLines: 2,
+                                      keyboardType: TextInputType.text,
                                         style: TextStyle(
                                             color: const Color(0xFF8C648A),
                                             fontWeight: FontWeight.w600,
@@ -225,7 +230,10 @@ class _ContactUsState extends State<ContactUs> {
                                                     color: Colors
                                                         .transparent))),
                                         onChanged: (value) {
-
+                                          setState(() {
+                                            descriptError = false;
+                                            subjectError = false;
+                                          });
                                         },
                                         controller: subjectController,
                                       validator: (val) {
@@ -241,6 +249,28 @@ class _ContactUsState extends State<ContactUs> {
                                   )
                                 ],
                               )),
+                          subjectError
+                              ? Container(
+
+                            width:
+                            AppDimensions.width10(context) * 23.3,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.width10(context) *
+                                    0.5),
+                            padding: EdgeInsets.only(
+                                left: AppDimensions.width10(context) *
+                                    1.2),
+                            child: Text(
+                              'Subject is required',
+                              style: TextStyle(
+                                color: const Color(0xFFFE6624),
+                                fontSize:
+                                AppDimensions.font10(context) * 1.4,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          )
+                              : Container(),
                           SizedBox(
                               height: AppDimensions.height10(context) * 3),
                           Container(
@@ -268,6 +298,8 @@ class _ContactUsState extends State<ContactUs> {
                                         left: AppDimensions.height10(
                                             context) *
                                             2.0,
+                                        top: AppDimensions.height10(context) *
+                                            0.5,
                                         bottom: AppDimensions.height10(
                                             context) *
                                             0.5),
@@ -287,6 +319,8 @@ class _ContactUsState extends State<ContactUs> {
                                   ),
                                   Container(
                                     margin: EdgeInsets.only(
+                                      right: AppDimensions.height10(context) *
+                                          1.0,
                                       left: AppDimensions.height10(
                                           context) *
                                           2.0,
@@ -297,6 +331,7 @@ class _ContactUsState extends State<ContactUs> {
                                     child: TextFormField(
                                       maxLength: 150,
                                       maxLines: 5,
+                                      keyboardType: TextInputType.text,
                                       style: TextStyle(
                                           color: const Color(0xFF8C648A),
                                           fontWeight: FontWeight.w600,
@@ -327,9 +362,13 @@ class _ContactUsState extends State<ContactUs> {
                                                   color: Colors
                                                       .transparent))),
                                       onChanged: (value) {
-
+                                        setState(() {
+                                          descriptError = false;
+                                          subjectError = false;
+                                        });
                                       },
                                       controller: descriptController,
+
                                       validator: (val) {
                                         if ((val == null && val == '')) {
                                           setState(() {
@@ -348,6 +387,27 @@ class _ContactUsState extends State<ContactUs> {
                               ),
                             ),
                           ),
+                          descriptError
+                              ? Container(
+                            width:
+                            AppDimensions.width10(context) * 23.3,
+                            margin: EdgeInsets.only(
+                                top: AppDimensions.width10(context) *
+                                    0.5),
+                            padding: EdgeInsets.only(
+                                left: AppDimensions.width10(context) *
+                                    1.2),
+                            child: Text(
+                              'Description is required',
+                              style: TextStyle(
+                                color: const Color(0xFFFE6624),
+                                fontSize:
+                                AppDimensions.font10(context) * 1.4,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          )
+                              : Container(),
 
                           SizedBox(
                               height: AppDimensions.height10(context) * 3),
@@ -363,6 +423,12 @@ class _ContactUsState extends State<ContactUs> {
                     AnimatedScaleButton(
                       onTap: () async {
                         if (subjectController.text !='' && descriptController.text !='' ) {
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar( const SnackBar(
+                            backgroundColor: Color(0xFFEDD15E),
+                              content: Text(
+                                  "Sending in progress",
+                              textAlign: TextAlign.center,style: TextStyle(fontSize: 16),)));
                           setState(() {
                             loading = true;
                           });
@@ -371,6 +437,11 @@ class _ContactUsState extends State<ContactUs> {
                               setState(() {
                                 loading = false;
                               });
+                              Future.delayed(const Duration(seconds: 3),(){
+                                Navigator.pushReplacement(
+                                    context, FadePageRoute(page: const Settings()));
+                              });
+
                             }
                           });
                         } else {

@@ -3,16 +3,18 @@ import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/webVisit.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 
-void journeyBottomSheet(context, title, body, link) {
+void journeyBottomSheet(context, title, body, link, onClose,dismiss) {
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
+    isDismissible: dismiss,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(
         top: Radius.circular(16),
       ),
     ),
+
     builder: (context) => Padding(
       padding:
           EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -40,6 +42,7 @@ void journeyBottomSheet(context, title, body, link) {
                 alignment: const Alignment(1, 0),
                 child: AnimatedScaleButton(
                   onTap: () {
+                    onClose();
                     Navigator.pop(context);
                   },
                   child: Container(

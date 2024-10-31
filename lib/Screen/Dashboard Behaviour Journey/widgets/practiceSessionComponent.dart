@@ -6,7 +6,7 @@ import 'package:potenic_app/Widgets/mult_circles.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:simple_tooltip/simple_tooltip.dart';
 
-dashBoardSessionComponent(BuildContext context,superTooltipController,index,data ,final VoidCallback action1, final VoidCallback tap1, final VoidCallback tap2){
+dashBoardSessionComponent(BuildContext context,superTooltipController1,superTooltipController2,superTooltipController3,skipFunc,nextFunc,index,data ,final VoidCallback action1, final VoidCallback tap1, final VoidCallback tap2){
   return Column(
     children: [
       Container(
@@ -83,11 +83,11 @@ dashBoardSessionComponent(BuildContext context,superTooltipController,index,data
                   ),
                 ),
         //down
-        // index == 0? Align(
-        //   alignment: const Alignment(-0.95, 1),
-        //   child: dashboardTooltip(superTooltipController, context, 3, 'down',(){}, (){},Container(height: 0,width: 0,),
-        //    ),
-        // ):Container()
+        index == 0? Align(
+          alignment: const Alignment(-0.95, 1),
+          child: dashboardTooltip(superTooltipController3, context, 3, 'down',skipFunc, nextFunc,Container(height: 0,width: 0,),
+           ),
+        ):Container()
 
             ]),
       ),
@@ -109,9 +109,13 @@ dashBoardSessionComponent(BuildContext context,superTooltipController,index,data
                   isRight: true,
                   onTap1: tap1,
                   onTap2: tap2,
-              index: index,
-              superTooltipController: superTooltipController,
-                        ),
+                  index: index,
+                  superTooltipController1: superTooltipController1,
+                  superTooltipController2: superTooltipController2,
+                  skipFunc: skipFunc,
+                  nextFunc: nextFunc,
+
+            ),
             )
         ],
       ),

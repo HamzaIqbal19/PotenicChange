@@ -1,6 +1,5 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
 import '../../../../Widgets/fading.dart';
@@ -16,9 +15,18 @@ class video_details extends StatelessWidget {
       appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          leading: Buttons().backButton(context, () {
-            Navigator.pop(context);
-          }),
+          leading: Center(
+            child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Image.asset(
+                  'assets/images/Back.webp',
+                  //  width: AppDimensions.width10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
+                  fit: BoxFit.contain,
+                )),
+          ),
           centerTitle: true,
           title: SizedBox(
             width: AppDimensions.width10(context) * 17.0,
@@ -33,7 +41,18 @@ class video_details extends StatelessWidget {
               colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
             ),
           ),
-          actions: [Buttons().closeButton(context, () {})]),
+          actions: [
+            Center(
+              child: IconButton(
+                  onPressed: () {},
+                  icon: Image.asset(
+                    'assets/images/Close.webp',
+                    // width: AppDimensions.width10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
+                    fit: BoxFit.contain,
+                  )),
+            )
+          ]),
       extendBodyBehindAppBar: true,
       body: Container(
         width: double.infinity,
@@ -275,9 +294,18 @@ class supporting_mat_video extends StatelessWidget {
       appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          leading: Buttons().backButton(context, () {
-            Navigator.pop(context);
-          }),
+          leading: Center(
+            child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Image.asset(
+                  'assets/images/Back.webp',
+                  // width: AppDimensions.width10(context) * 2.6,
+                  height: AppDimensions.height10(context) * 2.6,
+                  fit: BoxFit.contain,
+                )),
+          ),
           centerTitle: true,
           title: SizedBox(
             width: AppDimensions.width10(context) * 17.0,
@@ -292,7 +320,18 @@ class supporting_mat_video extends StatelessWidget {
               colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
             ),
           ),
-          actions: [Buttons().closeButton(context, () {})]),
+          actions: [
+            Center(
+              child: IconButton(
+                  onPressed: () {},
+                  icon: Image.asset(
+                    'assets/images/Close.webp',
+                    //width: AppDimensions.width10(context) * 2.6,
+                    height: AppDimensions.height10(context) * 2.6,
+                    fit: BoxFit.contain,
+                  )),
+            )
+          ]),
       extendBodyBehindAppBar: true,
       body: Container(
         width: double.infinity,

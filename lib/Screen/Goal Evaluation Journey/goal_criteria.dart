@@ -10,6 +10,7 @@ import 'package:potenic_app/Widgets/fading.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/app_dimensions.dart';
+import '../Capture Inspiration Journey/Widgets/updateBox.dart';
 import '../Capture Inspiration Journey/inpiration_landing.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
