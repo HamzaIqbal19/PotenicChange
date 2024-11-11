@@ -27,8 +27,8 @@ class PracticeSessionComponent extends StatelessWidget {
       height: AppDimensionsUpdated.height10(context) * 25.4,
       margin: EdgeInsets.only(
         top: AppDimensionsUpdated.height10(context) * 1.9,
-        left: AppDimensionsUpdated.height10(context) * 2,
-        right: AppDimensionsUpdated.height10(context) * 2,
+        left: AppDimensionsUpdated.height10(context) * 1.5,
+        right: AppDimensionsUpdated.height10(context) * 1.5,
       ),
       decoration: BoxDecoration(
         color: const Color(0xFFFBFBFB),
@@ -123,7 +123,7 @@ class PracticeSessionComponent extends StatelessWidget {
                       alignment: const Alignment(0.3, 0.2),
                       child: SizedBox(
                         width: AppDimensionsUpdated.width10(context) * 10.5,
-                        height: AppDimensionsUpdated.height10(context) * 4.8,
+                        //height: AppDimensionsUpdated.height10(context) * 4.8,
                         //changed font family due to client's request
                         child: Text(
                           orangeText,

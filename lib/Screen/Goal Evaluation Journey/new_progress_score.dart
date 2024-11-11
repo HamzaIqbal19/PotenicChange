@@ -11,12 +11,12 @@ import 'package:potenic_app/Screen/Goal%20Evaluation%20Journey/goal_criteria_imp
 import 'package:potenic_app/Screen/Subscription%20Journey/Subscription.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/goal_menu_inactive.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/webVisit.dart';
 import 'package:potenic_app/utils/app_link.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../Widgets/buttons.dart';
 import '../../utils/app_dimensions.dart';
 
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
@@ -76,35 +76,35 @@ class _new_progress_scoreState extends State<new_progress_score> {
   Future<void> _fetchGoalDetails() async {
     final SharedPreferences prefs = await _prefs;
 
-    AdminGoal.getUserGoalById(prefs.get('goal_num'))
-        .then((response) async {
-          print(
-              'Response goal evaluation: ${response["goalEvaluations"][0]['goalLevel']}');
-          if (response.length != 0) {
-            setState(() {
-              goalDetails = response;
-              selectedEval = response["goalEvaluations"].length - 1;
-              _selectedIndex = response["goalEvaluations"].length - 1;
-            });
-            if (widget.evaluationIndex !=
-                response["goalEvaluations"].length - 1) {
-              setState(() {
-                _selectedIndex = widget.evaluationIndex;
-                selectedEval = widget.evaluationIndex;
-              });
-            }
+    AdminGoal.getUserGoalById(prefs.get('goal_num')).then((response) async {
+      print("resposne daa ${response['goalEvaluations']}");
+      // print(
+      //     'Response goal evaluation: ${response["goalEvaluations"][0]['goalLevel']}');
+      if (response.length != 0) {
+        setState(() {
+          goalDetails = response;
+          selectedEval = response["goalEvaluations"].length - 1;
+          _selectedIndex = response["goalEvaluations"].length - 1;
+        });
+        if (widget.evaluationIndex != response["goalEvaluations"].length - 1) {
+          setState(() {
+            _selectedIndex = widget.evaluationIndex;
+            selectedEval = widget.evaluationIndex;
+          });
+        }
 
-            _scrollController =
-                FixedExtentScrollController(initialItem: _selectedIndex);
+        _scrollController =
+            FixedExtentScrollController(initialItem: _selectedIndex);
 
-            loadData();
-            GetDates();
-          } else {
-            loadData();
-          }
-        })
-        .catchError((error) {})
-        .whenComplete(() {});
+        loadData();
+        GetDates();
+      } else {
+        loadData();
+        print("errror");
+      }
+    }).catchError((error) {
+      print("catherrror");
+    }).whenComplete(() {});
   }
 
   GetDates() {
@@ -173,28 +173,37 @@ class _new_progress_scoreState extends State<new_progress_score> {
             backgroundColor: Colors.transparent,
             automaticallyImplyLeading: false,
             centerTitle: true,
-            leading: Buttons().backButton(context, (){
-               Navigator.push(
-                        context,
-                        FadePageRouteReverse(
-                            page: const goal_menu_inactive(
-                          isActive: true,
-                          goal_evaluation: true,
-                        )));
-            }),
+            leading: Center(
+                child: Buttons().backButton(context, () {
+              Navigator.push(
+                  context,
+                  FadePageRouteReverse(
+                      page: const goal_menu_inactive(
+                    isActive: true,
+                    goal_evaluation: true,
+                  )));
+            })
+                //  IconButton(
+                //     onPressed: () {
+                //       Navigator.push(
+                //           context,
+                //           FadePageRouteReverse(
+                //               page: const goal_menu_inactive(
+                //             isActive: true,
+                //             goal_evaluation: true,
+                //           )));
+                //     },
+                //     icon: Image.asset(
+                //       'assets/images/Back.webp',
+                //       //  width: AppDimensions.width10(context) * 3.0,
+                //       height: AppDimensions.height10(context) * 3.0,
+                //       fit: BoxFit.contain,
+
+                ),
             actions: [
-              Center(
-                child: IconButton(
-                    onPressed: () {
-                      evaluation_sheet(context);
-                    },
-                    icon: Image.asset(
-                      'assets/images/ic_info_outline.webp',
-                      width: AppDimensions.width10(context) * 3.0,
-                      height: AppDimensions.height10(context) * 3.0,
-                      fit: BoxFit.contain,
-                    )),
-              ),
+              Buttons().infoButton(context, () {
+                              evaluation_sheet(context);
+                            }),
             ]),
         body: Container(
           decoration: const BoxDecoration(
@@ -318,12 +327,12 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                             MainAxisAlignment.center,
                                         children: [
                                           SizedBox(
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    2.6,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                1.0,
+                                            // width:
+                                            //     AppDimensions.width10(context) *
+                                            //         2.6,
+                                            // height: AppDimensions.height10(
+                                            //         context) *
+                                            //     1.0,
                                             child: Center(
                                               child: Text(
                                                 'LEVEL',
@@ -332,7 +341,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                     fontSize:
                                                         AppDimensions.font10(
                                                                 context) *
-                                                            0.8,
+                                                            1.2,
                                                     fontWeight: FontWeight.w500,
                                                     color: const Color(
                                                         0xFF464646)),
@@ -432,7 +441,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                       //     AppDimensions.height10(context) * 8.1,
                                       margin: EdgeInsets.only(
                                           top: AppDimensions.height10(context) *
-                                              1.1),
+                                              0.8),
                                       child: Stack(
                                         children: [
                                           widget.premium == false
@@ -448,7 +457,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                   ? Container()
                                                   : Align(
                                                       alignment:
-                                                          Alignment.topLeft,
+                                                          Alignment(-1.2, 0),
                                                       child: Container(
                                                         width: AppDimensions
                                                                 .width10(
@@ -528,8 +537,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                     Container(
                                       width:
                                           AppDimensions.width10(context) * 33.0,
-                                      height:
-                                          AppDimensions.height10(context) * 4.9,
+                                      // height:
+                                      //     AppDimensions.height10(context) * 4.9,
                                       margin: EdgeInsets.only(
                                           top: AppDimensions.height10(context) *
                                               1.7),
@@ -541,10 +550,14 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                               fontWeight: FontWeight.w500,
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.6,
+                                                  1.8,
                                               color: const Color(0xFFFFFFFF)),
                                         ),
                                       ),
+                                    ),
+                                    SizedBox(
+                                      height:
+                                          AppDimensions.height10(context) * 1,
                                     ),
                                     Image.asset(
                                       'assets/images/Arrow.webp',
@@ -625,6 +638,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                 GestureDetector(
                                                   onTap: () {
                                                     int select = 0;
+                                                    print(
+                                                        "activr $activity_duration");
                                                     setState(() {
                                                       activity_duration =
                                                           _dates[_selectedIndex]
@@ -1298,6 +1313,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                       //           AppDimensions.height10(context) * 2.0),
                       //       color: const Color(0xFFFFFFFF).withOpacity(0.3)),
                       // )
+                      SizedBox(
+                        height: AppDimensions.height10(context) * 25,
+                      ),
                     ],
                   ),
                 )
@@ -1503,8 +1521,8 @@ class goal_criteria extends StatelessWidget {
                 Container(
                   width: AppDimensions.width10(context) * 3.2,
                   height: AppDimensions.height10(context) * 3.7,
-                  margin: EdgeInsets.only(
-                      left: AppDimensions.width10(context) * 1.0),
+                  // margin: EdgeInsets.only(
+                  //     left: AppDimensions.width10(context) * 1.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -1520,7 +1538,7 @@ class goal_criteria extends StatelessWidget {
                         '/5',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.8,
                             fontWeight: FontWeight.w300,
                             color: Color(text_color)),
                       ),
@@ -1665,7 +1683,6 @@ void Upgrade_sheet(context) {
                     ),
                   ),
                 )
-             
               ],
             ),
           ));
@@ -1739,7 +1756,7 @@ void evaluation_sheet(context) {
                     ),
                     Container(
                       // width: AppDimensions.width10(context) * 35.5,
-                      height: AppDimensions.height10(context) * 3.6,
+                      //height: AppDimensions.height10(context) * 3.6,
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.9),
                       child: Text(
@@ -1769,19 +1786,19 @@ void evaluation_sheet(context) {
                               children: const [
                             TextSpan(
                                 text:
-                                    'It’s important to have clarity on the progress you’re making with your goals.\n\nThis is why we’ve created a '),
+                                    'It’s important to have clarity on the progress you’re making with your goals.\n\nThe '),
                             TextSpan(
                                 text: 'Goal Level Evaluation ',
                                 style: TextStyle(fontWeight: FontWeight.w700)),
                             TextSpan(
                                 text:
-                                    'feature to help you assess your progress in relation to your reasons for wanting to achieve it (remember the statements you had to complete during onboarding when creating your goal)? We use these statements for you to evaluate your progress.\n\n'),
+                                    'feature helps you assess your progress in relation to your original reasons (remember the statements you had to complete during onboarding when creating your goal)? We use these statements for you to evaluate your progress.\n\n'),
                             TextSpan(
                                 text: 'Goal Level Evaluation ',
                                 style: TextStyle(fontWeight: FontWeight.w700)),
                             TextSpan(
                                 text:
-                                    'has four core criteria that you’ll need to assess:\n\n 1.Your why’s\n 2.Your new identity\n 3.Your vision for new self\n 4.Impact on your life\n\nBy navigating to each of different criteria, you would be able to '),
+                                    'has four criteria that you’ll need to assess:\n\n 1.Your why’s\n 2.Your new identity\n 3.Your vision for new self\n 4.Impact on your life\n\nNavigate to each of this criteria and '),
                             TextSpan(
                                 text: 'evaluate your progress.\n\n',
                                 style: TextStyle(fontWeight: FontWeight.w700)),
@@ -1793,7 +1810,7 @@ void evaluation_sheet(context) {
                                 style: TextStyle(fontWeight: FontWeight.w700)),
                             TextSpan(
                                 text:
-                                    'you perform that will eventually help you observe meaningful changes in your life.'),
+                                    ' you perform that will eventually help you observe meaningful changes in your life.'),
                           ])),
                     ),
                     SizedBox(

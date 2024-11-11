@@ -116,6 +116,7 @@ class _schedule_cardState extends State<schedule_card> {
   @override
   Widget build(BuildContext context) {
     return Container(
+        margin: EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
             color: Colors.white,
             border: Border.all(color: Colors.white, width: 2),
@@ -237,12 +238,14 @@ class _schedule_cardState extends State<schedule_card> {
                 for (int i = 0; i < num && i <= 9; i++) ...[
                   Container(
                     // color:Colors.orange,
-                    width: AppDimensions.width10(context) * 38.2,
-                    padding: const EdgeInsets.only(
-                      bottom: 10,
-                    ),
+                    padding:
+                    const EdgeInsets.only(
+                        left: 15,
+                        right: 15,
+                        bottom: 10),
+
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         startTimerState(
                           key: Key("$widget.key"),
@@ -265,6 +268,7 @@ class _schedule_cardState extends State<schedule_card> {
                             times[i] = start_time;
                           },
                         ),
+                       // SizedBox(width: 30,),
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
                           child: Container(
@@ -410,7 +414,7 @@ class _startTimerStateState extends State<startTimerState> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: AppDimensions.width10(context) * 32.5,
+      width: AppDimensions.width10(context) * 30,
       height: AppDimensions.height10(context) * 3.7,
       decoration: BoxDecoration(
           color: const Color.fromRGBO(0, 0, 0, 0.1),

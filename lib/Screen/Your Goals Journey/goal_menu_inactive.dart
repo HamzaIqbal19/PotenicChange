@@ -703,6 +703,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               RichText(
                                   text: TextSpan(
                                       style: TextStyle(
+                                        fontFamily: 'Laila',
                                           fontSize:
                                               AppDimensions.font10(context) * 2,
                                           fontWeight: FontWeight.w500,

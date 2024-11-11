@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
+import 'package:get/get.dart';
 import 'package:potenic_app/API/Authentication.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
-// import 'package:flutter_offline/flutter_offline.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/ContactUs.dart';
 import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/account_deleted.dart';
 import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/edit_credentials.dart';
 import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/notifications.dart';
 import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/widgets/menuWidgets.dart';
-import 'package:potenic_app/Screen/Practice%20Review%20Journey/Activateyourstar.dart';
+import '../Dashboard Behaviour Journey/loaders/TutorialController.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/followUs.dart';
+import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
 import 'package:potenic_app/Widgets/webVisit.dart';
 import 'package:potenic_app/utils/app_link.dart';
 import 'package:potenic_app/utils/app_texts.dart';
@@ -34,6 +35,7 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   String userName = 'Jane';
   String userEmail = 'jane.Smith@email.com';
+  final TutorialController tutorialController = Get.put(TutorialController());
 
   getUser() async {
     final SharedPreferences prefs = await _prefs;
@@ -498,7 +500,13 @@ class _SettingsState extends State<Settings> {
                                       record: 0,
                                     ),
                                   ));
-                              dashboard_sheet(context);
+                              journeyBottomSheet(
+                                  context,
+                                  AppText().dashboardTitle,
+                                  AppText().dashboardBody,
+                                  AppLinks().dashboardLink,(){
+                                tutorialController.startTutorial();
+                              },false);
                             }, 'Tutorial', true),
                             menuItems(context, () {
                               webVisit(AppLinks().faqs);

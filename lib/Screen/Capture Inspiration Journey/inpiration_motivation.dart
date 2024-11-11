@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/Widgets/updateBox.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
 import 'package:potenic_app/utils/app_texts.dart';
@@ -57,28 +58,45 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
             automaticallyImplyLeading: false,
             actions: [
               Center(
-                child: IconButton(
-                    onPressed: () async {
-                      Navigator.push(
-                          context,
-                          FadePageRouteReverse(
-                              page: const ViewDashboard(
-                            missed: false,
-                            name: '',
-                            update: false,
-                            helpfulTips: false,
-                            record: 0,
-                          )));
-                      final SharedPreferences prefs = await _prefs;
-                      prefs.remove('inspiration_saved_route');
-                    },
-                    icon: Image.asset(
-                      'assets/images/Close.webp',
-                      // width: AppDimensions.width10(context) * 2.6,
-                      height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.contain,
-                    )),
-              ),
+                  child: Buttons().closeButton(
+                context,
+                () async {
+                  Navigator.push(
+                      context,
+                      FadePageRouteReverse(
+                          page: const ViewDashboard(
+                        missed: false,
+                        name: '',
+                        update: false,
+                        helpfulTips: false,
+                        record: 0,
+                      )));
+                  final SharedPreferences prefs = await _prefs;
+                  prefs.remove('inspiration_saved_route');
+                },
+              )
+                  //  IconButton(
+                  //     onPressed: () async {
+                  //       Navigator.push(
+                  //           context,
+                  //           FadePageRouteReverse(
+                  //               page: const ViewDashboard(
+                  //             missed: false,
+                  //             name: '',
+                  //             update: false,
+                  //             helpfulTips: false,
+                  //             record: 0,
+                  //           )));
+                  //       final SharedPreferences prefs = await _prefs;
+                  //       prefs.remove('inspiration_saved_route');
+                  //     },
+                  //     icon: Image.asset(
+                  //       'assets/images/Close.webp',
+                  //       // width: AppDimensions.width10(context) * 2.6,
+                  //       height: AppDimensions.height10(context) * 2.6,
+                  //       fit: BoxFit.contain,
+                  //     )),
+                  ),
             ]),
         body: Container(
           width: double.infinity,
@@ -189,13 +207,14 @@ class _inspiration_motivationState extends State<inspiration_motivation> {
             Align(
               alignment: const Alignment(0, 0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Container(
                       width: AppDimensions.width10(context) * 34.3,
                       height: AppDimensions.height10(context) * 9.1,
                       margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 7.5,
-                          left: AppDimensions.width10(context) * 2),
+                        top: AppDimensions.height10(context) * 7.5,
+                      ),
                       child: GradientText(
                         'My inspirations ',
                         textAlign: TextAlign.center,

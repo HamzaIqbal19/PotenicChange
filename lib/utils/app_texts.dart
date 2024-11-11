@@ -30,7 +30,7 @@ class AppText {
 
   //Create Goal
 
-  String goalSetting = 'Your\njourney awaits';
+  String goalSetting = 'Your journey awaits';
   String step1 = "Step 1";
   String step1Head = " your goal ";
   String step1Body =
@@ -158,7 +158,7 @@ class AppText {
 
   String hurdleBottomSheedTitle = 'My faced hurdles';
   String hurdleBottomSheedBody =
-      'This is your private space to capture any obstacles that may divert you of course.\n\nAt Potenic, our aim is to empower you to own and enjoy your personal development journey.\n\nWe want to help you stay focused and this is why we also want you to be prepared for challenges ahead, so you can build a self-reliance and grow awareness.\n\nWith time, you will start seeing patterns (with the help of Potenic’s frameworks) and will be more aware of situations that get you triggered.';
+  "This is your private space to capture any obstacles that may divert you of course. \n\nAt Potenic, our aim is to help you own and enjoy your journey.\n\nWe want to help you stay focused and be prepared for challenges ahead, so you can build a self-reliance and grow awareness.\n\nWith time, you will start seeing patterns (with the help of Potenic’s frameworks) and will be more aware of situations that get you triggered.";
 
   //Inspiration
   String inspirationTitle = 'My inspirations';
@@ -203,7 +203,7 @@ class AppText {
   String answer4 =
       'If you stay on our free Empowered Starter plan, you get it for lifetime. No subscription fees, it’s yours to own :)';
   String answer5 =
-      'As soon as you start a trial, your account is due to an upgrade on day 6, at which point we will charge you a monthly or an yearly upgrade fee. You will receive daily reminders from us when the trial is due to expire, so you can decide if you wish to proceed with upgrade or, remain on our Empowered Starter plan. If you don’t cancel your trial, you will automatically be charged. The choice is yours.';
+      'As soon as you start a trial, your account is due to upgrade on day 6, at which point we will charge you a monthly or an yearly upgrade fee. You will receive daily reminders from us when the trial is due to expire, so you can decide if you wish to proceed with an upgrade or, remain on our Empowered Starter plan. If you don’t cancel your trial, you will automatically be charged. The choice is yours.';
 
   String contactUsHeading = 'Contact Us';
   String contactUsBody = 'Your Personalised Journey To Better Self Starts Here';

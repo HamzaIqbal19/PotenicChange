@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdles_l
 import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdles_summary.dart';
 import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/deleteanimatedDialog.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/menu_buttons.dart';
@@ -91,29 +92,41 @@ class _hurdle_menuState extends State<hurdle_menu> {
         ),
         centerTitle: true,
         leading: Center(
-          child: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Image.asset(
-                'assets/images/Back.webp',
-                //width: AppDimensions.width10(context) * 3.0,
-                height: AppDimensions.height10(context) * 3.0,
-                fit: BoxFit.contain,
-              )),
+          child: Buttons().backButton(
+            context,
+            () {
+              Navigator.pop(context);
+            },
+          ),
+          //  IconButton(
+          //     onPressed: () {
+          //       Navigator.pop(context);
+          //     },
+          //     icon: Image.asset(
+          //       'assets/images/Back.webp',
+          //       //width: AppDimensions.width10(context) * 3.0,
+          //       height: AppDimensions.height10(context) * 3.0,
+          //       fit: BoxFit.contain,
+          //     )),
         ),
         actions: [
           Center(
-            child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: Image.asset(
-                  'assets/images/Close.webp',
-                  //  width: AppDimensions.width10(context) * 2.6,
-                  height: AppDimensions.height10(context) * 2.6,
-                  fit: BoxFit.contain,
-                )),
+            child: Buttons().closeButton(
+              context,
+              () {
+                Navigator.pop(context);
+              },
+            ),
+            // IconButton(
+            //     onPressed: () {
+            //       Navigator.pop(context);
+            //     },
+            //     icon: Image.asset(
+            //       'assets/images/Close.webp',
+            //       //  width: AppDimensions.width10(context) * 2.6,
+            //       height: AppDimensions.height10(context) * 2.6,
+            //       fit: BoxFit.contain,
+            //     )),
           )
         ],
       ),

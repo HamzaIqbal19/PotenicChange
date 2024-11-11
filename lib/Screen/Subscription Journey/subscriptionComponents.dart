@@ -395,7 +395,6 @@ subscribedUser(context, bool yearly, String subId, bool cancelled, bool trial) {
   String planId = !yearly
       ? 'price_1OlQz5RkeqntfFwk39D9nntN'
       : "price_1OlQz5RkeqntfFwkHoelDUgz";
-  print('Yearly: $yearly');
   //bool cancel = canceled;
   showModalBottomSheet(
     context: context,

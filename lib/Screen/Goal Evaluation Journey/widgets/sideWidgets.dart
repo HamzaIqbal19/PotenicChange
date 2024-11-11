@@ -49,7 +49,7 @@ sideWidget(BuildContext context, noData, name){
             const BoxDecoration(color: Color(0xFFFFFFFF)),
           ),
           SizedBox(
-            // width: AppDimensions.width10(context) * 10.1,
+             width: AppDimensions.width10(context) * 24,
             //height: AppDimensions.height10(context) * 2.4,
             child: Text(
               noData == true

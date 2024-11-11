@@ -272,6 +272,7 @@ class _ViewDashboardState extends State<ViewDashboard>
         return timeA - timeB;
       });
 
+
       setState(() {});
     }
   }
@@ -360,7 +361,7 @@ class _ViewDashboardState extends State<ViewDashboard>
   }
 
   Future<Timer> startTimer() async {
-    return Timer(const Duration(seconds: 4), stop);
+    return Timer(const Duration(seconds: 2), stop);
   }
 
   void stop() {
@@ -377,7 +378,7 @@ class _ViewDashboardState extends State<ViewDashboard>
     final TutorialController tutorialController = Get.put(TutorialController());
 
      var startTutorial = tutorialController.showTutorial;
-    if(startTutorial == true){
+    if(startTutorial.value == true){
       tutorialController.stopTutorial();
       initializeTutorial();
     }
@@ -710,6 +711,7 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                                 completed: false,
                                                                               )));
                                                                         } else {
+                                                                          await prefs.setInt('recording_id', timesList[index]['data']['recordings'][0]['id']);
                                                                           Navigator.push(
                                                                               context,
                                                                               FadePageRoute(

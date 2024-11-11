@@ -38,7 +38,7 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print('StartTime = ${widget.initialHour}, ${widget.initialMinute}, ${widget.initialPeriod}');
+    // print('StartTime = ${widget.initialHour}, ${widget.initialMinute}, ${widget.initialPeriod}');
 
     if (widget.initialPeriod.toUpperCase() == 'PM') {
       setState(() {

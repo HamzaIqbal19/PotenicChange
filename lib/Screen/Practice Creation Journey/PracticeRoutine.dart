@@ -62,7 +62,6 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
 
   getReminderStatus() {
     PracticeGoalApi.getUserReminder().then((value) {
-      print("Reminder status: $value");
       if (value != null) {
         setState(() {
           notificationStatus = value['beforePractice'];
@@ -416,7 +415,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                 ),
                 Container(
                   padding: const EdgeInsets.only(
-                      top: 25, left: 13, right: 5, bottom: 5),
+                      top: 25, bottom: 5),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[

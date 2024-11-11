@@ -5,6 +5,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/constants/videothumbnail.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:flutter_web_browser/flutter_web_browser.dart';
 
@@ -78,16 +79,22 @@ class _view_detailsState extends State<view_details> {
               backgroundColor: Colors.transparent,
               elevation: 0,
               leading: Center(
-                child: IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: Image.asset(
-                      'assets/images/Back.webp',
-                      // width: AppDimensions.width10(context) * 2.6,
-                      height: AppDimensions.height10(context) * 2.8,
-                      fit: BoxFit.contain,
-                    )),
+                child: Buttons().backButton(
+                  context,
+                  () {
+                    Navigator.pop(context);
+                  },
+                ),
+                // IconButton(
+                //     onPressed: () {
+                //       Navigator.pop(context);
+                //     },
+                //     icon: Image.asset(
+                //       'assets/images/Back.webp',
+                //       // width: AppDimensions.width10(context) * 2.6,
+                //       height: AppDimensions.height10(context) * 2.8,
+                //       fit: BoxFit.contain,
+                //     )),
               )),
           body: Container(
             width: double.infinity,
@@ -161,7 +168,7 @@ class _view_detailsState extends State<view_details> {
                                               inspirationDetails['inspiration']
                                                   ['destinationLink']) ==
                                           ''
-                                      ? AssetImage('assets/images/video.webp')
+                                      ? const AssetImage('assets/images/video.webp')
                                       : NetworkImage(Videothumbnail()
                                               .extractThumbnailUrl(
                                                   inspirationDetails['inspiration']
@@ -190,7 +197,7 @@ class _view_detailsState extends State<view_details> {
                                         : Image.asset(
                                             'assets/images/videoicon.png',
                                           )
-                                    : SizedBox(),
+                                    : const SizedBox(),
                                 // child: Image.asset(
                                 //     'assets/images/play_button.webp'),
                               ),
@@ -207,20 +214,19 @@ class _view_detailsState extends State<view_details> {
                             height: AppDimensions.height10(context) * 52.5,
 
                             decoration: BoxDecoration(
-                              gradient: inspirationDetails['inspiration']
+                              image: inspirationDetails['inspiration']
                                           ['inspirationId'] ==
                                       4
-                                  ? const LinearGradient(
-                                      end: Alignment(0.73, 0),
-                                      begin: Alignment(-1, 1),
-                                      colors: [
-                                          Color(0xFF673636),
-                                          Color(0xFFF8C3B5),
-                                        ])
-                                  : const RadialGradient(colors: [
-                                      Color(0xFFE9A594),
-                                      Color(0xFFEEBEB2)
-                                    ]),
+                                  ? const DecorationImage(
+                                      image: AssetImage(
+                                          "assets/images/contentviewbg.png"),
+                                      fit: BoxFit.cover)
+                                  :inspirationDetails['inspiration']
+                              ['inspirationId'] ==
+                                  2? const DecorationImage(
+                                  image: AssetImage(
+                                      "assets/images/noteViewBg.png"),
+                                  fit: BoxFit.cover):null,
                             ),
                             child: Center(
                               child: Container(

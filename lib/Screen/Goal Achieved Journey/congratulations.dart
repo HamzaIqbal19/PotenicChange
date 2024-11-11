@@ -71,9 +71,24 @@ class _congratulationsState extends State<congratulations> {
             elevation: 0,
             automaticallyImplyLeading: false,
             actions: [
-              Buttons().closeButton(context, () {
-                Navigator.pop(context);
-              })
+              Center(
+                  child: Buttons().closeButton(
+                context,
+                () {
+                  Navigator.pop(context);
+                },
+              )
+                  // IconButton(
+                  //     onPressed: () {
+                  //       Navigator.pop(context);
+                  //     },
+                  //     icon: Image.asset(
+                  //       'assets/images/Close.webp',
+                  //       // width: AppDimensionsUpdated.width10(context) * 2.6,
+                  //       height: AppDimensionsUpdated.height10(context) * 2.6,
+                  //       fit: BoxFit.contain,
+                  //     )),
+                  )
             ]),
         extendBodyBehindAppBar: true,
         body: Container(
@@ -154,110 +169,130 @@ class _congratulationsState extends State<congratulations> {
                                   ])),
                         ),
                         Container(
-                          width: AppDimensionsUpdated.width10(context) * 27.8,
-                          height: AppDimensionsUpdated.height10(context) * 27.8,
+                          width: AppDimensionsUpdated.width10(context) * 35.8,
+                          height: AppDimensionsUpdated.height10(context) * 38.8,
                           margin: EdgeInsets.only(
-                              top:
-                                  AppDimensionsUpdated.height10(context) * 8.5),
+                              top: AppDimensionsUpdated.height10(context) * 3),
                           child: Stack(
                             children: [
                               Container(
                                 width: AppDimensionsUpdated.width10(context) *
-                                    27.8,
+                                    35.8,
                                 height: AppDimensionsUpdated.height10(context) *
-                                    27.8,
-                                decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage('$color' == '1'
-                                          ? "assets/images/red_gradient.webp"
-                                          : '$color' == '2'
-                                              ? 'assets/images/orange_moon.webp'
-                                              : '$color' == '3'
-                                                  ? "assets/images/lightGrey_gradient.webp"
-                                                  : '$color' == '4'
-                                                      ? "assets/images/lightBlue_gradient.webp"
-                                                      : '$color' == '5'
-                                                          ? "assets/images/medBlue_gradient.webp"
-                                                          : '$color' == '6'
-                                                              ? "assets/images/Blue_gradient.webp"
-                                                              : 'assets/images/orange_moon.webp'),
-                                      fit: BoxFit.contain),
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      // color: Colors.red,
-                                      height: AppDimensionsUpdated.height10(
-                                              context) *
-                                          9.0,
-                                      width: AppDimensionsUpdated.width10(
-                                              context) *
-                                          24.0,
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal:
-                                              AppDimensionsUpdated.height10(
-                                                      context) *
-                                                  2.0),
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                            goalName,
-                                            textAlign: TextAlign.center,
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 1,
-                                            style: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    2.0,
-                                                height: AppDimensionsUpdated
-                                                        .height10(context) *
-                                                    0.14,
-                                                fontWeight: FontWeight.w600,
-                                                color: const Color(0xff5B74A6)),
-                                          ),
-                                          SizedBox(
-                                            height:
+                                    37.8,
+                                decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                        fit: BoxFit.cover,
+                                        image: AssetImage(
+                                            "assets/images/congratsGoalBg.png"))),
+                              ),
+                              Align(
+                                alignment: const Alignment(0, -0.5),
+                                child: Container(
+                                  width: AppDimensionsUpdated.width10(context) *
+                                      27.8,
+                                  height:
+                                      AppDimensionsUpdated.height10(context) *
+                                          27.8,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage('$color' == '1'
+                                            ? "assets/images/red_gradient.webp"
+                                            : '$color' == '2'
+                                                ? 'assets/images/orange_moon.webp'
+                                                : '$color' == '3'
+                                                    ? "assets/images/lightGrey_gradient.webp"
+                                                    : '$color' == '4'
+                                                        ? "assets/images/lightBlue_gradient.webp"
+                                                        : '$color' == '5'
+                                                            ? "assets/images/medBlue_gradient.webp"
+                                                            : '$color' == '6'
+                                                                ? "assets/images/Blue_gradient.webp"
+                                                                : 'assets/images/orange_moon.webp'),
+                                        fit: BoxFit.contain),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        // color: Colors.red,
+                                        height: AppDimensionsUpdated.height10(
+                                                context) *
+                                            9.0,
+                                        width: AppDimensionsUpdated.width10(
+                                                context) *
+                                            24.0,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal:
                                                 AppDimensionsUpdated.height10(
                                                         context) *
-                                                    0.7,
-                                          ),
-                                          SizedBox(
-                                            // color: Colors.green,
-                                            height:
-                                                AppDimensionsUpdated.height10(
-                                                        context) *
-                                                    4.0,
-                                            width: AppDimensionsUpdated.width10(
-                                                    context) *
-                                                22.0,
-                                            child: Text('"$identity"',
-                                                maxLines: 2,
-                                                textAlign: TextAlign.center,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    fontStyle: FontStyle.italic,
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.6,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: const Color(
-                                                        0xff5B74A6))),
-                                          ),
-                                        ],
+                                                    2.0),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              goalName,
+                                              textAlign: TextAlign.center,
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 1,
+                                              style: TextStyle(
+                                                  fontSize:
+                                                      AppDimensions.font10(
+                                                              context) *
+                                                          2.0,
+                                                  height: AppDimensionsUpdated
+                                                          .height10(context) *
+                                                      0.14,
+                                                  fontWeight: FontWeight.w600,
+                                                  color:
+                                                      const Color(0xff5B74A6)),
+                                            ),
+                                            SizedBox(
+                                              height:
+                                                  AppDimensionsUpdated.height10(
+                                                          context) *
+                                                      0.7,
+                                            ),
+                                            SizedBox(
+                                              // color: Colors.green,
+                                              height:
+                                                  AppDimensionsUpdated.height10(
+                                                          context) *
+                                                      4.0,
+                                              width:
+                                                  AppDimensionsUpdated.width10(
+                                                          context) *
+                                                      22.0,
+                                              child: Text('"$identity"',
+                                                  maxLines: 2,
+                                                  textAlign: TextAlign.center,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      fontStyle:
+                                                          FontStyle.italic,
+                                                      fontSize:
+                                                          AppDimensions.font10(
+                                                                  context) *
+                                                              1.6,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xff5B74A6))),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    SizedBox(
-                                      height: AppDimensionsUpdated.height10(
-                                              context) *
-                                          4.3,
-                                    )
-                                  ],
+                                      SizedBox(
+                                        height: AppDimensionsUpdated.height10(
+                                                context) *
+                                            4.3,
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                               Align(
-                                alignment: const Alignment(0, 5.5),
+                                alignment: const Alignment(0, 1.5),
                                 child: Container(
                                   width: AppDimensionsUpdated.width10(context) *
                                       23.2,
@@ -290,13 +325,13 @@ class _congratulationsState extends State<congratulations> {
                                         // mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Container(
-                                            width: AppDimensionsUpdated.width10(
-                                                    context) *
-                                                3.9,
-                                            height:
-                                                AppDimensionsUpdated.height10(
-                                                        context) *
-                                                    4.7,
+                                            // width: AppDimensionsUpdated.width10(
+                                            //         context) *
+                                            //     3.9,
+                                            // height:
+                                            //     AppDimensionsUpdated.height10(
+                                            //             context) *
+                                            //         4.7,
                                             margin: EdgeInsets.only(
                                                 top: AppDimensionsUpdated
                                                         .height10(context) *
@@ -315,10 +350,10 @@ class _congratulationsState extends State<congratulations> {
                                                                   .height10(
                                                                       context) *
                                                               0.12,
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              0.8,
+                                                      // fontSize:
+                                                      //     AppDimensions.font10(
+                                                      //             context) *
+                                                      //         1,
                                                       color: const Color(
                                                           0xFF424242),
                                                     ),
@@ -336,24 +371,41 @@ class _congratulationsState extends State<congratulations> {
                                                                         context) *
                                                                 2.8,
                                                           )),
-                                                      const TextSpan(
+                                                      TextSpan(
                                                           text: '/5\n',
                                                           style: TextStyle(
-                                                              color: Color(
+                                                              fontSize: AppDimensions
+                                                                      .font10(
+                                                                          context) *
+                                                                  2.0,
+                                                              color: const Color(
                                                                   0xFF828282))),
-                                                      const TextSpan(
-                                                        text: 'LEVEL',
-                                                      )
+                                                      WidgetSpan(
+                                                          child: SizedBox(
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            2.5,
+                                                      )),
+                                                      TextSpan(
+                                                          text: 'LEVEL',
+                                                          style: TextStyle(
+                                                            fontSize: AppDimensions
+                                                                    .font10(
+                                                                        context) *
+                                                                1.4,
+                                                          ))
                                                     ])),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
+                                            height: 3,
+                                          ),
+                                          Container(
                                             width: AppDimensionsUpdated.width10(
                                                     context) *
                                                 13.1,
-                                            height:
-                                                AppDimensionsUpdated.height10(
-                                                        context) *
-                                                    5.1,
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 2),
                                             child: Center(
                                               child: Text(
                                                 goalLevel == 1
@@ -375,7 +427,7 @@ class _congratulationsState extends State<congratulations> {
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          1.4,
+                                                          1.5,
                                                   color:
                                                       const Color(0xFF000000),
                                                 ),
@@ -409,7 +461,7 @@ class _congratulationsState extends State<congratulations> {
                                 AppDimensionsUpdated.height10(context) * 5.0,
                             margin: EdgeInsets.only(
                                 top: AppDimensionsUpdated.height10(context) *
-                                    10.3),
+                                    5.3),
                             decoration: BoxDecoration(
                                 gradient: const LinearGradient(colors: [
                                   Color(0xFFFCC10D),
@@ -423,7 +475,7 @@ class _congratulationsState extends State<congratulations> {
                                 goalLevel > 3 ? 'Yes I am' : 'Exit',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: AppDimensions.font10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                   color: const Color(0xFFFFFFFF),
                                 ),
                               ),
@@ -463,7 +515,7 @@ class _congratulationsState extends State<congratulations> {
                                   height:
                                       AppDimensionsUpdated.height10(context) *
                                           0.15,
-                                  fontSize: AppDimensions.font10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 2.0,
                                   color: const Color(0xFFFA9934),
                                 ),
                               ),
@@ -510,8 +562,8 @@ void goal_achieved_sheet(context, data, subscription, length) {
                       top: Radius.circular(
                           AppDimensionsUpdated.height10(context) * 2.0)),
                   gradient: const LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
                       colors: [Color(0xFFE7DEDF), Color(0xFFF9F7F9)])),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -753,7 +805,7 @@ void goal_achieved_sheet(context, data, subscription, length) {
                                           data['goalLevel'] == 1
                                               ? "I haven’t noticed\nmuch progress yet"
                                               : data['goalLevel'] == 2
-                                                  ? "I'm making\gradual steps\nforward"
+                                                  ? "I'm making\ngradual steps\nforward"
                                                   : data['goalLevel'] == 3
                                                       ? "I'm almost there"
                                                       : data['goalLevel'] == 4
@@ -831,6 +883,7 @@ void goal_achieved_sheet(context, data, subscription, length) {
                           top: AppDimensionsUpdated.height10(context) * 1.8,
                           bottom: AppDimensionsUpdated.height10(context) * 4.3),
                       decoration: BoxDecoration(
+                          border: Border.all(color: const Color(0xffFA9934)),
                           color: const Color(0xFFF9F7F9),
                           borderRadius: BorderRadius.circular(
                               AppDimensionsUpdated.height10(context) * 5.0)),

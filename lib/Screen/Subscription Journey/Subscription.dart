@@ -36,7 +36,6 @@ class _SubscriptionState extends State<Subscription>
   late AnimationController controller;
   getUserTrial() {
     Authentication().getUserTrials().then((value) {
-      print("Trial value $value");
       setState(() {
         trial = value['remainingDays'];
       });
@@ -207,7 +206,6 @@ class _SubscriptionState extends State<Subscription>
                         SubscriptionService()
                             .makePayment('price_1OlQz5RkeqntfFwkHoelDUgz', trial)
                             .then((value) => {
-                                  print("Subscriptiondata $value"),
                                   if (value['status'] == 'active' ||
                                       value['status'] == 'trialing')
                                     {
@@ -234,9 +232,7 @@ class _SubscriptionState extends State<Subscription>
                         SubscriptionService()
                             .makePayment('price_1OlQz5RkeqntfFwk39D9nntN', trial)
                             .then((value) => {
-                                  print(
-                                      'Response Stripe Value: ${value['status']}'),
-                                  print('Response Stripe Value: $value'),
+
                                   if (value['status'] == 'active' ||
                                       value['status'] == 'trialing')
                                     {

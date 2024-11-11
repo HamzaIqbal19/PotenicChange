@@ -201,12 +201,12 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                               child: Text(
                                 widget.mainText,
                                 textAlign: TextAlign.center,
-                                maxLines: 2,
+                                maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensionsUpdated.font10(context) *
-                                            1.8,
+                                            2,
                                     height:
                                         AppDimensionsUpdated.height10(context) *
                                             0.12,
@@ -232,7 +232,7 @@ class _GoalPracticeComponentState extends State<GoalPracticeComponent> {
                                 style: TextStyle(
                                     fontSize:
                                         AppDimensionsUpdated.font10(context) *
-                                            1.4,
+                                            1.6,
                                     height:
                                         AppDimensionsUpdated.height10(context) *
                                             0.15,

@@ -220,7 +220,6 @@ class Hurdles {
         body: body);
 
     var responses = jsonDecode(request.body);
-    print("DElete multple $responses");
 
     if (request.statusCode == 200) {
       return true;

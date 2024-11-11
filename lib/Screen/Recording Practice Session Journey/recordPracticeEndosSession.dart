@@ -287,19 +287,10 @@ class _endofSessionState extends State<endofSession> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          leading: Center(
-            child: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                  feedback3.clear();
-                },
-                icon: Image.asset(
-                  'assets/images/Back.webp',
-                  //  width: AppDimensionsUpdated.width10(context) * 2.6,
-                  height: AppDimensionsUpdated.height10(context) * 2.8,
-                  fit: BoxFit.contain,
-                )),
-          ),
+          leading: Buttons().backButton(context, (){
+            Navigator.pop(context);
+            feedback3.clear();
+          }),
           centerTitle: true,
           title: appBarTitle(context, pracName,false),
           actions: [
@@ -341,7 +332,7 @@ class _endofSessionState extends State<endofSession> {
                 Container(
                   margin: EdgeInsets.only(
                       bottom: AppDimensionsUpdated.height10(context) * 10.5,
-                      top: AppDimensionsUpdated.height10(context) * 5.0),
+                      top: AppDimensionsUpdated.height10(context) * 7.0),
                 ),
                 Container(
                   width: AppDimensionsUpdated.width10(context) * 35.9,
@@ -361,7 +352,7 @@ class _endofSessionState extends State<endofSession> {
                   )),
                 ),
                 Container(
-                  height: AppDimensionsUpdated.width10(context) * 13.7,
+                  height: AppDimensionsUpdated.width10(context) * 15.7,
                   margin: EdgeInsets.only(
                       bottom: AppDimensionsUpdated.height10(context) * 5.2,
                       left: AppDimensionsUpdated.width10(context) * 1.0),

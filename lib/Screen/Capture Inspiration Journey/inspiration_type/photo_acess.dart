@@ -273,7 +273,6 @@ class _photo_infoState extends State<photo_info> {
   File? imageFile;
 
   cropImage() async {
-    print("crop called");
     CroppedFile? croppedFile = await ImageCropper().cropImage(
       sourcePath: image,
       cropStyle: CropStyle.circle,
@@ -303,7 +302,6 @@ class _photo_infoState extends State<photo_info> {
       image = croppedFile.path;
       setState(() {});
     } else {
-      print("Image is not cropped.");
     }
   }
 
@@ -835,7 +833,6 @@ class _photo_infoState extends State<photo_info> {
                                                   btEnable = false;
                                                 });
                                               }
-                                              print('image $image');
                                               InspirationApi()
                                                   .addInspiration(
                                                       1,

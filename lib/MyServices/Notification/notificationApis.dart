@@ -49,7 +49,6 @@ class notificationApi {
           '${URL.BASE_URL}api/user/getUserMessageCenterNotifications/$userId'),
       headers: headers,
     );
-    print("get notifications ${response.statusCode} $userId");
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
 
@@ -101,7 +100,6 @@ class notificationApi {
           '${URL.BASE_URL}api/user/markedReadNotification/$notificationId'),
       headers: headers,
     );
-    print("Mark as read response ${response.statusCode} ${response.body}");
     if (response.statusCode == 200) {
       getUserNotification();
       return true;
@@ -123,7 +121,6 @@ class notificationApi {
       Uri.parse('${URL.BASE_URL}api/user/markedReadAllNotification/$userId'),
       headers: headers,
     );
-    print("Mark as read response ${response.statusCode} ${response.body}");
     if (response.statusCode == 200) {
       return true;
     } else {

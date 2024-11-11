@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/goalEvaluation.dart';
+import 'package:potenic_app/Widgets/CustomCircle.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -125,8 +126,8 @@ class ProgressReportState extends State<ProgressReport> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: Buttons().backButton(context, () {
-            Navigator.pop(context);
-          }),
+          Navigator.pop(context);
+        }),
       ),
       extendBodyBehindAppBar: true,
       body: Container(
@@ -164,14 +165,14 @@ class ProgressReportState extends State<ProgressReport> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: UpdatedDimensions.font10(context) * 2.0,
-                            height: 1.2,
+                            height: 1.4,
                             fontWeight: FontWeight.w600,
                             color: const Color(0xFF437296)),
                       ),
                     ),
                     Container(
                       margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 0.5),
+                          top: AppDimensions.height10(context) * 0.7),
                       child: Text(
                         //we will give duration of 20 days
                         noData == true
@@ -180,7 +181,7 @@ class ProgressReportState extends State<ProgressReport> {
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: UpdatedDimensions.font10(context) * 1.6,
-                            height: 1.2,
+                            //height: 1.2,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFF437296)),
                       ),
@@ -189,7 +190,7 @@ class ProgressReportState extends State<ProgressReport> {
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 1.9),
                       child: Text(
-                        'You are a rockstar! :)',
+                        'You are a rockstar :)',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             fontSize: UpdatedDimensions.font10(context) * 2.2,
@@ -198,7 +199,9 @@ class ProgressReportState extends State<ProgressReport> {
                             color: const Color(0xFF437296)),
                       ),
                     ),
-                    const SizedBox(height: 20,),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Container(
                       width: AppDimensions.width10(context) * 34.0,
                       //height: AppDimensions.height10(context) * 11.2,
@@ -352,7 +355,7 @@ class ProgressReportState extends State<ProgressReport> {
                       //padding: EdgeInsets.all(0),
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 2.7),
-                     // height: AppDimensions.height10(context) * 69.3,
+                      // height: AppDimensions.height10(context) * 69.3,
                       decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage(
@@ -364,49 +367,139 @@ class ProgressReportState extends State<ProgressReport> {
                             margin: EdgeInsets.only(
                                 top: AppDimensions.height10(context) * 7.0),
                             child: Text(
-                              'Your identity statement',
+                              'Your identity statements',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontSize: UpdatedDimensions.font10(context) * 2.4,
+                                  fontSize:
+                                      UpdatedDimensions.font10(context) * 2.4,
                                   height: 1.2,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFFFFFFFF)),
                             ),
                           ),
-                          const SizedBox(height: 30,),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children:  [
-                                for (int i = 0; i < report['practice']['userGoal']['reason'].length; i++) ...[
-                                  identityComponent(context,i,report['practice']['userGoal']['reason'][i]['text'])
-                                ]
-                              ],
-                            )
+                          const SizedBox(
+                            height: 30,
                           ),
-                          const SizedBox(height: 50,),
+                          SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  for (int i = 0;
+                                      i <
+                                          report['practice']['userGoal']
+                                                  ['reason']
+                                              .length;
+                                      i++) ...[
+                                    identityComponent(
+                                        context,
+                                        i,
+                                        report['practice']['userGoal']['reason']
+                                            [i]['text'])
+                                  ]
+                                ],
+                              )),
+                          const SizedBox(
+                            height: 50,
+                          ),
                           Text(
                             'Your inspirations',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: UpdatedDimensions.font10(context) * 2.4,
+                                fontSize:
+                                    UpdatedDimensions.font10(context) * 2.4,
                                 height: 1.2,
                                 fontWeight: FontWeight.w600,
                                 color: const Color(0xFFFFFFFF)),
                           ),
-                          const SizedBox(height: 30,),
-                          report['userInspirations'].length == 0? emptyInspiration(context): SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                for (int i = 0; i < report['userInspirations'].length; i++) ... [
-                                  inspirationComponent(context, report['userInspirations'][i]['inspirationId'].toString(), report['userInspirations'][i]['file']??'', report['userInspirations'][i]['description']??'',i)
-                                ]
-                              ],
-                            ),
+                          const SizedBox(
+                            height: 30,
                           ),
-                          const SizedBox(height: 80,),
+                          report['userInspirations'].length == 0
+                              ? emptyInspiration(context)
+                              : SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Row(
+                                    children: [
+                                      for (int i = 0;
+                                          i < report['userInspirations'].length;
+                                          i++) ...[
+                                        report['userInspirations'][i]
+                                                    ['inspirationId'] ==
+                                                1
+                                            ? Container(
+                                          margin: EdgeInsets.only(
+                                              left:  i == 0? AppDimensions.width10(context) * 12:AppDimensions.width10(context) * 2,
+                                              right: AppDimensions.width10(context) * 1,
+                                              top: AppDimensions.height10(context),
+                                              bottom: AppDimensions.height10(context)),
+                                              child: CustomCircle().customContainer(context,
+                                                  id: report['userInspirations']
+                                                      [i]['inspirationId'],
+                                                  img: report['userInspirations']
+                                                          [i]['file'] ??
+                                                      ''),
+                                            )
+                                            : report['userInspirations'][i]
+                                                        ['inspirationId'] ==
+                                                    2
+                                                ? Container(
+                                          margin: EdgeInsets.only(
+                                              left:  i == 0? AppDimensions.width10(context) * 12:AppDimensions.width10(context) * 2,
+                                              right: AppDimensions.width10(context) * 1,
+                                              top: AppDimensions.height10(context),
+                                              bottom: AppDimensions.height10(context)),
+                                                  child: CustomCircle()
+                                                      .customContainer(
+                                                      context,
+                                                      id: report[
+                                                              'userInspirations']
+                                                          [i]['inspirationId'],
+                                                      desc: report[
+                                                              'userInspirations']
+                                                          [i]['description'],
+                                                    ),
+                                                )
+                                                : report['userInspirations'][i]
+                                                            ['inspirationId'] ==
+                                                        4
+                                                    ? Container(
+                                          margin: EdgeInsets.only(
+                                              left:  i == 0? AppDimensions.width10(context) * 12:AppDimensions.width10(context) * 2,
+                                              right: AppDimensions.width10(context) * 1,
+                                              top: AppDimensions.height10(context),
+                                              bottom: AppDimensions.height10(context)),
+                                                      child: CustomCircle()
+                                                          .customContainer(
+                                                          context,
+                                                          id: report[
+                                                                  'userInspirations']
+                                                              [
+                                                              i]['inspirationId'],
+                                                          desc: report[
+                                                                  'userInspirations']
+                                                              [i]['description'],
+                                                        ),
+                                                    )
+                                                    : report['userInspirations'][i]
+                                                                ['inspirationId'] ==
+                                                            3
+                                                        ? Container(
+                                            margin: EdgeInsets.only(
+                                                left:  i == 0? AppDimensions.width10(context) * 12:AppDimensions.width10(context) * 2,
+                                                right: AppDimensions.width10(context) * 1,
+                                                top: AppDimensions.height10(context),
+                                                bottom: AppDimensions.height10(context)),
+                                            child: CustomCircle().customContainer(context, id: report['userInspirations'][i]['inspirationId'], link: report['userInspirations'][i]['destinationLink']))
+                                                        : Container(),
+                                        //inspirationComponent(context, report['userInspirations'][i]['inspirationId'].toString(), report['userInspirations'][i]['file']??'', report['userInspirations'][i]['description']??'',i)
+                                      ]
+                                    ],
+                                  ),
+                                ),
+                          const SizedBox(
+                            height: 80,
+                          ),
                         ],
                       ),
                     ),
@@ -423,7 +516,7 @@ class ProgressReportState extends State<ProgressReport> {
                             color: const Color(0xFF437296)),
                       ),
                     ),
-                    calender(context, noData, report,20),
+                    calender(context, noData, report, 20),
                     Container(
                       margin: EdgeInsets.only(
                           top: AppDimensions.height10(context) * 3.7),
@@ -446,7 +539,8 @@ class ProgressReportState extends State<ProgressReport> {
                             color: const Color(0xFF437296)),
                       ),
                     ),
-                    habitComponent(context,options,outerColor,'active',true),
+                    habitComponent(
+                        context, options, outerColor, 'active', true),
                     Container(
                       width: double.infinity,
                       height: AppDimensions.height10(context) * 22.9,
@@ -470,7 +564,7 @@ class ProgressReportState extends State<ProgressReport> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                    UpdatedDimensions.font10(context) * 1.6,
+                                        UpdatedDimensions.font10(context) * 1.6,
                                     height: 1.2,
                                     fontWeight: FontWeight.w700,
                                     color: const Color(0xFFF5F5F5)),
@@ -488,7 +582,7 @@ class ProgressReportState extends State<ProgressReport> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                    UpdatedDimensions.font10(context) * 1.4,
+                                        UpdatedDimensions.font10(context) * 1.4,
                                     height: 1.2,
                                     fontWeight: FontWeight.w400,
                                     color: const Color(0xFFF5F5F5)),
@@ -557,9 +651,9 @@ class ProgressReportState extends State<ProgressReport> {
                                         'Exit report',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                            fontSize:
-                                            UpdatedDimensions.font10(context) *
-                                                    1.8,
+                                            fontSize: UpdatedDimensions.font10(
+                                                    context) *
+                                                1.8,
                                             height: 1.2,
                                             fontWeight: FontWeight.w600,
                                             color: const Color(0xFFFFFFFF)),

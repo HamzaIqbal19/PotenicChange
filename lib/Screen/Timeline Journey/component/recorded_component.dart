@@ -140,10 +140,10 @@ class _RecordedComponentState extends State<RecordedComponent> {
                               goalImages(widget.orangeImage.toString())),
                           fit: BoxFit.cover)),
                   child: Align(
-                      alignment: const Alignment(0.42, 0),
+                      alignment: const Alignment(0.2, 0),
                       child: SizedBox(
                         width: AppDimensionsUpdated.width10(context) * 10.5,
-                        height: AppDimensionsUpdated.height10(context) * 4.8,
+                      //  height: AppDimensionsUpdated.height10(context) * 4.8,
                         //changed font family due to client's request
                         child: Text(
                           widget.goalName,
@@ -168,7 +168,7 @@ class _RecordedComponentState extends State<RecordedComponent> {
                   width: AppDimensionsUpdated.width10(context) * 11.6,
                   height: AppDimensionsUpdated.height10(context) * 11.6,
                   // ignore: prefer_const_constructors
-                  padding: EdgeInsets.symmetric(horizontal: 5),
+                  padding: EdgeInsets.symmetric(horizontal: 15),
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: widget.status == 'Not Started'
@@ -199,7 +199,7 @@ class _RecordedComponentState extends State<RecordedComponent> {
                         fontSize: AppDimensionsUpdated.font10(context) * 1.6,
                         height: AppDimensionsUpdated.height10(context) * 0.12,
                         fontWeight: FontWeight.w500,
-                        color: const Color(0xffFBFBFB),
+                        color:widget.status == 'Not Started'? const Color(0xffFBFBFB):Color(practiceColor(widget.greenImage.toString())),
                       ),
                     ),
                   ),
@@ -264,16 +264,16 @@ class _RecordedComponentState extends State<RecordedComponent> {
                   children: [
                     Container(
                       width: AppDimensionsUpdated.width10(context) * 33.7,
-                      height: AppDimensionsUpdated.height10(context) * 4.1,
+                     // height: AppDimensionsUpdated.height10(context) * 4.1,
                       margin: EdgeInsets.only(
                           top: AppDimensionsUpdated.height10(context) * 2.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: AppDimensionsUpdated.width10(context) * 16.7,
-                            height:
-                                AppDimensionsUpdated.height10(context) * 1.7,
+                            // width: AppDimensionsUpdated.width10(context) * 16.7,
+                            // height:
+                            //     AppDimensionsUpdated.height10(context) * 1.7,
                             alignment: Alignment.centerLeft,
                             child: RichText(
                                 text: TextSpan(
@@ -281,7 +281,7 @@ class _RecordedComponentState extends State<RecordedComponent> {
                                         fontFamily: 'laila',
                                         fontSize: AppDimensionsUpdated.font10(
                                                 context) *
-                                            1.4,
+                                            1.6,
                                         height: AppDimensionsUpdated.height10(
                                                 context) *
                                             0.12,
@@ -298,17 +298,17 @@ class _RecordedComponentState extends State<RecordedComponent> {
                           ),
                           SizedBox(
                             width: AppDimensionsUpdated.width10(context) * 33.7,
-                            height:
-                                AppDimensionsUpdated.height10(context) * 2.3,
+                            // height:
+                            //     AppDimensionsUpdated.height10(context) * 2.3,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
 
-                                  height:
-                                      AppDimensionsUpdated.height10(context) *
-                                          1.7,
+                                  // height:
+                                  //     AppDimensionsUpdated.height10(context) *
+                                  //         1.7,
                                   margin: EdgeInsets.only(
                                       top: AppDimensionsUpdated.height10(
                                               context) *
@@ -319,7 +319,7 @@ class _RecordedComponentState extends State<RecordedComponent> {
                                     style: TextStyle(
                                         fontSize: AppDimensionsUpdated.font10(
                                                 context) *
-                                            1.4,
+                                            1.6,
                                         height: AppDimensionsUpdated.height10(
                                                 context) *
                                             0.12,
@@ -361,14 +361,14 @@ class _RecordedComponentState extends State<RecordedComponent> {
                     ),
                     SizedBox(
                       width: AppDimensionsUpdated.width10(context) * 33.7,
-                      height: AppDimensionsUpdated.height10(context) * 4.1,
+                      //height: AppDimensionsUpdated.height10(context) * 4.1,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: AppDimensionsUpdated.width10(context) * 16.7,
-                            height:
-                                AppDimensionsUpdated.height10(context) * 1.7,
+                            // width: AppDimensionsUpdated.width10(context) * 16.7,
+                            // height:
+                            //     AppDimensionsUpdated.height10(context) * 1.7,
                             alignment: Alignment.centerLeft,
                             child: RichText(
                                 text: TextSpan(
@@ -376,7 +376,7 @@ class _RecordedComponentState extends State<RecordedComponent> {
                                         fontFamily: 'laila',
                                         fontSize: AppDimensionsUpdated.font10(
                                                 context) *
-                                            1.4,
+                                            1.6,
                                         height: AppDimensionsUpdated.height10(
                                                 context) *
                                             0.12,
@@ -393,8 +393,8 @@ class _RecordedComponentState extends State<RecordedComponent> {
                           ),
                           SizedBox(
                             width: AppDimensionsUpdated.width10(context) * 33.7,
-                            height:
-                                AppDimensionsUpdated.height10(context) * 2.3,
+                            // height:
+                            //     AppDimensionsUpdated.height10(context) * 2.3,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -402,9 +402,9 @@ class _RecordedComponentState extends State<RecordedComponent> {
                                 Container(
                                   // width: AppDimensionsUpdated.width10(context) *
                                   //     16.7,
-                                  height:
-                                      AppDimensionsUpdated.height10(context) *
-                                          1.7,
+                                  // height:
+                                  //     AppDimensionsUpdated.height10(context) *
+                                  //         1.7,
                                   margin: EdgeInsets.only(
                                       top: AppDimensionsUpdated.height10(
                                               context) *
@@ -414,7 +414,7 @@ class _RecordedComponentState extends State<RecordedComponent> {
                                     style: TextStyle(
                                         fontSize: AppDimensionsUpdated.font10(
                                                 context) *
-                                            1.4,
+                                            1.6,
                                         height: AppDimensionsUpdated.height10(
                                                 context) *
                                             0.12,

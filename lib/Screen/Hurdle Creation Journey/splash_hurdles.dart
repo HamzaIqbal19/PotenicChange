@@ -140,7 +140,9 @@ class hurdles_splashState extends State<hurdles_splash> {
                               context,
                               AppText().hurdleBottomSheedTitle,
                               AppText().hurdleBottomSheedBody,
-                              AppLinks().hurdleTutorialLink,(){},true);
+                              AppLinks().hurdleTutorialLink,(){
+
+                          },false);
                         },
                         child: Container(
                             width:

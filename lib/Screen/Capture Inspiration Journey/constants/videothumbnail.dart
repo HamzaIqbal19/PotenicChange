@@ -6,7 +6,11 @@ class Videothumbnail {
     String thumbnailUrl;
 
     final RegExp youtubeRegExp = RegExp(
-        r'(?:https?://)?(?:www\.)?(?:youtube\.com/(?:[^/]+/.*|(?:v|e(?:mbed)?)|.*[?&]v=)|youtu\.be/)([^&?/]{11})');
+        r'(?:https?://)?(?:www\.)?(?:youtube\.com/(?:.*[?&]v=|(?:v|embed|shorts)/)|youtu\.be/)([^&?/]{11})');
+    // (
+    //     '?:https?://)?(?:www\.)?(?:youtube\.com/(?:[^/]+/.*|(?:v|embed|shorts)/|.*[?&]v=)|youtu\.be/)([^&?/]{11}');
+    // (
+    // r'(?:https?://)?(?:www\.)?(?:youtube\.com/(?:[^/]+/.*|(?:v|e(?:mbed)?)|.*[?&]v=)|youtu\.be/)([^&?/]{11})');
     final RegExp vimeoRegExp =
         RegExp(r'(?:https?://)?(?:www\.)?vimeo\.com/([0-9]+)');
     final RegExp dailymotionRegExp =
@@ -35,7 +39,6 @@ class Videothumbnail {
     } else {
       thumbnailUrl = '';
     }
-    print("thumbnail urll $thumbnailUrl");
 
     return thumbnailUrl;
   }

@@ -5,8 +5,10 @@ import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/constants/videothumbnail.dart';
+import 'package:potenic_app/Widgets/CustomCircle.dart';
 
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/deleteanimatedDialog.dart';
 import 'package:potenic_app/Widgets/menu_buttons.dart';
 
@@ -47,7 +49,6 @@ class _record_inspirationState extends State<record_inspiration> {
       if (response.length != 0) {
         setState(() {
           inspirationDetails = response;
-          print("isnpiration details $inspirationDetails");
         });
         loadData();
 
@@ -84,20 +85,29 @@ class _record_inspirationState extends State<record_inspiration> {
           elevation: 0,
           actions: [
             Center(
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        FadePageRouteReverse(
-                            page:
-                                const inspiration_landing(is_Updated: false)));
-                  },
-                  icon: Image.asset(
-                    'assets/images/Close.webp',
-                    //width: AppDimensions.width10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.8,
-                    fit: BoxFit.contain,
-                  )),
+              child: Buttons().closeButton(
+                context,
+                () {
+                  Navigator.push(
+                      context,
+                      FadePageRouteReverse(
+                          page: const inspiration_landing(is_Updated: false)));
+                },
+              ),
+              // IconButton(
+              //     onPressed: () {
+              //       Navigator.push(
+              //           context,
+              //           FadePageRouteReverse(
+              //               page:
+              //                   const inspiration_landing(is_Updated: false)));
+              //     },
+              //     icon: Image.asset(
+              //       'assets/images/Close.webp',
+              //       //width: AppDimensions.width10(context) * 2.6,
+              //       height: AppDimensions.height10(context) * 2.8,
+              //       fit: BoxFit.contain,
+              //     )),
             )
           ],
           automaticallyImplyLeading: false,
@@ -142,157 +152,195 @@ class _record_inspirationState extends State<record_inspiration> {
                           Column(children: [
                             inspirationDetails['inspiration']['inspirationId'] ==
                                     2
-                                ? Container(
-                                    width:
-                                        AppDimensions.width10(context) * 16.7,
-                                    height:
-                                        AppDimensions.height10(context) * 16.7,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        gradient: const RadialGradient(colors: [
-                                          Color(0xFFE9A594),
-                                          Color(0xFFEEBEB2)
-                                        ])),
-                                    child: Center(
-                                        child: Text(
-                                      inspirationDetails['inspiration']
-                                          ['description'],
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 3,
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontFamily: 'laila',
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.4,
-                                          fontWeight: FontWeight.w400,
-                                          color: const Color(0xFFFFFFFF)),
-                                    )),
-                                  )
+                                ? CustomCircle().customContainer(context,
+                                    id: inspirationDetails['inspiration']
+                                        ['inspirationId'],
+                                    desc: inspirationDetails['inspiration']
+                                        ['description'])
+                                // ? Container(
+                                //     padding: EdgeInsets.all(
+                                //         AppDimensions.height10(context) * 1),
+                                //     width:
+                                //         AppDimensions.width10(context) * 16.7,
+                                //     height:
+                                //         AppDimensions.height10(context) * 16.7,
+                                //     decoration: const BoxDecoration(
+                                //         shape: BoxShape.circle,
+                                //         gradient: const RadialGradient(colors: [
+                                //           Color(0xFFE9A594),
+                                //           Color(0xFFEEBEB2)
+                                //         ])),
+                                //     child: Center(
+                                //         child: Text(
+                                //       inspirationDetails['inspiration']
+                                //           ['description'],
+                                //       overflow: TextOverflow.ellipsis,
+                                //       maxLines: 3,
+                                //       textAlign: TextAlign.center,
+                                //       style: TextStyle(
+                                //           fontFamily: 'laila',
+                                //           fontSize:
+                                //               AppDimensions.font10(context) *
+                                //                   1.4,
+                                //           fontWeight: FontWeight.w400,
+                                //           color: const Color(0xFFFFFFFF)),
+                                //     )),
+                                //   )
                                 : inspirationDetails['inspiration']
                                             ['inspirationId'] ==
                                         4
-                                    ? Container(
-                                        width: AppDimensions.width10(context) *
-                                            16.7,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                16.7,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          gradient: const LinearGradient(
-                                              end: Alignment(0.73, 0),
-                                              begin: Alignment(-1, 1),
-                                              colors: [
-                                                Color(0xFF673636),
-                                                Color(0xFFF8C3B5),
-                                              ]),
-                                        ),
-                                        child: Center(
-                                            child: Text(
-                                          inspirationDetails['inspiration']
-                                              ['description'],
-                                          overflow: TextOverflow.ellipsis,
-                                          maxLines: 3,
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontFamily: 'laila',
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  1.4,
-                                              fontWeight: FontWeight.w400,
-                                              color: const Color(0xFFFFFFFF)),
-                                        )),
+                                    ? CustomCircle().customContainer(
+                                        context,
+                                        id: inspirationDetails['inspiration']
+                                            ['inspirationId'],
+                                        desc: inspirationDetails['inspiration']
+                                            ['description'],
                                       )
+                                    // Container(
+                                    //     padding: EdgeInsets.all(
+                                    //         AppDimensions.height10(context) *
+                                    //             1),
+                                    //     width: AppDimensions.width10(context) *
+                                    //         16.7,
+                                    //     height:
+                                    //         AppDimensions.height10(context) *
+                                    //             16.7,
+                                    //     decoration: const BoxDecoration(
+                                    //         shape: BoxShape.circle,
+                                    //         image: DecorationImage(
+                                    //             image: AssetImage(
+                                    //                 "assets/images/contentrecordbg.png"))
+                                    //         // gradient: LinearGradient(stops: [
+                                    //         //   0.13,
+                                    //         //   0.87
+                                    //         // ], colors: [
+                                    //         //   Color(0xFFC49095),
+                                    //         //   Color(0xFF744143),
+                                    //         // ]),
+                                    //         //  const RadialGradient(
+                                    //         //     // end: Alignment(0.73, 0),
+                                    //         //     // begin: Alignment(-1, 1),
+                                    //         //     colors: [
+                                    //         //       Color(0xFF744143), //673636
+                                    //         //       Color(0xFFC49095), //F8C3B5
+                                    //         //     ]),
+                                    //         ),
+                                    //     child: Center(
+                                    //         child: Text(
+                                    //       inspirationDetails['inspiration']
+                                    //           ['description'],
+                                    //       overflow: TextOverflow.ellipsis,
+                                    //       maxLines: 3,
+                                    //       textAlign: TextAlign.center,
+                                    //       style: TextStyle(
+                                    //           fontFamily: 'laila',
+                                    //           fontSize: AppDimensions.font10(
+                                    //                   context) *
+                                    //               1.4,
+                                    //           fontWeight: FontWeight.w400,
+                                    //           color: const Color(0xFFFFFFFF)),
+                                    //     )),
+                                    //   )
                                     : inspirationDetails['inspiration']
                                                 ['inspirationId'] ==
                                             3
-                                        ? Container(
-                                            width: AppDimensions.width10(context) *
-                                                16.7,
-                                            height: AppDimensions.height10(context) *
-                                                16.7,
-                                            decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                // gradient: inspirationDetails['inspiration']
-                                                //             ['inspirationId'] ==
-                                                //         2
-                                                //     ? const RadialGradient(
-                                                //         colors: [
-                                                //             Color(0xFFE9A594),
-                                                //             Color(0xFFEEBEB2)
-                                                //           ])
-                                                //     : const LinearGradient(
-                                                //         end: Alignment(0.73, 0),
-                                                //         begin: Alignment(-1, 1),
-                                                //         colors: [
-                                                //             Color(0xFF673636),
-                                                //             Color(0xFFF8C3B5),
-                                                //           ]),
-                                                image: DecorationImage(
-                                                    image: inspirationDetails['inspiration']['inspirationId'] ==
-                                                            3
-                                                        ? Videothumbnail().extractThumbnailUrl(inspirationDetails['inspiration']['destinationLink']) ==
-                                                                ''
-                                                            ? const AssetImage('assets/images/video.webp')
-                                                                as ImageProvider
-                                                            : NetworkImage(
-                                                                Videothumbnail()
-                                                                        .extractThumbnailUrl(inspirationDetails['inspiration']['destinationLink'])
-                                                                    as String)
-                                                        : const AssetImage('')
-                                                            as ImageProvider,
-                                                    fit: BoxFit.cover)),
-                                            child: inspirationDetails['inspiration']['inspirationId'] == 3
-                                                ? Videothumbnail().extractThumbnailUrl(inspirationDetails['inspiration']['destinationLink']) == ''
-                                                    ? Container()
-                                                    : SizedBox(
-                                                        width:
-                                                            10, // Set the desired width
-                                                        height:
-                                                            10, // Set the desired height
-                                                        child: Image.asset(
-                                                          'assets/images/videoicon.png',
-                                                          // fit: BoxFit
-                                                          //     ., // Ensures the image fits within the box
-                                                        ),
-                                                      )
-                                                // : Container(
-                                                //     decoration: BoxDecoration(
-                                                //         image: DecorationImage(
-                                                //             image: AssetImage(
-                                                //                 'assets/images/videoicon.png',))),
-                                                //   )
-                                                : Container())
-                                        : inspirationDetails['inspiration']['inspirationId'] == 1
-                                            ? Container(
-                                                width: AppDimensions.width10(
-                                                        context) *
-                                                    16.7,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    16.7,
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              18),
-                                                  child: FadeInImage(
-                                                    placeholder: const AssetImage(
-                                                        'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
-                                                    image: NetworkImage(
-                                                        inspirationDetails[
-                                                                    'inspiration']
-                                                                ['file']
-                                                            .toString()),
-                                                    fit: BoxFit.cover,
-                                                    placeholderFit:
-                                                        BoxFit.contain,
-                                                  ),
-                                                ),
-                                              )
+                                        ? CustomCircle().customContainer(context,
+                                            id: inspirationDetails['inspiration']
+                                                ['inspirationId'],
+                                            link: inspirationDetails['inspiration']
+                                                ['destinationLink'])
+                                        //  Container(
+                                        //     width: AppDimensions.width10(context) *
+                                        //         16.7,
+                                        //     height: AppDimensions.height10(context) *
+                                        //         16.7,
+                                        //     decoration: BoxDecoration(
+                                        //         shape: BoxShape.circle,
+                                        //         // gradient: inspirationDetails['inspiration']
+                                        //         //             ['inspirationId'] ==
+                                        //         //         2
+                                        //         //     ? const RadialGradient(
+                                        //         //         colors: [
+                                        //         //             Color(0xFFE9A594),
+                                        //         //             Color(0xFFEEBEB2)
+                                        //         //           ])
+                                        //         //     : const LinearGradient(
+                                        //         //         end: Alignment(0.73, 0),
+                                        //         //         begin: Alignment(-1, 1),
+                                        //         //         colors: [
+                                        //         //             Color(0xFF673636),
+                                        //         //             Color(0xFFF8C3B5),
+                                        //         //           ]),
+                                        //         image: DecorationImage(
+                                        //             image: inspirationDetails['inspiration']['inspirationId'] ==
+                                        //                     3
+                                        //                 ? Videothumbnail().extractThumbnailUrl(inspirationDetails['inspiration']['destinationLink']) ==
+                                        //                         ''
+                                        //                     ? const AssetImage('assets/images/video.webp')
+                                        //                         as ImageProvider
+                                        //                     : NetworkImage(
+                                        //                         Videothumbnail().extractThumbnailUrl(inspirationDetails['inspiration']['destinationLink'])
+                                        //                             as String)
+                                        //                 : const AssetImage('')
+                                        //                     as ImageProvider,
+                                        //             fit: BoxFit.cover)),
+                                        //     child: inspirationDetails['inspiration']['inspirationId'] == 3
+                                        //         ? Videothumbnail().extractThumbnailUrl(inspirationDetails['inspiration']['destinationLink']) == ''
+                                        //             ? Container()
+                                        //             : SizedBox(
+                                        //                 width:
+                                        //                     10, // Set the desired width
+                                        //                 height:
+                                        //                     10, // Set the desired height
+                                        //                 child: Image.asset(
+                                        //                   'assets/images/videoicon.png',
+                                        //                   // fit: BoxFit
+                                        //                   //     ., // Ensures the image fits within the box
+                                        //                 ),
+                                        //               )
+                                        //         // : Container(
+                                        //         //     decoration: BoxDecoration(
+                                        //         //         image: DecorationImage(
+                                        //         //             image: AssetImage(
+                                        //         //                 'assets/images/videoicon.png',))),
+                                        //         //   )
+                                        //         : Container())
+                                        : inspirationDetails['inspiration']
+                                                    ['inspirationId'] ==
+                                                1
+                                            ? CustomCircle().customContainer(context,
+                                                id: inspirationDetails['inspiration']
+                                                    ['inspirationId'],
+                                                img: inspirationDetails['inspiration']
+                                                    ['file'])
+                                            // Container(
+                                            //     width: AppDimensions.width10(
+                                            //             context) *
+                                            //         16.7,
+                                            //     height: AppDimensions.height10(
+                                            //             context) *
+                                            //         16.7,
+                                            //     child: ClipRRect(
+                                            //       borderRadius:
+                                            //           BorderRadius.circular(
+                                            //               AppDimensions
+                                            //                       .height10(
+                                            //                           context) *
+                                            //                   18),
+                                            //       child: FadeInImage(
+                                            //         placeholder: const AssetImage(
+                                            //             'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
+                                            //         image: NetworkImage(
+                                            //             inspirationDetails[
+                                            //                         'inspiration']
+                                            //                     ['file']
+                                            //                 .toString()),
+                                            //         fit: BoxFit.cover,
+                                            //         placeholderFit:
+                                            //             BoxFit.contain,
+                                            //       ),
+                                            //     ),
+                                            //   )
                                             : Container(),
 
                             // Container(
@@ -601,16 +649,30 @@ class _record_inspirationState extends State<record_inspiration> {
                                   .deleteUserInspiraton()
                                   .then((response) {
                                 if (response == true) {
-                                  Navigator.push(
-                                      context,
-                                      FadePageRoute(
-                                          page: inspiration_motivation(
-                                        goal_delete: true,
-                                        inspirationName:
-                                            inspirationDetails['inspiration']
-                                                ['title'],
-                                      )));
-                                }
+
+                                    InspirationApi()
+                                        .checkUserInspiration()
+                                        .then((response) {
+                                      if (response == true) {
+                                        Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page: const inspiration_landing(is_Updated: false)));
+                                      } else if (response == false) {
+                                        Navigator.push(
+                                            context,
+                                            FadePageRoute(
+                                                page:  inspiration_motivation(
+                                                  goal_delete: false,
+                                                  inspirationName: inspirationDetails['inspiration']
+                                                  ['title'],
+                                                )));
+                                      }
+                                    })
+                                        .catchError((error) {})
+                                        .whenComplete(() {});
+                                  }
+
                               });
                             },
                             child: Container(

@@ -80,7 +80,7 @@ class _StartProcessState extends State<StartProcess> {
                     children: [
                       Container(
                         padding: EdgeInsets.only(
-                            top: AppDimensions.height10(context) * 7.7),
+                            top: AppDimensions.height10(context) * 10.7),
                         child: GradientText(
                           AppText().goalSetting,
                           textAlign: TextAlign.center,

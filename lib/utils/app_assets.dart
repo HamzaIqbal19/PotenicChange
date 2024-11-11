@@ -6,7 +6,8 @@ class AppAssets {
   static const fbLogo = "$_imagesPath/fb.webp";
   static const closeButton = "$_imagesPath/Close.webp";
   static const backButton = "$_imagesPath/Back.webp";
-
+  static const addButton = "$_imagesPath/Addgoal.webp";
+  static const infoButton = "$_imagesPath/ic_info_outline.webp";
   //goalAssets
   static const goal1 = "$_imagesPath/red_gradient.webp";
   static const goal2 = "$_imagesPath/orange_moon.webp";

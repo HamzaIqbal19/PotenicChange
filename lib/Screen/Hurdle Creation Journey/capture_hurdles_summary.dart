@@ -12,6 +12,7 @@ import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdles_l
 import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/splash_hurdles.dart';
 import 'package:potenic_app/Screen/Practice%20Creation%20Journey/PracticeName.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/deleteanimatedDialog.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 
@@ -107,35 +108,51 @@ class _summary_hurdlesState extends State<summary_hurdles> {
             elevation: 0,
             leading: widget.delete_hurdle
                 ? Center(
-                    child: IconButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        icon: Image.asset(
-                          'assets/images/Back.webp',
-                          // width: AppDimensions.width10(context) * 3.0,
-                          height: AppDimensions.height10(context) * 3.0,
-                          fit: BoxFit.contain,
-                        )),
+                    child: Buttons().backButton(
+                    context,
+                    () {
+                      Navigator.pop(context);
+                    },
                   )
+                    // IconButton(
+                    //     onPressed: () {
+                    //       Navigator.pop(context);
+                    //     },
+                    //     icon: Image.asset(
+                    //       'assets/images/Back.webp',
+                    //       // width: AppDimensions.width10(context) * 3.0,
+                    //       height: AppDimensions.height10(context) * 3.0,
+                    //       fit: BoxFit.contain,
+                    //     )),
+                    )
                 : Container(),
             actions: [
               widget.delete_hurdle
                   ? Center(
-                      child: IconButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                FadePageRouteReverse(
-                                    page: const landing_hurdles()));
-                          },
-                          icon: Image.asset(
-                            'assets/images/Close.webp',
-                            // width: AppDimensions.width10(context) * 2.6,
-                            height: AppDimensions.height10(context) * 2.6,
-                            fit: BoxFit.contain,
-                          )),
+                      child: Buttons().closeButton(
+                      context,
+                      () {
+                        Navigator.push(
+                            context,
+                            FadePageRouteReverse(
+                                page: const landing_hurdles()));
+                      },
                     )
+
+                      // IconButton(
+                      //     onPressed: () {
+                      //       Navigator.push(
+                      //           context,
+                      //           FadePageRouteReverse(
+                      //               page: const landing_hurdles()));
+                      //     },
+                      //     icon: Image.asset(
+                      //       'assets/images/Close.webp',
+                      //       // width: AppDimensions.width10(context) * 2.6,
+                      //       height: AppDimensions.height10(context) * 2.6,
+                      //       fit: BoxFit.contain,
+                      //     )),
+                      )
                   : Container()
             ]),
         extendBodyBehindAppBar: true,

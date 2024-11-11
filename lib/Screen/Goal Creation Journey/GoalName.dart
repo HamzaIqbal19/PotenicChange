@@ -138,7 +138,6 @@ class _GoalNameState extends State<GoalName> {
   }
 
   void getGoalStatus() {
-    print("Current goal");
   }
 
   Future<Goal> getGoal() async {
@@ -816,7 +815,6 @@ class _GoalNameState extends State<GoalName> {
                                     BorderSide(color: Colors.transparent))),
                         controller: mygoal,
                         onChanged: (String value) {
-                          print("Value $value");
                           goalProvider.updateName(value);
                         },
                         validator: (val) {

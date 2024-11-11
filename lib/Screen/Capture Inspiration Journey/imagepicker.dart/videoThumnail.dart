@@ -87,7 +87,6 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     thumbnail = getYoutubeThumbnail('https://www.youtube.com/watch?v=e8lgclXZKAs&t=29s');
-    print(thumbnail);
   }
   String getYoutubeThumbnail(String videoUrl) {
     final Uri? uri = Uri.tryParse(videoUrl);

@@ -256,32 +256,23 @@ class _feelingsAfterState extends State<feelingsAfter> {
             elevation: 0,
             centerTitle: true,
             title: appBarTitle(context, pracName,false),
-            leading: Center(
-              child: IconButton(
-                  onPressed: () {
-                    if (widget.summary == false) {
-                      Navigator.push(
-                        context,
-                        FadePageRouteReverse(
-                          page: emotions(
-                            summary: false,
-                            pracName: pracName,
-                            record: false,
-                            selected: 0,
-                          ),
-                        ),
-                      );
-                    } else {
-                      Navigator.pop(context);
-                    }
-                  },
-                  icon: Image.asset(
-                    'assets/images/Back.webp',
-                    // width: AppDimensionsUpdated.width10(context) * 2.6,
-                    height: AppDimensionsUpdated.height10(context) * 2.8,
-                    fit: BoxFit.contain,
-                  )),
-            ),
+            leading: Buttons().backButton(context, (){
+              if (widget.summary == false) {
+                Navigator.push(
+                  context,
+                  FadePageRouteReverse(
+                    page: emotions(
+                      summary: false,
+                      pracName: pracName,
+                      record: false,
+                      selected: 0,
+                    ),
+                  ),
+                );
+              } else {
+                Navigator.pop(context);
+              }
+            }),
             actions: [
               Buttons().closeButton(context, () {
                 if (widget.summary) {
@@ -322,7 +313,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                   Container(
                     margin: EdgeInsets.only(
                         bottom: AppDimensionsUpdated.height10(context) * 10.5,
-                        top: AppDimensionsUpdated.height10(context) * 5.0),
+                        top: AppDimensionsUpdated.height10(context) * 7.0),
                   ),
 
                   SizedBox(
@@ -363,7 +354,7 @@ class _feelingsAfterState extends State<feelingsAfter> {
                         ),
 
                   Container(
-                    height: AppDimensionsUpdated.width10(context) * 13.7,
+                    height: AppDimensionsUpdated.width10(context) * 15.7,
                     margin: EdgeInsets.only(
                         bottom: AppDimensionsUpdated.height10(context) * 5.2,
                         left: AppDimensionsUpdated.width10(context) * 1.0),

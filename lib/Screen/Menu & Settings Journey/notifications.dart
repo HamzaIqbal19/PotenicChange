@@ -59,7 +59,6 @@ class _notificationsState extends State<notifications> {
 
   getReminderStatus() {
     PracticeGoalApi.getUserReminder().then((value) {
-      print("Reminder status: $value");
       if (value != null) {
         setState(() {
           notificationStatus[0] = value['receiveNotification'];

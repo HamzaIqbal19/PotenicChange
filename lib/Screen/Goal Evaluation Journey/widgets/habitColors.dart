@@ -15,7 +15,7 @@ AfterSessionText( option){
   if(option == 1){
     return '“Not great, haven’t\nenjoyed it”';
   }else if(option == 2){
-    return '“I got distracted, it\was hard to focus”';
+    return '“I got distracted, it\nwas hard to focus”';
   }else if(option == 3){
     return '“It was ok”';
   }else if(option == 4){
@@ -27,7 +27,6 @@ AfterSessionText( option){
 
 
 habitComponent(BuildContext context, options, outerColor,subscription,report){
-  print("options $options");
   return Container(
     width: AppDimensions.width10(context) * 38.2,
     //height: AppDimensions.height10(context) * 147.8,
@@ -89,9 +88,9 @@ habitComponent(BuildContext context, options, outerColor,subscription,report){
             children: [
              report? Container(
                   width:
-                  AppDimensions.width10(context) * 20.0,
+                  AppDimensions.width10(context) * 17.0,
                   height:
-                  AppDimensions.height10(context) * 20.0,
+                  AppDimensions.height10(context) * 17.0,
                   margin: EdgeInsets.only(
                       bottom:
                       AppDimensions.height10(context) *

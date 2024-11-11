@@ -265,7 +265,7 @@ class _emotionsState extends State<emotions> {
                     Container(
                       margin: EdgeInsets.only(
                           bottom: AppDimensionsUpdated.height10(context) * 10.5,
-                          top: AppDimensionsUpdated.height10(context) * 5.0),
+                          top: AppDimensionsUpdated.height10(context) * 7.0),
                     ),
                     Container(
                       width: AppDimensionsUpdated.width10(context) * 35.9,
@@ -302,7 +302,7 @@ class _emotionsState extends State<emotions> {
                       ),
                     ),
                     Container(
-                      height: AppDimensionsUpdated.width10(context) * 13.7,
+                      height: AppDimensionsUpdated.width10(context) * 15.7,
                       margin: EdgeInsets.only(
                           bottom: AppDimensionsUpdated.height10(context) * 5.2,
                           left: AppDimensionsUpdated.width10(context) * 1.0),

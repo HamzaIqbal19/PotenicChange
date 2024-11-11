@@ -20,6 +20,7 @@ import 'package:potenic_app/Widgets/CustomBottomSheet.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/bottomScrollView.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/deleteanimatedDialog.dart';
 import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
 import 'package:potenic_app/utils/app_link.dart';
@@ -137,7 +138,6 @@ class _landing_hurdlesState extends State<landing_hurdles> {
 
   List selectItems = [];
   void doMultiSelection(String path) {
-    print('Double tapped $selectItems');
     //if (isMultiSelectionEnabled) {
     setState(() {
       if (selectItems.contains(path)) {
@@ -266,35 +266,59 @@ class _landing_hurdlesState extends State<landing_hurdles> {
           automaticallyImplyLeading: false,
           actions: [
             Center(
-              child: IconButton(
-                  onPressed: () async {
-                    Navigator.push(
-                        context,
-                        FadePageRouteReverse(
-                            page: const ViewDashboard(
-                          missed: false,
-                          name: '',
-                          update: false,
-                          helpfulTips: false,
-                          record: 0,
-                        )));
-                    final SharedPreferences prefs = await _prefs;
-                    await prefs.remove('HurdleRoute');
-                    await prefs.remove('hurdleName');
-                    await prefs.remove('NameHurdle');
-                    await prefs.remove('hurdleStatement');
-                    await prefs.remove('hurdleId');
-                    await prefs.remove('selected_goals');
-                    await prefs.remove('feelingsList');
-                    await prefs.remove("hurdle_selected");
-                  },
-                  icon: Image.asset(
-                    'assets/images/Close.webp',
-                    // width: AppDimensions.width10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.6,
-                    fit: BoxFit.contain,
-                  )),
+                child: Buttons().closeButton(
+              context,
+              () async {
+                Navigator.push(
+                    context,
+                    FadePageRouteReverse(
+                        page: const ViewDashboard(
+                      missed: false,
+                      name: '',
+                      update: false,
+                      helpfulTips: false,
+                      record: 0,
+                    )));
+                final SharedPreferences prefs = await _prefs;
+                await prefs.remove('HurdleRoute');
+                await prefs.remove('hurdleName');
+                await prefs.remove('NameHurdle');
+                await prefs.remove('hurdleStatement');
+                await prefs.remove('hurdleId');
+                await prefs.remove('selected_goals');
+                await prefs.remove('feelingsList');
+                await prefs.remove("hurdle_selected");
+              },
             )
+                //  IconButton(
+                //     onPressed: () async {
+                //       Navigator.push(
+                //           context,
+                //           FadePageRouteReverse(
+                //               page: const ViewDashboard(
+                //             missed: false,
+                //             name: '',
+                //             update: false,
+                //             helpfulTips: false,
+                //             record: 0,
+                //           )));
+                //       final SharedPreferences prefs = await _prefs;
+                //       await prefs.remove('HurdleRoute');
+                //       await prefs.remove('hurdleName');
+                //       await prefs.remove('NameHurdle');
+                //       await prefs.remove('hurdleStatement');
+                //       await prefs.remove('hurdleId');
+                //       await prefs.remove('selected_goals');
+                //       await prefs.remove('feelingsList');
+                //       await prefs.remove("hurdle_selected");
+                //     },
+                //     icon: Image.asset(
+                //       'assets/images/Close.webp',
+                //       // width: AppDimensions.width10(context) * 2.6,
+                //       height: AppDimensions.height10(context) * 2.6,
+                //       fit: BoxFit.contain,
+                //     )),
+                )
           ],
         ),
         extendBodyBehindAppBar: true,
@@ -329,7 +353,6 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                         _fetchHurdle();
                         noData = false;
                       });
-                      print("allHurdle $hurdlesList");
                     },
                     onChanged: (value) {
                       setState(() {
@@ -1240,7 +1263,9 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                         context,
                                         AppText().hurdleBottomSheedTitle,
                                         AppText().hurdleBottomSheedBody,
-                                        AppLinks().hurdleTutorialLink,(){},true);
+                                        AppLinks().hurdleTutorialLink,(){
+                                          Navigator.pop(context);
+                                    },false);
                                   },
                                   child: Container(
                                       width:
@@ -1518,8 +1543,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                             children: [
                                               MulitiSelectionButton(
                                                 longPress: () {
-                                                  print(
-                                                      "Hurdle List $hurdlesList");
+
                                                   setState(() {
                                                     longPress = true;
                                                   });

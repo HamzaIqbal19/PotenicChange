@@ -39,6 +39,8 @@ PODS:
     - GoogleUtilities/UserDefaults (~> 8.0)
     - nanopb (~> 3.30910.0)
   - Flutter (1.0.0)
+  - flutter_keyboard_visibility (0.0.1):
+    - Flutter
   - flutter_timezone (0.0.1):
     - Flutter
   - flutter_web_browser (0.17.1):
@@ -151,6 +153,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
   - Flutter (from `Flutter`)
+  - flutter_keyboard_visibility (from `.symlinks/plugins/flutter_keyboard_visibility/ios`)
   - flutter_timezone (from `.symlinks/plugins/flutter_timezone/ios`)
   - flutter_web_browser (from `.symlinks/plugins/flutter_web_browser/ios`)
   - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
@@ -202,6 +205,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_messaging/ios"
   Flutter:
     :path: Flutter
+  flutter_keyboard_visibility:
+    :path: ".symlinks/plugins/flutter_keyboard_visibility/ios"
   flutter_timezone:
     :path: ".symlinks/plugins/flutter_timezone/ios"
   flutter_web_browser:
@@ -243,6 +248,7 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 6ef4a1c7eb2a61ee1f74727d7f6ce2e72acf1414
   FirebaseMessaging: c9ec7b90c399c7a6100297e9d16f8a27fc7f7152
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_keyboard_visibility: 0339d06371254c3eb25eeb90ba8d17dca8f9c069
   flutter_timezone: ffb07bdad3c6276af8dada0f11978d8a1f8a20bb
   flutter_web_browser: 7bccaafbb0c5b8862afe7bcd158f15557109f61f
   GoogleDataTransport: aae35b7ea0c09004c3797d53c8c41f66f219d6a7
@@ -275,4 +281,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: c01e801a3e50c9adf4300ac639d777dc445b0def
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.1

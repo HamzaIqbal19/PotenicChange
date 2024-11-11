@@ -306,7 +306,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                       ),
                       Container(
                         padding: const EdgeInsets.only(
-                            top: 25, left: 13, right: 5, bottom: 5),
+                            top: 25, bottom: 5),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -319,6 +319,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                   return Column(
                                     children: [
                                       Container(
+                                          margin: EdgeInsets.symmetric(horizontal: 20),
                                           decoration: BoxDecoration(
                                               color: Colors.white,
                                               border: Border.all(
@@ -487,14 +488,14 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                       i++) ...[
                                                     Container(
                                                       // color:Colors.orange,
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              38.2,
+
                                                       padding:
                                                           const EdgeInsets.only(
+                                                              left: 15,
+                                                              right: 15,
                                                               bottom: 10),
                                                       child: Row(
+                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                         children: [
                                                           startTimerState(
                                                             key: Key(

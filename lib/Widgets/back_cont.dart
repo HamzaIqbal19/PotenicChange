@@ -102,7 +102,7 @@ class _inner_textState extends State<inner_text> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(
-                    height: AppDimensions.height10(context) * 3.6,
+                    //height: AppDimensions.height10(context) * 3.6,
                     // width: AppDimensions.width10(context) * 26.9,
                     child: Text(widget.head_text,
                         style: TextStyle(
@@ -113,7 +113,7 @@ class _inner_textState extends State<inner_text> {
                               : !_focusNode.hasFocus
                                   ? const Color(0xFFFFFFFF)
                                   : const Color(0xFF828282),
-                          fontSize: AppDimensions.font10(context) * 2.2,
+                          fontSize: AppDimensions.font10(context) * 2.4,
                         ))),
                 widget.delete
                     ? GestureDetector(
@@ -232,8 +232,8 @@ class _inner_textState extends State<inner_text> {
                           );
                         },
                         child: Container(
-                          height: AppDimensions.width10(context) * 2.3,
-                          width: AppDimensions.width10(context) * 2.3,
+                          height: AppDimensions.width10(context) * 2.5,
+                          width: AppDimensions.width10(context) * 2.5,
                           margin: EdgeInsets.only(
                               bottom: AppDimensions.height10(context) * 1.0,
                               right: AppDimensions.width10(context) * 1.0),
@@ -276,7 +276,7 @@ class _inner_textState extends State<inner_text> {
                       counterStyle: const TextStyle(height: double.minPositive),
                       hintStyle: TextStyle(
                           height: AppDimensions.height10(context) * 0.15,
-                          fontSize: AppDimensions.font10(context) * 1.6,
+                          fontSize: AppDimensions.font10(context) * 2.4,
                           fontWeight: FontWeight.w500,
                           color: widget.comingFromEditScreen
                               ? Colors.white
@@ -291,6 +291,7 @@ class _inner_textState extends State<inner_text> {
                   focusNode: _focusNode,
                   style: TextStyle(
                       //  height: AppDimensions.height10(context) * 0.15,
+                    fontSize: AppDimensions.font10(context) * 2.4,
                       fontWeight: FontWeight.w500,
                       fontFamily: "Laila",
                       height: AppDimensions.height10(context) * 0.14,

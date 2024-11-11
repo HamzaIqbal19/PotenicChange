@@ -31,6 +31,7 @@ class _edit_credentialsState extends State<edit_credentials> {
   String emailMsg = '';
   bool errorEmail = false;
   bool loader =false;
+  final _editFormkey = GlobalKey<FormState>();
 
   TextEditingController feildController = TextEditingController();
   TextEditingController feildController2 = TextEditingController();
@@ -52,44 +53,47 @@ class _edit_credentialsState extends State<edit_credentials> {
 
   updateUser() {
     if (widget.email) {
-      if(feildController.text.isEmpty || feildController2.text.isEmpty){
+      if(feildController.text.isEmpty || feildController2.text.isEmpty ){
         setState(() {
           errorEmail = true;
           emailMsg = "Ooops! Needs to be an email format";
         });
       }else{
-      if (feildController.text == feildController2.text) {
+        if((EmailValidator.validate(feildController.text) &&
+            EmailValidator.validate(feildController2.text))){
+          if (feildController.text == feildController2.text) {
 
-        setState(() {
-            loader = true;
-          errorEmail = false;
-          emailMsg = "";
-        });
-        Authentication()
-            .userUpdate(
-                feildController.text, feildController2.text, widget.email)
-            .then((value) async {
-          print("User update value $value");
-          if (value == true) {
             setState(() {
-              loader = false;
+              loader = true;
+              errorEmail = false;
+              emailMsg = "";
             });
-            final SharedPreferences prefs = await _prefs;
-            prefs.setString('userEmail', feildController2.text);
-            Navigator.pushReplacement(
-                context, FadePageRoute(page: const Settings()));
+            Authentication()
+                .userUpdate(
+                feildController.text, feildController2.text, widget.email)
+                .then((value) async {
+              if (value == true) {
+                setState(() {
+                  loader = false;
+                });
+                final SharedPreferences prefs = await _prefs;
+                prefs.setString('userEmail', feildController2.text);
+                Navigator.pushReplacement(
+                    context, FadePageRoute(page: const Settings()));
+              } else {
+                dialog(context, value['message'], () {
+                  Navigator.pop(context);
+                }, false);
+              }
+            });
           } else {
-            dialog(context, value['message'], () {
-              Navigator.pop(context);
-            }, false);
+            setState(() {
+              errorEmail = true;
+              emailMsg = "Ooops! email does not match";
+            });
           }
-        });
-      } else {
-        setState(() {
-          errorEmail = true;
-          emailMsg = "Ooops! email Does not match";
-        });
-      }}
+        }
+      }
     } else {
       if(feildController.text.isEmpty){
       }else{
@@ -99,7 +103,6 @@ class _edit_credentialsState extends State<edit_credentials> {
       Authentication()
           .userUpdate(feildController.text, feildController2.text, widget.email)
           .then((value) async {
-        print("User update value $value");
         if (value == true) {
           setState(() {
             loader = false;
@@ -125,27 +128,27 @@ class _edit_credentialsState extends State<edit_credentials> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          elevation: 0,
-          backgroundColor: Colors.transparent,
-          leading: Buttons().backButton(context, () {
-            Navigator.pop(context);
-          }),
-        ),
-        body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage('assets/images/Mask Group.webp'),
-            fit: BoxFit.cover,
-          )),
-          width: double.infinity,
-          height: double.infinity,
-          child: SingleChildScrollView(
-            scrollDirection: Axis.vertical,
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        leading: Buttons().backButton(context, () {
+          Navigator.pop(context);
+        }),
+      ),
+      body: Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(
+          image: AssetImage('assets/images/Mask Group.webp'),
+          fit: BoxFit.cover,
+        )),
+        width: double.infinity,
+        height: double.infinity,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Form(
+            key: _editFormkey,
             child: Column(
               children: [
                 Container(
@@ -170,32 +173,33 @@ class _edit_credentialsState extends State<edit_credentials> {
                   ),
                 ),
                 widget.password_edit
-                    ? Container(
-                        width: AppDimensions.width10(context) * 35.7,
-                        margin: EdgeInsets.only(
-                          left: AppDimensions.width10(context) * 2.4,
-                          right: AppDimensions.width10(context) * 3.6,
-                          top: AppDimensions.height10(context) * 6.5,
+                    ? Align(
+                      alignment: Alignment.centerLeft,
+                      child: Container(
+                          width: AppDimensions.width10(context) * 35.7,
+                          margin: EdgeInsets.only(
+                            left: AppDimensions.width10(context) * 0.6,
+                           // right: AppDimensions.width10(context) * 3.6,
+                            top: AppDimensions.height10(context) * 6.5,
+                          ),
+                          child: Text(
+                            'We will email you a link to reset your password',
+                            style: TextStyle(
+                                fontSize: AppDimensions.font10(context) * 1.8,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xFFFBFBFB)),
+                          ),
                         ),
-                        child: Text(
-                          'We will email you a link to reset your password',
-                          style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.6,
-                              fontWeight: FontWeight.w500,
-                              color: const Color(0xFFFBFBFB)),
-                        ),
-                      )
+                    )
                     : Container(),
                 Container(
-                  height: widget.email
-                      ? AppDimensions.height10(context) * 22.4
-                      : widget.password_edit
-                          ? AppDimensions.height10(context) * 6.0
-                          : AppDimensions.height10(context) * 8.6,
+                  // height: widget.email
+                  //     ? AppDimensions.height10(context) * 22.4
+                  //     : widget.password_edit
+                  //         ? AppDimensions.height10(context) * 6.0
+                  //         : AppDimensions.height10(context) * 8.6,
                   width: AppDimensions.width10(context) * 36.0,
                   margin: EdgeInsets.only(
-                      left: AppDimensions.width10(context) * 1.8,
-                      right: AppDimensions.width10(context) * 3.6,
                       top: widget.email
                           ? AppDimensions.height10(context) * 4.1
                           : widget.password_edit
@@ -207,7 +211,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                             Align(
                               alignment: Alignment.centerLeft,
                               child: Container(
-                                height: AppDimensions.height10(context) * 3.8,
+                                //height: AppDimensions.height10(context) * 3.8,
                                 width: AppDimensions.width10(context) * 22.2,
                                 alignment: Alignment.centerLeft,
                                 margin: EdgeInsets.only(
@@ -222,7 +226,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                         AppDimensions.height10(context) * 0.15,
                                     fontWeight: FontWeight.w500,
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.8,
                                   ),
                                 ),
                               ),
@@ -230,8 +234,9 @@ class _edit_credentialsState extends State<edit_credentials> {
                             Container(
                               height: AppDimensions.height10(context) * 6,
                               width: AppDimensions.width10(context) * 36.0,
-                              padding: EdgeInsetsDirectional.only(
+                              padding: EdgeInsets.only(
                                 top: AppDimensions.height10(context) + 2,
+                                //left: AppDimensions.height10(context) * 1.0,
                               ),
                               decoration: BoxDecoration(
                                   color: Colors.white,
@@ -258,7 +263,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                           bottom:
                                               AppDimensions.height10(context) *
                                                   1.50,
-                                          left: 10.0,
+                                          left: 20.0,
                                           right: 10.0),
                                       floatingLabelBehavior:
                                           FloatingLabelBehavior.always,
@@ -281,7 +286,32 @@ class _edit_credentialsState extends State<edit_credentials> {
                                               color: Colors.transparent)),
                                       enabledBorder: const OutlineInputBorder(
                                           borderSide: BorderSide(
-                                              color: Colors.transparent)))),
+                                              color: Colors.transparent))),
+                                  validator: (val) {
+                                    if (val != null && val.isNotEmpty) {
+                                      val = val.trim();
+                                    }
+
+                                    if (val == null || val.isEmpty) {
+                                      setState(() {
+                                        errorEmail = true;
+                                        emailMsg = 'Email is required';
+                                      });
+                                    } else if (!EmailValidator.validate(
+                                        val)) {
+                                      setState(() {
+                                        errorEmail = true;
+                                        emailMsg =
+                                        ' Ooops! Needs to be an email format';
+                                      });
+                                    } else {
+                                      setState(() {
+                                        errorEmail = false;
+                                        emailMsg = '';
+                                      });
+                                    }
+                                    return null;
+                                  }),
                             ),
                             Container(
                               alignment: Alignment.centerLeft,
@@ -329,7 +359,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                           bottom:
                                               AppDimensions.height10(context) *
                                                   1.50,
-                                          left: 10.0,
+                                          left: 20.0,
                                           right: 10.0),
                                       floatingLabelBehavior:
                                           FloatingLabelBehavior.always,
@@ -363,11 +393,12 @@ class _edit_credentialsState extends State<edit_credentials> {
                                         errorEmail = true;
                                         emailMsg = 'Email is required';
                                       });
-                                    } else if (!EmailValidator.validate(val)) {
+                                    } else if (!EmailValidator.validate(
+                                        val)) {
                                       setState(() {
                                         errorEmail = true;
                                         emailMsg =
-                                            ' Ooops! Needs to be an email format';
+                                        ' Ooops! Needs to be an email format';
                                       });
                                     } else {
                                       setState(() {
@@ -376,7 +407,8 @@ class _edit_credentialsState extends State<edit_credentials> {
                                       });
                                     }
                                     return null;
-                                  }),
+                                  }
+                                  ),
                             ),
                             Container(
                               alignment: Alignment.centerLeft,
@@ -425,7 +457,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                         bottom:
                                             AppDimensions.height10(context) *
                                                 1.50,
-                                        left: 10.0,
+                                        left: 20.0,
                                         right: 10.0),
                                     floatingLabelBehavior:
                                         FloatingLabelBehavior.always,
@@ -492,52 +524,58 @@ class _edit_credentialsState extends State<edit_credentials> {
                 ),
                 AnimatedScaleButton(
                   onTap: () {
+                    if(_editFormkey.currentState!.validate()) {
+                      if (widget.password_edit == true) {
+                        if(feildController.text.isEmpty){
 
-                    if (widget.password_edit == true) {
-                      if(feildController.text.isEmpty){
-
-                      }else{
-                        setState(() {
-                          loader = true;
-                        });
-                      Authentication()
-                          .passReset(
-                        feildController.text.toString(),
-                      )
-                          .then((response) {
-                        if (response == true) {
+                        }else{
                           setState(() {
-
-                              loader = false;
-
+                            loader = true;
                           });
-                          Navigator.pushReplacement(
-                            context,
-                            FadePageRoute(
-                              page: EmailSent(
-                                email: feildController.text.toString(),
-                              ),
-                            ),
-                          );
-                        } else if (response == 404) {
-                          // setState(() {
-                          //   loading = false;
-                          //   noEmail = true;
-                          // });
-                        } else {
-                          // setState(() {
-                          //   loading = false;
-                          //   noEmail = false;
-                          // });
-                        }
-                      }).catchError((error) {
-                        setState(() {
-                          // loading = false;
-                        });
-                      });}
-                    } else {
-                      updateUser();
+                          Authentication()
+                              .passReset(
+                            feildController.text.toString(),
+                          )
+                              .then((response) {
+                            if (response == true) {
+                              setState(() {
+
+                                loader = false;
+
+                              });
+                              Navigator.pushReplacement(
+                                context,
+                                FadePageRoute(
+                                  page: EmailSent(
+                                    email: feildController.text.toString(),
+                                  ),
+                                ),
+                              );
+                            } else if (response == 404) {
+                              // setState(() {
+                              //   loading = false;
+                              //   noEmail = true;
+                              // });
+                            } else {
+                              // setState(() {
+                              //   loading = false;
+                              //   noEmail = false;
+                              // });
+                            }
+                          }).catchError((error) {
+                            setState(() {
+                              // loading = false;
+                            });
+                          });}
+                      } else {
+                        updateUser();
+                      }
+                    }else{
+                      setState(() {
+                        loader=false;
+                      });
                     }
+
                   },
                   child: Container(
                     height: AppDimensions.height10(context) * 5.0,

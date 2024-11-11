@@ -101,7 +101,6 @@ class _practice_summaryState extends State<practice_summary> {
           selectedDate,
         )
         .then((response) {
-          print("Response $response");
           if (response == true) {
             clean();
             Navigator.push(
@@ -146,7 +145,6 @@ class _practice_summaryState extends State<practice_summary> {
       differenceInDays = currentDate.difference(date1).inDays;
       isFuture = date1.isAfter(currentDate);
     });
-    print("date1 differenceInDays $isFuture $date1 $differenceInDays");
   }
 
   Future<Timer> loadData() async {
@@ -238,181 +236,164 @@ class _practice_summaryState extends State<practice_summary> {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          leading: Center(
-            child: widget.view
-                ? Container()
-                : IconButton(
-                    onPressed: () {
-                      clean();
-                      Navigator.push(
-                          context,
-                          FadePageRouteReverse(
-                              page: ViewDashboard(
-                            missed: false,
-                            name: '',
-                            update: false,
-                            helpfulTips: false,
-                            record: differenceInDays,
-                          )));
-                    },
-                    icon: Image.asset(
-                      'assets/images/Back.webp',
-                      //  width: AppDimensionsUpdated.width10(context) * 2.6,
-                      height: AppDimensionsUpdated.height10(context) * 2.8,
-                      fit: BoxFit.contain,
-                    )),
-          ),
+          leading: widget.view
+              ? Container()
+              :  Buttons().backButton(context, (){
+            clean();
+            Navigator.push(
+                context,
+                FadePageRouteReverse(
+                    page: ViewDashboard(
+                      missed: false,
+                      name: '',
+                      update: false,
+                      helpfulTips: false,
+                      record: differenceInDays,
+                    )));
+                    }),
           actions: [
             widget.view
                 ? Buttons().closeButton(context, () {
                     clean();
                     Navigator.pop(context);
                   })
-                : Center(
-                    child: IconButton(
-                        onPressed: () {
-                          showAnimatedDialog(
-                            animationType: DialogTransitionType.fadeScale,
-                            curve: Curves.easeInOut,
-                            duration: const Duration(seconds: 1),
-                            context: context,
-                            builder: (BuildContext context) => SizedBox(
-                              width:
-                                  AppDimensionsUpdated.width10(context) * 27.0,
-                              height:
-                                  AppDimensionsUpdated.height10(context) * 18.2,
-                              child: AlertDialog(
-                                contentPadding: EdgeInsets.zero,
-                                actionsPadding: EdgeInsets.zero,
-                                titlePadding: EdgeInsets.zero,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        AppDimensionsUpdated.height10(context) *
-                                            1.4)),
-                                title: Container(
-                                  margin: const EdgeInsets.only(
-                                      top: 19, right: 16, left: 16, bottom: 2),
-                                  height:
-                                      AppDimensionsUpdated.height10(context) *
-                                          2.2,
-                                  width: AppDimensionsUpdated.width10(context) *
-                                      23.8,
-                                  child: Text(
-                                    "Are you sure?",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: const Color(0xFF000000),
-                                      fontSize:
-                                          AppDimensionsUpdated.font10(context) *
-                                              1.7,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ),
-                                content: Container(
-                                  margin: EdgeInsets.only(
-                                      bottom: AppDimensionsUpdated.height10(
-                                              context) *
-                                          1.9,
-                                      left: AppDimensionsUpdated.height10(
-                                              context) *
-                                          1.6,
-                                      right: AppDimensionsUpdated.width10(
-                                              context) *
-                                          1.6),
-                                  height:
-                                      AppDimensionsUpdated.height10(context) *
-                                          3.2,
-                                  width: AppDimensionsUpdated.width10(context) *
-                                      23.8,
-                                  child: Text(
-                                    "If you close it now, you will lose all your progress.",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      height: AppDimensionsUpdated.height10(
-                                              context) *
-                                          0.15,
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                  ),
-                                ),
-                                actions: <Widget>[
-                                  Column(
-                                    children: [
-                                      Container(
-                                        height: 42,
-                                        width: double.infinity,
-                                        color: const Color(0xFF007AFF),
-                                        child: TextButton(
-                                          onPressed: () {
-                                            if (behaviourRoute == false) {
-                                              clean();
-                                              Navigator.pushReplacement(
-                                                  context,
-                                                  FadePageRouteReverse(
-                                                      page: ViewDashboard(
-                                                    missed: false,
-                                                    name: '',
-                                                    update: false,
-                                                    helpfulTips: false,
-                                                    record: differenceInDays,
-                                                  )));
-                                            } else {
-                                              clean();
-                                              Navigator.push(
-                                                  context,
-                                                  FadePageRouteReverse(
-                                                      page: ViewDashboard(
-                                                    missed: false,
-                                                    name: '',
-                                                    update: false,
-                                                    helpfulTips: false,
-                                                    record: differenceInDays,
-                                                  )));
-                                            }
-                                          },
-                                          child: const Text(
-                                            'Close',
-                                            style: TextStyle(
-                                                color: Color(0xFFFFFFFF),
-                                                fontSize: 17,
-                                                fontFamily: "Laila",
-                                                fontWeight: FontWeight.w400),
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: 44,
-                                        width: double.infinity,
-                                        child: TextButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: const Text(
-                                            'Cancel',
-                                            style: TextStyle(
-                                                fontSize: 17,
-                                                fontFamily: "Laila",
-                                                fontWeight: FontWeight.w400,
-                                                color: Color(0xFF007AFF)),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                : Buttons().closeButton(context, () {
+              showAnimatedDialog(
+                animationType: DialogTransitionType.fadeScale,
+                curve: Curves.easeInOut,
+                duration: const Duration(seconds: 1),
+                context: context,
+                builder: (BuildContext context) => SizedBox(
+                  width:
+                  AppDimensionsUpdated.width10(context) * 27.0,
+                  height:
+                  AppDimensionsUpdated.height10(context) * 18.2,
+                  child: AlertDialog(
+                    contentPadding: EdgeInsets.zero,
+                    actionsPadding: EdgeInsets.zero,
+                    titlePadding: EdgeInsets.zero,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            AppDimensionsUpdated.height10(context) *
+                                1.4)),
+                    title: Container(
+                      margin: const EdgeInsets.only(
+                          top: 19, right: 16, left: 16, bottom: 2),
+                      height:
+                      AppDimensionsUpdated.height10(context) *
+                          2.2,
+                      width: AppDimensionsUpdated.width10(context) *
+                          23.8,
+                      child: Text(
+                        "Are you sure?",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: const Color(0xFF000000),
+                          fontSize:
+                          AppDimensionsUpdated.font10(context) *
+                              1.7,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    content: Container(
+                      margin: EdgeInsets.only(
+                          bottom: AppDimensionsUpdated.height10(
+                              context) *
+                              1.9,
+                          left: AppDimensionsUpdated.height10(
+                              context) *
+                              1.6,
+                          right: AppDimensionsUpdated.width10(
+                              context) *
+                              1.6),
+                      height:
+                      AppDimensionsUpdated.height10(context) *
+                          3.2,
+                      width: AppDimensionsUpdated.width10(context) *
+                          23.8,
+                      child: Text(
+                        "If you close it now, you will lose all your progress.",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          height: AppDimensionsUpdated.height10(
+                              context) *
+                              0.15,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ),
+                    actions: <Widget>[
+                      Column(
+                        children: [
+                          Container(
+                            height: 42,
+                            width: double.infinity,
+                            color: const Color(0xFF007AFF),
+                            child: TextButton(
+                              onPressed: () {
+                                if (behaviourRoute == false) {
+                                  clean();
+                                  Navigator.pushReplacement(
+                                      context,
+                                      FadePageRouteReverse(
+                                          page: ViewDashboard(
+                                            missed: false,
+                                            name: '',
+                                            update: false,
+                                            helpfulTips: false,
+                                            record: differenceInDays,
+                                          )));
+                                } else {
+                                  clean();
+                                  Navigator.push(
+                                      context,
+                                      FadePageRouteReverse(
+                                          page: ViewDashboard(
+                                            missed: false,
+                                            name: '',
+                                            update: false,
+                                            helpfulTips: false,
+                                            record: differenceInDays,
+                                          )));
+                                }
+                              },
+                              child: const Text(
+                                'Close',
+                                style: TextStyle(
+                                    color: Color(0xFFFFFFFF),
+                                    fontSize: 17,
+                                    fontFamily: "Laila",
+                                    fontWeight: FontWeight.w400),
                               ),
                             ),
-                          );
-                        },
-                        icon: Image.asset(
-                          'assets/images/Close.webp',
-                          width: AppDimensionsUpdated.width10(context) * 2.8,
-                          height: AppDimensionsUpdated.height10(context) * 2.8,
-                          fit: BoxFit.contain,
-                        )),
-                  )
+                          ),
+                          SizedBox(
+                            height: 44,
+                            width: double.infinity,
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text(
+                                'Cancel',
+                                style: TextStyle(
+                                    fontSize: 17,
+                                    fontFamily: "Laila",
+                                    fontWeight: FontWeight.w400,
+                                    color: Color(0xFF007AFF)),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            })
+
           ],
         ),
         extendBodyBehindAppBar: true,
@@ -431,7 +412,7 @@ class _practice_summaryState extends State<practice_summary> {
                     children: [
                       Container(
                         width: AppDimensionsUpdated.width10(context) * 33.4,
-                        height: AppDimensionsUpdated.height10(context) * 3.4,
+                       // height: AppDimensionsUpdated.height10(context) * 3.4,
                         // color: Colors.amber,
                         margin: EdgeInsets.only(
                             top: AppDimensionsUpdated.height10(context) * 9.0),
@@ -449,7 +430,7 @@ class _practice_summaryState extends State<practice_summary> {
                       ),
                       Container(
                         width: AppDimensionsUpdated.width10(context) * 23.2,
-                        height: AppDimensionsUpdated.height10(context) * 3.8,
+                       // height: AppDimensionsUpdated.height10(context) * 3.8,
                         //  color: Colors.red,
                         margin: EdgeInsets.only(
                             top: AppDimensionsUpdated.height10(context) * 0.8),
@@ -1629,6 +1610,7 @@ Future<void> _checkDialogDisplay(context, String goalName, String identity,
 
 void __share_experience(context, String goalName, String identity, String color,
     String pracColor, String pracName) {
+  bool smallScreen = MediaQuery.of(context).size.height < 690;
   showModalBottomSheet(
     context: context,
     isScrollControlled: true,
@@ -1713,17 +1695,24 @@ void __share_experience(context, String goalName, String identity, String color,
                 ),
               ),
               Container(
-                width: AppDimensionsUpdated.width10(context) * 24.8,
-                height: AppDimensionsUpdated.height10(context) * 24.8,
+                width: smallScreen
+                    ? UpdatedDimensions.width10(context) * 27.8
+                    : UpdatedDimensions.width10(context) * 26.8,
+                height: smallScreen
+                    ? UpdatedDimensions.height10(context) * 33.2
+                    : UpdatedDimensions.height10(context) * 30.2,
                 margin: EdgeInsets.only(
                     top: AppDimensionsUpdated.height10(context) * 2.8),
                 child: Stack(children: [
                   Align(
-                      alignment: Alignment.topRight,
+                      alignment: Alignment.center,
                       child: goalWidget(
                           context,
-                          UpdatedDimensions.height10(context) * 28.8,
-                          UpdatedDimensions.width10(context) * 28.8,
+                          smallScreen
+                              ? UpdatedDimensions.height10(context) * 29.9
+                              : UpdatedDimensions.height10(context) * 26.8, smallScreen
+                          ? UpdatedDimensions.height10(context) * 29.9
+                          : UpdatedDimensions.height10(context) * 26.8,
                           color,
                           goalName,
                           identity,
@@ -1731,11 +1720,14 @@ void __share_experience(context, String goalName, String identity, String color,
                           UpdatedDimensions.font10(context) * 1.6,
                           const Color(0xff5B74A6))),
                   Align(
-                    alignment: const Alignment(0.9, 1.7),
+                    alignment: const Alignment(0.7, 1.3),
                     child: practiceWidget(
                         context,
-                        UpdatedDimensions.height10(context) * 12.8,
-                        UpdatedDimensions.height10(context) * 12.8,
+                        smallScreen
+                            ? UpdatedDimensions.height10(context) * 16.6
+                            : UpdatedDimensions.height10(context) * 14.1, smallScreen
+                        ? UpdatedDimensions.height10(context) * 16.6
+                        : UpdatedDimensions.height10(context) * 14.1,
                         pracColor,
                         pracName,
                         'completed'),
@@ -1743,16 +1735,47 @@ void __share_experience(context, String goalName, String identity, String color,
                 ]),
               ),
               Container(
-                  height: AppDimensionsUpdated.height10(context) * 12.5,
-                  width: AppDimensionsUpdated.width10(context) * 12.5,
+                  height: AppDimensions.height10(context) * 6.0,
+                  width: AppDimensions.width10(context) * 36.0,
+                decoration: BoxDecoration(
+                    border: Border.all(
+                        width: AppDimensions.width10(context) * 0.1,
+                        color: const Color(0xFFFCB30E)),
+                    borderRadius:
+                    BorderRadius.circular(AppDimensions.height10(context) * 2.0),
+                    color: const Color(0xFFFBFBFB)),
                   margin: EdgeInsets.only(
                       top: AppDimensionsUpdated.height10(context) * 3.9,
                       bottom: AppDimensionsUpdated.height10(context) * 3),
-                  decoration: const BoxDecoration(
-                      //color: Colors.amber,
-                      image: DecorationImage(
-                          image: AssetImage('assets/images/share_exp.webp'),
-                          fit: BoxFit.contain)))
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: AppDimensions.width10(context) * 2.4,
+                      height: AppDimensions.height10(context) * 2.4,
+                      margin: EdgeInsets.only(
+                        right: AppDimensions.height10(context) * 0.5,
+                      ),
+                      child: const Icon(
+                        Icons.share,
+                        color: Color(0XFF646464),
+                      ),
+                    ),
+                    SizedBox(
+                      //height: AppDimensions.height10(context) * 2.2,
+                      child: Center(
+                          child: Text(
+                            'Share',
+                            style: TextStyle(
+                                fontSize: AppDimensions.font10(context) * 2,
+                                fontWeight: FontWeight.w500,
+                                color: const Color(0xff646464)),
+                          )),
+                    ),
+                  ],
+                ),
+              )
             ],
           )),
     ),

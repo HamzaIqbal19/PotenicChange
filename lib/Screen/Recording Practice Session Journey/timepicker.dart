@@ -37,7 +37,6 @@ class _SchedulePickerState extends State<SchedulePicker> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    print('StartTime = ${widget.initialHour}, ${widget.initialMinute}, ${widget.initialPeriod}');
 
     if (widget.initialPeriod.toUpperCase() == 'PM') {
       setState(() {

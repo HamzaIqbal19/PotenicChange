@@ -37,11 +37,11 @@ List emotionSessionColor = [
 
 sessonCircles(BuildContext context,bool selected ,int index, before,endeOfSession){
   return Container(
-    width: AppDimensionsUpdated.width10(context) * 14.1,
-    height: AppDimensionsUpdated.width10(context) * 14.1,
-    margin: EdgeInsets.only(
-        left: AppDimensionsUpdated.width10(context) * 3.0,
-        right: AppDimensionsUpdated.width10(context) * 1.5),
+    width: AppDimensionsUpdated.width10(context) * 18.1,
+    height: AppDimensionsUpdated.width10(context) * 18.1,
+    // margin: EdgeInsets.only(
+    //     left: AppDimensionsUpdated.width10(context) * 0.5,
+    //     right: AppDimensionsUpdated.width10(context) * 0.5),
     decoration: BoxDecoration(
         color: Colors.transparent,
         shape: BoxShape.circle,
@@ -52,8 +52,8 @@ sessonCircles(BuildContext context,bool selected ,int index, before,endeOfSessio
                 ? Colors.white
                 : Colors.transparent)),
     child: Container(
-      height: AppDimensionsUpdated.width10(context) * 13.1,
-      width: AppDimensionsUpdated.width10(context) * 13.1,
+      height: AppDimensionsUpdated.width10(context) * 17.1,
+      width: AppDimensionsUpdated.width10(context) * 17.1,
       margin: EdgeInsets.symmetric(
           vertical:
           AppDimensionsUpdated.height10(context) * 0.4,
@@ -86,7 +86,7 @@ sessonCircles(BuildContext context,bool selected ,int index, before,endeOfSessio
         textAlign: TextAlign.center,
         style: TextStyle(
           fontSize:
-          AppDimensionsUpdated.font10(context) * 1.7,
+          AppDimensionsUpdated.font10(context) * 1.8,
           fontWeight: FontWeight.w500,
           color: Colors.white,
         ),

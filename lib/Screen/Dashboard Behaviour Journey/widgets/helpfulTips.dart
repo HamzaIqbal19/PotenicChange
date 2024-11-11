@@ -260,10 +260,10 @@ helpFulTips(BuildContext context,goalLevel, single,final VoidCallback action1,fi
                                 // : goalLevel == 6
                                 // ? '(6/7) Next'
                                 : goalLevel == 6
-                                ? '(6/6) Next'
+                                ? '(6/6) Finish'
                                 : goalLevel == 1
                                 ? '(1/6) Next'
-                                : '(6/6) Next',
+                                : '(6/6) Finish',
                             style: TextStyle(decoration: TextDecoration.none, fontFamily: 'Laila', fontSize: UpdatedDimensions.font10(context) * 1.6, color: const Color(0xFFFFFFFF), fontWeight: FontWeight.w600),
                           ),
                         ),

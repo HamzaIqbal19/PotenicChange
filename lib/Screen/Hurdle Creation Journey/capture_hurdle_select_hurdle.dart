@@ -11,6 +11,7 @@ import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdles_s
 import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/splash_hurdles.dart';
 import 'package:potenic_app/Widgets/alertbox.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -227,22 +228,33 @@ class _select_hurdleState extends State<select_hurdle> {
             leading: widget.update
                 ? Container()
                 : Center(
-                    child: IconButton(
-                        onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              FadePageRouteReverse(
-                                  page: const hurdles_goal_impact(
-                                summary: false,
-                              )));
-                        },
-                        icon: Image.asset(
-                          'assets/images/Back.webp',
-                          //width: AppDimensions.width10(context) * 3.0,
-                          height: AppDimensions.height10(context) * 3.0,
-                          fit: BoxFit.contain,
-                        )),
-                  ),
+                    child: Buttons().backButton(
+                    context,
+                    () {
+                      Navigator.pushReplacement(
+                          context,
+                          FadePageRouteReverse(
+                              page: const hurdles_goal_impact(
+                            summary: false,
+                          )));
+                    },
+                  )
+                    // IconButton(
+                    //     onPressed: () {
+                    //       Navigator.pushReplacement(
+                    //           context,
+                    //           FadePageRouteReverse(
+                    //               page: const hurdles_goal_impact(
+                    //             summary: false,
+                    //           )));
+                    //     },
+                    //     icon: Image.asset(
+                    //       'assets/images/Back.webp',
+                    //       //width: AppDimensions.width10(context) * 3.0,
+                    //       height: AppDimensions.height10(context) * 3.0,
+                    //       fit: BoxFit.contain,
+                    //     )),
+                    ),
             centerTitle: true,
             title: SizedBox(
               width: AppDimensions.width10(context) * 19.0,
@@ -274,211 +286,228 @@ class _select_hurdleState extends State<select_hurdle> {
             ),
             actions: [
               Center(
-                child: IconButton(
-                    onPressed: () {
-                      widget.update
-                          ? Navigator.pop(context)
-                          : AlertBox().alertDialog(context, "Hurdle?",
-                              () async {
-                              checkHurdle();
+                child: Buttons().closeButton(context, () {
+                  widget.update
+                      ? Navigator.pop(context)
+                      : AlertBox().alertDialog(context, "Hurdle?", () async {
+                          checkHurdle();
 
-                              final SharedPreferences prefs = await _prefs;
-                              await prefs.remove('HurdleRoute');
-                              await prefs.remove('hurdleName');
-                              await prefs.remove('NameHurdle');
-                              await prefs.remove('hurdleStatement');
-                              await prefs.remove('hurdleId');
-                              await prefs.remove('selected_goals');
-                              await prefs.remove('hurdle_selected');
-                              clearData();
-                            });
-                      // showAnimatedDialog(
-                      //     animationType: DialogTransitionType.fadeScale,
-                      //     curve: Curves.easeInOut,
-                      //     duration: const Duration(seconds: 1),
-                      //     context: context,
-                      //     builder: (BuildContext context) => SizedBox(
-                      //           width:
-                      //               AppDimensions.width10(context) * 27.0,
-                      //           height:
-                      //               AppDimensions.height10(context) * 24.0,
-                      //           child: AlertDialog(
-                      //             shape: RoundedRectangleBorder(
-                      //                 borderRadius: BorderRadius.circular(
-                      //                     AppDimensions.height10(context) *
-                      //                         1.4)),
-                      //             contentPadding: EdgeInsets.zero,
-                      //             actionsPadding: EdgeInsets.zero,
-                      //             titlePadding: EdgeInsets.zero,
-                      //             title: Container(
-                      //               margin: const EdgeInsets.only(
-                      //                   top: 19,
-                      //                   right: 16,
-                      //                   left: 16,
-                      //                   bottom: 2),
-                      //               height:
-                      //                   AppDimensions.height10(context) *
-                      //                       2.2,
-                      //               width: AppDimensions.width10(context) *
-                      //                   23.8,
-                      //               child: const Text(
-                      //                 "Exit hurdle?",
-                      //                 textAlign: TextAlign.center,
-                      //                 style: TextStyle(
-                      //                   fontSize: 17,
-                      //                   fontWeight: FontWeight.w400,
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //             content: Container(
-                      //               margin: const EdgeInsets.only(
-                      //                   bottom: 19, left: 16, right: 16),
-                      //               height:
-                      //                   AppDimensions.height10(context) *
-                      //                       1.6,
-                      //               width: 238,
-                      //               child: const Text(
-                      //                 "Please select from the options below",
-                      //                 textAlign: TextAlign.center,
-                      //                 style: TextStyle(
-                      //                   fontSize: 13,
-                      //                   fontWeight: FontWeight.w400,
-                      //                 ),
-                      //               ),
-                      //             ),
-                      //             actions: <Widget>[
-                      //               Column(
-                      //                 children: [
-                      //                   // SizedBox(
-                      //                   //   height: AppDimensions.height10(
-                      //                   //           context) *
-                      //                   //       0.1,
-                      //                   //   child: Divider(
-                      //                   //     color: const Color(0XFF3C3C43)
-                      //                   //         .withOpacity(0.29),
-                      //                   //   ),
-                      //                   // ),
-                      //                   // SizedBox(
-                      //                   //   height: 42,
-                      //                   //   width: double.infinity,
-                      //                   //   // color: Colors.white,
-                      //                   //   child: TextButton(
-                      //                   //     onPressed: () async {
-                      //                   //       checkHurdle();
-                      //                   //
-                      //                   //       final SharedPreferences
-                      //                   //           prefs = await _prefs;
-                      //                   //       await prefs.setString(
-                      //                   //           'HurdleRoute', 'Select');
-                      //                   //       await prefs.setInt(
-                      //                   //           'hurdle_selected',
-                      //                   //           selectBox);
-                      //                   //     },
-                      //                   //     child: const Text(
-                      //                   //       'Exit & save progress',
-                      //                   //       style: TextStyle(
-                      //                   //           color: Color(0xFF007AFF),
-                      //                   //           fontSize: 17,
-                      //                   //           fontFamily: "Laila",
-                      //                   //           fontWeight:
-                      //                   //               FontWeight.w400),
-                      //                   //     ),
-                      //                   //   ),
-                      //                   // ),
-                      //                   SizedBox(
-                      //                     height: AppDimensions.height10(
-                      //                             context) *
-                      //                         0.1,
-                      //                     child: Divider(
-                      //                       color: const Color(0XFF3C3C43)
-                      //                           .withOpacity(0.29),
-                      //                     ),
-                      //                   ),
-                      //                   SizedBox(
-                      //                     height: 44,
-                      //                     width: double.infinity,
-                      //                     child: TextButton(
-                      //                       onPressed: () async {
-                      //                         checkHurdle();
+                          final SharedPreferences prefs = await _prefs;
+                          await prefs.remove('HurdleRoute');
+                          await prefs.remove('hurdleName');
+                          await prefs.remove('NameHurdle');
+                          await prefs.remove('hurdleStatement');
+                          await prefs.remove('hurdleId');
+                          await prefs.remove('selected_goals');
+                          await prefs.remove('hurdle_selected');
+                          clearData();
+                        });
+                }),
+                // IconButton(
+                //     onPressed: () {
+                //       widget.update
+                //           ? Navigator.pop(context)
+                //           : AlertBox().alertDialog(context, "Hurdle?",
+                //               () async {
+                //               checkHurdle();
 
-                      //                         final SharedPreferences
-                      //                             prefs = await _prefs;
-                      //                         await prefs
-                      //                             .remove('HurdleRoute');
-                      //                         await prefs
-                      //                             .remove('hurdleName');
-                      //                         await prefs
-                      //                             .remove('NameHurdle');
-                      //                         await prefs.remove(
-                      //                             'hurdleStatement');
-                      //                         await prefs
-                      //                             .remove('hurdleId');
-                      //                         await prefs
-                      //                             .remove('selected_goals');
-                      //                         await prefs.remove(
-                      //                             'hurdle_selected');
-                      //                         clearData();
+                //               final SharedPreferences prefs = await _prefs;
+                //               await prefs.remove('HurdleRoute');
+                //               await prefs.remove('hurdleName');
+                //               await prefs.remove('NameHurdle');
+                //               await prefs.remove('hurdleStatement');
+                //               await prefs.remove('hurdleId');
+                //               await prefs.remove('selected_goals');
+                //               await prefs.remove('hurdle_selected');
+                //               clearData();
+                //             });
+                //       // showAnimatedDialog(
+                //       //     animationType: DialogTransitionType.fadeScale,
+                //       //     curve: Curves.easeInOut,
+                //       //     duration: const Duration(seconds: 1),
+                //       //     context: context,
+                //       //     builder: (BuildContext context) => SizedBox(
+                //       //           width:
+                //       //               AppDimensions.width10(context) * 27.0,
+                //       //           height:
+                //       //               AppDimensions.height10(context) * 24.0,
+                //       //           child: AlertDialog(
+                //       //             shape: RoundedRectangleBorder(
+                //       //                 borderRadius: BorderRadius.circular(
+                //       //                     AppDimensions.height10(context) *
+                //       //                         1.4)),
+                //       //             contentPadding: EdgeInsets.zero,
+                //       //             actionsPadding: EdgeInsets.zero,
+                //       //             titlePadding: EdgeInsets.zero,
+                //       //             title: Container(
+                //       //               margin: const EdgeInsets.only(
+                //       //                   top: 19,
+                //       //                   right: 16,
+                //       //                   left: 16,
+                //       //                   bottom: 2),
+                //       //               height:
+                //       //                   AppDimensions.height10(context) *
+                //       //                       2.2,
+                //       //               width: AppDimensions.width10(context) *
+                //       //                   23.8,
+                //       //               child: const Text(
+                //       //                 "Exit hurdle?",
+                //       //                 textAlign: TextAlign.center,
+                //       //                 style: TextStyle(
+                //       //                   fontSize: 17,
+                //       //                   fontWeight: FontWeight.w400,
+                //       //                 ),
+                //       //               ),
+                //       //             ),
+                //       //             content: Container(
+                //       //               margin: const EdgeInsets.only(
+                //       //                   bottom: 19, left: 16, right: 16),
+                //       //               height:
+                //       //                   AppDimensions.height10(context) *
+                //       //                       1.6,
+                //       //               width: 238,
+                //       //               child: const Text(
+                //       //                 "Please select from the options below",
+                //       //                 textAlign: TextAlign.center,
+                //       //                 style: TextStyle(
+                //       //                   fontSize: 13,
+                //       //                   fontWeight: FontWeight.w400,
+                //       //                 ),
+                //       //               ),
+                //       //             ),
+                //       //             actions: <Widget>[
+                //       //               Column(
+                //       //                 children: [
+                //       //                   // SizedBox(
+                //       //                   //   height: AppDimensions.height10(
+                //       //                   //           context) *
+                //       //                   //       0.1,
+                //       //                   //   child: Divider(
+                //       //                   //     color: const Color(0XFF3C3C43)
+                //       //                   //         .withOpacity(0.29),
+                //       //                   //   ),
+                //       //                   // ),
+                //       //                   // SizedBox(
+                //       //                   //   height: 42,
+                //       //                   //   width: double.infinity,
+                //       //                   //   // color: Colors.white,
+                //       //                   //   child: TextButton(
+                //       //                   //     onPressed: () async {
+                //       //                   //       checkHurdle();
+                //       //                   //
+                //       //                   //       final SharedPreferences
+                //       //                   //           prefs = await _prefs;
+                //       //                   //       await prefs.setString(
+                //       //                   //           'HurdleRoute', 'Select');
+                //       //                   //       await prefs.setInt(
+                //       //                   //           'hurdle_selected',
+                //       //                   //           selectBox);
+                //       //                   //     },
+                //       //                   //     child: const Text(
+                //       //                   //       'Exit & save progress',
+                //       //                   //       style: TextStyle(
+                //       //                   //           color: Color(0xFF007AFF),
+                //       //                   //           fontSize: 17,
+                //       //                   //           fontFamily: "Laila",
+                //       //                   //           fontWeight:
+                //       //                   //               FontWeight.w400),
+                //       //                   //     ),
+                //       //                   //   ),
+                //       //                   // ),
+                //       //                   SizedBox(
+                //       //                     height: AppDimensions.height10(
+                //       //                             context) *
+                //       //                         0.1,
+                //       //                     child: Divider(
+                //       //                       color: const Color(0XFF3C3C43)
+                //       //                           .withOpacity(0.29),
+                //       //                     ),
+                //       //                   ),
+                //       //                   SizedBox(
+                //       //                     height: 44,
+                //       //                     width: double.infinity,
+                //       //                     child: TextButton(
+                //       //                       onPressed: () async {
+                //       //                         checkHurdle();
 
-                      //                         // setState(() {
-                      //                         //   selectBox = -1;
-                      //                         // });
-                      //                       },
-                      //                       child: const Text(
-                      //                         'Exit & delete progress',
-                      //                         style: TextStyle(
-                      //                             fontSize: 17,
-                      //                             fontFamily: "Laila",
-                      //                             fontWeight:
-                      //                                 FontWeight.w400,
-                      //                             color: Color(0xFF007AFF)),
-                      //                       ),
-                      //                     ),
-                      //                   ),
-                      //                   SizedBox(
-                      //                     height: AppDimensions.height10(
-                      //                             context) *
-                      //                         0.1,
-                      //                     child: Divider(
-                      //                       color: const Color(0XFF3C3C43)
-                      //                           .withOpacity(0.29),
-                      //                     ),
-                      //                   ),
-                      //                   Container(
-                      //                     height: 42,
-                      //                     width: double.infinity,
-                      //                     margin: EdgeInsets.only(
-                      //                         bottom:
-                      //                             AppDimensions.height10(
-                      //                                     context) *
-                      //                                 1.0),
-                      //                     // color: Colors.white,
-                      //                     child: TextButton(
-                      //                       onPressed: () {
-                      //                         Navigator.pop(context);
-                      //                       },
-                      //                       child: const Text(
-                      //                         'Cancel exit',
-                      //                         style: TextStyle(
-                      //                             color: Color(0xFF007AFF),
-                      //                             fontSize: 17,
-                      //                             fontFamily: "Laila",
-                      //                             fontWeight:
-                      //                                 FontWeight.w400),
-                      //                       ),
-                      //                     ),
-                      //                   ),
-                      //                 ],
-                      //               ),
-                      //             ],
-                      //           ),
-                      //         ));
-                    },
-                    icon: Image.asset(
-                      'assets/images/Close.webp',
-                      // width: AppDimensions.width10(context) * 2.6,
-                      height: AppDimensions.height10(context) * 2.6,
-                      fit: BoxFit.contain,
-                    )),
+                //       //                         final SharedPreferences
+                //       //                             prefs = await _prefs;
+                //       //                         await prefs
+                //       //                             .remove('HurdleRoute');
+                //       //                         await prefs
+                //       //                             .remove('hurdleName');
+                //       //                         await prefs
+                //       //                             .remove('NameHurdle');
+                //       //                         await prefs.remove(
+                //       //                             'hurdleStatement');
+                //       //                         await prefs
+                //       //                             .remove('hurdleId');
+                //       //                         await prefs
+                //       //                             .remove('selected_goals');
+                //       //                         await prefs.remove(
+                //       //                             'hurdle_selected');
+                //       //                         clearData();
+
+                //       //                         // setState(() {
+                //       //                         //   selectBox = -1;
+                //       //                         // });
+                //       //                       },
+                //       //                       child: const Text(
+                //       //                         'Exit & delete progress',
+                //       //                         style: TextStyle(
+                //       //                             fontSize: 17,
+                //       //                             fontFamily: "Laila",
+                //       //                             fontWeight:
+                //       //                                 FontWeight.w400,
+                //       //                             color: Color(0xFF007AFF)),
+                //       //                       ),
+                //       //                     ),
+                //       //                   ),
+                //       //                   SizedBox(
+                //       //                     height: AppDimensions.height10(
+                //       //                             context) *
+                //       //                         0.1,
+                //       //                     child: Divider(
+                //       //                       color: const Color(0XFF3C3C43)
+                //       //                           .withOpacity(0.29),
+                //       //                     ),
+                //       //                   ),
+                //       //                   Container(
+                //       //                     height: 42,
+                //       //                     width: double.infinity,
+                //       //                     margin: EdgeInsets.only(
+                //       //                         bottom:
+                //       //                             AppDimensions.height10(
+                //       //                                     context) *
+                //       //                                 1.0),
+                //       //                     // color: Colors.white,
+                //       //                     child: TextButton(
+                //       //                       onPressed: () {
+                //       //                         Navigator.pop(context);
+                //       //                       },
+                //       //                       child: const Text(
+                //       //                         'Cancel exit',
+                //       //                         style: TextStyle(
+                //       //                             color: Color(0xFF007AFF),
+                //       //                             fontSize: 17,
+                //       //                             fontFamily: "Laila",
+                //       //                             fontWeight:
+                //       //                                 FontWeight.w400),
+                //       //                       ),
+                //       //                     ),
+                //       //                   ),
+                //       //                 ],
+                //       //               ),
+                //       //             ],
+                //       //           ),
+                //       //         ));
+                //     },
+                //     icon: Image.asset(
+                //       'assets/images/Close.webp',
+                //       // width: AppDimensions.width10(context) * 2.6,
+                //       height: AppDimensions.height10(context) * 2.6,
+                //       fit: BoxFit.contain,
+                //     )),
               )
             ]),
         extendBodyBehindAppBar: true,
@@ -528,7 +557,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                     top: AppDimensions.height10(context) * 3.9),
                                 padding: EdgeInsets.symmetric(
                                     horizontal: !smallScreen
-                                        ? AppDimensions.width10(context) * 3.6
+                                        ? AppDimensions.width10(context) * 1.5
                                         : AppDimensions.width10(context) * 4.6),
                                 child: GridView.builder(
                                     shrinkWrap: true,
@@ -658,7 +687,7 @@ class _select_hurdleState extends State<select_hurdle> {
                                                         fontSize: AppDimensions
                                                                 .font10(
                                                                     context) *
-                                                            1.6,
+                                                            1.8,
                                                         fontWeight:
                                                             FontWeight.w500),
                                                   ),

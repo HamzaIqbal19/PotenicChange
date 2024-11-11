@@ -85,19 +85,19 @@ void bottom_sheet(context, String goal) {
                             //   enable = true;
                             // });
                           },
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: 24,
-                            color: Color.fromARGB(209, 250, 154, 52),
+                            fontSize: AppDimensions.font10(context)*2.4,
+                            color: const Color.fromARGB(209, 250, 154, 52),
                           ),
                           decoration: InputDecoration(
                               filled: true,
                               fillColor: const Color.fromRGBO(0, 0, 0, 0.1),
                               hintText: "Enter practice name",
-                              hintStyle: const TextStyle(
+                              hintStyle:  TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: 24,
-                                  color: Color(0xFF828282)),
+                                  fontSize: AppDimensions.font10(context)*2.4,
+                                  color: const Color(0xFF828282)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18)),
                               focusedBorder: const OutlineInputBorder(

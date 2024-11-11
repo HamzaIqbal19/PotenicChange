@@ -102,7 +102,6 @@ class _PracticeReviewState extends State<PracticeReview> {
 
   getReminderStatus() {
     PracticeGoalApi.getUserReminder().then((value) {
-      print("Reminder status: $value");
       if (value != null) {
         setState(() {
           notificationStatus = value['beforePractice'];
@@ -189,16 +188,16 @@ class _PracticeReviewState extends State<PracticeReview> {
           // title: Text("Review",style: TextStyle(color: Color(0xFF5B74A6),fontWeight: FontWeight.w600,fontSize: AppDimensions.font10(context) *2.0),),
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: true,
-          title: Text(
-            goalName,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              color: const Color(0xFF5B74A6),
-              fontSize: AppDimensions.font10(context) * 2.2,
-            ),
-          ),
+          // title: Text(
+          //   goalName,
+          //   overflow: TextOverflow.ellipsis,
+          //   maxLines: 1,
+          //   style: TextStyle(
+          //     fontWeight: FontWeight.w600,
+          //     color: const Color(0xFF5B74A6),
+          //     fontSize: AppDimensions.font10(context) * 2.2,
+          //   ),
+          // ),
           leading: Center(
             // alignment: Alignment.center,
             child: IconButton(
@@ -292,12 +291,12 @@ class _PracticeReviewState extends State<PracticeReview> {
                          
                         ),
                         SizedBox(
-                          height: AppDimensions.height10(context) * 5.0,
+                          height: AppDimensions.height10(context) * 2.0,
                         ),
                         SizedBox(
                           height: AppDimensions.height10(context),
                         ),
-                        goalAndPractice(context, color, pracColor, pracName),
+                       // goalAndPractice(context, color, pracColor, ''),
                         SizedBox(
                           height: AppDimensions.height10(context) * 1.6,
                         ),
@@ -1139,7 +1138,6 @@ class _PracticeReviewState extends State<PracticeReview> {
 
                                           AnimatedScaleButton(
                                             onTap: () {
-                                              print("Printed press $pracName $pracColor $goalName $color");
                                               Navigator.push(
                                                 context,
                                                 FadePageRoute(

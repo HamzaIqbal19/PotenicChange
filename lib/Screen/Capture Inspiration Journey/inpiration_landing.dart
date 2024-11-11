@@ -10,7 +10,9 @@ import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/constants/vid
 import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
 import 'package:potenic_app/Widgets/BottomSearch.dart';
 import 'package:potenic_app/Widgets/CustomBottomSheet.dart';
+import 'package:potenic_app/Widgets/CustomCircle.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/deleteanimatedDialog.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
@@ -144,7 +146,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
     for (int i = 0; i <= inspirationList.length; i++) {
       if (inspirationList[i]['hashTags']?.length != 0) {
         if (inspirationList[i]['hashTags'] != null) {
-          print("tagss aree");
           List<String> tags = inspirationList[i]['hashTags']
               .toString()
               .replaceAll('[', '')
@@ -171,7 +172,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
 
   List selectItems = [];
   void doMultiSelection(String path) {
-    print('Double tapped $selectItems');
     //if (isMultiSelectionEnabled) {
     setState(() {
       if (selectItems.contains(path)) {
@@ -185,7 +185,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
         longPress = false;
       });
     }
-    print('Double tapped $selectItems');
   }
 
   void selectAll() {
@@ -222,7 +221,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
     super.initState();
     _fetchInspiraion();
     getInspirationRoute();
-    print("inspiratijon list $inspirationList");
   }
 
   // String image = '';
@@ -264,28 +262,42 @@ class _inspiration_landingState extends State<inspiration_landing> {
             automaticallyImplyLeading: false,
             actions: [
               Center(
-                child: IconButton(
-                    onPressed: () async {
-                      Navigator.push(
-                          context,
-                          FadePageRouteReverse(
-                              page: const ViewDashboard(
-                            missed: false,
-                            name: '',
-                            update: false,
-                            helpfulTips: false,
-                            record: 0,
-                          )));
-                      final SharedPreferences prefs = await _prefs;
-                      prefs.remove('inspiration_saved_route');
-                    },
-                    icon: Image.asset(
-                      'assets/images/Close.webp',
-                      // width: AppDimensions.width10(context) * 2.6,
-                      height: AppDimensions.height10(context) * 2.8,
-                      fit: BoxFit.contain,
-                    )),
-              )
+                  child: Buttons().closeButton(context, () async {
+                Navigator.push(
+                    context,
+                    FadePageRouteReverse(
+                        page: const ViewDashboard(
+                      missed: false,
+                      name: '',
+                      update: false,
+                      helpfulTips: false,
+                      record: 0,
+                    )));
+                final SharedPreferences prefs = await _prefs;
+                prefs.remove('inspiration_saved_route');
+              })),
+              //   IconButton(
+              //       onPressed: () async {
+              //         Navigator.push(
+              //             context,
+              //             FadePageRouteReverse(
+              //                 page: const ViewDashboard(
+              //               missed: false,
+              //               name: '',
+              //               update: false,
+              //               helpfulTips: false,
+              //               record: 0,
+              //             )));
+              //         final SharedPreferences prefs = await _prefs;
+              //         prefs.remove('inspiration_saved_route');
+              //       },
+              //       icon: Image.asset(
+              //         'assets/images/Close.webp',
+              //         // width: AppDimensions.width10(context) * 2.6,
+              //         height: AppDimensions.height10(context) * 2.8,
+              //         fit: BoxFit.contain,
+              //       )),
+              // )
             ],
           ),
           extendBodyBehindAppBar: true,
@@ -796,124 +808,232 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                             [
                                                                             'inspirationId'] ==
                                                                         2
-                                                                    ? Container(
-                                                                        width: !smallScreen
-                                                                            ? AppDimensions.width10(context) *
-                                                                                19.313
-                                                                            : AppDimensions.width10(context) *
-                                                                                17.6,
-                                                                        height: !smallScreen
-                                                                            ? AppDimensions.width10(context) *
-                                                                                19.313
-                                                                            : AppDimensions.width10(context) *
-                                                                                17.6,
-                                                                        decoration:
-                                                                            const BoxDecoration(
-                                                                          shape:
-                                                                              BoxShape.circle,
-                                                                          gradient:
-                                                                              RadialGradient(colors: [
-                                                                            Color(0xFFE9A594),
-                                                                            Color(0xFFEEBEB2)
-                                                                          ]),
-
-                                                                          // : const LinearGradient(
-                                                                          //     end: Alignment(0.73,
-                                                                          //         0),
-                                                                          //     begin: Alignment(-1,
-                                                                          //         1),
-                                                                          //     colors: [
-                                                                          //         Color(0xFF673636),
-                                                                          //         Color(0xFFF8C3B5),
-                                                                          //       ]),
-                                                                        ),
-                                                                        child:
-                                                                            Container(
-                                                                          padding:
-                                                                              EdgeInsets.symmetric(horizontal: AppDimensions.height10(context) * 1.7),
-                                                                          height:
-                                                                              AppDimensions.height10(context) * 6.3,
-                                                                          child: Center(
-                                                                              child: Text(
-                                                                            inspirationList[index *
-                                                                                2]['description'],
-                                                                            overflow:
-                                                                                TextOverflow.ellipsis,
-                                                                            maxLines:
-                                                                                2,
-                                                                            textAlign:
-                                                                                TextAlign.center,
-                                                                            style: TextStyle(
-                                                                                fontSize: AppDimensions.font10(context) * 1.6,
-                                                                                fontWeight: FontWeight.w400,
-                                                                                color: const Color(0xFFFFFFFF)),
-                                                                          )),
-                                                                        ),
+                                                                    ? CustomCircle()
+                                                                        .customContainer(
+                                                                        context,
+                                                                        id: inspirationList[index *
+                                                                                2]
+                                                                            [
+                                                                            'inspirationId'],
+                                                                        desc: inspirationList[index *
+                                                                                2]
+                                                                            [
+                                                                            'description'],
                                                                       )
                                                                     : inspirationList[index * 2]['inspirationId'] ==
                                                                             4
-                                                                        ? Container(
-                                                                            width: !smallScreen
-                                                                                ? AppDimensions.width10(context) * 19.313
-                                                                                : AppDimensions.width10(context) * 17.6,
-                                                                            height: !smallScreen
-                                                                                ? AppDimensions.width10(context) * 19.313
-                                                                                : AppDimensions.width10(context) * 17.6,
-                                                                            decoration:
-                                                                                const BoxDecoration(
-                                                                              gradient: LinearGradient(end: Alignment(0.73, 0), begin: Alignment(-1, 1), colors: [
-                                                                                Color(0xFF673636),
-                                                                                Color(0xFFF8C3B5),
-                                                                              ]),
-                                                                              shape: BoxShape.circle,
-                                                                            ),
-                                                                            child:
-                                                                                Container(
-                                                                              padding: EdgeInsets.symmetric(horizontal: AppDimensions.height10(context) * 1.7),
-                                                                              height: AppDimensions.height10(context) * 6.3,
-                                                                              child: Center(
-                                                                                  child: Text(
+                                                                        ? CustomCircle()
+                                                                            .customContainer(
+                                                                            context,
+                                                                            id: inspirationList[index *
+                                                                                2]['inspirationId'],
+                                                                            desc:
                                                                                 inspirationList[index * 2]['description'],
-                                                                                overflow: TextOverflow.ellipsis,
-                                                                                maxLines: 2,
-                                                                                textAlign: TextAlign.center,
-                                                                                style: TextStyle(fontSize: AppDimensions.font10(context) * 1.6, fontWeight: FontWeight.w400, color: const Color(0xFFFFFFFF)),
-                                                                              )),
-                                                                            ),
                                                                           )
                                                                         : inspirationList[index * 2]['inspirationId'] ==
                                                                                 3
-                                                                            ? Container(
-                                                                                width: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
-                                                                                height: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
-                                                                                decoration: BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: inspirationList[index * 2]['inspirationId'] == 3 ? (Videothumbnail().extractThumbnailUrl(inspirationList[index * 2]['destinationLink']) == '' ? AssetImage('assets/images/video.webp') : NetworkImage(Videothumbnail().extractThumbnailUrl(inspirationList[index * 2]['destinationLink']) == '' ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsqiOYwKF0MXIJXkB_hGpia15XovyFYLStaQ&s.jpg' : Videothumbnail().extractThumbnailUrl(inspirationList[index * 2]['destinationLink'])) as ImageProvider<Object>) : AssetImage(''), fit: BoxFit.cover)),
-                                                                                child: inspirationList[index * 2]['inspirationId'] == 3
-                                                                                    ? Videothumbnail().extractThumbnailUrl(inspirationList[index * 2]['destinationLink']) == ''
-                                                                                        ? Container()
-                                                                                        : SizedBox(
-                                                                                            width: 10, // Set the desired width
-                                                                                            height: 10, // Set the desired height
-                                                                                            child: Image.asset(
-                                                                                              'assets/images/videoicon.png',
-                                                                                              // fit: BoxFit
-                                                                                              //     ., // Ensures the image fits within the box
-                                                                                            ),
-                                                                                          )
-                                                                                    : Container())
+                                                                            ? CustomCircle().customContainer(
+                                                                                context,
+                                                                                id: inspirationList[index * 2]['inspirationId'],
+                                                                                link: inspirationList[index * 2]['destinationLink'],
+                                                                              )
+                                                                            // inspirationList[index *
+                                                                            //                 2]
+                                                                            //             [
+                                                                            //             'inspirationId'] ==
+                                                                            //         2
+                                                                            //     ? CustomCircle()
+                                                                            //         .customContainer(
+                                                                            //         context,
+                                                                            //         gradient:
+                                                                            //             const RadialGradient(
+                                                                            //                 colors: [
+                                                                            //               Color(0xFFE9A594),
+                                                                            //               Color(0xFFEEBEB2)
+                                                                            //             ]),
+                                                                            //         image:
+                                                                            //             null,
+                                                                            //         child:
+                                                                            //             Container(
+                                                                            //           padding:
+                                                                            //               EdgeInsets.symmetric(horizontal: AppDimensions.height10(context) * 1.7),
+                                                                            //           height:
+                                                                            //               AppDimensions.height10(context) * 6.3,
+                                                                            //           child: Center(
+                                                                            //               child: Text(
+                                                                            //             inspirationList[index *
+                                                                            //                 2]['description'],
+                                                                            //             overflow:
+                                                                            //                 TextOverflow.ellipsis,
+                                                                            //             maxLines:
+                                                                            //                 2,
+                                                                            //             textAlign:
+                                                                            //                 TextAlign.center,
+                                                                            //             style: TextStyle(
+                                                                            //                 fontSize: AppDimensions.font10(context) * 1.6,
+                                                                            //                 fontWeight: FontWeight.w400,
+                                                                            //                 color: const Color(0xFFFFFFFF)),
+                                                                            //           )),
+                                                                            //         ),
+                                                                            //       )
+
+                                                                            // Container(
+                                                                            //     width: !smallScreen
+                                                                            //         ? AppDimensions.width10(context) *
+                                                                            //             19.313
+                                                                            //         : AppDimensions.width10(context) *
+                                                                            //             17.6,
+                                                                            //     height: !smallScreen
+                                                                            //         ? AppDimensions.width10(context) *
+                                                                            //             19.313
+                                                                            //         : AppDimensions.width10(context) *
+                                                                            //             17.6,
+                                                                            //     decoration:
+                                                                            //         const BoxDecoration(
+                                                                            //       shape:
+                                                                            //           BoxShape.circle,
+                                                                            //       gradient:
+                                                                            //           RadialGradient(colors: [
+                                                                            //         Color(0xFFE9A594),
+                                                                            //         Color(0xFFEEBEB2)
+                                                                            //       ]),
+
+                                                                            //       // : const LinearGradient(
+                                                                            //       //     end: Alignment(0.73,
+                                                                            //       //         0),
+                                                                            //       //     begin: Alignment(-1,
+                                                                            //       //         1),
+                                                                            //       //     colors: [
+                                                                            //       //         Color(0xFF673636),
+                                                                            //       //         Color(0xFFF8C3B5),
+                                                                            //       //       ]),
+                                                                            //     ),
+                                                                            //     child:
+                                                                            //         Container(
+                                                                            //       padding:
+                                                                            //           EdgeInsets.symmetric(horizontal: AppDimensions.height10(context) * 1.7),
+                                                                            //       height:
+                                                                            //           AppDimensions.height10(context) * 6.3,
+                                                                            //       child: Center(
+                                                                            //           child: Text(
+                                                                            //         inspirationList[index *
+                                                                            //             2]['description'],
+                                                                            //         overflow:
+                                                                            //             TextOverflow.ellipsis,
+                                                                            //         maxLines:
+                                                                            //             2,
+                                                                            //         textAlign:
+                                                                            //             TextAlign.center,
+                                                                            //         style: TextStyle(
+                                                                            //             fontSize: AppDimensions.font10(context) * 1.6,
+                                                                            //             fontWeight: FontWeight.w400,
+                                                                            //             color: const Color(0xFFFFFFFF)),
+                                                                            //       )),
+                                                                            //     ),
+                                                                            //   )
+
+                                                                            // : inspirationList[index * 2]['inspirationId'] ==
+                                                                            //         4
+                                                                            //     ? CustomCircle()
+                                                                            //         .customContainer(
+                                                                            //         context,
+                                                                            //         gradient:
+                                                                            //             null,
+                                                                            //         image:
+                                                                            //             DecorationImage(image: AssetImage("assets/images/contentrecordbg.png"), fit: BoxFit.cover),
+                                                                            //         child:
+                                                                            //             Container(
+                                                                            //           padding: EdgeInsets.symmetric(horizontal: AppDimensions.height10(context) * 1.7),
+                                                                            //           height: AppDimensions.height10(context) * 6.3,
+                                                                            //           child: Center(
+                                                                            //               child: Text(
+                                                                            //             inspirationList[index * 2]['description'],
+                                                                            //             overflow: TextOverflow.ellipsis,
+                                                                            //             maxLines: 2,
+                                                                            //             textAlign: TextAlign.center,
+                                                                            //             style: TextStyle(fontSize: AppDimensions.font10(context) * 1.6, fontWeight: FontWeight.w400, color: const Color(0xFFFFFFFF)),
+                                                                            //           )),
+                                                                            //         ),
+                                                                            //       )
+                                                                            // ? Container(
+                                                                            //     width: !smallScreen
+                                                                            //         ? AppDimensions.width10(context) * 19.313
+                                                                            //         : AppDimensions.width10(context) * 17.6,
+                                                                            //     height: !smallScreen
+                                                                            //         ? AppDimensions.width10(context) * 19.313
+                                                                            //         : AppDimensions.width10(context) * 17.6,
+                                                                            //     decoration:
+                                                                            //         const BoxDecoration(
+                                                                            //       gradient: LinearGradient(end: Alignment(0.73, 0), begin: Alignment(-1, 1), colors: [
+                                                                            //         Color(0xFF673636),
+                                                                            //         Color(0xFFF8C3B5),
+                                                                            //       ]),
+                                                                            //       shape: BoxShape.circle,
+                                                                            //     ),
+                                                                            //     child:
+                                                                            //         Container(
+                                                                            //       padding: EdgeInsets.symmetric(horizontal: AppDimensions.height10(context) * 1.7),
+                                                                            //       height: AppDimensions.height10(context) * 6.3,
+                                                                            //       child: Center(
+                                                                            //           child: Text(
+                                                                            //         inspirationList[index * 2]['description'],
+                                                                            //         overflow: TextOverflow.ellipsis,
+                                                                            //         maxLines: 2,
+                                                                            //         textAlign: TextAlign.center,
+                                                                            //         style: TextStyle(fontSize: AppDimensions.font10(context) * 1.6, fontWeight: FontWeight.w400, color: const Color(0xFFFFFFFF)),
+                                                                            //       )),
+                                                                            //     ),
+                                                                            //   )
+                                                                            // : inspirationList[index * 2]['inspirationId'] ==
+                                                                            //         3
+                                                                            //     ? CustomCircle().customContainer(context,
+                                                                            //         gradient: null,
+                                                                            //         image: DecorationImage(image: inspirationList[index * 2]['inspirationId'] == 3 ? (Videothumbnail().extractThumbnailUrl(inspirationList[index * 2]['destinationLink']) == '' ? AssetImage('assets/images/video.webp') : NetworkImage(Videothumbnail().extractThumbnailUrl(inspirationList[index * 2]['destinationLink'])) as ImageProvider<Object>) : AssetImage(''), fit: BoxFit.cover),
+                                                                            //         child: inspirationList[index * 2]['inspirationId'] == 3
+                                                                            //             ? Videothumbnail().extractThumbnailUrl(inspirationList[index * 2]['destinationLink']) == ''
+                                                                            //                 ? Container()
+                                                                            //                 : SizedBox(
+                                                                            //                     width: 10, // Set the desired width
+                                                                            //                     height: 10, // Set the desired height
+                                                                            //                     child: Image.asset(
+                                                                            //                       'assets/images/videoicon.png',
+                                                                            //                       // fit: BoxFit
+                                                                            //                       //     ., // Ensures the image fits within the box
+                                                                            //                     ),
+                                                                            //                   )
+                                                                            //             : Container())
+                                                                            //  Container(
+                                                                            //     width: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
+                                                                            //     height: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
+                                                                            //     decoration: BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: inspirationList[index * 2]['inspirationId'] == 3 ? (Videothumbnail().extractThumbnailUrl(inspirationList[index * 2]['destinationLink']) == '' ? AssetImage('assets/images/video.webp') : NetworkImage(Videothumbnail().extractThumbnailUrl(inspirationList[index * 2]['destinationLink'])) as ImageProvider<Object>) : AssetImage(''), fit: BoxFit.cover)),
+                                                                            //     child: inspirationList[index * 2]['inspirationId'] == 3
+                                                                            //         ? Videothumbnail().extractThumbnailUrl(inspirationList[index * 2]['destinationLink']) == ''
+                                                                            //             ? Container()
+                                                                            //             : SizedBox(
+                                                                            //                 width: 10, // Set the desired width
+                                                                            //                 height: 10, // Set the desired height
+                                                                            //                 child: Image.asset(
+                                                                            //                   'assets/images/videoicon.png',
+                                                                            //                   // fit: BoxFit
+                                                                            //                   //     ., // Ensures the image fits within the box
+                                                                            //                 ),
+                                                                            //               )
+                                                                            //         : Container())
                                                                             : inspirationList[index * 2]['inspirationId'] == 1
-                                                                                ? Container(
-                                                                                    width: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
-                                                                                    height: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
-                                                                                    child: ClipRRect(
-                                                                                      borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 18),
-                                                                                      child: FadeInImage(
-                                                                                        placeholder: const AssetImage('assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
-                                                                                        image: NetworkImage(inspirationList[index * 2]['file'].toString()),
-                                                                                        fit: BoxFit.cover,
-                                                                                        placeholderFit: BoxFit.contain,
-                                                                                      ),
-                                                                                    ),
-                                                                                  )
+                                                                                ?
+                                                                                // ? CustomCircle().customContainer(
+                                                                                //     context,
+                                                                                //     child: ClipRRect(
+                                                                                //       borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 18),
+                                                                                //       child: FadeInImage(
+                                                                                //         placeholder: const AssetImage('assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
+                                                                                //         image: NetworkImage(inspirationList[index * 2]['file'].toString()),
+                                                                                //         fit: BoxFit.cover,
+                                                                                //         placeholderFit: BoxFit.contain,
+                                                                                //       ),
+                                                                                //     ),
+                                                                                //   )
+                                                                                CustomCircle().customContainer(context, img: inspirationList[index * 2]['file'], id: inspirationList[index * 2]['inspirationId'])
                                                                                 : Container(),
                                                               ],
                                                             ),
@@ -1234,107 +1354,194 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                               [
                                                                               'inspirationId'] ==
                                                                           2
-                                                                      ? Container(
-                                                                          width: !smallScreen
-                                                                              ? AppDimensions.width10(context) * 19.313
-                                                                              : AppDimensions.width10(context) * 17.6,
-                                                                          height: !smallScreen
-                                                                              ? AppDimensions.width10(context) * 19.313
-                                                                              : AppDimensions.width10(context) * 17.6,
-                                                                          decoration:
-                                                                              const BoxDecoration(
-                                                                            shape:
-                                                                                BoxShape.circle,
-                                                                            gradient:
-                                                                                RadialGradient(colors: [
-                                                                              Color(0xFFE9A594),
-                                                                              Color(0xFFEEBEB2)
-                                                                            ]),
-
-                                                                            // : const LinearGradient(
-                                                                            //     end: Alignment(0.73,
-                                                                            //         0),
-                                                                            //     begin: Alignment(-1,
-                                                                            //         1),
-                                                                            //     colors: [
-                                                                            //         Color(0xFF673636),
-                                                                            //         Color(0xFFF8C3B5),
-                                                                            //       ]),
-                                                                          ),
-                                                                          child:
-                                                                              Container(
-                                                                            padding:
-                                                                                EdgeInsets.symmetric(horizontal: AppDimensions.height10(context) * 1.7),
-                                                                            height:
-                                                                                AppDimensions.height10(context) * 6.3,
-                                                                            child: Center(
-                                                                                child: Text(
-                                                                              inspirationList[index * 2 + 1]['description'],
-                                                                              overflow: TextOverflow.ellipsis,
-                                                                              maxLines: 2,
-                                                                              textAlign: TextAlign.center,
-                                                                              style: TextStyle(fontSize: AppDimensions.font10(context) * 1.6, fontWeight: FontWeight.w400, color: const Color(0xFFFFFFFF)),
-                                                                            )),
-                                                                          ),
+                                                                      ? CustomCircle()
+                                                                          .customContainer(
+                                                                          context,
+                                                                          id: inspirationList[index * 2 + 1]
+                                                                              [
+                                                                              'inspirationId'],
+                                                                          desc: inspirationList[index * 2 + 1]
+                                                                              [
+                                                                              'description'],
                                                                         )
                                                                       : inspirationList[index * 2 + 1]['inspirationId'] ==
                                                                               4
-                                                                          ? Container(
-                                                                              width: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
-                                                                              height: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
-                                                                              decoration: const BoxDecoration(
-                                                                                gradient: LinearGradient(end: Alignment(0.73, 0), begin: Alignment(-1, 1), colors: [
-                                                                                  Color(0xFF673636),
-                                                                                  Color(0xFFF8C3B5),
-                                                                                ]),
-                                                                                shape: BoxShape.circle,
-                                                                              ),
-                                                                              child: Container(
-                                                                                padding: EdgeInsets.symmetric(horizontal: AppDimensions.height10(context) * 1.7),
-                                                                                height: AppDimensions.height10(context) * 6.3,
-                                                                                child: Center(
-                                                                                    child: Text(
-                                                                                  inspirationList[index * 2 + 1]['description'],
-                                                                                  overflow: TextOverflow.ellipsis,
-                                                                                  maxLines: 2,
-                                                                                  textAlign: TextAlign.center,
-                                                                                  style: TextStyle(fontSize: AppDimensions.font10(context) * 1.6, fontWeight: FontWeight.w400, color: const Color(0xFFFFFFFF)),
-                                                                                )),
-                                                                              ),
+                                                                          ? CustomCircle()
+                                                                              .customContainer(
+                                                                              context,
+                                                                              id: inspirationList[index * 2 + 1]['inspirationId'],
+                                                                              desc: inspirationList[index * 2 + 1]['description'],
                                                                             )
                                                                           : inspirationList[index * 2 + 1]['inspirationId'] == 3
-                                                                              ? Container(
-                                                                                  width: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
-                                                                                  height: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
-                                                                                  decoration: BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: inspirationList[index * 2 + 1]['inspirationId'] == 3 ? (Videothumbnail().extractThumbnailUrl(inspirationList[index * 2 + 1]['destinationLink']) == '' ? AssetImage('assets/images/video.webp') : NetworkImage(Videothumbnail().extractThumbnailUrl(inspirationList[index * 2 + 1]['destinationLink']).isEmpty ? 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsqiOYwKF0MXIJXkB_hGpia15XovyFYLStaQ&s.jpg' : Videothumbnail().extractThumbnailUrl(inspirationList[index * 2 + 1]['destinationLink'])) as ImageProvider<Object>) : AssetImage(''), fit: BoxFit.cover)),
-                                                                                  child: inspirationList[index * 2 + 1]['inspirationId'] == 3
-                                                                                      ? Videothumbnail().extractThumbnailUrl(inspirationList[index * 2 + 1]['destinationLink']) == ''
-                                                                                          ? Container()
-                                                                                          : SizedBox(
-                                                                                              width: 10, // Set the desired width
-                                                                                              height: 10, // Set the desired height
-                                                                                              child: Image.asset(
-                                                                                                'assets/images/videoicon.png',
-                                                                                                // fit: BoxFit
-                                                                                                //     ., // Ensures the image fits within the box
-                                                                                              ),
-                                                                                            )
-                                                                                      : Container(),
+                                                                              ? CustomCircle().customContainer(
+                                                                                  context,
+                                                                                  id: inspirationList[index * 2 + 1]['inspirationId'],
+                                                                                  link: inspirationList[index * 2 + 1]['destinationLink'],
                                                                                 )
+                                                                              // ? CustomCircle()
+                                                                              //     .customContainer(
+                                                                              //     context,
+                                                                              //     gradient:
+                                                                              //         RadialGradient(colors: [
+                                                                              //       Color(0xFFE9A594),
+                                                                              //       Color(0xFFEEBEB2)
+                                                                              //     ]),
+                                                                              //     child:
+                                                                              //         Container(
+                                                                              //       padding:
+                                                                              //           EdgeInsets.symmetric(horizontal: AppDimensions.height10(context) * 1.7),
+                                                                              //       height:
+                                                                              //           AppDimensions.height10(context) * 6.3,
+                                                                              //       child: Center(
+                                                                              //           child: Text(
+                                                                              //         inspirationList[index * 2 + 1]['description'],
+                                                                              //         overflow: TextOverflow.ellipsis,
+                                                                              //         maxLines: 2,
+                                                                              //         textAlign: TextAlign.center,
+                                                                              //         style: TextStyle(fontSize: AppDimensions.font10(context) * 1.6, fontWeight: FontWeight.w400, color: const Color(0xFFFFFFFF)),
+                                                                              //       )),
+                                                                              //     ),
+                                                                              //   )
+                                                                              // ? Container(
+                                                                              //     width: !smallScreen
+                                                                              //         ? AppDimensions.width10(context) * 19.313
+                                                                              //         : AppDimensions.width10(context) * 17.6,
+                                                                              //     height: !smallScreen
+                                                                              //         ? AppDimensions.width10(context) * 19.313
+                                                                              //         : AppDimensions.width10(context) * 17.6,
+                                                                              //     decoration:
+                                                                              //         const BoxDecoration(
+                                                                              //       shape:
+                                                                              //           BoxShape.circle,
+                                                                              //       gradient:
+                                                                              //           RadialGradient(colors: [
+                                                                              //         Color(0xFFE9A594),
+                                                                              //         Color(0xFFEEBEB2)
+                                                                              //       ]),
+
+                                                                              //     ),
+                                                                              //     child:
+                                                                              //         Container(
+                                                                              //       padding:
+                                                                              //           EdgeInsets.symmetric(horizontal: AppDimensions.height10(context) * 1.7),
+                                                                              //       height:
+                                                                              //           AppDimensions.height10(context) * 6.3,
+                                                                              //       child: Center(
+                                                                              //           child: Text(
+                                                                              //         inspirationList[index * 2 + 1]['description'],
+                                                                              //         overflow: TextOverflow.ellipsis,
+                                                                              //         maxLines: 2,
+                                                                              //         textAlign: TextAlign.center,
+                                                                              //         style: TextStyle(fontSize: AppDimensions.font10(context) * 1.6, fontWeight: FontWeight.w400, color: const Color(0xFFFFFFFF)),
+                                                                              //       )),
+                                                                              //     ),
+                                                                              //   )
+                                                                              // : inspirationList[index * 2 + 1]['inspirationId'] ==
+                                                                              //         4
+                                                                              //     ? CustomCircle().customContainer(
+                                                                              //         context,
+                                                                              //         gradient: LinearGradient(end: Alignment(0.73, 0), begin: Alignment(-1, 1), colors: [
+                                                                              //           Color(0xFF673636),
+                                                                              //           Color(0xFFF8C3B5),
+                                                                              //         ]),
+                                                                              //         child: Container(
+                                                                              //           padding: EdgeInsets.symmetric(horizontal: AppDimensions.height10(context) * 1.7),
+                                                                              //           height: AppDimensions.height10(context) * 6.3,
+                                                                              //           child: Center(
+                                                                              //               child: Text(
+                                                                              //             inspirationList[index * 2 + 1]['description'],
+                                                                              //             overflow: TextOverflow.ellipsis,
+                                                                              //             maxLines: 2,
+                                                                              //             textAlign: TextAlign.center,
+                                                                              //             style: TextStyle(fontSize: AppDimensions.font10(context) * 1.6, fontWeight: FontWeight.w400, color: const Color(0xFFFFFFFF)),
+                                                                              //           )),
+                                                                              //         ))
+                                                                              // ? Container(
+                                                                              //     width: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
+                                                                              //     height: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
+                                                                              //     decoration: const BoxDecoration(
+                                                                              //       gradient: LinearGradient(end: Alignment(0.73, 0), begin: Alignment(-1, 1), colors: [
+                                                                              //         Color(0xFF673636),
+                                                                              //         Color(0xFFF8C3B5),
+                                                                              //       ]),
+                                                                              //       shape: BoxShape.circle,
+                                                                              //     ),
+                                                                              //     child: Container(
+                                                                              //       padding: EdgeInsets.symmetric(horizontal: AppDimensions.height10(context) * 1.7),
+                                                                              //       height: AppDimensions.height10(context) * 6.3,
+                                                                              //       child: Center(
+                                                                              //           child: Text(
+                                                                              //         inspirationList[index * 2 + 1]['description'],
+                                                                              //         overflow: TextOverflow.ellipsis,
+                                                                              //         maxLines: 2,
+                                                                              //         textAlign: TextAlign.center,
+                                                                              //         style: TextStyle(fontSize: AppDimensions.font10(context) * 1.6, fontWeight: FontWeight.w400, color: const Color(0xFFFFFFFF)),
+                                                                              //       )),
+                                                                              //     ),
+                                                                              //   )
+                                                                              // : inspirationList[index * 2 + 1]['inspirationId'] == 3
+                                                                              //     ? CustomCircle().customContainer(
+                                                                              //         context,
+                                                                              //         image: DecorationImage(image: inspirationList[index * 2 + 1]['inspirationId'] == 3 ? (Videothumbnail().extractThumbnailUrl(inspirationList[index * 2 + 1]['destinationLink']) == '' ? AssetImage('assets/images/video.webp') : NetworkImage(Videothumbnail().extractThumbnailUrl(inspirationList[index * 2 + 1]['destinationLink'])) as ImageProvider<Object>) : AssetImage(''), fit: BoxFit.cover),
+                                                                              //         child: inspirationList[index * 2 + 1]['inspirationId'] == 3
+                                                                              //             ? Videothumbnail().extractThumbnailUrl(inspirationList[index * 2 + 1]['destinationLink']) == ''
+                                                                              //                 ? Container()
+                                                                              //                 : SizedBox(
+                                                                              //                     width: 10, // Set the desired width
+                                                                              //                     height: 10, // Set the desired height
+                                                                              //                     child: Image.asset(
+                                                                              //                       'assets/images/videoicon.png',
+                                                                              //                       // fit: BoxFit
+                                                                              //                       //     ., // Ensures the image fits within the box
+                                                                              //                     ),
+                                                                              //                   )
+                                                                              //             : Container(),
+                                                                              //       )
+                                                                              // ? Container(
+                                                                              //     width: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
+                                                                              //     height: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
+                                                                              //     decoration: BoxDecoration(shape: BoxShape.circle, image: DecorationImage(image: inspirationList[index * 2 + 1]['inspirationId'] == 3 ? (Videothumbnail().extractThumbnailUrl(inspirationList[index * 2 + 1]['destinationLink']) == '' ? AssetImage('assets/images/video.webp') : NetworkImage(Videothumbnail().extractThumbnailUrl(inspirationList[index * 2 + 1]['destinationLink'])) as ImageProvider<Object>) : AssetImage(''), fit: BoxFit.cover)),
+                                                                              //     child: inspirationList[index * 2 + 1]['inspirationId'] == 3
+                                                                              //         ? Videothumbnail().extractThumbnailUrl(inspirationList[index * 2 + 1]['destinationLink']) == ''
+                                                                              //             ? Container()
+                                                                              //             : SizedBox(
+                                                                              //                 width: 10, // Set the desired width
+                                                                              //                 height: 10, // Set the desired height
+                                                                              //                 child: Image.asset(
+                                                                              //                   'assets/images/videoicon.png',
+                                                                              //                   // fit: BoxFit
+                                                                              //                   //     ., // Ensures the image fits within the box
+                                                                              //                 ),
+                                                                              //               )
+                                                                              //         : Container(),
+                                                                              //   )
                                                                               : inspirationList[index * 2 + 1]['inspirationId'] == 1
-                                                                                  ? Container(
-                                                                                      width: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
-                                                                                      height: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
-                                                                                      child: ClipRRect(
-                                                                                        borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 18),
-                                                                                        child: FadeInImage(
-                                                                                          placeholder: const AssetImage('assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
-                                                                                          image: NetworkImage(inspirationList[index * 2 + 1]['file'].toString()),
-                                                                                          fit: BoxFit.cover,
-                                                                                          placeholderFit: BoxFit.contain,
-                                                                                        ),
-                                                                                      ),
-                                                                                    )
+                                                                                  // ? CustomCircle().customContainer(
+                                                                                  //     context,
+                                                                                  //     child: ClipRRect(
+                                                                                  //       borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 18),
+                                                                                  //       child: FadeInImage(
+                                                                                  //         placeholder: const AssetImage('assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
+                                                                                  //         image: NetworkImage(inspirationList[index * 2 + 1]['file'].toString()),
+                                                                                  //         fit: BoxFit.cover,
+                                                                                  //         placeholderFit: BoxFit.contain,
+                                                                                  //       ),
+                                                                                  //     ),
+                                                                                  //   )
+                                                                                  ? CustomCircle().customContainer(context, img: inspirationList[index * 2 + 1]['file'], id: inspirationList[index * 2 + 1]['inspirationId'])
+                                                                                  // ? Container(
+                                                                                  //     width: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
+                                                                                  //     height: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
+                                                                                  //     child: ClipRRect(
+                                                                                  //       borderRadius: BorderRadius.circular(AppDimensions.height10(context) * 18),
+                                                                                  //       child: FadeInImage(
+                                                                                  //         placeholder: const AssetImage('assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
+                                                                                  //         image: NetworkImage(inspirationList[index * 2 + 1]['file'].toString()),
+                                                                                  //         fit: BoxFit.cover,
+                                                                                  //         placeholderFit: BoxFit.contain,
+                                                                                  //       ),
+                                                                                  //     ),
+                                                                                  //   )
                                                                                   : Container(),
                                                                 ],
                                                               ),

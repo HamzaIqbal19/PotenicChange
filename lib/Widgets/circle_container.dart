@@ -28,8 +28,8 @@ class CircularFormation extends StatelessWidget {
           outerCircleColors: outerCircleColors,
         ),
         child: Container(
-          width: AppDimensions.width10(context) * 13.1,
-          height: AppDimensions.height10(context) * 13.1,
+          width: AppDimensions.width10(context) * 10.1,
+          height: AppDimensions.height10(context) * 10.1,
           //  margin: EdgeInsets.only(top: AppDimensions.height10(context) * 5.1),
           decoration: BoxDecoration(
               shape: BoxShape.circle,
@@ -43,7 +43,7 @@ class CircularFormation extends StatelessWidget {
                               : selection == 2
                                   ? 'assets/images/Countdown circle_1.webp'
                                   : 'assets/images/Countdown circle_2.webp'),
-                  fit: BoxFit.scaleDown)),
+                  fit: BoxFit.contain)),
         ),
       ),
     );

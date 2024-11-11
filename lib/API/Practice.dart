@@ -133,7 +133,6 @@ class PracticeGoalApi {
     var accessToken = prefs.getString("usertoken");
     var pracNum = prefs.getInt("prac_num");
 
-    print("Practice number $pracNum");
 
     var headers = {
       'Content-Type': 'application/json',
@@ -145,7 +144,6 @@ class PracticeGoalApi {
       headers: headers,
     );
 
-    print("response ${response.statusCode}");
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
       final SharedPreferences prefs = await _prefs;

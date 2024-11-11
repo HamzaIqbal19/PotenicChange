@@ -8,7 +8,9 @@ import 'package:potenic_app/Screen/Goal%20Creation%20Journey/Categories.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/add_your_practice.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/goal&practice_info.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/goal_menu_inactive.dart';
+import 'package:potenic_app/Screen/Your%20Goals%20Journey/widgets/goalLevelComponents.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -67,39 +69,17 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          leading: Container(
-            // padding:
-            //     EdgeInsets.only(left: AppDimensions.height10(context) * 1),
-            child: IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context, FadePageRouteReverse(page: const Menu()));
-                },
-                icon: Image.asset(
-                  'assets/images/Back.webp',
-                  //  width: AppDimensions.width10(context) * 2.6,
-                  height: AppDimensions.height10(context) * 2.8,
-                  fit: BoxFit.contain,
-                )),
-          ),
+          leading: Buttons().backButton(context, (){
+            Navigator.push(
+                context, FadePageRouteReverse(page: const Menu()));
+          }),
           actions: [
-            Container(
-              padding:
-                  EdgeInsets.only(right: AppDimensions.height10(context) * 0.4),
-              child: IconButton(
-                  onPressed: () async {
-                    Navigator.push(context,
-                        FadePageRouteReverse(page: const Categories()));
-                    final SharedPreferences prefs = await _prefs;
-                    await prefs.setString('goal_route', 'view_all_goals');
-                  },
-                  icon: Image.asset(
-                    'assets/images/Addgoal.webp',
-                    //width: AppDimensions.width10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.8,
-                    fit: BoxFit.contain,
-                  )),
-            ),
+            Buttons().addButton(context, ()async{
+              Navigator.push(context,
+                  FadePageRouteReverse(page: const Categories()));
+              final SharedPreferences prefs = await _prefs;
+              await prefs.setString('goal_route', 'view_all_goals');
+            })
           ],
         ),
         extendBodyBehindAppBar: true,
@@ -217,19 +197,19 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                                   fit: BoxFit.contain)),
                                         ),
                                         SizedBox(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  13.4,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.2,
+                                          // width:
+                                          //     AppDimensions.width10(context) *
+                                          //         13.4,
+                                          // height:
+                                          //     AppDimensions.height10(context) *
+                                          //         2.2,
                                           child: Text(
                                             'Goal & Practice',
                                             style: TextStyle(
                                                 fontWeight: FontWeight.w600,
                                                 fontSize: AppDimensions.font10(
                                                         context) *
-                                                    1.8,
+                                                    2.0,
                                                 color: const Color(0xff437296)),
                                           ),
                                         )
@@ -256,17 +236,18 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                     child: Column(
                                       children: [
                                         Container(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  13.9,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.2,
+                                          // width:
+                                          //     AppDimensions.width10(context) *
+                                          //         13.9,
+                                          // height:
+                                          //     AppDimensions.height10(context) *
+                                          //         2.2,
                                           margin: EdgeInsets.only(
                                               top: AppDimensions.height10(
                                                       context) *
                                                   3.1),
                                           child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
                                               Text(
                                                 'Status: ',
@@ -274,7 +255,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                                     fontSize:
                                                         AppDimensions.font10(
                                                                 context) *
-                                                            1.8,
+                                                            2.0,
                                                     fontWeight: FontWeight.w500,
                                                     color: const Color(
                                                         0xFFFFFFFF)),
@@ -288,7 +269,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                                           fontSize: AppDimensions
                                                                   .font10(
                                                                       context) *
-                                                              1.8,
+                                                              2.0,
                                                           fontWeight:
                                                               FontWeight.w700,
                                                           color: const Color(
@@ -300,7 +281,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                                           fontSize: AppDimensions
                                                                   .font10(
                                                                       context) *
-                                                              1.8,
+                                                              2.0,
                                                           fontWeight:
                                                               FontWeight.w700,
                                                           color: const Color(
@@ -644,181 +625,9 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Container(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    11.4,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    11.4,
-                                                decoration: const BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                    color: Color(0xFFFDFBE0)),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    SizedBox(
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              9.3,
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          3.55,
-                                                      child: Text(
-                                                        'No. of\nActive days',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.4,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            color: const Color(
-                                                                0xFF437296)),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              6.3,
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          3.3,
-                                                      margin: EdgeInsets.only(
-                                                          top: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              0.8),
-                                                      child: Text(
-                                                        goalsDetails[index][
-                                                                'goalTotalActiveDays']
-                                                            .toString(),
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                2.8,
-                                                            fontWeight:
-                                                                FontWeight.w500,
-                                                            color: const Color(
-                                                                0xFF464646)),
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                              Container(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    11.4,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    11.4,
-                                                decoration: const BoxDecoration(
-                                                    shape: BoxShape.circle,
-                                                    color: Color(0xFFFDFBE0)),
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    SizedBox(
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              9.3,
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          3.4,
-                                                      child: Text(
-                                                        'Goal\nLevel',
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                            fontSize: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.4,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            color: const Color(
-                                                                0xFF437296)),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              6.3,
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          3.3,
-                                                      margin: EdgeInsets.only(
-                                                          top: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              0.8),
-                                                      child: Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .center,
-                                                        children: [
-                                                          Text(
-                                                            goalsDetails[index][
-                                                                    'goalLevel']
-                                                                .toString(),
-                                                            textAlign: TextAlign
-                                                                .center,
-                                                            style: TextStyle(
-                                                                fontSize: AppDimensions
-                                                                        .font10(
-                                                                            context) *
-                                                                    2.8,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w600,
-                                                                color: const Color(
-                                                                    0xFF464646)),
-                                                          ),
-                                                          Padding(
-                                                            padding: EdgeInsets.only(
-                                                                top: AppDimensions
-                                                                        .height10(
-                                                                            context) *
-                                                                    1.5),
-                                                            child: Text(
-                                                              '/5',
-                                                              textAlign:
-                                                                  TextAlign
-                                                                      .center,
-                                                              style: TextStyle(
-                                                                  fontSize:
-                                                                      AppDimensions.font10(
-                                                                              context) *
-                                                                          1.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w300,
-                                                                  color: const Color(
-                                                                      0xFF464646)),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    )
-                                                  ],
-                                                ),
-                                              )
+                                              GoalLevelComponents().activeDays(context, goalsDetails[index]['goalTotalActiveDays'].toString()),
+                                              GoalLevelComponents().goalLevelCircle(context, goalsDetails[index]['goalLevel'].toString())
+
                                             ],
                                           ),
                                         ),

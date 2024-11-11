@@ -9,6 +9,7 @@ import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/Practice%20Creation%20Journey/Create%20Practice.dart';
 import 'package:potenic_app/Screen/Practice%20Creation%20Journey/PracticeName.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/goal_menu_inactive.dart';
+import 'package:potenic_app/Screen/Your%20Goals%20Journey/widgets/goalLevelComponents.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:avatar_glow/avatar_glow.dart';
@@ -311,7 +312,6 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
               totalItemsOn = response["activePracticesCount"];
               subscriptions = response['subscriptionsStatus'];
             });
-            print("subscriptions $subscriptions");
 
             loadData();
             startTimer();
@@ -444,7 +444,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                       child: Text(
                         'Edit',
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.8,
+                            fontSize: AppDimensions.font10(context) * 2.2,
                             fontWeight: FontWeight.w500,
                             color: const Color(0xFFFFFFFF)),
                       ),
@@ -494,14 +494,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                             Text(
                               'Status: ',
                               style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 2,
                                   fontWeight: FontWeight.w500,
                                   color: const Color(0xFFFFFFFF)),
                             ),
                             Text(
                               capitalizeFirstLetter(goalDetails['goalStatus']),
                               style: TextStyle(
-                                  fontSize: AppDimensions.font10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 2,
                                   fontWeight: FontWeight.w700,
                                   color: goalDetails['goalStatus'] == "active"
                                       ? const Color(0xFF156F6D)
@@ -518,119 +518,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Container(
-                              width: AppDimensions.width10(context) * 11.4,
-                              height: AppDimensions.width10(context) * 11.4,
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0xFFFDFBE0)),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.width10(context) * 9.3,
-                                    height:
-                                        AppDimensions.height10(context) * 3.6,
-                                    child: Text(
-                                      'No. of\nActive days',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.4,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  0.15,
-                                          fontWeight: FontWeight.w600,
-                                          color: const Color(0xFF437296)),
-                                    ),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.width10(context) * 6.3,
-                                    height:
-                                        AppDimensions.height10(context) * 3.3,
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
-                                            0.8),
-                                    child: Text(
-                                      goalDetails['goalTotalActiveDays']
-                                          .toString(),
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  2.8,
-                                          fontWeight: FontWeight.w500,
-                                          color: const Color(0xFF464646)),
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: AppDimensions.height10(context) * 11.4,
-                              height: AppDimensions.height10(context) * 11.4,
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0xFFFDFBE0)),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    width: AppDimensions.width10(context) * 9.3,
-                                    height:
-                                        AppDimensions.height10(context) * 3.6,
-                                    child: Text(
-                                      'Goal\nLevel',
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  1.4,
-                                          fontWeight: FontWeight.w600,
-                                          color: const Color(0xFF437296)),
-                                    ),
-                                  ),
-                                  Container(
-                                    width: AppDimensions.width10(context) * 6.3,
-                                    height:
-                                        AppDimensions.height10(context) * 3.3,
-                                    margin: EdgeInsets.only(
-                                        top: AppDimensions.height10(context) *
-                                            0.8),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          goalDetails['goalLevel'] == 0
-                                              ? '-'
-                                              : goalDetails['goalLevel']
-                                                  .toString(),
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  2.0,
-                                              fontWeight: FontWeight.w600,
-                                              color: const Color(0xFF464646)),
-                                        ),
-                                        Text(
-                                          '/5',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  1.0,
-                                              fontWeight: FontWeight.w300,
-                                              color: const Color(0xFF464646)),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                ],
-                              ),
-                            )
+                            GoalLevelComponents().activeDays(context, goalDetails['goalTotalActiveDays'].toString()),
+                            GoalLevelComponents().goalLevelCircle(context, goalDetails['goalLevel'] == 0 ? '-' : goalDetails['goalLevel'].toString()),
                           ],
                         ),
                       ),
@@ -725,8 +614,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                     Container(
                                       width:
                                           AppDimensions.width10(context) * 18.6,
-                                      height:
-                                          AppDimensions.height10(context) * 4.9,
+                                      // height:
+                                      //     AppDimensions.height10(context) * 4.9,
                                       margin: EdgeInsets.only(
                                           left:
                                               AppDimensions.height10(context) *
@@ -734,13 +623,14 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           SizedBox(
                                             // width: AppDimensions.width10(context) *
                                             //     9.2,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.2,
+                                            // height: AppDimensions.height10(
+                                            //         context) *
+                                            //     2.2,
                                             child: Text(
                                               goalDetails['userPractices']
                                                   [index]['name'],
@@ -749,7 +639,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          1.8,
+                                                          2.2,
                                                   fontWeight: FontWeight.w600,
                                                   color:
                                                       const Color(0xFFFFFFFF)),
@@ -767,7 +657,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                         fontSize: AppDimensions
                                                                 .font10(
                                                                     context) *
-                                                            2.0,
+                                                            2.2,
                                                         fontWeight:
                                                             FontWeight.w600,
                                                         color: const Color(
@@ -783,7 +673,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                                           fontSize: AppDimensions
                                                                   .font10(
                                                                       context) *
-                                                              1.3,
+                                                              1.8,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                           // fontFamily: 'Laila',

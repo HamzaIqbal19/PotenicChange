@@ -47,12 +47,12 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
     OnboardingModel(
       mainTitle: "Introduction",
       logo: 'assets/images/logo.webp',
-      title: 'What is Potenic and \n who is it for?',
+      title: 'What is Potenic?',
       index: 1,
       description:
-          'Potenic is a self-growth \n transformational app for personal\n development enthusiasts, who:',
+          'Potenic is a ritual building app for\nworking parents, who:',
       subDescription:
-          '- are on the journey already using self-development tools \n- need clarity on progress \n - struggle to stay focused \n - desire to reach a \n consistent level of self- \n fulfilment.',
+          '- crave more time for personal growth \n- struggle to stay on track \n - want to see real progress \n - desire a meaningful, balanced life\nthey can sustain',
       image1: "",
       backbutton: false,
       description2: "",
@@ -69,7 +69,7 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         title: 'Define your why',
         index: 2,
         description:
-            'Set your vision for better-self. True \n fulfilment comes from being clear \n and honest on your whys, what is \n truly important to you and your \n dreams.',
+            'Your ‘why’ is the foundation of your\nnew identity. By getting clear on\nyour vision - what’s truly important\nto you, you open the door to lasting\nfulfillment. ',
         subDescription: '',
         image1: "",
         backbutton: true,
@@ -84,9 +84,9 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         mainTitle: "Introduction",
         logo: 'assets/images/logo.webp',
         index: 3,
-        title: 'Evaluate the tools\nyou’re already using',
+        title: 'Assess the behaviours',
         description:
-            'Assess the tools you’re using,\ndiscover the practices that are\nworking for you, and eliminate the\nothers that don’t serve you.',
+            'Discover the practices that work for\nyou, and ditch the ones that don’t\nserve you.',
         subDescription: '',
         image1: "",
         backbutton: true,
@@ -135,7 +135,7 @@ class OnBoardingState extends State<OnBoarding> with TickerProviderStateMixin {
         index: 6,
         backbutton: true,
         description:
-            'Create a personal development goal that will become your own star (e.g. ‘set personal boundaries’)',
+            'Create a personal development goal\nthat will become your own star (e.g.\n‘set personal boundaries’)',
         subDescription: '',
         image1: "assets/images/image1.webp",
         description2:

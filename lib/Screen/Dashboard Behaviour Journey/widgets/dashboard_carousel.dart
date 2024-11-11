@@ -51,14 +51,14 @@ dashboardCarousel(
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
-                  height: isCenterItem
+                  height: isCenterItem && currentIndex ==realIndex
                       ? UpdatedDimensions.height10(context) * 22.2
                       : UpdatedDimensions.height10(context) * 9.2,
-                  width: isCenterItem
+                  width: isCenterItem && currentIndex ==realIndex
                       ? UpdatedDimensions.width10(context) * 20.8
                       : UpdatedDimensions.width10(context) * 8.8,
                   transform: Matrix4.translationValues(0, currentItem ? -30 : 30, 0),
-                  decoration: isCenterItem
+                  decoration: isCenterItem && currentIndex ==realIndex
                       ? const BoxDecoration()
                       : currentItem
                           ? (currentDate.isAfter(dayDate) && currentData)
@@ -78,11 +78,11 @@ dashboardCarousel(
                           ? const EdgeInsets.all(4)
                           : (currentDate.isBefore(dayDate) && currentData)
                               ? const EdgeInsets.all(4)
-                              : EdgeInsets.zero
-                      : EdgeInsets.zero,
+                              : const EdgeInsets.all(4)
+                      : const EdgeInsets.all(4),
                   child: Container(
                     decoration: BoxDecoration(
-                      image: isCenterItem
+                      image: isCenterItem && currentIndex ==realIndex
                           ? DecorationImage(
                               image: dashboardData == null || currentData
                                   ? const AssetImage('assets/images/currentbg2.webp')
@@ -100,14 +100,14 @@ dashboardCarousel(
                                       begin: Alignment.topCenter,
                                       end: Alignment.bottomCenter,
                                       colors: [
-                                          isCenterItem
+                                          isCenterItem && currentIndex ==realIndex
                                               ? Colors.transparent
                                               : const Color(0xffF5F1E0),
-                                          isCenterItem
+                                          isCenterItem && currentIndex ==realIndex
                                               ? Colors.transparent
                                               : const Color(0xffEDDC97)
                                         ]),
-                      border: isCenterItem
+                      border: isCenterItem && currentIndex ==realIndex
                           ? null
                           : Border.all(color: Colors.white, width: 3),
                     ),

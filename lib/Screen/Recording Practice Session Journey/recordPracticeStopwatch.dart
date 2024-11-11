@@ -254,7 +254,7 @@ class _clocksState extends State<clocks> {
               Container(
                 margin: EdgeInsets.only(
                     bottom: AppDimensionsUpdated.height10(context) * 7.5,
-                    top: AppDimensionsUpdated.height10(context) * 5.0),
+                    top: AppDimensionsUpdated.height10(context) * 7.0),
               ),
               Container(
                 width: AppDimensionsUpdated.width10(context) * 35.9,

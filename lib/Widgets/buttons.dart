@@ -74,12 +74,12 @@ class Buttons {
 
   closeButton(BuildContext context, action) {
     return Container(
-      margin: const EdgeInsets.only(right: 15),
+      margin: const EdgeInsets.only(right: 10),
       child: IconButton(
         icon: Image.asset(
           AppAssets.closeButton,
-          width: 28.0,
-          height: 28.0,
+          width: 30.0,
+          height: 30.0,
           fit: BoxFit.contain,
         ),
         onPressed: action,
@@ -89,15 +89,60 @@ class Buttons {
 
   backButton(BuildContext context, action) {
     return Container(
-      margin: const EdgeInsets.only(left: 15),
+      margin: const EdgeInsets.only(left: 10),
       child: IconButton(
           onPressed: action,
           icon: Image.asset(
             AppAssets.backButton,
-            // width: AppDimensions.width10(context) * 3,
-            height: AppDimensions.height10(context) * 3,
+             width: 36,
+            height: 36,
             fit: BoxFit.contain,
           )),
+    );
+  }
+
+  addButton(BuildContext context, action) {
+    return Container(
+      margin: const EdgeInsets.only(right: 10),
+      child: IconButton(
+          onPressed: action,
+          icon: Image.asset(
+            AppAssets.addButton,
+            width:  36,
+            height: 36,
+            fit: BoxFit.contain,
+          )),
+    );
+  }
+
+
+  infoButton(BuildContext context, action) {
+    return Container(
+      margin: const EdgeInsets.only(right: 10),
+      child: IconButton(
+          onPressed: action,
+          icon: Image.asset(
+            AppAssets.infoButton,
+            width: 36,
+            height: 36,
+            fit: BoxFit.cover,
+          )),
+    );
+  }
+
+  textButton(BuildContext context, action, text, color) {
+    return Container(
+      margin: const EdgeInsets.only(right: 5),
+      child: TextButton(
+        onPressed: action,
+        child: Text(
+          text,
+          style: TextStyle(
+              fontSize: AppDimensions.font10(context) * 2.2,
+              fontWeight: FontWeight.w500,
+              color: color),
+        ),
+      ),
     );
   }
 }

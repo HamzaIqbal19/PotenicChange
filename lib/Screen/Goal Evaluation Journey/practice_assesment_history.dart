@@ -8,6 +8,7 @@ import 'package:potenic_app/Screen/Goal%20Evaluation%20Journey/practice_progress
 import 'package:potenic_app/Screen/Goal%20Evaluation%20Journey/practice_score.dart';
 import 'package:potenic_app/Screen/Recording%20Practice%20Session%20Journey/recordPracticeMenu.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/appBarWidgets.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import '../../Widgets/menu_buttons.dart';
@@ -132,6 +133,8 @@ class _practice_assesmentState extends State<practice_assesment> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           automaticallyImplyLeading: false,
+          title: appBarTitle(context,'Practice Assessment History',false),
+          centerTitle: true,
           leading: Buttons().backButton(context, () {
             setRoute();
           }),
@@ -154,22 +157,14 @@ class _practice_assesmentState extends State<practice_assesment> {
               ? SingleChildScrollView(
                   child: Column(
                   children: [
-                    Container(
-                      // width: AppDimensions.width10(context) * 27.9,
-                      // alignment: Alignment.center,
-                      margin: EdgeInsets.only(
-                          top: AppDimensions.height10(context) * 5.2),
-                      child: const Text(
-                        'Practice Assessment History',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    SizedBox(
-                      height: AppDimensions.height10(context) * 2.5,
-                    ),
+                  Container(
+                  //width: AppDimensions.width10(context) * 30.4,
+
+                  margin: EdgeInsets.only(
+                  top: AppDimensions.height10(context) * 11.0,
+          ),),
+
+
                     ListView.builder(
                         shrinkWrap: true,
                         padding: EdgeInsets.zero,
@@ -213,9 +208,10 @@ class _practice_assesmentState extends State<practice_assesment> {
                                     child: SizedBox(
                                       // width:
                                       //     AppDimensions.width10(context) * 36.0,
-                                      height: AppDimensions.height10(context) *
-                                          24.7,
+                                      // height: AppDimensions.height10(context) *
+                                      //     24.7,
                                       child: Column(
+                                        mainAxisSize: MainAxisSize.min,
                                         children: [
                                           Container(
                                             width:
@@ -227,16 +223,13 @@ class _practice_assesmentState extends State<practice_assesment> {
                                                     1.2),
                                             child: Column(children: [
                                               SizedBox(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    2.1,
                                                 child: Text(
                                                   'Practice Assessment',
                                                   style: TextStyle(
                                                       fontSize:
                                                           AppDimensions.font10(
                                                                   context) *
-                                                              1.8,
+                                                              2,
                                                       fontWeight:
                                                           FontWeight.w700,
                                                       color: const Color(
@@ -258,7 +251,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                                                                   height: AppDimensions.height10(context) *
                                                                       0.15,
                                                                   fontSize: AppDimensions.font10(context) *
-                                                                      1.4,
+                                                                      1.5,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w400,

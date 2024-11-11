@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -7,7 +6,11 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/API/goalEvaluation.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation%20Journey/new_progress_score.dart';
 import 'package:potenic_app/Screen/Practice%20Creation%20Journey/PracticeName.dart';
+import 'package:potenic_app/Widgets/CustomCircle.dart';
+import 'package:potenic_app/Widgets/GoalCircle.dart';
+import 'package:potenic_app/Widgets/GoalScreensDialogBox.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -32,22 +35,22 @@ class your_impact extends StatefulWidget {
 
 class _your_impactState extends State<your_impact> {
   List options = [
-    'It makes my\nlife worse\n',
-    'It causes me a\nlot of distress\n',
+    'It makes my\nlife worse',
+    'It causes me a\nlot of distress',
     "I've noticed\nsome positive\nchanges",
-    "I feel good\nabout it\n",
+    "I feel good\nabout it",
     "It's changing\nmy life\npositively :)"
   ];
   List options2 = [
-    'It properly\nupsets me\n',
+    'It properly\nupsets me',
     'Slightly\nfrustrated and\nuneasy',
-    "It doesn't\nbother me\n",
+    "It doesn't\nbother me",
     "Positive that\nI'm taking the\nright actions",
     "Empowered\nand good\nabout myself"
   ];
 
   List messages = [
-    "It hasn’t started to impact my life",
+    "It has no impact on my life",
     "It has little impact on my life",
     "It has positive impact on my life",
     "It has a significant impact on my life",
@@ -291,172 +294,340 @@ class _your_impactState extends State<your_impact> {
           automaticallyImplyLeading: false,
           centerTitle: true,
           leading: Center(
-            child: IconButton(
-                onPressed: () {
-                  if (disable == false && widget.premium) {
-                    showAnimatedDialog(
-                        animationType: DialogTransitionType.fadeScale,
-                        curve: Curves.easeInOut,
-                        duration: const Duration(seconds: 1),
-                        context: context,
-                        builder: (BuildContext context) => Container(
-                            width: AppDimensions.width10(context) * 27.0,
-                            height: AppDimensions.height10(context) * 18.2,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                    AppDimensions.height10(context) * 1.4)),
-                            child: AlertDialog(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(
-                                      AppDimensions.height10(context) * 1.4)),
-                              contentPadding: EdgeInsets.zero,
-                              actionsPadding: EdgeInsets.zero,
-                              titlePadding: EdgeInsets.zero,
-                              title: Container(
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                        AppDimensions.height10(context) * 1.4)),
-                                margin: EdgeInsets.only(
-                                    top: AppDimensions.height10(context) * 1.9,
-                                    right:
-                                        AppDimensions.height10(context) * 1.6,
-                                    left: AppDimensions.width10(context) * 1.6,
-                                    bottom:
-                                        AppDimensions.height10(context) * 0.2),
-                                height: AppDimensions.height10(context) * 2.2,
-                                width: AppDimensions.width10(context) * 23.8,
-                                child: Text(
-                                  "Exit without saving changes?",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.7,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ),
-                              content: Container(
-                                margin: EdgeInsets.only(
-                                    bottom:
-                                        AppDimensions.height10(context) * 1.5,
-                                    left: AppDimensions.width10(context) * 1.6,
-                                    right:
-                                        AppDimensions.height10(context) * 1.6),
-                                height: AppDimensions.height10(context) * 3.4,
-                                width: AppDimensions.width10(context) * 23.8,
-                                child: Text(
-                                  "Are you sure you want to exit, all your\nchanges will be lost?",
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.3,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                              ),
-                              actions: <Widget>[
-                                Column(
-                                  children: [
-                                    SizedBox(
-                                      height:
-                                          AppDimensions.height10(context) * 0.1,
-                                      child: Divider(
-                                        color: const Color(0XFF3C3C43)
-                                            .withOpacity(0.29),
-                                      ),
-                                    ),
-                                    Container(
-                                      height:
-                                          AppDimensions.height10(context) * 4.2,
-                                      width: double.infinity,
-                                      color: const Color(0xFF007AFF),
-                                      child: TextButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              FadePageRouteReverse(
-                                                  page: new_progress_score(
-                                                premium: widget.premium,
-                                                evaluationIndex: widget.index,
-                                              )));
-                                          setState(() {
-                                            select_item = -1;
-                                            select_item_2 = -1;
-                                          });
-                                        },
-                                        child: Text(
-                                          'Yes',
-                                          style: TextStyle(
-                                              color: const Color(0xFFFFFFFF),
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  1.7,
-                                              fontFamily: "Laila",
-                                              fontWeight: FontWeight.w400),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          AppDimensions.height10(context) * 0.1,
-                                      child: Divider(
-                                        color: const Color(0XFF3C3C43)
-                                            .withOpacity(0.29),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          AppDimensions.height10(context) * 4.4,
-                                      width: double.infinity,
-                                      child: TextButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: Text(
-                                          'Cancel',
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  1.7,
-                                              fontFamily: "Laila",
-                                              fontWeight: FontWeight.w400,
-                                              color: const Color(0xFF007AFF)),
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      height:
-                                          AppDimensions.height10(context) * 0.1,
-                                      child: Divider(
-                                        color: const Color(0XFF3C3C43)
-                                            .withOpacity(0.29),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            )));
-                  } else {
-                    Navigator.push(
-                        context,
-                        FadePageRouteReverse(
-                            page: new_progress_score(
-                          premium: widget.premium,
-                          evaluationIndex: widget.index,
-                        )));
-                    setState(() {
-                      select_item = -1;
-                      select_item_2 = -1;
-                    });
-                  }
+              child: Buttons().backButton(context, () {
+            if (disable == false && widget.premium) {
+              // showAnimatedDialog(
+              //     animationType: DialogTransitionType.fadeScale,
+              //     curve: Curves.easeInOut,
+              //     duration: const Duration(seconds: 1),
+              //     context: context,
+              //     builder: (BuildContext context) => Container(
+              //         width: AppDimensions.width10(context) * 27.0,
+              //         height: AppDimensions.height10(context) * 18.2,
+              //         decoration: BoxDecoration(
+              //             borderRadius: BorderRadius.circular(
+              //                 AppDimensions.height10(context) * 1.4)),
+              //         child: AlertDialog(
+              //           shape: RoundedRectangleBorder(
+              //               borderRadius: BorderRadius.circular(
+              //                   AppDimensions.height10(context) * 1.4)),
+              //           contentPadding: EdgeInsets.zero,
+              //           actionsPadding: EdgeInsets.zero,
+              //           titlePadding: EdgeInsets.zero,
+              //           title: Container(
+              //             decoration: BoxDecoration(
+              //                 borderRadius: BorderRadius.circular(
+              //                     AppDimensions.height10(context) * 1.4)),
+              //             margin: EdgeInsets.only(
+              //                 top: AppDimensions.height10(context) * 1.9,
+              //                 right: AppDimensions.height10(context) * 1.6,
+              //                 left: AppDimensions.width10(context) * 1.6,
+              //                 bottom: AppDimensions.height10(context) * 0.2),
+              //             height: AppDimensions.height10(context) * 2.2,
+              //             width: AppDimensions.width10(context) * 23.8,
+              //             child: Text(
+              //               "Exit without saving changes?",
+              //               textAlign: TextAlign.center,
+              //               style: TextStyle(
+              //                 fontSize: AppDimensions.font10(context) * 1.7,
+              //                 fontWeight: FontWeight.w400,
+              //               ),
+              //             ),
+              //           ),
+              //           content: Container(
+              //             margin: EdgeInsets.only(
+              //                 top: AppDimensions.height10(context) * 1,
+              //                 bottom: AppDimensions.height10(context) * 1.5,
+              //                 left: AppDimensions.width10(context) * 1.6,
+              //                 right: AppDimensions.height10(context) * 1.6),
+              //             // height: AppDimensions.height10(context) * 3.4,
+              //             width: AppDimensions.width10(context) * 23.8,
+              //             child: Text(
+              //               "Are you sure you want to exit, all your\nchanges will be lost?",
+              //               textAlign: TextAlign.center,
+              //               style: TextStyle(
+              //                 fontSize: AppDimensions.font10(context) * 1.5,
+              //                 fontWeight: FontWeight.w400,
+              //               ),
+              //             ),
+              //           ),
+              //           actions: <Widget>[
+              //             Column(
+              //               children: [
+              //                 SizedBox(
+              //                   height: AppDimensions.height10(context) * 0.1,
+              //                   child: Divider(
+              //                     color:
+              //                         const Color(0XFF3C3C43).withOpacity(0.29),
+              //                   ),
+              //                 ),
+              //                 Container(
+              //                   height: AppDimensions.height10(context) * 4.2,
+              //                   width: double.infinity,
+              //                   color: const Color(0xFF007AFF),
+              //                   child: TextButton(
+              //                     onPressed: () {
+              //                       Navigator.push(
+              //                           context,
+              //                           FadePageRouteReverse(
+              //                               page: new_progress_score(
+              //                             premium: widget.premium,
+              //                             evaluationIndex: widget.index,
+              //                           )));
+              //                       setState(() {
+              //                         select_item = -1;
+              //                         select_item_2 = -1;
+              //                       });
+              //                     },
+              //                     child: Text(
+              //                       'Yes',
+              //                       style: TextStyle(
+              //                           color: const Color(0xFFFFFFFF),
+              //                           fontSize:
+              //                               AppDimensions.font10(context) * 1.7,
+              //                           fontFamily: "Laila",
+              //                           fontWeight: FontWeight.w400),
+              //                     ),
+              //                   ),
+              //                 ),
+              //                 SizedBox(
+              //                   height: AppDimensions.height10(context) * 0.1,
+              //                   child: Divider(
+              //                     color:
+              //                         const Color(0XFF3C3C43).withOpacity(0.29),
+              //                   ),
+              //                 ),
+              //                 SizedBox(
+              //                   height: AppDimensions.height10(context) * 4.4,
+              //                   width: double.infinity,
+              //                   child: TextButton(
+              //                     onPressed: () {
+              //                       Navigator.pop(context);
+              //                     },
+              //                     child: Text(
+              //                       'Cancel',
+              //                       style: TextStyle(
+              //                           fontSize:
+              //                               AppDimensions.font10(context) * 1.7,
+              //                           fontFamily: "Laila",
+              //                           fontWeight: FontWeight.w400,
+              //                           color: const Color(0xFF007AFF)),
+              //                     ),
+              //                   ),
+              //                 ),
+              //                 SizedBox(
+              //                   height: AppDimensions.height10(context) * 0.1,
+              //                   child: Divider(
+              //                     color:
+              //                         const Color(0XFF3C3C43).withOpacity(0.29),
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ],
+              //         )));
+
+              GoalScreenBox().alertBox(
+                context,
+                "Exit without saving changes?",
+                "Are you sure you want to exit, all your\nchanges will be lost?",
+                () {
+                  Navigator.push(
+                      context,
+                      FadePageRouteReverse(
+                          page: new_progress_score(
+                        premium: widget.premium,
+                        evaluationIndex: widget.index,
+                      )));
+                  setState(() {
+                    select_item = -1;
+                    select_item_2 = -1;
+                  });
                 },
-                icon: Image.asset(
-                  'assets/images/Back.webp',
-                  // width: AppDimensions.width10(context) * 3.0,
-                  height: AppDimensions.height10(context) * 3.0,
-                  fit: BoxFit.contain,
-                )),
-          ),
+                () {
+                  Navigator.pop(context); //ondismiss
+                },
+              );
+            } else {
+              Navigator.push(
+                  context,
+                  FadePageRouteReverse(
+                      page: new_progress_score(
+                    premium: widget.premium,
+                    evaluationIndex: widget.index,
+                  )));
+              setState(() {
+                select_item = -1;
+                select_item_2 = -1;
+              });
+            }
+          })
+              // IconButton(
+              //     onPressed: () {
+              //       if (disable == false && widget.premium) {
+              //         showAnimatedDialog(
+              //             animationType: DialogTransitionType.fadeScale,
+              //             curve: Curves.easeInOut,
+              //             duration: const Duration(seconds: 1),
+              //             context: context,
+              //             builder: (BuildContext context) => Container(
+              //                 width: AppDimensions.width10(context) * 27.0,
+              //                 height: AppDimensions.height10(context) * 18.2,
+              //                 decoration: BoxDecoration(
+              //                     borderRadius: BorderRadius.circular(
+              //                         AppDimensions.height10(context) * 1.4)),
+              //                 child: AlertDialog(
+              //                   shape: RoundedRectangleBorder(
+              //                       borderRadius: BorderRadius.circular(
+              //                           AppDimensions.height10(context) * 1.4)),
+              //                   contentPadding: EdgeInsets.zero,
+              //                   actionsPadding: EdgeInsets.zero,
+              //                   titlePadding: EdgeInsets.zero,
+              //                   title: Container(
+              //                     decoration: BoxDecoration(
+              //                         borderRadius: BorderRadius.circular(
+              //                             AppDimensions.height10(context) * 1.4)),
+              //                     margin: EdgeInsets.only(
+              //                         top: AppDimensions.height10(context) * 1.9,
+              //                         right:
+              //                             AppDimensions.height10(context) * 1.6,
+              //                         left: AppDimensions.width10(context) * 1.6,
+              //                         bottom:
+              //                             AppDimensions.height10(context) * 0.2),
+              //                     height: AppDimensions.height10(context) * 2.2,
+              //                     width: AppDimensions.width10(context) * 23.8,
+              //                     child: Text(
+              //                       "Exit without saving changes?",
+              //                       textAlign: TextAlign.center,
+              //                       style: TextStyle(
+              //                         fontSize:
+              //                             AppDimensions.font10(context) * 1.7,
+              //                         fontWeight: FontWeight.w400,
+              //                       ),
+              //                     ),
+              //                   ),
+              //                   content: Container(
+              //                     margin: EdgeInsets.only(
+              //                         bottom:
+              //                             AppDimensions.height10(context) * 1.5,
+              //                         left: AppDimensions.width10(context) * 1.6,
+              //                         right:
+              //                             AppDimensions.height10(context) * 1.6),
+              //                     height: AppDimensions.height10(context) * 3.4,
+              //                     width: AppDimensions.width10(context) * 23.8,
+              //                     child: Text(
+              //                       "Are you sure you want to exit, all your\nchanges will be lost?",
+              //                       textAlign: TextAlign.center,
+              //                       style: TextStyle(
+              //                         fontSize:
+              //                             AppDimensions.font10(context) * 1.3,
+              //                         fontWeight: FontWeight.w400,
+              //                       ),
+              //                     ),
+              //                   ),
+              //                   actions: <Widget>[
+              //                     Column(
+              //                       children: [
+              //                         SizedBox(
+              //                           height:
+              //                               AppDimensions.height10(context) * 0.1,
+              //                           child: Divider(
+              //                             color: const Color(0XFF3C3C43)
+              //                                 .withOpacity(0.29),
+              //                           ),
+              //                         ),
+              //                         Container(
+              //                           height:
+              //                               AppDimensions.height10(context) * 4.2,
+              //                           width: double.infinity,
+              //                           color: const Color(0xFF007AFF),
+              //                           child: TextButton(
+              //                             onPressed: () {
+              //                               Navigator.push(
+              //                                   context,
+              //                                   FadePageRouteReverse(
+              //                                       page: new_progress_score(
+              //                                     premium: widget.premium,
+              //                                     evaluationIndex: widget.index,
+              //                                   )));
+              //                               setState(() {
+              //                                 select_item = -1;
+              //                                 select_item_2 = -1;
+              //                               });
+              //                             },
+              //                             child: Text(
+              //                               'Yes',
+              //                               style: TextStyle(
+              //                                   color: const Color(0xFFFFFFFF),
+              //                                   fontSize: AppDimensions.font10(
+              //                                           context) *
+              //                                       1.7,
+              //                                   fontFamily: "Laila",
+              //                                   fontWeight: FontWeight.w400),
+              //                             ),
+              //                           ),
+              //                         ),
+              //                         SizedBox(
+              //                           height:
+              //                               AppDimensions.height10(context) * 0.1,
+              //                           child: Divider(
+              //                             color: const Color(0XFF3C3C43)
+              //                                 .withOpacity(0.29),
+              //                           ),
+              //                         ),
+              //                         SizedBox(
+              //                           height:
+              //                               AppDimensions.height10(context) * 4.4,
+              //                           width: double.infinity,
+              //                           child: TextButton(
+              //                             onPressed: () {
+              //                               Navigator.pop(context);
+              //                             },
+              //                             child: Text(
+              //                               'Cancel',
+              //                               style: TextStyle(
+              //                                   fontSize: AppDimensions.font10(
+              //                                           context) *
+              //                                       1.7,
+              //                                   fontFamily: "Laila",
+              //                                   fontWeight: FontWeight.w400,
+              //                                   color: const Color(0xFF007AFF)),
+              //                             ),
+              //                           ),
+              //                         ),
+              //                         SizedBox(
+              //                           height:
+              //                               AppDimensions.height10(context) * 0.1,
+              //                           child: Divider(
+              //                             color: const Color(0XFF3C3C43)
+              //                                 .withOpacity(0.29),
+              //                           ),
+              //                         ),
+              //                       ],
+              //                     ),
+              //                   ],
+              //                 )));
+              //       } else {
+              //         Navigator.push(
+              //             context,
+              //             FadePageRouteReverse(
+              //                 page: new_progress_score(
+              //               premium: widget.premium,
+              //               evaluationIndex: widget.index,
+              //             )));
+              //         setState(() {
+              //           select_item = -1;
+              //           select_item_2 = -1;
+              //         });
+              //       }
+              //     },
+              //     icon: Image.asset(
+              //       'assets/images/Back.webp',
+              //       // width: AppDimensions.width10(context) * 3.0,
+              //       height: AppDimensions.height10(context) * 3.0,
+              //       fit: BoxFit.contain,
+              //     )),
+              ),
         ),
         body: Container(
           width: double.infinity,
@@ -602,7 +773,7 @@ class _your_impactState extends State<your_impact> {
                                           style: TextStyle(
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.6,
+                                                  1.8,
                                               fontWeight: FontWeight.w300,
                                               color: const Color(0xFF646464)),
                                         ),
@@ -612,60 +783,65 @@ class _your_impactState extends State<your_impact> {
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              width: AppDimensions.width10(context) * 23.4,
-                              //height: AppDimensions.height10(context) * 7.3,
-                              child: Stack(
-                                children: [
-                                  Align(
-                                    alignment: const Alignment(-1, -0.5),
-                                    child: Container(
-                                      width:
-                                          AppDimensions.height10(context) * 2.5,
-                                      height:
-                                          AppDimensions.height10(context) * 1.6,
-                                      decoration: const BoxDecoration(
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                'assets/images/colon.webp'),
-                                            fit: BoxFit.contain),
-                                      ),
-                                    ),
-                                  ),
-                                  Align(
-                                    alignment: const Alignment(1, 0),
-                                    child: SizedBox(
-                                      width:
-                                          AppDimensions.width10(context) * 21.4,
-                                      // height:
-                                      //     AppDimensions.height10(context) * 7.3,
-
-                                      ///color: Colors.amber,
-                                      child: Center(
-                                        child: Text(
-                                          goalDetails['goalLevel'] == null ||
-                                                  goalDetails['goalLevel'] ==
-                                                      0 ||
-                                                  level == 0
-                                              ? "Score needed"
-                                              : '${messages[level - 1]}',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  1.8,
-                                              fontWeight: FontWeight.w600,
-                                              color: const Color(0xFFFFFFFF)),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  top: AppDimensions.height10(context) * 2),
+                              child: SizedBox(
+                                width: AppDimensions.width10(context) * 23.4,
+                                //height: AppDimensions.height10(context) * 7.3,
+                                child: Stack(
+                                  children: [
+                                    Align(
+                                      alignment: const Alignment(-1, -0.5),
+                                      child: Container(
+                                        width: AppDimensions.height10(context) *
+                                            2.5,
+                                        height:
+                                            AppDimensions.height10(context) *
+                                                1.6,
+                                        decoration: const BoxDecoration(
+                                          image: DecorationImage(
+                                              image: AssetImage(
+                                                  'assets/images/colon.webp'),
+                                              fit: BoxFit.contain),
                                         ),
                                       ),
                                     ),
-                                  )
-                                ],
+                                    Align(
+                                      alignment: const Alignment(1, 1),
+                                      child: SizedBox(
+                                        width: AppDimensions.width10(context) *
+                                            21.4,
+                                        // height:
+                                        //     AppDimensions.height10(context) * 7.3,
+
+                                        ///color: Colors.amber,
+                                        child: Center(
+                                          child: Text(
+                                            goalDetails['goalLevel'] == null ||
+                                                    goalDetails['goalLevel'] ==
+                                                        0 ||
+                                                    level == 0
+                                                ? "Score needed"
+                                                : '${messages[level - 1]}',
+                                            textAlign: TextAlign.center,
+                                            style: TextStyle(
+                                                fontSize: AppDimensions.font10(
+                                                        context) *
+                                                    1.8,
+                                                fontWeight: FontWeight.w600,
+                                                color: const Color(0xFFFFFFFF)),
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             ),
                             Container(
                               width: AppDimensions.width10(context) * 28.8,
-                              height: AppDimensions.height10(context) * 4.5,
+                              // height: AppDimensions.height10(context) * 4.5,
                               alignment: Alignment.topCenter,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 2.9),
@@ -674,7 +850,7 @@ class _your_impactState extends State<your_impact> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.6,
+                                        AppDimensions.font10(context) * 1.8,
                                     fontWeight: FontWeight.w500,
                                     color: const Color(0xFFFFFFFF)),
                               ),
@@ -717,7 +893,7 @@ class _your_impactState extends State<your_impact> {
                             ),
                             Container(
                               width: AppDimensions.width10(context) * 37.0,
-                              height: AppDimensions.height10(context) * 2.2,
+                              // height: AppDimensions.height10(context) * 2.2,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 1.3),
                               child: Text(
@@ -725,7 +901,7 @@ class _your_impactState extends State<your_impact> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 2.0,
+                                        AppDimensions.font10(context) * 2.2,
                                     fontWeight: FontWeight.w500,
                                     height:
                                         AppDimensions.height10(context) * 0.15,
@@ -737,17 +913,19 @@ class _your_impactState extends State<your_impact> {
                       ),
                       Container(
                         width: double.infinity,
-                        height: AppDimensions.width10(context) * 16.3,
+                        height: AppDimensions.width10(context) * 18.3,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 3.0,
                             left: AppDimensions.width10(context) * 0.425),
                         child: ListView.builder(
                             shrinkWrap: true,
-                            padding: EdgeInsets.zero,
+                            //  padding: EdgeInsets.zero,
                             scrollDirection: Axis.horizontal,
                             itemCount: options.length,
                             itemBuilder: (BuildContext context, int index1) {
-                              return AnimatedScaleButton(
+                              return GoalCircle(
+                                premium: widget.premium,
+                                selectedItemIndexesOuter: select_item,
                                 onTap: () {
                                   if (disable != true &&
                                       widget.premium == true) {
@@ -756,122 +934,136 @@ class _your_impactState extends State<your_impact> {
                                     });
                                   }
                                 },
-                                child: Container(
-                                  width: AppDimensions.width10(context) * 12.95,
-                                  height:
-                                      AppDimensions.width10(context) * 12.95,
-                                  margin: EdgeInsets.only(
-                                      right:
-                                          AppDimensions.width10(context) * 1.5),
-                                  child: Stack(children: [
-                                    Container(
-                                      width:
-                                          AppDimensions.width10(context) * 13.0,
-                                      height:
-                                          AppDimensions.width10(context) * 13.0,
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          gradient: select_item != index1
-                                              ? const LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                      Color(0XFFF5F5F5),
-                                                      Color(0XFFF5F5F5)
-                                                    ])
-                                              : const LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                      Color(0XFFFA9E71),
-                                                      Color(0xFFF9B87E)
-                                                    ]),
-                                          border: Border.all(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  0.3,
-                                              color: select_item != index1
-                                                  ? const Color(0xFFEE8F70)
-                                                  : const Color(0xFFFFFFFF))),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            '${index1 + 1}',
-                                            style: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    3.1,
-                                                fontWeight: FontWeight.w500,
-                                                color: select_item != index1
-                                                    ? const Color(0xFFFA9934)
-                                                    : const Color(0xFFFFFFFF)),
-                                          ),
-                                          Text(
-                                            options[index1],
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.46,
-                                                fontWeight: FontWeight.w400,
-                                                color: select_item != index1
-                                                    ? const Color(0xFFFA9934)
-                                                    : const Color(0xFFFFFFFF)),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    select_item != index1
-                                        ? Container()
-                                        : Align(
-                                            alignment: const Alignment(0, 0.8),
-                                            child: Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  4.0,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.0,
-                                              padding: EdgeInsets.all(
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      0.2),
-                                              decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  border: Border.all(
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              0.1,
-                                                      color: const Color(
-                                                          0xFFFFFFFF))),
-                                              child: Container(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    2.4,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    2.4,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        width: AppDimensions
-                                                                .width10(
-                                                                    context) *
-                                                            0.1,
-                                                        color: const Color(
-                                                            0xFFFFFFFF)),
-                                                    shape: BoxShape.circle,
-                                                    image: const DecorationImage(
-                                                        image: AssetImage(
-                                                            'assets/images/circle_tick.webp'))),
-                                              ),
-                                            ),
-                                          )
-                                  ]),
-                                ),
+                                index1: index1,
+                                options: options,
                               );
+                              // AnimatedScaleButton(
+                              //   onTap: () {
+                              //     if (disable != true &&
+                              //         widget.premium == true) {
+                              //       setState(() {
+                              //         select_item = index1;
+                              //       });
+                              //     }
+                              //   },
+                              //   child: Container(
+                              //     width: AppDimensions.width10(context) * 14,
+                              //     height: AppDimensions.width10(context) * 14,
+                              //     margin: EdgeInsets.only(
+                              //         right:
+                              //             AppDimensions.width10(context) * 1.5),
+                              //     child: Stack(children: [
+                              //       Container(
+                              //         padding: EdgeInsets.all(
+                              //             AppDimensions.height10(context) *
+                              //                 1.5),
+                              //         width: AppDimensions.width10(context) *
+                              //             13.95,
+                              //         height: AppDimensions.width10(context) *
+                              //             13.95,
+                              //         decoration: BoxDecoration(
+                              //             shape: BoxShape.circle,
+                              //             gradient: select_item != index1
+                              //                 ? const LinearGradient(
+                              //                     begin: Alignment.topCenter,
+                              //                     end: Alignment.bottomCenter,
+                              //                     colors: [
+                              //                         Color(0XFFF5F5F5),
+                              //                         Color(0XFFF5F5F5)
+                              //                       ])
+                              //                 : const LinearGradient(
+                              //                     begin: Alignment.topCenter,
+                              //                     end: Alignment.bottomCenter,
+                              //                     colors: [
+                              //                         Color(0XFFFA9E71),
+                              //                         Color(0xFFF9B87E)
+                              //                       ]),
+                              //             border: Border.all(
+                              //                 width: AppDimensions.height10(
+                              //                         context) *
+                              //                     0.3,
+                              //                 color: select_item != index1
+                              //                     ? const Color(0xFFEE8F70)
+                              //                     : const Color(0xFFFFFFFF))),
+                              //         child: Column(
+                              //           mainAxisAlignment:
+                              //               MainAxisAlignment.center,
+                              //           children: [
+                              //             Text(
+                              //               '${index1 + 1}',
+                              //               style: TextStyle(
+                              //                   fontSize: AppDimensions.font10(
+                              //                           context) *
+                              //                       3.1,
+                              //                   fontWeight: FontWeight.w500,
+                              //                   color: select_item != index1
+                              //                       ? const Color(0xFFFA9934)
+                              //                       : const Color(0xFFFFFFFF)),
+                              //             ),
+                              //             Text(
+                              //               options[index1],
+                              //               textAlign: TextAlign.center,
+                              //               style: TextStyle(
+                              //                   fontSize: AppDimensions.font10(
+                              //                           context) *
+                              //                       1.46,
+                              //                   fontWeight: FontWeight.w400,
+                              //                   color: select_item != index1
+                              //                       ? const Color(0xFFFA9934)
+                              //                       : const Color(0xFFFFFFFF)),
+                              //             )
+                              //           ],
+                              //         ),
+                              //       ),
+                              //       select_item != index1
+                              //           ? Container()
+                              //           : Align(
+                              //               alignment: const Alignment(0, 0.8),
+                              //               child: Container(
+                              //                 width: AppDimensions.height10(
+                              //                         context) *
+                              //                     4.0,
+                              //                 height: AppDimensions.height10(
+                              //                         context) *
+                              //                     4.0,
+                              //                 padding: EdgeInsets.all(
+                              //                     AppDimensions.height10(
+                              //                             context) *
+                              //                         0.2),
+                              //                 decoration: BoxDecoration(
+                              //                     shape: BoxShape.circle,
+                              //                     border: Border.all(
+                              //                         width:
+                              //                             AppDimensions.width10(
+                              //                                     context) *
+                              //                                 0.1,
+                              //                         color: const Color(
+                              //                             0xFFFFFFFF))),
+                              //                 child: Container(
+                              //                   width: AppDimensions.height10(
+                              //                           context) *
+                              //                       2.4,
+                              //                   height: AppDimensions.height10(
+                              //                           context) *
+                              //                       2.4,
+                              //                   decoration: BoxDecoration(
+                              //                       border: Border.all(
+                              //                           width: AppDimensions
+                              //                                   .width10(
+                              //                                       context) *
+                              //                               0.1,
+                              //                           color: const Color(
+                              //                               0xFFFFFFFF)),
+                              //                       shape: BoxShape.circle,
+                              //                       image: const DecorationImage(
+                              //                           image: AssetImage(
+                              //                               'assets/images/circle_tick.webp'))),
+                              //                 ),
+                              //               ),
+                              //             )
+                              //     ]),
+                              //   ),
+                              // );
                             }),
                       ),
                       Container(
@@ -913,7 +1105,7 @@ class _your_impactState extends State<your_impact> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                        AppDimensions.font10(context) * 2.0,
+                                        AppDimensions.font10(context) * 2.2,
                                     fontWeight: FontWeight.w500,
                                     height:
                                         AppDimensions.height10(context) * 0.15,
@@ -925,7 +1117,7 @@ class _your_impactState extends State<your_impact> {
                       ),
                       Container(
                         width: double.infinity,
-                        height: AppDimensions.width10(context) * 16.3,
+                        height: AppDimensions.width10(context) * 18.3,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 3.0,
                             left: AppDimensions.width10(context) * 0.425),
@@ -935,7 +1127,11 @@ class _your_impactState extends State<your_impact> {
                             scrollDirection: Axis.horizontal,
                             itemCount: options2.length,
                             itemBuilder: (BuildContext context, int index1) {
-                              return AnimatedScaleButton(
+                              return GoalCircle(
+                                premium: widget.premium,
+                                selectedItemIndexesOuter: select_item_2,
+                                index1: index1,
+                                options: options2,
                                 onTap: () {
                                   if (disable != true &&
                                       widget.premium == true) {
@@ -944,121 +1140,134 @@ class _your_impactState extends State<your_impact> {
                                     });
                                   }
                                 },
-                                child: Container(
-                                  width: AppDimensions.width10(context) * 13.0,
-                                  height: AppDimensions.width10(context) * 13.0,
-                                  margin: EdgeInsets.only(
-                                      right:
-                                          AppDimensions.width10(context) * 1.5),
-                                  child: Stack(children: [
-                                    Container(
-                                      width: AppDimensions.width10(context) *
-                                          12.95,
-                                      height: AppDimensions.width10(context) *
-                                          12.95,
-                                      decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          gradient: select_item_2 != index1
-                                              ? const LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                      Color(0XFFF5F5F5),
-                                                      Color(0XFFF5F5F5)
-                                                    ])
-                                              : const LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                      Color(0XFFFA9E71),
-                                                      Color(0xFFF9B87E)
-                                                    ]),
-                                          border: Border.all(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  0.3,
-                                              color: select_item_2 != index1
-                                                  ? const Color(0xFFEE8F70)
-                                                  : const Color(0xFFFFFFFF))),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            '${index1 + 1}',
-                                            style: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    3.1,
-                                                fontWeight: FontWeight.w500,
-                                                color: select_item_2 != index1
-                                                    ? const Color(0xFFFA9934)
-                                                    : const Color(0xFFFFFFFF)),
-                                          ),
-                                          Text(
-                                            options2[index1],
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.46,
-                                                fontWeight: FontWeight.w400,
-                                                color: select_item_2 != index1
-                                                    ? const Color(0xFFFA9934)
-                                                    : const Color(0xFFFFFFFF)),
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                    select_item_2 != index1
-                                        ? Container()
-                                        : Align(
-                                            alignment: const Alignment(0, 0.8),
-                                            child: Container(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  4.0,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  4.0,
-                                              padding: EdgeInsets.all(
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      0.2),
-                                              decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  border: Border.all(
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              0.1,
-                                                      color: const Color(
-                                                          0xFFFFFFFF))),
-                                              child: Container(
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    2.4,
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    2.4,
-                                                decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                        width: AppDimensions
-                                                                .width10(
-                                                                    context) *
-                                                            0.1,
-                                                        color: const Color(
-                                                            0xFFFFFFFF)),
-                                                    shape: BoxShape.circle,
-                                                    image: const DecorationImage(
-                                                        image: AssetImage(
-                                                            'assets/images/circle_tick.webp'))),
-                                              ),
-                                            ),
-                                          )
-                                  ]),
-                                ),
                               );
+                              // AnimatedScaleButton(
+                              //   onTap: () {
+                              //     if (disable != true &&
+                              //         widget.premium == true) {
+                              //       setState(() {
+                              //         select_item_2 = index1;
+                              //       });
+                              //     }
+                              //   },
+                              //   child: Container(
+                              //     width: AppDimensions.width10(context) * 14.0,
+                              //     height: AppDimensions.width10(context) * 14.0,
+                              //     margin: EdgeInsets.only(
+                              //         right:
+                              //             AppDimensions.width10(context) * 1.5),
+                              //     child: Stack(children: [
+                              //       Container(
+                              //         padding: EdgeInsets.all(
+                              //             AppDimensions.height10(context) *
+                              //                 1.5),
+                              //         width: AppDimensions.width10(context) *
+                              //             13.95,
+                              //         height: AppDimensions.width10(context) *
+                              //             13.95,
+                              //         decoration: BoxDecoration(
+                              //             shape: BoxShape.circle,
+                              //             gradient: select_item_2 != index1
+                              //                 ? const LinearGradient(
+                              //                     begin: Alignment.topCenter,
+                              //                     end: Alignment.bottomCenter,
+                              //                     colors: [
+                              //                         Color(0XFFF5F5F5),
+                              //                         Color(0XFFF5F5F5)
+                              //                       ])
+                              //                 : const LinearGradient(
+                              //                     begin: Alignment.topCenter,
+                              //                     end: Alignment.bottomCenter,
+                              //                     colors: [
+                              //                         Color(0XFFFA9E71),
+                              //                         Color(0xFFF9B87E)
+                              //                       ]),
+                              //             border: Border.all(
+                              //                 width: AppDimensions.height10(
+                              //                         context) *
+                              //                     0.3,
+                              //                 color: select_item_2 != index1
+                              //                     ? const Color(0xFFEE8F70)
+                              //                     : const Color(0xFFFFFFFF))),
+                              //         child: Column(
+                              //           mainAxisAlignment:
+                              //               MainAxisAlignment.center,
+                              //           children: [
+                              //             Text(
+                              //               '${index1 + 1}',
+                              //               style: TextStyle(
+                              //                   fontSize: AppDimensions.font10(
+                              //                           context) *
+                              //                       3.1,
+                              //                   fontWeight: FontWeight.w500,
+                              //                   color: select_item_2 != index1
+                              //                       ? const Color(0xFFFA9934)
+                              //                       : const Color(0xFFFFFFFF)),
+                              //             ),
+                              //             Text(
+                              //               options2[index1],
+                              //               textAlign: TextAlign.center,
+                              //               style: TextStyle(
+                              //                   fontSize: AppDimensions.font10(
+                              //                           context) *
+                              //                       1.46,
+                              //                   fontWeight: FontWeight.w400,
+                              //                   color: select_item_2 != index1
+                              //                       ? const Color(0xFFFA9934)
+                              //                       : const Color(0xFFFFFFFF)),
+                              //             )
+                              //           ],
+                              //         ),
+                              //       ),
+                              //       select_item_2 != index1
+                              //           ? Container()
+                              //           : Align(
+                              //               alignment: const Alignment(0, 0.8),
+                              //               child: Container(
+                              //                 width: AppDimensions.height10(
+                              //                         context) *
+                              //                     4.0,
+                              //                 height: AppDimensions.height10(
+                              //                         context) *
+                              //                     4.0,
+                              //                 padding: EdgeInsets.all(
+                              //                     AppDimensions.height10(
+                              //                             context) *
+                              //                         0.2),
+                              //                 decoration: BoxDecoration(
+                              //                     shape: BoxShape.circle,
+                              //                     border: Border.all(
+                              //                         width:
+                              //                             AppDimensions.width10(
+                              //                                     context) *
+                              //                                 0.1,
+                              //                         color: const Color(
+                              //                             0xFFFFFFFF))),
+                              //                 child: Container(
+                              //                   width: AppDimensions.height10(
+                              //                           context) *
+                              //                       2.4,
+                              //                   height: AppDimensions.height10(
+                              //                           context) *
+                              //                       2.4,
+                              //                   decoration: BoxDecoration(
+                              //                       border: Border.all(
+                              //                           width: AppDimensions
+                              //                                   .width10(
+                              //                                       context) *
+                              //                               0.1,
+                              //                           color: const Color(
+                              //                               0xFFFFFFFF)),
+                              //                       shape: BoxShape.circle,
+                              //                       image: const DecorationImage(
+                              //                           image: AssetImage(
+                              //                               'assets/images/circle_tick.webp'))),
+                              //                 ),
+                              //               ),
+                              //             )
+                              //     ]),
+                              //   ),
+                              // );
                             }),
                       ),
                       saved
@@ -1087,233 +1296,248 @@ class _your_impactState extends State<your_impact> {
                               height: AppDimensions.height10(context) * 5.0,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 7.5,
-                                  bottom:
-                                      AppDimensions.height10(context) * 9.5),
+                                  bottom: widget.premium == true
+                                      ? AppDimensions.height10(context) * 9.5
+                                      : AppDimensions.height10(context) * 20),
                               child: Row(
                                 children: [
                                   AnimatedScaleButton(
                                     onTap: () {
                                       if (disable == false &&
                                           widget.premium == true) {
-                                        showAnimatedDialog(
-                                            animationType:
-                                                DialogTransitionType.fadeScale,
-                                            curve: Curves.easeInOut,
-                                            duration:
-                                                const Duration(seconds: 1),
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                SizedBox(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      27.0,
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          18.2,
-                                                  child: AlertDialog(
-                                                    shape: RoundedRectangleBorder(
-                                                        borderRadius: BorderRadius
-                                                            .circular(AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                1.4)),
-                                                    contentPadding:
-                                                        EdgeInsets.zero,
-                                                    actionsPadding:
-                                                        EdgeInsets.zero,
-                                                    titlePadding:
-                                                        EdgeInsets.zero,
-                                                    title: Container(
-                                                      decoration: BoxDecoration(
-                                                          borderRadius: BorderRadius
-                                                              .circular(AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  1.4)),
-                                                      margin: EdgeInsets.only(
-                                                          top: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.9,
-                                                          right: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.6,
-                                                          left: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.6,
-                                                          bottom: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              0.2),
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          2.2,
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              23.8,
-                                                      child: Text(
-                                                        "Clear answers?",
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .font10(
-                                                                      context) *
-                                                              1.7,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    content: Container(
-                                                      margin: EdgeInsets.only(
-                                                          bottom: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.5,
-                                                          left: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.6,
-                                                          right: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.6),
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          3.2,
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              23.8,
-                                                      child: Text(
-                                                        "Are you sure you want to clear all your\nanswers for this Goal criterion?",
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: TextStyle(
-                                                          fontSize: AppDimensions
-                                                                  .font10(
-                                                                      context) *
-                                                              1.3,
-                                                          fontWeight:
-                                                              FontWeight.w400,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    actions: <Widget>[
-                                                      Column(
-                                                        children: [
-                                                          SizedBox(
-                                                            height: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                0.1,
-                                                            child: Divider(
-                                                              color: const Color(
-                                                                      0XFF3C3C43)
-                                                                  .withOpacity(
-                                                                      0.29),
-                                                            ),
-                                                          ),
-                                                          Container(
-                                                            height: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                4.2,
-                                                            width:
-                                                                double.infinity,
-                                                            color: const Color(
-                                                                0xFF007AFF),
-                                                            child: TextButton(
-                                                              onPressed: () {
-                                                                setState(() {
-                                                                  select_item =
-                                                                      -1;
-                                                                  select_item_2 =
-                                                                      -1;
-                                                                });
-                                                                Navigator.pop(
-                                                                    context);
-                                                              },
-                                                              child: Text(
-                                                                'Yes',
-                                                                style: TextStyle(
-                                                                    color: const Color(
-                                                                        0xFFFFFFFF),
-                                                                    fontSize:
-                                                                        AppDimensions.height10(context) *
-                                                                            1.7,
-                                                                    fontFamily:
-                                                                        "Laila",
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          SizedBox(
-                                                            height: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                0.1,
-                                                            child: Divider(
-                                                              color: const Color(
-                                                                      0XFF3C3C43)
-                                                                  .withOpacity(
-                                                                      0.29),
-                                                            ),
-                                                          ),
-                                                          SizedBox(
-                                                            height: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                4.4,
-                                                            width:
-                                                                double.infinity,
-                                                            child: TextButton(
-                                                              onPressed: () {
-                                                                Navigator.pop(
-                                                                    context);
-                                                              },
-                                                              child: Text(
-                                                                'Cancel',
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        AppDimensions.height10(context) *
-                                                                            1.7,
-                                                                    fontFamily:
-                                                                        "Laila",
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w400,
-                                                                    color: const Color(
-                                                                        0xFF007AFF)),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          SizedBox(
-                                                            height: AppDimensions
-                                                                    .height10(
-                                                                        context) *
-                                                                0.1,
-                                                            child: Divider(
-                                                              color: const Color(
-                                                                      0XFF3C3C43)
-                                                                  .withOpacity(
-                                                                      0.29),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ));
+                                        // showAnimatedDialog(
+                                        //     animationType:
+                                        //         DialogTransitionType.fadeScale,
+                                        //     curve: Curves.easeInOut,
+                                        //     duration:
+                                        //         const Duration(seconds: 1),
+                                        //     context: context,
+                                        //     builder: (BuildContext context) =>
+                                        //         SizedBox(
+                                        //           width: AppDimensions.height10(
+                                        //                   context) *
+                                        //               27.0,
+                                        //           height:
+                                        //               AppDimensions.height10(
+                                        //                       context) *
+                                        //                   18.2,
+                                        //           child: AlertDialog(
+                                        //             shape: RoundedRectangleBorder(
+                                        //                 borderRadius: BorderRadius
+                                        //                     .circular(AppDimensions
+                                        //                             .height10(
+                                        //                                 context) *
+                                        //                         1.4)),
+                                        //             contentPadding:
+                                        //                 EdgeInsets.zero,
+                                        //             actionsPadding:
+                                        //                 EdgeInsets.zero,
+                                        //             titlePadding:
+                                        //                 EdgeInsets.zero,
+                                        //             title: Container(
+                                        //               decoration: BoxDecoration(
+                                        //                   borderRadius: BorderRadius
+                                        //                       .circular(AppDimensions
+                                        //                               .height10(
+                                        //                                   context) *
+                                        //                           1.4)),
+                                        //               margin: EdgeInsets.only(
+                                        //                   top: AppDimensions
+                                        //                           .height10(
+                                        //                               context) *
+                                        //                       1.9,
+                                        //                   right: AppDimensions
+                                        //                           .height10(
+                                        //                               context) *
+                                        //                       1.6,
+                                        //                   left: AppDimensions
+                                        //                           .height10(
+                                        //                               context) *
+                                        //                       1.6,
+                                        //                   bottom: AppDimensions
+                                        //                           .height10(
+                                        //                               context) *
+                                        //                       0.2),
+                                        //               height: AppDimensions
+                                        //                       .height10(
+                                        //                           context) *
+                                        //                   2.2,
+                                        //               width:
+                                        //                   AppDimensions.width10(
+                                        //                           context) *
+                                        //                       23.8,
+                                        //               child: Text(
+                                        //                 "Clear answers?",
+                                        //                 textAlign:
+                                        //                     TextAlign.center,
+                                        //                 style: TextStyle(
+                                        //                   fontSize: AppDimensions
+                                        //                           .font10(
+                                        //                               context) *
+                                        //                       1.7,
+                                        //                   fontWeight:
+                                        //                       FontWeight.w400,
+                                        //                 ),
+                                        //               ),
+                                        //             ),
+                                        //             content: Container(
+                                        //               margin: EdgeInsets.only(
+                                        //                   bottom: AppDimensions
+                                        //                           .height10(
+                                        //                               context) *
+                                        //                       1.5,
+                                        //                   left: AppDimensions
+                                        //                           .height10(
+                                        //                               context) *
+                                        //                       1.6,
+                                        //                   right: AppDimensions
+                                        //                           .height10(
+                                        //                               context) *
+                                        //                       1.6),
+                                        //               height: AppDimensions
+                                        //                       .height10(
+                                        //                           context) *
+                                        //                   3.2,
+                                        //               width:
+                                        //                   AppDimensions.width10(
+                                        //                           context) *
+                                        //                       23.8,
+                                        //               child: Text(
+                                        //                 "Are you sure you want to clear all your\nanswers for this Goal criterion?",
+                                        //                 textAlign:
+                                        //                     TextAlign.center,
+                                        //                 style: TextStyle(
+                                        //                   fontSize: AppDimensions
+                                        //                           .font10(
+                                        //                               context) *
+                                        //                       1.3,
+                                        //                   fontWeight:
+                                        //                       FontWeight.w400,
+                                        //                 ),
+                                        //               ),
+                                        //             ),
+                                        //             actions: <Widget>[
+                                        //               Column(
+                                        //                 children: [
+                                        //                   SizedBox(
+                                        //                     height: AppDimensions
+                                        //                             .height10(
+                                        //                                 context) *
+                                        //                         0.1,
+                                        //                     child: Divider(
+                                        //                       color: const Color(
+                                        //                               0XFF3C3C43)
+                                        //                           .withOpacity(
+                                        //                               0.29),
+                                        //                     ),
+                                        //                   ),
+                                        //                   Container(
+                                        //                     height: AppDimensions
+                                        //                             .height10(
+                                        //                                 context) *
+                                        //                         4.2,
+                                        //                     width:
+                                        //                         double.infinity,
+                                        //                     color: const Color(
+                                        //                         0xFF007AFF),
+                                        //                     child: TextButton(
+                                        //                       onPressed: () {
+                                        //                         setState(() {
+                                        //                           select_item =
+                                        //                               -1;
+                                        //                           select_item_2 =
+                                        //                               -1;
+                                        //                         });
+                                        //                         Navigator.pop(
+                                        //                             context);
+                                        //                       },
+                                        //                       child: Text(
+                                        //                         'Yes',
+                                        //                         style: TextStyle(
+                                        //                             color: const Color(
+                                        //                                 0xFFFFFFFF),
+                                        //                             fontSize:
+                                        //                                 AppDimensions.height10(context) *
+                                        //                                     1.7,
+                                        //                             fontFamily:
+                                        //                                 "Laila",
+                                        //                             fontWeight:
+                                        //                                 FontWeight
+                                        //                                     .w400),
+                                        //                       ),
+                                        //                     ),
+                                        //                   ),
+                                        //                   SizedBox(
+                                        //                     height: AppDimensions
+                                        //                             .height10(
+                                        //                                 context) *
+                                        //                         0.1,
+                                        //                     child: Divider(
+                                        //                       color: const Color(
+                                        //                               0XFF3C3C43)
+                                        //                           .withOpacity(
+                                        //                               0.29),
+                                        //                     ),
+                                        //                   ),
+                                        //                   SizedBox(
+                                        //                     height: AppDimensions
+                                        //                             .height10(
+                                        //                                 context) *
+                                        //                         4.4,
+                                        //                     width:
+                                        //                         double.infinity,
+                                        //                     child: TextButton(
+                                        //                       onPressed: () {
+                                        //                         Navigator.pop(
+                                        //                             context);
+                                        //                       },
+                                        //                       child: Text(
+                                        //                         'Cancel',
+                                        //                         style: TextStyle(
+                                        //                             fontSize:
+                                        //                                 AppDimensions.height10(context) *
+                                        //                                     1.7,
+                                        //                             fontFamily:
+                                        //                                 "Laila",
+                                        //                             fontWeight:
+                                        //                                 FontWeight
+                                        //                                     .w400,
+                                        //                             color: const Color(
+                                        //                                 0xFF007AFF)),
+                                        //                       ),
+                                        //                     ),
+                                        //                   ),
+                                        //                   SizedBox(
+                                        //                     height: AppDimensions
+                                        //                             .height10(
+                                        //                                 context) *
+                                        //                         0.1,
+                                        //                     child: Divider(
+                                        //                       color: const Color(
+                                        //                               0XFF3C3C43)
+                                        //                           .withOpacity(
+                                        //                               0.29),
+                                        //                     ),
+                                        //                   ),
+                                        //                 ],
+                                        //               ),
+                                        //             ],
+                                        //           ),
+                                        //         ));
+
+                                        GoalScreenBox().alertBox(
+                                            context,
+                                            "Clear answers?",
+                                            "Are you sure you want to clear all your\nanswers for this Goal criterion?",
+                                            () {
+                                          setState(() {
+                                            select_item = -1;
+                                            select_item_2 = -1;
+                                          });
+                                          Navigator.pop(context);
+                                        }, () {
+                                          Navigator.pop(context); //ondismiss
+                                        });
                                       }
                                     },
                                     child: Container(
@@ -1337,7 +1561,7 @@ class _your_impactState extends State<your_impact> {
                                           style: TextStyle(
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.6,
+                                                  2.0,
                                               fontWeight: FontWeight.w600,
                                               color: const Color(0xFFFA9934)),
                                         ),
@@ -1348,215 +1572,230 @@ class _your_impactState extends State<your_impact> {
                                     onTap: () {
                                       if (disable == false &&
                                           widget.premium == true) {
-                                        showAnimatedDialog(
-                                          context: context,
-                                          builder: (BuildContext context) {
-                                            return SizedBox(
-                                              width: AppDimensions.height10(
-                                                      context) *
-                                                  27.0,
-                                              height: AppDimensions.height10(
-                                                      context) *
-                                                  18.2,
-                                              child: AlertDialog(
-                                                shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius
-                                                        .circular(AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            1.4)),
-                                                contentPadding: EdgeInsets.zero,
-                                                actionsPadding: EdgeInsets.zero,
-                                                titlePadding: EdgeInsets.zero,
-                                                title: Container(
-                                                  decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius
-                                                          .circular(AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              1.4)),
-                                                  margin: EdgeInsets.only(
-                                                      top: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.9,
-                                                      right: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.6,
-                                                      left: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.6,
-                                                      bottom: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          0.2),
-                                                  height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.2,
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      23.8,
-                                                  child: Text(
-                                                    "Reset answers?",
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              1.7,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                    ),
-                                                  ),
-                                                ),
-                                                content: Container(
-                                                  margin: EdgeInsets.only(
-                                                      bottom: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.5,
-                                                      left: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.6,
-                                                      right: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          1.6),
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      23.8,
-                                                  child: Text(
-                                                    "Are you sure you want to reset, all your\nchanges for this criterion?",
-                                                    textAlign: TextAlign.center,
-                                                    style: TextStyle(
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              1.3,
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                    ),
-                                                  ),
-                                                ),
-                                                actions: <Widget>[
-                                                  Column(
-                                                    children: [
-                                                      SizedBox(
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            0.1,
-                                                        child: Divider(
-                                                          color: const Color(
-                                                                  0XFF3C3C43)
-                                                              .withOpacity(
-                                                                  0.29),
-                                                        ),
-                                                      ),
-                                                      GestureDetector(
-                                                        onTap: () {
-                                                          select_item =
-                                                              reset_item_1;
-                                                          select_item_2 =
-                                                              reset_item_2;
-                                                          setState(() {});
-                                                          Navigator.pop(
-                                                              context);
-                                                        },
-                                                        child: Container(
-                                                          height: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              4.2,
-                                                          width:
-                                                              double.infinity,
-                                                          color: const Color(
-                                                              0xFF007AFF),
-                                                          child: Center(
-                                                            child: Text(
-                                                              'Yes',
-                                                              style: TextStyle(
-                                                                  color: const Color(
-                                                                      0xFFFFFFFF),
-                                                                  fontSize:
-                                                                      AppDimensions.font10(
-                                                                              context) *
-                                                                          1.7,
-                                                                  fontFamily:
-                                                                      "Laila",
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            0.1,
-                                                        child: Divider(
-                                                          color: const Color(
-                                                                  0XFF3C3C43)
-                                                              .withOpacity(
-                                                                  0.29),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            4.4,
-                                                        width: double.infinity,
-                                                        child: TextButton(
-                                                          onPressed: () {
-                                                            Navigator.pop(
-                                                                context);
-                                                          },
-                                                          child: Text(
-                                                            'Cancel',
-                                                            style: TextStyle(
-                                                                fontSize: AppDimensions
-                                                                        .font10(
-                                                                            context) *
-                                                                    1.7,
-                                                                fontFamily:
-                                                                    "Laila",
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w400,
-                                                                color: const Color(
-                                                                    0xFF007AFF)),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        height: AppDimensions
-                                                                .height10(
-                                                                    context) *
-                                                            0.1,
-                                                        child: Divider(
-                                                          color: const Color(
-                                                                  0XFF3C3C43)
-                                                              .withOpacity(
-                                                                  0.29),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ],
-                                              ),
-                                            );
+                                        // showAnimatedDialog(
+                                        //   context: context,
+                                        //   builder: (BuildContext context) {
+                                        //     return SizedBox(
+                                        //       width: AppDimensions.height10(
+                                        //               context) *
+                                        //           27.0,
+                                        //       height: AppDimensions.height10(
+                                        //               context) *
+                                        //           18.2,
+                                        //       child: AlertDialog(
+                                        //         shape: RoundedRectangleBorder(
+                                        //             borderRadius: BorderRadius
+                                        //                 .circular(AppDimensions
+                                        //                         .height10(
+                                        //                             context) *
+                                        //                     1.4)),
+                                        //         contentPadding: EdgeInsets.zero,
+                                        //         actionsPadding: EdgeInsets.zero,
+                                        //         titlePadding: EdgeInsets.zero,
+                                        //         title: Container(
+                                        //           decoration: BoxDecoration(
+                                        //               borderRadius: BorderRadius
+                                        //                   .circular(AppDimensions
+                                        //                           .height10(
+                                        //                               context) *
+                                        //                       1.4)),
+                                        //           margin: EdgeInsets.only(
+                                        //               top: AppDimensions
+                                        //                       .height10(
+                                        //                           context) *
+                                        //                   1.9,
+                                        //               right: AppDimensions
+                                        //                       .height10(
+                                        //                           context) *
+                                        //                   1.6,
+                                        //               left: AppDimensions
+                                        //                       .height10(
+                                        //                           context) *
+                                        //                   1.6,
+                                        //               bottom: AppDimensions
+                                        //                       .height10(
+                                        //                           context) *
+                                        //                   0.2),
+                                        //           height:
+                                        //               AppDimensions.height10(
+                                        //                       context) *
+                                        //                   2.2,
+                                        //           width: AppDimensions.height10(
+                                        //                   context) *
+                                        //               23.8,
+                                        //           child: Text(
+                                        //             "Reset answers?",
+                                        //             textAlign: TextAlign.center,
+                                        //             style: TextStyle(
+                                        //               fontSize:
+                                        //                   AppDimensions.font10(
+                                        //                           context) *
+                                        //                       1.7,
+                                        //               fontWeight:
+                                        //                   FontWeight.w400,
+                                        //             ),
+                                        //           ),
+                                        //         ),
+                                        //         content: Container(
+                                        //           margin: EdgeInsets.only(
+                                        //               bottom: AppDimensions
+                                        //                       .height10(
+                                        //                           context) *
+                                        //                   1.5,
+                                        //               left: AppDimensions
+                                        //                       .height10(
+                                        //                           context) *
+                                        //                   1.6,
+                                        //               right: AppDimensions
+                                        //                       .height10(
+                                        //                           context) *
+                                        //                   1.6),
+                                        //           width: AppDimensions.height10(
+                                        //                   context) *
+                                        //               23.8,
+                                        //           child: Text(
+                                        //             "Are you sure you want to reset, all your\nchanges for this criterion?",
+                                        //             textAlign: TextAlign.center,
+                                        //             style: TextStyle(
+                                        //               fontSize:
+                                        //                   AppDimensions.font10(
+                                        //                           context) *
+                                        //                       1.3,
+                                        //               fontWeight:
+                                        //                   FontWeight.w400,
+                                        //             ),
+                                        //           ),
+                                        //         ),
+                                        //         actions: <Widget>[
+                                        //           Column(
+                                        //             children: [
+                                        //               SizedBox(
+                                        //                 height: AppDimensions
+                                        //                         .height10(
+                                        //                             context) *
+                                        //                     0.1,
+                                        //                 child: Divider(
+                                        //                   color: const Color(
+                                        //                           0XFF3C3C43)
+                                        //                       .withOpacity(
+                                        //                           0.29),
+                                        //                 ),
+                                        //               ),
+                                        //               GestureDetector(
+                                        //                 onTap: () {
+                                        //                   select_item =
+                                        //                       reset_item_1;
+                                        //                   select_item_2 =
+                                        //                       reset_item_2;
+                                        //                   setState(() {});
+                                        //                   Navigator.pop(
+                                        //                       context);
+                                        //                 },
+                                        //                 child: Container(
+                                        //                   height: AppDimensions
+                                        //                           .height10(
+                                        //                               context) *
+                                        //                       4.2,
+                                        //                   width:
+                                        //                       double.infinity,
+                                        //                   color: const Color(
+                                        //                       0xFF007AFF),
+                                        //                   child: Center(
+                                        //                     child: Text(
+                                        //                       'Yes',
+                                        //                       style: TextStyle(
+                                        //                           color: const Color(
+                                        //                               0xFFFFFFFF),
+                                        //                           fontSize:
+                                        //                               AppDimensions.font10(
+                                        //                                       context) *
+                                        //                                   1.7,
+                                        //                           fontFamily:
+                                        //                               "Laila",
+                                        //                           fontWeight:
+                                        //                               FontWeight
+                                        //                                   .w400),
+                                        //                     ),
+                                        //                   ),
+                                        //                 ),
+                                        //               ),
+                                        //               SizedBox(
+                                        //                 height: AppDimensions
+                                        //                         .height10(
+                                        //                             context) *
+                                        //                     0.1,
+                                        //                 child: Divider(
+                                        //                   color: const Color(
+                                        //                           0XFF3C3C43)
+                                        //                       .withOpacity(
+                                        //                           0.29),
+                                        //                 ),
+                                        //               ),
+                                        //               SizedBox(
+                                        //                 height: AppDimensions
+                                        //                         .height10(
+                                        //                             context) *
+                                        //                     4.4,
+                                        //                 width: double.infinity,
+                                        //                 child: TextButton(
+                                        //                   onPressed: () {
+                                        //                     Navigator.pop(
+                                        //                         context);
+                                        //                   },
+                                        //                   child: Text(
+                                        //                     'Cancel',
+                                        //                     style: TextStyle(
+                                        //                         fontSize: AppDimensions
+                                        //                                 .font10(
+                                        //                                     context) *
+                                        //                             1.7,
+                                        //                         fontFamily:
+                                        //                             "Laila",
+                                        //                         fontWeight:
+                                        //                             FontWeight
+                                        //                                 .w400,
+                                        //                         color: const Color(
+                                        //                             0xFF007AFF)),
+                                        //                   ),
+                                        //                 ),
+                                        //               ),
+                                        //               SizedBox(
+                                        //                 height: AppDimensions
+                                        //                         .height10(
+                                        //                             context) *
+                                        //                     0.1,
+                                        //                 child: Divider(
+                                        //                   color: const Color(
+                                        //                           0XFF3C3C43)
+                                        //                       .withOpacity(
+                                        //                           0.29),
+                                        //                 ),
+                                        //               ),
+                                        //             ],
+                                        //           ),
+                                        //         ],
+                                        //       ),
+                                        //     );
+                                        //   },
+                                        //   animationType:
+                                        //       DialogTransitionType.fadeScale,
+                                        //   curve: Curves.easeInOut,
+                                        //   duration: const Duration(seconds: 1),
+                                        // );
+
+                                        GoalScreenBox().alertBox(
+                                          context,
+                                          "Reset answers?",
+                                          "Are you sure you want to reset, all your\nchanges for this criterion?",
+                                          () {
+                                            select_item = reset_item_1;
+                                            select_item_2 = reset_item_2;
+                                            setState(() {});
+                                            Navigator.pop(context);
                                           },
-                                          animationType:
-                                              DialogTransitionType.fadeScale,
-                                          curve: Curves.easeInOut,
-                                          duration: const Duration(seconds: 1),
+                                          () {
+                                            Navigator.pop(context); // ondismiss
+                                          },
                                         );
                                       }
                                     },
@@ -1585,7 +1824,7 @@ class _your_impactState extends State<your_impact> {
                                           style: TextStyle(
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.6,
+                                                  2.0,
                                               fontWeight: FontWeight.w600,
                                               color: const Color(0xFFFA9934)),
                                         ),
@@ -1598,261 +1837,304 @@ class _your_impactState extends State<your_impact> {
                                           widget.premium == true) {
                                         if (select_item != -1 &&
                                             select_item_2 != -1) {
-                                          showAnimatedDialog(
-                                              context: context,
-                                              animationType:
-                                                  DialogTransitionType
-                                                      .fadeScale,
-                                              curve: Curves.easeInOut,
-                                              duration:
-                                                  const Duration(seconds: 1),
-                                              builder:
-                                                  (BuildContext context) =>
-                                                      Container(
-                                                          width: AppDimensions
-                                                                  .height10(
-                                                                      context) *
-                                                              27.0,
-                                                          height:
-                                                              AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  18.2,
-                                                          decoration: BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius.circular(
-                                                                      AppDimensions.height10(
-                                                                              context) *
-                                                                          1.4)),
-                                                          child: AlertDialog(
-                                                            shape: RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius.circular(
-                                                                        AppDimensions.height10(context) *
-                                                                            1.4)),
-                                                            contentPadding:
-                                                                EdgeInsets.zero,
-                                                            actionsPadding:
-                                                                EdgeInsets.zero,
-                                                            titlePadding:
-                                                                EdgeInsets.zero,
-                                                            title: Container(
-                                                              decoration: BoxDecoration(
-                                                                  borderRadius:
-                                                                      BorderRadius.circular(
-                                                                          AppDimensions.height10(context) *
-                                                                              1.4)),
-                                                              margin: EdgeInsets.only(
-                                                                  top: AppDimensions
-                                                                          .height10(
-                                                                              context) *
-                                                                      1.9,
-                                                                  right:
-                                                                      AppDimensions.height10(
-                                                                              context) *
-                                                                          1.6,
-                                                                  left: AppDimensions
-                                                                          .height10(
-                                                                              context) *
-                                                                      1.6,
-                                                                  bottom: AppDimensions
-                                                                          .height10(
-                                                                              context) *
-                                                                      0.2),
-                                                              height: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  2.2,
-                                                              width: AppDimensions
-                                                                      .width10(
-                                                                          context) *
-                                                                  23.8,
-                                                              child: Text(
-                                                                "Save changes?",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      AppDimensions.font10(
-                                                                              context) *
-                                                                          1.7,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            content: Container(
-                                                              margin: EdgeInsets.only(
-                                                                  bottom: AppDimensions
-                                                                          .height10(
-                                                                              context) *
-                                                                      1.5,
-                                                                  left: AppDimensions
-                                                                          .height10(
-                                                                              context) *
-                                                                      1.6,
-                                                                  right: AppDimensions
-                                                                          .height10(
-                                                                              context) *
-                                                                      1.6),
-                                                              height: AppDimensions
-                                                                      .height10(
-                                                                          context) *
-                                                                  3.2,
-                                                              width: AppDimensions
-                                                                      .width10(
-                                                                          context) *
-                                                                  23.8,
-                                                              child: Text(
-                                                                "Are you sure you want to save your new\nupdates?",
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      AppDimensions.font10(
-                                                                              context) *
-                                                                          1.3,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w400,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                            actions: <Widget>[
-                                                              Column(
-                                                                children: [
-                                                                  SizedBox(
-                                                                    height:
-                                                                        AppDimensions.height10(context) *
-                                                                            0.1,
-                                                                    child:
-                                                                        Divider(
-                                                                      color: const Color(
-                                                                              0XFF3C3C43)
-                                                                          .withOpacity(
-                                                                              0.29),
-                                                                    ),
-                                                                  ),
-                                                                  Container(
-                                                                    height:
-                                                                        AppDimensions.height10(context) *
-                                                                            4.2,
-                                                                    width: double
-                                                                        .infinity,
-                                                                    color: const Color(
-                                                                        0xFF007AFF),
-                                                                    child:
-                                                                        TextButton(
-                                                                      onPressed:
-                                                                          () {
-                                                                        setState(
-                                                                            () {
-                                                                          level =
-                                                                              ((select_item + select_item_2 + 2) / 2).round();
-                                                                        });
+                                          // showAnimatedDialog(
+                                          //     context: context,
+                                          //     animationType:
+                                          //         DialogTransitionType
+                                          //             .fadeScale,
+                                          //     curve: Curves.easeInOut,
+                                          //     duration:
+                                          //         const Duration(seconds: 1),
+                                          //     builder:
+                                          //         (BuildContext context) =>
+                                          //             Container(
+                                          //                 width: AppDimensions
+                                          //                         .height10(
+                                          //                             context) *
+                                          //                     27.0,
+                                          //                 height:
+                                          //                     AppDimensions
+                                          //                             .height10(
+                                          //                                 context) *
+                                          //                         18.2,
+                                          //                 decoration: BoxDecoration(
+                                          //                     borderRadius:
+                                          //                         BorderRadius.circular(
+                                          //                             AppDimensions.height10(
+                                          //                                     context) *
+                                          //                                 1.4)),
+                                          //                 child: AlertDialog(
+                                          //                   shape: RoundedRectangleBorder(
+                                          //                       borderRadius:
+                                          //                           BorderRadius.circular(
+                                          //                               AppDimensions.height10(context) *
+                                          //                                   1.4)),
+                                          //                   contentPadding:
+                                          //                       EdgeInsets.zero,
+                                          //                   actionsPadding:
+                                          //                       EdgeInsets.zero,
+                                          //                   titlePadding:
+                                          //                       EdgeInsets.zero,
+                                          //                   title: Container(
+                                          //                     decoration: BoxDecoration(
+                                          //                         borderRadius:
+                                          //                             BorderRadius.circular(
+                                          //                                 AppDimensions.height10(context) *
+                                          //                                     1.4)),
+                                          //                     margin: EdgeInsets.only(
+                                          //                         top: AppDimensions
+                                          //                                 .height10(
+                                          //                                     context) *
+                                          //                             1.9,
+                                          //                         right:
+                                          //                             AppDimensions.height10(
+                                          //                                     context) *
+                                          //                                 1.6,
+                                          //                         left: AppDimensions
+                                          //                                 .height10(
+                                          //                                     context) *
+                                          //                             1.6,
+                                          //                         bottom: AppDimensions
+                                          //                                 .height10(
+                                          //                                     context) *
+                                          //                             0.2),
+                                          //                     height: AppDimensions
+                                          //                             .height10(
+                                          //                                 context) *
+                                          //                         2.2,
+                                          //                     width: AppDimensions
+                                          //                             .width10(
+                                          //                                 context) *
+                                          //                         23.8,
+                                          //                     child: Text(
+                                          //                       "Save changes?",
+                                          //                       textAlign:
+                                          //                           TextAlign
+                                          //                               .center,
+                                          //                       style:
+                                          //                           TextStyle(
+                                          //                         fontSize:
+                                          //                             AppDimensions.font10(
+                                          //                                     context) *
+                                          //                                 1.7,
+                                          //                         fontWeight:
+                                          //                             FontWeight
+                                          //                                 .w400,
+                                          //                       ),
+                                          //                     ),
+                                          //                   ),
+                                          //                   content: Container(
+                                          //                     margin: EdgeInsets.only(
+                                          //                         bottom: AppDimensions
+                                          //                                 .height10(
+                                          //                                     context) *
+                                          //                             1.5,
+                                          //                         left: AppDimensions
+                                          //                                 .height10(
+                                          //                                     context) *
+                                          //                             1.6,
+                                          //                         right: AppDimensions
+                                          //                                 .height10(
+                                          //                                     context) *
+                                          //                             1.6),
+                                          //                     height: AppDimensions
+                                          //                             .height10(
+                                          //                                 context) *
+                                          //                         3.2,
+                                          //                     width: AppDimensions
+                                          //                             .width10(
+                                          //                                 context) *
+                                          //                         23.8,
+                                          //                     child: Text(
+                                          //                       "Are you sure you want to save your new\nupdates?",
+                                          //                       textAlign:
+                                          //                           TextAlign
+                                          //                               .center,
+                                          //                       style:
+                                          //                           TextStyle(
+                                          //                         fontSize:
+                                          //                             AppDimensions.font10(
+                                          //                                     context) *
+                                          //                                 1.3,
+                                          //                         fontWeight:
+                                          //                             FontWeight
+                                          //                                 .w400,
+                                          //                       ),
+                                          //                     ),
+                                          //                   ),
+                                          //                   actions: <Widget>[
+                                          //                     Column(
+                                          //                       children: [
+                                          //                         SizedBox(
+                                          //                           height:
+                                          //                               AppDimensions.height10(context) *
+                                          //                                   0.1,
+                                          //                           child:
+                                          //                               Divider(
+                                          //                             color: const Color(
+                                          //                                     0XFF3C3C43)
+                                          //                                 .withOpacity(
+                                          //                                     0.29),
+                                          //                           ),
+                                          //                         ),
+                                          //                         Container(
+                                          //                           height:
+                                          //                               AppDimensions.height10(context) *
+                                          //                                   4.2,
+                                          //                           width: double
+                                          //                               .infinity,
+                                          //                           color: const Color(
+                                          //                               0xFF007AFF),
+                                          //                           child:
+                                          //                               TextButton(
+                                          //                             onPressed:
+                                          //                                 () {
+                                          //                               setState(
+                                          //                                   () {
+                                          //                                 level =
+                                          //                                     ((select_item + select_item_2 + 2) / 2).round();
+                                          //                               });
 
-                                                                        GoalEvaluationApi()
-                                                                            .updateEvaluation(
-                                                                          "impactOnYourSelf",
-                                                                          {
-                                                                            "level":
-                                                                                level,
-                                                                            "currentImpact":
-                                                                                (select_item + 1),
-                                                                            "currentEmotions":
-                                                                                (select_item_2 + 1)
-                                                                          },
-                                                                        ).then((response) {
-                                                                          print(
-                                                                              "criteria update response $response");
-                                                                          if (response ==
-                                                                              true) {
-                                                                            setState(() {
-                                                                              saved = true;
-                                                                              visible = true;
-                                                                              disable = true;
-                                                                            });
-                                                                            startTimer();
-                                                                          }
-                                                                          Navigator.pop(
-                                                                              context);
-                                                                        });
-                                                                      },
-                                                                      child:
-                                                                          Text(
-                                                                        'Yes',
-                                                                        style: TextStyle(
-                                                                            color: const Color(
-                                                                                0xFFFFFFFF),
-                                                                            fontSize: AppDimensions.font10(context) *
-                                                                                1.7,
-                                                                            fontFamily:
-                                                                                "Laila",
-                                                                            fontWeight:
-                                                                                FontWeight.w400),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  SizedBox(
-                                                                    height:
-                                                                        AppDimensions.height10(context) *
-                                                                            0.1,
-                                                                    child:
-                                                                        Divider(
-                                                                      color: const Color(
-                                                                              0XFF3C3C43)
-                                                                          .withOpacity(
-                                                                              0.29),
-                                                                    ),
-                                                                  ),
-                                                                  SizedBox(
-                                                                    height:
-                                                                        AppDimensions.height10(context) *
-                                                                            4.4,
-                                                                    width: double
-                                                                        .infinity,
-                                                                    child:
-                                                                        TextButton(
-                                                                      onPressed:
-                                                                          () {
-                                                                        Navigator.pop(
-                                                                            context);
-                                                                      },
-                                                                      child:
-                                                                          Text(
-                                                                        'Cancel',
-                                                                        style: TextStyle(
-                                                                            fontSize: AppDimensions.font10(context) *
-                                                                                1.7,
-                                                                            fontFamily:
-                                                                                "Laila",
-                                                                            fontWeight:
-                                                                                FontWeight.w400,
-                                                                            color: const Color(0xFF007AFF)),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                  SizedBox(
-                                                                    height:
-                                                                        AppDimensions.height10(context) *
-                                                                            0.1,
-                                                                    child:
-                                                                        Divider(
-                                                                      color: const Color(
-                                                                              0XFF3C3C43)
-                                                                          .withOpacity(
-                                                                              0.29),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          )));
+                                          //                               GoalEvaluationApi()
+                                          //                                   .updateEvaluation(
+                                          //                                 "impactOnYourSelf",
+                                          //                                 {
+                                          //                                   "level":
+                                          //                                       level,
+                                          //                                   "currentImpact":
+                                          //                                       (select_item + 1),
+                                          //                                   "currentEmotions":
+                                          //                                       (select_item_2 + 1)
+                                          //                                 },
+                                          //                               ).then((response) {
+                                          //                                 print(
+                                          //                                     "criteria update response $response");
+                                          //                                 if (response ==
+                                          //                                     true) {
+                                          //                                   setState(() {
+                                          //                                     saved = true;
+                                          //                                     visible = true;
+                                          //                                     disable = true;
+                                          //                                   });
+                                          //                                   startTimer();
+                                          //                                 }
+                                          //                                 Navigator.pop(
+                                          //                                     context);
+                                          //                               });
+                                          //                             },
+                                          //                             child:
+                                          //                                 Text(
+                                          //                               'Yes',
+                                          //                               style: TextStyle(
+                                          //                                   color: const Color(
+                                          //                                       0xFFFFFFFF),
+                                          //                                   fontSize: AppDimensions.font10(context) *
+                                          //                                       1.7,
+                                          //                                   fontFamily:
+                                          //                                       "Laila",
+                                          //                                   fontWeight:
+                                          //                                       FontWeight.w400),
+                                          //                             ),
+                                          //                           ),
+                                          //                         ),
+                                          //                         SizedBox(
+                                          //                           height:
+                                          //                               AppDimensions.height10(context) *
+                                          //                                   0.1,
+                                          //                           child:
+                                          //                               Divider(
+                                          //                             color: const Color(
+                                          //                                     0XFF3C3C43)
+                                          //                                 .withOpacity(
+                                          //                                     0.29),
+                                          //                           ),
+                                          //                         ),
+                                          //                         SizedBox(
+                                          //                           height:
+                                          //                               AppDimensions.height10(context) *
+                                          //                                   4.4,
+                                          //                           width: double
+                                          //                               .infinity,
+                                          //                           child:
+                                          //                               TextButton(
+                                          //                             onPressed:
+                                          //                                 () {
+                                          //                               Navigator.pop(
+                                          //                                   context);
+                                          //                             },
+                                          //                             child:
+                                          //                                 Text(
+                                          //                               'Cancel',
+                                          //                               style: TextStyle(
+                                          //                                   fontSize: AppDimensions.font10(context) *
+                                          //                                       1.7,
+                                          //                                   fontFamily:
+                                          //                                       "Laila",
+                                          //                                   fontWeight:
+                                          //                                       FontWeight.w400,
+                                          //                                   color: const Color(0xFF007AFF)),
+                                          //                             ),
+                                          //                           ),
+                                          //                         ),
+                                          //                         SizedBox(
+                                          //                           height:
+                                          //                               AppDimensions.height10(context) *
+                                          //                                   0.1,
+                                          //                           child:
+                                          //                               Divider(
+                                          //                             color: const Color(
+                                          //                                     0XFF3C3C43)
+                                          //                                 .withOpacity(
+                                          //                                     0.29),
+                                          //                           ),
+                                          //                         ),
+                                          //                       ],
+                                          //                     ),
+                                          //                   ],
+                                          //                 )));
+
+                                          GoalScreenBox().alertBox(
+                                            context,
+                                            "Save changes?",
+                                            "Are you sure you want to save your new\nupdates?",
+                                            () {
+                                              setState(() {
+                                                level = ((select_item +
+                                                            select_item_2 +
+                                                            2) /
+                                                        2)
+                                                    .round();
+                                              });
+
+                                              GoalEvaluationApi()
+                                                  .updateEvaluation(
+                                                "impactOnYourSelf",
+                                                {
+                                                  "level": level,
+                                                  "currentImpact":
+                                                      (select_item + 1),
+                                                  "currentEmotions":
+                                                      (select_item_2 + 1)
+                                                },
+                                              ).then((response) {
+                                                print(
+                                                    "criteria update response $response");
+                                                if (response == true) {
+                                                  setState(() {
+                                                    saved = true;
+                                                    visible = true;
+                                                    disable = true; //oncnfrm
+                                                  });
+                                                  startTimer();
+                                                }
+                                                Navigator.pop(context);
+                                              });
+                                            },
+                                            () {
+                                              Navigator.pop(
+                                                  context); //ondismiss
+                                            },
+                                          );
                                         } else {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(SnackBar(
@@ -1903,7 +2185,7 @@ class _your_impactState extends State<your_impact> {
                                           style: TextStyle(
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.6,
+                                                  2.0,
                                               fontWeight: FontWeight.w600,
                                               color: Colors.white),
                                         ),

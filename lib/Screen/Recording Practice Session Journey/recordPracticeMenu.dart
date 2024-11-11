@@ -64,12 +64,10 @@ class _practiceMenuState extends State<practiceMenu> {
     DateTime currentDate = DateTime.parse(DateTime.now().toString());
     DateTime date1 = DateTime.parse(prefs.getString('record_date')!);
 
-    print("differenceInDays $date1");
     setState(() {
       differenceInDays = currentDate.difference(date1).inDays;
       isFuture = date1.isAfter(currentDate);
     });
-    print("date1 differenceInDays $isFuture $date1 $differenceInDays");
   }
 
   void getSubscription() async {
@@ -170,37 +168,28 @@ class _practiceMenuState extends State<practiceMenu> {
           elevation: 0,
           automaticallyImplyLeading: false,
           forceMaterialTransparency: true,
-          leading: Center(
-            child: IconButton(
-                onPressed: () {
-                  if (route != 'goal_menu') {
-                    Navigator.push(
-                      context,
-                      FadePageRouteReverse(
-                        page: ViewDashboard(
-                          missed: false,
-                          name: '',
-                          update: false,
-                          helpfulTips: false,
-                          record: differenceInDays,
-                        ),
-                      ),
-                    );
-                  } else {
-                    Navigator.push(
-                        context,
-                        FadePageRouteReverse(
-                            page: const goal_menu_inactive(
-                                isActive: false, goal_evaluation: false)));
-                  }
-                },
-                icon: Image.asset(
-                  'assets/images/Back.webp',
-                  // width: AppDimensions.width10(context) * 2.6,
-                  height: AppDimensions.height10(context) * 2.8,
-                  fit: BoxFit.contain,
-                )),
-          ),
+          leading: Buttons().backButton(context, (){
+            if (route != 'goal_menu') {
+              Navigator.push(
+                context,
+                FadePageRouteReverse(
+                  page: ViewDashboard(
+                    missed: false,
+                    name: '',
+                    update: false,
+                    helpfulTips: false,
+                    record: differenceInDays,
+                  ),
+                ),
+              );
+            } else {
+              Navigator.push(
+                  context,
+                  FadePageRouteReverse(
+                      page: const goal_menu_inactive(
+                          isActive: false, goal_evaluation: false)));
+            }
+          }),
           centerTitle: true,
           actions: [
             Buttons().closeButton(context, () {

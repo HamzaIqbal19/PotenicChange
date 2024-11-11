@@ -39,8 +39,6 @@ class TimelineService {
           '${URL.BASE_URL}api/user/userPastDateTimeLine/$userId?givenDate=$givenDate';
     }
 
-    print("url $url");
-
     var response = await http.get(
       Uri.parse(url),
       headers: headers,
@@ -48,7 +46,6 @@ class TimelineService {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      print("Timeline data $jsonData");
       return (jsonData);
     } else {
       throw Exception('Failed to fetch goal names');
@@ -61,7 +58,6 @@ class TimelineService {
     var accessToken = prefs.getString("usertoken");
     var userId = prefs.getInt('userid');
 
-    print("Access Token : $accessToken");
 
     var headers = {
       'Content-Type': 'application/json',
@@ -90,7 +86,6 @@ class TimelineService {
 
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
-      print("Timeline data $jsonData");
       return (jsonData);
     } else {
       throw Exception('Failed to fetch goal names');

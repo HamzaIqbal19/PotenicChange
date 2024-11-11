@@ -48,7 +48,6 @@ class _MessageCenterState extends State<MessageCenter> {
         isLoading = false;
       });
 
-      print("User notification ${notifications[1]}");
     });
   }
 
@@ -62,7 +61,6 @@ class _MessageCenterState extends State<MessageCenter> {
   }
 
   undoDelete() {
-    print("Undo tapped");
     setState(() {
       undo = true;
       notifications = notificationList2;
@@ -70,7 +68,6 @@ class _MessageCenterState extends State<MessageCenter> {
   }
 
   deleteUserNotifications() {
-    print("Delete Tapped");
     setState(() {
       isLoading = true;
     });

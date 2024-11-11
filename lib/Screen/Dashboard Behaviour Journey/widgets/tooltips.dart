@@ -356,7 +356,7 @@ Widget tooltipComponent(BuildContext context, goalLevel, final VoidCallback acti
                       // : goalLevel == 6
                       // ? '(6/7) Next'
                           : goalLevel == 6
-                          ? '(6/6) Next'
+                          ? '(6/6) Finish'
                           : goalLevel == 1
                           ? '(1/6) Next'
                           : '(6/6) Finish',

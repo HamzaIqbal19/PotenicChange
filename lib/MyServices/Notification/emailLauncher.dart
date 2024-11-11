@@ -3,7 +3,6 @@ import 'package:url_launcher/url_launcher.dart';
 
 class laucherForNotifications {
   void emailLauncher() async {
-    print("Email launched");
     String email = Uri.encodeComponent("potenicbiz@gmail.com");
 
     var url = Uri.parse("mailto:$email/");

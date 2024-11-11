@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:potenic_app/Screen/HomeScreen/Home%20Screen-Progress%20Saved.dart';
 import 'package:potenic_app/Screen/HomeScreen/HomeScreen.dart';
 import 'package:potenic_app/Screen/Onboarding%20Journey/on-boarding.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -105,30 +106,44 @@ class OnboardingPageState extends State<OnboardingPage>
       child: Scaffold(
         extendBodyBehindAppBar: true,
         resizeToAvoidBottomInset: false,
+        extendBody: true,
         backgroundColor: Colors.transparent,
+        bottomNavigationBar: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // widget.pages[i]== widget.pages.length?
+                NextButton(_currentPage==4?"Start your journey":'Next'),
+                // :NextButton("Start your journey")
+              ],
+            ),
+            SizedBox(height: AppDimensions.height10(context) * 0.1),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: _buildPageIndicator(),
+                ),
+              ],
+            ),
+            SizedBox(height: AppDimensions.height10(context) * 3,)
+          ],
+        ),
         appBar: AppBar(
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: true,
           leading: _currentPage != 0
-              ? Center(
-                  // alignment: Alignment.center,
-                  child: IconButton(
-                    icon: Image.asset(
-                      'assets/images/Back.webp',
-                      //width: AppDimensions.width10(context) * 3,
-                      height: AppDimensions.width10(context) * 3,
-                      fit: BoxFit.cover,
-                    ),
-                    onPressed: () {
-                      _pageController.previousPage(
-                          duration: Duration(milliseconds: 500),
-                          curve: Curves.ease);
-                      // Add code for performing close action
-                    },
-                  ),
-                )
+              ? Buttons().backButton(context, (){
+            _pageController.previousPage(
+                duration: Duration(milliseconds: 500),
+                curve: Curves.ease);
+          })
               : Container(),
           title: Center(
             child: Text(
@@ -142,64 +157,48 @@ class OnboardingPageState extends State<OnboardingPage>
             ),
           ),
           actions: [
-            Center(
-              // alignment: Alignment.center,
-
-              child: Container(
-                decoration: BoxDecoration(shape: BoxShape.circle),
-                child: IconButton(
-                  icon: Image.asset(
-                    'assets/images/Close.webp',
-                    //width: AppDimensions.width10(context) * 2.8,
-                    height: AppDimensions.height10(context) * 2.8,
-                    fit: BoxFit.cover,
+            Buttons().closeButton(context, (){
+              if (Accestoken != null && Routes != null) {
+                Navigator.pushReplacement(
+                  context,
+                  FadePageRoute2(
+                    true,
+                    enterPage: HomeScreenProgressSaved(
+                      login: true,
+                      route: Routes.toString(),
+                    ),
+                    exitPage: OnBoarding(),
                   ),
-                  onPressed: () async {
-                    if (Accestoken != null && Routes != null) {
-                      Navigator.pushReplacement(
-                        context,
-                        FadePageRoute2(
-                          true,
-                          enterPage: HomeScreenProgressSaved(
-                            login: true,
-                            route: Routes.toString(),
-                          ),
-                          exitPage: OnBoarding(),
-                        ),
-                      );
-                    } else if (Accestoken != null && Routes == null) {
-                      Navigator.pushReplacement(
-                        context,
-                        FadePageRoute2(
-                          true,
-                          enterPage: HomeScreen(login: true),
-                          exitPage: OnBoarding(),
-                        ),
-                      );
-                    } else if (Accestoken == null && Routes == null) {
-                      Navigator.pushReplacement(
-                        context,
-                        FadePageRoute2(
-                          true,
-                          enterPage: HomeScreen(login: false),
-                          exitPage: OnBoarding(),
-                        ),
-                      );
-                    } else if (Accestoken == null && Routes != null) {
-                      Navigator.pushReplacement(
-                        context,
-                        FadePageRoute2(
-                          true,
-                          enterPage: HomeScreen(login: false),
-                          exitPage: OnBoarding(),
-                        ),
-                      );
-                    }
-                    // Add code for performing close action
-                  },
-                ),
-              ),
-            ),
+                );
+              } else if (Accestoken != null && Routes == null) {
+                Navigator.pushReplacement(
+                  context,
+                  FadePageRoute2(
+                    true,
+                    enterPage: HomeScreen(login: true),
+                    exitPage: OnBoarding(),
+                  ),
+                );
+              } else if (Accestoken == null && Routes == null) {
+                Navigator.pushReplacement(
+                  context,
+                  FadePageRoute2(
+                    true,
+                    enterPage: HomeScreen(login: false),
+                    exitPage: OnBoarding(),
+                  ),
+                );
+              } else if (Accestoken == null && Routes != null) {
+                Navigator.pushReplacement(
+                  context,
+                  FadePageRoute2(
+                    true,
+                    enterPage: HomeScreen(login: false),
+                    exitPage: OnBoarding(),
+                  ),
+                );
+              }
+            })
           ],
         ),
         body: AnnotatedRegion<SystemUiOverlayStyle>(
@@ -279,7 +278,7 @@ class OnboardingPageState extends State<OnboardingPage>
           SizedBox(
             height: page.description2 != ""
                 ? AppDimensions.height10(context) * 3.6
-                : (page.index == 3 || page.index == 1)
+                : ( page.index == 1)
                     ? AppDimensions.height10(context) * 8.4
                     : AppDimensions.height10(context) * 3.9,
             width: AppDimensions.width10(context) * 35.4,
@@ -297,15 +296,15 @@ class OnboardingPageState extends State<OnboardingPage>
           Column(
             children: [
               SizedBox(
-                // width: double.infinity,
-                width: AppDimensions.width10(context) * 35.4,
-                height: page.description2 != ""
-                    ? AppDimensions.height10(context) * 9.3
-                    : page.subDescription != ""
-                        ? AppDimensions.height10(context) * 9.3
-                        : (page.index == 3 || page.index == 1)
-                            ? AppDimensions.height10(context) * 28.5
-                            : AppDimensions.height10(context) * 32.5,
+                width: double.infinity,
+                //width: AppDimensions.width10(context) * 35.4,
+                // height: page.description2 != ""
+                //     ? AppDimensions.height10(context) * 9.3
+                //     : page.subDescription != ""
+                //         ? AppDimensions.height10(context) * 9.3
+                //         : ( page.index == 1)
+                //             ? AppDimensions.height10(context) * 28.5
+                //             : AppDimensions.height10(context) * 32.5,
                 child: Text(
                   page.description,
                   textAlign: TextAlign.center,
@@ -325,7 +324,7 @@ class OnboardingPageState extends State<OnboardingPage>
               SizedBox(
                 // width: double.infinity,
 
-                width: AppDimensions.width10(context) * 28.5,
+                //width: AppDimensions.width10(context) * 28.5,
                 height: page.description2 != ""
                     ? AppDimensions.height10(context) * 0
                     : page.subDescription != ""
@@ -394,24 +393,7 @@ class OnboardingPageState extends State<OnboardingPage>
               : SizedBox(
                   height: AppDimensions.height10(context) * 6.139,
                 ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // widget.pages[i]== widget.pages.length?
-              NextButton(page.buttonText),
-              // :NextButton("Start your journey")
-            ],
-          ),
-          SizedBox(height: AppDimensions.height10(context) * 0.1),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: _buildPageIndicator(),
-              ),
-            ],
-          ),
+
         ],
       ),
     );

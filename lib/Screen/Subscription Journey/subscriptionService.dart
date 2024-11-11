@@ -68,7 +68,6 @@ class SubscriptionService {
 
   createSubscriptionIntent(
       String paymentId, String priceId, customerId, trialDays) async {
-    print("Trial Days $trialDays");
     try {
       Map<String, dynamic> body;
       if (trialDays == 0) {
@@ -161,7 +160,6 @@ class SubscriptionService {
     );
     var jsonData = jsonDecode(response.body);
 
-    print("Get costumer data ${jsonData}");
 
     if (response.statusCode == 200) {
       return jsonData;
@@ -186,8 +184,7 @@ class SubscriptionService {
         },
       );
 
-      print(
-          "Cancel status: ${response.statusCode} ${json.decode(response.body)}");
+
       var data = json.decode(response.body);
 
       return response.statusCode;
@@ -238,7 +235,6 @@ class UnixTime {
     String formattedDate =
         '${date.day} ${_getMonthName(date.month)} ${date.year}';
 
-    print('Formatted Date: $formattedDate');
     return formattedDate;
   }
 

@@ -73,13 +73,11 @@ class GoalEvaluationApi {
         headers: headers,
         body: body);
     var jsonData = jsonDecode(request.body);
-    print('Goal Evaluation: $jsonData');
     if (request.statusCode == 200) {
       if (jsonData['sucess'] == true && jsonData['data'] == null) {
         return true;
       } else {
         final SharedPreferences prefs = await _prefs;
-        print('Goal Evaluation: called with data');
         if (levelChange != true || jsonData['data']['goalLevelUpdate']) {
           await prefs.setBool(
               'goalLevelUpdate', jsonData['data']['goalLevelUpdate']);
@@ -158,13 +156,11 @@ class PracticeEvaluation {
     var reportDate = prefs.getString('lastReportDate');
     var endDate = prefs.getString('lastReportEnd');
 
-    print(" Data $pracNum $reportDate $endDate");
 
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$accessToken'
     };
-    print("PracticeId $pracNum $reportDate $endDate");
 
     var response = await http.get(
       Uri.parse(
@@ -189,7 +185,6 @@ class PracticeEvaluation {
     var accessToken = prefs.getString("usertoken");
     var pracNum = prefs.getInt("prac_num");
 
-    print("Data $accessToken");
 
     var headers = {
       'Content-Type': 'application/json',

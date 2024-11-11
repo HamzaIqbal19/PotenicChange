@@ -457,7 +457,12 @@ class _VisualisingState extends State<Visualising> {
                 centerTitle: true,
                 backgroundColor: Colors.transparent,
                 automaticallyImplyLeading: false,
-                title: appBarTitle(context,widget.comingFromEditScreen ?AppText().viewAndEdit: AppText().starCreate5,false),
+                title: appBarTitle(
+                    context,
+                    widget.comingFromEditScreen
+                        ? AppText().viewAndEdit
+                        : AppText().starCreate5,
+                    false),
                 leading: Buttons().backButton(context, backPress),
                 actions: [
                   widget.comingFromEditScreen
@@ -637,379 +642,284 @@ class _VisualisingState extends State<Visualising> {
           extendBody: true,
           bottomNavigationBar: update
               ? GestureDetector(
-            onPanUpdate: (details) {
-              setState(() {
-                swipeOffset += details.delta.dx;
-              });
+                  onPanUpdate: (details) {
+                    setState(() {
+                      swipeOffset += details.delta.dx;
+                    });
 
-              if (swipeOffset.abs() >=
-                  MediaQuery.of(context).size.width /
-                      3.0) {
-                setState(() {
-                  showContainer = false;
-                });
-              }
-            },
-            child: AnimatedOpacity(
-              duration: const Duration(milliseconds: 700),
-              opacity: showContainer ? 1.0 : 0.0,
-              child: Transform.translate(
-                offset: Offset(swipeOffset, 0.0),
-                child: Container(
-                  width: AppDimensions.width10(context) *
-                      38.259,
-                  height:
-                  AppDimensions.height10(context) *
-                      9.707,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                          AppDimensions.height10(
-                              context) *
-                              2.0),
-                      gradient: const LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0xFFD4B7B9),
-                            Color(0xFF91698C)
-                          ])),
-                  child: Row(
-                    crossAxisAlignment:
-                    CrossAxisAlignment.center,
-                    //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                            left: AppDimensions.height10(
-                                context) *
-                                1.261),
-                        width: AppDimensions.width10(
-                            context) *
-                            4.437,
-                        height: AppDimensions.height10(
-                            context) *
-                            4.437,
-                        decoration: const BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(
-                                    'assets/images/circle_tick.webp'))),
-                      ),
-                      Container(
-                        //width: AppDimensions.width10(context) * 6.9,
-                        height: AppDimensions.height10(
-                            context) *
-                            3.6,
-                        margin: EdgeInsets.only(
-                            left: AppDimensions.height10(
-                                context) *
-                                1.232),
-                        child: Column(
-                          crossAxisAlignment:
-                          CrossAxisAlignment.start,
+                    if (swipeOffset.abs() >=
+                        MediaQuery.of(context).size.width / 3.0) {
+                      setState(() {
+                        showContainer = false;
+                      });
+                    }
+                  },
+                  child: AnimatedOpacity(
+                    duration: const Duration(milliseconds: 700),
+                    opacity: showContainer ? 1.0 : 0.0,
+                    child: Transform.translate(
+                      offset: Offset(swipeOffset, 0.0),
+                      child: Container(
+                        width: AppDimensions.width10(context) * 38.259,
+                        height: AppDimensions.height10(context) * 9.707,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                                AppDimensions.height10(context) * 2.0),
+                            gradient: const LinearGradient(
+                                begin: Alignment.topCenter,
+                                end: Alignment.bottomCenter,
+                                colors: [
+                                  Color(0xFFD4B7B9),
+                                  Color(0xFF91698C)
+                                ])),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            SizedBox(
-                              width:
-                              AppDimensions.height10(
-                                  context) *
-                                  4.6,
-                              height:
-                              AppDimensions.height10(
-                                  context) *
-                                  1.4,
-                              //   color: Colors.amber,
-                              child: Text(
-                                'Updates saved',
-                                style: TextStyle(
-                                    fontSize: AppDimensions
-                                        .font10(
-                                        context) *
-                                        1.3,
-                                    fontWeight:
-                                    FontWeight.w500,
-                                    color: const Color(
-                                        0xFFFFFFFF)),
+                            Container(
+                              margin: EdgeInsets.only(
+                                  left:
+                                      AppDimensions.height10(context) * 1.261),
+                              width: AppDimensions.width10(context) * 4.437,
+                              height: AppDimensions.height10(context) * 4.437,
+                              decoration: const BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage(
+                                          'assets/images/circle_tick.webp'))),
+                            ),
+                            Container(
+                              //width: AppDimensions.width10(context) * 6.9,
+                              height: AppDimensions.height10(context) * 3.6,
+                              margin: EdgeInsets.only(
+                                  left:
+                                      AppDimensions.height10(context) * 1.232),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 4.6,
+                                    height:
+                                        AppDimensions.height10(context) * 1.4,
+                                    //   color: Colors.amber,
+                                    child: Text(
+                                      'Updates saved',
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.font10(context) *
+                                                  1.3,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    width:
+                                        AppDimensions.height10(context) * 16.9,
+                                    height:
+                                        AppDimensions.height10(context) * 2.2,
+                                    child: Text(
+                                      'The Vision',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontSize:
+                                              AppDimensions.font10(context) *
+                                                  1.8,
+                                          fontWeight: FontWeight.w500,
+                                          color: const Color(0xFFFFFFFF)),
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                            SizedBox(
-                              width:
-                              AppDimensions.height10(
-                                  context) *
-                                  16.9,
-                              height:
-                              AppDimensions.height10(
-                                  context) *
-                                  2.2,
-                              child: Text(
-                                'The Vision',
-                                overflow:
-                                TextOverflow.ellipsis,
-                                style: TextStyle(
-                                    fontSize: AppDimensions
-                                        .font10(
-                                        context) *
-                                        1.8,
-                                    fontWeight:
-                                    FontWeight.w500,
-                                    color: const Color(
-                                        0xFFFFFFFF)),
+                            AnimatedScaleButton(
+                              onTap: () {
+                                setState(() {
+                                  update = false;
+                                });
+                                stopTimer();
+                              },
+                              child: Container(
+                                width: AppDimensions.height10(context) * 8.1,
+                                height: AppDimensions.height10(context) * 6.0,
+                                margin: EdgeInsets.only(
+                                    left: AppDimensions.height10(context) * 5,
+                                    right:
+                                        AppDimensions.height10(context) * 1.23),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: const Color(0xFFFFFFFF), width: 1),
+                                  borderRadius: BorderRadius.circular(
+                                      AppDimensions.height10(context) * 2.0),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'Undo',
+                                    style: TextStyle(
+                                        fontSize:
+                                            AppDimensions.font10(context) * 1.8,
+                                        fontWeight: FontWeight.w500,
+                                        color: const Color(0xFFFFFFFF)),
+                                  ),
+                                ),
                               ),
-                            ),
+                            )
                           ],
                         ),
                       ),
+                    ),
+                  ),
+                )
+              : Container(
+                  margin: EdgeInsets.only(
+                      top: AppDimensions.height10(context) * 1.0,
+                      bottom: AppDimensions.height10(context) * 2.6),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      widget.comingFromEditScreen
+                          ? AnimatedScaleButton(
+                              onTap: () {
+                                resetDialog();
+                              },
+                              child: Container(
+                                  width: AppDimensions.width10(context) * 10.0,
+                                  height: AppDimensions.height10(context) * 5.0,
+                                  decoration: goalVisualising[0]['text'] != ""
+                                      ? BoxDecoration(
+                                          color: Colors.white,
+                                          border: Border.all(
+                                              color: const Color(0xffFA9934)),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(50.0)),
+                                        )
+                                      : BoxDecoration(
+                                          // color: Color(0xFFFF7D50),
+                                          border: Border.all(
+                                              color: const Color(0xff282828)),
+                                          color: Colors.transparent,
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(50.0)),
+                                        ),
+                                  child: Center(
+                                      child: Text(
+                                    "Reset",
+                                    style: TextStyle(
+                                        fontFamily: "Laila",
+                                        fontWeight: FontWeight.w600,
+                                        color: goalVisualising[0]['text'] != ""
+                                            ? const Color(0xffFA9934)
+                                            : const Color(0xff282828),
+                                        fontSize:
+                                            AppDimensions.font10(context) * 2),
+                                  ))),
+                            )
+                          : Container(),
+                      // Container(
+                      //     // color: Colors.blue,
+                      //     width:
+                      //         AppDimensions.width10(context) *
+                      //             5.0,
+                      //     height:
+                      //         AppDimensions.height10(context) *
+                      //             5.0,
+                      //     child: AnimatedScaleButton(
+                      //       onTap: () {
+                      //         //   signupSheet(context, "Sign up / login", "login");
+                      //       },
+                      //       child: Image.asset(
+                      //         "assets/images/Moreactions.webp",
+                      //         fit: BoxFit.contain,
+                      //       ),
+                      //     )),
+                      SizedBox(
+                        width: AppDimensions.width10(context) * 2.0,
+                      ),
                       AnimatedScaleButton(
-                        onTap: () {
-                          setState(() {
-                            update = false;
-                          });
-                          stopTimer();
+                        onTap: () async {
+                          if (widget.comingFromEditScreen) {
+                            if (visualize[0]['text'] != "") {
+                              AdminGoal()
+                                  .updateUserGoal(
+                                      'visualizingYourSelf', visualize)
+                                  .then((value) {
+                                if (value == true) {
+                                  setState(() {
+                                    update = true;
+                                    showContainer = true;
+                                  });
+                                  startTimer();
+                                  // Navigator.push(
+                                  //     context,
+                                  //     FadePageRoute(
+                                  //       page: const StarReview(
+                                  //         route: 'goal',
+                                  //       ),
+                                  //     ));
+                                }
+                              });
+                            } else {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text("Field can't be empty")));
+                            }
+                          } else {
+                            final SharedPreferences prefs = await _prefs;
+                            await prefs.remove('route');
+                            saveAddPracRoute();
+                            goalVisualising[0]['text'] != ""
+                                ? updateGoalReason(goalVisualising)
+                                : Container();
+                          }
                         },
                         child: Container(
-                          width: AppDimensions.height10(
-                              context) *
-                              8.1,
-                          height: AppDimensions.height10(
-                              context) *
-                              6.0,
-                          margin: EdgeInsets.only(
-                              left:
-                              AppDimensions.height10(
-                                  context) *
-                                  5,
-                              right:
-                              AppDimensions.height10(
-                                  context) *
-                                  1.23),
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: const Color(
-                                    0xFFFFFFFF),
-                                width: 1),
-                            borderRadius:
-                            BorderRadius.circular(
-                                AppDimensions
-                                    .height10(
-                                    context) *
-                                    2.0),
-                          ),
+                          height: AppDimensions.height10(context) * 5.2,
+                          width: widget.comingFromEditScreen
+                              ? AppDimensions.width10(context) * 26.2
+                              : AppDimensions.width10(context) * 31.3,
+                          decoration: goalVisualising[0]['text'] == ""
+                              ? BoxDecoration(
+                                  // color: Color(0xFFFF7D50),
+                                  border: Border.all(color: Colors.transparent),
+                                  color:
+                                      const Color(0xFF282828).withOpacity(0.5),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(50.0)),
+                                )
+                              : BoxDecoration(
+                                  border: Border.all(color: Colors.transparent),
+                                  gradient: const LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Color(0xFFFCC10D),
+                                        Color(0xFFFDA210)
+                                      ]),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(50.0)),
+                                ),
                           child: Center(
                             child: Text(
-                              'Undo',
+                              widget.comingFromEditScreen
+                                  ? 'Update'
+                                  : goalVisualising[0]['text'] != ""
+                                      ? "Create your goal"
+                                      : "Next",
                               style: TextStyle(
-                                  fontSize: AppDimensions
-                                      .font10(
-                                      context) *
-                                      1.8,
-                                  fontWeight:
-                                  FontWeight.w500,
-                                  color: const Color(
-                                      0xFFFFFFFF)),
+                                color: goalVisualising[0]['text'] != "" ||
+                                        widget.comingFromEditScreen == true
+                                    ? Colors.white
+                                    : Colors.white.withOpacity(0.5),
+                                fontSize: UpdatedDimensions.font10(context) * 2,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 ),
-              ),
-            ),
-          )
-              : Container(
-            margin: EdgeInsets.only(
-                top: AppDimensions.height10(context) * 1.0,
-                bottom: AppDimensions.height10(context) * 2.6),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                widget.comingFromEditScreen
-                    ? AnimatedScaleButton(
-                  onTap: () {
-                    resetDialog();
-                  },
-                  child: Container(
-                      width: AppDimensions.width10(
-                          context) *
-                          10.0,
-                      height: AppDimensions.height10(
-                          context) *
-                          5.0,
-                      decoration: goalVisualising[0]
-                      ['text'] !=
-                          ""
-                          ? BoxDecoration(
-                        color: Colors.white,
-                        border: Border.all(
-                            color: const Color(
-                                0xffFA9934)),
-                        borderRadius:
-                        const BorderRadius
-                            .all(
-                            Radius.circular(
-                                50.0)),
-                      )
-                          : BoxDecoration(
-                        // color: Color(0xFFFF7D50),
-                        border: Border.all(
-                            color: const Color(
-                                0xff282828)),
-                        color:
-                        Colors.transparent,
-                        borderRadius:
-                        const BorderRadius
-                            .all(
-                            Radius.circular(
-                                50.0)),
-                      ),
-                      child: Center(
-                          child: Text(
-                            "Reset",
-                            style: TextStyle(
-                                fontFamily: "Laila",
-                                fontWeight:
-                                FontWeight.w600,
-                                color: goalVisualising[0]
-                                ['text'] !=
-                                    ""
-                                    ? const Color(
-                                    0xffFA9934)
-                                    : const Color(
-                                    0xff282828),
-                                fontSize:
-                                AppDimensions.font10(
-                                    context) *
-                                    2),
-                          ))),
-                )
-                    : Container(),
-                // Container(
-                //     // color: Colors.blue,
-                //     width:
-                //         AppDimensions.width10(context) *
-                //             5.0,
-                //     height:
-                //         AppDimensions.height10(context) *
-                //             5.0,
-                //     child: AnimatedScaleButton(
-                //       onTap: () {
-                //         //   signupSheet(context, "Sign up / login", "login");
-                //       },
-                //       child: Image.asset(
-                //         "assets/images/Moreactions.webp",
-                //         fit: BoxFit.contain,
-                //       ),
-                //     )),
-                SizedBox(
-                  width:
-                  AppDimensions.width10(context) * 2.0,
-                ),
-                AnimatedScaleButton(
-                  onTap: () async {
-                    if (widget.comingFromEditScreen) {
-                      if (visualize[0]['text'] != "") {
-                        AdminGoal()
-                            .updateUserGoal(
-                            'visualizingYourSelf',
-                            visualize)
-                            .then((value) {
-                          if (value == true) {
-                            setState(() {
-                              update = true;
-                              showContainer = true;
-                            });
-                            startTimer();
-                            // Navigator.push(
-                            //     context,
-                            //     FadePageRoute(
-                            //       page: const StarReview(
-                            //         route: 'goal',
-                            //       ),
-                            //     ));
-                          }
-                        });
-                      } else {
-                        ScaffoldMessenger.of(context)
-                            .showSnackBar(const SnackBar(
-                            content: Text(
-                                "Field can't be empty")));
-                      }
-                    } else {
-                      final SharedPreferences prefs =
-                      await _prefs;
-                      await prefs.remove('route');
-                      saveAddPracRoute();
-                      goalVisualising[0]['text'] != ""
-                          ? updateGoalReason(
-                          goalVisualising)
-                          : Container();
-                    }
-                  },
-                  child: Container(
-                    height:
-                    AppDimensions.height10(context) *
-                        5.2,
-                    width: widget.comingFromEditScreen
-                        ? AppDimensions.width10(context) *
-                        26.2
-                        : AppDimensions.width10(context) *
-                        31.3,
-                    decoration: goalVisualising[0]
-                    ['text'] ==
-                        ""
-                        ? BoxDecoration(
-                      // color: Color(0xFFFF7D50),
-                      border: Border.all(
-                          color: Colors.transparent),
-                      color: const Color(0xFF282828)
-                          .withOpacity(0.5),
-                      borderRadius:
-                      const BorderRadius.all(
-                          Radius.circular(50.0)),
-                    )
-                        : BoxDecoration(
-                      border: Border.all(
-                          color: Colors.transparent),
-                      gradient: const LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [
-                            Color(0xFFFCC10D),
-                            Color(0xFFFDA210)
-                          ]),
-                      borderRadius:
-                      const BorderRadius.all(
-                          Radius.circular(50.0)),
-                    ),
-                    child: Center(
-                      child: Text(
-                        widget.comingFromEditScreen
-                            ? 'Update'
-                            : goalVisualising[0]['text'] !=
-                            ""
-                            ? "Create your goal"
-                            : "Next",
-                        style: TextStyle(
-                          color: goalVisualising[0]
-                          ['text'] !=
-                              "" ||
-                              widget.comingFromEditScreen ==
-                                  true
-                              ? Colors.white
-                              : Colors.white
-                              .withOpacity(0.5),
-                          fontSize:
-                          UpdatedDimensions.font10(
-                              context) *
-                              2,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
           body: Stack(
             children: [
               Container(
@@ -1023,613 +933,635 @@ class _VisualisingState extends State<Visualising> {
                 ),
               ),
               loading == false
-                  ? SingleChildScrollView(
-                      physics: const ClampingScrollPhysics(),
-                      child: Column(
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 10.5),
-                          ),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 0.5,
-                          ),
-                          SizedBox(
-                            width: AppDimensions.width10(context) * 30,
-                            child: Center(
-                              child: Text(
-                                goalName,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  color: widget.comingFromEditScreen
-                                      ? const Color(0xFF437296)
-                                      : Colors.white,
-                                  fontSize: AppDimensions.font10(context) * 2.2,
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 1.0,
-                          ),
-                          widget.comingFromEditScreen
-                              ? SizedBox(
-                                  height: AppDimensions.height10(context) * 7.6,
-                                )
-                              : Container(
-                                  // color: Colors.blue,
-                                  width: AppDimensions.width10(context) * 10.4,
-                                  height: AppDimensions.height10(context) * 7.6,
-                                  // color: Colors.blue,
-
-                                  padding: EdgeInsets.only(
-                                      left:
-                                          AppDimensions.width10(context) * 1.5,
-                                      right: AppDimensions.height10(context) *
-                                          1.5),
-                                  child: Image.asset(
-                                    "assets/images/image3.webp",
-                                    fit: BoxFit.contain,
-                                  )),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 1.0,
-                          ),
-                          Center(
-                            child: Text(
-                              AppText().goalVisual,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                color: widget.comingFromEditScreen
-                                    ? const Color(0xFF437296)
-                                    : Colors.white,
-                                fontSize: AppDimensions.font10(context) * 2.8,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 1.0,
-                          ),
-                          SizedBox(
-                            // height: AppDimensions.height10(context) * 4.9,
-                            width: AppDimensions.width10(context) * 37.2,
-                            // height: AppDimensions.height10(context) * 4.9,
-                            child: Center(
-                              child: Text(
-                                AppText().goalVisualBody,
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.8,
+                  ? Container(
+                      height: AppDimensions.height10(context) * 70.0,
+                      margin: EdgeInsets.only(
+                          top: AppDimensions.height10(context) * 11),
+                      child: SingleChildScrollView(
+                        physics: const ClampingScrollPhysics(),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: AppDimensions.width10(context) * 30,
+                              child: Center(
+                                child: Text(
+                                  goalName,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     color: widget.comingFromEditScreen
                                         ? const Color(0xFF437296)
-                                        : const Color(0xFFFFFFFF)),
+                                        : Colors.white,
+                                    fontSize:
+                                        AppDimensions.font10(context) * 2.2,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: AppDimensions.height10(context) * 3.4,
-                          ),
-                          SizedBox(
-                            width: AppDimensions.width10(context) * 38.2,
-                            // height: widget.comingFromEditScreen
-                            //     ? visualize.length <= 1
-                            //         ? AppDimensions.height10(context) * 22.0
-                            //         : AppDimensions.height10(context) * 36.0
-                            //     : item <= 1
-                            //         ? AppDimensions.height10(context) * 22.0
-                            //         : AppDimensions.height10(context) * 37.0,
-                            child: Stack(children: [
-                              Container(
-                                // width: AppDimensions.width10(context) * 38.2,
-                                //height: AppDimensions.height10(context) * 33.0,
-                                margin: EdgeInsets.only(
-                                    bottom:
-                                        AppDimensions.height10(context) * 2.3),
-                                padding: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) * 1.1,
-                                ),
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    border: Border.all(
-                                        color: Colors.white,
-                                        width: AppDimensions.width10(context) *
-                                            0.2),
-                                    borderRadius: BorderRadius.all(
-                                        Radius.circular(
-                                            AppDimensions.height10(context) *
-                                                1.8))),
-                                child: ListView.builder(
-                                  itemCount: widget.comingFromEditScreen
-                                      ? (visualize?.length ?? 0)
-                                      : goalVisualising.length,
-                                  padding: EdgeInsets.zero,
-                                  shrinkWrap: true,
-                                  physics: const NeverScrollableScrollPhysics(),
-                                  itemBuilder: (BuildContext context, index) {
-                                    if (widget.comingFromEditScreen) {
-                                      if (visualize == null ||
-                                          index >= visualize.length) {
-                                        return Container(); // Return an empty container if the index is out of range.
-                                      }
-                                      return Column(children: [
-                                        inner_text(
-                                          key: Key(visualize[index]['key'] +
-                                              trigger),
-                                          delete: visualize.length > 1
-                                              ? true
-                                              : false,
-                                          head_text:
-                                              "${index + 1}. I picture myself.... ",
-                                          body_text: visualize[index]['text']!,
-                                          length: 200,
-                                          onChanged: (newText) {
-                                            if (goalVisualising.isEmpty) {
-                                              goalVisualising.add({
-                                                'key':
-                                                    'Reason ${goalVisualising.length.toString()}',
-                                                'text': '',
-                                              });
-                                            }
-                                            setState(() {
-                                              visualize[index]['text'] =
-                                                  newText;
-                                            });
-                                            handleTextChanged(index, newText);
-                                          },
-                                          onDelete: () => handleDelete(index),
-                                          index: index,
-                                          placeHolder: '',
-                                          comingFromEditScreen:
-                                              widget.comingFromEditScreen,
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.5,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  1.3),
-                                          child: Row(
-                                            children: [
-                                              Center(
-                                                child: Text(
-                                                  "Character count: ",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                    color:
-                                                        const Color(0xFF464646),
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.3,
-                                                  ),
-                                                ),
-                                              ),
-                                              Center(
-                                                child: SizedBox(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      6,
-                                                  child: Text(
-                                                    "${visualize[index]['text'].toString().length}/200",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      color: const Color(
-                                                          0xFF464646),
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              1.3,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.3,
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    4.0,
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        0.5,
-                                                    left:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.1),
-                                                decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFF282828)
-                                                            .withOpacity(0.2)),
-                                              )
-                                            ],
-                                          ),
-                                        )
-                                      ]);
-                                    } else {
-                                      if (index >= goalVisualising.length) {
-                                        return const Center();
-                                      }
-                                      return Column(children: [
-                                        inner_text(
-                                          key: Key(
-                                              goalVisualising[index]['key']!),
-                                          delete: goalVisualising.length > 1
-                                              ? true
-                                              : false,
-                                          head_text:
-                                              "${index + 1}. I picture myself.... ",
-                                          body_text: goalVisualising[index]
-                                              ['text']!,
-                                          length: 200,
-                                          onChanged: (newText) {
-                                            setState(() {
-                                              goalVisualising[index]['text'] =
-                                                  newText;
-                                            });
-                                            handleTextChanged(index, newText);
-                                            goalProvider
-                                                .updateVisualizingYourSelf(
-                                                    goalVisualising);
-                                          },
-                                          onDelete: () {
-                                            handleDelete(index);
-                                            goalProvider
-                                                .updateVisualizingYourSelf(
-                                                    goalVisualising);
-                                          },
-                                          index: index,
-                                          placeHolder: '',
-                                          comingFromEditScreen: false,
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  1.5,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  1.3),
-                                          child: Row(
-                                            children: [
-                                              Center(
-                                                child: Text(
-                                                  "Character count: ",
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w400,
-                                                    color:
-                                                        const Color(0xFF464646),
-                                                    fontSize:
-                                                        AppDimensions.font10(
-                                                                context) *
-                                                            1.3,
-                                                  ),
-                                                ),
-                                              ),
-                                              Center(
-                                                child: SizedBox(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      6,
-                                                  child: Text(
-                                                    "${goalVisualising[index]['text'].toString().length}/200",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.w700,
-                                                      color: const Color(
-                                                          0xFF464646),
-                                                      fontSize:
-                                                          AppDimensions.font10(
-                                                                  context) *
-                                                              1.3,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    0.3,
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    4.0,
-                                                margin: EdgeInsets.only(
-                                                    top: AppDimensions.height10(
-                                                            context) *
-                                                        0.5,
-                                                    left:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.1),
-                                                decoration: BoxDecoration(
-                                                    color:
-                                                        const Color(0xFF282828)
-                                                            .withOpacity(0.2)),
-                                              )
-                                            ],
-                                          ),
-                                        )
-                                      ]);
-                                    }
-                                  },
+                            SizedBox(
+                              height: AppDimensions.height10(context) * 1.0,
+                            ),
+                            widget.comingFromEditScreen
+                                ? SizedBox(
+                                    height:
+                                        AppDimensions.height10(context) * 7.6,
+                                  )
+                                : Container(
+                                    // color: Colors.blue,
+                                    width:
+                                        AppDimensions.width10(context) * 10.4,
+                                    height:
+                                        AppDimensions.height10(context) * 7.6,
+                                    // color: Colors.blue,
+
+                                    padding: EdgeInsets.only(
+                                        left: AppDimensions.width10(context) *
+                                            1.5,
+                                        right: AppDimensions.height10(context) *
+                                            1.5),
+                                    child: Image.asset(
+                                      "assets/images/image3.webp",
+                                      fit: BoxFit.contain,
+                                    )),
+                            SizedBox(
+                              height: AppDimensions.height10(context) * 1.0,
+                            ),
+                            Center(
+                              child: Text(
+                                AppText().goalVisual,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  color: widget.comingFromEditScreen
+                                      ? const Color(0xFF437296)
+                                      : Colors.white,
+                                  fontSize: AppDimensions.font10(context) * 2.8,
                                 ),
                               ),
-                              Positioned(
-                                top: 0,
-                                bottom: 0,
-                                left: 0,
-                                right: 0,
-                                child: Align(
-                                  alignment: Alignment.bottomCenter,
-                                  // alignment: item == 1
-                                  //     ? const Alignment(0.01, 1.4)
-                                  //     : const Alignment(0.01, 1.21),
-                                  //heightFactor: 0.5,
-                                  child: widget.comingFromEditScreen
-                                      ? visualize.length > 2
-                                          ? AnimatedScaleButton(
-                                              onTap: () {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  const SnackBar(
-                                                    content: Text(
-                                                        'You cannot add more than 3 items.'),
-                                                    duration:
-                                                        Duration(seconds: 3),
-                                                  ),
-                                                );
-                                              },
-                                              child: Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.7,
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    4.7,
-                                                decoration: const BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Color.fromARGB(
-                                                      189, 158, 158, 158),
-                                                ),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 4,
-                                                          left: 4,
-                                                          right: 4,
-                                                          bottom: 4),
-                                                  child: Container(
-                                                    color: Colors.transparent,
-                                                    child: Image.asset(
-                                                      'assets/images/Addgoal.webp',
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          4.7,
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              4.7,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            )
-                                          : AnimatedScaleButton(
-                                              onTap: () {
-                                                increment();
-                                                widget.comingFromEditScreen
-                                                    ? setState(() {
-                                                        visualize.add({
-                                                          'key':
-                                                              'Reason ${visualize.length.toString()}',
-                                                          'text': '',
-                                                        });
-                                                      })
-                                                    : setState(() {
-                                                        goalVisualising.add({
-                                                          'key':
-                                                              'Identity ${goalVisualising.length.toString()}',
-                                                          'text': '',
-                                                        });
-                                                      });
-                                              },
-                                              child: Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.7,
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    4.7,
-                                                decoration: const BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  gradient: LinearGradient(
-                                                      begin:
-                                                          Alignment.topCenter,
-                                                      end: Alignment
-                                                          .bottomCenter,
-                                                      colors: [
-                                                        Color(0xFFB1B8FF),
-                                                        Color(0xFFC5CAFF)
-                                                      ]),
-                                                ),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 4,
-                                                          left: 4,
-                                                          right: 4,
-                                                          bottom: 4),
-                                                  child: Container(
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            4.7,
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            4.7,
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                            //color: Colors.transparent,
-                                                            image: DecorationImage(
-                                                                image: AssetImage(
-                                                                    'assets/images/Addgoal.webp'),
-                                                                fit: BoxFit
-                                                                    .contain)),
-                                                  ),
-                                                ),
-                                              ),
-                                            )
-                                      : goalVisualising.length > 2
-                                          ? AnimatedScaleButton(
-                                              onTap: () {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  const SnackBar(
-                                                    content: Text(
-                                                        'You cannot add more than 3 items.'),
-                                                    duration:
-                                                        Duration(seconds: 3),
-                                                  ),
-                                                );
-                                              },
-                                              child: Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.7,
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    4.7,
-                                                decoration: const BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  color: Color.fromARGB(
-                                                      189, 158, 158, 158),
-                                                ),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 4,
-                                                          left: 4,
-                                                          right: 4,
-                                                          bottom: 4),
-                                                  child: Container(
-                                                    color: Colors.transparent,
-                                                    child: Image.asset(
-                                                      'assets/images/Addgoal.webp',
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          4.7,
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              4.7,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                            )
-                                          : AnimatedScaleButton(
-                                              onTap: () {
-                                                increment();
-                                                widget.comingFromEditScreen
-                                                    ? setState(() {
-                                                        visualize.add({
-                                                          'key':
-                                                              'Reason ${visualize.length.toString()}',
-                                                          'text': '',
-                                                        });
-                                                      })
-                                                    : setState(() {
-                                                        goalVisualising.add({
-                                                          'key':
-                                                              'Identity ${goalVisualising.length.toString()}',
-                                                          'text': '',
-                                                        });
-                                                      });
-                                              },
-                                              child: Container(
-                                                height: AppDimensions.height10(
-                                                        context) *
-                                                    4.7,
-                                                width: AppDimensions.height10(
-                                                        context) *
-                                                    4.7,
-                                                decoration: const BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                  gradient: LinearGradient(
-                                                      begin:
-                                                          Alignment.topCenter,
-                                                      end: Alignment
-                                                          .bottomCenter,
-                                                      colors: [
-                                                        Color(0xFFB1B8FF),
-                                                        Color(0xFFC5CAFF)
-                                                      ]),
-                                                ),
-                                                child: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          top: 4,
-                                                          left: 4,
-                                                          right: 4,
-                                                          bottom: 4),
-                                                  child: Container(
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            4.7,
-                                                    width:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            4.7,
-                                                    decoration:
-                                                        const BoxDecoration(
-                                                            //color: Colors.transparent,
-                                                            image: DecorationImage(
-                                                                image: AssetImage(
-                                                                    'assets/images/Addgoal.webp'),
-                                                                fit: BoxFit
-                                                                    .contain)),
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
+                            ),
+                            SizedBox(
+                              height: AppDimensions.height10(context) * 1.0,
+                            ),
+                            SizedBox(
+                              // height: AppDimensions.height10(context) * 4.9,
+                              width: AppDimensions.width10(context) * 37.2,
+                              // height: AppDimensions.height10(context) * 4.9,
+                              child: Center(
+                                child: Text(
+                                  AppText().goalVisualBody,
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.8,
+                                      fontWeight: FontWeight.w600,
+                                      color: widget.comingFromEditScreen
+                                          ? const Color(0xFF437296)
+                                          : const Color(0xFFFFFFFF)),
                                 ),
-                              )
-                            ]),
-                          ),
-                          // widget.comingFromEditScreen
-                          //     ? SizedBox(
-                          //         height: visualize.length > 1
-                          //             ? AppDimensions.height10(context) * 14.5
-                          //             : AppDimensions.height10(context) * 24.0,
-                          //       )
-                          //     : MediaQuery.of(context).viewInsets.bottom == 0
-                          //         ? SizedBox(
-                          //             height: AppDimensions.height10(context) *
-                          //                 21.4,
-                          //           )
-                          //         : SizedBox(
-                          //             height:
-                          //                 AppDimensions.height10(context) * 4.0,
-                          //           ),
-                          //
-                          // SizedBox(
-                          //   height: AppDimensions.height10(context) * 2.5,
-                          // ),
-                          Padding(
-                              padding: EdgeInsets.only(
-                                  bottom:
-                                      MediaQuery.of(context).viewInsets.bottom))
-                        ],
+                              ),
+                            ),
+                            SizedBox(
+                              height: AppDimensions.height10(context) * 3.4,
+                            ),
+                            SizedBox(
+                              width: AppDimensions.width10(context) * 38.2,
+                              // height: widget.comingFromEditScreen
+                              //     ? visualize.length <= 1
+                              //         ? AppDimensions.height10(context) * 22.0
+                              //         : AppDimensions.height10(context) * 36.0
+                              //     : item <= 1
+                              //         ? AppDimensions.height10(context) * 22.0
+                              //         : AppDimensions.height10(context) * 37.0,
+                              child: Stack(children: [
+                                Container(
+                                  // width: AppDimensions.width10(context) * 38.2,
+                                  //height: AppDimensions.height10(context) * 33.0,
+                                  margin: EdgeInsets.only(
+                                      bottom: AppDimensions.height10(context) *
+                                          2.3),
+                                  padding: EdgeInsets.only(
+                                    top: AppDimensions.height10(context) * 1.1,
+                                  ),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      border: Border.all(
+                                          color: Colors.white,
+                                          width:
+                                              AppDimensions.width10(context) *
+                                                  0.2),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(
+                                              AppDimensions.height10(context) *
+                                                  1.8))),
+                                  child: ListView.builder(
+                                    itemCount: widget.comingFromEditScreen
+                                        ? (visualize?.length ?? 0)
+                                        : goalVisualising.length,
+                                    padding: EdgeInsets.zero,
+                                    shrinkWrap: true,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemBuilder: (BuildContext context, index) {
+                                      if (widget.comingFromEditScreen) {
+                                        if (visualize == null ||
+                                            index >= visualize.length) {
+                                          return Container(); // Return an empty container if the index is out of range.
+                                        }
+                                        return Column(children: [
+                                          inner_text(
+                                            key: Key(visualize[index]['key'] +
+                                                trigger),
+                                            delete: visualize.length > 1
+                                                ? true
+                                                : false,
+                                            head_text:
+                                                "${index + 1}. I picture myself.... ",
+                                            body_text: visualize[index]
+                                                ['text']!,
+                                            length: 200,
+                                            onChanged: (newText) {
+                                              if (goalVisualising.isEmpty) {
+                                                goalVisualising.add({
+                                                  'key':
+                                                      'Reason ${goalVisualising.length.toString()}',
+                                                  'text': '',
+                                                });
+                                              }
+                                              setState(() {
+                                                visualize[index]['text'] =
+                                                    newText;
+                                              });
+                                              handleTextChanged(index, newText);
+                                            },
+                                            onDelete: () => handleDelete(index),
+                                            index: index,
+                                            placeHolder: '',
+                                            comingFromEditScreen:
+                                                widget.comingFromEditScreen,
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: AppDimensions.height10(
+                                                        context) *
+                                                    1.5,
+                                                bottom: AppDimensions.height10(
+                                                        context) *
+                                                    1.3),
+                                            child: Row(
+                                              children: [
+                                                Center(
+                                                  child: Text(
+                                                    "Character count: ",
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xFF464646),
+                                                      fontSize:
+                                                          AppDimensions.font10(
+                                                                  context) *
+                                                              1.3,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Center(
+                                                  child: SizedBox(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6,
+                                                    child: Text(
+                                                      "${visualize[index]['text'].toString().length}/200",
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: const Color(
+                                                            0xFF464646),
+                                                        fontSize: AppDimensions
+                                                                .font10(
+                                                                    context) *
+                                                            1.3,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          0.3,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      4.0,
+                                                  margin: EdgeInsets.only(
+                                                      top: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.5,
+                                                      left: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.1),
+                                                  decoration: BoxDecoration(
+                                                      color: const Color(
+                                                              0xFF282828)
+                                                          .withOpacity(0.2)),
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                        ]);
+                                      } else {
+                                        if (index >= goalVisualising.length) {
+                                          return const Center();
+                                        }
+                                        return Column(children: [
+                                          inner_text(
+                                            key: Key(
+                                                goalVisualising[index]['key']!),
+                                            delete: goalVisualising.length > 1
+                                                ? true
+                                                : false,
+                                            head_text:
+                                                "${index + 1}. I picture myself.... ",
+                                            body_text: goalVisualising[index]
+                                                ['text']!,
+                                            length: 200,
+                                            onChanged: (newText) {
+                                              setState(() {
+                                                goalVisualising[index]['text'] =
+                                                    newText;
+                                              });
+                                              handleTextChanged(index, newText);
+                                              goalProvider
+                                                  .updateVisualizingYourSelf(
+                                                      goalVisualising);
+                                            },
+                                            onDelete: () {
+                                              handleDelete(index);
+                                              goalProvider
+                                                  .updateVisualizingYourSelf(
+                                                      goalVisualising);
+                                            },
+                                            index: index,
+                                            placeHolder: '',
+                                            comingFromEditScreen: false,
+                                          ),
+                                          Container(
+                                            margin: EdgeInsets.only(
+                                                left: AppDimensions.height10(
+                                                        context) *
+                                                    1.5,
+                                                bottom: AppDimensions.height10(
+                                                        context) *
+                                                    1.3),
+                                            child: Row(
+                                              children: [
+                                                Center(
+                                                  child: Text(
+                                                    "Character count: ",
+                                                    style: TextStyle(
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xFF464646),
+                                                      fontSize:
+                                                          AppDimensions.font10(
+                                                                  context) *
+                                                              1.3,
+                                                    ),
+                                                  ),
+                                                ),
+                                                Center(
+                                                  child: SizedBox(
+                                                    width:
+                                                        AppDimensions.height10(
+                                                                context) *
+                                                            6,
+                                                    child: Text(
+                                                      "${goalVisualising[index]['text'].toString().length}/200",
+                                                      style: TextStyle(
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: const Color(
+                                                            0xFF464646),
+                                                        fontSize: AppDimensions
+                                                                .font10(
+                                                                    context) *
+                                                            1.3,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          0.3,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      4.0,
+                                                  margin: EdgeInsets.only(
+                                                      top: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.5,
+                                                      left: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          0.1),
+                                                  decoration: BoxDecoration(
+                                                      color: const Color(
+                                                              0xFF282828)
+                                                          .withOpacity(0.2)),
+                                                )
+                                              ],
+                                            ),
+                                          )
+                                        ]);
+                                      }
+                                    },
+                                  ),
+                                ),
+                                Positioned(
+                                  top: 0,
+                                  bottom: 0,
+                                  left: 0,
+                                  right: 0,
+                                  child: Align(
+                                    alignment: Alignment.bottomCenter,
+                                    // alignment: item == 1
+                                    //     ? const Alignment(0.01, 1.4)
+                                    //     : const Alignment(0.01, 1.21),
+                                    //heightFactor: 0.5,
+                                    child: widget.comingFromEditScreen
+                                        ? visualize.length > 2
+                                            ? AnimatedScaleButton(
+                                                onTap: () {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Text(
+                                                          'You cannot add more than 3 items.'),
+                                                      duration:
+                                                          Duration(seconds: 3),
+                                                    ),
+                                                  );
+                                                },
+                                                child: Container(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.7,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      4.7,
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: Color.fromARGB(
+                                                        189, 158, 158, 158),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 4,
+                                                            left: 4,
+                                                            right: 4,
+                                                            bottom: 4),
+                                                    child: Container(
+                                                      color: Colors.transparent,
+                                                      child: Image.asset(
+                                                        'assets/images/Addgoal.webp',
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            4.7,
+                                                        width: AppDimensions
+                                                                .width10(
+                                                                    context) *
+                                                            4.7,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                            : AnimatedScaleButton(
+                                                onTap: () {
+                                                  increment();
+                                                  widget.comingFromEditScreen
+                                                      ? setState(() {
+                                                          visualize.add({
+                                                            'key':
+                                                                'Reason ${visualize.length.toString()}',
+                                                            'text': '',
+                                                          });
+                                                        })
+                                                      : setState(() {
+                                                          goalVisualising.add({
+                                                            'key':
+                                                                'Identity ${goalVisualising.length.toString()}',
+                                                            'text': '',
+                                                          });
+                                                        });
+                                                },
+                                                child: Container(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.7,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      4.7,
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    gradient: LinearGradient(
+                                                        begin:
+                                                            Alignment.topCenter,
+                                                        end: Alignment
+                                                            .bottomCenter,
+                                                        colors: [
+                                                          Color(0xFFB1B8FF),
+                                                          Color(0xFFC5CAFF)
+                                                        ]),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 4,
+                                                            left: 4,
+                                                            right: 4,
+                                                            bottom: 4),
+                                                    child: Container(
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          4.7,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          4.7,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                              //color: Colors.transparent,
+                                                              image: DecorationImage(
+                                                                  image: AssetImage(
+                                                                      'assets/images/Addgoal.webp'),
+                                                                  fit: BoxFit
+                                                                      .contain)),
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                        : goalVisualising.length > 2
+                                            ? AnimatedScaleButton(
+                                                onTap: () {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    const SnackBar(
+                                                      content: Text(
+                                                          'You cannot add more than 3 items.'),
+                                                      duration:
+                                                          Duration(seconds: 3),
+                                                    ),
+                                                  );
+                                                },
+                                                child: Container(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.7,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      4.7,
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    color: Color.fromARGB(
+                                                        189, 158, 158, 158),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 4,
+                                                            left: 4,
+                                                            right: 4,
+                                                            bottom: 4),
+                                                    child: Container(
+                                                      color: Colors.transparent,
+                                                      child: Image.asset(
+                                                        'assets/images/Addgoal.webp',
+                                                        height: AppDimensions
+                                                                .height10(
+                                                                    context) *
+                                                            4.7,
+                                                        width: AppDimensions
+                                                                .width10(
+                                                                    context) *
+                                                            4.7,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              )
+                                            : AnimatedScaleButton(
+                                                onTap: () {
+                                                  increment();
+                                                  widget.comingFromEditScreen
+                                                      ? setState(() {
+                                                          visualize.add({
+                                                            'key':
+                                                                'Reason ${visualize.length.toString()}',
+                                                            'text': '',
+                                                          });
+                                                        })
+                                                      : setState(() {
+                                                          goalVisualising.add({
+                                                            'key':
+                                                                'Identity ${goalVisualising.length.toString()}',
+                                                            'text': '',
+                                                          });
+                                                        });
+                                                },
+                                                child: Container(
+                                                  height:
+                                                      AppDimensions.height10(
+                                                              context) *
+                                                          4.7,
+                                                  width: AppDimensions.height10(
+                                                          context) *
+                                                      4.7,
+                                                  decoration:
+                                                      const BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    gradient: LinearGradient(
+                                                        begin:
+                                                            Alignment.topCenter,
+                                                        end: Alignment
+                                                            .bottomCenter,
+                                                        colors: [
+                                                          Color(0xFFB1B8FF),
+                                                          Color(0xFFC5CAFF)
+                                                        ]),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.only(
+                                                            top: 4,
+                                                            left: 4,
+                                                            right: 4,
+                                                            bottom: 4),
+                                                    child: Container(
+                                                      height: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          4.7,
+                                                      width: AppDimensions
+                                                              .height10(
+                                                                  context) *
+                                                          4.7,
+                                                      decoration:
+                                                          const BoxDecoration(
+                                                              //color: Colors.transparent,
+                                                              image: DecorationImage(
+                                                                  image: AssetImage(
+                                                                      'assets/images/Addgoal.webp'),
+                                                                  fit: BoxFit
+                                                                      .contain)),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                  ),
+                                )
+                              ]),
+                            ),
+                            // widget.comingFromEditScreen
+                            //     ? SizedBox(
+                            //         height: visualize.length > 1
+                            //             ? AppDimensions.height10(context) * 14.5
+                            //             : AppDimensions.height10(context) * 24.0,
+                            //       )
+                            //     : MediaQuery.of(context).viewInsets.bottom == 0
+                            //         ? SizedBox(
+                            //             height: AppDimensions.height10(context) *
+                            //                 21.4,
+                            //           )
+                            //         : SizedBox(
+                            //             height:
+                            //                 AppDimensions.height10(context) * 4.0,
+                            //           ),
+                            //
+                            // SizedBox(
+                            //   height: AppDimensions.height10(context) * 2.5,
+                            // ),
+                            Padding(
+                                padding: EdgeInsets.only(
+                                    bottom: MediaQuery.of(context)
+                                        .viewInsets
+                                        .bottom))
+                          ],
+                        ),
                       ),
                     )
                   : const Center(

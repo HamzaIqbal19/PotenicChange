@@ -14,7 +14,8 @@ import 'package:potenic_app/Screen/Subscription%20Journey/Subscription.dart';
 import 'package:potenic_app/Screen/Subscription%20Journey/subscriptionComponents.dart';
 import 'package:potenic_app/Screen/Subscription%20Journey/subscriptionService.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
-import 'package:potenic_app/Widgets/resetDialog.dart';
+import 'package:potenic_app/Widgets/appBarWidgets.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/tutorialBottomSheet.dart';
 import 'package:potenic_app/utils/app_link.dart';
 import 'package:potenic_app/utils/app_texts.dart';
@@ -115,7 +116,6 @@ class _MenuState extends State<Menu> {
 
   getUserTrial() {
     Authentication().getUserTrials().then((value) {
-      print("Trial value $value");
       setState(() {
         trial = value['remainingDays'];
       });
@@ -161,45 +161,21 @@ class _MenuState extends State<Menu> {
             elevation: 0,
             backgroundColor: Colors.transparent,
             toolbarOpacity: 0.0,
-            leading: Container(
-              padding:
-                  EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        FadePageRouteReverse(
-                          page: const ViewDashboard(
-                            missed: false,
-                            name: '',
-                            update: false,
-                            helpfulTips: false,
-                            record: 0,
-                          ),
-                        ));
-                  },
-                  icon: Image.asset(
-                    'assets/images/Back.webp',
-                    //  width: AppDimensions.width10(context) * 2.6,
-                    height: AppDimensions.height10(context) * 2.8,
-                    fit: BoxFit.contain,
-                  )),
-            ),
+            leading: Buttons().backButton(context, (){
+              Navigator.pushReplacement(
+                  context,
+                  FadePageRouteReverse(
+                    page: const ViewDashboard(
+                      missed: false,
+                      name: '',
+                      update: false,
+                      helpfulTips: false,
+                      record: 0,
+                    ),
+                  ));
+            }),
             centerTitle: true,
-            title: SizedBox(
-              width: AppDimensions.width10(context) * 17.0,
-             // height: AppDimensions.height10(context) * 4.8,
-              child: Center(
-                child: Text(
-                  'Menu',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 2.2,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white),
-                ),
-              ),
-            )),
+            title: appBarTitle(context,'Menu',false)),
         body: Container(
           decoration: const BoxDecoration(
               image: DecorationImage(

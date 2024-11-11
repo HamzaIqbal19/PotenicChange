@@ -60,7 +60,6 @@ class _testSubsState extends State<testSubs> {
     if (response.statusCode == 200) {
       return json.decode(response.body);
     } else {
-      print(json.decode(response.body));
       throw 'Failed to create PaymentMethod.';
     }
   }
@@ -109,7 +108,6 @@ class _testSubsState extends State<testSubs> {
         },
         body: requestBody,
       );
-      print('Stripe : ${json.decode(response.body)}');
 
       return json.decode(response.body);
     } catch (err) {
@@ -120,10 +118,9 @@ class _testSubsState extends State<testSubs> {
   displayPaymentSheet() async {
     try {
       await Stripe.instance.presentPaymentSheet().then((value) {
-        print("Payment Successfully $value");
       });
     } catch (e) {
-      print("Payment unSuccessfully $e");
+      print("Payment failed $e");
     }
   }
 
@@ -149,7 +146,6 @@ class _testSubsState extends State<testSubs> {
         body: body,
       );
 
-      print('Stripe : ${json.decode(response.body)}');
 
       return json.decode(response.body);
     } catch (err) {
@@ -168,7 +164,6 @@ class _testSubsState extends State<testSubs> {
         },
       );
 
-      print('Stripe : ${json.decode(response.body)}');
 
       return json.decode(response.body);
     } catch (err) {

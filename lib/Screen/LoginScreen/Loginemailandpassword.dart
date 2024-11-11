@@ -89,7 +89,6 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
               ),
               // exitPage:SplashPage(),
             ));
-        print("response $response");
       }
     });
   }
@@ -251,13 +250,10 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                         height: AppDimensions.height10(context) * 8.2,
                       ),
                       Center(
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Image(
-                            image: const AssetImage("assets/images/logo.webp"),
-                            height: AppDimensions.height10(context) * 7.75,
-                            width: AppDimensions.width10(context) * 7.75,
-                          ),
+                        child: Image(
+                          image: const AssetImage("assets/images/logo.webp"),
+                          height: AppDimensions.height10(context) * 7.75,
+                          width: AppDimensions.width10(context) * 7.75,
                         ),
                       ),
 

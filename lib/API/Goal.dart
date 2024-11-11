@@ -355,7 +355,6 @@ class AdminGoal {
     final SharedPreferences prefs = await _prefs;
 
     var accessToken = prefs.getString("usertoken");
-    print("subscriptions $accessToken");
     var headers = {
       'Content-Type': 'application/json',
       'x-access-token': '$accessToken'

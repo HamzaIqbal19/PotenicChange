@@ -217,12 +217,16 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                             child: Column(
                               children: [
                                 Container(
-                                  width:
+                                  // width:
+                                  //     AppDimensionsUpdated.height10(context) *
+                                  //         17.1,
+                                  // height:
+                                  //     AppDimensionsUpdated.height10(context) *
+                                  //         2.4,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal:
                                       AppDimensionsUpdated.height10(context) *
-                                          17.1,
-                                  height:
-                                      AppDimensionsUpdated.height10(context) *
-                                          2.4,
+                                          2.5),
                                   margin: EdgeInsets.only(
                                       top: AppDimensionsUpdated.height10(
                                               context) *
@@ -231,10 +235,12 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                                   child: Text(
                                     widget.mainText,
                                     textAlign: TextAlign.center,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         fontSize: AppDimensionsUpdated.font10(
                                                 context) *
-                                            1.8,
+                                            2,
                                         height: AppDimensionsUpdated.height10(
                                                 context) *
                                             0.12,
@@ -242,11 +248,13 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                                         color: const Color(0xff5B74A6)),
                                   ),
                                 ),
+                                const SizedBox(height: 4,),
                                 Container(
 
-                                  height:
-                                      AppDimensionsUpdated.height10(context) *
-                                          3.63,
+                                  // height:
+                                  //     AppDimensionsUpdated.height10(context) *
+                                  //         3.63,
+                                  padding: const EdgeInsets.symmetric(horizontal: 20),
                                   margin: EdgeInsets.only(
                                       top: AppDimensionsUpdated.height10(
                                               context) *
@@ -260,7 +268,7 @@ class _NewVisionComponentState extends State<NewVisionComponent> {
                                           fontSize:
                                               AppDimensionsUpdated.font10(
                                                       context) *
-                                                  1.4,
+                                                  1.6,
                                           height: AppDimensionsUpdated.height10(
                                                   context) *
                                               0.15,

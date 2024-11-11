@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:potenic_app/API/Goal.dart';
+import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/constants/videothumbnail.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation%20Journey/new_progress_score.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
@@ -58,6 +59,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
           year = dateTime.year.toString();
         });
         print("goalLevel = $goalDetails");
+        print("isnpirations $inspirations");
       } else {
         setState(() {
           loading = false;
@@ -115,9 +117,24 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
           elevation: 0,
           automaticallyImplyLeading: false,
           actions: [
-            Buttons().closeButton(context, () {
-              Navigator.pop(context);
-            })
+            Center(
+                child: Buttons().closeButton(
+              context,
+              () {
+                Navigator.pop(context);
+              },
+            )
+                //  IconButton(
+                //     onPressed: () {
+                //       Navigator.pop(context);
+                //     },
+                //     icon: Image.asset(
+                //       'assets/images/Close.webp',
+                //       // width: AppDimensionsUpdated.width10(context) * 2.6,
+                //       height: AppDimensionsUpdated.height10(context) * 2.6,
+                //       fit: BoxFit.contain,
+                //     )),
+                )
           ]),
       extendBodyBehindAppBar: true,
       body: Container(
@@ -150,13 +167,13 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Your journey\nwith us',
+                                  'Your journey with us',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     // letterSpacing: AppDimensionsUpdated.height10(context) * 0.2,
                                     fontSize:
                                         AppDimensionsUpdated.font10(context) *
-                                            3.0,
+                                            4.0,
                                     height:
                                         AppDimensionsUpdated.height10(context) *
                                             0.15,
@@ -457,7 +474,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                           margin: EdgeInsets.only(
                               top: AppDimensionsUpdated.height10(context) * 10),
                           child: Text(
-                            'Your implemented new\nbehaviour practices to fulfil\n your vision...',
+                            'Your implemented new\nbehaviour practices to fulfill\n your vision...',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize:
@@ -609,7 +626,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                               bottom:
                                   AppDimensionsUpdated.height10(context) * 5.6),
                           child: Text(
-                            'You recorded the following\nhurdles to fulfil your\nvision...',
+                            'You recorded the following\nhurdles to fulfill your\nvision...',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 letterSpacing:
@@ -834,107 +851,291 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                               padding: EdgeInsets.zero,
                               shrinkWrap: true,
                               itemBuilder: ((context, index) {
-                                return Container(
-                                  width: AppDimensionsUpdated.width10(context) *
-                                      16.9,
-                                  height:
-                                      AppDimensionsUpdated.width10(context) *
-                                          16.9,
-                                  margin: EdgeInsets.only(
-                                      left: index == 0
-                                          ? AppDimensionsUpdated.width10(
-                                                  context) *
-                                              12.2
-                                          : AppDimensionsUpdated.width10(
-                                                  context) *
-                                              1.2),
-                                  decoration: BoxDecoration(
-                                      gradient: inspirations[index]
-                                                  ['inspirationId'] ==
-                                              2
-                                          ? const RadialGradient(colors: [
+                                return inspirations[index]['inspirationId'] == 2
+                                    ? Container(
+                                        padding: EdgeInsets.all(
+                                            AppDimensions.width10(context) *
+                                                1.5),
+                                        width: AppDimensionsUpdated.width10(
+                                                context) *
+                                            16.9,
+                                        height: AppDimensionsUpdated.width10(
+                                                context) *
+                                            16.9,
+                                        margin: EdgeInsets.only(
+                                            left: index == 0
+                                                ? AppDimensionsUpdated.width10(
+                                                        context) *
+                                                    12.2
+                                                : AppDimensionsUpdated.width10(
+                                                        context) *
+                                                    0.6),
+                                        decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            gradient: RadialGradient(colors: [
                                               Color(0xFFE9A594),
                                               Color(0xFFEEBEB2)
-                                            ])
-                                          : const RadialGradient(colors: [
-                                              Color(0xFFD9D9D9),
-                                              Color(0xFFD9D9D9)
-                                            ]),
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                          image: AssetImage(inspirations[index]
-                                                      ['inspirationId'] ==
-                                                  4
-                                              ? 'assets/images/distraction content.webp'
-                                              : inspirations[index]
-                                                          ['inspirationId'] ==
-                                                      3
-                                                  ? 'assets/images/video_play.webp'
-                                                  : ''),
-                                          fit: BoxFit.contain)),
-                                  child: inspirations[index]['inspirationId'] ==
-                                          2
-                                      ? Container(
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal:
-                                                  AppDimensionsUpdated.height10(
+                                            ])),
+                                        child: Center(
+                                            child: Text(
+                                          inspirations[index]['description'],
+                                          overflow: TextOverflow.ellipsis,
+                                          maxLines: 2,
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontSize:
+                                                  AppDimensionsUpdated.font10(
                                                           context) *
-                                                      1.7),
-                                          height: AppDimensionsUpdated.height10(
-                                                  context) *
-                                              6.3,
-                                          child: Center(
-                                              child: Text(
-                                            inspirations[index]['description'],
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 2,
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                                fontSize:
-                                                    AppDimensionsUpdated.font10(
-                                                            context) *
-                                                        1.6,
-                                                fontWeight: FontWeight.w400,
-                                                color: const Color(0xFFFFFFFF)),
-                                          )),
-                                        )
-                                      : inspirations[index]['inspirationId'] ==
-                                              1
-                                          ? Container(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal:
-                                                      AppDimensionsUpdated
-                                                              .height10(
-                                                                  context) *
-                                                          1),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(
+                                                      1.6,
+                                              fontWeight: FontWeight.w400,
+                                              color: const Color(0xFFFFFFFF)),
+                                        )),
+                                      )
+                                    : inspirations[index]['inspirationId'] == 4
+                                        ? Container(
+                                            padding: EdgeInsets.all(
+                                                AppDimensions.width10(context) *
+                                                    1.5),
+                                            width: AppDimensionsUpdated.width10(
+                                                    context) *
+                                                16.9,
+                                            height:
+                                                AppDimensionsUpdated.width10(
+                                                        context) *
+                                                    16.9,
+                                            margin: EdgeInsets.only(
+                                                left: index == 0
+                                                    ? AppDimensionsUpdated
+                                                            .width10(context) *
+                                                        12.2
+                                                    : AppDimensionsUpdated
+                                                            .width10(context) *
+                                                        0.6),
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                image: DecorationImage(
+                                                    image: AssetImage(
+                                                        "assets/images/contentviewbg.png"),
+                                                    fit: BoxFit.cover)),
+                                            child: Center(
+                                                child: Text(
+                                              inspirations[index]
+                                                  ['description'],
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 2,
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                  fontSize: AppDimensionsUpdated
+                                                          .font10(context) *
+                                                      1.6,
+                                                  fontWeight: FontWeight.w400,
+                                                  color:
+                                                      const Color(0xFFFFFFFF)),
+                                            )),
+                                          )
+                                        : inspirations[index]['inspirationId'] ==
+                                                3
+                                            ? Container(
+                                                padding: EdgeInsets.all(
+                                                    AppDimensions.width10(context) *
+                                                        1.5),
+                                                width:
+                                                    AppDimensionsUpdated.width10(context) *
+                                                        16.9,
+                                                height:
+                                                    AppDimensionsUpdated.width10(context) *
+                                                        16.9,
+                                                margin: EdgeInsets.only(
+                                                    left: index == 0
+                                                        ? AppDimensionsUpdated.width10(
+                                                                context) *
+                                                            12.2
+                                                        : AppDimensionsUpdated
+                                                                .width10(context) *
+                                                            0.6),
+                                                decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    image: DecorationImage(
+                                                        image: inspirations[index]['inspirationId'] == 3
+                                                            ? Videothumbnail().extractThumbnailUrl(inspirations[index]['destinationLink']) == ''
+                                                                ? const AssetImage('assets/images/video.webp') as ImageProvider
+                                                                : NetworkImage(Videothumbnail().extractThumbnailUrl(inspirations[index]['destinationLink']) as String)
+                                                            : const AssetImage('') as ImageProvider,
+                                                        fit: BoxFit.cover)),
+                                                child: inspirations[index]['inspirationId'] == 3
+                                                    ? Videothumbnail().extractThumbnailUrl(inspirations[index]['destinationLink']) == ''
+                                                        ? Container()
+                                                        : SizedBox(
+                                                            width:
+                                                                10, // Set the desired width
+                                                            height:
+                                                                10, // Set the desired height
+                                                            child: Image.asset(
+                                                              'assets/images/videoicon1.png',
+                                                              // fit: BoxFit
+                                                              //     ., // Ensures the image fits within the box
+                                                            ),
+                                                          )
+                                                    // : Container(
+                                                    //     decoration: BoxDecoration(
+                                                    //         image: DecorationImage(
+                                                    //             image: AssetImage(
+                                                    //                 'assets/images/videoicon.png',))),
+                                                    //   )
+                                                    : Container())
+                                            : Container(
+                                                width: AppDimensionsUpdated
+                                                        .width10(context) *
+                                                    16.9,
+                                                height: AppDimensionsUpdated
+                                                        .width10(context) *
+                                                    16.9,
+                                                margin: EdgeInsets.only(
+                                                    left: index == 0
+                                                        ? AppDimensionsUpdated
+                                                                .width10(
+                                                                    context) *
+                                                            12.2
+                                                        : AppDimensionsUpdated
+                                                                .width10(
+                                                                    context) *
+                                                            0.6),
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
                                                         AppDimensionsUpdated
                                                                 .height10(
                                                                     context) *
-                                                            18),
-                                                child: FadeInImage(
-                                                  placeholder: const AssetImage(
-                                                      'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
-                                                  image: NetworkImage(
-                                                      inspirations[index]
-                                                              ['file']
-                                                          .toString()),
-                                                  fit: BoxFit.cover,
-                                                  placeholderFit:
-                                                      BoxFit.contain,
+                                                            1),
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          AppDimensionsUpdated
+                                                                  .height10(
+                                                                      context) *
+                                                              18),
+                                                  child: FadeInImage(
+                                                    placeholder: const AssetImage(
+                                                        'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
+                                                    image: NetworkImage(
+                                                        inspirations[index]
+                                                                ['file']
+                                                            .toString()),
+                                                    fit: BoxFit.cover,
+                                                    placeholderFit:
+                                                        BoxFit.contain,
+                                                  ),
                                                 ),
-                                              ),
-                                            )
-                                          : Container(),
-                                );
+                                              );
+                                // : Container();
+                                // Container(
+                                //   width: AppDimensionsUpdated.width10(context) *
+                                //       16.9,
+                                //   height:
+                                //       AppDimensionsUpdated.width10(context) *
+                                //           16.9,
+                                //   margin: EdgeInsets.only(
+                                //       left: index == 0
+                                //           ? AppDimensionsUpdated.width10(
+                                //                   context) *
+                                //               12.2
+                                //           : AppDimensionsUpdated.width10(
+                                //                   context) *
+                                //               1.2),
+                                //   decoration: BoxDecoration(
+                                //     gradient: inspirations[index]
+                                //                 ['inspirationId'] ==
+                                //             2
+                                //         ? const RadialGradient(colors: [
+                                //             Color(0xFFE9A594),
+                                //             Color(0xFFEEBEB2)
+                                //           ])
+                                //         : const RadialGradient(colors: [
+                                //             Color(0xFFD9D9D9),
+                                //             Color(0xFFD9D9D9)
+                                //           ]),
+                                //     shape: BoxShape.circle,
+                                //     image: DecorationImage(
+                                //       image: inspirations[index]
+                                //                   ['inspirationId'] ==
+                                //               4
+                                //           ? AssetImage(
+                                //               'assets/images/distraction content.webp')
+                                //           : inspirations[index]
+                                //                       ['inspirationId'] ==
+                                //                   3
+                                //               ? NetworkImage(Videothumbnail()
+                                //                       .extractThumbnailUrl(
+                                //                           inspirations[index][
+                                //                               'destinationLink']))
+                                //                   as ImageProvider
+                                //               : AssetImage(
+                                //                   'assets/images/video.webp'),
+                                //       fit: BoxFit.cover,
+                                //     ),
+                                //   ),
+                                //   child: inspirations[index]['inspirationId'] ==
+                                //           2
+                                //       ? Container(
+                                //           padding: EdgeInsets.symmetric(
+                                //               horizontal:
+                                //                   AppDimensionsUpdated.height10(
+                                //                           context) *
+                                //                       1.7),
+                                //           height: AppDimensionsUpdated.height10(
+                                //                   context) *
+                                //               6.3,
+                                //           child: Center(
+                                //               child: Text(
+                                //             inspirations[index]['description'],
+                                //             overflow: TextOverflow.ellipsis,
+                                //             maxLines: 2,
+                                //             textAlign: TextAlign.center,
+                                //             style: TextStyle(
+                                //                 fontSize:
+                                //                     AppDimensionsUpdated.font10(
+                                //                             context) *
+                                //                         1.6,
+                                //                 fontWeight: FontWeight.w400,
+                                //                 color: const Color(0xFFFFFFFF)),
+                                //           )),
+                                //         )
+                                //       : inspirations[index]['inspirationId'] ==
+                                //               1
+                                //           ? Container(
+                                //               padding: EdgeInsets.symmetric(
+                                //                   horizontal:
+                                //                       AppDimensionsUpdated
+                                //                               .height10(
+                                //                                   context) *
+                                //                           1),
+                                //               child: ClipRRect(
+                                //                 borderRadius:
+                                //                     BorderRadius.circular(
+                                //                         AppDimensionsUpdated
+                                //                                 .height10(
+                                //                                     context) *
+                                //                             18),
+                                //                 child: FadeInImage(
+                                //                   placeholder: const AssetImage(
+                                //                       'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
+                                //                   image: NetworkImage(
+                                //                       inspirations[index]
+                                //                               ['file']
+                                //                           .toString()),
+                                //                   fit: BoxFit.cover,
+                                //                   placeholderFit:
+                                //                       BoxFit.contain,
+                                //                 ),
+                                //               ),
+                                //             )
+                                //           : Container(),
+                                // );
                               })),
                         ),
                         Container(
                           margin: EdgeInsets.only(
                               top: AppDimensionsUpdated.height10(context) *
-                                  26.6),
+                                  13.6),
                           child: Center(
                             child: Text(
                               'Practice sessions recorded',
@@ -1111,7 +1312,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                       child: Column(children: [
                         Container(
                           child: Text(
-                            'Well Done &\nCongratulations!!',
+                            'Well Done &\nCongratulations',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize:
@@ -1145,106 +1346,125 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                             height:
                                 AppDimensionsUpdated.height10(context) * 7.2),
                         SizedBox(
-                          width: AppDimensionsUpdated.width10(context) * 26.8,
-                          height: AppDimensionsUpdated.height10(context) * 26.8,
+                          width: AppDimensionsUpdated.width10(context) * 35.8,
+                          height: AppDimensionsUpdated.height10(context) * 36.8,
                           child: Stack(children: [
                             Container(
                               width:
-                                  AppDimensionsUpdated.width10(context) * 26.8,
+                                  AppDimensionsUpdated.width10(context) * 35.8,
                               height:
-                                  AppDimensionsUpdated.height10(context) * 26.8,
+                                  AppDimensionsUpdated.height10(context) * 36.8,
                               decoration: BoxDecoration(
-                                image: DecorationImage(
-                                    image: AssetImage('$color' == '1'
-                                        ? "assets/images/red_gradient.webp"
-                                        : '$color' == '2'
-                                            ? 'assets/images/orange_moon.webp'
-                                            : '$color' == '3'
-                                                ? "assets/images/lightGrey_gradient.webp"
-                                                : '$color' == '4'
-                                                    ? "assets/images/lightBlue_gradient.webp"
-                                                    : '$color' == '5'
-                                                        ? "assets/images/medBlue_gradient.webp"
-                                                        : '$color' == '6'
-                                                            ? "assets/images/Blue_gradient.webp"
-                                                            : 'assets/images/orange_moon.webp'),
-                                    fit: BoxFit.contain),
-                              ),
-                              child: Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      // color: Colors.red,
-                                      height: AppDimensionsUpdated.height10(
-                                              context) *
-                                          9.0,
-                                      width: AppDimensionsUpdated.width10(
-                                              context) *
-                                          24.0,
-                                      padding: EdgeInsets.symmetric(
-                                          horizontal:
-                                              AppDimensionsUpdated.height10(
-                                                      context) *
-                                                  2.0),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            goalName,
-                                            textAlign: TextAlign.center,
-                                            overflow: TextOverflow.ellipsis,
-                                            maxLines: 1,
-                                            style: TextStyle(
-                                                fontSize: AppDimensionsUpdated
-                                                        .font10(context) *
-                                                    2.0,
-                                                height: AppDimensionsUpdated
-                                                        .height10(context) *
-                                                    0.14,
-                                                fontWeight: FontWeight.w600,
-                                                color: const Color(0xff5B74A6)),
-                                          ),
-                                          SizedBox(
-                                            height:
+                                  image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(
+                                          "assets/images/congratsGoalBg.png"))),
+                            ),
+                            Align(
+                              alignment: Alignment(0, -0.5),
+                              child: Container(
+                                width: AppDimensionsUpdated.width10(context) *
+                                    26.8,
+                                height: AppDimensionsUpdated.height10(context) *
+                                    26.8,
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: AssetImage('$color' == '1'
+                                          ? "assets/images/red_gradient.webp"
+                                          : '$color' == '2'
+                                              ? 'assets/images/orange_moon.webp'
+                                              : '$color' == '3'
+                                                  ? "assets/images/lightGrey_gradient.webp"
+                                                  : '$color' == '4'
+                                                      ? "assets/images/lightBlue_gradient.webp"
+                                                      : '$color' == '5'
+                                                          ? "assets/images/medBlue_gradient.webp"
+                                                          : '$color' == '6'
+                                                              ? "assets/images/Blue_gradient.webp"
+                                                              : 'assets/images/orange_moon.webp'),
+                                      fit: BoxFit.contain),
+                                ),
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        // color: Colors.red,
+                                        height: AppDimensionsUpdated.height10(
+                                                context) *
+                                            9.0,
+                                        width: AppDimensionsUpdated.width10(
+                                                context) *
+                                            24.0,
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal:
                                                 AppDimensionsUpdated.height10(
                                                         context) *
-                                                    0.7,
-                                          ),
-                                          SizedBox(
-                                            // color: Colors.green,
-                                            height:
-                                                AppDimensionsUpdated.height10(
-                                                        context) *
-                                                    4.0,
-                                            width: AppDimensionsUpdated.width10(
-                                                    context) *
-                                                22.0,
-                                            child: Text('"$identity"',
-                                                maxLines: 2,
-                                                textAlign: TextAlign.center,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: TextStyle(
-                                                    fontStyle: FontStyle.italic,
-                                                    fontSize:
-                                                        AppDimensionsUpdated
-                                                                .font10(
-                                                                    context) *
-                                                            1.6,
-                                                    fontWeight: FontWeight.w400,
-                                                    color: const Color(
-                                                        0xff5B74A6))),
-                                          ),
-                                        ],
+                                                    2.0),
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              goalName,
+                                              textAlign: TextAlign.center,
+                                              overflow: TextOverflow.ellipsis,
+                                              maxLines: 1,
+                                              style: TextStyle(
+                                                  fontSize: AppDimensionsUpdated
+                                                          .font10(context) *
+                                                      2.0,
+                                                  height: AppDimensionsUpdated
+                                                          .height10(context) *
+                                                      0.14,
+                                                  fontWeight: FontWeight.w600,
+                                                  color:
+                                                      const Color(0xff5B74A6)),
+                                            ),
+                                            SizedBox(
+                                              height:
+                                                  AppDimensionsUpdated.height10(
+                                                          context) *
+                                                      0.7,
+                                            ),
+                                            SizedBox(
+                                              // color: Colors.green,
+                                              height:
+                                                  AppDimensionsUpdated.height10(
+                                                          context) *
+                                                      4.0,
+                                              width:
+                                                  AppDimensionsUpdated.width10(
+                                                          context) *
+                                                      22.0,
+                                              child: Text('"$identity"',
+                                                  maxLines: 2,
+                                                  textAlign: TextAlign.center,
+                                                  overflow: TextOverflow
+                                                      .ellipsis,
+                                                  style: TextStyle(
+                                                      fontStyle: FontStyle
+                                                          .italic,
+                                                      fontSize:
+                                                          AppDimensionsUpdated
+                                                                  .font10(
+                                                                      context) *
+                                                              1.6,
+                                                      fontWeight:
+                                                          FontWeight.w400,
+                                                      color: const Color(
+                                                          0xff5B74A6))),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: const Alignment(0, 1.5),
+                              alignment: const Alignment(0, 0.9),
                               child: Container(
                                 width: AppDimensionsUpdated.width10(context) *
                                     12.5,

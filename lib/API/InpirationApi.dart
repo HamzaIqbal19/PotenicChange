@@ -177,7 +177,6 @@ class InspirationApi {
     );
 
     if (response.statusCode == 200) {
-      print("Check User Inspiration ${jsonDecode(response.body)}");
       return true;
     } else {
       return false;
@@ -240,7 +239,6 @@ class InspirationApi {
         body: body);
 
     var responses = jsonDecode(request.body);
-    print("DElete multple $responses");
 
     if (request.statusCode == 200) {
       return true;

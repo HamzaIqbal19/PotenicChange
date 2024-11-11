@@ -69,7 +69,7 @@ class Authentication {
     final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
 
     var body = json.encode({
-      "fcmRegistrationToken": "$fcmToken",
+      "fcmRegistrationToken": '$fcmToken',
       "email": "$email",
       "password": "$password",
       "timeZone": currentTimeZone
@@ -82,7 +82,6 @@ class Authentication {
 
     if (request.statusCode == 200) {
       final SharedPreferences prefs = await _prefs;
-      print("Refreshtoken data $response");
       await prefs.setString('usertoken', response["accessToken"]);
       await prefs.setInt('userid', response['id']);
       await prefs.setString('customerID', response['userStripeId']);
@@ -210,7 +209,6 @@ class Authentication {
   }
 
   Future userUpdate(userName, email, bool name) async {
-    print("User Email $email, User NAME $userName");
     final SharedPreferences prefs = await _prefs;
     var userId = prefs.getInt('userid');
     var accessToken = prefs.getString("usertoken");
@@ -230,7 +228,6 @@ class Authentication {
 
     var response = jsonDecode(request.body);
 
-    print('response ${request.statusCode}  $response');
 
     if (request.statusCode == 200) {
       return true;
@@ -259,7 +256,6 @@ class Authentication {
 
     var response = jsonDecode(request.body);
 
-    print('response ${request.statusCode}  $response');
 
     if (request.statusCode == 200) {
       return true;
@@ -335,7 +331,6 @@ class Authentication {
       body: body,
     );
 
-    print("Trial value ${response.body}");
     if (response.statusCode == 200) {
       var jsonData = jsonDecode(response.body);
 

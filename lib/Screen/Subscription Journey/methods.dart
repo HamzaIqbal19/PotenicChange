@@ -7,12 +7,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 Map<String, dynamic>? paymentIntent;
 
 Future<void> makePayment() async {
-  print("Stripe Called");
   try {
-    print("Stripe Called 2");
     //STEP 1: Create Payment Intent
     paymentIntent = await createPaymentIntent('100', 'USD');
-    print("Stripe Called paymentIntent $paymentIntent");
     var gpay = const PaymentSheetGooglePay(
         merchantCountryCode: 'US', currencyCode: 'US', testEnv: true);
     var aPay = const PaymentSheetApplePay(
@@ -29,9 +26,7 @@ Future<void> makePayment() async {
                 applePay: aPay,
                 merchantDisplayName: 'Potenic'))
         .then((value) {
-      print("Stripe value Called $value");
     });
-    print("Stripe Called 5");
 
     //STEP 3: Display Payment sheet
     displayPaymentSheet();

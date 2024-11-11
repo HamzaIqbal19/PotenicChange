@@ -103,7 +103,7 @@ calender(BuildContext context, noData, report,int completedCount){
                         top: AppDimensions.height10(context) *
                             0.5),
                     child: Text(
-                      'Active days\ncompleted!',
+                      'Active days\ncompleted',
                       style: TextStyle(
                           fontSize:
                           AppDimensions.font10(context) *

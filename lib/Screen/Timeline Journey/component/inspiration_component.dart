@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Widgets/CustomCircle.dart';
 
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:potenic_app/utils/utils.dart';
 
 class InspirationComponent extends StatelessWidget {
-  String mainImage;
-  String Text1;
-  String Text2;
+  final mainImage;
+  final Text1;
+  final Text2;
   final status;
-  String inspirationId;
+  final inspirationId;
+  final inspirationLink;
   InspirationComponent({
     super.key,
     required this.mainImage,
@@ -16,12 +18,20 @@ class InspirationComponent extends StatelessWidget {
     required this.Text2,
     required this.inspirationId,
     required this.status,
+    this.inspirationLink,
   });
 
   @override
   Widget build(BuildContext context) {
+    // print("inspiration ka data $inspirationId");
+    // print("inspiration ka text $Text2");
+    // print("inspiration ka link $inspirationLink");
+    // print("inspiration ka image $mainImage");
+    // print("inspiration ka data $inspirationId");
+    // print("inspiration ka data $inspirationId");
+    // print("inspiration ka data $inspirationId");
     return Container(
-      height: AppDimensionsUpdated.height10(context) * 42.4,
+      height: AppDimensionsUpdated.height10(context) * 44.4,
       margin: EdgeInsets.only(
           top: AppDimensionsUpdated.height10(context) * 2.0,
           right: AppDimensionsUpdated.height10(context) * 1.5,
@@ -67,7 +77,7 @@ class InspirationComponent extends StatelessWidget {
           ),
           Container(
             width: AppDimensionsUpdated.width10(context) * 34.6,
-            height: AppDimensionsUpdated.height10(context) * 33.2,
+            height: AppDimensionsUpdated.height10(context) * 34.2,
             margin: EdgeInsets.only(
                 top: AppDimensionsUpdated.height10(context) * 1.5),
             decoration: status == true
@@ -143,69 +153,91 @@ class InspirationComponent extends StatelessWidget {
                         color: const Color(0xFFFFFFFF)),
                   ),
                 ),
-                inspirationId == '1'
-                    ? Container(
-                        width: AppDimensionsUpdated.width10(context) * 19.2,
-                        height: AppDimensionsUpdated.height10(context) * 19.2,
-                        margin: EdgeInsets.only(
-                            top: AppDimensions.height10(context),
-                            bottom: AppDimensions.height10(context)),
-                        decoration: const BoxDecoration(shape: BoxShape.circle),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(
-                              AppDimensions.height10(context) * 18),
-                          child: FadeInImage(
-                            placeholder: const AssetImage(
-                                'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
-                            image: NetworkImage(mainImage),
-                            fit: BoxFit.cover,
-                            placeholderFit: BoxFit.contain,
-                          ),
-                        ),
-                      )
-                    : Container(
-                        width: AppDimensionsUpdated.width10(context) * 17.2,
-                        height: AppDimensionsUpdated.height10(context) * 16.9,
-                        margin: EdgeInsets.only(
-                            top: AppDimensionsUpdated.height10(context) * 1.9),
-                        decoration: BoxDecoration(
-                            gradient: inspirationId == '2'
-                                ? const RadialGradient(colors: [
-                                    Color(0xFFE9A594),
-                                    Color(0xFFEEBEB2)
-                                  ])
-                                : const RadialGradient(colors: [
-                                    Color(0xFFD9D9D9),
-                                    Color(0xFFD9D9D9)
-                                  ]),
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: AssetImage(inspirationId == '4'
-                                    ? 'assets/images/distraction content.webp'
-                                    : inspirationId == '3'
-                                        ? 'assets/images/video_play.webp'
-                                        : ''),
-                                fit: BoxFit.cover)),
-                        child: inspirationId == '2'
-                            ? Center(
-                                child: Text(
-                                  Text2,
-                                  textAlign: TextAlign.center,
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: AppDimensionsUpdated.height10(
-                                              context) *
-                                          1.4),
-                                ),
+                SizedBox(
+                  height: AppDimensions.height10(context) * 1.5,
+                ),
+                inspirationId == 1
+                    ? CustomCircle().customContainer(context,
+                        id: inspirationId, img: mainImage)
+                    : inspirationId == 2
+                        ? CustomCircle().customContainer(
+                            context,
+                            id: inspirationId,
+                            desc: Text2,
+                          )
+                        : inspirationId == 4
+                            ? CustomCircle().customContainer(
+                                context,
+                                id: inspirationId,
+                                desc: Text2,
                               )
-                            : Container(),
-                      ),
+                            : inspirationId == 3
+                                ? CustomCircle().customContainer(context,
+                                    id: inspirationId, link: inspirationLink)
+                                : Container(),
+                // ? Container(
+                //     width: AppDimensionsUpdated.width10(context) * 19.2,
+                //     height: AppDimensionsUpdated.height10(context) * 19.2,
+                //     margin: EdgeInsets.only(
+                //         top: AppDimensions.height10(context),
+                //         bottom: AppDimensions.height10(context)),
+                //     decoration: const BoxDecoration(shape: BoxShape.circle),
+                //     child: ClipRRect(
+                //       borderRadius: BorderRadius.circular(
+                //           AppDimensions.height10(context) * 18),
+                //       child: FadeInImage(
+                //         placeholder: const AssetImage(
+                //             'assets/images/placeholder-image-gray-3x2.webp'), // Placeholder image
+                //         image: NetworkImage(mainImage),
+                //         fit: BoxFit.cover,
+                //         placeholderFit: BoxFit.contain,
+                //       ),
+                //     ),
+                //   )
+                // : Container(
+                //     width: AppDimensionsUpdated.width10(context) * 17.2,
+                //     height: AppDimensionsUpdated.height10(context) * 16.9,
+                //     margin: EdgeInsets.only(
+                //         top: AppDimensionsUpdated.height10(context) * 1.9),
+                //     decoration: BoxDecoration(
+                //         gradient: inspirationId == '2'
+                //             ? const RadialGradient(colors: [
+                //                 Color(0xFFE9A594),
+                //                 Color(0xFFEEBEB2)
+                //               ])
+                //             : const RadialGradient(colors: [
+                //                 Color(0xFFD9D9D9),
+                //                 Color(0xFFD9D9D9)
+                //               ]),
+                //         shape: BoxShape.circle,
+                //         image: DecorationImage(
+                //             image: AssetImage(inspirationId == '4'
+                //                 ? 'assets/images/distraction content.webp'
+                //                 : inspirationId == '3'
+                //                     ? 'assets/images/video_play.webp'
+                //                     : ''),
+                //             fit: BoxFit.cover)),
+                //     child: inspirationId == '2'
+                //         ? Center(
+                //             child: Text(
+                //               Text2,
+                //               textAlign: TextAlign.center,
+                //               maxLines: 2,
+                //               overflow: TextOverflow.ellipsis,
+                //               style: TextStyle(
+                //                   color: Colors.white,
+                //                   fontWeight: FontWeight.w400,
+                //                   fontSize: AppDimensionsUpdated.height10(
+                //                           context) *
+                //                       1.4),
+                //             ),
+                //           )
+                //         : Container(),
+                //   ),
+
                 Container(
                   width: AppDimensionsUpdated.width10(context) * 16.7,
-                  height: AppDimensionsUpdated.height10(context) * 1.7,
+                  //height: AppDimensionsUpdated.height10(context) * 1.7,
                   margin: EdgeInsets.only(
                       top: AppDimensionsUpdated.height10(context) * 0.6),
                   child: Text(
@@ -214,7 +246,7 @@ class InspirationComponent extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontWeight: FontWeight.w600,
-                      fontSize: AppDimensionsUpdated.font10(context) * 1.4,
+                      fontSize: AppDimensionsUpdated.font10(context) * 1.6,
                       color: status == true
                           ? Colors.white.withOpacity(0.4)
                           : status == false
@@ -225,7 +257,7 @@ class InspirationComponent extends StatelessWidget {
                 ),
                 Container(
                   width: AppDimensionsUpdated.width10(context) * 16.7,
-                  height: AppDimensionsUpdated.height10(context) * 3.0,
+                 // height: AppDimensionsUpdated.height10(context) * 3.0,
                   margin: EdgeInsets.only(
                       top: AppDimensionsUpdated.height10(context) * 0.2),
                   child: Text(
@@ -235,7 +267,7 @@ class InspirationComponent extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
                       fontWeight: FontWeight.w400,
-                      fontSize: AppDimensionsUpdated.font10(context) * 1.1,
+                      fontSize: AppDimensionsUpdated.font10(context) * 1.4,
                       color: status == true
                           ? Colors.white.withOpacity(0.4)
                           : status == false

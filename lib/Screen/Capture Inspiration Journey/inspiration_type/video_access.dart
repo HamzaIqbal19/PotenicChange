@@ -181,7 +181,6 @@ class _video_infoState extends State<video_info> {
                                                     btEnable = false;
                                                   });
                                                 }
-                                                print("fails");
                                                 // var url = await Videothumbnail()
                                                 //     .extractThumbnailUrl(
                                                 //         link.text.trim());
@@ -212,7 +211,6 @@ class _video_infoState extends State<video_info> {
                                                     setState(() {
                                                       btEnable = true;
                                                     });
-                                                    print("response $response");
                                                     link.clear();
                                                     statement.clear();
                                                     selectedGoals.clear();
@@ -235,7 +233,6 @@ class _video_infoState extends State<video_info> {
                                                                         false)));
                                                   }
                                                 });
-                                                print("api chli gaye");
 
                                                 final SharedPreferences prefs =
                                                     await _prefs;

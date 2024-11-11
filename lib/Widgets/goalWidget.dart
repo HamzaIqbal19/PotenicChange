@@ -54,7 +54,7 @@ goalWidget(BuildContext context, height, width, color, name, reason, font1,
             )),
         Align(
           alignment: const Alignment(0, -0.08),
-          child: SizedBox(
+          child: Container(
            // height: UpdatedDimensions.height10(context) * 4.0,
             width: UpdatedDimensions.width10(context) * 20.0,
             child: Text(reason,

@@ -15,6 +15,7 @@ import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inspiration_t
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inspiratoinEdit/photoEdit.dart';
 import 'package:potenic_app/Widgets/alertbox.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/utils/app_texts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
@@ -420,6 +421,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
       child: Scaffold(
         resizeToAvoidBottomInset: true,
         extendBody: true,
+        extendBodyBehindAppBar: true,
         bottomNavigationBar: Container(
             // padding: EdgeInsets.symmetric(
             //     horizontal: AppDimensions.width10(context) * 8),
@@ -851,24 +853,37 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
             centerTitle: true,
             leading: widget.data_saved || widget.update
                 ? Center(
-                    child: IconButton(
-                        onPressed: () {
-                          widget.route == 'landing'
-                              ? Navigator.push(
-                                  context,
-                                  FadePageRouteReverse(
-                                      page: const inspiration_landing(
-                                          is_Updated: false)),
-                                )
-                              : Navigator.pop(context);
-                        },
-                        icon: Image.asset(
-                          'assets/images/Back.webp',
-                          // width: AppDimensions.width10(context) * 2.6,
-                          height: AppDimensions.height10(context) * 2.6,
-                          fit: BoxFit.contain,
-                        )),
+                    child: Buttons().backButton(
+                    context,
+                    () {
+                      widget.route == 'landing'
+                          ? Navigator.push(
+                              context,
+                              FadePageRouteReverse(
+                                  page: const inspiration_landing(
+                                      is_Updated: false)),
+                            )
+                          : Navigator.pop(context);
+                    },
                   )
+                    //  IconButton(
+                    //     onPressed: () {
+                    //       widget.route == 'landing'
+                    //           ? Navigator.push(
+                    //               context,
+                    //               FadePageRouteReverse(
+                    //                   page: const inspiration_landing(
+                    //                       is_Updated: false)),
+                    //             )
+                    //           : Navigator.pop(context);
+                    //     },
+                    //     icon: Image.asset(
+                    //       'assets/images/Back.webp',
+                    //       // width: AppDimensions.width10(context) * 2.6,
+                    //       height: AppDimensions.height10(context) * 2.6,
+                    //       fit: BoxFit.contain,
+                    //     )),
+                    )
                 : Container(),
             title: widget.data_saved || widget.update
                 ? Container()
@@ -904,255 +919,303 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
               widget.data_saved || widget.update
                   ? Container()
                   : Center(
-                      child: IconButton(
-                          onPressed: () {
-                            AlertBox().alertDialog(
-                              context,
-                              "Inspiration?",
-                              () async {
-                                InspirationApi()
-                                    .checkUserInspiration()
-                                    .then((response) async {
-                                      if (response == true) {
-                                        Navigator.push(
-                                            context,
-                                            FadePageRouteReverse(
-                                                page: const inspiration_landing(
-                                                    is_Updated: false)));
-                                        selectedInActiveIndices.clear();
-                                        selectedIndices.clear();
-                                        selectedGoals.clear();
-                                        multiGoals.clear();
-                                        allgoalsSelected.clear();
-                                        setState(() {
-                                          selectAll = false;
-                                        });
-                                        final SharedPreferences prefs =
-                                            await _prefs;
-                                        await prefs
-                                            .remove('inspiration_saved_route');
-                                      } else if (response == false) {
-                                        Navigator.push(
-                                            context,
-                                            FadePageRouteReverse(
-                                                page:
-                                                    const inspiration_motivation(
-                                              goal_delete: false,
-                                              inspirationName: '',
-                                            )));
-                                        final SharedPreferences prefs =
-                                            await _prefs;
-                                        await prefs
-                                            .remove('inspiration_saved_route');
-                                        selectedInActiveIndices.clear();
-                                        selectedIndices.clear();
-                                        selectedGoals.clear();
-                                        multiGoals.clear();
-                                        allgoalsSelected.clear();
-                                        setState(() {
-                                          selectAll = false;
-                                        });
-                                      }
-                                    })
-                                    .catchError((error) {})
-                                    .whenComplete(() {});
-                              },
-                            );
+                      child: Buttons().closeButton(context, () {
+                        AlertBox().alertDialog(context, "Inspiration?",
+                            () async {
+                          InspirationApi()
+                              .checkUserInspiration()
+                              .then((response) async {
+                                if (response == true) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRouteReverse(
+                                          page: const inspiration_landing(
+                                              is_Updated: false)));
+                                  selectedInActiveIndices.clear();
+                                  selectedIndices.clear();
+                                  selectedGoals.clear();
+                                  multiGoals.clear();
+                                  allgoalsSelected.clear();
+                                  setState(() {
+                                    selectAll = false;
+                                  });
+                                  final SharedPreferences prefs = await _prefs;
+                                  await prefs.remove('inspiration_saved_route');
+                                } else if (response == false) {
+                                  Navigator.push(
+                                      context,
+                                      FadePageRouteReverse(
+                                          page: const inspiration_motivation(
+                                        goal_delete: false,
+                                        inspirationName: '',
+                                      )));
+                                  final SharedPreferences prefs = await _prefs;
+                                  await prefs.remove('inspiration_saved_route');
+                                  selectedInActiveIndices.clear();
+                                  selectedIndices.clear();
+                                  selectedGoals.clear();
+                                  multiGoals.clear();
+                                  allgoalsSelected.clear();
+                                  setState(() {
+                                    selectAll = false;
+                                  });
+                                }
+                              })
+                              .catchError((error) {})
+                              .whenComplete(() {});
+                        });
+                      }
+                          // IconButton(
+                          //     onPressed: () {
+                          //       AlertBox().alertDialog(
+                          //         context,
+                          //         "Inspiration?",
+                          //         () async {
+                          //           InspirationApi()
+                          //               .checkUserInspiration()
+                          //               .then((response) async {
+                          //                 if (response == true) {
+                          //                   Navigator.push(
+                          //                       context,
+                          //                       FadePageRouteReverse(
+                          //                           page: const inspiration_landing(
+                          //                               is_Updated: false)));
+                          //                   selectedInActiveIndices.clear();
+                          //                   selectedIndices.clear();
+                          //                   selectedGoals.clear();
+                          //                   multiGoals.clear();
+                          //                   allgoalsSelected.clear();
+                          //                   setState(() {
+                          //                     selectAll = false;
+                          //                   });
+                          //                   final SharedPreferences prefs =
+                          //                       await _prefs;
+                          //                   await prefs
+                          //                       .remove('inspiration_saved_route');
+                          //                 } else if (response == false) {
+                          //                   Navigator.push(
+                          //                       context,
+                          //                       FadePageRouteReverse(
+                          //                           page:
+                          //                               const inspiration_motivation(
+                          //                         goal_delete: false,
+                          //                         inspirationName: '',
+                          //                       )));
+                          //                   final SharedPreferences prefs =
+                          //                       await _prefs;
+                          //                   await prefs
+                          //                       .remove('inspiration_saved_route');
+                          //                   selectedInActiveIndices.clear();
+                          //                   selectedIndices.clear();
+                          //                   selectedGoals.clear();
+                          //                   multiGoals.clear();
+                          //                   allgoalsSelected.clear();
+                          //                   setState(() {
+                          //                     selectAll = false;
+                          //                   });
+                          //                 }
+                          //               })
+                          //               .catchError((error) {})
+                          //               .whenComplete(() {});
+                          //         },
+                          //       );
 
-                            // showAnimatedDialog(
-                            //     animationType: DialogTransitionType.fadeScale,
-                            //     curve: Curves.easeInOut,
-                            //     duration: const Duration(seconds: 1),
-                            //     context: context,
-                            //     builder: (BuildContext context) => SizedBox(
-                            //           width:
-                            //               AppDimensions.width10(context) * 27.0,
-                            //           height: AppDimensions.height10(context) *
-                            //               24.0,
-                            //           child: AlertDialog(
-                            //             shape: RoundedRectangleBorder(
-                            //                 borderRadius: BorderRadius.circular(
-                            //                     AppDimensions.height10(
-                            //                             context) *
-                            //                         1.4)),
-                            //             contentPadding: EdgeInsets.zero,
-                            //             actionsPadding: EdgeInsets.zero,
-                            //             titlePadding: EdgeInsets.zero,
-                            //             title: Container(
-                            //               margin: const EdgeInsets.only(
-                            //                   top: 19,
-                            //                   right: 16,
-                            //                   left: 16,
-                            //                   bottom: 2),
-                            //               // height:
-                            //               //     AppDimensions.height10(context) * 2.2,
-                            //               width:
-                            //                   AppDimensions.width10(context) *
-                            //                       23.8,
-                            //               child: const Text(
-                            //                 "Exit Inspiration?",
-                            //                 textAlign: TextAlign.center,
-                            //                 style: TextStyle(
-                            //                   fontSize: 17,
-                            //                   fontWeight: FontWeight.w400,
-                            //                 ),
-                            //               ),
-                            //             ),
-                            //             content: Container(
-                            //               margin: const EdgeInsets.only(
-                            //                   bottom: 19, left: 16, right: 16),
-                            //               // height:
-                            //               //     AppDimensions.height10(context) * 1.6,
-                            //               width: 238,
-                            //               child: const Text(
-                            //                 "Please select from the options below",
-                            //                 textAlign: TextAlign.center,
-                            //                 style: TextStyle(
-                            //                   fontSize: 13,
-                            //                   fontWeight: FontWeight.w400,
-                            //                 ),
-                            //               ),
-                            //             ),
-                            //             actions: <Widget>[
-                            //               Column(
-                            //                 children: [
-                            //                   SizedBox(
-                            //                     height: AppDimensions.height10(
-                            //                             context) *
-                            //                         0.1,
-                            //                     child: Divider(
-                            //                       color: const Color(0XFF3C3C43)
-                            //                           .withOpacity(0.29),
-                            //                     ),
-                            //                   ),
-                            //                   SizedBox(
-                            //                     height: 44,
-                            //                     width: double.infinity,
-                            //                     child: TextButton(
-                            //                       onPressed: () async {
-                            //                         InspirationApi()
-                            //                             .checkUserInspiration()
-                            //                             .then((response) async {
-                            //                               if (response ==
-                            //                                   true) {
-                            //                                 Navigator.push(
-                            //                                     context,
-                            //                                     FadePageRouteReverse(
-                            //                                         page: const inspiration_landing(
-                            //                                             is_Updated:
-                            //                                                 false)));
-                            //                                 selectedInActiveIndices
-                            //                                     .clear();
-                            //                                 selectedIndices
-                            //                                     .clear();
-                            //                                 selectedGoals
-                            //                                     .clear();
-                            //                                 multiGoals.clear();
-                            //                                 allgoalsSelected
-                            //                                     .clear();
-                            //                                 setState(() {
-                            //                                   selectAll = false;
-                            //                                 });
-                            //                                 final SharedPreferences
-                            //                                     prefs =
-                            //                                     await _prefs;
-                            //                                 await prefs.remove(
-                            //                                     'inspiration_saved_route');
-                            //                               } else if (response ==
-                            //                                   false) {
-                            //                                 Navigator.push(
-                            //                                     context,
-                            //                                     FadePageRouteReverse(
-                            //                                         page:
-                            //                                             const inspiration_motivation(
-                            //                                       goal_delete:
-                            //                                           false,
-                            //                                       inspirationName:
-                            //                                           '',
-                            //                                     )));
-                            //                                 final SharedPreferences
-                            //                                     prefs =
-                            //                                     await _prefs;
-                            //                                 await prefs.remove(
-                            //                                     'inspiration_saved_route');
-                            //                                 selectedInActiveIndices
-                            //                                     .clear();
-                            //                                 selectedIndices
-                            //                                     .clear();
-                            //                                 selectedGoals
-                            //                                     .clear();
-                            //                                 multiGoals.clear();
-                            //                                 allgoalsSelected
-                            //                                     .clear();
-                            //                                 setState(() {
-                            //                                   selectAll = false;
-                            //                                 });
-                            //                               }
-                            //                             })
-                            //                             .catchError((error) {})
-                            //                             .whenComplete(() {});
-                            //                       },
-                            //                       child: const Text(
-                            //                         'Exit & delete progress',
-                            //                         style: TextStyle(
-                            //                             fontSize: 17,
-                            //                             fontFamily: "Laila",
-                            //                             fontWeight:
-                            //                                 FontWeight.w400,
-                            //                             color:
-                            //                                 Color(0xFF007AFF)),
-                            //                       ),
-                            //                     ),
-                            //                   ),
-                            //                   SizedBox(
-                            //                     height: AppDimensions.height10(
-                            //                             context) *
-                            //                         0.1,
-                            //                     child: Divider(
-                            //                       color: const Color(0XFF3C3C43)
-                            //                           .withOpacity(0.29),
-                            //                     ),
-                            //                   ),
-                            //                   Container(
-                            //                     height: 42,
-                            //                     width: double.infinity,
-                            //                     margin: EdgeInsets.only(
-                            //                         bottom:
-                            //                             AppDimensions.height10(
-                            //                                     context) *
-                            //                                 1.0),
-                            //                     // color: Colors.white,
-                            //                     child: TextButton(
-                            //                       onPressed: () {
-                            //                         Navigator.pop(context);
-                            //                       },
-                            //                       child: const Text(
-                            //                         'Cancel exit',
-                            //                         style: TextStyle(
-                            //                             color:
-                            //                                 Color(0xFF007AFF),
-                            //                             fontSize: 17,
-                            //                             fontFamily: "Laila",
-                            //                             fontWeight:
-                            //                                 FontWeight.w400),
-                            //                       ),
-                            //                     ),
-                            //                   ),
-                            //                 ],
-                            //               ),
-                            //             ],
-                            //           ),
-                            //         ));
-                          },
-                          icon: Image.asset(
-                            'assets/images/Close.webp',
-                            // width: AppDimensions.width10(context) * 2.6,
-                            height: AppDimensions.height10(context) * 2.6,
-                            fit: BoxFit.contain,
-                          )),
-                    )
+                          //       // showAnimatedDialog(
+                          //       //     animationType: DialogTransitionType.fadeScale,
+                          //       //     curve: Curves.easeInOut,
+                          //       //     duration: const Duration(seconds: 1),
+                          //       //     context: context,
+                          //       //     builder: (BuildContext context) => SizedBox(
+                          //       //           width:
+                          //       //               AppDimensions.width10(context) * 27.0,
+                          //       //           height: AppDimensions.height10(context) *
+                          //       //               24.0,
+                          //       //           child: AlertDialog(
+                          //       //             shape: RoundedRectangleBorder(
+                          //       //                 borderRadius: BorderRadius.circular(
+                          //       //                     AppDimensions.height10(
+                          //       //                             context) *
+                          //       //                         1.4)),
+                          //       //             contentPadding: EdgeInsets.zero,
+                          //       //             actionsPadding: EdgeInsets.zero,
+                          //       //             titlePadding: EdgeInsets.zero,
+                          //       //             title: Container(
+                          //       //               margin: const EdgeInsets.only(
+                          //       //                   top: 19,
+                          //       //                   right: 16,
+                          //       //                   left: 16,
+                          //       //                   bottom: 2),
+                          //       //               // height:
+                          //       //               //     AppDimensions.height10(context) * 2.2,
+                          //       //               width:
+                          //       //                   AppDimensions.width10(context) *
+                          //       //                       23.8,
+                          //       //               child: const Text(
+                          //       //                 "Exit Inspiration?",
+                          //       //                 textAlign: TextAlign.center,
+                          //       //                 style: TextStyle(
+                          //       //                   fontSize: 17,
+                          //       //                   fontWeight: FontWeight.w400,
+                          //       //                 ),
+                          //       //               ),
+                          //       //             ),
+                          //       //             content: Container(
+                          //       //               margin: const EdgeInsets.only(
+                          //       //                   bottom: 19, left: 16, right: 16),
+                          //       //               // height:
+                          //       //               //     AppDimensions.height10(context) * 1.6,
+                          //       //               width: 238,
+                          //       //               child: const Text(
+                          //       //                 "Please select from the options below",
+                          //       //                 textAlign: TextAlign.center,
+                          //       //                 style: TextStyle(
+                          //       //                   fontSize: 13,
+                          //       //                   fontWeight: FontWeight.w400,
+                          //       //                 ),
+                          //       //               ),
+                          //       //             ),
+                          //       //             actions: <Widget>[
+                          //       //               Column(
+                          //       //                 children: [
+                          //       //                   SizedBox(
+                          //       //                     height: AppDimensions.height10(
+                          //       //                             context) *
+                          //       //                         0.1,
+                          //       //                     child: Divider(
+                          //       //                       color: const Color(0XFF3C3C43)
+                          //       //                           .withOpacity(0.29),
+                          //       //                     ),
+                          //       //                   ),
+                          //       //                   SizedBox(
+                          //       //                     height: 44,
+                          //       //                     width: double.infinity,
+                          //       //                     child: TextButton(
+                          //       //                       onPressed: () async {
+                          //       //                         InspirationApi()
+                          //       //                             .checkUserInspiration()
+                          //       //                             .then((response) async {
+                          //       //                               if (response ==
+                          //       //                                   true) {
+                          //       //                                 Navigator.push(
+                          //       //                                     context,
+                          //       //                                     FadePageRouteReverse(
+                          //       //                                         page: const inspiration_landing(
+                          //       //                                             is_Updated:
+                          //       //                                                 false)));
+                          //       //                                 selectedInActiveIndices
+                          //       //                                     .clear();
+                          //       //                                 selectedIndices
+                          //       //                                     .clear();
+                          //       //                                 selectedGoals
+                          //       //                                     .clear();
+                          //       //                                 multiGoals.clear();
+                          //       //                                 allgoalsSelected
+                          //       //                                     .clear();
+                          //       //                                 setState(() {
+                          //       //                                   selectAll = false;
+                          //       //                                 });
+                          //       //                                 final SharedPreferences
+                          //       //                                     prefs =
+                          //       //                                     await _prefs;
+                          //       //                                 await prefs.remove(
+                          //       //                                     'inspiration_saved_route');
+                          //       //                               } else if (response ==
+                          //       //                                   false) {
+                          //       //                                 Navigator.push(
+                          //       //                                     context,
+                          //       //                                     FadePageRouteReverse(
+                          //       //                                         page:
+                          //       //                                             const inspiration_motivation(
+                          //       //                                       goal_delete:
+                          //       //                                           false,
+                          //       //                                       inspirationName:
+                          //       //                                           '',
+                          //       //                                     )));
+                          //       //                                 final SharedPreferences
+                          //       //                                     prefs =
+                          //       //                                     await _prefs;
+                          //       //                                 await prefs.remove(
+                          //       //                                     'inspiration_saved_route');
+                          //       //                                 selectedInActiveIndices
+                          //       //                                     .clear();
+                          //       //                                 selectedIndices
+                          //       //                                     .clear();
+                          //       //                                 selectedGoals
+                          //       //                                     .clear();
+                          //       //                                 multiGoals.clear();
+                          //       //                                 allgoalsSelected
+                          //       //                                     .clear();
+                          //       //                                 setState(() {
+                          //       //                                   selectAll = false;
+                          //       //                                 });
+                          //       //                               }
+                          //       //                             })
+                          //       //                             .catchError((error) {})
+                          //       //                             .whenComplete(() {});
+                          //       //                       },
+                          //       //                       child: const Text(
+                          //       //                         'Exit & delete progress',
+                          //       //                         style: TextStyle(
+                          //       //                             fontSize: 17,
+                          //       //                             fontFamily: "Laila",
+                          //       //                             fontWeight:
+                          //       //                                 FontWeight.w400,
+                          //       //                             color:
+                          //       //                                 Color(0xFF007AFF)),
+                          //       //                       ),
+                          //       //                     ),
+                          //       //                   ),
+                          //       //                   SizedBox(
+                          //       //                     height: AppDimensions.height10(
+                          //       //                             context) *
+                          //       //                         0.1,
+                          //       //                     child: Divider(
+                          //       //                       color: const Color(0XFF3C3C43)
+                          //       //                           .withOpacity(0.29),
+                          //       //                     ),
+                          //       //                   ),
+                          //       //                   Container(
+                          //       //                     height: 42,
+                          //       //                     width: double.infinity,
+                          //       //                     margin: EdgeInsets.only(
+                          //       //                         bottom:
+                          //       //                             AppDimensions.height10(
+                          //       //                                     context) *
+                          //       //                                 1.0),
+                          //       //                     // color: Colors.white,
+                          //       //                     child: TextButton(
+                          //       //                       onPressed: () {
+                          //       //                         Navigator.pop(context);
+                          //       //                       },
+                          //       //                       child: const Text(
+                          //       //                         'Cancel exit',
+                          //       //                         style: TextStyle(
+                          //       //                             color:
+                          //       //                                 Color(0xFF007AFF),
+                          //       //                             fontSize: 17,
+                          //       //                             fontFamily: "Laila",
+                          //       //                             fontWeight:
+                          //       //                                 FontWeight.w400),
+                          //       //                       ),
+                          //       //                     ),
+                          //       //                   ),
+                          //       //                 ],
+                          //       //               ),
+                          //       //             ],
+                          //       //           ),
+                          //       //         ));
+                          //     },
+                          //     icon: Image.asset(
+                          //       'assets/images/Close.webp',
+                          //       // width: AppDimensions.width10(context) * 2.6,
+                          //       height: AppDimensions.height10(context) * 2.6,
+                          //       fit: BoxFit.contain,
+                          //     )),
+
+                          ),
+                    ),
             ]),
-        extendBodyBehindAppBar: true,
+
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -1178,9 +1241,10 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                     child: SingleChildScrollView(
                       child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              width: AppDimensions.width10(context) * 34.3,
+
                               height: AppDimensions.height10(context) * 7.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 8.7),
@@ -1238,32 +1302,38 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               },
                               child: Container(
                                 width: !smallScreen
-                                    ? AppDimensions.width10(context) * 14.1
+                                    ? AppDimensions.width10(context) * 16.5
                                     : AppDimensions.width10(context) * 13.5,
                                 height: !smallScreen
-                                    ? AppDimensions.width10(context) * 14.1
+                                    ? AppDimensions.width10(context) * 16.5
                                     : AppDimensions.width10(context) * 13.5,
                                 margin: EdgeInsets.only(
-                                    left: AppDimensions.width10(context) * 3,
-                                    right:
-                                        AppDimensions.width10(context) * 19.0,
+                                    // left: AppDimensions.width10(context) * 4.7,
+                                    left:
+                                        AppDimensions.width10(context) * 1.5,
                                     top: AppDimensions.height10(context) * 2.9),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                        width: 2,
+                                        width: selectAll == true
+                                            ? AppDimensions.width10(context) *
+                                                0.2
+                                            : 0,
                                         color: selectAll == true
                                             ? Colors.white
                                             : Colors.transparent)),
                                 padding: EdgeInsets.all(
-                                    AppDimensions.width10(context) * 0.5),
+                                    AppDimensions.width10(context) * 0.8),
                                 child: Container(
-                                  height: !smallScreen
-                                      ? AppDimensions.width10(context) * 13.1
-                                      : AppDimensions.width10(context) * 12.5,
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal:
+                                          AppDimensions.width10(context) * 0.8),
                                   width: !smallScreen
-                                      ? AppDimensions.width10(context) * 13.1
-                                      : AppDimensions.width10(context) * 12.5,
+                                      ? AppDimensions.width10(context) * 15.1
+                                      : AppDimensions.width10(context) * 13.1,
+                                  height: !smallScreen
+                                      ? AppDimensions.width10(context) * 15.1
+                                      : AppDimensions.width10(context) * 13.1,
                                   decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
@@ -1286,7 +1356,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                           color: Colors.white,
                                           fontSize:
                                               AppDimensions.font10(context) *
-                                                  1.6,
+                                                  1.8,
                                           fontWeight: FontWeight.w500),
                                     ),
                                   ),
@@ -1294,18 +1364,18 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               ),
                             ),
                             Container(
-                              width: AppDimensions.width10(context) * 12.4,
+                             // width: AppDimensions.width10(context) * 12.4,
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.width10(context) * 21.2,
-                                  left: AppDimensions.width10(context) * 2.8,
+                                  //right: AppDimensions.width10(context) * 21.2,
+                                  left: AppDimensions.width10(context) * 1.5,
                                   top: AppDimensions.height10(context) * 2.0),
                               child: Center(
                                 child: Text(
                                   'Active Goals',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.font10(context) * 2.0,
+                                          AppDimensions.font10(context) * 2.2,
                                       fontWeight: FontWeight.w600,
                                       color: Colors.white),
                                 ),
@@ -1314,10 +1384,10 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             Container(
                               margin: EdgeInsets.only(
                                   left: !smallScreen
-                                      ? AppDimensions.width10(context) * 5
+                                      ? AppDimensions.width10(context) * 1.5
                                       : AppDimensions.width10(context) * 6,
                                   top: AppDimensions.height10(context) * 1.0,
-                                  right: AppDimensions.width10(context) * 3,
+                                  right: AppDimensions.width10(context) * 1.5,
                                   bottom:
                                       AppDimensions.height10(context) * 2.0),
                               child: GridView.builder(
@@ -1438,7 +1508,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          1.6,
+                                                          1.8,
                                                   fontWeight: FontWeight.w500),
                                             ),
                                           ),
@@ -1448,17 +1518,17 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                   })),
                             ),
                             Container(
-                              width: AppDimensions.width10(context) * 13.7,
+                             // width: AppDimensions.width10(context) * 13.7,
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
-                                  right: AppDimensions.width10(context) * 19.5,
-                                  left: AppDimensions.width10(context) * 2.8),
+                                  //right: AppDimensions.width10(context) * 19.5,
+                                  left: AppDimensions.width10(context) * 1.5),
                               child: Center(
                                 child: Text(
                                   'Inactive Goals',
                                   style: TextStyle(
                                       fontSize:
-                                          AppDimensions.font10(context) * 2.0,
+                                          AppDimensions.font10(context) * 2.2,
                                       fontWeight: FontWeight.w600,
                                       height: 1.2,
                                       color: Colors.white),
@@ -1468,10 +1538,10 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                             Container(
                               margin: EdgeInsets.only(
                                   left: !smallScreen
-                                      ? AppDimensions.width10(context) * 5
+                                      ? AppDimensions.width10(context) * 1.5
                                       : AppDimensions.width10(context) * 6,
                                   top: AppDimensions.height10(context) * 1.0,
-                                  right: AppDimensions.width10(context) * 3,
+                                  right: AppDimensions.width10(context) * 1.5,
                                   bottom:
                                       AppDimensions.height10(context) * 2.0),
                               child: GridView.builder(
@@ -1593,7 +1663,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          1.6,
+                                                          1.8,
                                                   fontWeight: FontWeight.w500),
                                             ),
                                           ),

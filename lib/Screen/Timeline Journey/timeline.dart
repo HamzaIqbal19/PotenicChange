@@ -141,6 +141,7 @@ class _timelineState extends State<timeline> {
         .then((value) {
       setState(() {
         TimeLineRes = value;
+        print("timeline resp $TimeLineRes");
       });
       //bool result = areAllObjectsEmpty(TimeLineRes, currentDateKey);
 
@@ -540,7 +541,8 @@ class _timelineState extends State<timeline> {
                                                                   },
                                                                   itemExtent:
                                                                       40,
-                                                                  physics: const FixedExtentScrollPhysics(),
+                                                                  physics:
+                                                                      const FixedExtentScrollPhysics(),
                                                                   magnification:
                                                                       1.5,
                                                                   useMagnifier:
@@ -796,7 +798,8 @@ class _timelineState extends State<timeline> {
                                                             ListWheelScrollView(
                                                           itemExtent: 40,
                                                           magnification: 1.5,
-                                                              physics: const FixedExtentScrollPhysics(),
+                                                          physics:
+                                                              const FixedExtentScrollPhysics(),
                                                           useMagnifier:
                                                               true, // Set the height of each statement
                                                           children: _statements
@@ -1148,12 +1151,12 @@ class _timelineState extends State<timeline> {
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize:
-                                    AppDimensionsUpdated.font10(context) *
-                                        2,
+                                        AppDimensionsUpdated.font10(context) *
+                                            2,
                                     fontWeight: FontWeight.w600,
                                     height:
-                                    AppDimensionsUpdated.height10(context) *
-                                        0.12,
+                                        AppDimensionsUpdated.height10(context) *
+                                            0.12,
                                     color: const Color(0xFF437296)),
                               ),
                             ),
@@ -1421,17 +1424,18 @@ class _timelineState extends State<timeline> {
                                                                     [
                                                                     'userInspirationsCreated']
                                                                 [index];
+                                                            print("data $data");
                                                             return InspirationComponent(
                                                               Text1:
                                                                   data['title'],
-                                                              mainImage: data[
-                                                                      'file']
-                                                                  .toString(),
+                                                              mainImage:
+                                                                  data['file'],
                                                               inspirationId: data[
-                                                                      'inspirationId']
-                                                                  .toString(),
+                                                                  'inspirationId'],
                                                               Text2: data[
                                                                   'description'],
+                                                              inspirationLink: data[
+                                                                  'destinationLink'],
                                                               status: null,
                                                             );
                                                           })
@@ -1714,14 +1718,14 @@ class _timelineState extends State<timeline> {
                                                             return InspirationComponent(
                                                               Text1:
                                                                   data['title'],
-                                                              mainImage: data[
-                                                                      'file']
-                                                                  .toString(),
+                                                              mainImage:
+                                                                  data['file'],
                                                               inspirationId: data[
-                                                                      'inspirationId']
-                                                                  .toString(),
+                                                                  'inspirationId'],
                                                               Text2: data[
                                                                   'description'],
+                                                              inspirationLink: data[
+                                                              'destinationLink'],
                                                               status: false,
                                                             );
                                                           })
