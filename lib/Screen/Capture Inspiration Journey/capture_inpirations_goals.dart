@@ -890,15 +890,16 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                 : Container(
                     width: AppDimensions.width10(context) * 18.9,
                     height: AppDimensions.height10(context) * 2.6,
-                    margin: EdgeInsets.only(
-                        left: AppDimensions.width10(context) * 7.5),
+                    // margin: EdgeInsets.only(
+                    //     left: AppDimensions.width10(context) * 7),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         GradientText(
                           AppText().inspiration1,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 2.0,
+                            fontSize: AppDimensions.font10(context) * 2.2,
                             fontWeight: FontWeight.w600,
                           ),
                           colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -907,7 +908,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           '/2',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 2.0,
+                            fontSize: AppDimensions.font10(context) * 2.2,
                             fontWeight: FontWeight.w400,
                           ),
                           colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -1215,7 +1216,6 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           ),
                     ),
             ]),
-
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -1244,7 +1244,6 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-
                               height: AppDimensions.height10(context) * 7.3,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 8.7),
@@ -1309,8 +1308,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                     : AppDimensions.width10(context) * 13.5,
                                 margin: EdgeInsets.only(
                                     // left: AppDimensions.width10(context) * 4.7,
-                                    left:
-                                        AppDimensions.width10(context) * 1.5,
+                                    left: AppDimensions.width10(context) * 1.5,
                                     top: AppDimensions.height10(context) * 2.9),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
@@ -1364,7 +1362,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                               ),
                             ),
                             Container(
-                             // width: AppDimensions.width10(context) * 12.4,
+                              // width: AppDimensions.width10(context) * 12.4,
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
                                   //right: AppDimensions.width10(context) * 21.2,
@@ -1518,7 +1516,7 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                   })),
                             ),
                             Container(
-                             // width: AppDimensions.width10(context) * 13.7,
+                              // width: AppDimensions.width10(context) * 13.7,
                               height: AppDimensions.height10(context) * 2.4,
                               margin: EdgeInsets.only(
                                   //right: AppDimensions.width10(context) * 19.5,

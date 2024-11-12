@@ -37,7 +37,6 @@ class menu_behaviour extends StatefulWidget {
 }
 
 class _menu_behaviourState extends State<menu_behaviour> {
-
   String reportDate = '';
   String recordDate = '';
   String subscripption = '';
@@ -55,8 +54,6 @@ class _menu_behaviourState extends State<menu_behaviour> {
       differenceInDays = currentDate.difference(date1).inDays;
     });
   }
-
-
 
   void getSubscription() async {
     final SharedPreferences prefs = await _prefs;
@@ -79,9 +76,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
         AdminGoal.getUserGoalById(response['userGoalId']).then(
           (value) {
             if (value.length != 0) {
-              setState(() {
-
-              });
+              setState(() {});
             }
           },
         );
@@ -147,20 +142,20 @@ class _menu_behaviourState extends State<menu_behaviour> {
             // ),
             automaticallyImplyLeading: false,
             actions: [
-             Buttons().closeButton(context, (){
-              Navigator.push(
-                        context,
-                        FadePageRouteReverse(
-                          page: const ViewDashboard(
-                            missed: false,
-                            name: '',
-                            update: false,
-                            helpfulTips: false,
-                            record: 0,
-                          ),
-                        ),
-                      );
-             })
+              Buttons().closeButton(context, () {
+                Navigator.push(
+                  context,
+                  FadePageRouteReverse(
+                    page: const ViewDashboard(
+                      missed: false,
+                      name: '',
+                      update: false,
+                      helpfulTips: false,
+                      record: 0,
+                    ),
+                  ),
+                );
+              })
             ]),
         extendBodyBehindAppBar: true,
         body: Container(
@@ -189,7 +184,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                               AppText().pracMenu,
                               style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: AppDimensions.font10(context) * 2.0,
+                                  fontSize: AppDimensions.font10(context) * 2.2,
                                   fontWeight: FontWeight.w600),
                             ),
                             SizedBox(
@@ -207,7 +202,10 @@ class _menu_behaviourState extends State<menu_behaviour> {
                               ),
                             ),
                             goalAndPractice(
-                                context, pracDetails['userGoal']['color'], pracDetails['color'], pracDetails['name']),
+                                context,
+                                pracDetails['userGoal']['color'],
+                                pracDetails['color'],
+                                pracDetails['name']),
                           ],
                         ),
                       ),
@@ -265,15 +263,17 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                       )),
                                     ),
                                   ),
-                                  const SizedBox(height: 5,),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
                                   Text(
                                     'View/Edit\nsession',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: Colors.white,
                                         height:
-                                        AppDimensions.height10(context) *
-                                            0.14,
+                                            AppDimensions.height10(context) *
+                                                0.14,
                                         fontSize:
                                             AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500),
@@ -293,7 +293,9 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                 ],
                               ),
                             ),
-                            SizedBox(width: AppDimensions.width10(context) * 2,),
+                            SizedBox(
+                              width: AppDimensions.width10(context) * 2,
+                            ),
                             SizedBox(
                               width: AppDimensions.width10(context) * 9.3,
                               height: AppDimensions.height10(context) * 11.8,
@@ -436,7 +438,7 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                                                           missed:
                                                                               true,
                                                                           name:
-                                                                          pracDetails['name'],
+                                                                              pracDetails['name'],
                                                                           update:
                                                                               true,
                                                                           helpfulTips:
@@ -558,20 +560,21 @@ class _menu_behaviourState extends State<menu_behaviour> {
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(height: 5,),
+                                  const SizedBox(
+                                    height: 5,
+                                  ),
                                   Text(
                                     'Missed\nsession',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                         color: Colors.white,
                                         height:
-                                        AppDimensions.height10(context) *
-                                            0.14,
+                                            AppDimensions.height10(context) *
+                                                0.14,
                                         fontSize:
                                             AppDimensions.font10(context) * 1.6,
                                         fontWeight: FontWeight.w500),
                                   ),
-
                                 ],
                               ),
                             ),

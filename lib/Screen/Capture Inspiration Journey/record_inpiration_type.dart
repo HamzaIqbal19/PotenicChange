@@ -135,7 +135,7 @@ class _record_inspirationState extends State<record_inspiration> {
                         child: Text(
                           'Menu',
                           style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 2.00,
+                              fontSize: AppDimensions.font10(context) * 2.20,
                               fontWeight: FontWeight.w600,
                               color: const Color(0xFFFFFFFF)),
                         ),
@@ -649,30 +649,31 @@ class _record_inspirationState extends State<record_inspiration> {
                                   .deleteUserInspiraton()
                                   .then((response) {
                                 if (response == true) {
-
-                                    InspirationApi()
-                                        .checkUserInspiration()
-                                        .then((response) {
-                                      if (response == true) {
-                                        Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page: const inspiration_landing(is_Updated: false)));
-                                      } else if (response == false) {
-                                        Navigator.push(
-                                            context,
-                                            FadePageRoute(
-                                                page:  inspiration_motivation(
-                                                  goal_delete: false,
-                                                  inspirationName: inspirationDetails['inspiration']
-                                                  ['title'],
-                                                )));
-                                      }
-                                    })
-                                        .catchError((error) {})
-                                        .whenComplete(() {});
-                                  }
-
+                                  InspirationApi()
+                                      .checkUserInspiration()
+                                      .then((response) {
+                                        if (response == true) {
+                                          Navigator.push(
+                                              context,
+                                              FadePageRoute(
+                                                  page:
+                                                      const inspiration_landing(
+                                                          is_Updated: false)));
+                                        } else if (response == false) {
+                                          Navigator.push(
+                                              context,
+                                              FadePageRoute(
+                                                  page: inspiration_motivation(
+                                                goal_delete: false,
+                                                inspirationName:
+                                                    inspirationDetails[
+                                                        'inspiration']['title'],
+                                              )));
+                                        }
+                                      })
+                                      .catchError((error) {})
+                                      .whenComplete(() {});
+                                }
                               });
                             },
                             child: Container(
