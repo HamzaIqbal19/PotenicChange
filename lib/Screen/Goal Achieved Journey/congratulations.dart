@@ -8,6 +8,7 @@ import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_assets.dart';
 import 'package:potenic_app/utils/app_texts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/app_dimensions.dart';
 
 class congratulations extends StatefulWidget {
@@ -483,15 +484,19 @@ class _congratulationsState extends State<congratulations> {
                           ),
                         ),
                         AnimatedScaleButton(
-                          onTap: () {
+                          onTap: () async {
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
                             Navigator.push(
                                 context,
                                 FadePageRoute(
                                     page: new_progress_score(
+                                  dateChange: true,
+                                  congratsScreen: true,
                                   premium:
                                       subscriptions == 'active' ? true : false,
                                   evaluationIndex:
-                                      goalDetails['goalEvaluations'].length - 1,
+                                      prefs.getInt('selectedEval')!,
                                 )));
                           },
                           child: Container(
@@ -867,13 +872,17 @@ void goal_achieved_sheet(context, data, subscription, length) {
                     ),
                   ),
                   AnimatedScaleButton(
-                    onTap: () {
+                    onTap: () async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
                       Navigator.push(
                           context,
                           FadePageRoute(
                               page: new_progress_score(
                             premium: subscription == 'active' ? true : false,
-                            evaluationIndex: 0,
+                            evaluationIndex: prefs.getInt('selectedEval')!,
+                            dateChange: true,
+                            congratsScreen: true,
                           )));
                     },
                     child: Container(

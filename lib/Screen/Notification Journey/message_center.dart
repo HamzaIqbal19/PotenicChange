@@ -47,7 +47,6 @@ class _MessageCenterState extends State<MessageCenter> {
         notificationList2 = value;
         isLoading = false;
       });
-
     });
   }
 
@@ -118,7 +117,7 @@ class _MessageCenterState extends State<MessageCenter> {
               child: Text(
                 !options ? "" : 'Select All',
                 style: TextStyle(
-                    fontSize: AppDimensionsUpdated.font10(context) * 1.6,
+                    fontSize: AppDimensionsUpdated.font10(context) * 2.0,
                     height: AppDimensionsUpdated.height10(context) * 0.16,
                     fontWeight: FontWeight.w500,
                     decoration: TextDecoration.underline,
@@ -139,14 +138,16 @@ class _MessageCenterState extends State<MessageCenter> {
                           });
                         }
                       },
-                      child: SizedBox(
+                      child: Container(
+                        margin: EdgeInsets.only(
+                            right: AppDimensions.height10(context) * 1.7),
                         width: AppDimensionsUpdated.width10(context) * 5.8,
                         height: AppDimensionsUpdated.height10(context) * 2.4,
                         child: Text(
                           'Cancel',
                           style: TextStyle(
                               fontSize:
-                                  AppDimensionsUpdated.font10(context) * 1.6,
+                                  AppDimensionsUpdated.font10(context) * 2.0,
                               height:
                                   AppDimensionsUpdated.height10(context) * 0.16,
                               fontWeight: FontWeight.w500,
@@ -429,7 +430,7 @@ class _MessageCenterState extends State<MessageCenter> {
                                         style: TextStyle(
                                           fontSize: AppDimensionsUpdated.font10(
                                                   context) *
-                                              1.6,
+                                              2.0,
                                           fontWeight: FontWeight.w600,
                                           color: const Color(0xFFFFFFFF),
                                         )),
@@ -450,7 +451,7 @@ class _MessageCenterState extends State<MessageCenter> {
                                       style: TextStyle(
                                         fontSize: AppDimensionsUpdated.font10(
                                                 context) *
-                                            1.4,
+                                            1.8,
                                         fontWeight: FontWeight.w400,
                                         color: const Color(0xFFFA9934),
                                       )),
@@ -464,7 +465,7 @@ class _MessageCenterState extends State<MessageCenter> {
                               style: TextStyle(
                                   fontSize:
                                       AppDimensionsUpdated.font10(context) *
-                                          1.6,
+                                          2.0,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFFFA9934)),
                             ),

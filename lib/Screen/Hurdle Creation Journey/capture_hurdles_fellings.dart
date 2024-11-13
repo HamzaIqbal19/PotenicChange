@@ -569,7 +569,6 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                       setState(() {
                                                         circleState--;
                                                       });
-
                                                     },
                                                     child: const Icon(
                                                       Icons.delete,
@@ -615,7 +614,7 @@ class _felling_hurdlesState extends State<felling_hurdles> {
                                                       TextCapitalization
                                                           .sentences,
                                                   enableInteractiveSelection:
-                                                      false,
+                                                      true,
                                                   controller: control[i],
                                                   expands: true,
                                                   maxLines: null,

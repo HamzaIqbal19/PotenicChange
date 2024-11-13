@@ -30,7 +30,15 @@ class _edit_credentialsState extends State<edit_credentials> {
   bool update = false;
   String emailMsg = '';
   bool errorEmail = false;
-  bool loader =false;
+  bool loader = false;
+  bool colorChange = false;
+  String newEmailMsg = '';
+  bool newErrorEmail = false;
+  String cnfrmEmailMsg = '';
+  bool cnfrmErrorEmail = false;
+  String passEmail = '';
+  bool passErrorEmail = false;
+
   final _editFormkey = GlobalKey<FormState>();
 
   TextEditingController feildController = TextEditingController();
@@ -45,24 +53,30 @@ class _edit_credentialsState extends State<edit_credentials> {
     if (widget.password_edit) {
       setState(() {
         feildController.text = userEmail;
+        colorChange = true;
       });
-    }else if(widget.email == false){
-      feildController.text =userName;
+    } else if (widget.email == false) {
+      feildController.text = userName;
+      colorChange = true;
     }
   }
 
   updateUser() {
     if (widget.email) {
-      if(feildController.text.isEmpty || feildController2.text.isEmpty ){
-        setState(() {
-          errorEmail = true;
-          emailMsg = "Ooops! Needs to be an email format";
-        });
-      }else{
-        if((EmailValidator.validate(feildController.text) &&
-            EmailValidator.validate(feildController2.text))){
+      // if (feildController.text.isEmpty || feildController2.text.isEmpty) {
+      //   setState(() {
+      //     newErrorEmail = false;
+      //     newEmailMsg = "";
+      //   });
+      //   // setState(() {
+      //   //   errorEmail = true;
+      //   //   emailMsg = "Ooops! Needs to be an email format";
+      //   // });
+      // }
+      {
+        if ((EmailValidator.validate(feildController.text) &&
+            EmailValidator.validate(feildController2.text))) {
           if (feildController.text == feildController2.text) {
-
             setState(() {
               loader = true;
               errorEmail = false;
@@ -70,7 +84,7 @@ class _edit_credentialsState extends State<edit_credentials> {
             });
             Authentication()
                 .userUpdate(
-                feildController.text, feildController2.text, widget.email)
+                    feildController.text, feildController2.text, widget.email)
                 .then((value) async {
               if (value == true) {
                 setState(() {
@@ -88,37 +102,102 @@ class _edit_credentialsState extends State<edit_credentials> {
             });
           } else {
             setState(() {
-              errorEmail = true;
-              emailMsg = "Ooops! email does not match";
+              // newErrorEmail = true;
+              /// newEmailMsg = "Email doesnot match";
+              cnfrmErrorEmail = true;
+              cnfrmEmailMsg = "Email does not match";
             });
           }
         }
       }
     } else {
-      if(feildController.text.isEmpty){
-      }else{
+      if (feildController.text.isEmpty) {
+      } else {
         setState(() {
           loader = true;
         });
-      Authentication()
-          .userUpdate(feildController.text, feildController2.text, widget.email)
-          .then((value) async {
-        if (value == true) {
-          setState(() {
-            loader = false;
-          });
-          final SharedPreferences prefs = await _prefs;
-          prefs.setString('userName', feildController.text);
-          Navigator.pushReplacement(
-              context, FadePageRoute(page: const Settings()));
-        } else {
-          dialog(context, value['message'], () {
-            Navigator.pop(context);
-          }, false);
-        }
-      });
-    }}
+        Authentication()
+            .userUpdate(
+                feildController.text, feildController2.text, widget.email)
+            .then((value) async {
+          if (value == true) {
+            setState(() {
+              loader = false;
+            });
+            final SharedPreferences prefs = await _prefs;
+            prefs.setString('userName', feildController.text);
+            Navigator.pushReplacement(
+                context, FadePageRoute(page: const Settings()));
+          } else {
+            dialog(context, value['message'], () {
+              Navigator.pop(context);
+            }, false);
+          }
+        });
+      }
+    }
   }
+
+  // updateUser() {
+  //   if (widget.email == true) {
+  //     if (feildController.text.isNotEmpty &&
+  //         feildController2.text.isNotEmpty &&
+  //         EmailValidator.validate(feildController.text) &&
+  //         EmailValidator.validate(feildController2.text)) {
+  //       if (feildController.text == feildController2.text) {
+  //         setState(() {
+  //           newErrorEmail = false;
+  //           newEmailMsg = "";
+  //         });
+  //         Authentication()
+  //             .userUpdate(
+  //                 feildController.text, feildController2.text, widget.email)
+  //             .then((value) async {
+  //           print("User update value $value");
+  //           if (value == true) {
+  //             final SharedPreferences prefs = await _prefs;
+  //             prefs.setString('userEmail', feildController2.text);
+  //             Navigator.pushReplacement(
+  //                 context, FadePageRoute(page: const Settings()));
+  //             //    Navigator.pop(context);
+  //           } else {
+  //             dialog(context, value['message'], () {
+  //               Navigator.pop(context);
+  //             }, false);
+  //           }
+  //         });
+  //       } else {
+  //         setState(() {
+  //           // newErrorEmail = true;
+  //           /// newEmailMsg = "Email doesnot match";
+  //           cnfrmErrorEmail = true;
+  //           cnfrmEmailMsg = "Email doesnot match";
+  //         });
+  //       }
+  //     }
+  //   } else if (widget.email == false) {
+  //     if (feildController.text.isNotEmpty) {
+  //       print("name");
+  //       Authentication()
+  //           .userUpdate(
+  //               feildController.text, feildController2.text, widget.email)
+  //           .then((value) async {
+  //         print("User update value $value");
+  //         if (value == true) {
+  //           final SharedPreferences prefs = await _prefs;
+  //           prefs.setString('userName', feildController.text);
+  //           // Navigator.pop(context);
+  //           Navigator.pushReplacement(
+  //               context, FadePageRoute(page: const Settings()));
+  //         } else {
+  //           dialog(context, value['message'], () {
+  //             Navigator.pop(context);
+  //           }, false);
+  //         }
+  //       });
+  //     }
+  //   }
+  // }
 
   @override
   void initState() {
@@ -174,12 +253,12 @@ class _edit_credentialsState extends State<edit_credentials> {
                 ),
                 widget.password_edit
                     ? Align(
-                      alignment: Alignment.centerLeft,
-                      child: Container(
+                        alignment: Alignment.centerLeft,
+                        child: Container(
                           width: AppDimensions.width10(context) * 35.7,
                           margin: EdgeInsets.only(
-                            left: AppDimensions.width10(context) * 0.6,
-                           // right: AppDimensions.width10(context) * 3.6,
+                            left: AppDimensions.width10(context) * 3.9,
+                            // right: AppDimensions.width10(context) * 3.6,
                             top: AppDimensions.height10(context) * 6.5,
                           ),
                           child: Text(
@@ -190,7 +269,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                 color: const Color(0xFFFBFBFB)),
                           ),
                         ),
-                    )
+                      )
                     : Container(),
                 Container(
                   // height: widget.email
@@ -255,7 +334,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                     color: const Color(0xFF8C648A),
                                     fontWeight: FontWeight.w600,
                                     fontSize:
-                                    AppDimensions.font10(context) * 1.8,
+                                        AppDimensions.font10(context) * 1.8,
                                   ),
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
@@ -294,40 +373,48 @@ class _edit_credentialsState extends State<edit_credentials> {
 
                                     if (val == null || val.isEmpty) {
                                       setState(() {
-                                        errorEmail = true;
-                                        emailMsg = 'Email is required';
+                                        newErrorEmail = true;
+                                        newEmailMsg = 'Email is required';
                                       });
-                                    } else if (!EmailValidator.validate(
-                                        val)) {
+                                    } else if (!EmailValidator.validate(val)) {
                                       setState(() {
-                                        errorEmail = true;
-                                        emailMsg =
-                                        ' Ooops! Needs to be an email format';
+                                        newErrorEmail = true;
+                                        newEmailMsg =
+                                            ' Ooops! Needs to be an email format';
                                       });
                                     } else {
                                       setState(() {
-                                        errorEmail = false;
-                                        emailMsg = '';
+                                        newErrorEmail = false;
+                                        newEmailMsg = '';
                                       });
                                     }
                                     return null;
                                   }),
                             ),
-                            Container(
-                              alignment: Alignment.centerLeft,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.width10(context) * 1.0,
-                                  bottom:
-                                      AppDimensions.height10(context) * 1.3),
-                              child: Text(
-                                emailMsg,
-                                style: TextStyle(
-                                  color: const Color(0xFFFE6624),
-                                  fontSize: AppDimensions.font10(context) * 1.4,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ),
+                            SizedBox(
+                                height: newErrorEmail == false
+                                    ? AppDimensions.height10(context) * 3.18
+                                    : 0),
+                            newErrorEmail
+                                ? Container(
+                                    alignment: Alignment.centerLeft,
+                                    margin: EdgeInsets.only(
+                                        left: AppDimensions.width10(context) *
+                                            1.0,
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.3),
+                                    child: Text(
+                                      newEmailMsg,
+                                      style: TextStyle(
+                                        color: const Color(0xFFFE6624),
+                                        fontSize:
+                                            AppDimensions.font10(context) * 1.4,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  )
+                                : Container(),
                             Container(
                               height: AppDimensions.height10(context) * 6,
                               width: AppDimensions.width10(context) * 36.0,
@@ -343,86 +430,97 @@ class _edit_credentialsState extends State<edit_credentials> {
                                           AppDimensions.height10(context) *
                                               1.8))),
                               child: TextFormField(
-                                  keyboardType: TextInputType.emailAddress,
-                                  textCapitalization:
-                                      TextCapitalization.sentences,
-                                  controller: feildController2,
-                                  style: TextStyle(
-                                    color: const Color(0xFF8C648A),
-                                    fontWeight: FontWeight.w600,
-                                    fontSize:
-                                    AppDimensions.font10(context) * 1.8,
-                                  ),
-                                  decoration: InputDecoration(
-                                      contentPadding: EdgeInsets.only(
-                                          top: 5.0,
-                                          bottom:
-                                              AppDimensions.height10(context) *
-                                                  1.50,
-                                          left: 20.0,
-                                          right: 10.0),
-                                      floatingLabelBehavior:
-                                          FloatingLabelBehavior.always,
-                                      hintText: "john.smith@yahoo.com",
-                                      hintStyle: TextStyle(
-                                        color: const Color(0xFF8C648A),
-                                        fontWeight: FontWeight.w600,
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.8,
-                                      ),
-                                      labelText: "Confirm Email",
-                                      labelStyle: TextStyle(
-                                        color: const Color(0xFF282828),
-                                        fontWeight: FontWeight.w500,
-                                        fontSize:
-                                            AppDimensions.font10(context) * 2.1,
-                                      ),
-                                      focusedBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent)),
-                                      enabledBorder: const OutlineInputBorder(
-                                          borderSide: BorderSide(
-                                              color: Colors.transparent))),
-                                  validator: (val) {
-                                    if (val != null && val.isNotEmpty) {
-                                      val = val.trim();
-                                    }
-
-                                    if (val == null || val.isEmpty) {
-                                      setState(() {
-                                        errorEmail = true;
-                                        emailMsg = 'Email is required';
-                                      });
-                                    } else if (!EmailValidator.validate(
-                                        val)) {
-                                      setState(() {
-                                        errorEmail = true;
-                                        emailMsg =
-                                        ' Ooops! Needs to be an email format';
-                                      });
-                                    } else {
-                                      setState(() {
-                                        errorEmail = false;
-                                        emailMsg = '';
-                                      });
-                                    }
-                                    return null;
-                                  }
-                                  ),
-                            ),
-                            Container(
-                              alignment: Alignment.centerLeft,
-                              margin: EdgeInsets.only(
-                                  left: AppDimensions.width10(context) * 1.0),
-                              child: Text(
-                                emailMsg,
+                                keyboardType: TextInputType.emailAddress,
+                                textCapitalization:
+                                    TextCapitalization.sentences,
+                                controller: feildController2,
                                 style: TextStyle(
-                                  color: const Color(0xFFFE6624),
-                                  fontSize: AppDimensions.font10(context) * 1.4,
-                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xFF8C648A),
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: AppDimensions.font10(context) * 1.8,
                                 ),
+                                decoration: InputDecoration(
+                                    contentPadding: EdgeInsets.only(
+                                        top: 5.0,
+                                        bottom:
+                                            AppDimensions.height10(context) *
+                                                1.50,
+                                        left: 20.0,
+                                        right: 10.0),
+                                    floatingLabelBehavior:
+                                        FloatingLabelBehavior.always,
+                                    hintText: "john.smith@yahoo.com",
+                                    hintStyle: TextStyle(
+                                      color: const Color(0xFF8C648A),
+                                      fontWeight: FontWeight.w600,
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.8,
+                                    ),
+                                    labelText: "Confirm Email",
+                                    labelStyle: TextStyle(
+                                      color: const Color(0xFF282828),
+                                      fontWeight: FontWeight.w500,
+                                      fontSize:
+                                          AppDimensions.font10(context) * 2.1,
+                                    ),
+                                    focusedBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Colors.transparent)),
+                                    enabledBorder: const OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                            color: Colors.transparent))),
+                                validator: (val) {
+                                  if (val != null && val.isNotEmpty) {
+                                    val = val.trim();
+                                  }
+
+                                  if (val == null || val.isEmpty) {
+                                    setState(() {
+                                      cnfrmErrorEmail = true;
+                                      cnfrmEmailMsg = 'Email is required';
+                                    });
+                                  } else if (!EmailValidator.validate(val)) {
+                                    setState(() {
+                                      cnfrmErrorEmail = true;
+                                      cnfrmEmailMsg =
+                                          ' Ooops! Needs to be an email format';
+                                    });
+                                  } else {
+                                    setState(() {
+                                      cnfrmErrorEmail = false;
+                                      cnfrmEmailMsg = '';
+                                    });
+                                  }
+                                  return null;
+                                },
+                                onChanged: (value) {
+                                  setState(() {
+                                    if (value.isNotEmpty) {
+                                      colorChange = true;
+                                    } else {
+                                      colorChange = false;
+                                    }
+                                  });
+                                },
                               ),
                             ),
+                            cnfrmErrorEmail
+                                ? Container(
+                                    alignment: Alignment.centerLeft,
+                                    margin: EdgeInsets.only(
+                                        left: AppDimensions.width10(context) *
+                                            1.0),
+                                    child: Text(
+                                      cnfrmEmailMsg,
+                                      style: TextStyle(
+                                        color: const Color(0xFFFE6624),
+                                        fontSize:
+                                            AppDimensions.font10(context) * 1.4,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  )
+                                : Container(),
                           ],
                         )
                       : Column(
@@ -442,7 +540,29 @@ class _edit_credentialsState extends State<edit_credentials> {
                                           AppDimensions.height10(context) *
                                               1.8))),
                               child: TextFormField(
-                                keyboardType:widget.password_edit?TextInputType.emailAddress: TextInputType.text,
+                                validator: (value) {
+                                  if (value != null && value.isNotEmpty) {
+                                    value.trim();
+                                  }
+                                  if (widget.password_edit == true) {
+                                    if (value == null || value.isEmpty) {
+                                      setState(() {
+                                        passErrorEmail = true;
+                                        passEmail = "Email is required";
+                                      });
+                                    } else if (!EmailValidator.validate(
+                                        value)) {
+                                      setState(() {
+                                        passErrorEmail = true;
+                                        passEmail =
+                                            ' Ooops! Needs to be an email format';
+                                      });
+                                    }
+                                  }
+                                },
+                                keyboardType: widget.password_edit
+                                    ? TextInputType.emailAddress
+                                    : TextInputType.text,
                                 textCapitalization:
                                     TextCapitalization.sentences,
                                 controller: feildController,
@@ -487,10 +607,34 @@ class _edit_credentialsState extends State<edit_credentials> {
                                         borderSide: BorderSide(
                                             color: Colors.transparent))),
                                 onChanged: (value) {
-                                  setState(() {});
+                                  setState(() {
+                                    if (value.isNotEmpty) {
+                                      colorChange = true;
+                                    } else {
+                                      colorChange = false;
+                                    }
+                                  });
                                 },
                               ),
                             ),
+                            passErrorEmail
+                                ? Container(
+                                    alignment: Alignment.centerLeft,
+                                    margin: EdgeInsets.only(
+                                      left:
+                                          AppDimensions.width10(context) * 1.0,
+                                    ),
+                                    child: Text(
+                                      passEmail,
+                                      style: TextStyle(
+                                        color: const Color(0xFFFE6624),
+                                        fontSize:
+                                            AppDimensions.font10(context) * 1.4,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  )
+                                : Container(),
                             widget.password_edit
                                 ? Container()
                                 : widget.email
@@ -524,11 +668,10 @@ class _edit_credentialsState extends State<edit_credentials> {
                 ),
                 AnimatedScaleButton(
                   onTap: () {
-                    if(_editFormkey.currentState!.validate()) {
+                    if (_editFormkey.currentState!.validate()) {
                       if (widget.password_edit == true) {
-                        if(feildController.text.isEmpty){
-
-                        }else{
+                        if (feildController.text.isEmpty) {
+                        } else {
                           setState(() {
                             loader = true;
                           });
@@ -539,9 +682,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                               .then((response) {
                             if (response == true) {
                               setState(() {
-
                                 loader = false;
-
                               });
                               Navigator.pushReplacement(
                                 context,
@@ -566,16 +707,16 @@ class _edit_credentialsState extends State<edit_credentials> {
                             setState(() {
                               // loading = false;
                             });
-                          });}
+                          });
+                        }
                       } else {
                         updateUser();
                       }
-                    }else{
+                    } else {
                       setState(() {
-                        loader=false;
+                        loader = false;
                       });
                     }
-
                   },
                   child: Container(
                     height: AppDimensions.height10(context) * 5.0,
@@ -589,27 +730,27 @@ class _edit_credentialsState extends State<edit_credentials> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(
                             AppDimensions.height10(context) * 3.6),
-                        color: feildController.text.isEmpty
+                        color: colorChange == false
                             ? const Color(0xFF282828).withOpacity(0.5)
                             : const Color(0xFFFBFBFB)),
                     child: Center(
                       child: loader
                           ? SpinKitThreeBounce(
-                        color: const Color(0xFF8C648A),
-                        // delay: Duration(milliseconds: 0),
-                        size: AppDimensions.height10(context) * 3.5,
-                      )
-                          :Text(
-                        widget.password_edit ? 'Send' : 'Save updates',
-                        style: TextStyle(
-                          color: feildController.text.isEmpty
-                              ? const Color(0xFFFFFFFF).withOpacity(0.9)
-                              : const Color(0xFF8C648A),
-                          fontSize: AppDimensions.font10(context) * 2,
-                          height: AppDimensions.height10(context) * 0.12,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                              color: const Color(0xFF8C648A),
+                              // delay: Duration(milliseconds: 0),
+                              size: AppDimensions.height10(context) * 3.5,
+                            )
+                          : Text(
+                              widget.password_edit ? 'Send' : 'Save updates',
+                              style: TextStyle(
+                                color: colorChange == false
+                                    ? const Color(0xFFFFFFFF).withOpacity(0.9)
+                                    : const Color(0xFF8C648A),
+                                fontSize: AppDimensions.font10(context) * 2,
+                                height: AppDimensions.height10(context) * 0.12,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
                     ),
                   ),
                 ),

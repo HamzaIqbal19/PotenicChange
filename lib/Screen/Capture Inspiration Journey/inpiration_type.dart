@@ -179,7 +179,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                     AppText().inspiration2,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 2.0,
+                      fontSize: AppDimensions.font10(context) * 2.2,
                       fontWeight: FontWeight.w600,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],
@@ -188,7 +188,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                     '/2',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: AppDimensions.font10(context) * 2.0,
+                      fontSize: AppDimensions.font10(context) * 2.2,
                       fontWeight: FontWeight.w400,
                     ),
                     colors: const [Color(0xffFA9934), Color(0xffEDD15E)],

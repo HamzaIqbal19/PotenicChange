@@ -50,7 +50,7 @@ class InspirationTextFields {
     );
   }
 
-  Widget inspirationCustomTextField({controller, context}) {
+  Widget inspirationCustomTextField({controller, context, maxlength}) {
     return TextFormField(
       key: PageStorageKey('textkeyvalue'),
       validator: (value) {
@@ -62,7 +62,7 @@ class InspirationTextFields {
       textAlignVertical: TextAlignVertical.top,
       textCapitalization: TextCapitalization.sentences,
       maxLines: null,
-      maxLength: 250,
+      maxLength: maxlength,
       style: TextStyle(
           fontSize: AppDimensions.font10(context) * 1.8,
           fontWeight: FontWeight.w500,

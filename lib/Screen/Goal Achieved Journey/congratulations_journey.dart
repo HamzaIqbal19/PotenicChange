@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/Goal%20Evaluation%20Journey/new_progress_scor
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../utils/app_dimensions.dart';
 
 class Congratulations_journey extends StatefulWidget {
@@ -1538,16 +1539,20 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                           ),
                         ),
                         AnimatedScaleButton(
-                          onTap: () {
+                          onTap: () async {
+                            SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
                             Navigator.push(
                                 context,
                                 FadePageRoute(
                                     page: new_progress_score(
-                                  premium:
-                                      subscriptions == 'active' ? true : false,
-                                  evaluationIndex:
-                                      goalDetails['goalEvaluations'].length - 1,
-                                )));
+                                        congratsScreen: true,
+                                        dateChange: true,
+                                        premium: subscriptions == 'active'
+                                            ? true
+                                            : false,
+                                        evaluationIndex:
+                                            prefs.getInt('selectedEval')!)));
                           },
                           child: Container(
                             width: AppDimensionsUpdated.width10(context) * 29.0,

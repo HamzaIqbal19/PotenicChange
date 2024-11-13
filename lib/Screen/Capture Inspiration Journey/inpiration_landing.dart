@@ -7,6 +7,7 @@ import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/Widgets/updateBox.dart';
 
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/constants/videothumbnail.dart';
+import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inpiration_motivation.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
 import 'package:potenic_app/Widgets/BottomSearch.dart';
 import 'package:potenic_app/Widgets/CustomBottomSheet.dart';
@@ -53,6 +54,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
   String selectionTag = '';
   int inspirationId = 0;
   var route;
+  bool checkResponse = true;
 
   final TextEditingController _searchController = TextEditingController();
 
@@ -101,7 +103,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
     });
   }
 
-  void _fetchInspiraion() async {
+  _fetchInspiraion() async {
     InspirationApi().getUserInspiration().then((response) {
       if (response.length != 0) {
         setState(() {
@@ -208,10 +210,24 @@ class _inspiration_landingState extends State<inspiration_landing> {
     setState(() {
       loading = true;
     });
-    InspirationApi().deleteMulipleInspiration(selectItems).then((value) {
+    InspirationApi().deleteMulipleInspiration(selectItems).then((value) async {
+      print("vale $value");
       if (value == true) {
         selectItems.clear();
-        _fetchInspiraion();
+        await _fetchInspiraion();
+        InspirationApi().getUserInspiration().then((response) {
+          print("resposne $response");
+          if (response == false) {
+            Navigator.push(
+                context,
+                FadePageRoute(
+                    page: const inspiration_motivation(
+                        goal_delete: false, inspirationName: '')));
+          } else {
+            print("dkksd");
+            // print("isnpiration list $inspirationList");
+          }
+        });
       }
     });
   }

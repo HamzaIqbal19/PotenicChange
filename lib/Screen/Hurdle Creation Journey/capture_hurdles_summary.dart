@@ -423,8 +423,8 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                               )));
                         },
                         child: Container(
-                          height: AppDimensions.height10(context) * 6.0,
-                          width: AppDimensions.width10(context) * 37.5,
+                          height: AppDimensions.height10(context) * 6.3,
+                          width: AppDimensions.width10(context) * 38.4,
                           margin: EdgeInsets.only(
                               bottom: AppDimensions.height10(context) * 4.0,
                               top: AppDimensions.height10(context) * 3.0),
@@ -437,7 +437,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             children: [
                               Container(
                                 width: AppDimensions.width10(context) * 23.9,
-                                height: AppDimensions.height10(context) * 2.2,
+                                // height: AppDimensions.height10(context) * 2.2,
                                 margin: EdgeInsets.only(
                                     left:
                                         AppDimensions.width10(context) * 1.99),
@@ -449,7 +449,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                         color: const Color(0xFF646464),
                                         fontSize:
                                             UpdatedDimensions.font10(context) *
-                                                1.6,
+                                                2.0,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     )),
@@ -471,7 +471,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                                 0.2,
                                         fontSize:
                                             UpdatedDimensions.font10(context) *
-                                                1.6),
+                                                2.0),
                                   ))
                             ],
                           ),

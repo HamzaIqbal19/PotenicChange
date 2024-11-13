@@ -97,7 +97,7 @@ class _GoalCircleState extends State<GoalCircle> {
               : widget.selectedItemIndexesOuter != widget.index1
                   ? Container()
                   : Align(
-                      alignment: const Alignment(0, 0.8),
+                      alignment: const Alignment(-0.1, 0.9),
                       widthFactor: 3.35,
                       child: Container(
                         width: AppDimensions.width10(context) * 5,

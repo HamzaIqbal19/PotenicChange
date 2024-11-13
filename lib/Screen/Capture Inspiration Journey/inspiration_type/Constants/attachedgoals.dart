@@ -10,14 +10,14 @@ class AttachedGoals {
     return AnimatedScaleButton(
       onTap: ontap,
       child: Container(
-        height: AppDimensions.height10(context) * 6.0,
-        width: AppDimensions.width10(context) * 37.5,
+        height: AppDimensions.height10(context) * 6.3,
+        width: AppDimensions.width10(context) * 38.4,
         margin: EdgeInsets.only(
           left: AppDimensions.width10(context) * 2.0,
           right: AppDimensions.width10(context) * 1.9,
         ),
         decoration: BoxDecoration(
-            color: const Color(0xFFFBFBFB),
+            color: const Color(0xFFFBFBFB), //FBFBF
             borderRadius:
                 BorderRadius.circular(AppDimensions.height10(context) * 2.0)),
         child: Row(
@@ -31,7 +31,7 @@ class AttachedGoals {
                 '${selectedGoals!.length} impacted goals',
                 style: TextStyle(
                   color: const Color(0xFF646464),
-                  fontSize: AppDimensions.font10(context) * 1.9,
+                  fontSize: AppDimensions.font10(context) * 2.0,
                   fontWeight: FontWeight.w500,
                 ),
               ),
@@ -47,7 +47,7 @@ class AttachedGoals {
                       decoration: TextDecoration.underline,
                       decorationThickness:
                           AppDimensions.height10(context) * 0.2,
-                      fontSize: UpdatedDimensions.font10(context) * 1.6),
+                      fontSize: UpdatedDimensions.font10(context) * 2.0),
                 ))
           ],
         ),

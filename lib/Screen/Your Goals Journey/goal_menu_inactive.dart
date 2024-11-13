@@ -313,9 +313,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             Navigator.push(
                                 context,
                                 FadePageRoute(
-                                    page: const new_progress_score(
+                                    page: new_progress_score(
                                   premium: false,
                                   evaluationIndex: 0,
+                                  dateChange: false,
                                 )));
                           } else {
                             if (goalDetails['goalStatus'] == "active" &&
@@ -330,6 +331,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                     evaluationIndex:
                                         goalDetails['goalEvaluations'].length -
                                             1,
+                                    dateChange: false,
                                   )));
                             } else {
                               if (goalDetails['goalEvaluations'].length != 0) {
@@ -703,7 +705,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               RichText(
                                   text: TextSpan(
                                       style: TextStyle(
-                                        fontFamily: 'Laila',
+                                          fontFamily: 'Laila',
                                           fontSize:
                                               AppDimensions.font10(context) * 2,
                                           fontWeight: FontWeight.w500,

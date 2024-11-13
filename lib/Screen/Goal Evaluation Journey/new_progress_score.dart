@@ -24,8 +24,14 @@ final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 class new_progress_score extends StatefulWidget {
   final int evaluationIndex;
   final bool premium;
+  final bool dateChange;
+  final congratsScreen;
   const new_progress_score(
-      {super.key, required this.premium, required this.evaluationIndex});
+      {super.key,
+      required this.premium,
+      required this.evaluationIndex,
+      required this.dateChange,
+      this.congratsScreen});
 
   @override
   State<new_progress_score> createState() => _new_progress_scoreState();
@@ -44,6 +50,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
   bool color_fill_2 = false;
   bool Loader = true;
   var goalDetails;
+  var selectedDate;
 
   List messages = [
     "No progress towards my ",
@@ -77,7 +84,6 @@ class _new_progress_scoreState extends State<new_progress_score> {
     final SharedPreferences prefs = await _prefs;
 
     AdminGoal.getUserGoalById(prefs.get('goal_num')).then((response) async {
-      print("resposne daa ${response['goalEvaluations']}");
       // print(
       //     'Response goal evaluation: ${response["goalEvaluations"][0]['goalLevel']}');
       if (response.length != 0) {
@@ -89,7 +95,12 @@ class _new_progress_scoreState extends State<new_progress_score> {
         if (widget.evaluationIndex != response["goalEvaluations"].length - 1) {
           setState(() {
             _selectedIndex = widget.evaluationIndex;
-            selectedEval = widget.evaluationIndex;
+            if (widget.congratsScreen == true) {
+              var eval = prefs.getInt('selectedEval');
+              selectedEval = eval!;
+            } else {
+              selectedEval = widget.evaluationIndex;
+            }
           });
         }
 
@@ -103,11 +114,13 @@ class _new_progress_scoreState extends State<new_progress_score> {
         print("errror");
       }
     }).catchError((error) {
-      print("catherrror");
+      print("catherrror $error");
     }).whenComplete(() {});
   }
 
-  GetDates() {
+  GetDates() async {
+    final SharedPreferences prefs = await _prefs;
+
     if (goalDetails["goalEvaluations"] != null) {
       for (int i = 0; i < goalDetails["goalEvaluations"].length; i++) {
         late DateTime futureDate;
@@ -132,8 +145,32 @@ class _new_progress_scoreState extends State<new_progress_score> {
           _dates.add(
               '$formattedDate to $formattedFutureDate (${goalDetails["goalEvaluations"][i]['totalPoint']}/5)');
         }
+        print('date yaha ha $_dates');
         setState(() {
-          activity_duration = _dates[_dates.length - 1].substring(0, 22);
+          if (widget.dateChange == false) {
+            activity_duration = _dates[_dates.length - 1].substring(0, 22);
+            // print("activrity $activity_duration");
+          } else if (widget.dateChange == true) {
+            var val = prefs.getBool('bottomVal');
+
+            if (widget.congratsScreen == true && val == null) {
+              val = true;
+            } else {}
+
+            if (val == true) {
+              var date = prefs.getString('selectDate');
+
+              activity_duration = date == null
+                  ? _dates[_dates.length - 1].substring(0, 22)
+                  : date;
+            } else {
+              activity_duration = _dates[_dates.length - 1].substring(0, 22);
+            }
+            // print("dsds ${_dates[_selectedIndex].substring(0, 22)}");
+            // print("activritscscscy $activity_duration");
+          }
+          // print("_dtetee $_dates");
+          // print("activrity $activity_duration");
         });
       }
     }
@@ -174,7 +211,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
             automaticallyImplyLeading: false,
             centerTitle: true,
             leading: Center(
-                child: Buttons().backButton(context, () {
+                child: Buttons().backButton(context, () async {
+              SharedPreferences prefs = await SharedPreferences.getInstance();
+              // prefs.remove('selectDate');
               Navigator.push(
                   context,
                   FadePageRouteReverse(
@@ -202,8 +241,8 @@ class _new_progress_scoreState extends State<new_progress_score> {
                 ),
             actions: [
               Buttons().infoButton(context, () {
-                              evaluation_sheet(context);
-                            }),
+                evaluation_sheet(context);
+              }),
             ]),
         body: Container(
           decoration: const BoxDecoration(
@@ -575,6 +614,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                             ),
                             GestureDetector(
                               onTap: () {
+                                print("datess $_dates");
                                 showModalBottomSheet(
                                   context: context,
                                   builder: (BuildContext context) {
@@ -636,22 +676,34 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                   ),
                                                 ),
                                                 GestureDetector(
-                                                  onTap: () {
+                                                  onTap: () async {
                                                     int select = 0;
-                                                    print(
-                                                        "activr $activity_duration");
                                                     setState(() {
                                                       activity_duration =
                                                           _dates[_selectedIndex]
                                                               .substring(0, 22);
                                                       select = _selectedIndex;
                                                     });
+                                                    SharedPreferences prefs =
+                                                        await SharedPreferences
+                                                            .getInstance();
+                                                    prefs.setBool(
+                                                        'bottomVal', true);
+                                                    prefs.setString(
+                                                        'selectDate',
+                                                        activity_duration);
+                                                    // selectedDate =
+                                                    //     activity_duration;
+
                                                     if (select < 0 ||
                                                         select >=
                                                             _dates.length) {
                                                       setState(() {
                                                         selectedEval =
                                                             _selectedIndex;
+                                                        prefs.setInt(
+                                                            'selectedEval',
+                                                            selectedEval);
                                                         mirror = _selectedIndex;
                                                       });
                                                     } else {
@@ -662,6 +714,9 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                       setState(() {
                                                         selectedEval =
                                                             _selectedIndex;
+                                                        prefs.setInt(
+                                                            'selectedEval',
+                                                            selectedEval);
                                                         mirror = mirrorIndex;
                                                       });
                                                     }

@@ -554,7 +554,9 @@ class _video_infoState extends State<video_info> {
                             child:
                                 InspirationTextFields() //inspiartion TEXT FORM FIELD ////////////////
                                     .inspirationCustomTextField(
-                                        controller: statement, context: context)
+                                        controller: statement,
+                                        context: context,
+                                        maxlength: 250)
 
                             // TextField(
                             //   controller: statement,
