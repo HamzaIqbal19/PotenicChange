@@ -132,7 +132,7 @@ class PracticeGoalApi {
     final SharedPreferences prefs = await _prefs;
     var accessToken = prefs.getString("usertoken");
     var pracNum = prefs.getInt("prac_num");
-
+    print('pracNum $pracNum');
 
     var headers = {
       'Content-Type': 'application/json',
@@ -282,7 +282,6 @@ class PracticeGoalApi {
   }
 
   static Future getUserDashboard(day) async {
-
     final SharedPreferences prefs = await _prefs;
 
     var accessToken = prefs.getString("usertoken");

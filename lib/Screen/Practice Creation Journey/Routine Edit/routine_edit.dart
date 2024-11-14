@@ -4,6 +4,7 @@ import 'package:advance_expansion_tile/advance_expansion_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:intl/intl.dart';
 import 'package:potenic_app/API/Practice.dart';
 import 'package:potenic_app/Screen/Practice%20Creation%20Journey/PracticeName.dart';
 import 'package:potenic_app/Screen/Practice%20Review%20Journey/practiceReview.dart';
@@ -33,7 +34,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
   bool updated = false;
   String goalName = '';
   bool loading = true;
-  var schedule;
+  List<dynamic> schedule = [];
   var starttime;
   var color;
   var pracColor;
@@ -75,14 +76,105 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
   ];
   List<Map<String, dynamic>> updates = [];
 
+  List<Map<String, dynamic>> titit = [
+    {'day': 'Monday', 'time1': '1:00 AM'},
+    {'day': 'Tuesday', 'time1': '2:00 PM', 'time2': '1:30 PM'},
+    {'day': 'Wednesday', 'time1': '12:00 AM', 'time2': '1:45 PM'},
+  ];
+
+  // DateTime _parseTime(String time) {
+  //   // time = time.trim().replaceAll(RegExp(r'\s+'), ' ');
+  //   time = time
+  //       .replaceAll(RegExp(r'(\d{1,2}:\d{2})(AM|PM|am|pm)'), r'$1 $2')
+  //       .trim();
+  //   try {
+  //     return DateFormat.jm().parse(time);
+  //   } catch (e) {
+  //     print("Error parsing time '$time': $e");
+  //     return DateTime.now(); // Use a default fallback, if necessary
+  //   }
+  // }
+  DateTime customParseTime(String time) {
+    print("object");
+    // Extract the time part and AM/PM
+    final timeParts = time.trim().split(RegExp(r'(?<=\d)(?=[a-zA-Z])'));
+    print("time $timeParts");
+
+    // Extract the hour, minute, and period (AM/PM)
+    final timeString = timeParts[0];
+    print("time1 $timeString");
+    final period = timeString.toString().split(' ');
+    print("time2 $period");
+
+    // Split the time into hour and minute
+    final hourMinute = period[0].split(':');
+    print("time3 $hourMinute");
+    int hour = int.parse(timeString[0]);
+    print("time4 $hour");
+    final minute = int.parse(hourMinute[1]);
+    print("time5 $minute");
+
+    // Adjust hour if the period is PM (excluding 12 PM)
+    if (period[1] == 'pm' && hour != 12) {
+      hour += 12;
+    } else {
+      print("period $period");
+    }
+    // Adjust for 12 AM being midnight
+    if (period[1] == 'am' && hour == 12) {
+      hour = 0;
+    } else {
+      print("period22 $period");
+    }
+
+    // Return a DateTime object for comparison
+    return DateTime(0, 1, 1, hour, minute);
+  }
+
+  _sortTimesWithinDay(List<Map<String, dynamic>> timesDay) {
+    print("yaha aya time $timesPerDay");
+
+    // timesPerDay.sort((a, b) =>
+    //     selectedDay.indexOf(a['day']) - selectedDay.indexOf(b['day']));
+
+    // print('Sorted days order: $timesPerDay');
+
+    try {
+      for (var entry in timesDay) {
+        var times = entry.entries
+            .where((e) => e.key.startsWith('time'))
+            .map((e) => e.value)
+            .toList();
+
+        // Debugging: Print times before sorting
+        print('Times before sorting for ${entry['day']}: $times');
+        //  times.sort();
+        times.sort((a, b) => customParseTime(a).compareTo(customParseTime(b)));
+        print('Times after sorting for ${entry['day']}: $times');
+
+        for (int i = 0; i < times.length; i++) {
+          entry['time${i + 1}'] = times[i];
+        }
+      }
+    } catch (e) {
+      print("e ee $e");
+    }
+  }
+
   void _fetchPracticeDetails() async {
     PracticeGoalApi.getUserPractice().then((response) {
+      print("resposne $response");
       if (response.length != 0) {
         setState(() {
           pracName = response["name"];
           schedule = response["schedule"];
         });
 
+        List<Map<String, dynamic>> schedules = schedule
+            .where((item) => item is Map<String, dynamic>)
+            .map((item) => item as Map<String, dynamic>)
+            .toList();
+        _sortTimesWithinDay(schedules);
         replaceItems(schedule, timesPerDay);
         // mapItems(schedule, updates);
         loadData();
@@ -305,8 +397,7 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                         height: AppDimensions.height10(context) * 2.1,
                       ),
                       Container(
-                        padding: const EdgeInsets.only(
-                            top: 25, bottom: 5),
+                        padding: const EdgeInsets.only(top: 25, bottom: 5),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -319,7 +410,8 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                   return Column(
                                     children: [
                                       Container(
-                                          margin: EdgeInsets.symmetric(horizontal: 20),
+                                          margin: EdgeInsets.symmetric(
+                                              horizontal: 20),
                                           decoration: BoxDecoration(
                                               color: Colors.white,
                                               border: Border.all(
@@ -389,71 +481,6 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                         ),
                                                         onPressed: () {
                                                           showModalBottomSheet(
-                                                            context: context,
-                                                            builder: (context) {
-                                                              return MyListWheelForm(
-                                                                key: Key(
-                                                                    "${widget.key}"),
-                                                                onSelectionChanged:
-                                                                    (selectedDay,
-                                                                        selectedHour,
-                                                                        selectedMinute,
-                                                                        selectedPeriod,
-                                                                        done) {
-                                                                  setState(
-                                                                      () async {
-                                                                    if (done) {
-                                                                      //selectedDays.add(days_name);
-                                                                      // _globalKey.currentState?.expand();
-
-                                                                      setState(
-                                                                          () {
-                                                                        // num = num + 1;
-                                                                        //   startTime = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
-                                                                      });
-
-                                                                      // final SharedPreferences prefs =
-                                                                      //     await _prefs;
-                                                                      // var Start_Time = prefs.setString(
-                                                                      //     'startTime', '$startTime');
-                                                                      // var End_Time = prefs.setString(
-                                                                      //     'endTime', '$end_time');
-
-                                                                      done =
-                                                                          done;
-                                                                      if (done ==
-                                                                          true) {
-                                                                        // _globalKey.currentState?.expand();
-                                                                        String
-                                                                            startTime =
-                                                                            '';
-                                                                        setState(
-                                                                            () {
-                                                                          startTime =
-                                                                              "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
-                                                                        });
-                                                                        if (timesPerDay[index].keys.length <
-                                                                            11) {
-                                                                          timesPerDay[index]['time${timesPerDay[index].keys.length}'] =
-                                                                              startTime;
-                                                                        } else {
-                                                                          ScaffoldMessenger.of(context)
-                                                                              .showSnackBar(const SnackBar(content: Text("Practice routine in limited to 10 sessions par day.")));
-                                                                        }
-
-                                                                        Navigator.pop(
-                                                                            context);
-                                                                      }
-                                                                    }
-                                                                  });
-                                                                },
-                                                                initialHour: '',
-                                                                initialMinute:
-                                                                    '',
-                                                                initialPeriod:
-                                                                    '',
-                                                              );
-                                                            },
                                                             isScrollControlled:
                                                                 true,
                                                             shape:
@@ -466,7 +493,167 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                                         16),
                                                               ),
                                                             ),
+                                                            context: context,
+                                                            builder: (context) {
+                                                              return MyListWheelForm(
+                                                                key: Key(
+                                                                    "${widget.key.toString()}"),
+                                                                onSelectionChanged:
+                                                                    (selectedDay,
+                                                                        selectedHour,
+                                                                        selectedMinute,
+                                                                        selectedPeriod,
+                                                                        done) {
+                                                                  setState(() {
+                                                                    if (done) {
+                                                                      setState(
+                                                                          () {
+                                                                        // num = num + 1;
+                                                                        //   startTime = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                                                      });
+                                                                      setState(
+                                                                          () async {
+                                                                        String
+                                                                            startTime =
+                                                                            "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
+
+                                                                        if (timesPerDay[index].keys.length <
+                                                                            11) {
+                                                                          timesPerDay[index]['time${timesPerDay[index].keys.length}'] =
+                                                                              startTime;
+
+                                                                          _sortTimesWithinDay(
+                                                                              timesPerDay);
+                                                                        } else {
+                                                                          ScaffoldMessenger.of(context)
+                                                                              .showSnackBar(
+                                                                            const SnackBar(content: Text("Practice routine is limited to 10 sessions per day.")),
+                                                                          );
+                                                                        }
+
+                                                                        Navigator.pop(
+                                                                            context); // Close the bottom sheet after selection
+                                                                      });
+                                                                    }
+                                                                  });
+                                                                },
+                                                                initialHour: '',
+                                                                initialMinute:
+                                                                    '',
+                                                                initialPeriod:
+                                                                    '',
+                                                              );
+                                                            },
                                                           );
+                                                          print(
+                                                              "timesperdayyyy $timesPerDay");
+
+// Helper function to parse and sort times within each day's map entry
+
+                                                          // showModalBottomSheet(
+                                                          //   context: context,
+                                                          //   builder: (context) {
+                                                          //     var timesss;
+                                                          //     return MyListWheelForm(
+                                                          //       key: Key(
+                                                          //           "${widget.key}"),
+                                                          //       onSelectionChanged:
+                                                          //           (selectedDay,
+                                                          //               selectedHour,
+                                                          //               selectedMinute,
+                                                          //               selectedPeriod,
+                                                          //               done) {
+                                                          //         setState(
+                                                          //             () async {
+                                                          //           if (done) {
+                                                          //             //selectedDays.add(days_name);
+                                                          //             // _globalKey.currentState?.expand();
+
+                                                          //             setState(
+                                                          //                 () {
+                                                          //               // num = num + 1;
+                                                          //               //   startTime = "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
+                                                          //             });
+
+                                                          //             // final SharedPreferences prefs =
+                                                          //             //     await _prefs;
+                                                          //             // var Start_Time = prefs.setString(
+                                                          //             //     'startTime', '$startTime');
+                                                          //             // var End_Time = prefs.setString(
+                                                          //             //     'endTime', '$end_time');
+
+                                                          //             done =
+                                                          //                 done;
+                                                          //             if (done ==
+                                                          //                 true) {
+                                                          //               // _globalKey.currentState?.expand();
+                                                          //               String
+                                                          //                   startTime =
+                                                          //                   '';
+                                                          //               setState(
+                                                          //                   () {
+                                                          //                 startTime =
+                                                          //                     "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
+                                                          //               });
+                                                          //               if (timesPerDay[index].keys.length <
+                                                          //                   11) {
+                                                          //                 timesPerDay[index]['time${timesPerDay[index].keys.length}'] =
+                                                          //                     startTime;
+                                                          //                 DateTime
+                                                          //                     _parseTime(String time) {
+                                                          //                   return DateFormat.jm().parse(time);
+                                                          //                 }
+
+                                                          //                 for (var entry
+                                                          //                     in timesPerDay) {
+                                                          //                   // Extract times from the map and sort if they exist
+                                                          //                   var times =
+                                                          //                       entry.entries.where((e) => e.key.startsWith('time')).map((e) => e.value).toList();
+
+                                                          //                   times.sort((a, b) =>
+                                                          //                       _parseTime(a).compareTo(_parseTime(b)));
+
+                                                          //                   // Update the map with sorted times
+                                                          //                   for (int i = 0;
+                                                          //                       i < times.length;
+                                                          //                       i++) {
+                                                          //                     entry['time${i + 1}'] = times[i];
+                                                          //                   }
+                                                          //                 }
+                                                          //               } else {
+                                                          //                 ScaffoldMessenger.of(context)
+                                                          //                     .showSnackBar(const SnackBar(content: Text("Practice routine in limited to 10 sessions par day.")));
+                                                          //               }
+
+                                                          //               Navigator.pop(
+                                                          //                   context);
+                                                          //             }
+                                                          //           }
+                                                          //         });
+                                                          //       },
+                                                          //       initialHour: '',
+                                                          //       initialMinute:
+                                                          //           '',
+                                                          //       initialPeriod:
+                                                          //           '',
+                                                          //     );
+                                                          //   },
+                                                          //   isScrollControlled:
+                                                          //       true,
+                                                          //   shape:
+                                                          //       const RoundedRectangleBorder(
+                                                          //     borderRadius:
+                                                          //         BorderRadius
+                                                          //             .vertical(
+                                                          //       top: Radius
+                                                          //           .circular(
+                                                          //               16),
+                                                          //     ),
+                                                          //   ),
+                                                          // );
+
+                                                          print(
+                                                              "timesss $timesPerDay");
                                                         })),
                                                 title: Text(
                                                   selectedDay[index],
@@ -495,7 +682,9 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                               right: 15,
                                                               bottom: 10),
                                                       child: Row(
-                                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
                                                         children: [
                                                           startTimerState(
                                                             key: Key(
@@ -525,10 +714,13 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
                                                                     selectedDay[
                                                                         index],
                                                               );
+
                                                               dayMap['time${i + 1}'] =
                                                                   value;
                                                               setState(() {
                                                                 //  startTime = value;
+                                                                _sortTimesWithinDay(
+                                                                    timesPerDay);
                                                               });
                                                               //times[i] = startTime;
                                                             },
@@ -873,3 +1065,30 @@ class _PracticeRoutineEditState extends State<PracticeRoutineEdit> {
     );
   }
 }
+   //     var val = timesPerDay[
+                                                                          //         index]
+                                                                          //       ..removeWhere((key, value) =>
+                                                                          //           key.toString().startsWith('d'));
+                                                                          //     print(
+                                                                          //         "sjfjsjf  ${val.values}");
+                                                                          //     for (var element
+                                                                          //         in val.values) {
+                                                                          //       var relations =
+                                                                          //           element.toString().compareTo(startTime);
+                                                                          //       print("indexx ${element}");
+                                                                          //       print("relations $relations");
+
+                                                                          //       if(relations == -1){
+                                                                          //  add   =      timesPerDay[index]['time${timesPerDay[index].keys.length}'] == startTime;
+                                                                          //       }
+                                                                          //       else if(relations == 1){
+
+                                                                          //        var cehck =  timesPerDay[index].addAll();
+                                                                          //     timesPerDay[index]..sort()
+
+                                                                          // }
+                                                                          ///      }
+                                                                          // if (val.values.toString().
+                                                                          //     ) {
+                                                                          //   print("timeee $startTime");
+                                                                          // }

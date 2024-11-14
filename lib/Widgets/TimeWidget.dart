@@ -239,10 +239,7 @@ class _schedule_cardState extends State<schedule_card> {
                   Container(
                     // color:Colors.orange,
                     padding:
-                    const EdgeInsets.only(
-                        left: 15,
-                        right: 15,
-                        bottom: 10),
+                        const EdgeInsets.only(left: 15, right: 15, bottom: 10),
 
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -268,7 +265,7 @@ class _schedule_cardState extends State<schedule_card> {
                             times[i] = start_time;
                           },
                         ),
-                       // SizedBox(width: 30,),
+                        // SizedBox(width: 30,),
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
                           child: Container(
@@ -421,14 +418,14 @@ class _startTimerStateState extends State<startTimerState> {
           borderRadius: BorderRadius.circular(18),
           border: Border.all(width: 3, color: Colors.transparent)),
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           showModalBottomSheet(
             context: context,
             builder: (context) {
               return MyListWheelForm(
                 key: Key("$widget.key"),
-                onSelectionChanged: (selectedDay, selectedHour,
-                    selectedMinute, selectedPeriod, Done) {
+                onSelectionChanged: (selectedDay, selectedHour, selectedMinute,
+                    selectedPeriod, Done) {
                   String startTime =
                       "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
                   widget.onChanged(startTime);
