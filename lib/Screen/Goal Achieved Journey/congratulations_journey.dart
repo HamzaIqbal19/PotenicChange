@@ -7,6 +7,7 @@ import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/constants/videothumbnail.dart';
 import 'package:potenic_app/Screen/Dashboard%20Behaviour%20Journey/dashboard_view_goals.dart';
 import 'package:potenic_app/Screen/Goal%20Evaluation%20Journey/new_progress_score.dart';
+import 'package:potenic_app/Widgets/AppCustomCircle.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -520,13 +521,8 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                               itemBuilder: ((context, index) {
                                 return AnimatedScaleButton(
                                   onTap: () {},
-                                  child: Container(
-                                    height:
-                                        AppDimensionsUpdated.height10(context) *
-                                            13.8,
-                                    width:
-                                        AppDimensionsUpdated.width10(context) *
-                                            13.8,
+                                  child: AppCustomCircle().CustomContainer(
+                                    context,
                                     margin: EdgeInsets.only(
                                         left: index == 0
                                             ? AppDimensionsUpdated.width10(
@@ -535,36 +531,76 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                             : AppDimensionsUpdated.width10(
                                                     context) *
                                                 1.2),
-                                    decoration: BoxDecoration(
-                                        // color: Colors.amber,
-                                        shape: BoxShape.circle,
-                                        border: Border.all(
-                                            color: Colors.white,
-                                            width: AppDimensionsUpdated.width10(
-                                                    context) *
-                                                0.2),
-                                        image: DecorationImage(
-                                            image: AssetImage(practices[index]
-                                                        ['color'] ==
-                                                    '1'
-                                                ? "assets/images/Ellipse orange_wb.webp"
+                                    border: Border.all(
+                                        color: Colors.white,
+                                        width: AppDimensionsUpdated.width10(
+                                                context) *
+                                            0.2),
+                                    image: DecorationImage(
+                                        image: AssetImage(practices[index]
+                                                    ['color'] ==
+                                                '1'
+                                            ? "assets/images/Ellipse orange_wb.webp"
+                                            : practices[index]['color'] == '2'
+                                                ? 'assets/images/Ellipse 158_wb.webp'
                                                 : practices[index]['color'] ==
-                                                        '2'
-                                                    ? 'assets/images/Ellipse 158_wb.webp'
+                                                        '3'
+                                                    ? "assets/images/Ellipse 157_wb.webp"
                                                     : practices[index]
                                                                 ['color'] ==
-                                                            '3'
-                                                        ? "assets/images/Ellipse 157_wb.webp"
+                                                            '4'
+                                                        ? "assets/images/Ellipse light-blue_wb.webp"
                                                         : practices[index]
                                                                     ['color'] ==
-                                                                '4'
-                                                            ? "assets/images/Ellipse light-blue_wb.webp"
-                                                            : practices[index]
-                                                                        ['color'] ==
-                                                                    '5'
-                                                                ? "assets/images/Ellipse blue_wb.webp"
-                                                                : 'assets/images/Ellipse 158_wb.webp'),
-                                            fit: BoxFit.contain)),
+                                                                '5'
+                                                            ? "assets/images/Ellipse blue_wb.webp"
+                                                            : 'assets/images/Ellipse 158_wb.webp'),
+                                        fit: BoxFit.contain),
+                                    // Container(
+                                    //   height:
+                                    //       AppDimensionsUpdated.height10(context) *
+                                    //           13.8,
+                                    //   width:
+                                    //       AppDimensionsUpdated.width10(context) *
+                                    //           13.8,
+                                    //   margin: EdgeInsets.only(
+                                    //       left: index == 0
+                                    //           ? AppDimensionsUpdated.width10(
+                                    //                   context) *
+                                    //               12.2
+                                    //           : AppDimensionsUpdated.width10(
+                                    //                   context) *
+                                    //               1.2),
+                                    //   decoration: BoxDecoration(
+                                    //       // color: Colors.amber,
+                                    //       shape: BoxShape.circle,
+                                    //       border: Border.all(
+                                    //           color: Colors.white,
+                                    //           width: AppDimensionsUpdated.width10(
+                                    //                   context) *
+                                    //               0.2),
+                                    //       image: DecorationImage(
+                                    //           image: AssetImage(practices[index]
+                                    //                       ['color'] ==
+                                    //                   '1'
+                                    //               ? "assets/images/Ellipse orange_wb.webp"
+                                    //               : practices[index]['color'] ==
+                                    //                       '2'
+                                    //                   ? 'assets/images/Ellipse 158_wb.webp'
+                                    //                   : practices[index]
+                                    //                               ['color'] ==
+                                    //                           '3'
+                                    //                       ? "assets/images/Ellipse 157_wb.webp"
+                                    //                       : practices[index]
+                                    //                                   ['color'] ==
+                                    //                               '4'
+                                    //                           ? "assets/images/Ellipse light-blue_wb.webp"
+                                    //                           : practices[index]
+                                    //                                       ['color'] ==
+                                    //                                   '5'
+                                    //                               ? "assets/images/Ellipse blue_wb.webp"
+                                    //                               : 'assets/images/Ellipse 158_wb.webp'),
+                                    //           fit: BoxFit.contain)),
                                     child: Center(
                                         child: Text(
                                       practices[index]['name'].toString(),
@@ -844,7 +880,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                         SizedBox(
                             height: AppDimensionsUpdated.height10(context) * 5),
                         Container(
-                          height: AppDimensionsUpdated.height10(context) * 14.8,
+                          height: AppDimensionsUpdated.height10(context) * 15.1,
                           width: double.infinity,
                           child: ListView.builder(
                               itemCount: int.parse('${inspirations.length}'),
@@ -859,10 +895,10 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                                 1.5),
                                         width: AppDimensionsUpdated.width10(
                                                 context) *
-                                            16.9,
+                                            15.1,
                                         height: AppDimensionsUpdated.width10(
                                                 context) *
-                                            16.9,
+                                            15.1,
                                         margin: EdgeInsets.only(
                                             left: index == 0
                                                 ? AppDimensionsUpdated.width10(

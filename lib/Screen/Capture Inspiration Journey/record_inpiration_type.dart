@@ -152,7 +152,7 @@ class _record_inspirationState extends State<record_inspiration> {
                           Column(children: [
                             inspirationDetails['inspiration']['inspirationId'] ==
                                     2
-                                ? CustomCircle().customContainer(context,
+                                ? InspirationCustomCircle().customContainer(context,
                                     id: inspirationDetails['inspiration']
                                         ['inspirationId'],
                                     desc: inspirationDetails['inspiration']
@@ -186,10 +186,9 @@ class _record_inspirationState extends State<record_inspiration> {
                                 //           color: const Color(0xFFFFFFFF)),
                                 //     )),
                                 //   )
-                                : inspirationDetails['inspiration']
-                                            ['inspirationId'] ==
+                                : inspirationDetails['inspiration']['inspirationId'] ==
                                         4
-                                    ? CustomCircle().customContainer(
+                                    ? InspirationCustomCircle().customContainer(
                                         context,
                                         id: inspirationDetails['inspiration']
                                             ['inspirationId'],
@@ -244,7 +243,8 @@ class _record_inspirationState extends State<record_inspiration> {
                                     : inspirationDetails['inspiration']
                                                 ['inspirationId'] ==
                                             3
-                                        ? CustomCircle().customContainer(context,
+                                        ? InspirationCustomCircle().customContainer(
+                                            context,
                                             id: inspirationDetails['inspiration']
                                                 ['inspirationId'],
                                             link: inspirationDetails['inspiration']
@@ -308,11 +308,11 @@ class _record_inspirationState extends State<record_inspiration> {
                                         : inspirationDetails['inspiration']
                                                     ['inspirationId'] ==
                                                 1
-                                            ? CustomCircle().customContainer(context,
+                                            ? InspirationCustomCircle().customContainer(
+                                                context,
                                                 id: inspirationDetails['inspiration']
                                                     ['inspirationId'],
-                                                img: inspirationDetails['inspiration']
-                                                    ['file'])
+                                                img: inspirationDetails['inspiration']['file'])
                                             // Container(
                                             //     width: AppDimensions.width10(
                                             //             context) *

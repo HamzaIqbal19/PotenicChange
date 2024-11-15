@@ -56,10 +56,14 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
     }
     if (widget.initialMinute != "00" && widget.initialMinute.isNotEmpty) {
       setState(() {
+        print("initial minute ${widget.initialMinute}");
         int initialMinuteIndex = _minutes.indexOf(widget.initialMinute);
+        print("initial minute index ${initialMinuteIndex}");
         _minutes = _minutes.sublist(initialMinuteIndex)
           ..addAll(_minutes.sublist(0, initialMinuteIndex));
+        print("  ___minutes${_minutes}");
         minute = widget.initialMinute;
+        print("  minutes${minute}");
       });
     }
   }
@@ -157,7 +161,6 @@ class _MyListWheelFormState extends State<MyListWheelForm> {
           Divider(
               height: AppDimensions.height10(context) * 0.1,
               color: const Color(0xFF828282)),
-          
           Center(
             child: Stack(
               children: [

@@ -149,6 +149,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
         setState(() {
           if (widget.dateChange == false) {
             activity_duration = _dates[_dates.length - 1].substring(0, 22);
+            prefs.remove('bottomVal');
             // print("activrity $activity_duration");
           } else if (widget.dateChange == true) {
             var val = prefs.getBool('bottomVal');

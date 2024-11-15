@@ -168,7 +168,8 @@ class _CreatePracticeState extends State<CreatePractice> {
               child: AppBar(
                 elevation: 0,
                 centerTitle: true,
-                title: appBarTitle(context,loading ?'': AppText().createPrac1,false),
+                title: appBarTitle(
+                    context, loading ? '' : AppText().createPrac1, false),
                 backgroundColor: Colors.transparent,
                 automaticallyImplyLeading: false,
                 leading: Buttons().backButton(context, backPress),
@@ -331,7 +332,7 @@ class _CreatePracticeState extends State<CreatePractice> {
                                   gridDelegate:
                                       SliverGridDelegateWithFixedCrossAxisCount(
                                     crossAxisCount: 2,
-                                    childAspectRatio: 4.2 / 3,
+                                    childAspectRatio: 4.2 / 3.5,
                                     mainAxisSpacing:
                                         AppDimensions.width10(context) * 1.4,
                                     crossAxisSpacing: 0.1,
@@ -384,14 +385,14 @@ class _CreatePracticeState extends State<CreatePractice> {
                                                   circle_border: 3.0,
                                                   circle_bordercolor:
                                                       0xFFFFFFFF,
-                                                  circle_height:
-                                                      AppDimensions.width10(
-                                                              context) *
-                                                          13.4,
-                                                  circle_width:
-                                                      AppDimensions.width10(
-                                                              context) *
-                                                          13.4,
+                                                  // circle_height:
+                                                  //     AppDimensions.width10(
+                                                  //             context) *
+                                                  //         13.4,
+                                                  // circle_width:
+                                                  //     AppDimensions.width10(
+                                                  //             context) *
+                                                  //         13.4,
                                                   textfont:
                                                       AppDimensions.font10(
                                                               context) *

@@ -824,7 +824,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                             [
                                                                             'inspirationId'] ==
                                                                         2
-                                                                    ? CustomCircle()
+                                                                    ? InspirationCustomCircle()
                                                                         .customContainer(
                                                                         context,
                                                                         id: inspirationList[index *
@@ -838,7 +838,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                       )
                                                                     : inspirationList[index * 2]['inspirationId'] ==
                                                                             4
-                                                                        ? CustomCircle()
+                                                                        ? InspirationCustomCircle()
                                                                             .customContainer(
                                                                             context,
                                                                             id: inspirationList[index *
@@ -848,7 +848,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                           )
                                                                         : inspirationList[index * 2]['inspirationId'] ==
                                                                                 3
-                                                                            ? CustomCircle().customContainer(
+                                                                            ? InspirationCustomCircle().customContainer(
                                                                                 context,
                                                                                 id: inspirationList[index * 2]['inspirationId'],
                                                                                 link: inspirationList[index * 2]['destinationLink'],
@@ -1049,7 +1049,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                                 //       ),
                                                                                 //     ),
                                                                                 //   )
-                                                                                CustomCircle().customContainer(context, img: inspirationList[index * 2]['file'], id: inspirationList[index * 2]['inspirationId'])
+                                                                                InspirationCustomCircle().customContainer(context, img: inspirationList[index * 2]['file'], id: inspirationList[index * 2]['inspirationId'])
                                                                                 : Container(),
                                                               ],
                                                             ),
@@ -1370,7 +1370,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                               [
                                                                               'inspirationId'] ==
                                                                           2
-                                                                      ? CustomCircle()
+                                                                      ? InspirationCustomCircle()
                                                                           .customContainer(
                                                                           context,
                                                                           id: inspirationList[index * 2 + 1]
@@ -1382,14 +1382,14 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                         )
                                                                       : inspirationList[index * 2 + 1]['inspirationId'] ==
                                                                               4
-                                                                          ? CustomCircle()
+                                                                          ? InspirationCustomCircle()
                                                                               .customContainer(
                                                                               context,
                                                                               id: inspirationList[index * 2 + 1]['inspirationId'],
                                                                               desc: inspirationList[index * 2 + 1]['description'],
                                                                             )
                                                                           : inspirationList[index * 2 + 1]['inspirationId'] == 3
-                                                                              ? CustomCircle().customContainer(
+                                                                              ? InspirationCustomCircle().customContainer(
                                                                                   context,
                                                                                   id: inspirationList[index * 2 + 1]['inspirationId'],
                                                                                   link: inspirationList[index * 2 + 1]['destinationLink'],
@@ -1544,7 +1544,7 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                                   //       ),
                                                                                   //     ),
                                                                                   //   )
-                                                                                  ? CustomCircle().customContainer(context, img: inspirationList[index * 2 + 1]['file'], id: inspirationList[index * 2 + 1]['inspirationId'])
+                                                                                  ? InspirationCustomCircle().customContainer(context, img: inspirationList[index * 2 + 1]['file'], id: inspirationList[index * 2 + 1]['inspirationId'])
                                                                                   // ? Container(
                                                                                   //     width: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,
                                                                                   //     height: !smallScreen ? AppDimensions.width10(context) * 19.313 : AppDimensions.width10(context) * 17.6,

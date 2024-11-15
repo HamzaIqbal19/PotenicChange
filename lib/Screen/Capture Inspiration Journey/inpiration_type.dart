@@ -425,7 +425,7 @@ class _inspiration_typeState extends State<inspiration_type> {
                 ),
               ),
               SizedBox(
-                height: AppDimensions.width10(context) * 13.3,
+                // height: AppDimensions.width10(context) * 13.3,
                 //margin: EdgeInsets.only(left: AppDimensions.width10(context) * 1.6),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,

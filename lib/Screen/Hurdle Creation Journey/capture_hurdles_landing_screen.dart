@@ -245,6 +245,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   String selectedGoal = 'All';
   @override
   Widget build(BuildContext context) {
+    bool smallScreen = MediaQuery.of(context).size.height < 690;
     return WillPopScope(
       onWillPop: () async {
         Navigator.push(
@@ -1625,14 +1626,32 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                       ),
                                                     ),
                                                     Container(
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              19.313,
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          19.942,
+                                                      width: !smallScreen
+                                                          ? AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              19.313
+                                                          : AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              17.6,
+                                                      height: !smallScreen
+                                                          ? AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              19.313
+                                                          : AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              17.6,
+                                                      // width:
+                                                      //     AppDimensions.width10(
+                                                      //             context) *
+                                                      //         19.313,
+                                                      // height: AppDimensions
+                                                      //         .height10(
+                                                      //             context) *
+                                                      //     19.942,
                                                       padding: EdgeInsets.symmetric(
                                                           horizontal: AppDimensions
                                                                   .width10(

@@ -428,11 +428,13 @@ class _startTimerStateState extends State<startTimerState> {
                     selectedPeriod, Done) {
                   String startTime =
                       "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
+
                   widget.onChanged(startTime);
                   widget.onChangedStart(
                       startTime); // Pass the selected value to the onChanged callback
                   setState(() {
                     start_time = startTime;
+                    print("start time $start_time");
 
                     day = selectedDay;
                     hour = selectedHour;
@@ -445,8 +447,8 @@ class _startTimerStateState extends State<startTimerState> {
                   widget.onChanged(start_time);
                   Navigator.pop(context);
                 },
-                initialHour: widget.start_Time.substring(0, 1),
-                initialMinute: widget.start_Time.substring(2, 4),
+                initialHour: widget.start_Time.split(':')[0],
+                initialMinute: widget.start_Time.split(':')[1].split(' ')[0],
                 initialPeriod: widget.start_Time.substring(5, 7),
               );
             },

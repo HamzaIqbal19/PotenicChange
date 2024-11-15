@@ -32,7 +32,7 @@ import 'package:potenic_app/utils/app_dimensions.dart';
 //     );
 //   }
 // }
-class CustomCircle {
+class InspirationCustomCircle {
   Widget customContainer(context,
       {final link, final desc, final id, final img, void Function()? onTap}) {
     bool smallScreen = MediaQuery.of(context).size.height < 690;

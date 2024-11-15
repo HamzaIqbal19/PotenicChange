@@ -1,5 +1,6 @@
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
+import 'package:potenic_app/Widgets/AppCustomCircle.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,16 +16,11 @@ class CircleType {
   }) {
     return AnimatedScaleButton(
       onTap: onTap!,
-      child: Container(
-        width: AppDimensions.width10(context) * 13.3,
-        height: AppDimensions.width10(context) * 13.3,
+      child: AppCustomCircle().CustomContainer(
+        context,
         margin: EdgeInsets.only(
             right: AppDimensions.width10(context) * 1.4, left: left!),
-        decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            //borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(
-                image: AssetImage(bgimage!), fit: BoxFit.cover)),
+        image: DecorationImage(image: AssetImage(bgimage!), fit: BoxFit.cover),
         child: Container(
           margin: EdgeInsets.all(AppDimensions.height10(context) * 0.758),
           decoration: const BoxDecoration(
@@ -54,7 +50,7 @@ class CircleType {
                         text!,
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                            fontSize: AppDimensions.font10(context) * 1.6,
+                            fontSize: AppDimensions.font10(context) * 1.8,
                             fontWeight: FontWeight.w600,
                             color: Colors.white),
                       ),

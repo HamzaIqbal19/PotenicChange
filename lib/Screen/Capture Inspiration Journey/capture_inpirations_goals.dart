@@ -13,6 +13,7 @@ import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inspiration_t
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inspiration_type/photo_acess.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inspiration_type/video_access.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inspiratoinEdit/photoEdit.dart';
+import 'package:potenic_app/Widgets/AppCustomCircle.dart';
 import 'package:potenic_app/Widgets/alertbox.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
@@ -1322,30 +1323,22 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                             : Colors.transparent)),
                                 padding: EdgeInsets.all(
                                     AppDimensions.width10(context) * 0.8),
-                                child: Container(
+                                child: AppCustomCircle().CustomContainer(
+                                  context,
                                   padding: EdgeInsets.symmetric(
                                       horizontal:
                                           AppDimensions.width10(context) * 0.8),
-                                  width: !smallScreen
-                                      ? AppDimensions.width10(context) * 15.1
-                                      : AppDimensions.width10(context) * 13.1,
-                                  height: !smallScreen
-                                      ? AppDimensions.width10(context) * 15.1
-                                      : AppDimensions.width10(context) * 13.1,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  0.1,
-                                          color: Colors.white),
-                                      gradient: const LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Color(0xffBE3FC6),
-                                            Color(0xff642445)
-                                          ])),
+                                  gradient: const LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Color(0xffBE3FC6),
+                                        Color(0xff642445)
+                                      ]),
+                                  border: Border.all(
+                                      width:
+                                          AppDimensions.width10(context) * 0.1,
+                                      color: Colors.white),
                                   child: Center(
                                     child: Text(
                                       'All goals',
@@ -1404,115 +1397,108 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                   itemCount: active.length,
                                   itemBuilder: ((context, index) {
                                     return AnimatedScaleButton(
-                                      onTap: () {
-                                        if (widget.route != 'details') {
-                                          setState(() {
-                                            if (selectedIndices
-                                                .contains(index)) {
-                                              multiGoals
-                                                  .remove(active[index]['id']);
-                                              selectedIndices.remove(index);
-                                            } else {
-                                              selectedIndices.add(index);
-                                              multiGoals
-                                                  .add(active[index]['id']);
-                                            }
-                                          });
+                                        onTap: () {
+                                          if (widget.route != 'details') {
+                                            setState(() {
+                                              if (selectedIndices
+                                                  .contains(index)) {
+                                                multiGoals.remove(
+                                                    active[index]['id']);
+                                                selectedIndices.remove(index);
+                                              } else {
+                                                selectedIndices.add(index);
+                                                multiGoals
+                                                    .add(active[index]['id']);
+                                              }
+                                            });
 
-                                          setState(() {
-                                            selectAll = false;
-                                          });
-                                        }
-                                      },
-                                      child: Container(
-                                        margin: EdgeInsets.only(
-                                            right: !smallScreen
-                                                ? AppDimensions.width10(
-                                                        context) *
-                                                    2.5
-                                                : AppDimensions.width10(
-                                                        context) *
-                                                    3),
-                                        height: selectedIndices
-                                                    .contains(index) ||
-                                                selectAll == true
-                                            ? AppDimensions.height10(context) *
-                                                14.1
-                                            : AppDimensions.height10(context) *
-                                                13.1,
-                                        width: selectedIndices
-                                                    .contains(index) ||
-                                                selectAll == true
-                                            ? AppDimensions.width10(context) *
-                                                14.1
-                                            : AppDimensions.width10(context) *
-                                                13.1,
-                                        padding: EdgeInsets.all(
-                                            AppDimensions.width10(context) *
-                                                0.8),
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                              width: selectedIndices
-                                                          .contains(index) ||
-                                                      selectAll == true
+                                            setState(() {
+                                              selectAll = false;
+                                            });
+                                          }
+                                        },
+                                        child: Container(
+                                          margin: EdgeInsets.only(
+                                              right: !smallScreen
                                                   ? AppDimensions.width10(
                                                           context) *
-                                                      0.2
-                                                  : 0,
-                                              color: selectedIndices
-                                                          .contains(index) ||
-                                                      selectAll == true
-                                                  ? Colors.white
-                                                  : Colors.transparent),
-                                        ),
-                                        child: Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  13.1,
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  13.1,
-                                          padding: EdgeInsets.symmetric(
-                                              horizontal: AppDimensions.width10(
-                                                      context) *
-                                                  0.8),
-                                          // margin: EdgeInsets.only(
-                                          //   right:
-                                          //       AppDimensions.height10(context) * 4.5,
-                                          // ),
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              border: Border.all(
-                                                  width: AppDimensions.height10(
+                                                      2.5
+                                                  : AppDimensions.width10(
                                                           context) *
-                                                      0.1,
-                                                  color: Colors.white),
-                                              gradient: const LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                    Color(0xffBE3FC6),
-                                                    Color(0xff642445)
-                                                  ])),
-                                          child: Center(
-                                            child: Text(
-                                              active[index]['name'],
-                                              maxLines: 2,
-                                              overflow: TextOverflow.ellipsis,
-                                              textAlign: TextAlign.center,
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          1.8,
-                                                  fontWeight: FontWeight.w500),
+                                                      3),
+                                          height:
+                                              selectedIndices.contains(index) ||
+                                                      selectAll == true
+                                                  ? AppDimensions.height10(
+                                                          context) *
+                                                      14.1
+                                                  : AppDimensions.height10(
+                                                          context) *
+                                                      13.1,
+                                          width: selectedIndices
+                                                      .contains(index) ||
+                                                  selectAll == true
+                                              ? AppDimensions.width10(context) *
+                                                  14.1
+                                              : AppDimensions.width10(context) *
+                                                  13.1,
+                                          padding: EdgeInsets.all(
+                                              AppDimensions.width10(context) *
+                                                  0.8),
+                                          decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                                width: selectedIndices
+                                                            .contains(index) ||
+                                                        selectAll == true
+                                                    ? AppDimensions.width10(
+                                                            context) *
+                                                        0.2
+                                                    : 0,
+                                                color: selectedIndices
+                                                            .contains(index) ||
+                                                        selectAll == true
+                                                    ? Colors.white
+                                                    : Colors.transparent),
+                                          ),
+                                          child:
+                                              AppCustomCircle().CustomContainer(
+                                            context,
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal:
+                                                    AppDimensions.width10(
+                                                            context) *
+                                                        0.8),
+                                            gradient: const LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors: [
+                                                  Color(0xffBE3FC6),
+                                                  Color(0xff642445)
+                                                ]),
+                                            border: Border.all(
+                                                width: AppDimensions.height10(
+                                                        context) *
+                                                    0.1,
+                                                color: Colors.white),
+                                            child: Center(
+                                              child: Text(
+                                                active[index]['name'],
+                                                maxLines: 2,
+                                                overflow: TextOverflow.ellipsis,
+                                                textAlign: TextAlign.center,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize:
+                                                        AppDimensions.font10(
+                                                                context) *
+                                                            1.8,
+                                                    fontWeight:
+                                                        FontWeight.w500),
+                                              ),
                                             ),
                                           ),
-                                        ),
-                                      ),
-                                    );
+                                        ));
                                   })),
                             ),
                             Container(
@@ -1621,35 +1607,25 @@ class _inspiraton_goalsState extends State<inspiraton_goals> {
                                                   ? Colors.white
                                                   : Colors.transparent),
                                         ),
-                                        child: Container(
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  13.1,
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  13.1,
+                                        child:
+                                            AppCustomCircle().CustomContainer(
+                                          context,
                                           padding: EdgeInsets.symmetric(
                                               horizontal: AppDimensions.width10(
                                                       context) *
                                                   1.2),
-                                          // margin: EdgeInsets.only(
-                                          //   right: AppDimensions.width10(context) *
-                                          //       4.5,
-                                          // ),
-                                          decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              border: Border.all(
-                                                  width: AppDimensions.height10(
-                                                          context) *
-                                                      0.1,
-                                                  color: Colors.white),
-                                              gradient: const LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  colors: [
-                                                    Color(0xffBE3FC6),
-                                                    Color(0xff642445)
-                                                  ])),
+                                          gradient: const LinearGradient(
+                                              begin: Alignment.topCenter,
+                                              end: Alignment.bottomCenter,
+                                              colors: [
+                                                Color(0xffBE3FC6),
+                                                Color(0xff642445)
+                                              ]),
+                                          border: Border.all(
+                                              width: AppDimensions.height10(
+                                                      context) *
+                                                  0.1,
+                                              color: Colors.white),
                                           child: Center(
                                             child: Text(
                                               inActive[index]['name'],

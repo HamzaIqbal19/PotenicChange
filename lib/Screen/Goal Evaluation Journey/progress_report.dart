@@ -428,29 +428,58 @@ class ProgressReportState extends State<ProgressReport> {
                                                     ['inspirationId'] ==
                                                 1
                                             ? Container(
-                                          margin: EdgeInsets.only(
-                                              left:  i == 0? AppDimensions.width10(context) * 12:AppDimensions.width10(context) * 2,
-                                              right: AppDimensions.width10(context) * 1,
-                                              top: AppDimensions.height10(context),
-                                              bottom: AppDimensions.height10(context)),
-                                              child: CustomCircle().customContainer(context,
-                                                  id: report['userInspirations']
-                                                      [i]['inspirationId'],
-                                                  img: report['userInspirations']
-                                                          [i]['file'] ??
-                                                      ''),
-                                            )
+                                                margin: EdgeInsets.only(
+                                                    left: i == 0
+                                                        ? AppDimensions.width10(
+                                                                context) *
+                                                            12
+                                                        : AppDimensions.width10(
+                                                                context) *
+                                                            2,
+                                                    right:
+                                                        AppDimensions.width10(
+                                                                context) *
+                                                            1,
+                                                    top: AppDimensions.height10(
+                                                        context),
+                                                    bottom:
+                                                        AppDimensions.height10(
+                                                            context)),
+                                                child: InspirationCustomCircle()
+                                                    .customContainer(context,
+                                                        id: report[
+                                                                'userInspirations']
+                                                            [
+                                                            i]['inspirationId'],
+                                                        img:
+                                                            report['userInspirations']
+                                                                        [i]
+                                                                    ['file'] ??
+                                                                ''),
+                                              )
                                             : report['userInspirations'][i]
                                                         ['inspirationId'] ==
                                                     2
                                                 ? Container(
-                                          margin: EdgeInsets.only(
-                                              left:  i == 0? AppDimensions.width10(context) * 12:AppDimensions.width10(context) * 2,
-                                              right: AppDimensions.width10(context) * 1,
-                                              top: AppDimensions.height10(context),
-                                              bottom: AppDimensions.height10(context)),
-                                                  child: CustomCircle()
-                                                      .customContainer(
+                                                    margin: EdgeInsets.only(
+                                                        left: i == 0
+                                                            ? AppDimensions.width10(
+                                                                    context) *
+                                                                12
+                                                            : AppDimensions.width10(
+                                                                    context) *
+                                                                2,
+                                                        right: AppDimensions
+                                                                .width10(
+                                                                    context) *
+                                                            1,
+                                                        top: AppDimensions
+                                                            .height10(context),
+                                                        bottom: AppDimensions
+                                                            .height10(context)),
+                                                    child:
+                                                        InspirationCustomCircle()
+                                                            .customContainer(
                                                       context,
                                                       id: report[
                                                               'userInspirations']
@@ -459,18 +488,31 @@ class ProgressReportState extends State<ProgressReport> {
                                                               'userInspirations']
                                                           [i]['description'],
                                                     ),
-                                                )
+                                                  )
                                                 : report['userInspirations'][i]
                                                             ['inspirationId'] ==
                                                         4
                                                     ? Container(
-                                          margin: EdgeInsets.only(
-                                              left:  i == 0? AppDimensions.width10(context) * 12:AppDimensions.width10(context) * 2,
-                                              right: AppDimensions.width10(context) * 1,
-                                              top: AppDimensions.height10(context),
-                                              bottom: AppDimensions.height10(context)),
-                                                      child: CustomCircle()
-                                                          .customContainer(
+                                                        margin: EdgeInsets.only(
+                                                            left: i == 0
+                                                                ? AppDimensions.width10(
+                                                                        context) *
+                                                                    12
+                                                                : AppDimensions.width10(
+                                                                        context) *
+                                                                    2,
+                                                            right: AppDimensions.width10(
+                                                                    context) *
+                                                                1,
+                                                            top: AppDimensions
+                                                                .height10(
+                                                                    context),
+                                                            bottom: AppDimensions
+                                                                .height10(
+                                                                    context)),
+                                                        child:
+                                                            InspirationCustomCircle()
+                                                                .customContainer(
                                                           context,
                                                           id: report[
                                                                   'userInspirations']
@@ -478,19 +520,24 @@ class ProgressReportState extends State<ProgressReport> {
                                                               i]['inspirationId'],
                                                           desc: report[
                                                                   'userInspirations']
-                                                              [i]['description'],
+                                                              [
+                                                              i]['description'],
                                                         ),
-                                                    )
-                                                    : report['userInspirations'][i]
-                                                                ['inspirationId'] ==
+                                                      )
+                                                    : report['userInspirations']
+                                                                    [i][
+                                                                'inspirationId'] ==
                                                             3
                                                         ? Container(
-                                            margin: EdgeInsets.only(
-                                                left:  i == 0? AppDimensions.width10(context) * 12:AppDimensions.width10(context) * 2,
-                                                right: AppDimensions.width10(context) * 1,
-                                                top: AppDimensions.height10(context),
-                                                bottom: AppDimensions.height10(context)),
-                                            child: CustomCircle().customContainer(context, id: report['userInspirations'][i]['inspirationId'], link: report['userInspirations'][i]['destinationLink']))
+                                                            margin: EdgeInsets.only(
+                                                                left: i == 0
+                                                                    ? AppDimensions.width10(context) *
+                                                                        12
+                                                                    : AppDimensions.width10(context) * 2,
+                                                                right: AppDimensions.width10(context) * 1,
+                                                                top: AppDimensions.height10(context),
+                                                                bottom: AppDimensions.height10(context)),
+                                                            child: InspirationCustomCircle().customContainer(context, id: report['userInspirations'][i]['inspirationId'], link: report['userInspirations'][i]['destinationLink']))
                                                         : Container(),
                                         //inspirationComponent(context, report['userInspirations'][i]['inspirationId'].toString(), report['userInspirations'][i]['file']??'', report['userInspirations'][i]['description']??'',i)
                                       ]

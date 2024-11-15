@@ -9,6 +9,7 @@ import 'package:potenic_app/API/Hurdles.dart';
 import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdle_select_hurdle.dart';
 import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdles_landing_screen.dart';
 import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdles_summary.dart';
+import 'package:potenic_app/Widgets/AppCustomCircle.dart';
 import 'package:potenic_app/Widgets/alertbox.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
@@ -567,7 +568,7 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                             // width: AppDimensions.width10(context) * 34.3,
+                              // width: AppDimensions.width10(context) * 34.3,
                               height: AppDimensions.height10(context) * 7.75,
                               margin: EdgeInsets.only(
                                   top: AppDimensions.height10(context) * 8.7),
@@ -642,27 +643,40 @@ class _hurdles_goal_impactState extends State<hurdles_goal_impact> {
                                             : Colors.transparent)),
                                 padding: EdgeInsets.all(
                                     AppDimensions.width10(context) * 0.8),
-                                child: Container(
-                                  width: !smallScreen
-                                      ? AppDimensions.width10(context) * 15.1
-                                      : AppDimensions.width10(context) * 13.1,
-                                  height: !smallScreen
-                                      ? AppDimensions.width10(context) * 15.1
-                                      : AppDimensions.width10(context) * 13.1,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      border: Border.all(
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  0.1,
-                                          color: Colors.white),
-                                      gradient: const LinearGradient(
-                                          begin: Alignment.topCenter,
-                                          end: Alignment.bottomCenter,
-                                          colors: [
-                                            Color(0xffBE3FC6),
-                                            Color(0xff642445)
-                                          ])),
+                                child: AppCustomCircle().CustomContainer(
+                                  context,
+                                  border: Border.all(
+                                      width:
+                                          AppDimensions.width10(context) * 0.1,
+                                      color: Colors.white),
+                                  gradient: const LinearGradient(
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
+                                      colors: [
+                                        Color(0xffBE3FC6),
+                                        Color(0xff642445)
+                                      ]),
+                                  // Container(
+                                  //   width: !smallScreen
+                                  //       ? AppDimensions.width10(context) * 15.1
+                                  //       : AppDimensions.width10(context) * 13.1,
+                                  //   height: !smallScreen
+                                  //       ? AppDimensions.width10(context) * 15.1
+                                  //       : AppDimensions.width10(context) * 13.1,
+                                  //   decoration: BoxDecoration(
+                                  //       shape: BoxShape.circle,
+                                  //       border: Border.all(
+                                  //           width:
+                                  //               AppDimensions.width10(context) *
+                                  //                   0.1,
+                                  //           color: Colors.white),
+                                  //       gradient: const LinearGradient(
+                                  //           begin: Alignment.topCenter,
+                                  //           end: Alignment.bottomCenter,
+                                  //           colors: [
+                                  //             Color(0xffBE3FC6),
+                                  //             Color(0xff642445)
+                                  //           ])),
                                   child: Center(
                                     child: Text(
                                       'All goals',

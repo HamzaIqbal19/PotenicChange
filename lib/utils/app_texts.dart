@@ -158,7 +158,7 @@ class AppText {
 
   String hurdleBottomSheedTitle = 'My faced hurdles';
   String hurdleBottomSheedBody =
-  "This is your private space to capture any obstacles that may divert you of course. \n\nAt Potenic, our aim is to help you own and enjoy your journey.\n\nWe want to help you stay focused and be prepared for challenges ahead, so you can build a self-reliance and grow awareness.\n\nWith time, you will start seeing patterns (with the help of Potenic’s frameworks) and will be more aware of situations that get you triggered.";
+      "This is your private space to capture any obstacles that may divert you of course. \n\nAt Potenic, our aim is to help you own and enjoy your journey.\n\nWe want to help you stay focused and be prepared for challenges ahead, so you can build a self-reliance and grow awareness.\n\nWith time, you will start seeing patterns (with the help of Potenic’s frameworks) and will be more aware of situations that get you triggered.";
 
   //Inspiration
   String inspirationTitle = 'My inspirations';
@@ -207,5 +207,4 @@ class AppText {
 
   String contactUsHeading = 'Contact Us';
   String contactUsBody = 'Your Personalised Journey To Better Self Starts Here';
-
 }
