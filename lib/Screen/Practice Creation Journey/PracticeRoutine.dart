@@ -190,7 +190,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
             centerTitle: true,
             backgroundColor: Colors.transparent,
             automaticallyImplyLeading: false,
-            title: appBarTitle(context, AppText().createPrac3,false),
+            title: appBarTitle(context, AppText().createPrac3, false),
             leading: Buttons().backButton(context, backPress),
             actions: [
               Buttons().closeButton(context, () {
@@ -352,9 +352,9 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   height: AppDimensions.height10(context),
                 ),
                 Center(
-                  child: goalAndPractice(context, color, 2, practice.text.toString()),
+                  child: goalAndPractice(
+                      context, color, 2, practice.text.toString()),
                 ),
-
                 SizedBox(
                   height: AppDimensions.height10(context) * 2.3,
                 ),
@@ -414,8 +414,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                   height: AppDimensions.height10(context) * 2.1,
                 ),
                 Container(
-                  padding: const EdgeInsets.only(
-                      top: 25, bottom: 5),
+                  padding: const EdgeInsets.only(top: 25, bottom: 5),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[

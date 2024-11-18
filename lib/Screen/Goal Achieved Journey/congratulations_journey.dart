@@ -527,7 +527,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                         left: index == 0
                                             ? AppDimensionsUpdated.width10(
                                                     context) *
-                                                12.2
+                                                12.8
                                             : AppDimensionsUpdated.width10(
                                                     context) *
                                                 1.2),
@@ -708,10 +708,10 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                   child: Container(
                                     height:
                                         AppDimensionsUpdated.height10(context) *
-                                            17.6,
+                                            16.6,
                                     width:
                                         AppDimensionsUpdated.height10(context) *
-                                            18.2,
+                                            17.2,
                                     padding: EdgeInsets.all(
                                         AppDimensionsUpdated.height10(context)),
                                     decoration: const BoxDecoration(
@@ -724,17 +724,17 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                         left: index == 0
                                             ? AppDimensionsUpdated.width10(
                                                     context) *
-                                                12.2
+                                                12.8
                                             : AppDimensionsUpdated.width10(
                                                     context) *
-                                                2),
+                                                1.2),
                                     child: Container(
                                       height: AppDimensionsUpdated.height10(
                                               context) *
-                                          17.6,
+                                          16.6,
                                       width: AppDimensionsUpdated.height10(
                                               context) *
-                                          18.2,
+                                          17.2,
                                       decoration: const BoxDecoration(
                                           //color: Colors.amber,
                                           image: DecorationImage(
@@ -895,15 +895,15 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                                 1.5),
                                         width: AppDimensionsUpdated.width10(
                                                 context) *
-                                            15.1,
+                                            16.9,
                                         height: AppDimensionsUpdated.width10(
                                                 context) *
-                                            15.1,
+                                            16.9,
                                         margin: EdgeInsets.only(
                                             left: index == 0
                                                 ? AppDimensionsUpdated.width10(
                                                         context) *
-                                                    12.2
+                                                    12.8
                                                 : AppDimensionsUpdated.width10(
                                                         context) *
                                                     0.6),
@@ -944,7 +944,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                                 left: index == 0
                                                     ? AppDimensionsUpdated
                                                             .width10(context) *
-                                                        12.2
+                                                        12.8
                                                     : AppDimensionsUpdated
                                                             .width10(context) *
                                                         0.6),
@@ -986,7 +986,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                                     left: index == 0
                                                         ? AppDimensionsUpdated.width10(
                                                                 context) *
-                                                            12.2
+                                                            12.8
                                                         : AppDimensionsUpdated
                                                                 .width10(context) *
                                                             0.6),
@@ -1032,7 +1032,7 @@ class _Congratulations_journeyState extends State<Congratulations_journey> {
                                                         ? AppDimensionsUpdated
                                                                 .width10(
                                                                     context) *
-                                                            12.2
+                                                            12.8
                                                         : AppDimensionsUpdated
                                                                 .width10(
                                                                     context) *

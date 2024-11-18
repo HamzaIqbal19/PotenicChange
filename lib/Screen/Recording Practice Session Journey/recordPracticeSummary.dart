@@ -238,19 +238,19 @@ class _practice_summaryState extends State<practice_summary> {
           elevation: 0,
           leading: widget.view
               ? Container()
-              :  Buttons().backButton(context, (){
-            clean();
-            Navigator.push(
-                context,
-                FadePageRouteReverse(
-                    page: ViewDashboard(
-                      missed: false,
-                      name: '',
-                      update: false,
-                      helpfulTips: false,
-                      record: differenceInDays,
-                    )));
-                    }),
+              : Buttons().backButton(context, () {
+                  clean();
+                  Navigator.push(
+                      context,
+                      FadePageRouteReverse(
+                          page: ViewDashboard(
+                        missed: false,
+                        name: '',
+                        update: false,
+                        helpfulTips: false,
+                        record: differenceInDays,
+                      )));
+                }),
           actions: [
             widget.view
                 ? Buttons().closeButton(context, () {
@@ -258,142 +258,130 @@ class _practice_summaryState extends State<practice_summary> {
                     Navigator.pop(context);
                   })
                 : Buttons().closeButton(context, () {
-              showAnimatedDialog(
-                animationType: DialogTransitionType.fadeScale,
-                curve: Curves.easeInOut,
-                duration: const Duration(seconds: 1),
-                context: context,
-                builder: (BuildContext context) => SizedBox(
-                  width:
-                  AppDimensionsUpdated.width10(context) * 27.0,
-                  height:
-                  AppDimensionsUpdated.height10(context) * 18.2,
-                  child: AlertDialog(
-                    contentPadding: EdgeInsets.zero,
-                    actionsPadding: EdgeInsets.zero,
-                    titlePadding: EdgeInsets.zero,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(
-                            AppDimensionsUpdated.height10(context) *
-                                1.4)),
-                    title: Container(
-                      margin: const EdgeInsets.only(
-                          top: 19, right: 16, left: 16, bottom: 2),
-                      height:
-                      AppDimensionsUpdated.height10(context) *
-                          2.2,
-                      width: AppDimensionsUpdated.width10(context) *
-                          23.8,
-                      child: Text(
-                        "Are you sure?",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: const Color(0xFF000000),
-                          fontSize:
-                          AppDimensionsUpdated.font10(context) *
-                              1.7,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                    content: Container(
-                      margin: EdgeInsets.only(
-                          bottom: AppDimensionsUpdated.height10(
-                              context) *
-                              1.9,
-                          left: AppDimensionsUpdated.height10(
-                              context) *
-                              1.6,
-                          right: AppDimensionsUpdated.width10(
-                              context) *
-                              1.6),
-                      height:
-                      AppDimensionsUpdated.height10(context) *
-                          3.2,
-                      width: AppDimensionsUpdated.width10(context) *
-                          23.8,
-                      child: Text(
-                        "If you close it now, you will lose all your progress.",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          height: AppDimensionsUpdated.height10(
-                              context) *
-                              0.15,
-                          fontSize: 13,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ),
-                    actions: <Widget>[
-                      Column(
-                        children: [
-                          Container(
-                            height: 42,
-                            width: double.infinity,
-                            color: const Color(0xFF007AFF),
-                            child: TextButton(
-                              onPressed: () {
-                                if (behaviourRoute == false) {
-                                  clean();
-                                  Navigator.pushReplacement(
-                                      context,
-                                      FadePageRouteReverse(
-                                          page: ViewDashboard(
-                                            missed: false,
-                                            name: '',
-                                            update: false,
-                                            helpfulTips: false,
-                                            record: differenceInDays,
-                                          )));
-                                } else {
-                                  clean();
-                                  Navigator.push(
-                                      context,
-                                      FadePageRouteReverse(
-                                          page: ViewDashboard(
-                                            missed: false,
-                                            name: '',
-                                            update: false,
-                                            helpfulTips: false,
-                                            record: differenceInDays,
-                                          )));
-                                }
-                              },
-                              child: const Text(
-                                'Close',
-                                style: TextStyle(
-                                    color: Color(0xFFFFFFFF),
-                                    fontSize: 17,
-                                    fontFamily: "Laila",
-                                    fontWeight: FontWeight.w400),
+                    showAnimatedDialog(
+                      animationType: DialogTransitionType.fadeScale,
+                      curve: Curves.easeInOut,
+                      duration: const Duration(seconds: 1),
+                      context: context,
+                      builder: (BuildContext context) => SizedBox(
+                        width: AppDimensionsUpdated.width10(context) * 27.0,
+                        height: AppDimensionsUpdated.height10(context) * 18.2,
+                        child: AlertDialog(
+                          contentPadding: EdgeInsets.zero,
+                          actionsPadding: EdgeInsets.zero,
+                          titlePadding: EdgeInsets.zero,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(
+                                  AppDimensionsUpdated.height10(context) *
+                                      1.4)),
+                          title: Container(
+                            margin: const EdgeInsets.only(
+                                top: 19, right: 16, left: 16, bottom: 2),
+                            height:
+                                AppDimensionsUpdated.height10(context) * 2.2,
+                            width: AppDimensionsUpdated.width10(context) * 23.8,
+                            child: Text(
+                              "Are you sure?",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: const Color(0xFF000000),
+                                fontSize:
+                                    AppDimensionsUpdated.font10(context) * 1.7,
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: 44,
-                            width: double.infinity,
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text(
-                                'Cancel',
-                                style: TextStyle(
-                                    fontSize: 17,
-                                    fontFamily: "Laila",
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0xFF007AFF)),
+                          content: Container(
+                            margin: EdgeInsets.only(
+                                bottom: AppDimensionsUpdated.height10(context) *
+                                    1.9,
+                                left: AppDimensionsUpdated.height10(context) *
+                                    1.6,
+                                right: AppDimensionsUpdated.width10(context) *
+                                    1.6),
+                            height:
+                                AppDimensionsUpdated.height10(context) * 3.2,
+                            width: AppDimensionsUpdated.width10(context) * 23.8,
+                            child: Text(
+                              "If you close it now, you will lose all your progress.",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                height: AppDimensionsUpdated.height10(context) *
+                                    0.15,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w400,
                               ),
                             ),
                           ),
-                        ],
+                          actions: <Widget>[
+                            Column(
+                              children: [
+                                Container(
+                                  height: 42,
+                                  width: double.infinity,
+                                  color: const Color(0xFF007AFF),
+                                  child: TextButton(
+                                    onPressed: () {
+                                      if (behaviourRoute == false) {
+                                        clean();
+                                        Navigator.pushReplacement(
+                                            context,
+                                            FadePageRouteReverse(
+                                                page: ViewDashboard(
+                                              missed: false,
+                                              name: '',
+                                              update: false,
+                                              helpfulTips: false,
+                                              record: differenceInDays,
+                                            )));
+                                      } else {
+                                        clean();
+                                        Navigator.push(
+                                            context,
+                                            FadePageRouteReverse(
+                                                page: ViewDashboard(
+                                              missed: false,
+                                              name: '',
+                                              update: false,
+                                              helpfulTips: false,
+                                              record: differenceInDays,
+                                            )));
+                                      }
+                                    },
+                                    child: const Text(
+                                      'Close',
+                                      style: TextStyle(
+                                          color: Color(0xFFFFFFFF),
+                                          fontSize: 17,
+                                          fontFamily: "Laila",
+                                          fontWeight: FontWeight.w400),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 44,
+                                  width: double.infinity,
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text(
+                                      'Cancel',
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontFamily: "Laila",
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xFF007AFF)),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ],
-                  ),
-                ),
-              );
-            })
-
+                    );
+                  })
           ],
         ),
         extendBodyBehindAppBar: true,
@@ -412,7 +400,7 @@ class _practice_summaryState extends State<practice_summary> {
                     children: [
                       Container(
                         width: AppDimensionsUpdated.width10(context) * 33.4,
-                       // height: AppDimensionsUpdated.height10(context) * 3.4,
+                        // height: AppDimensionsUpdated.height10(context) * 3.4,
                         // color: Colors.amber,
                         margin: EdgeInsets.only(
                             top: AppDimensionsUpdated.height10(context) * 9.0),
@@ -430,7 +418,7 @@ class _practice_summaryState extends State<practice_summary> {
                       ),
                       Container(
                         width: AppDimensionsUpdated.width10(context) * 23.2,
-                       // height: AppDimensionsUpdated.height10(context) * 3.8,
+                        // height: AppDimensionsUpdated.height10(context) * 3.8,
                         //  color: Colors.red,
                         margin: EdgeInsets.only(
                             top: AppDimensionsUpdated.height10(context) * 0.8),
@@ -1036,7 +1024,7 @@ class _practice_summaryState extends State<practice_summary> {
                                   ),
                                   children: const [
                                     TextSpan(
-                                      text: 'How did the practice go?',
+                                      text: 'How did the practice go? sdd',
                                     ),
                                   ])),
                         ),
@@ -1710,9 +1698,10 @@ void __share_experience(context, String goalName, String identity, String color,
                           context,
                           smallScreen
                               ? UpdatedDimensions.height10(context) * 29.9
-                              : UpdatedDimensions.height10(context) * 26.8, smallScreen
-                          ? UpdatedDimensions.height10(context) * 29.9
-                          : UpdatedDimensions.height10(context) * 26.8,
+                              : UpdatedDimensions.height10(context) * 26.8,
+                          smallScreen
+                              ? UpdatedDimensions.height10(context) * 29.9
+                              : UpdatedDimensions.height10(context) * 26.8,
                           color,
                           goalName,
                           identity,
@@ -1725,9 +1714,10 @@ void __share_experience(context, String goalName, String identity, String color,
                         context,
                         smallScreen
                             ? UpdatedDimensions.height10(context) * 16.6
-                            : UpdatedDimensions.height10(context) * 14.1, smallScreen
-                        ? UpdatedDimensions.height10(context) * 16.6
-                        : UpdatedDimensions.height10(context) * 14.1,
+                            : UpdatedDimensions.height10(context) * 14.1,
+                        smallScreen
+                            ? UpdatedDimensions.height10(context) * 16.6
+                            : UpdatedDimensions.height10(context) * 14.1,
                         pracColor,
                         pracName,
                         'completed'),
@@ -1735,18 +1725,18 @@ void __share_experience(context, String goalName, String identity, String color,
                 ]),
               ),
               Container(
-                  height: AppDimensions.height10(context) * 6.0,
-                  width: AppDimensions.width10(context) * 36.0,
+                height: AppDimensions.height10(context) * 6.0,
+                width: AppDimensions.width10(context) * 36.0,
                 decoration: BoxDecoration(
                     border: Border.all(
                         width: AppDimensions.width10(context) * 0.1,
                         color: const Color(0xFFFCB30E)),
-                    borderRadius:
-                    BorderRadius.circular(AppDimensions.height10(context) * 2.0),
+                    borderRadius: BorderRadius.circular(
+                        AppDimensions.height10(context) * 2.0),
                     color: const Color(0xFFFBFBFB)),
-                  margin: EdgeInsets.only(
-                      top: AppDimensionsUpdated.height10(context) * 3.9,
-                      bottom: AppDimensionsUpdated.height10(context) * 3),
+                margin: EdgeInsets.only(
+                    top: AppDimensionsUpdated.height10(context) * 3.9,
+                    bottom: AppDimensionsUpdated.height10(context) * 3),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -1766,12 +1756,12 @@ void __share_experience(context, String goalName, String identity, String color,
                       //height: AppDimensions.height10(context) * 2.2,
                       child: Center(
                           child: Text(
-                            'Share',
-                            style: TextStyle(
-                                fontSize: AppDimensions.font10(context) * 2,
-                                fontWeight: FontWeight.w500,
-                                color: const Color(0xff646464)),
-                          )),
+                        'Share',
+                        style: TextStyle(
+                            fontSize: AppDimensions.font10(context) * 2,
+                            fontWeight: FontWeight.w500,
+                            color: const Color(0xff646464)),
+                      )),
                     ),
                   ],
                 ),
