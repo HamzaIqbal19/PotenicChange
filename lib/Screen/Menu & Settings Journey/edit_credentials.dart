@@ -334,7 +334,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                     color: const Color(0xFF8C648A),
                                     fontWeight: FontWeight.w600,
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.8,
+                                        AppDimensions.font10(context) * 2.4,
                                   ),
                                   decoration: InputDecoration(
                                       contentPadding: EdgeInsets.only(
@@ -351,7 +351,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                         color: const Color(0xFF8C648A),
                                         fontWeight: FontWeight.w600,
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.8,
+                                            AppDimensions.font10(context) * 2.4,
                                       ),
                                       labelText: "New Email",
                                       labelStyle: TextStyle(
@@ -437,7 +437,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                 style: TextStyle(
                                   color: const Color(0xFF8C648A),
                                   fontWeight: FontWeight.w600,
-                                  fontSize: AppDimensions.font10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 2.4,
                                 ),
                                 decoration: InputDecoration(
                                     contentPadding: EdgeInsets.only(
@@ -454,7 +454,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                       color: const Color(0xFF8C648A),
                                       fontWeight: FontWeight.w600,
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.8,
+                                          AppDimensions.font10(context) * 2.4,
                                     ),
                                     labelText: "Confirm Email",
                                     labelStyle: TextStyle(
@@ -569,7 +569,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                 style: TextStyle(
                                   color: const Color(0xFF8C648A),
                                   fontWeight: FontWeight.w600,
-                                  fontSize: AppDimensions.font10(context) * 1.8,
+                                  fontSize: AppDimensions.font10(context) * 2.4,
                                 ),
                                 decoration: InputDecoration(
                                     contentPadding: EdgeInsets.only(
@@ -588,7 +588,7 @@ class _edit_credentialsState extends State<edit_credentials> {
                                       color: const Color(0xFF8C648A),
                                       fontWeight: FontWeight.w600,
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.8,
+                                          AppDimensions.font10(context) * 2.4,
                                     ),
                                     labelText: widget.password_edit
                                         ? "Confirm Email"

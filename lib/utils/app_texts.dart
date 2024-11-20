@@ -33,16 +33,15 @@ class AppText {
   String goalSetting = 'Your journey awaits';
   String step1 = "Step 1";
   String step1Head = " your goal ";
-  String step1Body =
-      'by defining your vision to\nhelp you stay focused and self-motivated.';
+  String step1Body = 'and why it matters. This\nvision fuels your focus and motivation as\nyou progress.';
   String step2 = "Step 2";
   String step2Head = " your practice ";
-  String step2Body = "and create a routine\nthat fits your lifestyle.";
+  String step2Body = "to turn your goal into a\ndaily routine that suits your lifestyle.";
   String step2Body2 =
-      "Embark on a self-driven journey toward\nself-discovery and personal growth.";
+      "Start a self-driven journey and grow\non your own terms.";
   String startJourney = 'Start your journey';
   String footerBody =
-      ", you’ll be on your way\ntoward more clarity and self-fulfilment.";
+      ", you’ll be set to start a\njourney of intentional growth and fulfilment.";
   String startJourney2 = "You can save and exit at any time. ";
 
   //goal category
@@ -52,7 +51,7 @@ class AppText {
   String starCreate3 = "Goal Creation 3/5";
   String starCreate4 = "Goal Creation 4/5";
   String starCreate5 = "Goal Creation 5/5";
-  String viewAndEdit = 'View and edit mode';
+  String viewAndEdit = '';
   String selectCategory = 'Select Your Goal Category ';
   String selectCategoryBody = "Which category does your goal belong to? ";
   String viewAllGoals = "View all \n goals";
@@ -158,7 +157,7 @@ class AppText {
 
   String hurdleBottomSheedTitle = 'My faced hurdles';
   String hurdleBottomSheedBody =
-      "This is your private space to capture any obstacles that may divert you of course. \n\nAt Potenic, our aim is to help you own and enjoy your journey.\n\nWe want to help you stay focused and be prepared for challenges ahead, so you can build a self-reliance and grow awareness.\n\nWith time, you will start seeing patterns (with the help of Potenic’s frameworks) and will be more aware of situations that get you triggered.";
+  "This is your private space to capture any obstacles that may divert you of course. \n\nAt Potenic, our aim is to help you own and enjoy your journey.\n\nWe want to help you stay focused and be prepared for challenges ahead, so you can build a self-reliance and grow awareness.\n\nWith time, you will start seeing patterns (with the help of Potenic’s frameworks) and will be more aware of situations that get you triggered.";
 
   //Inspiration
   String inspirationTitle = 'My inspirations';
@@ -207,4 +206,9 @@ class AppText {
 
   String contactUsHeading = 'Contact Us';
   String contactUsBody = 'Your Personalised Journey To Better Self Starts Here';
+
+  //Dialogs
+  String contactUsDialogTitle = 'Details Sent';
+  String contactUsDialogBody = 'Thank you for contacting our team, we aim to reply to all queries within 48 hours on weekdays only.';
+
 }

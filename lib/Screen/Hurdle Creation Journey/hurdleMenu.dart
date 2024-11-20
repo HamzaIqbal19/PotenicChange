@@ -148,7 +148,7 @@ class _hurdle_menuState extends State<hurdle_menu> {
                   ),
                   Container(
                     width: AppDimensions.width10(context) * 19.62,
-                    height: AppDimensions.height10(context) * 19.33,
+                    // height: AppDimensions.height10(context) * 19.33,
                     padding:
                         EdgeInsets.all(AppDimensions.width10(context) * 2.3),
                     decoration: const BoxDecoration(

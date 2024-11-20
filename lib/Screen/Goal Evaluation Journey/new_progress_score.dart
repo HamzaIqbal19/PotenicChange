@@ -618,6 +618,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                 print("datess $_dates");
                                 showModalBottomSheet(
                                   context: context,
+                                  isScrollControlled: true,
                                   builder: (BuildContext context) {
                                     print('BottomSheet');
                                     return SizedBox(
@@ -647,10 +648,10 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                     Navigator.pop(context);
                                                   },
                                                   child: Container(
-                                                    width:
-                                                        AppDimensions.width10(
-                                                                context) *
-                                                            5.0,
+                                                    // width:
+                                                    //     AppDimensions.width10(
+                                                    //             context) *
+                                                    //         5.0,
                                                     height:
                                                         AppDimensions.height10(
                                                                 context) *
@@ -668,7 +669,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                           fontSize: AppDimensions
                                                                   .font10(
                                                                       context) *
-                                                              1.4,
+                                                              1.9,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           color: const Color(
@@ -725,10 +726,10 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                         _dates[_selectedIndex]);
                                                   },
                                                   child: Container(
-                                                    width:
-                                                        AppDimensions.width10(
-                                                                context) *
-                                                            3.7,
+                                                    // width:
+                                                    //     AppDimensions.width10(
+                                                    //             context) *
+                                                    //         3.7,
                                                     height:
                                                         AppDimensions.height10(
                                                                 context) *
@@ -746,7 +747,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                           fontSize: AppDimensions
                                                                   .font10(
                                                                       context) *
-                                                              1.4,
+                                                              1.9,
                                                           fontWeight:
                                                               FontWeight.w400,
                                                           color: const Color(

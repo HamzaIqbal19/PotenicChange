@@ -23,6 +23,7 @@ int getCurrentCharacters() {
 final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 final goalName = TextEditingController();
+bool enable = false;
 
 void bottom_sheet(context, String goal) {
   String? name = goal;
@@ -81,22 +82,26 @@ void bottom_sheet(context, String goal) {
                           maxLength: getMaxCharacters(),
 
                           onChanged: (value) {
-                            // setState(() {
-                            //   enable = true;
-                            // });
+                            setState(() {
+                              if (value.isNotEmpty) {
+                                enable = true;
+                              } else {
+                                enable = false;
+                              }
+                            });
                           },
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
-                            fontSize: AppDimensions.font10(context)*2.4,
+                            fontSize: AppDimensions.font10(context) * 2.4,
                             color: const Color.fromARGB(209, 250, 154, 52),
                           ),
                           decoration: InputDecoration(
                               filled: true,
                               fillColor: const Color.fromRGBO(0, 0, 0, 0.1),
                               hintText: "Enter practice name",
-                              hintStyle:  TextStyle(
+                              hintStyle: TextStyle(
                                   fontWeight: FontWeight.w600,
-                                  fontSize: AppDimensions.font10(context)*2.4,
+                                  fontSize: AppDimensions.font10(context) * 2.4,
                                   color: const Color(0xFF828282)),
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18)),
@@ -154,7 +159,7 @@ void bottom_sheet(context, String goal) {
                           gradient: LinearGradient(
                               begin: Alignment.topCenter,
                               end: Alignment.bottomCenter,
-                              colors: goalName.text.toString().isNotEmpty
+                              colors: enable
                                   ? [
                                       const Color(0xFFFCC10D),
                                       const Color(0xFFFDA210)

@@ -31,7 +31,7 @@ class InspirationComponent extends StatelessWidget {
     // print("inspiration ka data $inspirationId");
     // print("inspiration ka data $inspirationId");
     return Container(
-      height: AppDimensionsUpdated.height10(context) * 44.4,
+      height: AppDimensionsUpdated.height10(context) * 40.4,
       margin: EdgeInsets.only(
           top: AppDimensionsUpdated.height10(context) * 2.0,
           right: AppDimensionsUpdated.height10(context) * 1.5,
@@ -77,7 +77,7 @@ class InspirationComponent extends StatelessWidget {
           ),
           Container(
             width: AppDimensionsUpdated.width10(context) * 34.6,
-            height: AppDimensionsUpdated.height10(context) * 34.2,
+            height: AppDimensionsUpdated.height10(context) * 31.2,
             margin: EdgeInsets.only(
                 top: AppDimensionsUpdated.height10(context) * 1.5),
             decoration: status == true
@@ -156,14 +156,21 @@ class InspirationComponent extends StatelessWidget {
                 SizedBox(
                   height: AppDimensions.height10(context) * 2.589,
                 ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    left: AppDimensions.height10(context) * 9,
-                    right: AppDimensions.height10(context) * 9,
-                  ),
+                Container(
+                  width: AppDimensionsUpdated.width10(context) * 16.1,
+                  height: AppDimensionsUpdated.height10(context) * 16.1,
                   child: inspirationId == 1
-                      ? InspirationCustomCircle().customContainer(context,
-                          id: inspirationId, img: mainImage)
+                      ? Padding(
+                          padding: EdgeInsets.only(
+                              // top: AppDimensions.height10(context) * 2,
+                              // left: AppDimensions.height10(context) * 6,
+                              // right: AppDimensions.height10(context) * 6,
+                              ),
+                          child: InspirationCustomCircle().customContainer(
+                              context,
+                              id: inspirationId,
+                              img: mainImage),
+                        )
                       : inspirationId == 2
                           ? InspirationCustomCircle().customContainer(
                               context,
@@ -247,7 +254,7 @@ class InspirationComponent extends StatelessWidget {
                   width: AppDimensionsUpdated.width10(context) * 16.7,
                   //height: AppDimensionsUpdated.height10(context) * 1.7,
                   margin: EdgeInsets.only(
-                      top: AppDimensionsUpdated.height10(context) * 0.6),
+                      top: AppDimensionsUpdated.height10(context) * 1),
                   child: Text(
                     Text1,
                     textAlign: TextAlign.center,

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:potenic_app/API/GoalModel.dart';
 import 'package:potenic_app/Notifier/GoalNotifier.dart';
 import 'package:potenic_app/Screen/Goal%20Creation%20Journey/GoalName.dart';
+import 'package:potenic_app/Widgets/BottomSearch.dart';
 import 'package:potenic_app/Widgets/Circle.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/appBarWidgets.dart';
@@ -534,105 +535,129 @@ class _AllGoalsState extends State<AllGoals> {
             height: AppDimensions.width10(context) * 7.0,
 
             child: searchIcon == true
-                ? Container(
-                    color: Colors.transparent,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              height: AppDimensions.height10(context) * 3.6,
-                              width: AppDimensions.width10(context) * 31.3,
-                              padding: const EdgeInsets.all(6.0),
-                              decoration: BoxDecoration(
-                                  color:
-                                      const Color(0xFF767680).withOpacity(0.12),
-                                  border:
-                                      Border.all(color: Colors.white, width: 2),
-                                  borderRadius: BorderRadius.all(
-                                      Radius.circular(
-                                          AppDimensions.height10(context)))),
-                              child: Center(
-                                child: TextFormField(
-                                    controller: _searchController,
-                                    textCapitalization:
-                                        TextCapitalization.sentences,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        searchText = value;
-                                        _searchGoals(value);
-                                      });
-                                    },
-                                    decoration: InputDecoration(
-                                        contentPadding:
-                                            const EdgeInsets.all(0.0),
-                                        prefixIcon: Image.asset(
-                                          'assets/images/Light.webp',
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  1.5,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  1.5,
-                                        ),
-                                        suffixIcon: AnimatedScaleButton(
-                                          onTap: () {
-                                            searchText = '';
-                                            _searchGoals('');
-                                            _searchController.clear();
-                                          },
-                                          child: Image.asset(
-                                            'assets/images/cancel.webp',
-                                            width:
-                                                AppDimensions.width10(context) *
-                                                    2.3,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                2.3,
-                                            // fit: BoxFit.contain,
-                                          ),
-                                        ),
-                                        hintText: "Search",
-                                        hintStyle: TextStyle(
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                0.14),
-                                        focusedBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)),
-                                        enabledBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)))),
-                              ),
-                            ),
-                          ],
-                        ),
-
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              searchIcon = false;
-                              _searchGoals('');
-                              _searchController.clear();
-                            });
-                          },
-                          child: Text(
-                            "Cancel",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: AppDimensions.font10(context) * 1.7,
-                              fontWeight: FontWeight.w400,
-                              color: const Color(0xFF007AFF),
-                            ),
-                          ),
-                        ),
-
-                        //const Padding(padding: EdgeInsets.all(10))
-                      ],
-                    ),
+                ? BottomSearch(
+                    controller: _searchController,
+                    onTap: () {
+                      setState(() {
+                        //    searchIcon = false;
+                        _searchGoals('');
+                        _searchController.clear();
+                      });
+                    },
+                    CancelTap: () {
+                      setState(() {
+                        searchIcon = false;
+                        _searchGoals('');
+                        _searchController.clear();
+                      });
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        searchText = value;
+                        _searchGoals(value);
+                      });
+                    },
                   )
+                // Container(
+                //     color: Colors.transparent,
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.spaceAround,
+                //       crossAxisAlignment: CrossAxisAlignment.center,
+                //       children: [
+                //         Row(
+                //           children: [
+                //             Container(
+                //               height: AppDimensions.height10(context) * 3.6,
+                //               width: AppDimensions.width10(context) * 31.3,
+                //               padding: const EdgeInsets.all(6.0),
+                //               decoration: BoxDecoration(
+                //                   color:
+                //                       const Color(0xFF767680).withOpacity(0.12),
+                //                   border:
+                //                       Border.all(color: Colors.white, width: 2),
+                //                   borderRadius: BorderRadius.all(
+                //                       Radius.circular(
+                //                           AppDimensions.height10(context)))),
+                //               child: Center(
+                //                 child: TextFormField(
+                //                     controller: _searchController,
+                //                     textCapitalization:
+                //                         TextCapitalization.sentences,
+                //                     onChanged: (value) {
+                //                       setState(() {
+                //                         searchText = value;
+                //                         _searchGoals(value);
+                //                       });
+                //                     },
+                //                     decoration: InputDecoration(
+                //                         contentPadding:
+                //                             const EdgeInsets.all(0.0),
+                //                         prefixIcon: Image.asset(
+                //                           'assets/images/Light.webp',
+                //                           width:
+                //                               AppDimensions.width10(context) *
+                //                                   1.5,
+                //                           height:
+                //                               AppDimensions.height10(context) *
+                //                                   1.5,
+                //                         ),
+                //                         suffixIcon: AnimatedScaleButton(
+                //                           onTap: () {
+                //                             searchText = '';
+                //                             _searchGoals('');
+                //                             _searchController.clear();
+                //                           },
+                //                           child: Image.asset(
+                //                             'assets/images/cancel.webp',
+                //                             width:
+                //                                 AppDimensions.width10(context) *
+                //                                     2.3,
+                //                             height: AppDimensions.height10(
+                //                                     context) *
+                //                                 2.3,
+                //                             // fit: BoxFit.contain,
+                //                           ),
+                //                         ),
+                //                         hintText: "Search",
+                //                         hintStyle: TextStyle(
+                //                             height: AppDimensions.height10(
+                //                                     context) *
+                //                                 0.14),
+                //                         focusedBorder: const OutlineInputBorder(
+                //                             borderSide: BorderSide(
+                //                                 color: Colors.transparent)),
+                //                         enabledBorder: const OutlineInputBorder(
+                //                             borderSide: BorderSide(
+                //                                 color: Colors.transparent)))),
+                //               ),
+                //             ),
+                //           ],
+                //         ),
+
+                //         GestureDetector(
+                //           onTap: () {
+                //             setState(() {
+                //               searchIcon = false;
+                //               _searchGoals('');
+                //               _searchController.clear();
+                //             });
+                //           },
+                //           child: Text(
+                //             "Cancel",
+                //             textAlign: TextAlign.center,
+                //             style: TextStyle(
+                //               fontSize: AppDimensions.font10(context) * 1.7,
+                //               fontWeight: FontWeight.w400,
+                //               color: const Color(0xFF007AFF),
+                //             ),
+                //           ),
+                //         ),
+
+                //         //const Padding(padding: EdgeInsets.all(10))
+                //       ],
+                //     ),
+                //   )
+
                 : Container(
                     color: Colors.transparent,
                     child: Row(

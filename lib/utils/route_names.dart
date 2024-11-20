@@ -29,7 +29,7 @@ class RouteNames {
   static const String goalIdentity = "/goalIdentity";
   static const String visualising = "/Visualising";
   static const String goalFinished = "/goalFinished";
-  static const String startReview = "/startReview";
+  static const String starReview = "/startReview";
 
   static const String createPractice = "/createPractice";
   static const String practiceName = "/practiceName";

@@ -353,6 +353,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                       _searchController.clear();
                       setState(() {
                         hurdlesList = allHurdle;
+                        noData = false;
                       });
                     },
                     CancelTap: () {
@@ -1274,7 +1275,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                         AppText().hurdleBottomSheedTitle,
                                         AppText().hurdleBottomSheedBody,
                                         AppLinks().hurdleTutorialLink, () {
-                                      Navigator.pop(context);
+                                      // Navigator.pop(context);
                                     }, false);
                                   },
                                   child: Container(

@@ -518,8 +518,13 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            GoalLevelComponents().activeDays(context, goalDetails['goalTotalActiveDays'].toString()),
-                            GoalLevelComponents().goalLevelCircle(context, goalDetails['goalLevel'] == 0 ? '-' : goalDetails['goalLevel'].toString()),
+                            GoalLevelComponents().activeDays(context,
+                                goalDetails['goalTotalActiveDays'].toString()),
+                            GoalLevelComponents().goalLevelCircle(
+                                context,
+                                goalDetails['goalLevel'] == 0
+                                    ? '-'
+                                    : goalDetails['goalLevel'].toString()),
                           ],
                         ),
                       ),
@@ -623,7 +628,8 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
-                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
                                         children: [
                                           SizedBox(
                                             // width: AppDimensions.width10(context) *
@@ -909,7 +915,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.font10(context) *
-                                                  1.6,
+                                                  1.8,
                                           fontWeight: FontWeight.w700,
                                           color: const Color(0xFF5B74A6)),
                                     ),
@@ -918,7 +924,7 @@ class _multiple_goal_inactiveState extends State<multiple_goal_inactive> {
                                       style: TextStyle(
                                           fontSize:
                                               AppDimensions.font10(context) *
-                                                  1.6,
+                                                  1.8,
                                           fontWeight: FontWeight.w400,
                                           color: const Color(0xFF5B74A6)),
                                     ),

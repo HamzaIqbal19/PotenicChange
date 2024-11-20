@@ -795,24 +795,24 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                     .toString());
                                                           },
                                                           child: Container(
-                                                            width: !smallScreen
-                                                                ? AppDimensions
-                                                                        .width10(
-                                                                            context) *
-                                                                    19.313
-                                                                : AppDimensions
-                                                                        .width10(
-                                                                            context) *
-                                                                    17.6,
-                                                            height: !smallScreen
-                                                                ? AppDimensions
-                                                                        .width10(
-                                                                            context) *
-                                                                    19.313
-                                                                : AppDimensions
-                                                                        .width10(
-                                                                            context) *
-                                                                    17.6,
+                                                            //   width: !smallScreen
+                                                            //     ? AppDimensions
+                                                            //             .width10(
+                                                            //                 context) *
+                                                            //         19.313
+                                                            //     : AppDimensions
+                                                            //             .width10(
+                                                            //                 context) *
+                                                            //         17.6,
+                                                            // height: !smallScreen
+                                                            //     ? AppDimensions
+                                                            //             .width10(
+                                                            //                 context) *
+                                                            //         19.313
+                                                            //     : AppDimensions
+                                                            //             .width10(
+                                                            //                 context) *
+                                                            //         17.6,
 
                                                             child: Column(
                                                               mainAxisSize:
@@ -1345,25 +1345,6 @@ class _inspiration_landingState extends State<inspiration_landing> {
                                                                       .toString());
                                                             },
                                                             child: Container(
-                                                              width: !smallScreen
-                                                                  ? AppDimensions
-                                                                          .width10(
-                                                                              context) *
-                                                                      19.313
-                                                                  : AppDimensions
-                                                                          .width10(
-                                                                              context) *
-                                                                      17.6,
-                                                              height: !smallScreen
-                                                                  ? AppDimensions
-                                                                          .width10(
-                                                                              context) *
-                                                                      19.313
-                                                                  : AppDimensions
-                                                                          .width10(
-                                                                              context) *
-                                                                      17.6,
-
                                                               child: Column(
                                                                 children: [
                                                                   inspirationList[index * 2 + 1]

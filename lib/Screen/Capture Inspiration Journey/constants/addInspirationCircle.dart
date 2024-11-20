@@ -36,8 +36,8 @@ class CircleType {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: AppDimensions.width10(context) * 3.032,
-                      height: AppDimensions.height10(context) * 3.032,
+                      width: AppDimensions.width10(context) * 3.5,
+                      height: AppDimensions.height10(context) * 3.5,
                       margin: EdgeInsets.only(
                           bottom: AppDimensions.height10(context) * 0.68),
                       decoration: BoxDecoration(
@@ -56,8 +56,8 @@ class CircleType {
                       ),
                     ),
                     Container(
-                      width: AppDimensions.width10(context) * 2.122,
-                      height: AppDimensions.height10(context) * 2.122,
+                      width: AppDimensions.width10(context) * 2.8,
+                      height: AppDimensions.height10(context) * 2.8,
                       margin: EdgeInsets.only(
                           bottom: AppDimensions.height10(context) * 0.178),
                       decoration: const BoxDecoration(
