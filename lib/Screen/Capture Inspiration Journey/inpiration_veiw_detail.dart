@@ -768,8 +768,8 @@ class _view_detailsState extends State<view_details> {
                                     Container(
                                       width:
                                           AppDimensions.width10(context) * 23.9,
-                                      height:
-                                          AppDimensions.height10(context) * 2.2,
+                                      // height:
+                                      //     AppDimensions.height10(context) * 2.2,
                                       margin: EdgeInsets.only(
                                         left: AppDimensions.height10(context) *
                                             1.99,
@@ -780,7 +780,7 @@ class _view_detailsState extends State<view_details> {
                                           color: const Color(0xFF646464),
                                           fontSize:
                                               AppDimensions.font10(context) *
-                                                  1.8,
+                                                  2,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),

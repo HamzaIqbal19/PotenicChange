@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:advance_expansion_tile/advance_expansion_tile.dart';
+import 'package:potenic_app/Screen/Practice%20Review%20Journey/widgets/sortedTimes.dart';
 import 'package:potenic_app/Widgets/DateTimeBottomSheet.dart';
 import 'package:potenic_app/Widgets/routinecommitment.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -71,6 +72,7 @@ class _schedule_cardState extends State<schedule_card> {
 
   bool Done = false;
   final String days_name;
+
 
   final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
   void removeSelectedDay(String day) {
@@ -194,6 +196,24 @@ class _schedule_cardState extends State<schedule_card> {
                                             "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
                                       });
                                       times.add(start_time);
+
+                                      List<DateTime> parsedTimes = times.map((time) {
+                                        return DateTime.parse('1970-01-01 ' + timerSorter().convertTo24HourFormat(time));
+                                      }).toList();
+
+                                      // Sort the DateTime objects
+                                      parsedTimes.sort();
+
+                                      // Convert back to the original 12-hour string format with am/pm
+                                      List<String> sortedTimes = parsedTimes.map((time) {
+                                        return timerSorter().formatTo12Hour(time);
+                                      }).toList();
+
+                                      // Print the sorted times
+                                      times.clear();
+                                      times.addAll(sortedTimes);
+
+
                                       TwoValues<String, int> values =
                                           TwoValues<String, int>(
                                               start_time, num);

@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/Goal%20Creation%20Journey/Goal_Identity.dart'
 import 'package:potenic_app/Screen/Practice%20Creation%20Journey/Created%20Practice.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/add_your_practice.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/goal_menu_inactive.dart';
+import 'package:potenic_app/Widgets/back_cont.dart';
 import 'package:potenic_app/Widgets/bottom_sheet.dart';
 import 'package:potenic_app/Widgets/fading.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -454,20 +455,21 @@ class _StarReviewState extends State<StarReview> {
                                             right: AppDimensions.height10(
                                                 context)),
                                         decoration: BoxDecoration(
-                                            gradient: _focusNode.hasFocus
-                                                ? const LinearGradient(
+                                            gradient:
+                                            _focusNode.hasFocus
+                                                ?
+                                            const LinearGradient(
                                                     begin: Alignment.topCenter,
                                                     end: Alignment.bottomCenter,
                                                     colors: [
-                                                        Color(0xFFEFBEB2),
-                                                        Color(0xFFEAA897)
+                                                      Color(0xFFEFBEB2), Color(0xFFEAA897)
                                                       ])
-                                                : const LinearGradient(
+                                                :
+                                            const LinearGradient(
                                                     begin: Alignment.topCenter,
                                                     end: Alignment.bottomCenter,
                                                     colors: [
-                                                        Color(0xFFEECDC5),
-                                                        Color(0xFFF6E0DB)
+                                                      Color(0xFFEFBEB2), Color(0xFFEAA897)
                                                       ]),
                                             // color: Colors.white,
 
@@ -498,7 +500,7 @@ class _StarReviewState extends State<StarReview> {
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          2.2,
+                                                          2.4,
                                                 )),
                                             SizedBox(
                                               height: AppDimensions.height10(
@@ -1193,8 +1195,7 @@ class _StarReviewState extends State<StarReview> {
                                           padding: EdgeInsets.zero,
                                           itemBuilder: (context, index) {
                                             return Column(children: [
-                                              inner_text2('Reason ${index + 1}',
-                                                  '${reason[index]['text']}'),
+                                              inner_text(head_text: 'Statement ${index + 1}', body_text: '${reason[index]['text']}', length: 200, onChanged: (value){}, onDelete: (){}, delete: false, index: index, comingFromEditScreen: false, placeHolder: 'I want to achieve this goal because...'),
                                               SizedBox(
                                                 height: AppDimensions.height10(
                                                     context),
@@ -1337,9 +1338,8 @@ class _StarReviewState extends State<StarReview> {
                                           padding: EdgeInsets.zero,
                                           itemBuilder: (context, index) {
                                             return Column(children: [
-                                              inner_text2(
-                                                  'Statement ${index + 1}',
-                                                  '${identity[index]['text']}'),
+                                              inner_text(head_text: 'Statement ${index + 1}', body_text: '${identity[index]['text']}', length: 200, onChanged: (value){}, onDelete: (){}, delete: false, index: index, comingFromEditScreen: false, placeHolder: 'I want to achieve this goal because...'),
+
                                               SizedBox(
                                                 height: AppDimensions.height10(
                                                     context),
@@ -1483,9 +1483,8 @@ class _StarReviewState extends State<StarReview> {
                                           padding: EdgeInsets.zero,
                                           itemBuilder: (context, index) {
                                             return Column(children: [
-                                              inner_text2(
-                                                  'Statement ${index + 1}',
-                                                  '${visualize[index]['text']}'),
+                                              inner_text(head_text: 'Statement ${index + 1}', body_text: '${visualize[index]['text']}', length: 200, onChanged: (value){}, onDelete: (){}, delete: false, index: index, comingFromEditScreen: false, placeHolder: 'I want to achieve this goal because...'),
+
                                               SizedBox(
                                                 height: AppDimensions.height10(
                                                     context),
@@ -1794,176 +1793,6 @@ class _StarReviewState extends State<StarReview> {
                   ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class inner_text1 extends StatefulWidget {
-  final String circle_text;
-
-  const inner_text1(this.circle_text, {super.key});
-
-  @override
-  State<inner_text1> createState() => _inner_text1State();
-}
-
-class _inner_text1State extends State<inner_text1> {
-  final TextEditingController body_text = TextEditingController();
-
-  final TextEditingController heading_text = TextEditingController();
-
-  late FocusNode _focusNode;
-
-  @override
-  void initState() {
-    super.initState();
-    _focusNode = FocusNode()..addListener(_onFocus);
-  }
-
-  void _onFocus() {
-    setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: AppDimensions.height10(context) * 8.9,
-      width: AppDimensions.width10(context) * 36.0,
-      padding: EdgeInsets.only(
-          top: AppDimensions.height10(context) * 2,
-          bottom: 1,
-          left: AppDimensions.width10(context),
-          right: AppDimensions.width10(context) * 6.0),
-      decoration: BoxDecoration(
-          gradient: _focusNode.hasFocus
-              ? const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xFFEFBEB2), Color(0xFFEAA897)])
-              : const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xFFEECDC5), Color(0xFFF6E0DB)]),
-          // color: Colors.white,
-
-          border: Border.all(color: Colors.white, width: 2),
-          borderRadius: BorderRadius.all(
-              Radius.circular(AppDimensions.height10(context) * 1.8))),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SizedBox(
-              height: AppDimensions.height10(context) * 3.6,
-              width: AppDimensions.width10(context) * 26.9,
-              child: Text("Control my anger",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: _focusNode.hasFocus
-                        ? const Color(0xFFFFFFFF)
-                        : const Color(0xFFFFFFFF),
-                    fontSize: AppDimensions.font10(context) * 2.2,
-                  ))),
-        ],
-      ),
-    );
-  }
-}
-
-class inner_text2 extends StatefulWidget {
-  final String circle_text;
-  final String panel_Text;
-
-  const inner_text2(this.circle_text, this.panel_Text, {super.key});
-
-  @override
-  State<inner_text2> createState() => _inner_text2State();
-}
-
-class _inner_text2State extends State<inner_text2> {
-  final TextEditingController body_text = TextEditingController();
-
-  final TextEditingController heading_text = TextEditingController();
-
-  late FocusNode _focusNode;
-
-  @override
-  void initState() {
-    super.initState();
-    _focusNode = FocusNode()..addListener(_onFocus);
-  }
-
-  void _onFocus() {
-    setState(() {});
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: AppDimensions.width10(context) * 36.0,
-      decoration: BoxDecoration(
-          gradient: _focusNode.hasFocus
-              ? const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xFFE9A594), Color(0xFFEEBEB2)])
-              : const LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [Color(0xFFE9A594), Color(0xFFEEBEB2)]),
-          // color: Colors.white,
-
-          border: Border.all(color: Colors.white, width: 2),
-          borderRadius: BorderRadius.all(
-              Radius.circular(AppDimensions.height10(context) * 1.8))),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-              width: AppDimensions.width10(context) * 32.0,
-              padding: EdgeInsets.only(
-                  top: AppDimensions.height10(context) * 1.3,
-                  left: AppDimensions.width10(context) * 0.6),
-              child: Text(widget.circle_text,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Laila",
-                    color: _focusNode.hasFocus
-                        ? const Color(0xFFFFFFFF)
-                        : const Color(0xFFFFFFFF),
-                    fontSize: AppDimensions.font10(context) * 2.2,
-                  ))),
-          SizedBox(
-            height: AppDimensions.height10(context) * 0.9,
-          ),
-          Container(
-              padding: EdgeInsets.only(
-                  bottom: AppDimensions.height10(context) * 2.4),
-              width: AppDimensions.width10(context) * 32.0,
-              child: CupertinoTextField(
-                readOnly: true,
-                placeholder: widget.panel_Text,
-                placeholderStyle: TextStyle(
-                    fontSize: AppDimensions.font10(context) * 1.6,
-                    fontWeight: FontWeight.w500,
-                    fontFamily: "Laila",
-                    height: AppDimensions.height10(context) * 0.12,
-                    color: const Color(0xFFFFFFFF)),
-                controller: body_text,
-                focusNode: _focusNode,
-                // maxLines: 4,
-                minLines: null,
-                maxLines: null,
-                expands: true,
-
-                style: const TextStyle(
-                    fontWeight: FontWeight.w500, color: Color(0xFFFFFFFF)),
-                decoration: const BoxDecoration(
-                  color: Colors.transparent,
-                ),
-              )),
-        ],
       ),
     );
   }

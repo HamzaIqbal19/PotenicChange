@@ -65,11 +65,11 @@ class Authentication {
 
   Future signIn(email, password) async {
     var headers = {'Content-Type': 'application/json'};
-    var fcmToken = await FirebaseMessaging.instance.getToken();
+    //var fcmToken = await FirebaseMessaging.instance.getToken();
     final String currentTimeZone = await FlutterTimezone.getLocalTimezone();
 
     var body = json.encode({
-      "fcmRegistrationToken": '$fcmToken',
+      "fcmRegistrationToken": 'fcmToken',
       "email": "$email",
       "password": "$password",
       "timeZone": currentTimeZone

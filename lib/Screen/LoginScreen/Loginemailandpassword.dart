@@ -332,9 +332,11 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                               color: const Color(0xFF8C648A),
                                               fontWeight: FontWeight.w600,
                                               decoration: TextDecoration.none,
+                                              height: AppDimensions.height10(context) * 0.15,
+                                              decorationThickness: 0,
                                               fontSize: AppDimensions.font10(
                                                       context) *
-                                                  1.8),
+                                                  2.4),
                                           decoration: InputDecoration(
                                               errorBorder: InputBorder.none,
                                               contentPadding: EdgeInsets.zero,
@@ -342,9 +344,11 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                               hintStyle: TextStyle(
                                                 color: const Color(0xFF8C648A),
                                                 fontWeight: FontWeight.w600,
+                                                height: AppDimensions.height10(context) * 0.15,
+                                                decorationThickness: 0,
                                                 fontSize: AppDimensions.font10(
                                                         context) *
-                                                    1.8,
+                                                    2.4,
                                               ),
                                               focusedBorder:
                                                   const OutlineInputBorder(
@@ -483,9 +487,11 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                                 color: const Color(0xFF8C648A),
                                                 fontWeight: FontWeight.w600,
                                                 decoration: TextDecoration.none,
+                                                height: AppDimensions.height10(context) * 0.15,
+                                                decorationThickness: 0,
                                                 fontSize: AppDimensions.font10(
                                                         context) *
-                                                    1.8),
+                                                    2.4),
                                             decoration: InputDecoration(
                                                 contentPadding: EdgeInsets.zero,
                                                 hintText: "*******",
@@ -493,10 +499,12 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                                   color:
                                                       const Color(0xFF8C648A),
                                                   fontWeight: FontWeight.w600,
+                                                  height: AppDimensions.height10(context) * 0.15,
+                                                  decorationThickness: 0,
                                                   fontSize:
                                                       AppDimensions.font10(
                                                               context) *
-                                                          1.8,
+                                                          2.4,
                                                 ),
                                                 focusedBorder:
                                                     const OutlineInputBorder(

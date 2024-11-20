@@ -10,6 +10,7 @@ import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/settings.dart';
 import 'package:potenic_app/Screen/ResetPassword/PasswordReset.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
+import 'package:potenic_app/Widgets/alertbox.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
@@ -206,18 +207,20 @@ class _ContactUsState extends State<ContactUs> {
                                             color: const Color(0xFF8C648A),
                                             fontWeight: FontWeight.w600,
                                             decoration: TextDecoration.none,
+                                            height: AppDimensions.height10(context) * 0.15,
                                             fontSize: AppDimensions.font10(
                                                 context) *
-                                                1.8),
+                                                2.4),
                                         decoration: InputDecoration(
                                             contentPadding: EdgeInsets.zero,
                                             hintText: "What your enquiry is about?",
                                             hintStyle: TextStyle(
                                               color: const Color(0xFF8C648A),
                                               fontWeight: FontWeight.w600,
+                                              height: AppDimensions.height10(context) * 0.15,
                                               fontSize: AppDimensions.font10(
                                                   context) *
-                                                  1.8,
+                                                  2.4,
                                             ),
                                             focusedBorder:
                                             const OutlineInputBorder(
@@ -274,7 +277,7 @@ class _ContactUsState extends State<ContactUs> {
                           SizedBox(
                               height: AppDimensions.height10(context) * 3),
                           Container(
-                            height: AppDimensions.height10(context) * 18.5,
+                            //height: AppDimensions.height10(context) * 18.5,
                             width: AppDimensions.width10(context) * 36.0,
                             decoration: BoxDecoration(
                                 color: Colors.white,
@@ -334,11 +337,14 @@ class _ContactUsState extends State<ContactUs> {
                                       keyboardType: TextInputType.text,
                                       style: TextStyle(
                                           color: const Color(0xFF8C648A),
+                                          fontFamily: 'laila',
                                           fontWeight: FontWeight.w600,
                                           decoration: TextDecoration.none,
+                                          decorationThickness: 0,
+                                          height: AppDimensions.height10(context) * 0.15,
                                           fontSize: AppDimensions.font10(
                                               context) *
-                                              1.8),
+                                              2.4),
                                       decoration: InputDecoration(
                                           contentPadding: EdgeInsets.zero,
                                           hintText: "Please tell us how we can help you",
@@ -346,10 +352,13 @@ class _ContactUsState extends State<ContactUs> {
                                             color:
                                             const Color(0xFF8C648A),
                                             fontWeight: FontWeight.w600,
+                                            fontFamily: 'laila',
+                                            decorationThickness: 0,
+                                            height: AppDimensions.height10(context) * 0.15,
                                             fontSize:
                                             AppDimensions.font10(
                                                 context) *
-                                                1.8,
+                                                2.4,
                                           ),
                                           focusedBorder:
                                           const OutlineInputBorder(
@@ -438,8 +447,9 @@ class _ContactUsState extends State<ContactUs> {
                                 loading = false;
                               });
                               Future.delayed(const Duration(seconds: 3),(){
-                                Navigator.pushReplacement(
+                                Navigator.push(
                                     context, FadePageRoute(page: const Settings()));
+                                AlertBox().messageDialog(context, AppText().contactUsDialogTitle, AppText().contactUsDialogBody,(){Navigator.pop(context);}, 'OK');
                               });
 
                             }

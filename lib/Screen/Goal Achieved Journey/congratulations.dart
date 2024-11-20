@@ -805,7 +805,7 @@ void goal_achieved_sheet(context, data, subscription, length) {
                                           data['goalLevel'] == 1
                                               ? "I haven’t noticed\nmuch progress yet"
                                               : data['goalLevel'] == 2
-                                                  ? "I'm making\ngradual steps\nforward"
+                                                  ? "I'm making\nsmall steps\nforward"
                                                   : data['goalLevel'] == 3
                                                       ? "I'm almost there"
                                                       : data['goalLevel'] == 4

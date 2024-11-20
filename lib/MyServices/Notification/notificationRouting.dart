@@ -81,6 +81,10 @@ navigationIds(data) async {
     await prefs.setInt("prac_num", int.parse(data["userPracticeId"]));
     await prefs.setInt("goal_num", int.parse(data["userGoalId"]));
   }
+
+  if (data["route"] == 'goalEvaluation') {
+    await prefs.setInt("goal_num", int.parse(data["userGoalId"]));
+  }
   //  ;
   // switch (route) {
   //   case "hurdle":

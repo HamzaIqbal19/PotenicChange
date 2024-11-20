@@ -298,8 +298,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                   color: const Color(0xFF8C648A),
                                   fontWeight: FontWeight.w600,
                                   decoration: TextDecoration.none,
+                                  height: AppDimensions.height10(context) * 0.15,
                                   fontSize:
-                                      AppDimensions.height10(context) * 1.8),
+                                      AppDimensions.height10(context) * 2.4),
                               decoration: InputDecoration(
                                   contentPadding: const EdgeInsets.only(
                                       top: 5.0,
@@ -312,8 +313,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                   hintStyle: TextStyle(
                                     color: const Color(0xFF8C648A),
                                     fontWeight: FontWeight.w600,
+                                    decoration: TextDecoration.none,
+                                    height: AppDimensions.height10(context) * 0.15,
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.8,
+                                        AppDimensions.font10(context) * 2.4,
                                   ),
                                   labelText: "Name",
                                   focusedBorder: const OutlineInputBorder(
@@ -382,8 +385,9 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                     color: const Color(0xFF8C648A),
                                     fontWeight: FontWeight.w600,
                                     decoration: TextDecoration.none,
+                                    height: AppDimensions.height10(context) * 0.15,
                                     fontSize:
-                                        AppDimensions.font10(context) * 1.8),
+                                        AppDimensions.font10(context) * 2.4),
                                 decoration: InputDecoration(
                                     contentPadding: const EdgeInsets.only(
                                         top: 5.0,
@@ -396,8 +400,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                     hintStyle: TextStyle(
                                       color: const Color(0xFF8C648A),
                                       fontWeight: FontWeight.w600,
+                                      decoration: TextDecoration.none,
+                                      height: AppDimensions.height10(context) * 0.15,
                                       fontSize:
-                                          AppDimensions.font10(context) * 1.8,
+                                          AppDimensions.font10(context) * 2.4,
                                     ),
                                     labelText: "Email",
                                     focusedBorder: const OutlineInputBorder(
@@ -480,9 +486,10 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                         color: const Color(0xFF8C648A),
                                         fontWeight: FontWeight.w600,
                                         decoration: TextDecoration.none,
+                                        height: AppDimensions.height10(context) * 0.15,
                                         fontSize:
                                             AppDimensions.font10(context) *
-                                                1.8),
+                                                2.4),
                                     decoration: InputDecoration(
                                         contentPadding: const EdgeInsets.only(
                                             top: 5.0,
@@ -496,9 +503,11 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                                         hintStyle: TextStyle(
                                           color: const Color(0xFF8C648A),
                                           fontWeight: FontWeight.w600,
+                                          decoration: TextDecoration.none,
+                                          height: AppDimensions.height10(context) * 0.15,
                                           fontSize:
                                               AppDimensions.font10(context) *
-                                                  1.8,
+                                                  2.4,
                                         ),
                                         labelText: "Password",
                                         focusedBorder: const OutlineInputBorder(

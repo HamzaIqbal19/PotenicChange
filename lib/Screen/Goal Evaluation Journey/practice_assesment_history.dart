@@ -161,7 +161,7 @@ class _practice_assesmentState extends State<practice_assesment> {
                   //width: AppDimensions.width10(context) * 30.4,
 
                   margin: EdgeInsets.only(
-                  top: AppDimensions.height10(context) * 11.0,
+                  top: AppDimensions.height10(context) * 14.0,
           ),),
 
 

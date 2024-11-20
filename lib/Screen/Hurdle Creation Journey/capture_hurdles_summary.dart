@@ -437,7 +437,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                             children: [
                               Container(
                                 width: AppDimensions.width10(context) * 23.9,
-                                height: AppDimensions.height10(context) * 2.2,
+                               // height: AppDimensions.height10(context) * 2.2,
                                 margin: EdgeInsets.only(
                                     left:
                                         AppDimensions.width10(context) * 1.99),
@@ -449,7 +449,7 @@ class _summary_hurdlesState extends State<summary_hurdles> {
                                         color: const Color(0xFF646464),
                                         fontSize:
                                             UpdatedDimensions.font10(context) *
-                                                1.6,
+                                                2,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     )),

@@ -176,9 +176,9 @@ class _edit_credentialsState extends State<edit_credentials> {
                     ? Align(
                       alignment: Alignment.centerLeft,
                       child: Container(
-                          width: AppDimensions.width10(context) * 35.7,
+                          width: AppDimensions.width10(context) * 36.0,
                           margin: EdgeInsets.only(
-                            left: AppDimensions.width10(context) * 0.6,
+                            left: AppDimensions.width10(context) * 2.6,
                            // right: AppDimensions.width10(context) * 3.6,
                             top: AppDimensions.height10(context) * 6.5,
                           ),
@@ -503,8 +503,8 @@ class _edit_credentialsState extends State<edit_credentials> {
                             widget.password_edit
                                 ? Container()
                                 : Container(
-                                    height:
-                                        AppDimensions.height10(context) * 1.7,
+                                    // height:
+                                    //     AppDimensions.height10(context) * 1.7,
                                     alignment: Alignment.centerLeft,
                                     margin: EdgeInsets.only(
                                         left: AppDimensions.width10(context) *
@@ -514,8 +514,8 @@ class _edit_credentialsState extends State<edit_credentials> {
                                       style: TextStyle(
                                         color: const Color(0xFFFBFBFB),
                                         fontSize:
-                                            AppDimensions.font10(context) * 1.4,
-                                        fontWeight: FontWeight.w400,
+                                            AppDimensions.font10(context) * 1.8,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                   ),

@@ -165,7 +165,7 @@ class hurdles_splashState extends State<hurdles_splash> {
                   margin: EdgeInsets.only(
                       bottom: AppDimensions.height10(context) * 3.7),
                   child: Text(
-                      'Use this space to capture obstacles that\nmay hold you back from achieving your\npersonal growth goals.',
+                      'Capture obstacles that hold you back.\nAcknowledge what stands between you\nand your goals. ',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontSize: AppDimensions.font10(context) * 1.8,
