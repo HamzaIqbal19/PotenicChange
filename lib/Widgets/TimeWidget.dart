@@ -125,27 +125,13 @@ class _schedule_cardState extends State<schedule_card> {
     return DateTime(0, 1, 1, hour, minute);
   }
 
-  _sortTimesWithinDay(List<Map<String, dynamic>> timesDay) {
-    // print("yaha aya time $timesPerDay");
-
+  List<String> sortTimes(List<String> times) {
     try {
-      for (var entry in timesDay) {
-        var times = entry.entries
-            .where((e) => e.key.startsWith('time'))
-            .map((e) => e.value)
-            .toList();
-
-        // print('Times before sorting for ${entry['day']}: $times');
-        //  times.sort();
-        times.sort((a, b) => customParseTime(a).compareTo(customParseTime(b)));
-        // print('Times after sorting for ${entry['day']}: $times');
-
-        for (int i = 0; i < times.length; i++) {
-          entry['time${i + 1}'] = times[i];
-        }
-      }
+      times.sort((a, b) => customParseTime(a).compareTo(customParseTime(b)));
+      return times;
     } catch (e) {
-      print("e ee $e");
+      print("Error: $e");
+      return times; // Return the original list in case of an error
     }
   }
 
@@ -238,13 +224,13 @@ class _schedule_cardState extends State<schedule_card> {
                                 setState(() async {
                                   if (Done) {
                                     selectedDays.add(days_name);
+                                    print("timesss ${times.length}");
 
                                     setState(() {
                                       num = num + 1;
                                       start_time =
                                           "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
                                     });
-                                    print("start time $start_time");
 
                                     Done = Done;
                                     if (Done == true) {
@@ -253,14 +239,27 @@ class _schedule_cardState extends State<schedule_card> {
                                         start_time =
                                             "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
                                       });
-                                      times.add(start_time);
-                                      print("times $times");
+
+                                      if (times.contains(start_time)) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                              content: Text(
+                                                  "This time slot is already selected.")),
+                                        );
+                                      } else {
+                                        times.add(start_time);
+                                        sortTimes(times);
+
+                                        print("length ${times.length}");
+                                      }
                                       TwoValues<String, int> values =
                                           TwoValues<String, int>(
                                               start_time, num);
                                       widget.onChangedStart(values);
                                       onCountChanged(count);
                                       _globalKey.currentState?.expand();
+                                      print("times $times");
                                       Navigator.pop(context);
                                     }
                                   }
@@ -296,7 +295,7 @@ class _schedule_cardState extends State<schedule_card> {
                     fontSize: 20.0),
               ),
               children: <Widget>[
-                for (int i = 0; i < num && i <= 9; i++) ...[
+                for (int i = 0; i < times.length && i <= 9; i++) ...[
                   Container(
                     // color:Colors.orange,
                     padding:
@@ -310,20 +309,32 @@ class _schedule_cardState extends State<schedule_card> {
                           text: ' $num) Time: ',
                           start_Time: times[i],
                           onChanged: (value) {
-                            setState(() {
-                              start_time = value;
-                            });
-                            times[i] = start_time;
-                            TwoValues<String, int> values =
-                                TwoValues<String, int>(value, num);
+                            // setState(() {
+                            //   start_time = value;
+                            // });
+                            // times[i] = start_time;
 
-                            widget.onChangedStart(values);
+                            // TwoValues<String, int> values =
+                            //     TwoValues<String, int>(value, num);
+
+                            // widget.onChangedStart(values);
                           },
                           onChangedStart: (String value) {
                             setState(() {
                               start_time = value;
                             });
-                            times[i] = start_time;
+                            if (times.contains(start_time)) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text(
+                                        "This time slot is already selected.")),
+                              );
+                            } else {
+                              times[i] = start_time;
+                              sortTimes(times);
+                            }
+
+                            print("times $times");
                           },
                         ),
                         // SizedBox(width: 30,),

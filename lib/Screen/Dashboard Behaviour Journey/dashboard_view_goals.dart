@@ -250,6 +250,7 @@ class _ViewDashboardState extends State<ViewDashboard>
             'data': practiceData[i],
             'status': '${practiceData[i]['recordingStatusTime${y + 1}']}'
           });
+          print("timelist ${timesList}");
         }
       }
 

@@ -177,6 +177,64 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
     Navigator.pop(context);
   }
 
+  DateTime customParseTime(String time) {
+    // Extract the time part and AM/PM
+    final timeParts = time.trim().split(RegExp(r'(?<=\d)(?=[a-zA-Z])'));
+    // print("time $timeParts");
+
+    final timeString = timeParts[0];
+    // print("time1 $timeString");
+    final period = timeString.toString().split(' ');
+    // print("time2 $period");
+
+    final hourMinute = period[0].split(':');
+    // print("time3 $hourMinute");
+    int hour = int.parse(hourMinute[0]);
+    // print("time4 $hour");
+    final minute = int.parse(hourMinute[1]);
+    // print("time5 $minute");
+
+    // Adjust hour if the period is PM (excluding 12 PM)
+    if (period[1] == 'pm' && hour != 12) {
+      hour += 12;
+    } else {
+      // print("period $period");
+    }
+    // Adjust for 12 AM being midnight
+    if (period[1] == 'am' && hour == 12) {
+      hour = 0;
+    } else {
+      // print("period22 $period");
+    }
+
+    // Return a DateTime object for comparison
+    return DateTime(0, 1, 1, hour, minute);
+  }
+
+  _sortTimesWithinDay(List<Map<String, dynamic>> timesDay) {
+    // print("yaha aya time $timesPerDay");
+
+    try {
+      for (var entry in timesDay) {
+        var times = entry.entries
+            .where((e) => e.key.startsWith('time'))
+            .map((e) => e.value)
+            .toList();
+
+        // print('Times before sorting for ${entry['day']}: $times');
+        //  times.sort();
+        times.sort((a, b) => customParseTime(a).compareTo(customParseTime(b)));
+        // print('Times after sorting for ${entry['day']}: $times');
+
+        for (int i = 0; i < times.length; i++) {
+          entry['time${i + 1}'] = times[i];
+        }
+      }
+    } catch (e) {
+      print("e ee $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -446,15 +504,18 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                         (map) =>
                                             map['day'] == selectedDay[index],
                                       );
+
                                       DayMap['time${value.value2}'] =
                                           value.value1;
+                                      _sortTimesWithinDay([DayMap]);
+                                      print("Dyamao $timesPerDay");
+                                      // }
                                     } else {
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(const SnackBar(
                                               content: Text(
                                                   "Practice routine in limited to 10 sessions par day.")));
                                     }
-                                    print("timesperday $timesPerDay");
                                   },
 
                                   onCountChanged: (value) {
@@ -466,6 +527,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                     } else {
                                       // If it's not already selected, add it to the list
                                       selectedDays.add(timesPerDay[index]);
+
                                       setState(() {
                                         count1 = count;
                                         index1 = index;
