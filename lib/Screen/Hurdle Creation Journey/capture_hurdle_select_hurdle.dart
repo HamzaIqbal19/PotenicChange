@@ -175,7 +175,7 @@ class _select_hurdleState extends State<select_hurdle> {
                     context,
                     FadePageRoute(
                         page: const summary_hurdles(
-                      delete_hurdle: true,
+                      delete_hurdle: false,
                     )),
                   );
                 }

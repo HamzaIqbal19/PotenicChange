@@ -9,6 +9,7 @@ import 'package:potenic_app/Screen/LoginScreen/LoginPage.dart';
 import 'package:potenic_app/Screen/ResetPassword/PasswordReset.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpPage.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
+import 'package:potenic_app/Widgets/authTextField.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading2.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -274,14 +275,14 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
 
                       // SizedBox(height: AppDimensions.height0),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 26 + 12,
+                        height: AppDimensions.height10(context) * 26 + 24,
                         width: AppDimensions.width10(context) * 36,
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                                height: AppDimensions.height10(context) * 6.2,
+                                // height: AppDimensions.height10(context) * 6.2,
                                 width: AppDimensions.width10(context) * 36.0,
                                 decoration: BoxDecoration(
                                     color: Colors.white,
@@ -295,136 +296,170 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Container(
-                                      margin: EdgeInsets.only(
-                                          left: AppDimensions.width10(context) *
-                                              2.0,
-                                          bottom:
-                                              AppDimensions.height10(context) *
-                                                  0.5),
-                                      width:
-                                          AppDimensions.width10(context) * 3.7,
-                                      height:
-                                          AppDimensions.height10(context) * 1.7,
-                                      child: Text(
-                                        "Email",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w400,
-                                            color: const Color(0xFF282828),
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.4),
-                                      ),
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
-                                            2.0,
-                                      ),
-                                      width:
-                                          AppDimensions.width10(context) * 36.0,
-                                      height:
-                                          AppDimensions.height10(context) * 2.2,
-                                      child: TextFormField(
-                                          keyboardType:
-                                              TextInputType.emailAddress,
-                                          style: TextStyle(
-                                              color: const Color(0xFF8C648A),
-                                              fontWeight: FontWeight.w600,
-                                              decoration: TextDecoration.none,
-                                              height: AppDimensions.height10(context) * 0.15,
-                                              decorationThickness: 0,
-                                              fontSize: AppDimensions.font10(
-                                                      context) *
-                                                  2.4),
-                                          decoration: InputDecoration(
-                                              errorBorder: InputBorder.none,
-                                              contentPadding: EdgeInsets.zero,
-                                              hintText: "JohnSmith@yahoo.com",
-                                              hintStyle: TextStyle(
-                                                color: const Color(0xFF8C648A),
-                                                fontWeight: FontWeight.w600,
-                                                height: AppDimensions.height10(context) * 0.15,
-                                                decorationThickness: 0,
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    2.4,
-                                              ),
-                                              focusedBorder:
-                                                  const OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                          color: Colors
-                                                              .transparent)),
-                                              enabledBorder:
-                                                  const OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                          color: Colors
-                                                              .transparent))),
-                                          onChanged: (value) {
-                                            setState(() {
-                                              passwordMsg = "";
-                                              errorPassword = false;
-                                                  emailMsg = '';
-                                              errorEmail = false;
-                                            });
-                                          },
-                                          controller: emailController,
-                                          validator: (val) {
-                                            if (val != null && val.isNotEmpty) {
-                                              val = val.trim();
-                                            }
-
-                                            if (val == null || val.isEmpty) {
-                                              setState(() {
-                                                errorEmail = true;
-                                                emailMsg = 'Email is required';
-                                              });
-                                            } else if (!EmailValidator.validate(
-                                                val)) {
-                                              setState(() {
-                                                errorEmail = true;
-                                                emailMsg =
-                                                    ' Ooops! Needs to be an email format';
-                                              });
-                                            } else {
-                                              setState(() {
-                                                errorEmail = false;
-                                                emailMsg = '';
-                                              });
-                                            }
-                                            return null;
+                                    // Container(
+                                    //   margin: EdgeInsets.only(
+                                    //       left: AppDimensions.width10(context) *
+                                    //           2.0,
+                                    //       bottom:
+                                    //           AppDimensions.height10(context) *
+                                    //               0.5),
+                                    //   width:
+                                    //       AppDimensions.width10(context) * 3.7,
+                                    //   height:
+                                    //       AppDimensions.height10(context) * 1.7,
+                                    //   child: Text(
+                                    //     "Email",
+                                    //     style: TextStyle(
+                                    //         fontWeight: FontWeight.w400,
+                                    //         color: const Color(0xFF282828),
+                                    //         fontSize:
+                                    //             AppDimensions.font10(context) *
+                                    //                 1.4),
+                                    //   ),
+                                    // ),
+                                    CustomTextfields().AuthTextField(
+                                        passObscure: false,
+                                        hintText: "JohnSmith@yahoo.com",
+                                        labeText: "Email",
+                                        context: context,
+                                        controller: emailController,
+                                        onChanged: (value) {
+                                          setState(() {
+                                            // passwordMsg = "";
+                                            // errorPassword = false;
+                                            emailMsg = '';
+                                            errorEmail = false;
+                                          });
+                                        },
+                                        validator: (val) {
+                                          if (val != null && val.isNotEmpty) {
+                                            val = val.trim();
                                           }
-                                          // },
-                                          ),
-                                    )
+
+                                          if (val == null || val.isEmpty) {
+                                            setState(() {
+                                              errorEmail = true;
+                                              emailMsg = 'Email is required';
+                                            });
+                                          } else if (!EmailValidator.validate(
+                                              val)) {
+                                            setState(() {
+                                              errorEmail = true;
+                                              emailMsg =
+                                                  ' Ooops! Needs to be an email format';
+                                            });
+                                          } else {
+                                            setState(() {
+                                              errorEmail = false;
+                                              emailMsg = '';
+                                            });
+                                          }
+                                          return null;
+                                        }
+                                        // },
+                                        )
+
+                                    // TextFormField(
+                                    //     keyboardType:
+                                    //         TextInputType.emailAddress,
+                                    //     style: TextStyle(
+                                    //         color: const Color(0xFF8C648A),
+                                    //         fontWeight: FontWeight.w600,
+                                    //         decoration: TextDecoration.none,
+                                    //         fontSize: AppDimensions.font10(
+                                    //                 context) *
+                                    //             2.4),
+                                    //     decoration: InputDecoration(
+                                    //         errorBorder: InputBorder.none,
+                                    //         contentPadding: EdgeInsets.zero,
+                                    //         hintText: "JohnSmith@yahoo.com",
+                                    //         hintStyle: TextStyle(
+                                    //           color: const Color(0xFF8C648A),
+                                    //           fontWeight: FontWeight.w600,
+                                    //           fontSize: AppDimensions.font10(
+                                    //                   context) *
+                                    //               2.4,
+                                    //         ),
+                                    //         focusedBorder:
+                                    //             const OutlineInputBorder(
+                                    //                 borderSide: BorderSide(
+                                    //                     color: Colors
+                                    //                         .transparent)),
+                                    //         enabledBorder:
+                                    //             const OutlineInputBorder(
+                                    //                 borderSide: BorderSide(
+                                    //                     color: Colors
+                                    //                         .transparent))),
+                                    //     onChanged: (value) {
+                                    //       setState(() {
+                                    //         passwordMsg = "";
+                                    //         errorPassword = false;
+                                    //         emailMsg = '';
+                                    //         errorEmail = false;
+                                    //       });
+                                    //     },
+                                    //     controller: emailController,
+                                    //     validator: (val) {
+                                    //       if (val != null && val.isNotEmpty) {
+                                    //         val = val.trim();
+                                    //       }
+
+                                    //       if (val == null || val.isEmpty) {
+                                    //         setState(() {
+                                    //           errorEmail = true;
+                                    //           emailMsg = 'Email is required';
+                                    //         });
+                                    //       } else if (!EmailValidator.validate(
+                                    //           val)) {
+                                    //         setState(() {
+                                    //           errorEmail = true;
+                                    //           emailMsg =
+                                    //               ' Ooops! Needs to be an email format';
+                                    //         });
+                                    //       } else {
+                                    //         setState(() {
+                                    //           errorEmail = false;
+                                    //           emailMsg = '';
+                                    //         });
+                                    //       }
+                                    //       return null;
+                                    //     }
+                                    //     // },
+                                    //     )
                                   ],
                                 )),
                             errorEmail
-                                ? Container(
-                                    height:
-                                        AppDimensions.height10(context) * 1.7,
-                                    width:
-                                        AppDimensions.width10(context) * 23.3,
-                                    padding: EdgeInsets.only(
-                                        left: AppDimensions.width10(context) *
-                                            1.2),
-                                    child: Text(
-                                      emailMsg,
-                                      style: TextStyle(
-                                        color: const Color(0xFFFE6624),
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.4,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
+                                ? CustomTextfields().errorText(
+                                    context: context,
+                                    texterror: emailMsg,
                                   )
                                 : Container(),
+                            // errorEmail
+                            //     ? Container(
+                            //         height:
+                            //             AppDimensions.height10(context) * 1.7,
+                            //         width:
+                            //             AppDimensions.width10(context) * 23.3,
+                            //         padding: EdgeInsets.only(
+                            //             left: AppDimensions.width10(context) *
+                            //                 1.2),
+                            //         child: Text(
+                            //           emailMsg,
+                            //           style: TextStyle(
+                            //             color: const Color(0xFFFE6624),
+                            //             fontSize:
+                            //                 AppDimensions.font10(context) * 1.4,
+                            //             fontWeight: FontWeight.w600,
+                            //           ),
+                            //         ),
+                            //       )
+                            //     : Container(),
                             SizedBox(
                                 height: errorEmail
                                     ? AppDimensions.height10(context)
                                     : AppDimensions.height10(context) * 3),
                             Container(
-                              height: AppDimensions.height10(context) * 6.2,
+                              //height: AppDimensions.height10(context) * 6.2,
                               width: AppDimensions.width10(context) * 36.0,
                               decoration: BoxDecoration(
                                   color: Colors.white,
@@ -445,166 +480,216 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                              left: AppDimensions.height10(
-                                                      context) *
-                                                  2.0,
-                                              bottom: AppDimensions.height10(
-                                                      context) *
-                                                  0.5),
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  6.3,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  1.7,
-                                          child: Text(
-                                            "Password",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                color: const Color(0xFF282828),
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    1.4),
-                                          ),
-                                        ),
-                                        Container(
-                                          margin: EdgeInsets.only(
-                                            left: AppDimensions.height10(
-                                                    context) *
-                                                2.0,
-                                          ),
-                                          width:
-                                              AppDimensions.width10(context) *
-                                                  36.0,
-                                          height:
-                                              AppDimensions.height10(context) *
-                                                  2.2,
-                                          child: TextFormField(
-                                            obscureText: passObscure,
-                                            style: TextStyle(
-                                                color: const Color(0xFF8C648A),
-                                                fontWeight: FontWeight.w600,
-                                                decoration: TextDecoration.none,
-                                                height: AppDimensions.height10(context) * 0.15,
-                                                decorationThickness: 0,
-                                                fontSize: AppDimensions.font10(
-                                                        context) *
-                                                    2.4),
-                                            decoration: InputDecoration(
-                                                contentPadding: EdgeInsets.zero,
-                                                hintText: "*******",
-                                                hintStyle: TextStyle(
-                                                  color:
-                                                      const Color(0xFF8C648A),
-                                                  fontWeight: FontWeight.w600,
-                                                  height: AppDimensions.height10(context) * 0.15,
-                                                  decorationThickness: 0,
-                                                  fontSize:
-                                                      AppDimensions.font10(
-                                                              context) *
-                                                          2.4,
-                                                ),
-                                                focusedBorder:
-                                                    const OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color: Colors
-                                                                .transparent)),
-                                                enabledBorder:
-                                                    const OutlineInputBorder(
-                                                        borderSide: BorderSide(
-                                                            color: Colors
-                                                                .transparent))),
-                                            onChanged: (value) {
+                                        // Container(
+                                        //   margin: EdgeInsets.only(
+                                        //       left: AppDimensions.height10(
+                                        //               context) *
+                                        //           2.0,
+                                        //       bottom: AppDimensions.height10(
+                                        //               context) *
+                                        //           0.5),
+                                        //   width:
+                                        //       AppDimensions.width10(context) *
+                                        //           6.3,
+                                        //   height:
+                                        //       AppDimensions.height10(context) *
+                                        //           1.7,
+                                        //   child: Text(
+                                        //     "Password",
+                                        //     style: TextStyle(
+                                        //         fontWeight: FontWeight.w400,
+                                        //         color: const Color(0xFF282828),
+                                        //         fontSize: AppDimensions.font10(
+                                        //                 context) *
+                                        //             1.4),
+                                        //   ),
+                                        // ),
+                                        // Container(
+                                        //   margin: EdgeInsets.only(
+                                        //     left: AppDimensions.height10(
+                                        //             context) *
+                                        //         2.0,
+                                        //   ),
+                                        //   width:
+                                        //       AppDimensions.width10(context) *
+                                        //           36.0,
+                                        //   height:
+                                        //       AppDimensions.height10(context) *
+                                        //           3.0,
+                                        //   child: TextFormField(
+                                        //     obscureText: passObscure,
+                                        //     style: TextStyle(
+                                        //         color: const Color(0xFF8C648A),
+                                        //         fontWeight: FontWeight.w600,
+                                        //         decoration: TextDecoration.none,
+                                        //         fontSize: AppDimensions.font10(
+                                        //                 context) *
+                                        //             2.4),
+                                        //     decoration: InputDecoration(
+                                        //         contentPadding: EdgeInsets.zero,
+                                        //         hintText: "*******",
+                                        //         hintStyle: TextStyle(
+                                        //           color:
+                                        //               const Color(0xFF8C648A),
+                                        //           fontWeight: FontWeight.w600,
+                                        //           fontSize:
+                                        //               AppDimensions.font10(
+                                        //                       context) *
+                                        //                   2.4,
+                                        //         ),
+                                        //         focusedBorder:
+                                        //             const OutlineInputBorder(
+                                        //                 borderSide: BorderSide(
+                                        //                     color: Colors
+                                        //                         .transparent)),
+                                        //         enabledBorder:
+                                        //             const OutlineInputBorder(
+                                        //                 borderSide: BorderSide(
+                                        //                     color: Colors
+                                        //                         .transparent))),
+                                        //     onChanged: (value) {
+                                        //       setState(() {
+                                        //         passwordMsg = "";
+                                        //         errorPassword = false;
+                                        //         emailMsg = '';
+                                        //         errorEmail = false;
+                                        //       });
+                                        //     },
+                                        //     controller: passwordController,
+                                        //     validator: (val) {
+                                        //       if ((val == null && val == '')) {
+                                        //         setState(() {
+                                        //           passwordMsg =
+                                        //               "Password is required";
+                                        //           errorPassword = true;
+                                        //         });
+                                        //       } else if (val!.length < 8) {
+                                        //         setState(() {
+                                        //           passwordMsg =
+                                        //               "Minimum 8 characters";
+                                        //           errorPassword = true;
+                                        //         });
+                                        //       } else {
+                                        //         setState(() {
+                                        //           passwordMsg = "";
+                                        //           errorPassword = false;
+                                        //         });
+                                        //       }
+                                        //       return null;
+                                        //     },
+                                        //     onFieldSubmitted: (value) {
+                                        //       loginFunction();
+                                        //     },
+                                        //   ),
+                                        // ),
+
+                                        CustomTextfields().AuthTextField(
+                                          passObscure: passObscure,
+                                          context: context,
+                                          controller: passwordController,
+                                          labeText: "Password",
+                                          hintText: "*******",
+                                          onFieldSubmitted: (value) {
+                                            loginFunction();
+                                          },
+                                          validator: (val) {
+                                            if ((val == null && val == '')) {
+                                              setState(() {
+                                                passwordMsg =
+                                                    "Password is required";
+                                                errorPassword = true;
+                                              });
+                                            } else if (val!.length < 8) {
+                                              setState(() {
+                                                passwordMsg =
+                                                    "Minimum 8 characters";
+                                                errorPassword = true;
+                                              });
+                                            } else {
                                               setState(() {
                                                 passwordMsg = "";
                                                 errorPassword = false;
-                                                emailMsg = '';
-                                                errorEmail = false;
                                               });
-                                            },
-                                            controller: passwordController,
-                                            validator: (val) {
-                                              if ((val == null && val == '')) {
-                                                setState(() {
-                                                  passwordMsg =
-                                                      "Password is required";
-                                                  errorPassword = true;
-                                                });
-                                              } else if (val!.length < 8) {
-                                                setState(() {
-                                                  passwordMsg =
-                                                      "Minimum 8 characters";
-                                                  errorPassword = true;
-                                                });
-                                              } else {
-                                                setState(() {
-                                                  passwordMsg = "";
-                                                  errorPassword = false;
-                                                });
-                                              }
-                                              return null;
-                                            },
-                                            onFieldSubmitted: (value) {
-                                              loginFunction();
-                                            },
-                                          ),
+                                            }
+                                            return null;
+                                          },
+                                          onChanged: (value) {
+                                            setState(() {
+                                              passwordMsg = "";
+                                              errorPassword = false;
+                                              // emailMsg = '';
+                                              // errorEmail = false;
+                                            });
+                                          },
                                         ),
                                       ],
                                     ),
                                   ),
-                                  GestureDetector(
-                                    onTap: () {
+                                  CustomTextfields().visibleIcon(
+                                    context: context,
+                                    onpress: () {
                                       setState(() {
                                         passObscure = !passObscure;
                                       });
                                     },
-                                    child: SizedBox(
-                                      height:
-                                          AppDimensions.height10(context) * 2.4,
-                                      width:
-                                          AppDimensions.width10(context) * 2.4,
-                                      child: Image.asset(
-                                        passObscure
-                                            ? 'assets/images/visible-icon-9.webp'
-                                            : 'assets/images/ic_remove_red_eye.webp',
-                                        color: const Color(0xFF8C648A),
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                2.4,
-                                        width: AppDimensions.height10(context) *
-                                            2.4,
-                                      ),
-                                    ),
                                   )
+                                  // GestureDetector(
+                                  //   onTap: () {
+                                  //     setState(() {
+                                  //       passObscure = !passObscure;
+                                  //     });
+                                  //   },
+                                  //   child: SizedBox(
+                                  //     height:
+                                  //         AppDimensions.height10(context) * 2.4,
+                                  //     width:
+                                  //         AppDimensions.width10(context) * 2.4,
+                                  //     child: Image.asset(
+                                  //       passObscure
+                                  //           ? 'assets/images/visible-icon-9.webp'
+                                  //           : 'assets/images/ic_remove_red_eye.webp',
+                                  //       color: const Color(0xFF8C648A),
+                                  //       height:
+                                  //           AppDimensions.height10(context) *
+                                  //               2.4,
+                                  //       width: AppDimensions.height10(context) *
+                                  //           2.4,
+                                  //     ),
+                                  //   ),
+                                  // )
                                 ],
                               ),
                             ),
                             errorPassword
-                                ? Container(
-                                    padding: EdgeInsets.only(
-                                        left: AppDimensions.width10(context) *
-                                            1.2),
-                                    child: Text(
-                                      passwordMsg,
-                                      // PasswordError,
-
-                                      style: TextStyle(
-                                        color: const Color(0xFFFE6624),
-                                        fontSize:
-                                            AppDimensions.font10(context) * 1.4,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
+                                ? CustomTextfields().errorText(
+                                    context: context,
+                                    texterror: passwordMsg,
                                   )
-                                : const SizedBox(),
+                                : Container(),
+                            // errorPassword
+                            //     ? Container(
+                            //         padding: EdgeInsets.only(
+                            //             left: AppDimensions.width10(context) *
+                            //                 1.2),
+                            //         child: Text(
+                            //           passwordMsg,
+                            //           // PasswordError,
+
+                            //           style: TextStyle(
+                            //             color: const Color(0xFFFE6624),
+                            //             fontSize:
+                            //                 AppDimensions.font10(context) * 1.4,
+                            //             fontWeight: FontWeight.w600,
+                            //           ),
+                            //         ),
+                            //       )
+                            //     : const SizedBox(),
                             SizedBox(
                                 height: errorPassword
                                     ? AppDimensions.height10(context)
                                     : AppDimensions.height10(context) * 3),
                             Container(
-                                height: AppDimensions.height10(context) * 2.2,
+                                // height: AppDimensions.height10(context) * 2.2,
                                 padding: EdgeInsets.only(
                                     left: AppDimensions.width10(context) * 1.2,
                                     right: 5),
@@ -680,7 +765,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                       // height: AppDimensions.height10(context) * 2.7,
                                       margin: EdgeInsets.only(
                                           top: AppDimensions.height10(context) *
-                                              2.0),
+                                              2),
                                       child: Center(
                                           child: RichText(
                                               textAlign: TextAlign.center,
@@ -689,14 +774,14 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                                     color:
                                                         const Color(0xFFFE6624),
                                                     fontFamily: 'laila',
-                                                    height:
-                                                        AppDimensions.height10(
-                                                                context) *
-                                                            0.16,
+                                                    // height:
+                                                    //     AppDimensions.height10(
+                                                    //             context) *
+                                                    //         0.16,
                                                     fontSize:
                                                         AppDimensions.font10(
                                                                 context) *
-                                                            1.5,
+                                                            1.4,
                                                     fontWeight: FontWeight.w600,
                                                   ),
                                                   children: const [
@@ -721,7 +806,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                         ),
                       ),
 
-                      SizedBox(height: AppDimensions.height10(context) * 3.0),
+                      SizedBox(height: AppDimensions.height10(context) * 5.0),
 
                       AnimatedScaleButton(
                         onTap: () async {
@@ -804,7 +889,7 @@ class _LoginemailandpasswordState extends State<Loginemailandpassword> {
                                     style: TextStyle(
                                       color: const Color(0xFF8C648A),
                                       fontSize:
-                                          AppDimensions.font10(context) *2 ,
+                                          AppDimensions.font10(context) * 2,
                                       fontWeight: FontWeight.w600,
                                     ),
                                   ),

@@ -174,8 +174,8 @@ class _view_detailsState extends State<view_details> {
                                       : NetworkImage(Videothumbnail()
                                               .extractThumbnailUrl(
                                                   inspirationDetails['inspiration']
-                                                      ['destinationLink'])
-                                          as String) as ImageProvider
+                                                      ['destinationLink']))
+                                          as ImageProvider
                                   : const AssetImage(
                                           'assets/images/bg_inpiration_purple.webp')
                                       as ImageProvider,

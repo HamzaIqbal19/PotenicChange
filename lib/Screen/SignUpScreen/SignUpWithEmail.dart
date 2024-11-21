@@ -7,6 +7,7 @@ import 'package:potenic_app/Screen/LoginScreen/Loginemailandpassword.dart';
 import 'package:potenic_app/Screen/SignUpScreen/SignUpSuccessful.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:potenic_app/Widgets/authTextField.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/webVisit.dart';
 import 'package:potenic_app/utils/app_dimensions.dart';
@@ -244,7 +245,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                         width: AppDimensions.width10(context) * 7.75,
                       ),
                     ),
-
                     SizedBox(height: AppDimensions.height10(context)),
                     SizedBox(
                       height: AppDimensions.height10(context) * 4.0,
@@ -263,16 +263,15 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                         //height: AppDimensions.height10(context) * 7 + 4,
                         //width: AppDimensions.screenWidth(context) - 100,
                         child: Text(
-                          AppText().signUpSubHead,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white,
-                            fontSize: AppDimensions.font10(context) * 2.0,
-                          ),
-                        )),
-                     SizedBox(height: AppDimensions.height10(context)),
-
+                      AppText().signUpSubHead,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                        fontSize: AppDimensions.font10(context) * 2.0,
+                      ),
+                    )),
+                    SizedBox(height: AppDimensions.height10(context)),
                     SizedBox(
                       // height: AppDimensions.height10(context) * 34,
                       width: AppDimensions.width10(context) * 36,
@@ -280,195 +279,99 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
-                            height: AppDimensions.height10(context) * 6.2,
-                            width: AppDimensions.width10(context) * 36,
-                            padding: EdgeInsetsDirectional.only(
-                              top: AppDimensions.height10(context) * 1.2,
-                            ),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                border:
-                                    Border.all(color: Colors.white, width: 2),
-                                borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10(context) * 1.8))),
-                            child: TextFormField(
-                              keyboardType: TextInputType.name,
-                              style: TextStyle(
-                                  color: const Color(0xFF8C648A),
-                                  fontWeight: FontWeight.w600,
-                                  decoration: TextDecoration.none,
-                                  height: AppDimensions.height10(context) * 0.15,
-                                  fontSize:
-                                      AppDimensions.height10(context) * 2.4),
-                              decoration: InputDecoration(
-                                  contentPadding: const EdgeInsets.only(
-                                      top: 5.0,
-                                      //bottom: 15.0,
-                                      left: 20.0,
-                                      right: 10.0),
-                                  floatingLabelBehavior:
-                                      FloatingLabelBehavior.always,
-                                  hintText: "John",
-                                  hintStyle: TextStyle(
-                                    color: const Color(0xFF8C648A),
-                                    fontWeight: FontWeight.w600,
-                                    decoration: TextDecoration.none,
-                                    height: AppDimensions.height10(context) * 0.15,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.4,
-                                  ),
-                                  labelText: "Name",
-                                  focusedBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.transparent)),
-                                  enabledBorder: const OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Colors.transparent))),
+                          CustomTextfields().AuthTextField(
+                            passObscure: false,
+                            hintText: "John",
+                            labeText: "Name",
+                            textInputType: TextInputType.name,
+                            controller: nameController,
+                            context: context,
+                            onChanged: (value) {
+                              setState(() {
+                                // passwordMsg = "";
+                                // errorPassword = false;
+                                // emailMsg = '';
+                                // errorEmail = false;
+                                errorName = false;
+                                nameMsg = '';
+                              });
+                            },
+                            validator: (val) {
+                              if (val == null || val == "") {
+                                setState(() {
+                                  errorName = true;
+                                  nameMsg = 'Name is required';
+                                });
+                              } else {
+                                setState(() {
+                                  nameMsg = '';
+                                  errorName = false;
+                                });
+                              }
+                              return null;
+                            },
+                          ),
+                          errorName
+                              ? CustomTextfields().errorText(
+                                  texterror: nameMsg, context: context)
+                              : Container(),
+                          SizedBox(
+                              height: errorName
+                                  ? AppDimensions.height10(context) * 1.1
+                                  : AppDimensions.height10(context) * 3),
+                          CustomTextfields().AuthTextField(
+                              controller: emailController,
+                              passObscure: false,
+                              context: context,
+                              textInputType: TextInputType.emailAddress,
+                              hintText: "abc@gmail.com",
+                              labeText: "Email",
                               onChanged: (value) {
                                 setState(() {
-                                  passwordMsg = "";
-                                  errorPassword = false;
+                                  // passwordMsg = "";
+                                  // errorPassword = false;
                                   emailMsg = '';
                                   errorEmail = false;
-                                  errorName = false;
-                                  nameMsg = '';
+                                  // errorName = false;
+                                  // nameMsg = '';
                                 });
                               },
-                              controller: nameController,
                               validator: (val) {
-                                if (val == null || val == "") {
+                                if (val != null && val.isNotEmpty) {
+                                  val = val.trim();
+                                }
+
+                                if (val == null || val.isEmpty) {
                                   setState(() {
-                                    errorName = true;
-                                    nameMsg = 'Name is required';
+                                    errorEmail = true;
+                                    emailMsg = 'Email is required';
+                                  });
+                                } else if (!EmailValidator.validate(val)) {
+                                  setState(() {
+                                    errorEmail = true;
+                                    emailMsg =
+                                        ' Ooops! Needs to be an email format';
                                   });
                                 } else {
                                   setState(() {
-                                    nameMsg = '';
-                                    errorName = false;
+                                    errorEmail = false;
+                                    emailMsg = '';
                                   });
                                 }
                                 return null;
-                              },
-                            ),
-                          ),
-                          errorName
-                              ? Text(
-                                  "Name is required",
-                                  style: TextStyle(
-                                    color: const Color(0xFFFE6624),
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.4,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                )
-                              : Container(),
-                          SizedBox(
-                              height: errorEmail
-                                  ? AppDimensions.height10(context)
-                                  : AppDimensions.height10(context) * 3),
-                          Container(
-                            height: AppDimensions.height10(context) * 6.2,
-                            width: AppDimensions.width10(context) * 36,
-                            padding: EdgeInsetsDirectional.only(
-                              top: AppDimensions.height10(context) * 1.2,
-                            ),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                border:
-                                    Border.all(color: Colors.white, width: 2),
-                                borderRadius: BorderRadius.all(Radius.circular(
-                                    AppDimensions.height10(context) * 1.8))),
-                            child: TextFormField(
-                                keyboardType: TextInputType.emailAddress,
-                                style: TextStyle(
-                                    color: const Color(0xFF8C648A),
-                                    fontWeight: FontWeight.w600,
-                                    decoration: TextDecoration.none,
-                                    height: AppDimensions.height10(context) * 0.15,
-                                    fontSize:
-                                        AppDimensions.font10(context) * 2.4),
-                                decoration: InputDecoration(
-                                    contentPadding: const EdgeInsets.only(
-                                        top: 5.0,
-                                        //bottom: 15.0,
-                                        left: 20.0,
-                                        right: 10.0),
-                                    floatingLabelBehavior:
-                                        FloatingLabelBehavior.always,
-                                    hintText: "abc@gmail.com",
-                                    hintStyle: TextStyle(
-                                      color: const Color(0xFF8C648A),
-                                      fontWeight: FontWeight.w600,
-                                      decoration: TextDecoration.none,
-                                      height: AppDimensions.height10(context) * 0.15,
-                                      fontSize:
-                                          AppDimensions.font10(context) * 2.4,
-                                    ),
-                                    labelText: "Email",
-                                    focusedBorder: const OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.transparent)),
-                                    enabledBorder: const OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.transparent))),
-                                onChanged: (value) {
-                                  setState(() {
-                                    passwordMsg = "";
-                                    errorPassword = false;
-                                    emailMsg = '';
-                                    errorEmail = false;
-                                    errorName = false;
-                                    nameMsg = '';
-                                  });
-                                },
-                                controller: emailController,
-                                validator: (val) {
-                                  if (val != null && val.isNotEmpty) {
-                                    val = val.trim();
-                                  }
-
-                                  if (val == null || val.isEmpty) {
-                                    setState(() {
-                                      errorEmail = true;
-                                      emailMsg = 'Email is required';
-                                    });
-                                  } else if (!EmailValidator.validate(val)) {
-                                    setState(() {
-                                      errorEmail = true;
-                                      emailMsg =
-                                          ' Ooops! Needs to be an email format';
-                                    });
-                                  } else {
-                                    setState(() {
-                                      errorEmail = false;
-                                      emailMsg = '';
-                                    });
-                                  }
-                                  return null;
-                                }),
-                          ),
+                              }),
                           errorEmail
-                              ? Text(
-                                  emailMsg,
-                                  style: TextStyle(
-                                    color: const Color(0xFFFE6624),
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.4,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                )
+                              ? CustomTextfields().errorText(
+                                  texterror: emailMsg, context: context)
                               : Container(),
                           SizedBox(
                               height: errorEmail
-                                  ? AppDimensions.height10(context)
+                                  ? AppDimensions.height10(context) * 1.1
                                   : AppDimensions.height10(context) * 3),
                           Container(
                             height: AppDimensions.height10(context) * 6.2,
                             width: AppDimensions.width10(context) * 36,
-                            padding: EdgeInsetsDirectional.only(
-                              top: AppDimensions.height10(context) * 1.2,
-                            ),
+                            padding: EdgeInsetsDirectional.only(),
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 border:
@@ -478,121 +381,135 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                             child: Row(
                               children: [
                                 SizedBox(
-                                  width: AppDimensions.width10(context) * 32,
-                                  child: TextFormField(
-                                    obscureText: passObscure,
-                                    textAlign: TextAlign.justify,
-                                    style: TextStyle(
-                                        color: const Color(0xFF8C648A),
-                                        fontWeight: FontWeight.w600,
-                                        decoration: TextDecoration.none,
-                                        height: AppDimensions.height10(context) * 0.15,
-                                        fontSize:
-                                            AppDimensions.font10(context) *
-                                                2.4),
-                                    decoration: InputDecoration(
-                                        contentPadding: const EdgeInsets.only(
-                                            top: 5.0,
-                                            bottom: 15.0,
-                                            left: 20.0,
-                                            right: 10.0),
-                                        alignLabelWithHint: true,
-                                        floatingLabelBehavior:
-                                            FloatingLabelBehavior.always,
-                                        hintText: "********",
-                                        hintStyle: TextStyle(
-                                          color: const Color(0xFF8C648A),
-                                          fontWeight: FontWeight.w600,
-                                          decoration: TextDecoration.none,
-                                          height: AppDimensions.height10(context) * 0.15,
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  2.4,
-                                        ),
-                                        labelText: "Password",
-                                        focusedBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent)),
-                                        enabledBorder: const OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.transparent))),
-                                    onChanged: (value) {
-                                      setState(() {
-                                        passwordMsg = "";
-                                        errorPassword = false;
-                                        emailMsg = '';
-                                        errorEmail = false;
-                                        errorName = false;
-                                        nameMsg = '';
-                                      });
-                                    },
-                                    controller: passwordController,
-                                    onFieldSubmitted: (value) {
-                                      signUp();
-                                    },
-                                    validator: (val) {
-                                      if ((val == null && val == '')) {
-                                        setState(() {
-                                          passwordMsg = "Password is required";
-                                          errorPassword = true;
-                                        });
-                                      } else if (val!.length < 8) {
-                                        setState(() {
-                                          passwordMsg = "Minimum 8 characters";
-                                          errorPassword = true;
-                                        });
-                                      } else {
+                                    width: AppDimensions.width10(context) * 32,
+                                    child: CustomTextfields().AuthTextField(
+                                      passObscure: passObscure,
+                                      controller: passwordController,
+                                      context: context,
+                                      hintText: "**********",
+                                      labeText: "Password",
+                                      onFieldSubmitted: (value) {
+                                        signUp();
+                                      },
+                                      onChanged: (value) {
                                         setState(() {
                                           passwordMsg = "";
                                           errorPassword = false;
+                                          // emailMsg = '';
+                                          // errorEmail = false;
+                                          // errorName = false;
+                                          // nameMsg = '';
                                         });
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                ),
-                                GestureDetector(
-                                  onTap: () {
+                                      },
+                                      validator: (val) {
+                                        if ((val == null && val == '')) {
+                                          setState(() {
+                                            passwordMsg =
+                                                "Password is required";
+                                            errorPassword = true;
+                                          });
+                                        } else if (val!.length < 8) {
+                                          setState(() {
+                                            passwordMsg =
+                                                "Minimum 8 characters";
+                                            errorPassword = true;
+                                          });
+                                        } else {
+                                          setState(() {
+                                            passwordMsg = "";
+                                            errorPassword = false;
+                                          });
+                                        }
+                                        return null;
+                                      },
+                                    )),
+                                // TextFormField(
+                                //   obscureText: passObscure,
+                                //   textAlign: TextAlign.justify,
+                                //   style: TextStyle(
+                                //       color: const Color(0xFF8C648A),
+                                //       fontWeight: FontWeight.w600,
+                                //       decoration: TextDecoration.none,
+                                //       fontSize:
+                                //           AppDimensions.font10(context) *
+                                //               2.4),
+                                //   decoration: InputDecoration(
+                                //       contentPadding: const EdgeInsets.only(
+                                //           top: 5.0,
+                                //           bottom: 15.0,
+                                //           left: 20.0,
+                                //           right: 10.0),
+                                //       alignLabelWithHint: true,
+                                //       floatingLabelBehavior:
+                                //           FloatingLabelBehavior.always,
+                                //       hintText: "********",
+                                //       hintStyle: TextStyle(
+                                //         color: const Color(0xFF8C648A),
+                                //         fontWeight: FontWeight.w600,
+                                //         fontSize:
+                                //             AppDimensions.font10(context) *
+                                //                 2.4,
+                                //       ),
+                                //       labelText: "Password",
+                                //       focusedBorder: const OutlineInputBorder(
+                                //           borderSide: BorderSide(
+                                //               color: Colors.transparent)),
+                                //       enabledBorder: const OutlineInputBorder(
+                                //           borderSide: BorderSide(
+                                //               color: Colors.transparent))),
+                                //   onChanged: (value) {
+                                //     setState(() {
+                                //       passwordMsg = "";
+                                //       errorPassword = false;
+                                //       emailMsg = '';
+                                //       errorEmail = false;
+                                //       errorName = false;
+                                //       nameMsg = '';
+                                //     });
+                                //   },
+                                //   controller: passwordController,
+                                //   onFieldSubmitted: (value) {
+                                //     signUp();
+                                //   },
+                                //   validator: (val) {
+                                //     if ((val == null && val == '')) {
+                                //       setState(() {
+                                //         passwordMsg = "Password is required";
+                                //         errorPassword = true;
+                                //       });
+                                //     } else if (val!.length < 8) {
+                                //       setState(() {
+                                //         passwordMsg = "Minimum 8 characters";
+                                //         errorPassword = true;
+                                //       });
+                                //     } else {
+                                //       setState(() {
+                                //         passwordMsg = "";
+                                //         errorPassword = false;
+                                //       });
+                                //     }
+                                //     return null;
+                                //   },
+                                // ),
+
+                                CustomTextfields().visibleIcon(
+                                  onpress: () {
                                     setState(() {
                                       passObscure = !passObscure;
                                     });
                                   },
-                                  child: Container(
-                                    height:
-                                        AppDimensions.height10(context) * 2.4,
-                                    width: AppDimensions.width10(context) * 2.4,
-                                    margin: EdgeInsets.only(
-                                        bottom:
-                                            AppDimensions.height10(context) *
-                                                1.0),
-                                    child: Image.asset(
-                                      passObscure
-                                          ? 'assets/images/visible-icon-9.webp'
-                                          : 'assets/images/ic_remove_red_eye.webp',
-                                      color: const Color(0xFF8C648A),
-                                      height:
-                                          AppDimensions.height10(context) * 2.4,
-                                      width:
-                                          AppDimensions.width10(context) * 2.4,
-                                    ),
-                                  ),
-                                )
+                                  context: context,
+                                  passObscure: passObscure,
+                                ),
                               ],
                             ),
                           ),
                           errorPassword
-                              ? Text(
-                                  passwordMsg,
-                                  style: TextStyle(
-                                    color: const Color(0xFFFE6624),
-                                    fontSize:
-                                        AppDimensions.font10(context) * 1.4,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                )
+                              ? CustomTextfields().errorText(
+                                  texterror: passwordMsg, context: context)
                               : Container(),
                           SizedBox(
-                              height: errorEmail
+                              height: errorPassword
                                   ? AppDimensions.height10(context)
                                   : AppDimensions.height10(context) * 3),
                           SizedBox(
@@ -745,7 +662,6 @@ class _SignUpWithEmailState extends State<SignUpWithEmail>
                         ],
                       ),
                     ),
-
                     SizedBox(
                       height: AppDimensions.height10(context) * 3.0,
                     ),

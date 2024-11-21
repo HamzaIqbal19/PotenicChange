@@ -37,69 +37,103 @@ class InspirationCustomCircle {
       {final link, final desc, final id, final img, void Function()? onTap}) {
     bool smallScreen = MediaQuery.of(context).size.height < 690;
     return GestureDetector(
-        onTap: onTap,
-        child: Container(
-          padding: EdgeInsets.all(AppDimensions.height10(context) * 1),
-          width: !smallScreen
-              ? AppDimensions.width10(context) * 19.313
-              : AppDimensions.width10(context) * 17.6,
-          height: !smallScreen
-              ? AppDimensions.width10(context) * 19.313
-              : AppDimensions.width10(context) * 17.6,
-          decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              //  gradient: gradient,
-              image: DecorationImage(
-                  image: id == 4
-                      ? AssetImage("assets/images/contentrecordbg.png")
-                      : id == 2
-                          ? AssetImage("assets/images/noterecordbg.png")
-                          : id == 3
-                              ? (Videothumbnail().extractThumbnailUrl(link) ==
-                                      ''
-                                  ? AssetImage('assets/images/video.webp')
-                                  : NetworkImage(Videothumbnail()
-                                          .extractThumbnailUrl(link))
-                                      as ImageProvider<Object>)
-                              : AssetImage(''),
-                  fit: BoxFit.cover)),
-          child: id == 2 || id == 4
+      onTap: onTap,
+      child: id == 2
+          ? Container(
+              padding: EdgeInsets.all(AppDimensions.height10(context) * 1),
+              width: !smallScreen
+                  ? AppDimensions.width10(context) * 19.313
+                  : AppDimensions.width10(context) * 17.6,
+              height: !smallScreen
+                  ? AppDimensions.width10(context) * 19.313
+                  : AppDimensions.width10(context) * 17.6,
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  //  gradient: gradient,
+                  image: DecorationImage(
+                      image: AssetImage("assets/images/noterecordbg.png"),
+                      fit: BoxFit.cover)),
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: AppDimensions.height10(context) * 1.7),
+                height: AppDimensions.height10(context) * 6.3,
+                child: Center(
+                    child: Text(
+                  desc,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      fontSize: AppDimensions.font10(context) * 1.6,
+                      fontWeight: FontWeight.w400,
+                      color: const Color(0xFFFFFFFF)),
+                )),
+              ),
+            )
+          : id == 4
               ? Container(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: AppDimensions.height10(context) * 1.7),
-                  height: AppDimensions.height10(context) * 6.3,
-                  child: Center(
-                      child: Text(
-                    desc,
-                    overflow: TextOverflow.ellipsis,
-                    maxLines: 2,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: AppDimensions.font10(context) * 1.6,
-                        fontWeight: FontWeight.w400,
-                        color: const Color(0xFFFFFFFF)),
-                  )),
+                  padding: EdgeInsets.all(AppDimensions.height10(context) * 1),
+                  width: !smallScreen
+                      ? AppDimensions.width10(context) * 19.313
+                      : AppDimensions.width10(context) * 17.6,
+                  height: !smallScreen
+                      ? AppDimensions.width10(context) * 19.313
+                      : AppDimensions.width10(context) * 17.6,
+                  decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      //  gradient: gradient,
+                      image: DecorationImage(
+                          image:
+                              AssetImage("assets/images/contentrecordbg.png"),
+                          fit: BoxFit.cover)),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                        horizontal: AppDimensions.height10(context) * 1.7),
+                    height: AppDimensions.height10(context) * 6.3,
+                    child: Center(
+                        child: Text(
+                      desc,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: AppDimensions.font10(context) * 1.6,
+                          fontWeight: FontWeight.w400,
+                          color: const Color(0xFFFFFFFF)),
+                    )),
+                  ),
                 )
               : id == 3
-                  ? Videothumbnail().extractThumbnailUrl(link) == ''
-                      ? Container()
-                      : SizedBox(
-                          width: 10, // Set the desired width
-                          height: 10, // Set the desired height
-                          child: Image.asset(
-                            'assets/images/videoicon.png',
-                            // fit: BoxFit
-                            //     ., // Ensures the image fits within the box
-                          ),
-                        )
+                  ? Container(
+                      padding:
+                          EdgeInsets.all(AppDimensions.height10(context) * 1),
+                      width: !smallScreen
+                          ? AppDimensions.width10(context) * 19.313
+                          : AppDimensions.width10(context) * 17.6,
+                      height: !smallScreen
+                          ? AppDimensions.width10(context) * 19.313
+                          : AppDimensions.width10(context) * 17.6,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        //  gradient: gradient,
+                        image: DecorationImage(
+                            image:
+                                Videothumbnail().extractThumbnailUrl(link) == ''
+                                    ? AssetImage('assets/images/video.webp')
+                                    : NetworkImage(Videothumbnail()
+                                            .extractThumbnailUrl(link))
+                                        as ImageProvider<Object>,
+                            fit: BoxFit.cover),
+                      ))
                   : id == 1
                       ? Container(
                           width: !smallScreen
-                              ? AppDimensions.width10(context) * 19.313
-                              : AppDimensions.width10(context) * 17.6,
+                              ? AppDimensions.width10(context) * 19.3
+                              : AppDimensions.width10(context) * 17.4,
                           height: !smallScreen
-                              ? AppDimensions.width10(context) * 19.313
-                              : AppDimensions.width10(context) * 17.6,
+                              ? AppDimensions.width10(context) * 19.7
+                              : AppDimensions.width10(context) * 17.8,
+                          decoration: BoxDecoration(shape: BoxShape.circle),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 18),
@@ -113,6 +147,6 @@ class InspirationCustomCircle {
                           ),
                         )
                       : Container(),
-        ));
+    );
   }
 }

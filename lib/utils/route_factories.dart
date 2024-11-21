@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/capture_inpirations_goals.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inpiration_landing.dart';
@@ -56,9 +54,7 @@ import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/notifications.d
 import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/settings.dart';
 import 'package:potenic_app/Screen/Menu%20&%20Settings%20Journey/success.dart';
 import 'package:potenic_app/Screen/Notification%20Journey/message_center.dart';
-import 'package:potenic_app/Screen/Notification%20Journey/widgets/messageComponent.dart';
 import 'package:potenic_app/Screen/Onboarding%20Journey/on-boarding.dart';
-import 'package:potenic_app/Screen/Onboarding%20Journey/on-boardings_page.dart';
 import 'package:potenic_app/Screen/Practice%20Creation%20Journey/Create%20Practice.dart';
 import 'package:potenic_app/Screen/Practice%20Creation%20Journey/Created%20Practice.dart';
 import 'package:potenic_app/Screen/Practice%20Creation%20Journey/PracticeName.dart';
@@ -618,7 +614,7 @@ class RouteFactories {
             builder: (context) => const Loginemailandpassword());
       case RouteNames.signUp:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => SignUpPage());
+            settings: settings, builder: (context) => const SignUpPage());
       case RouteNames.signUpEmailPass:
         return MaterialPageRoute(
             settings: settings, builder: (context) => const SignUpWithEmail());
@@ -633,7 +629,7 @@ class RouteFactories {
       //     settings: settings, builder: (context) => const LiquidityPool());
       case RouteNames.resetPassword:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => PasswordReset());
+            settings: settings, builder: (context) => const PasswordReset());
       case RouteNames.verification:
         return MaterialPageRoute(
             settings: settings,
@@ -645,22 +641,22 @@ class RouteFactories {
             settings: settings, builder: (context) => const reset());
       case RouteNames.startProcess:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => StartProcess());
+            settings: settings, builder: (context) => const StartProcess());
       case RouteNames.categories:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => Categories());
+            settings: settings, builder: (context) => const Categories());
       // case RouteNames.otpEmail:
       //   return MaterialPageRoute(
       //       settings: settings, builder: (context) => OtpEmailVerify());
       case RouteNames.allGoals:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => AllGoals());
+            settings: settings, builder: (context) => const AllGoals());
       // case RouteNames.referralCode:
       //   return
       case RouteNames.goalCategory:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => GoalCategory(
+            builder: (context) => const GoalCategory(
                   '',
                   '',
                   0,
@@ -674,7 +670,7 @@ class RouteFactories {
       case RouteNames.goalWhy:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => GoalWhy(
+            builder: (context) => const GoalWhy(
                   comingFromEditScreen: false,
                   route: '',
                   saved: true,
@@ -682,7 +678,7 @@ class RouteFactories {
       case RouteNames.goalIdentity:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => Goal_Identity(
+            builder: (context) => const Goal_Identity(
                   comingFromEditScreen: false,
                   route: '',
                   saved: true,
@@ -690,37 +686,37 @@ class RouteFactories {
       case RouteNames.visualising:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => Visualising(
+            builder: (context) => const Visualising(
                   comingFromEditScreen: true,
                   saved: true,
                   route: '',
                 ));
       case RouteNames.goalFinished:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => GoalFinished());
-      case RouteNames.startReview:
+            settings: settings, builder: (context) => const GoalFinished());
+      case RouteNames.starReview:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => StarReview(
+            builder: (context) => const StarReview(
                   route: '',
                 ));
       case RouteNames.createPractice:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => CreatePractice());
+            settings: settings, builder: (context) => const CreatePractice());
 
       case RouteNames.practiceName:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => PracticeName(
+            builder: (context) => const PracticeName(
                   comingFromEditScreen: false,
                 ));
       case RouteNames.practiceRoutine:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => PracticeRoutine());
+            settings: settings, builder: (context) => const PracticeRoutine());
       case RouteNames.practiceReminder:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => PracticeReminder(
+            builder: (context) => const PracticeReminder(
                   comingFromEditScreen: false,
                   goalColor: '',
                   pracColor: '',
@@ -729,17 +725,17 @@ class RouteFactories {
                 ));
       case RouteNames.practiceFinished:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => PracticeFinished());
+            settings: settings, builder: (context) => const PracticeFinished());
       case RouteNames.practiceReview:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => PracticeReview());
+            settings: settings, builder: (context) => const PracticeReview());
       case RouteNames.activateStar:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => ActivateStar());
+            settings: settings, builder: (context) => const ActivateStar());
       case RouteNames.viewDashboard:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => ViewDashboard(
+            builder: (context) => const ViewDashboard(
                   missed: true,
                   update: false,
                   name: '',
@@ -749,14 +745,14 @@ class RouteFactories {
       case RouteNames.goalMenuInactive:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => goal_menu_inactive(
+            builder: (context) => const goal_menu_inactive(
                   isActive: true,
                   goal_evaluation: true,
                 ));
       case RouteNames.newProgressScore:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => new_progress_score(
+            builder: (context) => const new_progress_score(
                   premium: true,
                   evaluationIndex: 0,
                   dateChange: false,
@@ -764,7 +760,7 @@ class RouteFactories {
       case RouteNames.goalCriteria:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => your_why(
+            builder: (context) => const your_why(
                   destination: '',
                   index: 0,
                   premium: false,
@@ -773,24 +769,25 @@ class RouteFactories {
       case RouteNames.goalCriteriaImpact:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => your_impact(
+            builder: (context) => const your_impact(
                   index: 0,
                   premium: false,
                 ));
       case RouteNames.multipleGoalInactive:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => multiple_goal_inactive());
+            settings: settings,
+            builder: (context) => const multiple_goal_inactive());
       case RouteNames.practiceMenu:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => practiceMenu(
+            builder: (context) => const practiceMenu(
                   goal_eval: false,
                   completed: true,
                 ));
       case RouteNames.emotions:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => emotions(
+            builder: (context) => const emotions(
                   summary: false,
                   selected: 0,
                   pracName: '',
@@ -798,11 +795,12 @@ class RouteFactories {
                 ));
       case RouteNames.progressReportUnsub:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => progress_report_unsub());
+            settings: settings,
+            builder: (context) => const progress_report_unsub());
       case RouteNames.practiceScore:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => prac_score(
+            builder: (context) => const prac_score(
                   route: '',
                   index: 0,
                   secondaryRoute: '',
@@ -810,82 +808,82 @@ class RouteFactories {
       case RouteNames.progressReport:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => ProgressReport(
+            builder: (context) => const ProgressReport(
                   index: 0,
                 ));
       case RouteNames.practiceProgress:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => practice_progress(
+            builder: (context) => const practice_progress(
                   days: 0,
                   route: '',
                 ));
       case RouteNames.practiceAssesment:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => practice_assesment(
+            builder: (context) => const practice_assesment(
                   days: 0,
                   route: '',
                 ));
       case RouteNames.clocks:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => clocks());
+            settings: settings, builder: (context) => const clocks());
       case RouteNames.feelingsAfter:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => feelingsAfter(
+            builder: (context) => const feelingsAfter(
                   summary: false,
                   selected: 0,
                 ));
       case RouteNames.practiceSummary:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => practice_summary(
+            builder: (context) => const practice_summary(
                   view: true,
                   newSession: '',
                 ));
       case RouteNames.endOfSession:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => endofSession(
+            builder: (context) => const endofSession(
                   selected: 0,
                   summary: true,
                 ));
       case RouteNames.welldoneSplash:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => welldone_splash());
+            settings: settings, builder: (context) => const welldone_splash());
       case RouteNames.linkInfo:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => link_info(
+            builder: (context) => const link_info(
                   link_state: true,
                 ));
       case RouteNames.noteSaved:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => noteSaved());
+            settings: settings, builder: (context) => const noteSaved());
 
       case RouteNames.photoInfo:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => photo_info());
+            settings: settings, builder: (context) => const photo_info());
 
       case RouteNames.videoInfo:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => video_info(
+            builder: (context) => const video_info(
                   link_state: true,
                 ));
 
       case RouteNames.photoEdit:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => photo_Edit(
+            builder: (context) => const photo_Edit(
                   updateData: false,
                 ));
 
       case RouteNames.videoEdit:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => videoEdit(
+            builder: (context) => const videoEdit(
                   note: false,
                   context: true,
                   updateData: false,
@@ -894,7 +892,7 @@ class RouteFactories {
       case RouteNames.inspirationGoals:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => inspiraton_goals(
+            builder: (context) => const inspiraton_goals(
                 data_saved: true,
                 route: '',
                 note: true,
@@ -904,135 +902,136 @@ class RouteFactories {
       case RouteNames.inspirationLanding:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => inspiration_landing(
+            builder: (context) => const inspiration_landing(
                   is_Updated: true,
                 ));
 
       case RouteNames.inspirationMotivation:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => inspiration_motivation(
+            builder: (context) => const inspiration_motivation(
                   goal_delete: true,
                   inspirationName: '',
                 ));
 
       case RouteNames.inspirationType:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => inspiration_type());
+            settings: settings, builder: (context) => const inspiration_type());
 
       case RouteNames.viewDetails:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => view_details());
+            settings: settings, builder: (context) => const view_details());
 
       case RouteNames.recordInspiration:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => record_inspiration());
+            settings: settings,
+            builder: (context) => const record_inspiration());
 
       case RouteNames.recordSummary:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => record_summary());
+            settings: settings, builder: (context) => const record_summary());
 
       case RouteNames.recordSession:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => record_session(
+            builder: (context) => const record_session(
                   past_session: true,
                 ));
 
       case RouteNames.futurePracticeMenu:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => futurePracticeMenu(
+            builder: (context) => const futurePracticeMenu(
                   pracName: '',
                 ));
 
       case RouteNames.menuBehaviour:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => menu_behaviour());
+            settings: settings, builder: (context) => const menu_behaviour());
 
       case RouteNames.congratulations:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => congratulations());
+            settings: settings, builder: (context) => const congratulations());
 
       case RouteNames.congratulationsJourney:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => Congratulations_journey());
+            builder: (context) => const Congratulations_journey());
       case RouteNames.hurdlesGoalImpact:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => hurdles_goal_impact(
+            builder: (context) => const hurdles_goal_impact(
                   summary: true,
                 ));
       case RouteNames.hurdleName:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => hurdle_name(
+            builder: (context) => const hurdle_name(
                   update: true,
                 ));
       case RouteNames.selectHurdle:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => select_hurdle(
+            builder: (context) => const select_hurdle(
                   update: true,
                 ));
       case RouteNames.hurldeStatement:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => hurdle_statement(
+            builder: (context) => const hurdle_statement(
                   update: true,
                 ));
       case RouteNames.feelingHurdles:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => felling_hurdles(
+            builder: (context) => const felling_hurdles(
                   update: true,
                 ));
       case RouteNames.landingHurldes:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => landing_hurdles());
+            settings: settings, builder: (context) => const landing_hurdles());
       case RouteNames.summaryHurdles:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => summary_hurdles(
+            builder: (context) => const summary_hurdles(
                   delete_hurdle: true,
                 ));
 
       case RouteNames.hurdleMenu:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => hurdle_menu());
+            settings: settings, builder: (context) => const hurdle_menu());
       case RouteNames.hurdleSplash:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => hurdles_splash());
+            settings: settings, builder: (context) => const hurdles_splash());
       case RouteNames.accountDeleted:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => Acc_deleted());
+            settings: settings, builder: (context) => const Acc_deleted());
       case RouteNames.contactUs:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => ContactUs());
+            settings: settings, builder: (context) => const ContactUs());
       case RouteNames.editCredentials:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => edit_credentials(
+            builder: (context) => const edit_credentials(
                   email: true,
                   password_edit: true,
                 ));
       case RouteNames.notifiactions:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => notifications());
+            settings: settings, builder: (context) => const notifications());
       case RouteNames.settings:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => Settings());
+            settings: settings, builder: (context) => const Settings());
       case RouteNames.success:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => Success());
+            settings: settings, builder: (context) => const Success());
       case RouteNames.messageCenter:
         return MaterialPageRoute(
-            settings: settings, builder: (context) => MessageCenter());
+            settings: settings, builder: (context) => const MessageCenter());
       case RouteNames.timeline:
         return MaterialPageRoute(
             settings: settings,
-            builder: (context) => timeline(
+            builder: (context) => const timeline(
                   goalId: 0,
                   pracId: 0,
                 ));

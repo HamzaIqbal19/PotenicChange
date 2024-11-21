@@ -1119,8 +1119,8 @@ class video_EditState extends State<videoEdit> {
                                       FadePageRoute(
                                           page: inspiraton_goals(
                                         update: true,
-                                        data_saved: false,
-                                        route: 'note_saved_video',
+                                        data_saved: true,
+                                        route: 'edit',
                                         context: widget.context,
                                         note: widget.note,
                                       )));

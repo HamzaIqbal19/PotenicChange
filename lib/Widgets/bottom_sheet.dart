@@ -280,7 +280,11 @@ bottom_sheet(BuildContext context) {
                                       width: 3, color: Colors.transparent))),
                           onChanged: (value) {
                             setState(() {
-                              enable = true;
+                              if (value.isNotEmpty) {
+                                enable = true;
+                              } else {
+                                enable = false;
+                              }
                             });
                           },
                           controller: goalName,

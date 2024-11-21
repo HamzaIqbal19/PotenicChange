@@ -79,6 +79,7 @@ class _photo_EditState extends State<photo_Edit> {
             });
 
             if (widget.updateData == true) {
+              print("trueee ${widget.updateData}");
               setState(() {
                 loading = false;
               });
@@ -89,6 +90,10 @@ class _photo_EditState extends State<photo_Edit> {
                   inspirationDetails['inspiration']['title'].toString();
               statement.text =
                   inspirationDetails['inspiration']['description'].toString();
+              print("link ${link.text}");
+              print("title ${title.text}");
+              print("statement ${statement.text}");
+
               if (inspirationDetails['inspiration']['hashTags'].length != 0) {
                 for (int i = 0;
                     i < inspirationDetails['inspiration']['hashTags'].length;
@@ -1042,8 +1047,8 @@ class _photo_EditState extends State<photo_Edit> {
                                             FadePageRoute(
                                                 page: const inspiraton_goals(
                                               update: true,
-                                              data_saved: false,
-                                              route: 'note_saved',
+                                              data_saved: true,
+                                              route: 'photo_edit',
                                               context: false,
                                               note: false,
                                             )));
