@@ -121,7 +121,7 @@ class _ViewDashboardState extends State<ViewDashboard>
     });
   }
 
-  initializeTutorial(){
+  initializeTutorial() {
     if (widget.helpfulTips == true) {
       Future.delayed(const Duration(seconds: 2), _incrementValue);
     }
@@ -272,7 +272,6 @@ class _ViewDashboardState extends State<ViewDashboard>
         return timeA - timeB;
       });
 
-
       setState(() {});
     }
   }
@@ -357,7 +356,6 @@ class _ViewDashboardState extends State<ViewDashboard>
 
     Future.delayed(
         const Duration(milliseconds: 50), () => _scrollToCurrentIndex());
-
   }
 
   Future<Timer> startTimer() async {
@@ -377,8 +375,8 @@ class _ViewDashboardState extends State<ViewDashboard>
         Get.find<notificationController>();
     final TutorialController tutorialController = Get.put(TutorialController());
 
-     var startTutorial = tutorialController.showTutorial;
-    if(startTutorial.value == true){
+    var startTutorial = tutorialController.showTutorial;
+    if (startTutorial.value == true) {
       tutorialController.stopTutorial();
       initializeTutorial();
     }
@@ -602,6 +600,8 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                       timesList[
                                                                           index],
                                                                       () {
+                                                                    print(
+                                                                        "timelist ${timesList[index]}");
                                                                     _scrollToCurrentIndex();
                                                                   }, () async {
                                                                     if (_showOverlay ==
@@ -711,7 +711,9 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                                 completed: false,
                                                                               )));
                                                                         } else {
-                                                                          await prefs.setInt('recording_id', timesList[index]['data']['recordings'][0]['id']);
+                                                                          await prefs.setInt(
+                                                                              'recording_id',
+                                                                              timesList[index]['data']['recordings'][0]['id']);
                                                                           Navigator.push(
                                                                               context,
                                                                               FadePageRoute(

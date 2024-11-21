@@ -90,6 +90,64 @@ class _schedule_cardState extends State<schedule_card> {
     });
   }
 
+  DateTime customParseTime(String time) {
+    // Extract the time part and AM/PM
+    final timeParts = time.trim().split(RegExp(r'(?<=\d)(?=[a-zA-Z])'));
+    // print("time $timeParts");
+
+    final timeString = timeParts[0];
+    // print("time1 $timeString");
+    final period = timeString.toString().split(' ');
+    // print("time2 $period");
+
+    final hourMinute = period[0].split(':');
+    // print("time3 $hourMinute");
+    int hour = int.parse(hourMinute[0]);
+    // print("time4 $hour");
+    final minute = int.parse(hourMinute[1]);
+    // print("time5 $minute");
+
+    // Adjust hour if the period is PM (excluding 12 PM)
+    if (period[1] == 'pm' && hour != 12) {
+      hour += 12;
+    } else {
+      // print("period $period");
+    }
+    // Adjust for 12 AM being midnight
+    if (period[1] == 'am' && hour == 12) {
+      hour = 0;
+    } else {
+      // print("period22 $period");
+    }
+
+    // Return a DateTime object for comparison
+    return DateTime(0, 1, 1, hour, minute);
+  }
+
+  _sortTimesWithinDay(List<Map<String, dynamic>> timesDay) {
+    // print("yaha aya time $timesPerDay");
+
+    try {
+      for (var entry in timesDay) {
+        var times = entry.entries
+            .where((e) => e.key.startsWith('time'))
+            .map((e) => e.value)
+            .toList();
+
+        // print('Times before sorting for ${entry['day']}: $times');
+        //  times.sort();
+        times.sort((a, b) => customParseTime(a).compareTo(customParseTime(b)));
+        // print('Times after sorting for ${entry['day']}: $times');
+
+        for (int i = 0; i < times.length; i++) {
+          entry['time${i + 1}'] = times[i];
+        }
+      }
+    } catch (e) {
+      print("e ee $e");
+    }
+  }
+
   // final ValueChanged<String> onChangedStart;
   // final ValueChanged<String> onChangedEnd;
 
@@ -185,6 +243,7 @@ class _schedule_cardState extends State<schedule_card> {
                                       start_time =
                                           "$selectedHour:$selectedMinute${selectedPeriod.toLowerCase()}";
                                     });
+                                    print("start time $start_time");
 
                                     Done = Done;
                                     if (Done == true) {
@@ -194,6 +253,7 @@ class _schedule_cardState extends State<schedule_card> {
                                             "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
                                       });
                                       times.add(start_time);
+                                      print("times $times");
                                       TwoValues<String, int> values =
                                           TwoValues<String, int>(
                                               start_time, num);

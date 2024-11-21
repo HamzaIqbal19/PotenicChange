@@ -454,6 +454,7 @@ class _PracticeRoutineState extends State<PracticeRoutine> {
                                               content: Text(
                                                   "Practice routine in limited to 10 sessions par day.")));
                                     }
+                                    print("timesperday $timesPerDay");
                                   },
 
                                   onCountChanged: (value) {
