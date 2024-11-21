@@ -14,6 +14,7 @@ import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdle_se
 import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdle_statement.dart';
 import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/capture_hurdles_fellings.dart';
 import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/hurdleMenu.dart';
+import 'package:potenic_app/Screen/Hurdle%20Creation%20Journey/splash_hurdles.dart';
 import 'package:potenic_app/Screen/Practice%20Creation%20Journey/PracticeName.dart';
 import 'package:potenic_app/Widgets/BottomSearch.dart';
 import 'package:potenic_app/Widgets/CustomBottomSheet.dart';
@@ -211,6 +212,14 @@ class _landing_hurdlesState extends State<landing_hurdles> {
       if (value == true) {
         selectItems.clear();
         _fetchHurdle();
+        Hurdles().getUserHurdles().then((response) {
+          print("response $response");
+          if (response == 404) {
+            Navigator.push(context, FadePageRoute(page: hurdles_splash()));
+          } else {
+            print("sfsf");
+          }
+        });
       }
     });
   }
@@ -236,6 +245,7 @@ class _landing_hurdlesState extends State<landing_hurdles> {
   String selectedGoal = 'All';
   @override
   Widget build(BuildContext context) {
+    bool smallScreen = MediaQuery.of(context).size.height < 690;
     return WillPopScope(
       onWillPop: () async {
         Navigator.push(
@@ -1263,9 +1273,9 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                         context,
                                         AppText().hurdleBottomSheedTitle,
                                         AppText().hurdleBottomSheedBody,
-                                        AppLinks().hurdleTutorialLink,(){
-                                          Navigator.pop(context);
-                                    },false);
+                                        AppLinks().hurdleTutorialLink, () {
+                                      Navigator.pop(context);
+                                    }, false);
                                   },
                                   child: Container(
                                       width:
@@ -1543,7 +1553,6 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                             children: [
                                               MulitiSelectionButton(
                                                 longPress: () {
-
                                                   setState(() {
                                                     longPress = true;
                                                   });
@@ -1617,14 +1626,32 @@ class _landing_hurdlesState extends State<landing_hurdles> {
                                                       ),
                                                     ),
                                                     Container(
-                                                      width:
-                                                          AppDimensions.width10(
-                                                                  context) *
-                                                              19.313,
-                                                      height: AppDimensions
-                                                              .height10(
-                                                                  context) *
-                                                          19.942,
+                                                      width: !smallScreen
+                                                          ? AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              19.313
+                                                          : AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              17.6,
+                                                      height: !smallScreen
+                                                          ? AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              19.313
+                                                          : AppDimensions
+                                                                  .width10(
+                                                                      context) *
+                                                              17.6,
+                                                      // width:
+                                                      //     AppDimensions.width10(
+                                                      //             context) *
+                                                      //         19.313,
+                                                      // height: AppDimensions
+                                                      //         .height10(
+                                                      //             context) *
+                                                      //     19.942,
                                                       padding: EdgeInsets.symmetric(
                                                           horizontal: AppDimensions
                                                                   .width10(

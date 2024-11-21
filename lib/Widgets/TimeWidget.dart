@@ -259,10 +259,7 @@ class _schedule_cardState extends State<schedule_card> {
                   Container(
                     // color:Colors.orange,
                     padding:
-                    const EdgeInsets.only(
-                        left: 15,
-                        right: 15,
-                        bottom: 10),
+                        const EdgeInsets.only(left: 15, right: 15, bottom: 10),
 
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -288,7 +285,7 @@ class _schedule_cardState extends State<schedule_card> {
                             times[i] = start_time;
                           },
                         ),
-                       // SizedBox(width: 30,),
+                        // SizedBox(width: 30,),
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
                           child: Container(
@@ -441,21 +438,23 @@ class _startTimerStateState extends State<startTimerState> {
           borderRadius: BorderRadius.circular(18),
           border: Border.all(width: 3, color: Colors.transparent)),
       child: GestureDetector(
-        onTap: (){
+        onTap: () {
           showModalBottomSheet(
             context: context,
             builder: (context) {
               return MyListWheelForm(
                 key: Key("$widget.key"),
-                onSelectionChanged: (selectedDay, selectedHour,
-                    selectedMinute, selectedPeriod, Done) {
+                onSelectionChanged: (selectedDay, selectedHour, selectedMinute,
+                    selectedPeriod, Done) {
                   String startTime =
                       "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
+
                   widget.onChanged(startTime);
                   widget.onChangedStart(
                       startTime); // Pass the selected value to the onChanged callback
                   setState(() {
                     start_time = startTime;
+                    print("start time $start_time");
 
                     day = selectedDay;
                     hour = selectedHour;
@@ -468,8 +467,8 @@ class _startTimerStateState extends State<startTimerState> {
                   widget.onChanged(start_time);
                   Navigator.pop(context);
                 },
-                initialHour: widget.start_Time.substring(0, 1),
-                initialMinute: widget.start_Time.substring(2, 4),
+                initialHour: widget.start_Time.split(':')[0],
+                initialMinute: widget.start_Time.split(':')[1].split(' ')[0],
                 initialPeriod: widget.start_Time.substring(5, 7),
               );
             },

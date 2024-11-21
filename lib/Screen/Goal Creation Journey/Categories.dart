@@ -100,7 +100,8 @@ class _CategoriesState extends State<Categories> {
         centerTitle: true,
         backgroundColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        title: appBarTitle(context,loading?'': AppText().starCreate1,false),
+        title:
+            appBarTitle(context, loading ? '' : AppText().starCreate1, false),
         actions: [
           Buttons().closeButton(context, () {
             Navigator.pop(context);
@@ -184,25 +185,80 @@ class _CategoriesState extends State<Categories> {
                                       return LongPressDraggable<
                                           Map<String, dynamic>>(
                                         data: goalCategories![index],
-                                        feedback: circles(
-                                            circle_text: goalCategories![index]
-                                                ["name"],
-                                            circle_color1: 0xFFFC854F,
-                                            circle_color2: 0xFFFAA960,
-                                            circle_border: 3.0,
-                                            circle_bordercolor: 0xFFFFFFFF,
-                                            circle_height:
-                                                AppDimensions.height10(
-                                                        context) *
-                                                    13.4,
-                                            circle_width:
+                                        feedback: Container(
+                                            height: AppDimensions.height10(
+                                                    context) *
+                                                13.4,
+                                            width:
                                                 AppDimensions.width10(context) *
                                                     13.4,
-                                            textfont:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                            textcolor: 0xFFFFFFFF),
-                                        childWhenDragging: Container(),
+                                            padding: EdgeInsets.symmetric(
+                                                horizontal:
+                                                    AppDimensions.width10(
+                                                            context) *
+                                                        0.2),
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                //borderRadius: const BorderRadius.all(Radius.circular(70.0)),
+                                                border: Border.all(
+                                                    width: 3.0,
+                                                    color: Color(0xFFFFFFFF)),
+                                                gradient: const LinearGradient(
+                                                    begin: Alignment.topCenter,
+                                                    end: Alignment.bottomCenter,
+                                                    colors: [
+                                                      Color(0xFFFC854F),
+                                                      Color(0xFFFAA960)
+                                                    ])),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                SizedBox(
+                                                  width: AppDimensions.width10(
+                                                          context) *
+                                                      10.9,
+                                                  child: Text(
+                                                    goalCategories![index]
+                                                        ["name"],
+                                                    textAlign: TextAlign.center,
+                                                    style: TextStyle(
+                                                      decoration:
+                                                          TextDecoration.none,
+                                                      fontSize:
+                                                          AppDimensions.font10(
+                                                                  context) *
+                                                              1.6,
+                                                      color: Color(0xFFFFFFFF),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            )),
+
+                                        // circles(
+                                        //     circle_text: goalCategories![index]
+                                        //         ["name"],
+                                        //     circle_color1: 0xFFFC854F,
+                                        //     circle_color2: 0xFFFAA960,
+                                        //     circle_border: 3.0,
+                                        //     circle_bordercolor: 0xFFFFFFFF,
+                                        //     // circle_height:
+                                        //     //     AppDimensions.height10(
+                                        //     //             context) *
+                                        //     //         13.4,
+                                        //     // circle_width:
+                                        //     //  AppDimensions.width10(context) *
+                                        //     //    13.4,
+                                        //     textfont:
+                                        //         AppDimensions.font10(context) *
+                                        //             1.6,
+                                        //     textcolor: 0xFFFFFFFF),
+                                        // childWhenDragging: Container(),
                                         child: AnimatedScaleButton(
                                           onTap: () {
                                             goalProvider.setGoal(goal);
@@ -220,27 +276,85 @@ class _CategoriesState extends State<Categories> {
                                               ),
                                             );
                                           },
-                                          child: circles(
-                                              circle_text:
-                                                  capitalizeFirstLetter(
-                                                      goalCategories![index]
-                                                          ["name"]),
-                                              circle_color1: 0xFFFC854F,
-                                              circle_color2: 0xFFFAA960,
-                                              circle_border: 3.0,
-                                              circle_bordercolor: 0xFFFFFFFF,
-                                              circle_height:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      13.4,
-                                              circle_width:
-                                                  AppDimensions.width10(
-                                                          context) *
-                                                      13.4,
-                                              textfont: AppDimensions.font10(
+                                          child: Container(
+                                              height: AppDimensions.height10(
                                                       context) *
-                                                  1.6,
-                                              textcolor: 0xFFFFFFFF),
+                                                  13.4,
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  13.4,
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal:
+                                                      AppDimensions.width10(
+                                                              context) *
+                                                          0.2),
+                                              decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  //borderRadius: const BorderRadius.all(Radius.circular(70.0)),
+                                                  border: Border.all(
+                                                      width: 3.0,
+                                                      color: Color(0xFFFFFFFF)),
+                                                  gradient: LinearGradient(
+                                                      begin: Alignment.topCenter,
+                                                      end: Alignment.bottomCenter,
+                                                      colors: [
+                                                        Color(0xFFFC854F),
+                                                        Color(0xFFFAA960)
+                                                      ])),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  SizedBox(
+                                                    width:
+                                                        AppDimensions.width10(
+                                                                context) *
+                                                            10.9,
+                                                    child: Text(
+                                                      capitalizeFirstLetter(
+                                                          goalCategories![index]
+                                                              ["name"]),
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                        decoration:
+                                                            TextDecoration.none,
+                                                        fontSize: AppDimensions
+                                                                .font10(
+                                                                    context) *
+                                                            1.6,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )),
+                                          // circles(
+                                          //     circle_text:
+                                          //         capitalizeFirstLetter(
+                                          //             goalCategories![index]
+                                          //                 ["name"]),
+                                          //     circle_color1: 0xFFFC854F,
+                                          //     circle_color2: 0xFFFAA960,
+                                          //     circle_border: 3.0,
+                                          //     circle_bordercolor: 0xFFFFFFFF,
+                                          //     // circle_height:
+                                          //     //     AppDimensions.height10(
+                                          //     //             context) *
+                                          //     //         13.4,
+                                          //     // circle_width:
+                                          //     //     AppDimensions.width10(
+                                          //     //             context) *
+                                          //     //         13.4,
+                                          //     textfont: AppDimensions.font10(
+                                          //             context) *
+                                          //         1.6,
+                                          //     textcolor: 0xFFFFFFFF),
                                         ),
                                         // empty container when dragging
                                       );
@@ -296,26 +410,84 @@ class _CategoriesState extends State<Categories> {
                                         return LongPressDraggable<
                                             Map<String, dynamic>>(
                                           data: goalCategories![dataIndex],
-                                          feedback: circles(
-                                              circle_text:
-                                                  goalCategories![dataIndex]
-                                                      ["name"],
-                                              circle_color1: 0xFFFC854F,
-                                              circle_color2: 0xFFFAA960,
-                                              circle_border: 3.0,
-                                              circle_bordercolor: 0xFFFFFFFF,
-                                              circle_height:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      13.4,
-                                              circle_width:
-                                                  AppDimensions.width10(
-                                                          context) *
-                                                      13.4,
-                                              textfont: AppDimensions.font10(
+                                          feedback: Container(
+                                              height: AppDimensions.height10(
                                                       context) *
-                                                  1.6,
-                                              textcolor: 0xFFFFFFFF),
+                                                  13.4,
+                                              width: AppDimensions.width10(
+                                                      context) *
+                                                  13.4,
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal:
+                                                      AppDimensions.width10(
+                                                              context) *
+                                                          0.2),
+                                              decoration: BoxDecoration(
+                                                  shape: BoxShape.circle,
+                                                  //borderRadius: const BorderRadius.all(Radius.circular(70.0)),
+                                                  border: Border.all(
+                                                      width: 3.0,
+                                                      color: Color(0xFFFFFFFF)),
+                                                  gradient: LinearGradient(
+                                                      begin: Alignment.topCenter,
+                                                      end: Alignment.bottomCenter,
+                                                      colors: [
+                                                        Color(0xFFFC854F),
+                                                        Color(0xFFFAA960)
+                                                      ])),
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  SizedBox(
+                                                    width:
+                                                        AppDimensions.width10(
+                                                                context) *
+                                                            10.9,
+                                                    child: Text(
+                                                      goalCategories![dataIndex]
+                                                          ["name"],
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      style: TextStyle(
+                                                        decoration:
+                                                            TextDecoration.none,
+                                                        fontSize: AppDimensions
+                                                                .font10(
+                                                                    context) *
+                                                            1.6,
+                                                        color:
+                                                            Color(0xFFFFFFFF),
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              )),
+
+                                          // circles(
+                                          //     circle_text:
+                                          //         goalCategories![dataIndex]
+                                          //             ["name"],
+                                          //     circle_color1: 0xFFFC854F,
+                                          //     circle_color2: 0xFFFAA960,
+                                          //     circle_border: 3.0,
+                                          //     circle_bordercolor: 0xFFFFFFFF,
+                                          //     // circle_height:
+                                          //     //     AppDimensions.height10(
+                                          //     //             context) *
+                                          //     //         13.4,
+                                          //     // circle_width:
+                                          //     //     AppDimensions.width10(
+                                          //     //             context) *
+                                          //     //         13.4,
+                                          //     textfont: AppDimensions.font10(
+                                          //             context) *
+                                          //         1.6,
+                                          //     textcolor: 0xFFFFFFFF),
                                           childWhenDragging: Container(),
                                           child: AnimatedScaleButton(
                                             onTap: () {
@@ -336,27 +508,88 @@ class _CategoriesState extends State<Categories> {
                                                 ),
                                               );
                                             },
-                                            child: circles(
-                                                circle_text:
-                                                    capitalizeFirstLetter(
-                                                  goalCategories![dataIndex]
-                                                      ["name"],
-                                                ),
-                                                circle_color1: 0xFFFC854F,
-                                                circle_color2: 0xFFFAA960,
-                                                circle_border: 3.0,
-                                                circle_bordercolor: 0xFFFFFFFF,
-                                                circle_height: AppDimensions
-                                                        .height10(context) *
-                                                    13.4,
-                                                circle_width:
-                                                    AppDimensions.width10(
-                                                            context) *
+                                            child: Container(
+                                                height:
+                                                    AppDimensions.height10(context) *
                                                         13.4,
-                                                textfont: AppDimensions.font10(
+                                                width: AppDimensions.width10(
                                                         context) *
-                                                    1.6,
-                                                textcolor: 0xFFFFFFFF),
+                                                    13.4,
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        AppDimensions.width10(
+                                                                context) *
+                                                            0.2),
+                                                decoration: BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                    //borderRadius: const BorderRadius.all(Radius.circular(70.0)),
+                                                    border: Border.all(
+                                                        width: 3.0,
+                                                        color:
+                                                            Color(0xFFFFFFFF)),
+                                                    gradient: LinearGradient(
+                                                        begin:
+                                                            Alignment.topCenter,
+                                                        end: Alignment.bottomCenter,
+                                                        colors: [
+                                                          Color(0xFFFC854F),
+                                                          Color(0xFFFAA960)
+                                                        ])),
+                                                child: Column(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    SizedBox(
+                                                      width:
+                                                          AppDimensions.width10(
+                                                                  context) *
+                                                              10.9,
+                                                      child: Text(
+                                                        goalCategories![
+                                                            dataIndex]["name"],
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        style: TextStyle(
+                                                          decoration:
+                                                              TextDecoration
+                                                                  .none,
+                                                          fontSize: AppDimensions
+                                                                  .font10(
+                                                                      context) *
+                                                              1.6,
+                                                          color:
+                                                              Color(0xFFFFFFFF),
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                )),
+
+                                            // circles(
+                                            //     circle_text:
+                                            //         capitalizeFirstLetter(
+                                            //       goalCategories![dataIndex]
+                                            //           ["name"],
+                                            //     ),
+                                            //     circle_color1: 0xFFFC854F,
+                                            //     circle_color2: 0xFFFAA960,
+                                            //     circle_border: 3.0,
+                                            //     circle_bordercolor: 0xFFFFFFFF,
+                                            //     // circle_height: AppDimensions
+                                            //     //         .height10(context) *
+                                            //     //     13.4,
+                                            //     // circle_width:
+                                            //     //     AppDimensions.width10(
+                                            //     //             context) *
+                                            //     //         13.4,
+                                            //     textfont: AppDimensions.font10(
+                                            //             context) *
+                                            //         1.6,
+                                            //     textcolor: 0xFFFFFFFF),
                                           ),
                                           // empty container when dragging
                                         );
@@ -400,17 +633,55 @@ class _CategoriesState extends State<Categories> {
                       },
                       child: Container(
                         decoration: const BoxDecoration(shape: BoxShape.circle),
-                        child: circles(
-                            circle_text: AppText().viewAllGoals,
-                            circle_color1: 0xFFFC854F,
-                            circle_color2: 0xFFFAA960,
-                            circle_border: 3.0,
-                            circle_bordercolor: 0xFFFFFFFF,
-                            circle_height:
-                                AppDimensions.height10(context) * 10.0,
-                            circle_width: AppDimensions.width10(context) * 10.0,
-                            textfont: AppDimensions.font10(context) * 1.6,
-                            textcolor: 0xFFFFFFFF),
+                        child: Container(
+                            height: AppDimensions.height10(context) * 10.0,
+                            width: AppDimensions.width10(context) * 10.0,
+                            padding: EdgeInsets.symmetric(
+                                horizontal:
+                                    AppDimensions.width10(context) * 0.2),
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                //borderRadius: const BorderRadius.all(Radius.circular(70.0)),
+                                border: Border.all(
+                                    width: 3.0, color: Color(0xFFFFFFFF)),
+                                gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Color(0xFFFC854F),
+                                      Color(0xFFFAA960)
+                                    ])),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: AppDimensions.width10(context) * 10.9,
+                                  child: Text(
+                                    AppText().viewAllGoals,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      decoration: TextDecoration.none,
+                                      fontSize:
+                                          AppDimensions.font10(context) * 1.6,
+                                      color: Color(0xFFFFFFFF),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            )),
+                        // circles(
+                        //     circle_text: AppText().viewAllGoals,
+                        //     circle_color1: 0xFFFC854F,
+                        //     circle_color2: 0xFFFAA960,
+                        //     circle_border: 3.0,
+                        //     circle_bordercolor: 0xFFFFFFFF,
+                        //     // circle_height:
+                        //     //     AppDimensions.height10(context) * 10.0,
+                        //     // circle_width: AppDimensions.width10(context) * 10.0,
+                        //     textfont: AppDimensions.font10(context) * 1.6,
+                        //     textcolor: 0xFFFFFFFF),
                       ),
                     )
                   ],

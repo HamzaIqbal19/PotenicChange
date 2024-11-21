@@ -46,7 +46,7 @@ class ButtonFields extends StatelessWidget {
                       style: TextStyle(
                         color: Color(textColor),
                         fontFamily: 'laila',
-                        fontSize: AppDimensions.font10(context) * 1.9,
+                        fontSize: AppDimensions.font10(context) * 2.0,
                         fontWeight: FontWeight.w500,
                       ),
                       children: [

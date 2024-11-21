@@ -224,7 +224,9 @@ class _practice_progressState extends State<practice_progress> {
                   child: Column(
                       // mainAxisAlignment: ,
                       children: [
-                       SizedBox(height: AppDimensions.width10(context) * 10,),
+                        SizedBox(
+                          height: AppDimensions.width10(context) * 10,
+                        ),
                         Container(
                           width: AppDimensions.width10(context) * 30,
                           //height: AppDimensions.height10(context) * 2.6,
@@ -253,7 +255,7 @@ class _practice_progressState extends State<practice_progress> {
                           noData ? " " : report['practice']["name"],
                         ),
                         Container(
-                         // width: AppDimensions.width10(context) * 37.6,
+                          // width: AppDimensions.width10(context) * 37.6,
                           //  height: AppDimensions.height10(context) * 7.2,
                           margin: EdgeInsets.only(
                               top: AppDimensions.height10(context) * 1.9),

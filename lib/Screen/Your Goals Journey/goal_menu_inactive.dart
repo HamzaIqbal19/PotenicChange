@@ -13,6 +13,7 @@ import 'package:potenic_app/Screen/Recording%20Practice%20Session%20Journey/reco
 import 'package:potenic_app/Screen/Timeline%20Journey/component/imageComponent.dart';
 import 'package:potenic_app/Screen/Timeline%20Journey/timeline.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/goal_inactive_5goals.dart';
+import 'package:potenic_app/Widgets/AppCustomCircle.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -313,9 +314,10 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                             Navigator.push(
                                 context,
                                 FadePageRoute(
-                                    page: const new_progress_score(
+                                    page: new_progress_score(
                                   premium: false,
                                   evaluationIndex: 0,
+                                  dateChange: false,
                                 )));
                           } else {
                             if (goalDetails['goalStatus'] == "active" &&
@@ -330,6 +332,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                     evaluationIndex:
                                         goalDetails['goalEvaluations'].length -
                                             1,
+                                    dateChange: false,
                                   )));
                             } else {
                               if (goalDetails['goalEvaluations'].length != 0) {
@@ -703,7 +706,7 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                               RichText(
                                   text: TextSpan(
                                       style: TextStyle(
-                                        fontFamily: 'Laila',
+                                          fontFamily: 'Laila',
                                           fontSize:
                                               AppDimensions.font10(context) * 2,
                                           fontWeight: FontWeight.w500,
@@ -776,29 +779,46 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                             goalDetails['userPractices'][index]
                                                 ['id']);
                                       },
-                                      child: Container(
-                                        width: AppDimensions.height10(context) *
-                                            13.8,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                13.8,
+                                      child: AppCustomCircle().CustomContainer(
+                                        context,
                                         padding: EdgeInsets.all(
                                             AppDimensions.width10(context) *
                                                 0.8),
                                         margin: EdgeInsets.only(
                                             left:
                                                 AppDimensions.width10(context)),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.white, width: 2),
-                                            shape: BoxShape.circle,
-                                            image: DecorationImage(
-                                              image: AssetImage(practiceImages(
-                                                  goalDetails['userPractices']
-                                                          [index]['color']
-                                                      .toString())),
-                                              fit: BoxFit.contain,
-                                            )),
+                                        border: Border.all(
+                                            color: Colors.white, width: 2),
+                                        image: DecorationImage(
+                                          image: AssetImage(practiceImages(
+                                              goalDetails['userPractices']
+                                                      [index]['color']
+                                                  .toString())),
+                                          fit: BoxFit.contain,
+                                        ),
+                                        // Container(
+                                        //   width: AppDimensions.height10(context) *
+                                        //       13.8,
+                                        //   height:
+                                        //       AppDimensions.height10(context) *
+                                        //           13.8,
+                                        //   padding: EdgeInsets.all(
+                                        //       AppDimensions.width10(context) *
+                                        //           0.8),
+                                        //   margin: EdgeInsets.only(
+                                        //       left:
+                                        //           AppDimensions.width10(context)),
+                                        //   decoration: BoxDecoration(
+                                        //       border: Border.all(
+                                        //           color: Colors.white, width: 2),
+                                        //       shape: BoxShape.circle,
+                                        //       image: DecorationImage(
+                                        //         image: AssetImage(practiceImages(
+                                        //             goalDetails['userPractices']
+                                        //                     [index]['color']
+                                        //                 .toString())),
+                                        //         fit: BoxFit.contain,
+                                        //       )),
                                         child: Container(
                                           padding: EdgeInsets.all(
                                               AppDimensions.height10(context)),
@@ -847,29 +867,22 @@ class _goal_menu_inactiveState extends State<goal_menu_inactive> {
                                         await prefs.setString(
                                             'prac_menu_route', 'goal_menu');
                                       },
-                                      child: Container(
-                                        width: AppDimensions.height10(context) *
-                                            13.8,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                13.8,
+                                      child: AppCustomCircle().CustomContainer(
+                                        context,
                                         padding: EdgeInsets.all(
                                             AppDimensions.width10(context) *
                                                 0.8),
                                         margin: EdgeInsets.only(
                                             left:
                                                 AppDimensions.width10(context)),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.white, width: 2),
-                                            shape: BoxShape.circle,
-                                            image: DecorationImage(
-                                              image: AssetImage(practiceImages(
-                                                  activePractices[index]
-                                                          ['color']
-                                                      .toString())),
-                                              fit: BoxFit.contain,
-                                            )),
+                                        border: Border.all(
+                                            color: Colors.white, width: 2),
+                                        image: DecorationImage(
+                                          image: AssetImage(practiceImages(
+                                              activePractices[index]['color']
+                                                  .toString())),
+                                          fit: BoxFit.contain,
+                                        ),
                                         child: Container(
                                           padding: EdgeInsets.all(
                                               AppDimensions.width10(context)),

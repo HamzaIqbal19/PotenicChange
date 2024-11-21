@@ -183,7 +183,8 @@ class _AllGoalsState extends State<AllGoals> {
               centerTitle: true,
               backgroundColor: Colors.transparent,
               automaticallyImplyLeading: false,
-              title: appBarTitle(context,loading?'': AppText().starCreate1,false),
+              title: appBarTitle(
+                  context, loading ? '' : AppText().starCreate1, false),
               leading: Buttons().backButton(context, () {
                 Navigator.pop(context);
               }),
@@ -290,23 +291,78 @@ class _AllGoalsState extends State<AllGoals> {
                                                   top: AppDimensions.height10(
                                                           context) *
                                                       0.1),
-                                              child: circles(
-                                                  circle_text: '',
-                                                  circle_color1: 0xFFFC854F,
-                                                  circle_color2: 0xFFFAA960,
-                                                  circle_border: 1,
-                                                  circle_bordercolor:
-                                                      0xFFFFFFFF,
-                                                  circle_height:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.5,
-                                                  circle_width:
-                                                      AppDimensions.height10(
-                                                              context) *
-                                                          2.5,
-                                                  textfont: 0,
-                                                  textcolor: 0),
+                                              child: Container(
+                                                  height: AppDimensions.height10(
+                                                          context) *
+                                                      2.5,
+                                                  width: AppDimensions.width10(context) *
+                                                      2.5,
+                                                  padding: EdgeInsets.symmetric(
+                                                      horizontal:
+                                                          AppDimensions.width10(
+                                                                  context) *
+                                                              0.2),
+                                                  decoration: BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                      //borderRadius: const BorderRadius.all(Radius.circular(70.0)),
+                                                      border: Border.all(
+                                                          width: 1,
+                                                          color: Color(
+                                                              0xFFFFFFFF)),
+                                                      gradient: LinearGradient(
+                                                          begin: Alignment.topCenter,
+                                                          end: Alignment.bottomCenter,
+                                                          colors: [
+                                                            Color(0xFFFC854F),
+                                                            Color(0xFFFAA960)
+                                                          ])),
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      SizedBox(
+                                                        width: AppDimensions
+                                                                .width10(
+                                                                    context) *
+                                                            10.9,
+                                                        child: Text(
+                                                          '',
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          style: TextStyle(
+                                                            decoration:
+                                                                TextDecoration
+                                                                    .none,
+                                                            fontSize: 0,
+                                                            color: Color(0),
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  )),
+                                              // circles(
+                                              //     circle_text: '',
+                                              //     circle_color1: 0xFFFC854F,
+                                              //     circle_color2: 0xFFFAA960,
+                                              //     circle_border: 1,
+                                              //     circle_bordercolor:
+                                              //         0xFFFFFFFF,
+                                              //     // circle_height:
+                                              //     //     AppDimensions.height10(
+                                              //     //             context) *
+                                              //     //         2.5,
+                                              //     // circle_width:
+                                              //     //     AppDimensions.height10(
+                                              //     //             context) *
+                                              //     //         2.5,
+                                              //     textfont: 0,
+                                              //     textcolor: 0),
                                             ),
                                             SizedBox(
                                               width: AppDimensions.width10(
@@ -431,14 +487,14 @@ class _AllGoalsState extends State<AllGoals> {
                                                                     3.0,
                                                                 circle_bordercolor:
                                                                     0xFFEE8E6F,
-                                                                circle_height:
-                                                                    AppDimensions.width10(
-                                                                            context) *
-                                                                        13.4,
-                                                                circle_width:
-                                                                    AppDimensions.width10(
-                                                                            context) *
-                                                                        13.4,
+                                                                // circle_height:
+                                                                //     AppDimensions.width10(
+                                                                //             context) *
+                                                                //         13.4,
+                                                                // circle_width:
+                                                                //     AppDimensions.width10(
+                                                                //             context) *
+                                                                //         13.4,
                                                                 textfont: AppDimensions
                                                                         .font10(
                                                                             context) *

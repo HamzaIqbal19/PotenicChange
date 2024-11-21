@@ -124,10 +124,10 @@ class _NewGoalState extends State<NewGoal> {
                                   circle_color2: 0xFFFAA960,
                                   circle_border: 1,
                                   circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height:
-                                      AppDimensions.height10(context) * 2.5,
-                                  circle_width:
-                                      AppDimensions.height10(context) * 2.5,
+                                  //   circle_height:
+                                  //     AppDimensions.height10(context) * 2.5,
+                                  // circle_width:
+                                  //     AppDimensions.height10(context) * 2.5,
                                   textfont: 0,
                                   textcolor: 0),
                             ),
@@ -167,12 +167,12 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_color2: 0xFFFFFFFF,
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
-                                      circle_height:
-                                          AppDimensions.height10(context) *
-                                              13.4,
-                                      circle_width:
-                                          AppDimensions.height10(context) *
-                                              13.4,
+                                      // circle_height:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
+                                      // circle_width:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
                                       textfont:
                                           AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -182,12 +182,12 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_color2: 0xFFFFFFFF,
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
-                                      circle_height:
-                                          AppDimensions.height10(context) *
-                                              13.4,
-                                      circle_width:
-                                          AppDimensions.height10(context) *
-                                              13.4,
+                                      // circle_height:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
+                                      // circle_width:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
                                       textfont:
                                           AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -203,12 +203,12 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_color2: 0xFFFFFFFF,
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
-                                      circle_height:
-                                          AppDimensions.height10(context) *
-                                              13.4,
-                                      circle_width:
-                                          AppDimensions.height10(context) *
-                                              13.4,
+                                      // circle_height:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
+                                      // circle_width:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
                                       textfont:
                                           AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -218,12 +218,12 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_color2: 0xFFFFFFFF,
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
-                                      circle_height:
-                                          AppDimensions.height10(context) *
-                                              13.4,
-                                      circle_width:
-                                          AppDimensions.height10(context) *
-                                              13.4,
+                                      // circle_height:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
+                                      // circle_width:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
                                       textfont:
                                           AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -239,12 +239,12 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_color2: 0xFFFFFFFF,
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
-                                      circle_height:
-                                          AppDimensions.height10(context) *
-                                              13.4,
-                                      circle_width:
-                                          AppDimensions.height10(context) *
-                                              13.4,
+                                      // circle_height:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
+                                      // circle_width:
+                                      //     AppDimensions.height10(context) *
+                                      //    13.4,
                                       textfont:
                                           AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -254,12 +254,12 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_color2: 0xFFFFFFFF,
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
-                                      circle_height:
-                                          AppDimensions.height10(context) *
-                                              13.4,
-                                      circle_width:
-                                          AppDimensions.height10(context) *
-                                              13.4,
+                                      // circle_height:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
+                                      // circle_width:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
                                       textfont:
                                           AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -288,10 +288,10 @@ class _NewGoalState extends State<NewGoal> {
                                   circle_color2: 0xFFFAA960,
                                   circle_border: 1,
                                   circle_bordercolor: 0xFFFFFFFF,
-                                  circle_height:
-                                      AppDimensions.height10(context) * 2.5,
-                                  circle_width:
-                                      AppDimensions.height10(context) * 2.5,
+                                  // circle_height:
+                                  //     AppDimensions.height10(context) * 2.5,
+                                  // circle_width:
+                                  //     AppDimensions.height10(context) * 2.5,
                                   textfont: 0,
                                   textcolor: 0),
                             ),
@@ -331,12 +331,12 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_color2: 0xFFFFFFFF,
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
-                                      circle_height:
-                                          AppDimensions.height10(context) *
-                                              13.4,
-                                      circle_width:
-                                          AppDimensions.height10(context) *
-                                              13.4,
+                                      // circle_height:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
+                                      // circle_width:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
                                       textfont:
                                           AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -346,12 +346,12 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_color2: 0xFFFFFFFF,
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
-                                      circle_height:
-                                          AppDimensions.height10(context) *
-                                              13.4,
-                                      circle_width:
-                                          AppDimensions.height10(context) *
-                                              13.4,
+                                      // circle_height:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
+                                      // circle_width:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
                                       textfont:
                                           AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -367,12 +367,12 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_color2: 0xFFFFFFFF,
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
-                                      circle_height:
-                                          AppDimensions.height10(context) *
-                                              13.4,
-                                      circle_width:
-                                          AppDimensions.height10(context) *
-                                              13.4,
+                                      // circle_height:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
+                                      // circle_width:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
                                       textfont:
                                           AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -382,12 +382,12 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_color2: 0xFFFFFFFF,
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
-                                      circle_height:
-                                          AppDimensions.height10(context) *
-                                              13.4,
-                                      circle_width:
-                                          AppDimensions.height10(context) *
-                                              13.4,
+                                      // circle_height:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
+                                      // circle_width:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
                                       textfont:
                                           AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -403,12 +403,12 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_color2: 0xFFFFFFFF,
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
-                                      circle_height:
-                                          AppDimensions.height10(context) *
-                                              13.4,
-                                      circle_width:
-                                          AppDimensions.height10(context) *
-                                              13.4,
+                                      // circle_height:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
+                                      // circle_width:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
                                       textfont:
                                           AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),
@@ -418,12 +418,12 @@ class _NewGoalState extends State<NewGoal> {
                                       circle_color2: 0xFFFFFFFF,
                                       circle_border: 3.0,
                                       circle_bordercolor: 0xFFEE8E6F,
-                                      circle_height:
-                                          AppDimensions.height10(context) *
-                                              13.4,
-                                      circle_width:
-                                          AppDimensions.height10(context) *
-                                              13.4,
+                                      // circle_height:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
+                                      // circle_width:
+                                      //     AppDimensions.height10(context) *
+                                      //         13.4,
                                       textfont:
                                           AppDimensions.height10(context) * 1.6,
                                       textcolor: 0xFFFA9934),

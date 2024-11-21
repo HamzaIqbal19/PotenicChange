@@ -154,27 +154,35 @@ class InspirationComponent extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: AppDimensions.height10(context) * 1.5,
+                  height: AppDimensions.height10(context) * 2.589,
                 ),
-                inspirationId == 1
-                    ? CustomCircle().customContainer(context,
-                        id: inspirationId, img: mainImage)
-                    : inspirationId == 2
-                        ? CustomCircle().customContainer(
-                            context,
-                            id: inspirationId,
-                            desc: Text2,
-                          )
-                        : inspirationId == 4
-                            ? CustomCircle().customContainer(
-                                context,
-                                id: inspirationId,
-                                desc: Text2,
-                              )
-                            : inspirationId == 3
-                                ? CustomCircle().customContainer(context,
-                                    id: inspirationId, link: inspirationLink)
-                                : Container(),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: AppDimensions.height10(context) * 9,
+                    right: AppDimensions.height10(context) * 9,
+                  ),
+                  child: inspirationId == 1
+                      ? InspirationCustomCircle().customContainer(context,
+                          id: inspirationId, img: mainImage)
+                      : inspirationId == 2
+                          ? InspirationCustomCircle().customContainer(
+                              context,
+                              id: inspirationId,
+                              desc: Text2,
+                            )
+                          : inspirationId == 4
+                              ? InspirationCustomCircle().customContainer(
+                                  context,
+                                  id: inspirationId,
+                                  desc: Text2,
+                                )
+                              : inspirationId == 3
+                                  ? InspirationCustomCircle().customContainer(
+                                      context,
+                                      id: inspirationId,
+                                      link: inspirationLink)
+                                  : Container(),
+                ),
                 // ? Container(
                 //     width: AppDimensionsUpdated.width10(context) * 19.2,
                 //     height: AppDimensionsUpdated.height10(context) * 19.2,
@@ -255,27 +263,27 @@ class InspirationComponent extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  width: AppDimensionsUpdated.width10(context) * 16.7,
-                 // height: AppDimensionsUpdated.height10(context) * 3.0,
-                  margin: EdgeInsets.only(
-                      top: AppDimensionsUpdated.height10(context) * 0.2),
-                  child: Text(
-                    Text2,
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: AppDimensionsUpdated.font10(context) * 1.4,
-                      color: status == true
-                          ? Colors.white.withOpacity(0.4)
-                          : status == false
-                              ? Colors.white
-                              : Colors.white,
-                    ),
-                  ),
-                )
+                // Container(
+                //   width: AppDimensionsUpdated.width10(context) * 16.7,
+                //   // height: AppDimensionsUpdated.height10(context) * 3.0,
+                //   margin: EdgeInsets.only(
+                //       top: AppDimensionsUpdated.height10(context) * 0.2),
+                //   child: Text(
+                //     Text2,
+                //     textAlign: TextAlign.center,
+                //     maxLines: 2,
+                //     overflow: TextOverflow.ellipsis,
+                //     style: TextStyle(
+                //       fontWeight: FontWeight.w400,
+                //       fontSize: AppDimensionsUpdated.font10(context) * 1.4,
+                //       color: status == true
+                //           ? Colors.white.withOpacity(0.4)
+                //           : status == false
+                //               ? Colors.white
+                //               : Colors.white,
+                //     ),
+                //   ),
+                // )
               ],
             ),
           )

@@ -301,8 +301,7 @@ class _photo_infoState extends State<photo_info> {
     if (croppedFile != null) {
       image = croppedFile.path;
       setState(() {});
-    } else {
-    }
+    } else {}
   }
 
   void getImage() async {
@@ -1073,6 +1072,7 @@ class _photo_infoState extends State<photo_info> {
                                         InspirationTextFields() //inspiartion TEXT FORM FIELD ////////////////
                                             .inspirationCustomTextField(
                                                 controller: statement,
+                                                maxlength: 250,
                                                 context: context)
 
                                     // TextFormField(

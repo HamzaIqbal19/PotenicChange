@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:potenic_app/API/InpirationApi.dart';
 import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/constants/videothumbnail.dart';
+import 'package:potenic_app/Screen/Capture%20Inspiration%20Journey/inspiration_type/Constants/attachedgoals.dart';
 import 'package:potenic_app/Widgets/animatedButton.dart';
 import 'package:potenic_app/Widgets/buttons.dart';
 import 'package:potenic_app/Widgets/fading.dart';
@@ -168,7 +169,8 @@ class _view_detailsState extends State<view_details> {
                                               inspirationDetails['inspiration']
                                                   ['destinationLink']) ==
                                           ''
-                                      ? const AssetImage('assets/images/video.webp')
+                                      ? const AssetImage(
+                                          'assets/images/video.webp')
                                       : NetworkImage(Videothumbnail()
                                               .extractThumbnailUrl(
                                                   inspirationDetails['inspiration']
@@ -221,12 +223,14 @@ class _view_detailsState extends State<view_details> {
                                       image: AssetImage(
                                           "assets/images/contentviewbg.png"),
                                       fit: BoxFit.cover)
-                                  :inspirationDetails['inspiration']
-                              ['inspirationId'] ==
-                                  2? const DecorationImage(
-                                  image: AssetImage(
-                                      "assets/images/noteViewBg.png"),
-                                  fit: BoxFit.cover):null,
+                                  : inspirationDetails['inspiration']
+                                              ['inspirationId'] ==
+                                          2
+                                      ? const DecorationImage(
+                                          image: AssetImage(
+                                              "assets/images/noteViewBg.png"),
+                                          fit: BoxFit.cover)
+                                      : null,
                             ),
                             child: Center(
                               child: Container(
@@ -735,8 +739,85 @@ class _view_detailsState extends State<view_details> {
                                     color: const Color(0xff828282)),
                               ),
                             ),
-                            AnimatedScaleButton(
-                              onTap: () {
+                            // AnimatedScaleButton(
+
+                            //   onTap: () {
+                            //     Navigator.push(
+                            //         context,
+                            //         FadePageRoute(
+                            //             page: const inspiraton_goals(
+                            //           update: true,
+                            //           data_saved: true,
+                            //           context: false,
+                            //           note: false,
+                            //           route: 'details',
+                            //         )));
+                            //   },
+                            //   child: Container(
+                            //     height: AppDimensions.height10(context) * 6.2,
+                            //     width: AppDimensions.width10(context) * 38.4,
+                            //     margin: EdgeInsets.only(
+                            //         bottom:
+                            //             AppDimensions.height10(context) * 1.0,
+                            //         left: AppDimensions.width10(context) * 2.2,
+                            //         right: AppDimensions.width10(context) * 1.7,
+                            //         top: AppDimensions.height10(context) * 0.5),
+                            //     decoration: BoxDecoration(
+                            //         color: const Color(0xFFFBFBFB),
+                            //         borderRadius: BorderRadius.circular(
+                            //             AppDimensions.height10(context) * 2.0)),
+                            //     child: Row(
+                            //       mainAxisAlignment:
+                            //           MainAxisAlignment.spaceBetween,
+                            //       children: [
+                            //         Container(
+                            //           width:
+                            //               AppDimensions.width10(context) * 23.9,
+                            //           margin: EdgeInsets.only(
+                            //             left: AppDimensions.height10(context) *
+                            //                 1.99,
+                            //           ),
+                            //           child: Text(
+                            //             '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals',
+                            //             style: TextStyle(
+                            //               color: const Color(0xFF646464),
+                            //               fontSize:
+                            //                   AppDimensions.font10(context) *
+                            //                       2.0,
+                            //               fontWeight: FontWeight.w500,
+                            //             ),
+                            //           ),
+                            //         ),
+                            //         Container(
+                            //             margin: EdgeInsets.only(
+                            //                 right:
+                            //                     AppDimensions.width10(context) *
+                            //                         2.391),
+                            //             child: Text(
+                            //               'View',
+                            //               style: TextStyle(
+                            //                   color: const Color(0xFF437296),
+                            //                   fontWeight: FontWeight.w700,
+                            //                   decoration:
+                            //                       TextDecoration.underline,
+                            //                   decorationThickness:
+                            //                       AppDimensions.height10(
+                            //                               context) *
+                            //                           0.2,
+                            //                   fontSize:
+                            //                       UpdatedDimensions.font10(
+                            //                               context) *
+                            //                           2.0),
+                            //             ))
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ),
+
+                            AttachedGoals().customAttachedWidget(
+                              context,
+                              inspirationDetails['inspiration']['userGoalId'],
+                              () {
                                 Navigator.push(
                                     context,
                                     FadePageRoute(
@@ -748,68 +829,7 @@ class _view_detailsState extends State<view_details> {
                                       route: 'details',
                                     )));
                               },
-                              child: Container(
-                                height: AppDimensions.height10(context) * 6.0,
-                                width: AppDimensions.width10(context) * 37.5,
-                                margin: EdgeInsets.only(
-                                    bottom:
-                                        AppDimensions.height10(context) * 1.0,
-                                    left: AppDimensions.width10(context) * 2.2,
-                                    right: AppDimensions.width10(context) * 1.7,
-                                    top: AppDimensions.height10(context) * 0.5),
-                                decoration: BoxDecoration(
-                                    color: const Color(0xFFFBFBFB),
-                                    borderRadius: BorderRadius.circular(
-                                        AppDimensions.height10(context) * 2.0)),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                      width:
-                                          AppDimensions.width10(context) * 23.9,
-                                      // height:
-                                      //     AppDimensions.height10(context) * 2.2,
-                                      margin: EdgeInsets.only(
-                                        left: AppDimensions.height10(context) *
-                                            1.99,
-                                      ),
-                                      child: Text(
-                                        '${inspirationDetails['inspiration']['userGoalId'].length} impacted goals',
-                                        style: TextStyle(
-                                          color: const Color(0xFF646464),
-                                          fontSize:
-                                              AppDimensions.font10(context) *
-                                                  2,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                        margin: EdgeInsets.only(
-                                            right:
-                                                AppDimensions.width10(context) *
-                                                    2.391),
-                                        child: Text(
-                                          'View',
-                                          style: TextStyle(
-                                              color: const Color(0xFF437296),
-                                              fontWeight: FontWeight.w700,
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              decorationThickness:
-                                                  AppDimensions.height10(
-                                                          context) *
-                                                      0.2,
-                                              fontSize:
-                                                  UpdatedDimensions.font10(
-                                                          context) *
-                                                      1.6),
-                                        ))
-                                  ],
-                                ),
-                              ),
-                            ),
+                            )
                           ],
                         ),
                       )),

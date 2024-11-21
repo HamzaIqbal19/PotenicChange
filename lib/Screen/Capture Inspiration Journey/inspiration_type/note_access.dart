@@ -868,8 +868,8 @@ class _noteSavedState extends State<noteSaved> {
                             tagList.clear();
                             hastags.clear();
                             statement.clear();
-                            Navigator.push(context,
-                                FadePageRoute(page: const inspiration_type()));
+                            // Navigator.push(context,
+                            //     FadePageRoute(page: const inspiration_type()));
                             final SharedPreferences prefs = await _prefs;
                             await prefs.remove('ImageLink');
                           },
@@ -1105,9 +1105,9 @@ class _noteSavedState extends State<noteSaved> {
                             ),
                             child: InspirationTextFields()
                                 .inspirationCustomTextField(
-                              controller: statement,
-                              context: context,
-                            )
+                                    controller: statement,
+                                    context: context,
+                                    maxlength: 2000)
 
                             // TextFormField(
                             //   textAlignVertical: TextAlignVertical.top,

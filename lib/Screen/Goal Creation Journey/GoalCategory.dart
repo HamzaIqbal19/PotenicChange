@@ -205,7 +205,8 @@ class _GoalCategoryState extends State<GoalCategory> {
                 centerTitle: true,
                 backgroundColor: Colors.transparent,
                 automaticallyImplyLeading: false,
-                title: appBarTitle(context,loading?'': AppText().starCreate2,false),
+                title: appBarTitle(
+                    context, loading ? '' : AppText().starCreate2, false),
                 leading: Buttons().backButton(context, () {
                   Navigator.pop(context);
                 }),
@@ -255,10 +256,10 @@ class _GoalCategoryState extends State<GoalCategory> {
                               circle_color2: 0xFFFAA960,
                               circle_border: 3,
                               circle_bordercolor: 0xFFFFFFFF,
-                              circle_height:
-                                  AppDimensions.height10(context) * 13.4,
-                              circle_width:
-                                  AppDimensions.width10(context) * 13.4,
+                              // circle_height:
+                              //     AppDimensions.height10(context) * 13.4,
+                              // circle_width:
+                              //     AppDimensions.width10(context) * 13.4,
                               textfont: AppDimensions.font10(context) * 1.6,
                               textcolor: 0XFFFFFFFF),
                           SizedBox(
@@ -288,10 +289,11 @@ class _GoalCategoryState extends State<GoalCategory> {
                           ),
                           Container(
                             margin: EdgeInsets.only(
-                                top: AppDimensions.height10(context) * 2.0,
-                                bottom: AppDimensions.height10(context) * 8.0,
-                                left: AppDimensions.width10(context) * 2.0,
-                                right: AppDimensions.width10(context) * 2.0),
+                              top: AppDimensions.height10(context) * 2.0,
+                              bottom: AppDimensions.height10(context) * 8.0,
+                              // left: AppDimensions.width10(context) * 2.0,
+                              // right: AppDimensions.width10(context) * 2.0
+                            ),
                             child: noData == true
                                 ? Container(
                                     height:
@@ -311,75 +313,87 @@ class _GoalCategoryState extends State<GoalCategory> {
                                           fontWeight: FontWeight.w700),
                                     )),
                                   )
-                                : GridView.builder(
-                                    padding: EdgeInsets.zero,
-                                    physics:
-                                        const NeverScrollableScrollPhysics(),
-                                    shrinkWrap: true,
-                                    gridDelegate:
-                                        const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      childAspectRatio:
-                                          4.2 / 3, // Two items in each row
+                                : Padding(
+                                    padding: EdgeInsets.only(
+                                        left:
+                                            AppDimensions.height10(context) * 3,
+                                        right: AppDimensions.height10(context) *
+                                            3),
+                                    child: GridView.builder(
+                                        padding: EdgeInsets.zero,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        shrinkWrap: true,
+                                        gridDelegate:
+                                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 2,
+                                          childAspectRatio: 4.2 /
+                                              3.5, // Two items in each row
 
-                                      mainAxisSpacing: 9.0,
-                                      crossAxisSpacing: 0.0,
-                                    ),
-                                    itemCount: Allgoal![0]["goals"].length,
-                                    itemBuilder: (context, index1) {
-                                      return Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Row(
+                                          mainAxisSpacing: 18.0,
+                                          crossAxisSpacing: 0,
+                                        ),
+                                        itemCount: Allgoal![0]["goals"].length,
+                                        itemBuilder: (context, index1) {
+                                          return Column(
                                             mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                                MainAxisAlignment.start,
                                             children: [
-                                              AnimatedScaleButton(
-                                                onTap: () {
-                                                  goalProvider.updateGoalId(
-                                                      Allgoal![0]["goals"]
-                                                          [index1]["id"]);
-                                                  goalProvider.updateName(
-                                                      Allgoal![0]["goals"]
-                                                          [index1]["goalName"]);
-                                                  getUserId(
-                                                      widget.id,
-                                                      Allgoal![0]["goals"]
-                                                          [index1]["goalName"],
-                                                      Allgoal![0]["goals"]
-                                                          [index1]["id"]);
-                                                },
-                                                child: circles(
-                                                    circle_text:
-                                                        capitalizeFirstLetter(
-                                                      Allgoal![0]["goals"]
-                                                          [index1]["goalName"],
-                                                    ),
-                                                    circle_color1: 0xFFFFFFFF,
-                                                    circle_color2: 0xFFFFFFFF,
-                                                    circle_border: 3.0,
-                                                    circle_bordercolor:
-                                                        0xFFEE8E6F,
-                                                    circle_height:
-                                                        AppDimensions.width10(
-                                                                context) *
-                                                            13.4,
-                                                    circle_width:
-                                                        AppDimensions.width10(
-                                                                context) *
-                                                            13.4,
-                                                    textfont:
-                                                        AppDimensions.font10(
-                                                                context) *
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  AnimatedScaleButton(
+                                                    onTap: () {
+                                                      goalProvider.updateGoalId(
+                                                          Allgoal![0]["goals"]
+                                                              [index1]["id"]);
+                                                      goalProvider.updateName(
+                                                          Allgoal![0]["goals"]
+                                                                  [index1]
+                                                              ["goalName"]);
+                                                      getUserId(
+                                                          widget.id,
+                                                          Allgoal![0]["goals"]
+                                                                  [index1]
+                                                              ["goalName"],
+                                                          Allgoal![0]["goals"]
+                                                              [index1]["id"]);
+                                                    },
+                                                    child: circles(
+                                                        circle_text:
+                                                            capitalizeFirstLetter(
+                                                          Allgoal![0]["goals"]
+                                                                  [index1]
+                                                              ["goalName"],
+                                                        ),
+                                                        circle_color1:
+                                                            0xFFFFFFFF,
+                                                        circle_color2:
+                                                            0xFFFFFFFF,
+                                                        circle_border: 3.0,
+                                                        circle_bordercolor:
+                                                            0xFFEE8E6F,
+                                                        // circle_height:
+                                                        //     AppDimensions.width10(
+                                                        //             context) *
+                                                        //         13.4,
+                                                        // circle_width:
+                                                        //     AppDimensions.width10(
+                                                        //             context) *
+                                                        //         13.4,
+                                                        textfont: AppDimensions
+                                                                .font10(
+                                                                    context) *
                                                             1.6,
-                                                    textcolor: 0xFFFA9934),
-                                              ),
+                                                        textcolor: 0xFFFA9934),
+                                                  ),
+                                                ],
+                                              )
                                             ],
-                                          )
-                                        ],
-                                      );
-                                    }),
+                                          );
+                                        }),
+                                  ),
                           ),
                           SizedBox(
                             height: AppDimensions.height10(context) * 5,

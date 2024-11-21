@@ -1,4 +1,4 @@
-import 'package:carousel_slider/carousel_slider.dart' ;
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -11,7 +11,11 @@ import 'package:potenic_app/utils/utils.dart';
 import 'package:super_tooltip/super_tooltip.dart';
 
 dashboardCarousel(
-  BuildContext context, CarouselSliderController controller, SuperTooltipController superTooltipController,skipFunc,nextFunc,
+  BuildContext context,
+  CarouselSliderController controller,
+  SuperTooltipController superTooltipController,
+  skipFunc,
+  nextFunc,
   dashboardData,
   int currentIndex,
   final ValueChanged<TwoValues<String, int>> onCountChanged,
@@ -23,7 +27,7 @@ dashboardCarousel(
 
   return SizedBox(
     child: Stack(
-     // crossAxisAlignment: CrossAxisAlignment.center,
+      // crossAxisAlignment: CrossAxisAlignment.center,
       alignment: AlignmentDirectional.center,
       children: [
         Container(
@@ -33,10 +37,22 @@ dashboardCarousel(
             carouselController: controller,
             itemCount: 15,
             itemBuilder: (context, index, realIndex) {
-              DateTime dayDate = currentDate.add(Duration(days: index -7));
-              var currentPractices = dashboardData == null ? "0/0" : "${dashboardData[formatDates(dayDate.toString())]['dashBoardData']['completePractice']}/${dashboardData[formatDates(dayDate.toString())]['dashBoardData']['totalPractice']}";
-              var currentData = dashboardData == null ? false : dashboardData[formatDates(dayDate.toString())]['dashBoardData']['totalPractice'] == 0;
-              var currentCompleted = dashboardData == null ? "0/0" : dashboardData[formatDates(dayDate.toString())]['dashBoardData']['completePractice'] / dashboardData[formatDates(dayDate.toString())]['dashBoardData']['totalPractice'] == 1;
+              DateTime dayDate = currentDate.add(Duration(days: index - 7));
+              var currentPractices = dashboardData == null
+                  ? "0/0"
+                  : "${dashboardData[formatDates(dayDate.toString())]['dashBoardData']['completePractice']}/${dashboardData[formatDates(dayDate.toString())]['dashBoardData']['totalPractice']}";
+              var currentData = dashboardData == null
+                  ? false
+                  : dashboardData[formatDates(dayDate.toString())]
+                          ['dashBoardData']['totalPractice'] ==
+                      0;
+              var currentCompleted = dashboardData == null
+                  ? "0/0"
+                  : dashboardData[formatDates(dayDate.toString())]
+                              ['dashBoardData']['completePractice'] /
+                          dashboardData[formatDates(dayDate.toString())]
+                              ['dashBoardData']['totalPractice'] ==
+                      1;
 
               currentItem = realIndex == currentIndex;
               if (currentDate == dayDate) {
@@ -45,31 +61,33 @@ dashboardCarousel(
                 isCenterItem = false;
               }
               return AnimatedScaleButton(
-                onTap: (){
+                onTap: () {
                   controller.animateToPage(index);
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
                   curve: Curves.easeInOut,
-                  height: isCenterItem && currentIndex ==realIndex
+                  height: isCenterItem && currentIndex == realIndex
                       ? UpdatedDimensions.height10(context) * 22.2
                       : UpdatedDimensions.height10(context) * 9.2,
-                  width: isCenterItem && currentIndex ==realIndex
+                  width: isCenterItem && currentIndex == realIndex
                       ? UpdatedDimensions.width10(context) * 20.8
                       : UpdatedDimensions.width10(context) * 8.8,
-                  transform: Matrix4.translationValues(0, currentItem ? -30 : 30, 0),
-                  decoration: isCenterItem && currentIndex ==realIndex
+                  transform:
+                      Matrix4.translationValues(0, currentItem ? -30 : 30, 0),
+                  decoration: isCenterItem && currentIndex == realIndex
                       ? const BoxDecoration()
                       : currentItem
                           ? (currentDate.isAfter(dayDate) && currentData)
                               ? BoxDecoration(
-                                  border: Border.all(color: Colors.white, width: 0.5),
+                                  border: Border.all(
+                                      color: Colors.white, width: 0.5),
                                   shape: BoxShape.circle)
                               : (currentDate.isBefore(dayDate) && currentData)
                                   ? BoxDecoration(
                                       shape: BoxShape.circle,
-                                      border:
-                                          Border.all(color: Colors.white, width: 0.5),
+                                      border: Border.all(
+                                          color: Colors.white, width: 0.5),
                                     )
                                   : const BoxDecoration()
                           : const BoxDecoration(),
@@ -82,11 +100,13 @@ dashboardCarousel(
                       : const EdgeInsets.all(4),
                   child: Container(
                     decoration: BoxDecoration(
-                      image: isCenterItem && currentIndex ==realIndex
+                      image: isCenterItem && currentIndex == realIndex
                           ? DecorationImage(
                               image: dashboardData == null || currentData
-                                  ? const AssetImage('assets/images/currentbg2.webp')
-                                  : const AssetImage('assets/images/Asset 10 2.webp'),
+                                  ? const AssetImage(
+                                      'assets/images/currentbg2.webp')
+                                  : const AssetImage(
+                                      'assets/images/Asset 10 2.webp'),
                               fit: BoxFit.contain)
                           : null,
                       shape: BoxShape.circle,
@@ -100,14 +120,16 @@ dashboardCarousel(
                                       begin: Alignment.topCenter,
                                       end: Alignment.bottomCenter,
                                       colors: [
-                                          isCenterItem && currentIndex ==realIndex
+                                          isCenterItem &&
+                                                  currentIndex == realIndex
                                               ? Colors.transparent
                                               : const Color(0xffF5F1E0),
-                                          isCenterItem && currentIndex ==realIndex
+                                          isCenterItem &&
+                                                  currentIndex == realIndex
                                               ? Colors.transparent
                                               : const Color(0xffEDDC97)
                                         ]),
-                      border: isCenterItem && currentIndex ==realIndex
+                      border: isCenterItem && currentIndex == realIndex
                           ? null
                           : Border.all(color: Colors.white, width: 3),
                     ),
@@ -132,9 +154,12 @@ dashboardCarousel(
                               height: UpdatedDimensions.height10(context) * 2,
                             )),
                             TextSpan(
-                              text: DateFormat('EEE\n').format(dayDate).toUpperCase(),
+                              text: DateFormat('EEE\n')
+                                  .format(dayDate)
+                                  .toUpperCase(),
                               style: TextStyle(
-                                  fontSize: UpdatedDimensions.font10(context) * 1.2,
+                                  fontSize:
+                                      UpdatedDimensions.font10(context) * 1.2,
                                   fontFamily: 'Laila',
                                   fontWeight: FontWeight.w600,
                                   color: dashboardData == null
@@ -143,7 +168,8 @@ dashboardCarousel(
                                           ? noDataColors(currentData)
                                           : currentDate.isBefore(dayDate)
                                               ? noDataColors(currentData)
-                                              : noDataColors(currentData)), // Day
+                                              : noDataColors(
+                                                  currentData)), // Day
                             ),
                             WidgetSpan(
                                 child: SizedBox(
@@ -152,7 +178,8 @@ dashboardCarousel(
                             TextSpan(
                               text: DateFormat('dd.MM\n').format(dayDate),
                               style: TextStyle(
-                                  fontSize: UpdatedDimensions.font10(context) * 1.4,
+                                  fontSize:
+                                      UpdatedDimensions.font10(context) * 1.4,
                                   fontFamily: 'Laila',
                                   fontWeight: FontWeight.w400,
                                   color: dashboardData == null
@@ -161,7 +188,8 @@ dashboardCarousel(
                                           ? noDataColors(currentData)
                                           : currentDate.isBefore(dayDate)
                                               ? noDataColors(currentData)
-                                              : noDataColors(currentData)), // Date
+                                              : noDataColors(
+                                                  currentData)), // Date
                             ),
                             WidgetSpan(
                                 child: SizedBox(
@@ -169,8 +197,9 @@ dashboardCarousel(
                             )),
                             WidgetSpan(
                               child: SizedBox(
-                                height: UpdatedDimensions.height10(context) * 2.1,
-                                width: UpdatedDimensions.width10(context) * 2.1,
+                                height:
+                                    UpdatedDimensions.height10(context) * 2.1,
+                                width: UpdatedDimensions.width10(context) * 2.5,
                                 child: decoratedBox(
                                     context,
                                     dashboardData == null
@@ -179,10 +208,10 @@ dashboardCarousel(
                                             ? circleColors(
                                                 currentData, currentCompleted)
                                             : currentDate.isBefore(dayDate)
-                                                ? circleColors(
-                                                    currentData, currentCompleted)
-                                                : circleColors(
-                                                    currentData, currentCompleted),
+                                                ? circleColors(currentData,
+                                                    currentCompleted)
+                                                : circleColors(currentData,
+                                                    currentCompleted),
                                     currentDate.isAfter(dayDate)
                                         ? currentPractices
                                         : currentDate.isBefore(dayDate)
@@ -194,10 +223,10 @@ dashboardCarousel(
                                             ? circleTextColors(
                                                 currentData, currentCompleted)
                                             : currentDate.isBefore(dayDate)
-                                                ? circleTextColors(
-                                                    currentData, currentCompleted)
-                                                : circleTextColors(
-                                                    currentData, currentCompleted),
+                                                ? circleTextColors(currentData,
+                                                    currentCompleted)
+                                                : circleTextColors(currentData,
+                                                    currentCompleted),
                                     currentDate.isAfter(dayDate),
                                     currentDate.isBefore(dayDate)
                                         ? currentData
@@ -230,12 +259,21 @@ dashboardCarousel(
             ),
           ),
         ),
-         Positioned(
+        Positioned(
           bottom: 100,
-          child: dashboardTooltip(superTooltipController, context, 4, 'down',skipFunc, nextFunc,Container(height: 0,width: 0,),
-           ),
+          child: dashboardTooltip(
+            superTooltipController,
+            context,
+            4,
+            'down',
+            skipFunc,
+            nextFunc,
+            Container(
+              height: 0,
+              width: 0,
+            ),
+          ),
         )
-
       ],
     ),
   );

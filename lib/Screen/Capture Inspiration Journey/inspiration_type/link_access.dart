@@ -369,6 +369,7 @@ class _link_infoState extends State<link_info> {
                                   InspirationTextFields() //inspiartion TEXT FORM FIELD ////////////////
                                       .inspirationCustomTextField(
                                           controller: statement,
+                                          maxlength: 250,
                                           context: context)
 
                               // TextField(

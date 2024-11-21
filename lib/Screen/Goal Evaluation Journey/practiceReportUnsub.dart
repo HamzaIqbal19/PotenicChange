@@ -14,11 +14,7 @@ import '../../Widgets/calender.dart';
 import '../../utils/app_dimensions.dart';
 
 class progress_report_unsub extends StatelessWidget {
-
-
   const progress_report_unsub({super.key});
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -72,13 +68,12 @@ class progress_report_unsub extends StatelessWidget {
         height: double.infinity,
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
-          child:
-          Column(
+          child: Column(
             children: [
               sideWidget(context, true, 'Meditation'),
               Container(
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 5.0),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 5.0),
                 child: Text(
                   'Congratulations!',
                   textAlign: TextAlign.center,
@@ -90,8 +85,8 @@ class progress_report_unsub extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 2.7),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.7),
                 child: Text(
                   'You have been consistently doing\nyour practice for 20 active days ',
                   textAlign: TextAlign.center,
@@ -103,8 +98,8 @@ class progress_report_unsub extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 0.5),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 0.5),
                 child: Text(
                   //we will give duration of 20 days
                   'from [dd/mmm/yy] to [dd/mmm/yy]',
@@ -117,8 +112,8 @@ class progress_report_unsub extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 1.9),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 1.9),
                 child: Text(
                   'You are a rockstar! :)',
                   textAlign: TextAlign.center,
@@ -129,12 +124,14 @@ class progress_report_unsub extends StatelessWidget {
                       color: const Color(0xFF437296)),
                 ),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               Container(
                 width: AppDimensions.width10(context) * 34.0,
                 //height: AppDimensions.height10(context) * 11.2,
-                margin: EdgeInsets.only(
-                    left: AppDimensions.width10(context) * 1.5),
+                margin:
+                    EdgeInsets.only(left: AppDimensions.width10(context) * 1.5),
                 child: Center(
                   child: Row(
                     children: [
@@ -146,7 +143,8 @@ class progress_report_unsub extends StatelessWidget {
                             left: AppDimensions.width10(context) * 0.5),
                         decoration: const BoxDecoration(
                             image: DecorationImage(
-                                image: AssetImage('assets/images/orange_moon.webp'))),
+                                image: AssetImage(
+                                    'assets/images/orange_moon.webp'))),
                         child: Align(
                           alignment: const Alignment(1, 1.1),
                           child: Container(
@@ -155,12 +153,12 @@ class progress_report_unsub extends StatelessWidget {
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border: Border.all(
-                                  width: AppDimensions.width10(context) *
-                                      0.2,
+                                  width: AppDimensions.width10(context) * 0.2,
                                   color: const Color(0xFFFFFFFF),
                                 ),
                                 image: const DecorationImage(
-                                    image: AssetImage('assets/images/Ellipse 158_wb.webp'))),
+                                    image: AssetImage(
+                                        'assets/images/Ellipse 158_wb.webp'))),
                           ),
                         ),
                       ),
@@ -174,11 +172,9 @@ class progress_report_unsub extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              height:
-                              AppDimensions.height10(context) * 3.0,
+                              height: AppDimensions.height10(context) * 3.0,
                               margin: EdgeInsets.only(
-                                bottom:
-                                AppDimensions.height10(context) * 0.1,
+                                bottom: AppDimensions.height10(context) * 0.1,
                               ),
                               child: Text(
                                 'Control my anger',
@@ -186,26 +182,22 @@ class progress_report_unsub extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize:
-                                    AppDimensions.font10(context) *
-                                        2.0,
+                                        AppDimensions.font10(context) * 2.0,
                                     height: 1.2,
                                     fontWeight: FontWeight.w600,
                                     color: const Color(0xFF437296)),
                               ),
                             ),
                             SizedBox(
-                              width:
-                              AppDimensions.width10(context) * 27.9,
-                              height:
-                              AppDimensions.height10(context) * 2.7,
+                              width: AppDimensions.width10(context) * 27.9,
+                              height: AppDimensions.height10(context) * 2.7,
                               child: Text(
                                 'Meditation ',
                                 textAlign: TextAlign.start,
                                 overflow: TextOverflow.ellipsis,
                                 style: TextStyle(
                                     fontSize:
-                                    AppDimensions.font10(context) *
-                                        1.8,
+                                        AppDimensions.font10(context) * 1.8,
                                     height: 1.2,
                                     fontWeight: FontWeight.w600,
                                     color: const Color(0xFF156F6D)),
@@ -221,8 +213,8 @@ class progress_report_unsub extends StatelessWidget {
               Container(
                 // width: AppDimensions.width10(context) * 2.1,
                 //height: AppDimensions.height10(context) * 4.3,
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 2.0),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.0),
                 child: Image.asset(
                   'assets/images/Arrow.webp',
                   width: AppDimensions.width10(context) * 4.1,
@@ -232,13 +224,12 @@ class progress_report_unsub extends StatelessWidget {
               Container(
                 width: double.infinity,
                 //padding: EdgeInsets.all(0),
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 2.7),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 2.7),
                 // height: AppDimensions.height10(context) * 69.3,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(
-                            'assets/images/pro_report_bg#2.webp'),
+                        image: AssetImage('assets/images/pro_report_bg#2.webp'),
                         fit: BoxFit.cover)),
                 child: Column(
                   children: [
@@ -255,19 +246,23 @@ class progress_report_unsub extends StatelessWidget {
                             color: const Color(0xFFFFFFFF)),
                       ),
                     ),
-                    const SizedBox(height: 30,),
+                    const SizedBox(
+                      height: 30,
+                    ),
                     SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children:  [
+                          children: [
                             for (int i = 0; i < 1; i++) ...[
-                              identityComponent(context,i,'is in control of my anger')
+                              identityComponent(
+                                  context, i, 'is in control of my anger')
                             ]
                           ],
-                        )
+                        )),
+                    const SizedBox(
+                      height: 50,
                     ),
-                    const SizedBox(height: 50,),
                     Text(
                       'Your inspirations',
                       textAlign: TextAlign.center,
@@ -277,15 +272,19 @@ class progress_report_unsub extends StatelessWidget {
                           fontWeight: FontWeight.w600,
                           color: const Color(0xFFFFFFFF)),
                     ),
-                    const SizedBox(height: 30,),
-                     emptyInspiration(context),
-                    const SizedBox(height: 80,),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    emptyInspiration(context),
+                    const SizedBox(
+                      height: 80,
+                    ),
                   ],
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 7.0),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 7.0),
                 child: Text(
                   'You have completed 20\nactive days of practice',
                   textAlign: TextAlign.center,
@@ -296,10 +295,10 @@ class progress_report_unsub extends StatelessWidget {
                       color: const Color(0xFF437296)),
                 ),
               ),
-              calender(context, true, report,20),
+              calender(context, true, report, 20),
               Container(
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 3.7),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 3.7),
                 child: Image.asset(
                   'assets/images/Arrow.webp',
                   width: AppDimensions.width10(context) * 4.1,
@@ -307,8 +306,8 @@ class progress_report_unsub extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(
-                    top: AppDimensions.height10(context) * 4.0),
+                margin:
+                    EdgeInsets.only(top: AppDimensions.height10(context) * 4.0),
                 child: Text(
                   'This is how you felt\nimplementing your new\npractice',
                   textAlign: TextAlign.center,
@@ -319,7 +318,7 @@ class progress_report_unsub extends StatelessWidget {
                       color: const Color(0xFF437296)),
                 ),
               ),
-              habitComponent(context,options,outerColor,'active',true),
+              habitComponent(context, options, outerColor, 'active', true),
               Container(
                 width: double.infinity,
                 height: AppDimensions.height10(context) * 22.9,
@@ -342,8 +341,7 @@ class progress_report_unsub extends StatelessWidget {
                           'Practice Assessment',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize:
-                              UpdatedDimensions.font10(context) * 1.6,
+                              fontSize: UpdatedDimensions.font10(context) * 1.6,
                               height: 1.2,
                               fontWeight: FontWeight.w700,
                               color: const Color(0xFFF5F5F5)),
@@ -354,14 +352,12 @@ class progress_report_unsub extends StatelessWidget {
                         //height: AppDimensions.height10(context) * 1.8,
                         margin: EdgeInsets.only(
                             top: AppDimensions.height10(context) * 0.8,
-                            bottom:
-                            AppDimensions.height10(context) * 1.2),
+                            bottom: AppDimensions.height10(context) * 1.2),
                         child: Text(
                           'Your latest 20 active day evaluation.',
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                              fontSize:
-                              UpdatedDimensions.font10(context) * 1.4,
+                              fontSize: UpdatedDimensions.font10(context) * 1.4,
                               height: 1.2,
                               fontWeight: FontWeight.w400,
                               color: const Color(0xFFF5F5F5)),
@@ -387,7 +383,7 @@ class progress_report_unsub extends StatelessWidget {
                           premium: true,
                           fieldText2: '(',
                           textColor2: 0xff8EA1B1,
-                          fieldText3:  '-',
+                          fieldText3: '-',
                           fieldText4: '/5)',
                         ),
                       ),
@@ -402,8 +398,7 @@ class progress_report_unsub extends StatelessWidget {
                               top: AppDimensions.height10(context) * 1.2),
                           decoration: BoxDecoration(
                             border: Border.all(
-                                width:
-                                AppDimensions.height10(context) * 0.1,
+                                width: AppDimensions.height10(context) * 0.1,
                                 color: const Color(0xFFFFFFFF)),
                             borderRadius: BorderRadius.circular(
                                 AppDimensions.height10(context) * 2.0),
@@ -414,16 +409,15 @@ class progress_report_unsub extends StatelessWidget {
                               // height:
                               //     AppDimensions.height10(context) * 2.1,
                               margin: EdgeInsets.only(
-                                  top: AppDimensions.height10(context) *
-                                      0.2),
+                                  top: AppDimensions.height10(context) * 0.2),
                               child: Center(
                                 child: Text(
                                   'Exit report',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                       fontSize:
-                                      UpdatedDimensions.font10(context) *
-                                          1.8,
+                                          UpdatedDimensions.font10(context) *
+                                              1.8,
                                       height: 1.2,
                                       fontWeight: FontWeight.w600,
                                       color: const Color(0xFFFFFFFF)),

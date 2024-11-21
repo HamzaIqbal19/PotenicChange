@@ -206,7 +206,12 @@ class _PracticeReminderState extends State<PracticeReminder> {
             elevation: 0,
             centerTitle: true,
             backgroundColor: Colors.transparent,
-            title: appBarTitle(context,widget.comingFromEditScreen?AppText().viewAndEdit: AppText().createPrac3,widget.comingFromEditScreen),
+            title: appBarTitle(
+                context,
+                widget.comingFromEditScreen
+                    ? AppText().viewAndEdit
+                    : AppText().createPrac3,
+                widget.comingFromEditScreen),
             automaticallyImplyLeading: true,
             leading: Buttons().backButton(context, backPress),
             actions: [

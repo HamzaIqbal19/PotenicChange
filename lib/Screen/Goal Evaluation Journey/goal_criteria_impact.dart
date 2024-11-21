@@ -218,6 +218,7 @@ class _your_impactState extends State<your_impact> {
                                         page: new_progress_score(
                                       premium: widget.premium,
                                       evaluationIndex: widget.index,
+                                      dateChange: true,
                                     )));
                                 setState(() {
                                   select_item = -1;
@@ -278,6 +279,7 @@ class _your_impactState extends State<your_impact> {
                   page: new_progress_score(
                 premium: widget.premium,
                 evaluationIndex: widget.index,
+                dateChange: true,
               )));
           setState(() {
             select_item = -1;
@@ -438,6 +440,7 @@ class _your_impactState extends State<your_impact> {
                           page: new_progress_score(
                         premium: widget.premium,
                         evaluationIndex: widget.index,
+                        dateChange: true,
                       )));
                   setState(() {
                     select_item = -1;
@@ -455,6 +458,7 @@ class _your_impactState extends State<your_impact> {
                       page: new_progress_score(
                     premium: widget.premium,
                     evaluationIndex: widget.index,
+                    dateChange: true,
                   )));
               setState(() {
                 select_item = -1;

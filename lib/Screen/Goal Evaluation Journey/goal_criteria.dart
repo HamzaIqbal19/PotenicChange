@@ -322,6 +322,7 @@ class _your_whyState extends State<your_why> {
                                         page: new_progress_score(
                                       premium: widget.premium,
                                       evaluationIndex: widget.index,
+                                      dateChange: true,
                                     )));
                               },
                               child: Text(
@@ -376,6 +377,7 @@ class _your_whyState extends State<your_why> {
                   page: new_progress_score(
                 premium: widget.premium,
                 evaluationIndex: widget.index,
+                dateChange: true,
               )));
           selectedItemIndexesOuter!.clear();
         }
@@ -533,6 +535,7 @@ class _your_whyState extends State<your_why> {
                             page: new_progress_score(
                           evaluationIndex: widget.index,
                           premium: widget.premium,
+                          dateChange: true,
                         )));
                   },
                   () {
@@ -546,6 +549,7 @@ class _your_whyState extends State<your_why> {
                         page: new_progress_score(
                       evaluationIndex: widget.index,
                       premium: widget.premium,
+                      dateChange: true,
                     )));
               }
             },

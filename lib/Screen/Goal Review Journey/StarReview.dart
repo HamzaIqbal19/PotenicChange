@@ -57,28 +57,29 @@ class _StarReviewState extends State<StarReview> {
   void _onFocus() {
     setState(() {});
   }
-  setColor(){
-    if(color1 == true){
+
+  setColor() {
+    if (color1 == true) {
       setState(() {
         color = '1';
       });
-    }else if(color2 == true){
+    } else if (color2 == true) {
       setState(() {
         color = '2';
       });
-    } else if(color3 == true){
+    } else if (color3 == true) {
       setState(() {
         color = '3';
       });
-    } else if(color4 == true){
+    } else if (color4 == true) {
       setState(() {
         color = '4';
       });
-    } else if(color5 == true){
+    } else if (color5 == true) {
       setState(() {
         color = '5';
       });
-    }else if(color6 == true){
+    } else if (color6 == true) {
       setState(() {
         color = '6';
       });
@@ -243,7 +244,6 @@ class _StarReviewState extends State<StarReview> {
                         SizedBox(
                           height: AppDimensions.height10(context) * 5.5,
                         ),
-                        
                         SizedBox(
                           height: AppDimensions.height10(context) * 2.0,
                         ),

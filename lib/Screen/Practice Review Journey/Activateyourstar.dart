@@ -347,9 +347,9 @@ class _ActivateStarState extends State<ActivateStar> {
                                               context,
                                               AppText().dashboardTitle,
                                               AppText().dashboardBody,
-                                              AppLinks().dashboardLink,(){
+                                              AppLinks().dashboardLink, () {
                                             tutorialController.startTutorial();
-                                          },false);
+                                          }, false);
 
                                           //dashboard_sheet(context);
                                         } else if (response == 400) {

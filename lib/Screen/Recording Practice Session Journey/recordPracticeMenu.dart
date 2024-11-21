@@ -164,36 +164,12 @@ class _practiceMenuState extends State<practiceMenu> {
       },
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          forceMaterialTransparency: true,
-          leading: Buttons().backButton(context, (){
-            if (route != 'goal_menu') {
-              Navigator.push(
-                context,
-                FadePageRouteReverse(
-                  page: ViewDashboard(
-                    missed: false,
-                    name: '',
-                    update: false,
-                    helpfulTips: false,
-                    record: differenceInDays,
-                  ),
-                ),
-              );
-            } else {
-              Navigator.push(
-                  context,
-                  FadePageRouteReverse(
-                      page: const goal_menu_inactive(
-                          isActive: false, goal_evaluation: false)));
-            }
-          }),
-          centerTitle: true,
-          actions: [
-            Buttons().closeButton(context, () {
-              if (route == 'dashboard') {
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            automaticallyImplyLeading: false,
+            forceMaterialTransparency: true,
+            leading: Buttons().backButton(context, () {
+              if (route != 'goal_menu') {
                 Navigator.push(
                   context,
                   FadePageRouteReverse(
@@ -213,10 +189,33 @@ class _practiceMenuState extends State<practiceMenu> {
                         page: const goal_menu_inactive(
                             isActive: false, goal_evaluation: false)));
               }
-            })
-          ],
-          title: appBarTitle(context, AppText().pracMenu,false)
-        ),
+            }),
+            centerTitle: true,
+            actions: [
+              Buttons().closeButton(context, () {
+                if (route == 'dashboard') {
+                  Navigator.push(
+                    context,
+                    FadePageRouteReverse(
+                      page: ViewDashboard(
+                        missed: false,
+                        name: '',
+                        update: false,
+                        helpfulTips: false,
+                        record: differenceInDays,
+                      ),
+                    ),
+                  );
+                } else {
+                  Navigator.push(
+                      context,
+                      FadePageRouteReverse(
+                          page: const goal_menu_inactive(
+                              isActive: false, goal_evaluation: false)));
+                }
+              })
+            ],
+            title: appBarTitle(context, AppText().pracMenu, false)),
         extendBodyBehindAppBar: true,
         backgroundColor: Colors.transparent,
         body: Container(
