@@ -102,7 +102,7 @@ class _StarReviewWhyState extends State<StarReviewWhy> {
                                 top: AppDimensions.height10(context) * 5.3),
                             child: Center(
                               child: Text(
-                                "View and edit mode",
+                                "",
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFF437296),

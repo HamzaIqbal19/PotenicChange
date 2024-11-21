@@ -331,11 +331,12 @@ class _SubscriptionState extends State<Subscription>
                                     SizedBox(
                                       width: AppDimensionsUpdated.height10(
                                               context) *
-                                          9.1,
+                                          8.5,
                                       height: AppDimensionsUpdated.height10(
                                               context) *
                                           3.934,
-                                      child: Center(
+                                      child: Align(
+                                        alignment: Alignment.topCenter,
                                         child: Text(
                                           'Empowered\n(free)',
                                           textAlign: TextAlign.center,
@@ -353,21 +354,24 @@ class _SubscriptionState extends State<Subscription>
                                     SizedBox(
                                       width: AppDimensionsUpdated.height10(
                                               context) *
-                                          7.7,
+                                          9.1,
                                       height: AppDimensionsUpdated.height10(
                                               context) *
                                           19.67,
-                                      child: Text(
-                                        'Ownership',
-                                        style: TextStyle(
-                                            fontSize:
-                                                AppDimensions.font10(context) *
-                                                    1.6,
-                                            fontWeight: FontWeight.w700,
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                0.15,
-                                            color: const Color(0xFF437296)),
+                                      child: Align(
+                                        alignment: Alignment.topCenter,
+                                        child: Text(
+                                          'Ownership',
+                                          style: TextStyle(
+                                              fontSize:
+                                                  AppDimensions.font10(context) *
+                                                      1.6,
+                                              fontWeight: FontWeight.w700,
+                                              height: AppDimensions.height10(
+                                                      context) *
+                                                  0.15,
+                                              color: const Color(0xFF437296)),
+                                        ),
                                       ),
                                     )
                                   ],
@@ -1150,7 +1154,7 @@ class _SubscriptionState extends State<Subscription>
                           child: Container(
                             width: AppDimensionsUpdated.width10(context) * 9.0,
                             height:
-                                AppDimensionsUpdated.height10(context) * 58.2,
+                                AppDimensionsUpdated.height10(context) * 62,
                             color: const Color(0xFFFA9934).withOpacity(0.1),
                           ),
                         )

@@ -47,6 +47,7 @@ class _MessageCenterState extends State<MessageCenter> {
         notificationList2 = value;
         isLoading = false;
       });
+
     });
   }
 
@@ -93,36 +94,34 @@ class _MessageCenterState extends State<MessageCenter> {
         automaticallyImplyLeading: false,
         // centerTitle: true,
         leadingWidth: AppDimensionsUpdated.width10(context) * 13,
-        leading: Center(
-          child: AnimatedScaleButton(
-            onTap: () {
+        leading: AnimatedScaleButton(
+          onTap: () {
+            setState(() {
+              addIdsToList();
+            });
+            alertBox(context, () {
               setState(() {
-                addIdsToList();
+                delete = false;
+                options = false;
               });
-              alertBox(context, () {
-                setState(() {
-                  delete = false;
-                  options = false;
-                });
-                deleteUserNotifications();
-                //removeNotifications();
-                Navigator.pop(context);
-              });
-            },
-            child: SizedBox(
-              //width: AppDimensionsUpdated.width10(context) * 9.5,
-              height: AppDimensionsUpdated.height10(context) * 2.4,
+              deleteUserNotifications();
+              //removeNotifications();
+              Navigator.pop(context);
+            });
+          },
+          child: Container(
+            //width: AppDimensionsUpdated.width10(context) * 9.5,
+           // height: AppDimensionsUpdated.height10(context) * 2.4,
 
-              // margin: EdgeInsets.only(left: AppDimensionsUpdated.width10(context) * 1.6),
-              child: Text(
-                !options ? "" : 'Select All',
-                style: TextStyle(
-                    fontSize: AppDimensionsUpdated.font10(context) * 2.0,
-                    height: AppDimensionsUpdated.height10(context) * 0.16,
-                    fontWeight: FontWeight.w500,
-                    decoration: TextDecoration.underline,
-                    color: const Color(0xFFFBFBFB)),
-              ),
+             margin: EdgeInsets.only(left: AppDimensionsUpdated.width10(context) * 1.5),
+            child: Text(
+              !options ? "" : 'Select All',
+              style: TextStyle(
+                  fontSize: AppDimensionsUpdated.font10(context) * 2,
+                  height: AppDimensionsUpdated.height10(context) * 0.16,
+                  fontWeight: FontWeight.w500,
+                  decoration: TextDecoration.underline,
+                  color: const Color(0xFFFBFBFB)),
             ),
           ),
         ),
@@ -139,15 +138,14 @@ class _MessageCenterState extends State<MessageCenter> {
                         }
                       },
                       child: Container(
-                        margin: EdgeInsets.only(
-                            right: AppDimensions.height10(context) * 1.7),
                         width: AppDimensionsUpdated.width10(context) * 5.8,
-                        height: AppDimensionsUpdated.height10(context) * 2.4,
+                       // height: AppDimensionsUpdated.height10(context) * 2.4,
+                        margin: EdgeInsets.only(right: AppDimensionsUpdated.width10(context) * 1.5),
                         child: Text(
                           'Cancel',
                           style: TextStyle(
                               fontSize:
-                                  AppDimensionsUpdated.font10(context) * 2.0,
+                                  AppDimensionsUpdated.font10(context) * 2,
                               height:
                                   AppDimensionsUpdated.height10(context) * 0.16,
                               fontWeight: FontWeight.w500,
@@ -265,8 +263,6 @@ class _MessageCenterState extends State<MessageCenter> {
                                       }
                                     });
                                   } else {
-                                    print(
-                                        "Notification Data ${notifications[index]}");
                                     // notificationApi.markAsRead(
                                     //     notifications['index']["id"]);
                                     seeMoreSheet(context, notifications[index],
@@ -430,7 +426,7 @@ class _MessageCenterState extends State<MessageCenter> {
                                         style: TextStyle(
                                           fontSize: AppDimensionsUpdated.font10(
                                                   context) *
-                                              2.0,
+                                              2,
                                           fontWeight: FontWeight.w600,
                                           color: const Color(0xFFFFFFFF),
                                         )),
@@ -465,7 +461,7 @@ class _MessageCenterState extends State<MessageCenter> {
                               style: TextStyle(
                                   fontSize:
                                       AppDimensionsUpdated.font10(context) *
-                                          2.0,
+                                          2,
                                   fontWeight: FontWeight.w600,
                                   color: const Color(0xFFFA9934)),
                             ),

@@ -109,13 +109,13 @@ class _StartProcessState extends State<StartProcess> {
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               color: Colors.white,
-                              fontSize: AppDimensions.font10(context) * 1.9,
+                              fontSize: AppDimensions.font10(context) * 1.95,
                             ),
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 3,
+                        height: AppDimensions.height10(context) * 2.5,
                       ),
                       Center(
                         child: Image(
@@ -125,7 +125,7 @@ class _StartProcessState extends State<StartProcess> {
                         ),
                       ),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 3,
+                        height: AppDimensions.height10(context) * 2.5,
                       ),
                       Center(
                         child: Text(
@@ -148,10 +148,10 @@ class _StartProcessState extends State<StartProcess> {
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                                 fontFamily: 'Laila',
-                                fontSize: AppDimensions.font10(context) * 1.7,
+                                fontSize: AppDimensions.font10(context) * 1.75,
                               ),
                               children: [
-                                const TextSpan(text: 'Set'),
+                                const TextSpan(text: 'Define'),
                                 TextSpan(
                                   text: AppText().step1Head,
                                   style: const TextStyle(
@@ -171,7 +171,7 @@ class _StartProcessState extends State<StartProcess> {
                         ),
                       ),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 3,
+                        height: AppDimensions.height10(context) * 2.5,
                       ),
                       Center(
                         child: Text(
@@ -194,7 +194,7 @@ class _StartProcessState extends State<StartProcess> {
                                 fontWeight: FontWeight.w500,
                                 color: Colors.white,
                                 fontFamily: 'Laila',
-                                fontSize: AppDimensions.font10(context) * 1.7,
+                                fontSize: AppDimensions.font10(context) * 1.75,
                               ),
                               children: [
                                 const TextSpan(text: 'Add'),
@@ -207,7 +207,7 @@ class _StartProcessState extends State<StartProcess> {
                                 TextSpan(text: AppText().step2Body),
                               ])),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 3,
+                        height: AppDimensions.height10(context) * 2.5,
                       ),
                       Center(
                         child: Image(
@@ -217,7 +217,7 @@ class _StartProcessState extends State<StartProcess> {
                         ),
                       ),
                       SizedBox(
-                        height: AppDimensions.height10(context) * 4,
+                        height: AppDimensions.height10(context) * 3.5,
                       ),
                       RichText(
                           textAlign: TextAlign.center,
@@ -229,7 +229,7 @@ class _StartProcessState extends State<StartProcess> {
                                 fontSize: AppDimensions.font10(context) * 1.5,
                               ),
                               children: [
-                                const TextSpan(text: 'In less than '),
+                                const TextSpan(text: 'In just '),
                                 const TextSpan(
                                   text: '20 minutes',
                                   style: TextStyle(
@@ -241,7 +241,7 @@ class _StartProcessState extends State<StartProcess> {
                     ],
                   ),
                   Positioned(
-                    bottom: 50,
+                    bottom: 45,
                     child: AnimatedScaleButton(
                       onTap: () {
                         Navigator.push(

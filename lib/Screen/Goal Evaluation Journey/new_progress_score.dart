@@ -61,7 +61,7 @@ class _new_progress_scoreState extends State<new_progress_score> {
   ];
 
   List messagesImpact = [
-    "It hasn't started to ",
+    "It has no ",
     "It has little ",
     "It has positive ",
     "It has a significant ",
@@ -1312,16 +1312,16 @@ class _new_progress_scoreState extends State<new_progress_score> {
                                                       ['impactOnYourSelf']['level'] ==
                                                   5
                                               ? 'impacting'
-                                              : 'impact',
+                                              : 'impact ',
                                   text_span_3: widget.premium == false
                                       ? ''
                                       : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf'] == null
                                           ? ''
                                           : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'] == 0
-                                              ? ' my life yet'
+                                              ? 'on my life yet'
                                               : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']['level'] == 5
                                                   ? ' my life positively and consistently'
-                                                  : '  my life',
+                                                  : 'on my life',
                                   border: goalDetails['goalEvaluations'] == null || widget.premium == false
                                       ? true
                                       : goalDetails['goalEvaluations'][selectedEval]['impactOnYourSelf']

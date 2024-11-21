@@ -288,7 +288,7 @@ class OnboardingPageState extends State<OnboardingPage>
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 color: page.titleColor,
-                fontSize: AppDimensions.font10(context) * 3.0,
+                fontSize: AppDimensions.font10(context) * 3.4,
               ),
             ),
           ), //Title Container
@@ -312,7 +312,7 @@ class OnboardingPageState extends State<OnboardingPage>
                     letterSpacing: AppDimensions.width10(context) * 0.13,
                     fontWeight: FontWeight.w500,
                     color: page.descripColor,
-                    fontSize: AppDimensions.font10(context) * 2.0,
+                    fontSize: AppDimensions.font10(context) * 2.2,
                   ),
                 ),
               ),
@@ -337,7 +337,7 @@ class OnboardingPageState extends State<OnboardingPage>
                     letterSpacing: AppDimensions.width10(context) * 0.15,
                     fontWeight: FontWeight.w400,
                     color: page.descripColor,
-                    fontSize: AppDimensions.font10(context) * 2.0,
+                    fontSize: AppDimensions.font10(context) * 2.2,
                   ),
                 ),
               ),
@@ -370,7 +370,7 @@ class OnboardingPageState extends State<OnboardingPage>
                       fontWeight: FontWeight.w500,
                       letterSpacing: AppDimensions.width10(context) * 0.13,
                       color: page.descripColor,
-                      fontSize: AppDimensions.font10(context) * 2.0,
+                      fontSize: AppDimensions.font10(context) * 2.2,
                     ),
                   ))
               : Container(),

@@ -17,129 +17,133 @@ class EmailSent extends StatefulWidget {
 class _EmailSentState extends State<EmailSent> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        extendBodyBehindAppBar: true,
-        resizeToAvoidBottomInset: false,
-        appBar: PreferredSize(
-            preferredSize:
-                Size.fromHeight(AppDimensions.height10(context) * 5.0),
-            child: AppBar(
-              elevation: 0,
-              centerTitle: true,
-              backgroundColor: Colors.transparent,
-              automaticallyImplyLeading: false,
-              actions: [
-                Buttons().closeButton(context, () {
-                  Navigator.pop(context);
-                })
-              ],
-            )),
-        body: Stack(
-          children: <Widget>[
-            Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/loginscreenBackground.webp"),
-                  fit: BoxFit.cover,
+    return PopScope(
+      canPop: false,
+      child: Scaffold(
+          extendBodyBehindAppBar: true,
+          resizeToAvoidBottomInset: false,
+          appBar: PreferredSize(
+              preferredSize:
+                  Size.fromHeight(AppDimensions.height10(context) * 5.0),
+              child: AppBar(
+                elevation: 0,
+                centerTitle: true,
+                backgroundColor: Colors.transparent,
+                automaticallyImplyLeading: false,
+                // actions: [
+                //   Buttons().closeButton(context, () {
+                //     Navigator.pop(context);
+                //   })
+                // ],
+              )),
+          body: Stack(
+            children: <Widget>[
+              Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image:
+                        AssetImage("assets/images/loginscreenBackground.webp"),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
-            ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                SizedBox(
-                  height: AppDimensions.height10(context) * 8.0,
-                ),
-                Center(
-                  child: Image(
-                    // color: Colors.orange,
-                    image: const AssetImage("assets/images/logo.webp"),
-                    height: AppDimensions.height10(context) * 7.75,
-                    width: AppDimensions.width10(context) * 7.75,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  SizedBox(
+                    height: AppDimensions.height10(context) * 8.0,
                   ),
-                ),
-
-                SizedBox(height: AppDimensions.height10(context) * 2.32),
-                SizedBox(
-                  height: AppDimensions.height10(context) * 6.8,
-                  width: AppDimensions.width10(context) * 32.0,
-                  child: Text(
-                    "Password reset email\nsent",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      height: AppDimensions.height10(context) * 0.15,
-                      color: Colors.white,
-                      fontSize: AppDimensions.font10(context) * 2.8,
+                  Center(
+                    child: Image(
+                      // color: Colors.orange,
+                      image: const AssetImage("assets/images/logo.webp"),
+                      height: AppDimensions.height10(context) * 7.75,
+                      width: AppDimensions.width10(context) * 7.75,
                     ),
                   ),
-                ),
-                SizedBox(height: AppDimensions.height10(context) * 2.2),
-                // SizedBox(height: AppDimensions.height2),
-                SizedBox(
-                    height: AppDimensions.height10(context) * 2.4,
-                    width: AppDimensions.screenWidth(context) - 100,
+
+                  SizedBox(height: AppDimensions.height10(context) * 2.32),
+                  SizedBox(
+                    //height: AppDimensions.height10(context) * 6.8,
+                    width: AppDimensions.width10(context) * 32.0,
                     child: Text(
-                      'The email is on its way. ',
+                      "Password reset email\nsent",
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w700,
+                        height: AppDimensions.height10(context) * 0.15,
                         color: Colors.white,
-                        fontSize: AppDimensions.font10(context) * 2,
+                        fontSize: AppDimensions.font10(context) * 2.8,
                       ),
-                    )),
-                SizedBox(height: AppDimensions.height10(context) * 0.92),
-                SizedBox(
-                    height: AppDimensions.height10(context) * 7 + 4,
-                    width: AppDimensions.width10(context) * 31.6,
-                    child: Text(
-                      'Please check your inbox including Promotions & Spam folders to reset your password.',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontWeight: FontWeight.w400,
-                        color: Colors.white,
-                        fontSize: AppDimensions.font10(context) * 1.4,
-                      ),
-                    )),
-                SizedBox(height: AppDimensions.height10(context) * 4.2),
-                AnimatedScaleButton(
-                  onTap: () {
-                    Navigator.pushReplacement(
-                      context,
-                      FadePageRoute(
-                        page: Verification(
-                          email: widget.email,
+                    ),
+                  ),
+                  SizedBox(height: AppDimensions.height10(context) * 2.2),
+                  // SizedBox(height: AppDimensions.height2),
+                  SizedBox(
+                      height: AppDimensions.height10(context) * 2.4,
+                      width: AppDimensions.screenWidth(context) - 100,
+                      child: Text(
+                        'The email is on its way. ',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                          fontSize: AppDimensions.font10(context) * 2,
                         ),
+                      )),
+                  SizedBox(height: AppDimensions.height10(context) * 0.92),
+                  SizedBox(
+                      height: AppDimensions.height10(context) * 7 + 4,
+                      width: AppDimensions.width10(context) * 31.6,
+                      child: Text(
+                        'Please check your inbox including Promotions & Spam folders to reset your password.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                          fontSize: AppDimensions.font10(context) * 1.4,
+                        ),
+                      )),
+                  SizedBox(height: AppDimensions.height10(context) * 4.2),
+                  AnimatedScaleButton(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        FadePageRoute(
+                          page: Verification(
+                            email: widget.email,
+                          ),
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: AppDimensions.height10(context) * 4.4,
+                      width: AppDimensions.width10(context) * 26.7,
+                      // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.width10(context) *0.8),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFFFFFF),
+                        borderRadius: BorderRadius.circular(
+                            AppDimensions.height10(context) * 5.0),
                       ),
-                    );
-                  },
-                  child: Container(
-                    height: AppDimensions.height10(context) * 4.4,
-                    width: AppDimensions.width10(context) * 26.7,
-                    // padding: EdgeInsets.only(left:AppDimensions.height10(context) *0.8,top:AppDimensions.height10(context) *1.6,right: AppDimensions.width10(context) *0.8),
-                    decoration: BoxDecoration(
-                      color: const Color(0xFFFFFFFF),
-                      borderRadius: BorderRadius.circular(
-                          AppDimensions.height10(context) * 5.0),
+                      child: Center(
+                          child: Text(
+                        'Go to Verification page',
+                        style: TextStyle(
+                          color: const Color(0xFF8C648A),
+                          fontSize: AppDimensions.font10(context) * 2,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      )),
                     ),
-                    child: Center(
-                        child: Text(
-                      'Go to Verification page',
-                      style: TextStyle(
-                        color: const Color(0xFF8C648A),
-                        fontSize: AppDimensions.font10(context) * 2,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    )),
                   ),
-                ),
 
-                // SizedBox(height: AppDimensions.height120+90),
-              ],
-              // child:  Text("Hello background"),
-            ),
-          ],
-        ));
+                  // SizedBox(height: AppDimensions.height120+90),
+                ],
+                // child:  Text("Hello background"),
+              ),
+            ],
+          )),
+    );
   }
 }
