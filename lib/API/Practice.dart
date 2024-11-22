@@ -296,6 +296,7 @@ class PracticeGoalApi {
           '${URL.BASE_URL}api/userPractice/userDashBoardDataById/$userId?givenDate=$day'),
       headers: headers,
     );
+
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
       return data;

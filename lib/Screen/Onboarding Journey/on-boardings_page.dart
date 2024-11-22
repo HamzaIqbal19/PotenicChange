@@ -163,9 +163,8 @@ class OnboardingPageState extends State<OnboardingPage>
                   context,
                   FadePageRoute2(
                     true,
-                    enterPage: HomeScreenProgressSaved(
+                    enterPage: HomeScreen(
                       login: true,
-                      route: Routes.toString(),
                     ),
                     exitPage: OnBoarding(),
                   ),

@@ -175,9 +175,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                               prefs.setString('loginEmail', email);
                                               prefs.setString('loginPass', pass);
                                             }
-
-
-
                                             Navigator.push(
                                               context,
                                               FadePageRoute2(

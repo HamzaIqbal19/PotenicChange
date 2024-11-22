@@ -354,6 +354,8 @@ class _Goal_IdentityState extends State<Goal_Identity> {
       } else if (route == 'view_all_goals') {
         Navigator.pushReplacement(
             context, FadePageRouteReverse(page: const view_all_goals_menu()));
+        final SharedPreferences prefs = await _prefs;
+        await prefs.setString('route', "GoalIdentity");
       } else {
         Navigator.push(
           context,

@@ -5,6 +5,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:potenic_app/API/Goal.dart';
 import 'package:potenic_app/Screen/Goal%20Creation%20Journey/Categories.dart';
+import 'package:potenic_app/Screen/Goal%20Creation%20Journey/Goal-Visualising.dart';
+import 'package:potenic_app/Screen/Goal%20Creation%20Journey/Goal-Why.dart';
+import 'package:potenic_app/Screen/Goal%20Creation%20Journey/Goal_Identity.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/add_your_practice.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/goal&practice_info.dart';
 import 'package:potenic_app/Screen/Your%20Goals%20Journey/goal_menu_inactive.dart';
@@ -30,6 +33,7 @@ class view_all_goals_menu extends StatefulWidget {
 class _view_all_goals_menuState extends State<view_all_goals_menu> {
   var goalsDetails;
   bool Loader = true;
+  var newGoalRoute;
 
   Future<Timer> loadData() async {
     return Timer(const Duration(seconds: 1), onDoneLoading);
@@ -40,6 +44,12 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
       Loader = false;
     });
   }
+
+  getRoute() async {
+    final SharedPreferences prefs = await _prefs;
+    newGoalRoute = prefs.getString('route') ?? '';
+  }
+
 
   void _fetchAllUserGoals() {
     AdminGoal.getUserGoalByUserId().then((response) {
@@ -56,6 +66,7 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
   void initState() {
     super.initState();
     _fetchAllUserGoals();
+    getRoute();
   }
 
   @override
@@ -75,8 +86,16 @@ class _view_all_goals_menuState extends State<view_all_goals_menu> {
           }),
           actions: [
             Buttons().addButton(context, ()async{
+              if(newGoalRoute == 'goalWhy'){
+                Navigator.push(context, FadePageRoute(page: const GoalWhy(comingFromEditScreen: false, route: '', saved: true)));
+              }else if(newGoalRoute == 'GoalIdentity'){
+                Navigator.push(context, FadePageRoute(page: const Goal_Identity(comingFromEditScreen: false, route: '', saved: true)));
+              }else if(newGoalRoute == 'goalVisualising'){
+                Navigator.push(context, FadePageRoute(page: const Visualising(comingFromEditScreen: false, route: '', saved: true)));
+              }else{
               Navigator.push(context,
                   FadePageRouteReverse(page: const Categories()));
+              }
               final SharedPreferences prefs = await _prefs;
               await prefs.setString('goal_route', 'view_all_goals');
             })

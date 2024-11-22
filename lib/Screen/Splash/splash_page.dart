@@ -58,6 +58,8 @@ class SplashPageState extends State<SplashPage> {
     var accestoken = prefs.getString("usertoken");
     var sessionToken = prefs.getString("refreshtoken");
     var routes = prefs.getString("route");
+    var goalRoute = prefs.getString('goal_route')??'';
+    print('goalRoute $goalRoute');
     bool pracRoute = prefs.getBool('pracRoute') == true ? true : false;
 //
     if (accestoken != null && routes == null) {
@@ -103,11 +105,24 @@ class SplashPageState extends State<SplashPage> {
           .refreshTokenApi(sessionToken!)
           .then((response) {
             if (response == true) {
+              if(goalRoute !=''){
+                Navigator.push(
+                    context,
+                    FadePageRoute(
+                      page: const ViewDashboard(
+                        missed: false,
+                        name: '',
+                        update: false,
+                        helpfulTips: false,
+                        record: 0,
+                      ),
+                    ));
+              }else{
               Navigator.push(
                   context,
                   FadePageRoute(
                     page: const HomeScreen(login: true),
-                  ));
+                  ));}
             } else {
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(response["message"])));
@@ -115,8 +130,34 @@ class SplashPageState extends State<SplashPage> {
           })
           .catchError((error) {})
           .whenComplete(() {
-            onDoneLoading();
+           // onDoneLoading();
           });
+    }else if (accestoken != null && goalRoute == 'view_all_goals') {
+      Authentication()
+          .refreshTokenApi(sessionToken!)
+          .then((response) {
+        if (response == true) {
+            Navigator.push(
+                context,
+                FadePageRoute(
+                  page: const ViewDashboard(
+                    missed: false,
+                    name: '',
+                    update: false,
+                    helpfulTips: false,
+                    record: 0,
+                  ),
+                ));
+
+        } else {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(response["message"])));
+        }
+      })
+          .catchError((error) {})
+          .whenComplete(() {
+       // onDoneLoading();
+      });
     } else {
       onDoneLoading();
     }

@@ -239,9 +239,6 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                   builder: (BuildContext context) => SizedBox(
                                         width: AppDimensions.width10(context) *
                                             27.0,
-                                        height:
-                                            AppDimensions.height10(context) *
-                                                19.8,
                                         child: AlertDialog(
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
@@ -280,9 +277,6 @@ class _HomeScreenProgressSavedState extends State<HomeScreenProgressSaved> {
                                                 bottom: 19,
                                                 left: 16,
                                                 right: 16),
-                                            height: AppDimensions.height10(
-                                                    context) *
-                                                4.8,
                                             width: 238,
                                             child: Text(
                                               "Are you sure you want to log out? If you do, you will be prompted to login again by entering your email and password.",

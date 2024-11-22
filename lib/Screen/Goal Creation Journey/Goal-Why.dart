@@ -361,6 +361,8 @@ class _goalwhyState extends State<GoalWhy> {
       } else if (route == 'view_all_goals') {
         Navigator.pushReplacement(
             context, FadePageRouteReverse(page: const view_all_goals_menu()));
+        final SharedPreferences prefs = await _prefs;
+        await prefs.setString('route', "goalWhy");
       } else {
         Navigator.push(
           context,

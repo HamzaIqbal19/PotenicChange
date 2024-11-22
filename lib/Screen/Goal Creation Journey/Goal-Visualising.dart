@@ -543,11 +543,12 @@ class _VisualisingState extends State<Visualising> {
                                                   ),
                                                 ),
                                               );
-                                              final SharedPreferences prefs =
-                                                  await _prefs;
-                                              await prefs.setString(
-                                                  'route', "goalVisualising");
+
                                             }
+                                            final SharedPreferences prefs =
+                                            await _prefs;
+                                            await prefs.setString(
+                                                'route', "goalVisualising");
                                           },
                                           child: const Text(
                                             'Exit & save progress',
