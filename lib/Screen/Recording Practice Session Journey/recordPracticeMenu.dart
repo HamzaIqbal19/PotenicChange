@@ -508,6 +508,7 @@ class _practiceMenuState extends State<practiceMenu> {
                                                                                     update: true,
                                                                                     helpfulTips: false,
                                                                                     record: differenceInDays,
+                                                                                    navigateRecord: true,
                                                                                   )));
                                                                             }
                                                                           });

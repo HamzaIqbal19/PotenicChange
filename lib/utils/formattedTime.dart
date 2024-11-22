@@ -1,4 +1,3 @@
-
 import 'package:intl/intl.dart';
 
 String getFormattedDate(int removeDay) {
@@ -11,7 +10,7 @@ String getFormattedDay(int removeDay) {
       .format(DateTime.now().subtract(Duration(days: removeDay)));
 }
 
-formatDates(date){
+formatDates(date) {
   DateTime dateTime = DateTime.parse(date);
   return DateFormat('yyyy-MM-dd').format(dateTime);
 }

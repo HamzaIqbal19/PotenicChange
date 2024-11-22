@@ -1482,6 +1482,7 @@ class _practice_summaryState extends State<practice_summary> {
                                           update: true,
                                           helpfulTips: false,
                                           record: differenceInDays,
+                                          navigateRecord: true,
                                         )));
                                     _checkDialogDisplay(context, goalName,
                                         identity, color, pracColor, pracName);

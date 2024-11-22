@@ -18,6 +18,7 @@ dashboardCarousel(
   nextFunc,
   dashboardData,
   int currentIndex,
+  int initalPage,
   final ValueChanged<TwoValues<String, int>> onCountChanged,
 ) {
   DateTime currentDate = DateTime.now();
@@ -247,7 +248,7 @@ dashboardCarousel(
               enlargeFactor: 0.4,
               enlargeStrategy: CenterPageEnlargeStrategy.scale,
               scrollPhysics: const BouncingScrollPhysics(),
-              initialPage: 7,
+              initialPage: initalPage,
               enableInfiniteScroll: false,
               onPageChanged: (index, reason) {
                 currentFocused =

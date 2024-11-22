@@ -40,6 +40,7 @@ class ViewDashboard extends StatefulWidget {
   final String name;
   final bool helpfulTips;
   final int record;
+  final navigateRecord;
 
   const ViewDashboard(
       {super.key,
@@ -47,7 +48,8 @@ class ViewDashboard extends StatefulWidget {
       required this.update,
       required this.name,
       required this.helpfulTips,
-      required this.record});
+      required this.record,
+      this.navigateRecord});
 
   @override
   State<ViewDashboard> createState() => _ViewDashboardState();
@@ -87,6 +89,8 @@ class _ViewDashboardState extends State<ViewDashboard>
   bool isVisible = true;
   final NotificationPermissionService _notificationPermissionService =
       NotificationPermissionService();
+  var saveindex;
+  var saveDate;
 
   void _incrementValue() {
     if (goalLevel == 1) {
@@ -250,7 +254,6 @@ class _ViewDashboardState extends State<ViewDashboard>
             'data': practiceData[i],
             'status': '${practiceData[i]['recordingStatusTime${y + 1}']}'
           });
-          print("timelist ${timesList}");
         }
       }
 
@@ -308,6 +311,18 @@ class _ViewDashboardState extends State<ViewDashboard>
     getGoalUpdates();
 
     WidgetsBinding.instance.addObserver(this);
+    getIndex();
+  }
+
+  getIndex() async {
+    SharedPreferences prefs = await _prefs;
+    saveindex = prefs.getInt('saveindex');
+
+    if (widget.navigateRecord == true) {
+      currentIndex = saveindex;
+    } else {
+      currentIndex;
+    }
   }
 
   void _scrollToCurrentIndex() {
@@ -324,15 +339,24 @@ class _ViewDashboardState extends State<ViewDashboard>
 
   final GlobalKey centerKey = GlobalKey();
 
-  void fetchDashboardData() {
+  void fetchDashboardData() async {
+    SharedPreferences prefs = await _prefs;
     AdminGoal.checkUserActiveGoal().then((response) {
       if (response == 200) {
         PracticeGoalApi.getUserDashboard(getFormattedDate(current))
             .then((value) {
           setState(() {
             allGoals = value['data'];
+            print("data ${allGoals}");
           });
-          toggleDates(DateTime.now().toString());
+          if (widget.navigateRecord == true) {
+            var getDate = prefs.getString('date');
+            print("getDate");
+
+            toggleDates(getDate);
+          } else {
+            toggleDates(DateTime.now().toString());
+          }
           setState(() {
             noActive = false;
           });
@@ -533,9 +557,13 @@ class _ViewDashboardState extends State<ViewDashboard>
                                               disposeTooltips,
                                               _incrementValue,
                                               null,
-                                              currentIndex, (value) {
+                                              currentIndex,
+                                              widget.navigateRecord == true
+                                                  ? saveindex
+                                                  : 7, (value) {
                                               setState(() {
                                                 currentIndex = value.value2;
+
                                                 toggleDates(value.value1);
                                                 focusedDate = DateTime.parse(
                                                     formatDates(value.value1));
@@ -548,12 +576,38 @@ class _ViewDashboardState extends State<ViewDashboard>
                                               disposeTooltips,
                                               _incrementValue,
                                               allGoals,
-                                              currentIndex, (value) {
+                                              currentIndex,
+                                              widget.navigateRecord == true
+                                                  ? saveindex
+                                                  : 7, (value) async {
+                                              SharedPreferences prefs =
+                                                  await _prefs;
                                               setState(() {
+                                                if (widget.navigateRecord ==
+                                                    true) {}
+
+                                                // if (widget.navigateRecord ==
+                                                //     true) {
+                                                // print(
+                                                //     "check ${widget.navigateRecord}");
+                                                // saveindex =
+                                                //     prefs.getInt('saveindex');
+                                                // saveDate =
+                                                //     prefs.getString('date');
+                                                // currentIndex = saveindex ?? 7;
+                                                // toggleDates(saveDate);
+                                                // focusedDate = DateTime.parse(
+                                                //     formatDates(saveDate));
+                                                // } else {
                                                 currentIndex = value.value2;
                                                 toggleDates(value.value1);
                                                 focusedDate = DateTime.parse(
                                                     formatDates(value.value1));
+                                                prefs.setInt(
+                                                    'saveindex', currentIndex);
+                                                prefs.setString('date',
+                                                    focusedDate.toString());
+                                                //      }
                                               });
                                             }),
                                       noActive
@@ -601,8 +655,6 @@ class _ViewDashboardState extends State<ViewDashboard>
                                                                       timesList[
                                                                           index],
                                                                       () {
-                                                                    print(
-                                                                        "timelist ${timesList[index]}");
                                                                     _scrollToCurrentIndex();
                                                                   }, () async {
                                                                     if (_showOverlay ==
