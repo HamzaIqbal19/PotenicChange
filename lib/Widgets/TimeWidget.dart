@@ -73,7 +73,6 @@ class _schedule_cardState extends State<schedule_card> {
   bool Done = false;
   final String days_name;
 
-
   final GlobalKey<AdvanceExpansionTileState> _globalKey = GlobalKey();
   void removeSelectedDay(String day) {
     if (count > 0) {
@@ -90,6 +89,50 @@ class _schedule_cardState extends State<schedule_card> {
     setState(() {
       count = 0;
     });
+  }
+
+  DateTime customParseTime(String time) {
+    // Extract the time part and AM/PM
+    final timeParts = time.trim().split(RegExp(r'(?<=\d)(?=[a-zA-Z])'));
+    // print("time $timeParts");
+
+    final timeString = timeParts[0];
+    // print("time1 $timeString");
+    final period = timeString.toString().split(' ');
+    // print("time2 $period");
+
+    final hourMinute = period[0].split(':');
+    // print("time3 $hourMinute");
+    int hour = int.parse(hourMinute[0]);
+    // print("time4 $hour");
+    final minute = int.parse(hourMinute[1]);
+    // print("time5 $minute");
+
+    // Adjust hour if the period is PM (excluding 12 PM)
+    if (period[1] == 'pm' && hour != 12) {
+      hour += 12;
+    } else {
+      // print("period $period");
+    }
+    // Adjust for 12 AM being midnight
+    if (period[1] == 'am' && hour == 12) {
+      hour = 0;
+    } else {
+      // print("period22 $period");
+    }
+
+    // Return a DateTime object for comparison
+    return DateTime(0, 1, 1, hour, minute);
+  }
+
+  List<String> sortTimes(List<String> times) {
+    try {
+      times.sort((a, b) => customParseTime(a).compareTo(customParseTime(b)));
+      return times;
+    } catch (e) {
+      print("Error: $e");
+      return times; // Return the original list in case of an error
+    }
   }
 
   // final ValueChanged<String> onChangedStart;
@@ -181,6 +224,7 @@ class _schedule_cardState extends State<schedule_card> {
                                 setState(() async {
                                   if (Done) {
                                     selectedDays.add(days_name);
+                                    print("timesss ${times.length}");
 
                                     setState(() {
                                       num = num + 1;
@@ -195,31 +239,27 @@ class _schedule_cardState extends State<schedule_card> {
                                         start_time =
                                             "$selectedHour:$selectedMinute ${selectedPeriod.toLowerCase()}";
                                       });
-                                      times.add(start_time);
 
-                                      List<DateTime> parsedTimes = times.map((time) {
-                                        return DateTime.parse('1970-01-01 ' + timerSorter().convertTo24HourFormat(time));
-                                      }).toList();
+                                      if (times.contains(start_time)) {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          const SnackBar(
+                                              content: Text(
+                                                  "This time slot is already selected.")),
+                                        );
+                                      } else {
+                                        times.add(start_time);
+                                        sortTimes(times);
 
-                                      // Sort the DateTime objects
-                                      parsedTimes.sort();
-
-                                      // Convert back to the original 12-hour string format with am/pm
-                                      List<String> sortedTimes = parsedTimes.map((time) {
-                                        return timerSorter().formatTo12Hour(time);
-                                      }).toList();
-
-                                      // Print the sorted times
-                                      times.clear();
-                                      times.addAll(sortedTimes);
-
-
+                                        print("length ${times.length}");
+                                      }
                                       TwoValues<String, int> values =
                                           TwoValues<String, int>(
                                               start_time, num);
                                       widget.onChangedStart(values);
                                       onCountChanged(count);
                                       _globalKey.currentState?.expand();
+                                      print("times $times");
                                       Navigator.pop(context);
                                     }
                                   }
@@ -255,7 +295,7 @@ class _schedule_cardState extends State<schedule_card> {
                     fontSize: 20.0),
               ),
               children: <Widget>[
-                for (int i = 0; i < num && i <= 9; i++) ...[
+                for (int i = 0; i < times.length && i <= 9; i++) ...[
                   Container(
                     // color:Colors.orange,
                     padding:
@@ -269,20 +309,32 @@ class _schedule_cardState extends State<schedule_card> {
                           text: ' $num) Time: ',
                           start_Time: times[i],
                           onChanged: (value) {
-                            setState(() {
-                              start_time = value;
-                            });
-                            times[i] = start_time;
-                            TwoValues<String, int> values =
-                                TwoValues<String, int>(value, num);
+                            // setState(() {
+                            //   start_time = value;
+                            // });
+                            // times[i] = start_time;
 
-                            widget.onChangedStart(values);
+                            // TwoValues<String, int> values =
+                            //     TwoValues<String, int>(value, num);
+
+                            // widget.onChangedStart(values);
                           },
                           onChangedStart: (String value) {
                             setState(() {
                               start_time = value;
                             });
-                            times[i] = start_time;
+                            if (times.contains(start_time)) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                    content: Text(
+                                        "This time slot is already selected.")),
+                              );
+                            } else {
+                              times[i] = start_time;
+                              sortTimes(times);
+                            }
+
+                            print("times $times");
                           },
                         ),
                         // SizedBox(width: 30,),
