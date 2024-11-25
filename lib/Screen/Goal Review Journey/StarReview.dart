@@ -455,21 +455,20 @@ class _StarReviewState extends State<StarReview> {
                                             right: AppDimensions.height10(
                                                 context)),
                                         decoration: BoxDecoration(
-                                            gradient:
-                                            _focusNode.hasFocus
-                                                ?
-                                            const LinearGradient(
+                                            gradient: _focusNode.hasFocus
+                                                ? const LinearGradient(
                                                     begin: Alignment.topCenter,
                                                     end: Alignment.bottomCenter,
                                                     colors: [
-                                                      Color(0xFFEFBEB2), Color(0xFFEAA897)
+                                                        Color(0xFFEFBEB2),
+                                                        Color(0xFFEAA897)
                                                       ])
-                                                :
-                                            const LinearGradient(
+                                                : const LinearGradient(
                                                     begin: Alignment.topCenter,
                                                     end: Alignment.bottomCenter,
                                                     colors: [
-                                                      Color(0xFFEFBEB2), Color(0xFFEAA897)
+                                                        Color(0xFFEFBEB2),
+                                                        Color(0xFFEAA897)
                                                       ]),
                                             // color: Colors.white,
 
@@ -1195,7 +1194,19 @@ class _StarReviewState extends State<StarReview> {
                                           padding: EdgeInsets.zero,
                                           itemBuilder: (context, index) {
                                             return Column(children: [
-                                              inner_text(head_text: 'Statement ${index + 1}', body_text: '${reason[index]['text']}', length: 200, onChanged: (value){}, onDelete: (){}, delete: false, index: index, comingFromEditScreen: false, placeHolder: 'I want to achieve this goal because...'),
+                                              inner_text(
+                                                  head_text:
+                                                      'Statement ${index + 1}',
+                                                  body_text:
+                                                      '${reason[index]['text']}',
+                                                  length: 200,
+                                                  onChanged: (value) {},
+                                                  onDelete: () {},
+                                                  delete: false,
+                                                  index: index,
+                                                  comingFromEditScreen: false,
+                                                  placeHolder:
+                                                      'I want to achieve this goal because...'),
                                               SizedBox(
                                                 height: AppDimensions.height10(
                                                     context),
@@ -1338,8 +1349,19 @@ class _StarReviewState extends State<StarReview> {
                                           padding: EdgeInsets.zero,
                                           itemBuilder: (context, index) {
                                             return Column(children: [
-                                              inner_text(head_text: 'Statement ${index + 1}', body_text: '${identity[index]['text']}', length: 200, onChanged: (value){}, onDelete: (){}, delete: false, index: index, comingFromEditScreen: false, placeHolder: 'I want to achieve this goal because...'),
-
+                                              inner_text(
+                                                  head_text:
+                                                      'Statement ${index + 1}',
+                                                  body_text:
+                                                      '${identity[index]['text']}',
+                                                  length: 200,
+                                                  onChanged: (value) {},
+                                                  onDelete: () {},
+                                                  delete: false,
+                                                  index: index,
+                                                  comingFromEditScreen: false,
+                                                  placeHolder:
+                                                      'I want to achieve this goal because...'),
                                               SizedBox(
                                                 height: AppDimensions.height10(
                                                     context),
@@ -1483,8 +1505,19 @@ class _StarReviewState extends State<StarReview> {
                                           padding: EdgeInsets.zero,
                                           itemBuilder: (context, index) {
                                             return Column(children: [
-                                              inner_text(head_text: 'Statement ${index + 1}', body_text: '${visualize[index]['text']}', length: 200, onChanged: (value){}, onDelete: (){}, delete: false, index: index, comingFromEditScreen: false, placeHolder: 'I want to achieve this goal because...'),
-
+                                              inner_text(
+                                                  head_text:
+                                                      'Statement ${index + 1}',
+                                                  body_text:
+                                                      '${visualize[index]['text']}',
+                                                  length: 200,
+                                                  onChanged: (value) {},
+                                                  onDelete: () {},
+                                                  delete: false,
+                                                  index: index,
+                                                  comingFromEditScreen: false,
+                                                  placeHolder:
+                                                      'I want to achieve this goal because...'),
                                               SizedBox(
                                                 height: AppDimensions.height10(
                                                     context),
